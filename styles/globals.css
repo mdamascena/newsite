@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,39 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.dongle{
+  font-family: 'Dongle', sans-serif;
+}
+
+.baloo{
+  font-family: 'Baloo 2', cursive;
+}
+
+.ubuntu{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.poppins{
+  font-family: 'Poppins', sans-serif;
+}
+
+.bgMainHome{
+  background: url(../public/img/bgmain.png), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: top 50% right 10%;
+
+  height: 80vh;
+}
+
+@media(max-width: 720px){
+  .bgMainHome{
+    background: url(../public/img/bgmain.jpg), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
