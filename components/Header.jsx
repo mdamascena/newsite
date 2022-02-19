@@ -4,7 +4,7 @@ import LogoA from '../public/img/LOGO_AZUL.png'
 import styled from 'styled-components'
 import tw from 'tailwind-styled-components'
 import Button from "@material-tailwind/react/Button"
-import Input from "@material-tailwind/react/Input";
+import { useEffect, useState } from 'react'
 
 
 const NavbarCSS = styled.div`
@@ -23,7 +23,6 @@ const Navbar = tw(NavbarCSS)`
     right-0 
     flex 
     flex-row
-    container
     items-center 
     mx-auto
     gap-10
@@ -37,11 +36,30 @@ const Li = tw.li`
     transition-transform 
     duration-500
     text-sm
-    
 `;
 
 export default function Header() {
 
+    const [bgNavbar, setBgNavbar] = useState('bg-opacity-10');
+    const [logo, setLogo] = useState(LogoB);
+    const [txtNavbar, setxtNavbar] = useState('text-white');
+   
+    useEffect(
+        () => {
+            window.addEventListener('scroll', ()=>{
+                if(window.scrollY > 0){
+                    setBgNavbar('shadow-lg');
+                    setLogo(LogoA);
+                    setxtNavbar('text-blue-600');
+                }else{
+                    setBgNavbar('bg-opacity-10');
+                    setLogo(LogoB);
+                    setxtNavbar('text-white');
+                }
+            });
+        }, []
+    )
+ 
     function clickMenu() {
         let btn = document.querySelector('.toggle')
         btn.classList.toggle('active');
@@ -67,28 +85,24 @@ export default function Header() {
 
     return (
         <header>
+            <div id='menuBar' className={`${bgNavbar} z-50 fixed py-[12px] px-[20px] rounded-[10px] left-0 right-0 flex flex-row items-center lg:mx-14 mx-4 top-4 bg-white`}>
 
-            <Navbar id='menuBar'>
                 <div className='flex-2 lg:flex-1 flex hover:animate-bounce transition-transform duration-500'>
-                    <Image id='logoBranco' src={LogoB} width={140} height={30} placeholder='blur' className='' />
-
+                    <Image id='logoBranco' src={logo} width={140} height={30} placeholder='blur' />
                 </div>
 
                 <nav className="hidden lg:block flex-2">
-
-                    <ul className='text-white poppins flex gap-7'>
-                        <Li>Princial</Li>
+                    <ul className={`${txtNavbar} poppins flex gap-7`}>
+                        <Li>Principal</Li>
                         <Li>Quem Somos</Li>
                         <Li>Empréstimos</Li>
                         <Li>Como Funciona</Li>
                         <Li>Perguntas frequantes</Li>
                         <Li>Contato</Li>
                     </ul>
-
                 </nav>
 
                 <div className='flex-1 grid justify-items-stretch'>
-
                     <Button className='justify-self-end bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
                         color="amber"
                         buttonType="filled"
@@ -98,7 +112,6 @@ export default function Header() {
                         iconOnly={false}
                         ripple="light"> <span className='hidden lg:block poppins'>Acessar conta</span><span className='lg:hidden poppins'>Entrar</span>
                     </Button>
-
                 </div>
 
                 <div className='toggle lg:hidden flex-1' onClick={clickMenu}>
@@ -106,8 +119,7 @@ export default function Header() {
                     <span></span>
                     <span></span>
                 </div>
-
-            </Navbar>
+            </div>
 
         </header>
     )
