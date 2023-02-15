@@ -75,11 +75,8 @@ export default function SectionDescFGTS() {
                 </div>
 
                 <Image src={ImgFGTS} className="col-span-1 lg:order-1"/>
-
+            
             </div>
-
-            {/*<div className='saturate-150 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-500 rounded-[2rem] h-36 lg:mx-52 mx-8'>
-            </div>*/}
 
         </section>
     )
