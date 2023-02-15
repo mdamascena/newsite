@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from "next/image"
 import ImgFGTS from '../../public/img/modelo_cel.png'
-import { style } from "@mui/system"
+
 import {FaCheck} from 'react-icons/Fa'
 import tw from 'tailwind-styled-components'
 
