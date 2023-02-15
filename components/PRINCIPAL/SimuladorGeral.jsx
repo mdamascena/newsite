@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
 import Button from "@material-tailwind/react/Button"
 import Image from 'next/image'
-import BrasaoC from '../public/img/BRASAO_CINZA.png'
+import BrasaoC from '../../public/img/BRASAO_CINZA.png'
 import { useState, useEffect } from "react"
 import {AiOutlineBarcode} from "react-icons/ai"
 import {RiBankLine} from "react-icons/ri"
@@ -24,7 +24,7 @@ const CardMod = tw.div`
     px-6 
     m-2 
     shadow-lg 
-    duration-700 
+    duration-700
     h-72
     cursor-pointer 
     flex 

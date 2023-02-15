@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import LogoFB from '../public/img/LOGO_FULL_BRANCO.png'
+import LogoFB from '../../public/img/LOGO_FULL_BRANCO.png'
 import {SiInstagram} from "react-icons/si"
 import {ImFacebook} from 'react-icons/im'
 import {SiTiktok} from 'react-icons/si'
-import {MdHeadsetMic} from 'react-icons/md'
+import {MdHeadsetMic} from 'react-icons/Md'
 
 export default function Footer(){
     return(

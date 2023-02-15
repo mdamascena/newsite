@@ -1,5 +1,5 @@
 import Image from "next/image"
-import ree from '../public/favicon.png'
+import ree from '../newsite/public/favicon.png'
 
 export default function Grid(){
     return(

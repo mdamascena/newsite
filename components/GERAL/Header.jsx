@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import LogoB from '../public/img/LOGO_BRANCO.png'
-import LogoA from '../public/img/LOGO_AZUL.png'
-import Brasao from '../public/img/BRASAO_AZUL.png'
+import LogoB from '../../public/img/LOGO_BRANCO.png'
+import LogoA from '../../public/img/LOGO_AZUL.png'
+import Brasao from '../../public/img/BRASAO_AZUL.png'
 import tw from 'tailwind-styled-components'
 import Button from "@material-tailwind/react/Button"
 import { useEffect, useState } from 'react'
@@ -85,7 +85,7 @@ export default function Header() {
                         <Li className={`${bgNavbar[4]}`}>Principal</Li>
                         <Li className={`${bgNavbar[4]}`}>Quem Somos</Li>
                         <Li className={`${bgNavbar[4]} flex group`}>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500'/></Li>
-                        <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200  mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
+                        <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200 mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
                             <ul className={dropMenu[2]}>
                                 <LiSm>CredFGTS</LiSm>
                                 <LiSm>CredLuz</LiSm>

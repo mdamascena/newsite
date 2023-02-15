@@ -35,6 +35,10 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
+.Gochi{
+  font-family: 'Gochi Hand', cursive;
+}
+
 .bgMainHome{
   background: url(../public/img/bgmain.png), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
   background-size: cover;
