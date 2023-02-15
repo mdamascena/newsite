@@ -1,88 +1,71 @@
 import styled from "styled-components"
 import tw from 'tailwind-styled-components'
-import Box from '@mui/material/Box'
-import Slider from '@mui/material/Slider'
-import Typography from '@mui/material/Typography'
 import Button from "@material-tailwind/react/Button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-export default function MainHome(props) {
-
-  const [ValorEmp, setValorEmp] = useState(0); 
-
-  const handleSliderChange = (event, NovoValor) =>{
-    setValorEmp(NovoValor);
-  }
-
-  const handleInputChange = (event) => {
-    setValorEmp(event.target.ValorEmp === '' ? '' : Number(event.target.ValorEmp));
-  };
-
-  const handleBlur = () => {
-    if (ValorEmp < 200) {
-      setValue(200);
-    } else if (ValorEmp > 24000) {
-      setValue(24000);
-    }
-  };
+export default function MainHome() {
 
   return (
     <main className="bgMainHome">
-
+      
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="col-span-1 px-5 lg:px-16 mt-[10rem]">
-          <h1 className="text-white text-4xl poppins font-bold tracking-tight">
+        
+        <div className="col-span-1 px-5 lg:pl-28 lg:pr-32 lg:my-[26vh] mt-[50vh] mb-[5vh]">
+
+          <h1 className="text-white lg:text-4xl text-[30px] text-center lg:text-left poppins font-bold tracking-tight">
             Seu Empréstimo Online
           </h1>
 
-          <h2 className="mt-2 poppins text-yellow-400 font-semibold text-2xl">
+          <h2 className="lg:mt-2 text-center lg:text-left poppins text-yellow-400 font-light text-[20px] lg:text-2xl">
             Com dinheiro real na sua conta!
           </h2>
 
-          <div className="bg-white rounded-2xl p-5 lg:mr-32 mt-3">
-            <h1 className="text-blue-400 font-semibold poppins text-center text-lg mb-2">
-              De quanto vc precisa?
-            </h1>
-
-            <div className="grid justify-center">
-              <Box width={320}>
-                
-                <h1 className="text-sky-600 text-2xl poppins font-semibold text-center"></h1>
-                
-                <Slider
-                  defaultValue={ValorEmp}
-                  valueLabelDisplay="auto"
-                  aria-label="Default"
-                  min={200}
-                  max={24000}
-                  step={100}
-
-                />
-              </Box>
-
-              <Button className='px-20 mt-5 justify-self-center bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
-                color="amber"
-                buttonType="filled"
-                size="regular"
-                rounded={true}
-                block={false}
-                iconOnly={false}
-                ripple="light"> <span className='hidden lg:block poppins'>Simular empréstimo</span><span className='lg:hidden poppins'>Entrar</span>
-              </Button>
-            </div>
+          <div className="mt-3">
+            <p className="text-white poppins hidden md:block">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nam delectus 
+              quo sapiente cum sequi maxime accusantium, ducimus nemo ipsa vel 
+              ex omnis voluptates. Veritatis corrupti excepturi enim fugit praesentium.
+            </p>
+            
+            <button className='
+              focus:outline-none
+              bg-gradient-to-r 
+              from-yellow-300 
+              to-amber-500
+              mx-auto
+              border-b-4
+              border-orange-400 
+              text-2xl
+              lg:py-2
+              lg:px-36
+              lg:mx-0
+              py-2
+              px-24
+              flex
+              poppins 
+              font-semibold 
+              rounded-full 
+              text-white 
+              mt-8
+              hover:to-amber-600 
+              hover:from-yellow-500
+              focus:to-amber-700 
+              focus:from-yellow-600
+              focus:ring-offset-0
+              focus:ring-opacity-70        
+              focus:ring-4
+              focus:ring-amber-200'>Simular agora</button>
+ 
           </div>
+        
         </div>
 
         <div className="hidden lg:block col-span-1">
-
+          
         </div>
       </div>
 
     </main>
 
   )
-}
-
-const valueRange = (value) => {
-  document.getElementById('rangeValue').innerHTML = value;
 }

@@ -2,9 +2,11 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
 import MainHome from '../components/MainHome'
+import Footer from '../components/Footer'
 import Grid from '../components/Grid'
 import Exec from '../components/Exercicios'
-
+import TiposCred from '../components/Modalidades'
+import Simulacao from '../components/SimuladorGeral'
 
 export default function Home() {
   return (
@@ -19,16 +21,16 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Dongle:wght@300&family=Poppins&family=Ubuntu:wght@300&display=swap" rel="stylesheet"></link>
-      
+        <script src="https://kit.fontawesome.com/8d9284e27b.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
       </Head>
 
       <Header/>
       <MainHome/>
-      <Exec/>
-      
-      
-      
-          
+      <TiposCred/>
+      <Simulacao/>
+      <Footer/>
+     
     </div>
 
   )
