@@ -24,7 +24,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Dongle:wght@300&family=Gochi+Hand&family=Poppins&family=Ubuntu:wght@300&display=swap" rel="stylesheet"></link>
-        <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
       </Head>
 
