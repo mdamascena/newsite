@@ -37,7 +37,7 @@ export default function SectionTaxa() {
                             </div>
 
                             <div className='bg-slate-200 flex-1 rounded-xl relative col-span-5 my-auto'>
-                                <div className='py-1 rounded-xl bg-orange-500 poppins text-white text-right p-5'>
+                                <div className='py-1 rounded-xl bg-amber-500 poppins text-white text-right p-5'>
                                     28,00%
                                 </div>
                             </div>
