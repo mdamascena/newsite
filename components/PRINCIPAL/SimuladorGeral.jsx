@@ -1,8 +1,7 @@
 import styled from "styled-components"
 import tw from 'tailwind-styled-components'
-import Box from '@mui/material/Box'
-import Slider from '@mui/material/Slider'
-import Button from "@material-tailwind/react/Button"
+
+
 import Image from 'next/image'
 import BrasaoC from '../../public/img/BRASAO_CINZA.png'
 import { useState, useEffect } from "react"
@@ -71,7 +70,7 @@ export default function SessaoModalidades(){
 
                                 <span className="poppins text-2xl lg:text-4xl text-blue-500 text-center font-bold m-3" id='rangeValue'>{'R$ '+valorEmp+".000"}</span>
                         
-                                <Box className="p-4 lg:my-3">
+                                {/*<Box className="p-4 lg:my-3">
                                     <Slider 
                                         id='selectVlr'
                                         aria-label="Default"
@@ -80,9 +79,9 @@ export default function SessaoModalidades(){
                                         max={25}
                                         onChange={handleChange}
                                     />
-                                </Box>
+                                </Box>*/}
 
-                                <Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
+                                {/*<Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
                                     color="amber"
                                     buttonType="filled"
                                     size="regular"
@@ -90,7 +89,7 @@ export default function SessaoModalidades(){
                                     block={false}
                                     iconOnly={false}
                                     ripple="light"> <span className="text-sm">Simulação</span>
-                                </Button>
+                                </Button>*/}
                             </div>
                         </div>
 
@@ -108,7 +107,7 @@ export default function SessaoModalidades(){
                                 sequi sed quidem a enim repellat praesentium voluptates? Quibusdam, 
                                 vitae. Repellat, aperiam.
                                
-                                <Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
+                                {/*<Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
                                     color="amber"
                                     buttonType="filled"
                                     size="regular"
@@ -116,7 +115,7 @@ export default function SessaoModalidades(){
                                     block={false}
                                     iconOnly={false}
                                     ripple="light"> <span className="text-sm">Solicitar</span>
-                                </Button>
+                                </Button>*/}
                             </div>
                         </CardMod>
 
@@ -134,7 +133,7 @@ export default function SessaoModalidades(){
                                 sequi sed quidem a enim repellat praesentium voluptates? Quibusdam, 
                                 vitae. Repellat, aperiam.
                                
-                                <Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
+                                {/*<Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
                                     color="amber"
                                     buttonType="filled"
                                     size="regular"
@@ -142,7 +141,7 @@ export default function SessaoModalidades(){
                                     block={false}
                                     iconOnly={false}
                                     ripple="light"> <span className="text-sm">Solicitar</span>
-                                </Button>
+                                </Button>*/}
                             </div> 
                         </CardMod>
 
@@ -160,7 +159,7 @@ export default function SessaoModalidades(){
                                 sequi sed quidem a enim repellat praesentium voluptates? Quibusdam, 
                                 vitae. Repellat, aperiam.
                                
-                                <Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
+                                {/*<Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
                                     color="amber"
                                     buttonType="filled"
                                     size="regular"
@@ -168,7 +167,7 @@ export default function SessaoModalidades(){
                                     block={false}
                                     iconOnly={false}
                                     ripple="light"> <span className="text-sm">Solicitar</span>
-                                </Button>
+                                </Button>*/}
                             </div>
                         </CardMod>
 

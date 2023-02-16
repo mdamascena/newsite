@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import CalcFGTS from '../FGTS/SimuladorFGTS'
 import ImgMain from '../../public/img/pers_home.png'
-import Button from "@material-tailwind/react/Button"
+
 import styled from "styled-components"
 import tw from 'tailwind-styled-components'
 import { useState, useEffect } from "react"

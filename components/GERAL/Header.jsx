@@ -3,7 +3,7 @@ import LogoB from '../../public/img/LOGO_BRANCO.png'
 import LogoA from '../../public/img/LOGO_AZUL.png'
 import Brasao from '../../public/img/BRASAO_AZUL.png'
 import tw from 'tailwind-styled-components'
-import Button from "@material-tailwind/react/Button"
+
 import { useEffect, useState } from 'react'
 import {RiArrowDownSLine} from 'react-icons/ri'
 
@@ -99,7 +99,7 @@ export default function Header() {
                 </nav>
 
                 <div className='justify-items-stretch'>
-                    <Button className='normal-case justify-self-end bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
+                    {/*<Button className='normal-case justify-self-end bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
                         color="amber"
                         buttonType="filled"
                         size="regular"
@@ -107,7 +107,7 @@ export default function Header() {
                         block={false}
                         iconOnly={false}
                         ripple="light"> <span className='hidden lg:block poppins'>Acessar conta</span><span className='lg:hidden poppins'>Entrar</span>
-                    </Button>
+                    </Button>*/}
                 </div>
 
                 <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>
