@@ -6,11 +6,6 @@ import {AiOutlineBarcode} from "react-icons/ai"
 import {RiBankLine} from "react-icons/ri"
 import {RiLightbulbFlashLine} from 'react-icons/ri'
 import {MdOutlineCake} from 'react-icons/md'
-import {RiShieldCheckLine} from 'react-icons/ri'
-import {IoStopwatchOutline} from 'react-icons/io5'
-import {IoPodiumOutline} from 'react-icons/io5'
-import {IoWalletOutline} from 'react-icons/io5'
-import {AiOutlineFieldTime} from 'react-icons/Ai'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
