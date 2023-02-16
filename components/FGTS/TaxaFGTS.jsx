@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import { RiH1 } from 'react-icons/ri'
-
 
 export default function SectionTaxa() {
     return (

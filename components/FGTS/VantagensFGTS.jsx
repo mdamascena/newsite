@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Persona from '../../public/img/mulher_azul.png'
 import tw from 'tailwind-styled-components'
-import {MdMoneyOff} from 'react-icons/Md'
-import {VscSearchStop} from 'react-icons/Vsc'
-import {AiOutlineFieldTime} from 'react-icons/Ai'
-import {GiMoneyStack} from 'react-icons/Gi'
+import {MdMoneyOff} from 'react-icons/md'
+import {VscSearchStop} from 'react-icons/vsc'
+import {AiOutlineFieldTime} from 'react-icons/ai'
+import {GiMoneyStack} from 'react-icons/gi'
 import {HiOutlineArrowNarrowRight} from "react-icons/hi";
 import {HiOutlineArrowNarrowLeft} from "react-icons/hi";
 

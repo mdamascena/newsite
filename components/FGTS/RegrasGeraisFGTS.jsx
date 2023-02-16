@@ -1,7 +1,7 @@
 import Image from "next/image"
 import ImgFGTS from '../../public/img/modelo_cel.png'
 
-import {FaCheck} from 'react-icons/Fa'
+import {FaCheck} from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
 
 const BtnCalc = tw.button`
