@@ -7,6 +7,31 @@ import tw from 'tailwind-styled-components'
 import { useEffect, useState } from 'react'
 import {RiArrowDownSLine} from 'react-icons/ri'
 
+const BtnMenu = tw.button`
+    bg-gradient-to-r 
+    from-yellow-300 
+    to-amber-500 
+    text-md 
+    lg:py-2
+    py-1
+    lg:px-6
+    px-4
+    poppins
+    rounded-full
+    text-white
+    shadow-md
+    border-b-2 
+    border-amber-300
+    focus:outline-none
+    hover:shadow-md
+    hover:bg-gradient-to-r 
+    hover:to-amber-500 
+    hover:from-yellow-400
+    hover:ring-offset-0
+    hover:ring-4
+    hover:ring-amber-200
+`;
+
 const Li = tw.li`
     hover:scale-[1.2]
     cursor-pointer 
@@ -99,15 +124,7 @@ export default function Header() {
                 </nav>
 
                 <div className='justify-items-stretch'>
-                    {/*<Button className='normal-case justify-self-end bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400'
-                        color="amber"
-                        buttonType="filled"
-                        size="regular"
-                        rounded={true}
-                        block={false}
-                        iconOnly={false}
-                        ripple="light"> <span className='hidden lg:block poppins'>Acessar conta</span><span className='lg:hidden poppins'>Entrar</span>
-                    </Button>*/}
+                    <BtnMenu>Acessar</BtnMenu>
                 </div>
 
                 <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>
