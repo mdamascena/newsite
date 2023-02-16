@@ -5,11 +5,11 @@ import {RiBankLine} from "react-icons/ri"
 import {RiLightbulbFlashLine} from 'react-icons/ri'
 import {MdOutlineCake} from 'react-icons/md'
 import {RiShieldCheckLine} from 'react-icons/ri'
-import {IoStopwatchOutline} from 'react-icons/io5'
+
 import {IoPodiumOutline} from 'react-icons/io5'
 import {IoWalletOutline} from 'react-icons/io5'
-import {AiOutlineFieldTime} from 'react-icons/Ai'
-import {GiTakeMyMoney} from 'react-icons/Gi'
+import {AiOutlineFieldTime} from 'react-icons/ai'
+
 import Image from 'next/image'
 import Pers from '../../public/img/valoreal_mobile_s.png'
 import {Carousel} from 'react-responsive-carousel'
