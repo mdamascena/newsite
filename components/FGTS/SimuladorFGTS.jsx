@@ -2,8 +2,8 @@ import styled from "styled-components"
 import tw from 'tailwind-styled-components'
 
 import { useState, useEffect } from "react"
-import { MdOutlineEditCalendar } from 'react-icons/Md'
-import { MdOutlineAccountBalanceWallet } from 'react-icons/Md'
+import { MdOutlineEditCalendar } from 'react-icons/md'
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 
 const BtnSolic = tw.button`
     bg-gradient-to-r 
