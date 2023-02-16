@@ -159,15 +159,7 @@ export default function SessaoModalidades(){
                                 sequi sed quidem a enim repellat praesentium voluptates? Quibusdam, 
                                 vitae. Repellat, aperiam.
                                
-                                {/*<Button className='mx-auto lg:px-20 bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-r hover:to-amber-500 hover:from-yellow-400 mt-5'
-                                    color="amber"
-                                    buttonType="filled"
-                                    size="regular"
-                                    rounded={true}
-                                    block={false}
-                                    iconOnly={false}
-                                    ripple="light"> <span className="text-sm">Solicitar</span>
-                                </Button>*/}
+                                
                             </div>
                         </CardMod>
 
