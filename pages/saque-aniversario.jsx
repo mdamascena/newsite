@@ -7,8 +7,7 @@ import TaxaFGTS from '../components/FGTS/TaxaFGTS'
 import RegrasFGTS from '../components/FGTS/RegrasGeraisFGTS'
 import CalcFGTS from '../components/FGTS/SimuladorFGTS'
 import Footer from '../components/GERAL/Footer'
-import Grid from '../Grid'
-import Exec from '../Exercicios'
+
 
 export default function Home() {
   return (

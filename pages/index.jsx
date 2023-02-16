@@ -3,8 +3,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/GERAL/Header'
 import MainHome from '../components/PRINCIPAL/MainHome'
 import Footer from '../components/GERAL/Footer'
-import Grid from '../Grid'
-import Exec from '../Exercicios'
+
 import TiposCred from '../components/PRINCIPAL/Modalidades'
 import Simulacao from '../components/PRINCIPAL/SimuladorGeral'
 
