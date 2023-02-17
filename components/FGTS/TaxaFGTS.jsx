@@ -6,7 +6,7 @@ export default function SectionTaxa() {
 
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 
-                <div className='col-span-1 mt-8 -mb-8 order-2 lg:order-1'>
+                <div className='col-span-1 mt-8 -mb-12 order-2 lg:order-1'>
                     <GuruFinanceiro/>
                 </div>
                 

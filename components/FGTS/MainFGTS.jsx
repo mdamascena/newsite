@@ -45,7 +45,7 @@ export default function MainFGTS (){
     return(
         <main className="bgMainFGTS"> 
 
-            <div className="px-8 lg:px-28 lg:pt-20 pt-28 grid grid-cols-1 lg:grid-cols-2"> 
+            <div className="px-4 lg:px-28 lg:pt-20 pt-28 grid grid-cols-1 lg:grid-cols-2"> 
 
                 <div className='poppins lg:my-auto mb-10'>
                     <EmpTitle>Empréstimo</EmpTitle>
