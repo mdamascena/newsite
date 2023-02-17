@@ -1,3 +1,4 @@
+import GuruFinanceiro from '../../components/ANIMACOES/AnimeFinancial.jsx'
 
 export default function SectionTaxa() {
     return (
@@ -6,7 +7,7 @@ export default function SectionTaxa() {
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 
                 <div className='col-span-1 mt-8 -mb-8 order-2 lg:order-1'>
-                    
+                    <GuruFinanceiro/>
                 </div>
                 
                 <div className='col-span-2 my-auto poppins text-slate-400 lg:text-xl text-md order-1 lg:order-2'>

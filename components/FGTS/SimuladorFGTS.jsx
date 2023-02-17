@@ -56,7 +56,7 @@ export default function SimuladorFGTS() {
                                 <label className="text-blue-100 text-sm" htmlFor="saldo">Digite seu saldo FGTS</label>
                                 <div className="relative flex items-center">
                                     <MdOutlineAccountBalanceWallet className="w-6 h-6 absolute ml-3 text-slate-400" />
-                                    <IntSolic placeholder='R$ 00.000,00' name="saldo" />
+                                    <IntSolic placeholder='R$ 00.000,00' name="saldo" inputmode="numeric" />
                                 </div>
                             </div>
 
@@ -64,7 +64,7 @@ export default function SimuladorFGTS() {
                                 <label className="text-blue-100 text-sm" htmlFor="nascimento">Data do seu nascimento</label>
                                 <div className="relative flex items-center">
                                     <MdOutlineEditCalendar className="w-6 h-6 absolute ml-3 text-slate-400" />
-                                    <IntSolic placeholder='00/00/0000' name="nascimento" />
+                                    <IntSolic placeholder='00/00/0000' name="nascimento" inputmode="numeric" />
                                 </div>
                             </div>
 
