@@ -23,7 +23,7 @@ export default function SectionTaxa() {
 
             <div className='grid grid-cols-3 lg:mx-4 lg:mb-32 mb-10'>
 
-                <div className='lg:col-span-2 col-span-3 rounded-3xl bg-white p-7 my-4 lg:mr-6 shadow-lg'>
+                <div className='lg:col-span-2 col-span-3 rounded-3xl bg-white p-7 my-4 lg:mr-6 shadow-lg order-2 lg:order-1'>
                     
                     <h1 className='text-slate-400 poppins text-3xl font-bold tracking-tight mb-8'>Taxa de juros mensal</h1>
                     
@@ -81,7 +81,7 @@ export default function SectionTaxa() {
 
                 </div>
 
-                <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white poppins shadow-lg'>
+                <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white poppins shadow-lg order-1 lg:order-2'>
                     
                     <h1 className='text-center poppins text-white lg:text-4xl text-xl'>
                         Juros a partir de
