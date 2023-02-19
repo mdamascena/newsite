@@ -100,12 +100,14 @@ export default function Header() {
     return (
         <header>
             
-            <div id='menuBar' className={`${bgNavbar[0]} z-50 fixed py-[12px] px-[20px] rounded-[10px] left-0 right-0 flex flex-row items-center lg:mx-24 mx-4 top-4 bg-white duration-500`}>
+            <div id='menuBar' className={`${bgNavbar[0]} z-50 fixed py-2 px-[20px] rounded-[10px] left-0 right-0 flex flex-row items-center lg:mx-24 mx-4 top-4 bg-white duration-500`}>
+                
                 <div className='pr-16 pt-1 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                    <Image id='logoBranco' src={bgNavbar[3]} width={140} height={30} placeholder='blur' />
+                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' />
                 </div>
 
                 <nav className="hidden lg:block mx-auto">
+
                     <ul className={`${bgNavbar[1]} poppins flex gap-7`}>
                         <Li className={`${bgNavbar[4]}`}>Principal</Li>
                         <Li className={`${bgNavbar[4]}`}>Quem Somos</Li>
@@ -121,6 +123,7 @@ export default function Header() {
                         <Li className={`${bgNavbar[4]}`}>Perguntas frequantes</Li>
                         <Li className={`${bgNavbar[4]}`}>Contato</Li>
                     </ul>
+
                 </nav>
 
                 <div className='justify-items-stretch'>
