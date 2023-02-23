@@ -1,13 +1,15 @@
 import Head from 'next/head'
-import lottie from 'lottie-web';
+import lottie from 'lottie-web'
 import styles from '../styles/Home.module.css'
+import AlertInfor from '../components/GERAL/Alert'
 import HeaderB from '../components/GERAL/Header_branco'
 import MainFGTS from '../components/FGTS/MainFGTS'
 import Vantagens from '../components/FGTS/VantagensFGTS'
 import TaxaFGTS from '../components/FGTS/TaxaFGTS'
 import RegrasFGTS from '../components/FGTS/RegrasGeraisFGTS'
-import CalcFGTS from '../components/FGTS/SimuladorFGTS'
+import SimulaFGTS from '../components/FORM/SimuladorFGTS'
 import Footer from '../components/GERAL/Footer'
+
 
 
 export default function Home() {
@@ -28,9 +30,10 @@ export default function Home() {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
       </Head>
 
+      <AlertInfor/>
       <HeaderB/>
       <MainFGTS/>
-      <CalcFGTS/>
+      <SimulaFGTS/>
       <Vantagens/>
       <TaxaFGTS/>
       <RegrasFGTS/>

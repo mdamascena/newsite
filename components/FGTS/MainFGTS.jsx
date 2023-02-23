@@ -1,26 +1,29 @@
 import Image from 'next/image'
-import CalcFGTS from '../FGTS/SimuladorFGTS'
 import ImgMain from '../../public/img/pers_home.png'
-
-import styled from "styled-components"
+import styled from 'styled-components'
 import tw from 'tailwind-styled-components'
 import { useState, useEffect } from "react"
+import Modal from '../GERAL/Modal'
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
     to-amber-500 
     text-2xl 
-    lg:py-3 
     lg:px-32 
     py-3
     px-20
+    lg:flex-none
+    flex-1
     poppins
     font-semibold
     rounded-xl
     text-white
     mt-8
-    shadow-lg
+    shadow-md
+    shadow-amber-400 
+    border-b-2 
+    border-amber-300
     focus:outline-none
     hover:shadow-md
     hover:bg-gradient-to-r 
@@ -43,9 +46,9 @@ const EmpTitle = tw.h1`
 export default function MainFGTS (){
     
     return(
-        <main className="bgMainFGTS"> 
-
-            <div className="px-4 lg:px-28 lg:pt-20 pt-28 grid grid-cols-1 lg:grid-cols-2"> 
+        <main className="bgMainFGTS">
+            
+            <div className="px-4 lg:px-24 lg:pt-20 pt-28 grid grid-cols-1 lg:grid-cols-2"> 
 
                 <div className='poppins lg:my-auto mb-10'>
                     <EmpTitle>Empréstimo</EmpTitle>
@@ -58,16 +61,15 @@ export default function MainFGTS (){
                     </p>
                     
                     <div className='flex justify-center lg:justify-start'>
-                        <BtnCalc className='shadow-amber-500 border-b-2 border-amber-300'>Contrate agora</BtnCalc> 
+                        <BtnCalc>Contrate agora</BtnCalc> 
                     </div>
                      
                 </div>
 
                 <div className='-mb-1'>
-                    <Image src={ImgMain}/>
+                    <Image src={ImgMain} />
                 </div>
             </div>
         </main>
-    
     )
 }

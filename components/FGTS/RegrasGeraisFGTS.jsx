@@ -1,6 +1,5 @@
 import Image from "next/image"
 import ImgFGTS from '../../public/img/modelo_cel.png'
-
 import {FaCheck} from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
 
@@ -20,7 +19,10 @@ const BtnCalc = tw.button`
     rounded-xl
     text-white
     my-5
-    shadow-lg
+    shadow-md
+    shadow-amber-400 
+    border-b-2 
+    border-amber-300
     focus:outline-none
     hover:shadow-md
     hover:bg-gradient-to-r 
@@ -36,7 +38,7 @@ export default function SectionDescFGTS() {
     return (
         <section className="bg-slate-50">
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 mx-4 lg:mx-36 px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 mx-5 lg:mx-36 lg:px-6">
                 
                 <div className="col-span-1 poppins lg:order-2 lg:ml-10 lg:my-auto">
 
@@ -69,7 +71,7 @@ export default function SectionDescFGTS() {
                     </ul>
 
                     <div className='flex justify-center lg:justify-start'>
-                        <BtnCalc className='shadow-amber-500 border-b-2 border-amber-300'>Contrate agora</BtnCalc> 
+                        <BtnCalc>Contrate agora</BtnCalc> 
                     </div>
 
                 </div>

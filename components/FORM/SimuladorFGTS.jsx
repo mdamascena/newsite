@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import tw from 'tailwind-styled-components'
-
 import { useState, useEffect } from "react"
 import { MdOutlineEditCalendar } from 'react-icons/md'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
@@ -8,15 +7,18 @@ import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 const BtnSolic = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
-    to-amber-500 
-    text-xl
+    to-amber-500
+    text-xl 
+    lg:text-2xl 
+    py-3
+    flex-1
     poppins
     font-semibold
     rounded-xl
     text-white
-    shadow-lg
+    border-b-2 
+    border-amber-300
     focus:outline-none
-    hover:shadow-md
     hover:bg-gradient-to-r 
     hover:to-amber-500 
     hover:from-yellow-400
@@ -43,7 +45,7 @@ export default function SimuladorFGTS() {
     return (
         <section className="bg-blue-700 saturate-100 poppins">
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-24 py-8 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-14 py-8 lg:py-16">
 
                 <div className="col-span-3">
                     <h1 className="text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-bold ml-5">
@@ -82,17 +84,18 @@ export default function SimuladorFGTS() {
                     </p>
                 </div>
 
-                <div className="lg:col-span-2 col-span-1 lg:px-20 grid content-center">
+                <div className="lg:col-span-2 col-span-1 lg:px-20">
 
-                    <div className="text-justify mb-4 lg:mb-0 justify-items-center grid">
+                    <div className="text-justify mb-4 lg:mb-0">
+
                         <p className="text-white hidden lg:block">
                             Grana extra para usar como quiser, sem comprometer sua renda com mensalidades. O desconto é feito diretamente no saldo do FGTS.
                         </p>
-                        <div className="col-span-1 mt-5">
-                            <BtnSolic className="w-80 lg:w-96 py-3 lg:py-2 border-b-2 border-amber-300">
-                                Solicitar agora
-                            </BtnSolic>
+
+                        <div className="col-span-1 mt-5 flex">
+                            <BtnSolic>Solicitar agora</BtnSolic>
                         </div>
+
                     </div>
 
                 </div>

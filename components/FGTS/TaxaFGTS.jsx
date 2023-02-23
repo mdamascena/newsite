@@ -2,7 +2,7 @@ import GuruFinanceiro from '../../components/ANIMACOES/AnimeFinancial.jsx'
 
 export default function SectionTaxa() {
     return (
-        <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-20 p-4'>
+        <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-14 p-4'>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 
@@ -11,12 +11,10 @@ export default function SectionTaxa() {
                 </div>
                 
                 <div className='col-span-2 my-auto poppins text-slate-400 lg:text-xl text-md order-1 lg:order-2'>
-                    
                     <p className='text-4xl mb-5 font-bold'>Não deixe o seu FGTS parado!</p>
 
                     O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos. 
                     É uma das melhores opções de crédito sem comprometer sua renda com pagamento de parcelas!
-                    
                 </div>
           
             </div>
