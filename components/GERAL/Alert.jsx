@@ -15,7 +15,7 @@ export default function AlertTaxa (){
     useEffect(
         () => {
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 0 && closeClick == false) {
+                if (window.scrollY > 10 && closeClick == false) {
                     setCloseScroll(true);
                 } else {
                     setCloseScroll(false);
@@ -25,7 +25,7 @@ export default function AlertTaxa (){
     )
     
     return(
-        <div className='bg-blue-600 p-3 lg:p-4 z-50' hidden={closeClick || closeScroll}>
+        <div className='bg-blue-600 p-3 lg:p-4' hidden={closeClick || closeScroll}>
             <div className="flex">
                 <div className="poppins text-white lg:text-md text-sm text-center flex-1">
                     A ValoReal não cobra nenhum valor antecipado para liberação de empréstimo!
