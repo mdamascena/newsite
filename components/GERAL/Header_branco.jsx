@@ -58,10 +58,10 @@ const LiSm = tw.li`
 
 export default function Header() {
 
-    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500', 'block']);
+    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-0', true]);
     const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
-    const [closeAlert, setCloseAlert] = useState('flex')
+    const [closeAlert, setCloseAlert] = useState('block transition-all duration-500')
 
     const abrirDrop = () => {
         if (dropMenu[1]) {
@@ -93,18 +93,24 @@ export default function Header() {
         () => {
             window.addEventListener('scroll', () => {
 
-                if (window.scrollY > 40) {
-                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300','hidden']);
+                if (window.scrollY > 0) {
+                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300']);
                 } else {
-                    setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500','block']);
+                    setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
+                }
+
+                if (window.scrollY > 50) {
+                    setCloseAlert('hidden transition-all duration-500')
+                } else {
+                    setCloseAlert('block transition-all duration-500')
                 }
             });
         }, []
     )
 
     return (
-        <header className=''>
-            <div className={`${bgNavbar[5]} transition-all duration-500`}>
+        <header>
+            <div className={`${closeAlert}`}>
                 <AlertI/>
             </div>
             
