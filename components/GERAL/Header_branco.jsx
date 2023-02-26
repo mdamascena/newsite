@@ -5,6 +5,7 @@ import tw from 'tailwind-styled-components'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import {MdOutlineClose} from 'react-icons/md'
+import AlertI from '../GERAL/Alert'
 
 const Li = tw.li`
     hover:scale-[1.2]
@@ -57,7 +58,7 @@ const LiSm = tw.li`
 
 export default function Header() {
 
-    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
+    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500', 'block']);
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-0', true]);
     const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
     const [closeAlert, setCloseAlert] = useState('flex')
@@ -92,10 +93,10 @@ export default function Header() {
         () => {
             window.addEventListener('scroll', () => {
 
-                if (window.scrollY > 0) {
-                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300']);
+                if (window.scrollY > 40) {
+                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300','hidden']);
                 } else {
-                    setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
+                    setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500','block']);
                 }
             });
         }, []
@@ -103,7 +104,10 @@ export default function Header() {
 
     return (
         <header className=''>
-
+            <div className={`${bgNavbar[5]} transition-all duration-500`}>
+                <AlertI/>
+            </div>
+            
             <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-14 mx-4 bg-blue-600 duration-500`}>
                 
                 <div className='pr-8 pt-2 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
@@ -126,7 +130,6 @@ export default function Header() {
                         <Li className={`${bgNavbar[4]}`}>Como Funciona</Li>
                         <Li className={`${bgNavbar[4]}`}>Perguntas frequantes</Li>
                         <Li className={`${bgNavbar[4]}`}>Contato</Li>
-
                     </ul>
 
                 </nav>
@@ -146,7 +149,7 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed bg-white text-center top-20 z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
+            <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed mt-20 bg-white text-center z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
                 <ul className='poppins gap-7'>
                     <LiSm>Principal</LiSm>
                     <LiSm>Quem Somos</LiSm>

@@ -2,7 +2,7 @@ import GuruFinanceiro from '../../components/ANIMACOES/AnimeFinancial.jsx'
 
 export default function SectionTaxa() {
     return (
-        <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-14 p-4'>
+        <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-24 p-4'>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 

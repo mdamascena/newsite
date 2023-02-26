@@ -57,7 +57,7 @@ const CardBack = tw.div`
 export default function SectionVantagens(){
     return(
         <section className='poppins bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600 saturate-100'>
-            <div className='mx-4 lg:mx-20'>
+            <div className='mx-4 lg:mx-24'>
 
                 <div className='text-justify lg:pt-8 pt-8 lg:mb-8'>
                     <h1 className="text-blue-300 mx-4 lg:text-4xl text-2xl font-bold tracking-tight lg:mb-6 mb-2 p-3 text-center">
