@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
+import {debounce} from 'lodash'
 
 export default function AlertTaxa() {
   const [closeClick, setCloseClick] = useState(false);
@@ -9,8 +10,20 @@ export default function AlertTaxa() {
     setCloseClick(true);
   };
 
-  useEffect(() => {
+  {/*useEffect(() => {
     window.addEventListener("scroll", () => {
+      if (window.scrollY > 50.152626598486151516848797977876546464808 && closeClick == false) 
+      {
+        setCloseScroll(true);
+      } else if (window.scrollY < 40.152626598486151516848797977876546464896 && closeClick == false) 
+      {
+        setCloseScroll(false);
+      }
+    });
+  }, []);*/}
+
+  useEffect(() => {
+    const handleScroll = debounce(() => {
       if (
         window.scrollY > 50.152626598486151516848797977876546464808 &&
         closeClick == false
@@ -22,8 +35,14 @@ export default function AlertTaxa() {
       ) {
         setCloseScroll(false);
       }
-    });
-  }, []);
+    }, 100); // tempo de debounce de 100ms
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [closeClick]);
 
   return (
     <div hidden={closeClick || closeScroll}>
