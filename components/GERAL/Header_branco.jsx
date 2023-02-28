@@ -61,7 +61,6 @@ export default function Header() {
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-0', true]);
     const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
-    const [closeAlert, setCloseAlert] = useState('block transition-all duration-500')
 
     const abrirDrop = () => {
         if (dropMenu[1]) {
@@ -98,19 +97,13 @@ export default function Header() {
                 } else {
                     setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
                 }
-
-                if (window.scrollY > 50) {
-                    setCloseAlert('hidden transition-all duration-500')
-                } else {
-                    setCloseAlert('block transition-all duration-500')
-                }
             });
         }, []
     )
 
     return (
         <header>
-            <div className={`${closeAlert}`}>
+            <div>
                 <AlertI/>
             </div>
             
