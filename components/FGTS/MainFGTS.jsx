@@ -9,7 +9,7 @@ const BtnCalc = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
     to-amber-500 
-    text-2xl 
+    text-xl 
     lg:px-32 
     py-3
     px-20
@@ -52,7 +52,7 @@ export default function MainFGTS (){
 
                 <div className='poppins lg:my-auto mb-10'>
                     <EmpTitle>Empréstimo</EmpTitle>
-                    <h1 className='text-blue-600 lg:text-5xl text-[30px] text-center lg:text-left font-extrabold'>
+                    <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-extrabold'>
                         Saque Aniversário <span className='font-bold tracking-tighter'>FGTS</span>
                     </h1>
                     

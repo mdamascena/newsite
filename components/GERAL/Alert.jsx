@@ -10,37 +10,32 @@ export default function AlertTaxa() {
     setCloseClick(true);
   };
 
-  {/*useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50.152626598486151516848797977876546464808 && closeClick == false) 
-      {
-        setCloseScroll(true);
-      } else if (window.scrollY < 40.152626598486151516848797977876546464896 && closeClick == false) 
-      {
-        setCloseScroll(false);
-      }
-    });
-  }, []);*/}
-
   useEffect(() => {
+    let timeoutId; // define uma variável para armazenar o ID do timeout
+    let isAtTop = true; // define uma variável para armazenar se a página está no topo
+  
     const handleScroll = debounce(() => {
-      if (
-        window.scrollY > 50.152626598486151516848797977876546464808 &&
-        closeClick == false
-      ) {
-        setCloseScroll(true);
-      } else if (
-        window.scrollY < 40.152626598486151516848797977876546464896 &&
-        closeClick == false
-      ) {
-        setCloseScroll(false);
-      }
-    }, 100); // tempo de debounce de 100ms
+      clearTimeout(timeoutId); // cancela o timeout anterior
+      timeoutId = setTimeout(() => {
+        if ( window.scrollY > 43 && closeClick == false && !isAtTop ){ // verifica se a página não está no topo
+          setCloseScroll(true);
+        } 
+        else if ( window.scrollY < 40 && closeClick == false && isAtTop ){ // verifica se a página está no topo
+          setCloseScroll(false);
+        }
+      }, 0); // tempo de espera de 1ms
+    }, 0); // tempo de debounce de 1ms
+  
+    const handlePagePosition = () => {
+      isAtTop = window.scrollY === 0; // atualiza o estado de "isAtTop"
+    };
   
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handlePagePosition);
   
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handlePagePosition);
     };
   }, [closeClick]);
 

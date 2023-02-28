@@ -91,7 +91,6 @@ export default function Header() {
     useEffect(
         () => {
             window.addEventListener('scroll', () => {
-
                 if (window.scrollY > 0) {
                     setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300']);
                 } else {
@@ -103,10 +102,7 @@ export default function Header() {
 
     return (
         <header>
-            <div>
-                <AlertI/>
-            </div>
-            
+            <AlertI/>
             <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-14 mx-4 bg-blue-600 duration-500`}>
                 
                 <div className='pr-8 pt-2 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
