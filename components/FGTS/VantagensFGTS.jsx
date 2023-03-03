@@ -23,7 +23,7 @@ const Card = tw.div`
     hover:bg-blue-50
     saturate-100
     lg:h-[30vh]
-    h-[23vh]
+    h-[24vh]
     poppins
     relative
 `;
@@ -76,7 +76,7 @@ export default function SectionVantagens(){
                     <Card>
                         <CardFront>
                             <MdMoneyOff className='lg:text-6xl text-5xl text-white mx-auto mb-3'/>
-                            <h2 className='text-blue-300 lg:text-2xl text-md font-bold tracking-tight m-3'>
+                            <h2 className='text-blue-300 lg:text-2xl text-sm font-bold tracking-tight m-3'>
                                 Sem mensalidades para pagar
                             </h2>
                         
@@ -93,7 +93,7 @@ export default function SectionVantagens(){
                     <Card>
                         <CardFront>
                             <AiOutlineFieldTime className='lg:text-6xl text-5xl text-white mx-auto mb-3'/>
-                            <h2 className='text-blue-300 lg:text-2xl text-md font-bold tracking-tight m-3'>
+                            <h2 className='text-blue-300 lg:text-2xl text-sm font-bold tracking-tight m-3'>
                                 Liberação mais rápida do mercado
                             </h2>
                             
@@ -117,7 +117,7 @@ export default function SectionVantagens(){
                     <Card>
                         <CardFront>
                             <GiMoneyStack className='lg:text-6xl text-5xl text-white mx-auto mb-3'/>
-                            <h2 className='text-blue-300 lg:text-2xl tracking-tight m-3'>Antecipe até 12 saques do seu FGTS</h2>
+                            <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tight m-3'>Antecipe até 12 saques do seu FGTS</h2>
                             
                             <div className='flex justify-end'>
                                 <HiOutlineArrowNarrowRight className='text-white text-xl'/>
@@ -132,7 +132,7 @@ export default function SectionVantagens(){
                     <Card>
                         <CardFront>
                             <VscSearchStop className='lg:text-6xl text-5xl text-white mx-auto mb-3'/>
-                            <h2 className='text-blue-300 lg:text-2xl text-md tracking-tight m-3'>Sem consulta de restrições no SPC/SERASA</h2>
+                            <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tight m-3'>Sem consulta de restrições no SPC/SERASA</h2>
                             
                             <div className='flex justify-end'>
                                 <HiOutlineArrowNarrowRight className='text-white text-xl'/>

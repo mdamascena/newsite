@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
 import Image from "next/image";
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png";
+import Brasao from "../../../public/img/BRASAO_CINZA.png";
 
 export default function Home() {
   return (

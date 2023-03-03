@@ -8,7 +8,8 @@ import Modal from '../GERAL/Modal'
 const BtnCalc = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
-    to-amber-500 
+    to-amber-500
+    lg:text-2xl 
     text-xl 
     lg:px-32 
     py-3
@@ -56,8 +57,8 @@ export default function MainFGTS (){
                         Saque Aniversário <span className='font-bold tracking-tighter'>FGTS</span>
                     </h1>
                     
-                    <p className='poppins text-blue-500 text-xl mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center'>
-                        Antecipe seu <b>FGTS</b>, até <span className='text-2xl font-extrabold tracking-tighter'>12 parcelas</span> com a melhor taxa do mercado e sem descontos mensais!
+                    <p className='poppins text-blue-500 text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center'>
+                        Antecipe seu <b className='text-2xl'>FGTS</b>, até <span className='text-2xl font-extrabold tracking-tighter'>12 parcelas</span> com a melhor taxa do mercado e sem descontos mensais!
                     </p>
                     
                     <div className='flex justify-center lg:justify-start'>

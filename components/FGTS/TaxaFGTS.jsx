@@ -84,10 +84,10 @@ export default function SectionTaxa() {
                     <h1 className='text-center poppins text-white lg:text-4xl text-xl'>
                         Juros a partir de
                     </h1>
-                    <h2 className='Gochi text-center text-8xl lg:text-9xl text-white'>
+                    <h2 className='Gochi text-center text-7xl lg:text-9xl text-white'>
                         1,59%<span className='text-3xl'> a.m.</span>
                     </h2>
-                    <p className='text-center poppins text-white text-xl font-normal my-5'>
+                    <p className='text-center poppins text-white lg:text-lg text-md font-normal my-5'>
                         A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.
                     </p>
 
