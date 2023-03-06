@@ -13,7 +13,7 @@ const BtnCalc = tw.button`
     text-xl 
     lg:px-32 
     py-3
-    px-20
+    px-18
     lg:flex-none
     flex-1
     poppins
@@ -49,7 +49,7 @@ export default function MainFGTS (){
     return(
         <main className="bgMainFGTS">
             
-            <div className="px-4 lg:px-24 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2"> 
+            <div className="px-8 lg:px-24 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2"> 
 
                 <div className='poppins lg:my-auto mb-10'>
                     <EmpTitle>Empréstimo</EmpTitle>
