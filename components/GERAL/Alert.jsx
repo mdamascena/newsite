@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { MdOutlineClose } from "react-icons/md";
+import { useState, useEffect } from "react"
+import { MdOutlineClose } from "react-icons/md"
 import {debounce} from 'lodash'
+import {TiWarning} from 'react-icons/ti'
 
 export default function AlertTaxa() {
   const [closeClick, setCloseClick] = useState(false);
@@ -20,7 +21,7 @@ export default function AlertTaxa() {
         if ( window.scrollY > 43 && closeClick == false && !isAtTop ){ // verifica se a página não está no topo
           setCloseScroll(true);
         } 
-        else if ( window.scrollY < 40 && closeClick == false && isAtTop ){ // verifica se a página está no topo
+        else if ( window.scrollY < 5 && closeClick == false && isAtTop ){ // verifica se a página está no topo
           setCloseScroll(false);
         }
       }, 0); // tempo de espera de 1ms
@@ -44,8 +45,9 @@ export default function AlertTaxa() {
       <div className="bg-blue-600 p-3 lg:p-4">
 
         <div className="flex">
-
+        <TiWarning className="text-white text-xl font-bold"/>
           <div className="poppins text-white lg:text-md text-sm text-center flex-1">
+            
             A ValoReal não cobra nenhum valor antecipado para liberação de
             empréstimo!
           </div>
