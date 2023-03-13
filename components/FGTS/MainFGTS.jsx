@@ -49,15 +49,15 @@ export default function MainFGTS (){
     return(
         <main className="bgMainFGTS">
             
-            <div className="px-8 lg:px-24 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2"> 
+            <div className="px-4 lg:px-24 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2"> 
 
-                <div className='poppins lg:my-auto mb-10'>
+                <div className='poppins lg:my-auto mb-10 image.png'>
                     <EmpTitle>Empréstimo</EmpTitle>
                     <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-extrabold'>
                         Saque Aniversário <span className='font-bold tracking-tighter'>FGTS</span>
                     </h1>
                     
-                    <p className='poppins text-blue-500 text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center'>
+                    <p className='poppins text-blue-500 lg:text-xl text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center'>
                         Antecipe seu <b className='text-2xl'>FGTS</b>, até <span className='text-2xl font-extrabold tracking-tighter'>12 parcelas</span> com a melhor taxa do mercado e sem descontos mensais!
                     </p>
                     
