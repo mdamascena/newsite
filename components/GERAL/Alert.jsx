@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import {debounce} from 'lodash'
-import {TiWarning} from 'react-icons/ti'
 
 export default function AlertTaxa() {
   const [closeClick, setCloseClick] = useState(false);
@@ -45,9 +44,7 @@ export default function AlertTaxa() {
       <div className="bg-blue-600 p-3 lg:p-4">
 
         <div className="flex">
-        <TiWarning className="text-white text-xl font-bold"/>
           <div className="poppins text-white lg:text-md text-sm text-center flex-1">
-            
             A ValoReal não cobra nenhum valor antecipado para liberação de
             empréstimo!
           </div>
