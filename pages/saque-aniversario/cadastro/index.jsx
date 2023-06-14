@@ -3,6 +3,8 @@ import styles from "../../../styles/Home.module.css";
 import Image from "next/image";
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png";
 import Brasao from "../../../public/img/BRASAO_CINZA.png";
+import StepUm from "../../../components/FORM/StepFGTS1"
+
 
 export default function Home() {
   return (
@@ -21,31 +23,25 @@ export default function Home() {
       </Head>
 
       <main className="bg-slate-50 poppins">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-1 lg:h-[97.8vh] bg-[#1242cf] m-2 rounded-xl">
+
+        <div className="grid grid-cols-1 lg:grid-cols-5">
+          
+          <div className="m-2 col-span-2 lg:h-[97.5vh] bg-gradient-to-br from-blue-600 via-blue-700 to-blue-700 saturate-150 rounded-xl">
             <div className="p-5">
-              <Image src={LogoB} width={150} height={32.99} />
+              <Image src={LogoB} width={110} height={24.19} />
             </div>
           </div>
 
-          <div className="col-span-1 lg:col-span-2 h-screen text-slate-400">
+          <div className="col-span-1 lg:col-span-3 text-slate-400 lg:pr-64 lg:pl-16 h-screen">
             <div className="p-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-              nulla exercitationem voluptas quam commodi officiis? Molestias,
-              veritatis quia! Tempora sequi perspiciatis tenetur ipsam
-              molestias. Praesentium magni minima hic eius quidem! Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Porro nulla
-              exercitationem voluptas quam commodi officiis? Molestias,
-              veritatis quia! Tempora sequi perspiciatis tenetur ipsam
-              molestias. Praesentium magni minima hic eius quidem! Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Porro nulla
-              exercitationem voluptas quam commodi officiis? Molestias,
-              veritatis quia! Tempora sequi perspiciatis tenetur ipsam
-              molestias. Praesentium magni minima hic eius quidem!
+              <StepUm/>
             </div>
           </div>
+
         </div>
+      
       </main>
+
     </div>
   );
 }
