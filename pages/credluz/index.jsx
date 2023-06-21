@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import MainCredluz from '../../components/CREDLUZ/MainCredluz'
+import HeaderB from '../../components/GERAL/Header_branco'
+import Footer from '../../components/GERAL/Footer'
 
 export default function Home() {
   return (
@@ -18,7 +20,9 @@ export default function Home() {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
       </Head>
       
+      <HeaderB/>
       <MainCredluz/>
+      <Footer/>
       
      
     </div>
