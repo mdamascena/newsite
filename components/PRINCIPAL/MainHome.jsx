@@ -69,7 +69,7 @@ export default function MainHome() {
 
         <div className="col-span-1 px-5 lg:pl-28 lg:pr-32 lg:mt-44 lg:mb-36 mb-[5vh] bg-slate-100">
 
-          {/*
+          
           <div className="mt-24 lg:mt-0">
             
             <h1 className="text-white lg:text-4xl text-[30px] text-center lg:text-left poppins font-bold tracking-tight">
@@ -89,7 +89,7 @@ export default function MainHome() {
             </p>
 
             <BtnHome>Simular agora</BtnHome>
-          </div>*/}
+          </div>
 
           <div className=''>
             <Carousel className="grid grid-cols-1 relative lg:-top-5 -top-16"
