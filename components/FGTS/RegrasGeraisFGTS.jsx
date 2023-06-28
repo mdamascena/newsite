@@ -1,5 +1,5 @@
 import Image from "next/image"
-import ImgFGTS from '../../public/img/modelo_icone_m.png'
+import ImgFGTS from '../../public/img/modelo_icone_fgts.png'
 import {FaCheck} from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
 
