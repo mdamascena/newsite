@@ -1,5 +1,5 @@
 import Image from "next/image"
-import ImgFGTS from '../../public/img/modelo_azul_cel.png'
+import ImgFGTS from '../../public/img/modelo_icone_m.png'
 import {FaCheck} from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
 
@@ -76,7 +76,10 @@ export default function SectionDescFGTS() {
 
                 </div>
 
-                <Image src={ImgFGTS} className="col-span-1 lg:order-1"/>
+                <figure className="col-span-1 lg:order-1 px-11 lg:px-0 flex content-end lg:justify-end justify-center"> 
+                    <Image width={543} height={725} src={ImgFGTS} alt=""/>
+                </figure>
+                
             
             </div>
 
