@@ -19,7 +19,7 @@ export default function SectionTaxa() {
           
             </div>
 
-            <div className='grid grid-cols-3 lg:mx-4 lg:mb-32 mb-10'>
+            <div className='grid grid-cols-3 lg:mx-4 mb-10'>
 
                 <div className='lg:col-span-2 col-span-3 rounded-3xl bg-white p-7 my-4 lg:mr-6 shadow-lg order-2 lg:order-1'>
                     

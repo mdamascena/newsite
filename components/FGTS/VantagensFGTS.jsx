@@ -109,7 +109,7 @@ export default function SectionVantagens(){
                 </div>
                 
                 <div className='pt-0 lg:pt-8 lg:px-4 lg:col-span-3 col-span-2 flex justify-center lg:order-2 order-3'>
-                    <Image src={Persona}/>
+                    <Image src={Persona} alt=''/>
                 </div>
 
                 <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-12 pt-8 lg:order-3'>
