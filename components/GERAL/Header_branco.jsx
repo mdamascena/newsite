@@ -106,7 +106,7 @@ export default function Header() {
             <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-14 mx-4 bg-blue-600 duration-500`}>
                 
                 <figure className='pr-8 pt-2 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' />
+                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt=''/>
                 </figure>
 
                 <nav className="hidden lg:block mx-auto">
