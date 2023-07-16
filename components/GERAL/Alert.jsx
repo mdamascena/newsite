@@ -41,7 +41,7 @@ export default function AlertTaxa() {
 
   return (
     <div hidden={closeClick || closeScroll}>
-      <div className="bg-blue-900 p-3 lg:p-4 saturate-150">
+      <div className="bg-blue-950 p-3 lg:p-4 saturate-150">
 
         <div className="flex">
           <div className="poppins text-white lg:text-md text-sm text-center flex-1">
