@@ -43,7 +43,7 @@ const BtnHome = tw.button`
   lg:mx-0
   mb-14
   py-2
-  px-24
+  px-20
   flex
   poppins
   font-semibold 

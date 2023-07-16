@@ -5,11 +5,9 @@ import {RiBankLine} from "react-icons/ri"
 import {RiLightbulbFlashLine} from 'react-icons/ri'
 import {MdOutlineCake} from 'react-icons/md'
 import {RiShieldCheckLine} from 'react-icons/ri'
-
 import {IoPodiumOutline} from 'react-icons/io5'
 import {IoWalletOutline} from 'react-icons/io5'
 import {AiOutlineFieldTime} from 'react-icons/ai'
-
 import Image from 'next/image'
 import Pers from '../../public/img/valoreal_mobile_s.png'
 import {Carousel} from 'react-responsive-carousel'
@@ -101,11 +99,11 @@ export default function SessaoModalidades(){
                         
                     {/*Energia*/}
                     <CardMod className='mb-5'>
-                        <div className="p-3 duration-300 poppins text-left">
+                        <div className="p-3 duration-300 poppins text-left h-60">
                             <RiLightbulbFlashLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full"/>
                             <p className="text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">na conta de luz</p>
-                            <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
+                            <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Empréstimo com débita na conta de luz, sem comprovação de renda</p>
                         </div>      
                     </CardMod>
 
@@ -208,7 +206,7 @@ export default function SessaoModalidades(){
             <div className='poppins grid lg:grid-cols-5 grid-cols-2 justify-items-stretch items-stretch px-5 lg:px-28 relative lg:bottom-10 bottom-32'>
                 
                 <div className='justify-self-center col-span-1 -mb-2 lg:w-72 w-40 lg:order-1 order-2 hidden lg:block'>
-                    <Image src={Pers} />
+                    <Image src={Pers} alt='' />
                 </div>
 
                 <div className='col-span-4 grid grid-cols-4 self-start mt-24 lg:order-2 order-1'>
