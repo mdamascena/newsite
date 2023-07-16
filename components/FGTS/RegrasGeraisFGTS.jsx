@@ -77,7 +77,7 @@ export default function SectionDescFGTS() {
                 </div>
 
                 <figure className="col-span-1 lg:order-1 px-11 lg:px-0 flex content-end lg:justify-end justify-center"> 
-                    <Image width={545} height={580} src={ImgFGTS} alt=""/>
+                    <Image width={550} height={600} src={ImgFGTS} alt=""/>
                 </figure>
                 
             
