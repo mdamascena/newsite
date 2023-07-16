@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import Head from 'next/head'
 import lottie from 'lottie-web'
 import styles from '../../styles/Home.module.css'

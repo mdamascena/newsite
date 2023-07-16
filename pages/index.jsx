@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/GERAL/Header'

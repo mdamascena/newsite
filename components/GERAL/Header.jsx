@@ -3,7 +3,7 @@ import LogoB from '../../public/img/LOGO_BRANCO.png'
 import LogoA from '../../public/img/LOGO_AZUL.png'
 import Brasao from '../../public/img/BRASAO_AZUL.png'
 import tw from 'tailwind-styled-components'
-
+import AlertI from '../GERAL/Alert'
 import { useEffect, useState } from 'react'
 import {RiArrowDownSLine} from 'react-icons/ri'
 
@@ -99,12 +99,12 @@ export default function Header() {
 
     return (
         <header>
-            
-            <div id='menuBar' className={`${bgNavbar[0]} z-50 fixed py-2 px-[20px] rounded-[10px] left-0 right-0 flex flex-row items-center lg:mx-24 mx-4 top-4 bg-white duration-500`}>
+            <AlertI/>
+            <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-14 mx-4 bg-white duration-500`}>
                 
-                <div className='pr-16 pt-1 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' />
-                </div>
+                <figure className='pr-8 pt-2 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
+                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
+                </figure>
 
                 <nav className="hidden lg:block mx-auto">
 
