@@ -68,7 +68,7 @@ export default function MainFGTS (){
                 </div>
 
                 <div className='-mb-1'>
-                    <Image src={ImgMain} />
+                    <Image src={ImgMain} alt='' />
                 </div>
             </div>
         </main>

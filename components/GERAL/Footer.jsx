@@ -74,7 +74,7 @@ export default function Footer(){
             <hr className="border-4 border-blue-700 border-opacity-75 rounded-full h-2 lg:mx-40 mx-8"/>
 
             <div className="lg:mx-40 mx-8 mt-5">
-                <Image src={LogoFB} width={140} height={30}/>
+                <Image src={LogoFB} width={140} height={30} alt=''/>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2  lg:mx-40 mx-8 gap-6 mt-3">

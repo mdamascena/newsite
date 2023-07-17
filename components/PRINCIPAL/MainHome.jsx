@@ -36,7 +36,7 @@ const BtnHome = tw.button`
   to-amber-500
   mx-auto
   border-b-4
-  border-orange-400 
+  border-orange-700 
   text-2xl
   lg:py-2
   lg:px-32

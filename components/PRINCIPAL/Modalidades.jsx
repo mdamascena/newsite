@@ -202,12 +202,34 @@ export default function SessaoModalidades(){
                     </CardMod>
                 </div>
             </div>
+
+            <div className='grid grid-col-1 lg:grid-cols-2 mb-32 mt-24 lg:px-32 px-8'>
+                <div className='col-span-1 poppins mb-3'>
+
+                    <h1 className='text-3xl lg:text-5xl text-blue-500 tracking-tight'>
+                        As melhores taxas você encontra aqui.
+                    </h1>
+                    <p className='text-md lg:text-xl mt-2 text-slate-400'>
+                        Nós buscamos várias ofertas para você encontrar o empréstimo de que precisa!
+                    </p>
+
+                </div>
+
+                <div className='col-span-1'>
+                    <div className='grid grid-cols-3 h-64'>
+                        <div className='col-span-1 bg-blue-600 rounded-2xl mx-5 mt-52'></div>
+                        <div className='col-span-1 bg-slate-300 rounded-2xl mx-5 mt-24'></div>
+                        <div className='col-span-1 bg-slate-500 rounded-2xl mx-5'></div>
+                    </div>
+                </div>
+
+            </div>
             
             <div className='poppins grid lg:grid-cols-5 grid-cols-2 justify-items-stretch items-stretch px-5 lg:px-28 relative lg:bottom-10 bottom-32'>
                 
-                <div className='justify-self-center col-span-1 -mb-2 lg:w-72 w-40 lg:order-1 order-2 hidden lg:block'>
+                <figure className='justify-self-center col-span-1 lg:order-1 order-2 hidden lg:block'>
                     <Image src={Pers} alt='' />
-                </div>
+                </figure>
 
                 <div className='col-span-4 grid grid-cols-4 self-start mt-24 lg:order-2 order-1'>
 

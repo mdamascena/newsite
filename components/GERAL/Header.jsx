@@ -137,7 +137,7 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed bg-white text-center top-20 z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
+            <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed mt-20 bg-white text-center z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
                 <ul className='poppins gap-7'>
                     <LiSm>Principal</LiSm>
                     <LiSm>Quem Somos</LiSm>

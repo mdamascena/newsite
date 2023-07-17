@@ -5,7 +5,7 @@ import tw from 'tailwind-styled-components'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import {MdOutlineClose} from 'react-icons/md'
-import AlertI from '../GERAL/Alert'
+import AlertI from '../GERAL/AlertBlue'
 
 const Li = tw.li`
     hover:scale-[1.2]
@@ -148,9 +148,7 @@ export default function Header() {
                 <ul className='poppins gap-7'>
                     <LiSm>Principal</LiSm>
                     <LiSm>Quem Somos</LiSm>
-                    <LiSm className='group text-center'>
-                        Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500'/>
-                        
+                    <LiSm className='group text-center'>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500'/>
                         <div className="h-0 scale-y-0 group-hover:scale-y-95 group-hover:h-24 border-0 m-1 bg-blue-200 mx-7 rounded-[8px] transition-all duration-500 origin-top-right">
                             <ul className>
                                 <LiSm>CredFGTS</LiSm>
