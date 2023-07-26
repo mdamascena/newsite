@@ -58,7 +58,7 @@ const LiSm = tw.li`
 
 export default function Header() {
 
-    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10','text-white','bg-white', LogoB,'hover:text-yellow-300']);
+    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10','text-white','bg-white', LogoB,'hover:text-yellow-300','bg-black']);
     const [mudaLinha, setMudaLinha] = useState(['w-6','','w-4','scale-0',true]);
     const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
 
@@ -89,9 +89,9 @@ export default function Header() {
             window.addEventListener('scroll', ()=>{
                 
                 if(window.scrollY > 0){
-                    setBgNavbar(['shadow-lg','text-blue-500','bg-blue-500',LogoA,'hover:text-yellow-500']);
+                    setBgNavbar(['shadow-lg','text-blue-500','bg-blue-500',LogoA,'hover:text-yellow-500','bg-white']);
                 }else{
-                    setBgNavbar(['bg-opacity-10','text-white','bg-white',LogoB,'hover:text-yellow-300']);
+                    setBgNavbar(['bg-opacity-10','text-white','bg-white',LogoB,'hover:text-yellow-300','bg-black']);
                 }
             });
         }, []
@@ -100,7 +100,7 @@ export default function Header() {
     return (
         <header>
             <AlertI/>
-            <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-14 mx-4 bg-white duration-500`}>
+            <div id='menuBar' className={`${bgNavbar[0]} ${bgNavbar[5]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 duration-500`}>
                 
                 <figure className='pr-8 pt-2 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                     <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
