@@ -70,3 +70,10 @@ a {
     background-position: top;
   }
 }
+.bgMainPrincipal{
+  background: radial-gradient(circle,  #1e3a8a 10%, #172554 130%);
+}
+@media(max-width: 1024px){
+
+}
+

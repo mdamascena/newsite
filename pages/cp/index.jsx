@@ -23,13 +23,13 @@ export default function Home() {
         <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
       </Head>
-      
-      <Header/>
-      <MainHome/>
-      <TiposCred/>
-      <Simulacao/> 
-      <Footer/>
-     
+
+      <Header />
+      <MainHome />
+      <TiposCred />
+      <Simulacao />
+      <Footer />
+
     </div>
 
   )
