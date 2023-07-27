@@ -76,6 +76,9 @@ a {
   background-size: cover;
 }
 @media(max-width: 1024px){
-
+  .bgMainPrincipal{
+    background-position: bottom;
+  }
+  
 }
 

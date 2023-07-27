@@ -18,7 +18,7 @@ export default function MainPrincipal() {
                             <span className="text-yellow-400">Seu empréstimo ONLINE</span> com múltiplas opções de créditos
                         </h1>
                         
-                        <h3 className="text-white leading-[20px] mt-8 text-md md:text-xl md:text-left text-center">
+                        <h3 className="text-white leading-[20px] mt-5 text-md md:text-xl md:text-left text-center">
                             Mais autonomia, muito mais controle e economia de tempo para você. Feito para o seu perfil.
                         </h3>
                         
