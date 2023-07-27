@@ -3,31 +3,38 @@ import Image from "next/image"
 import imageOne from "../../public/img/BRASAO_CINZA.png"
 import imageTwo from "../../public/img/BRASAO_AZUL.png"
 import cel from "../../public/img/valoreal_mobile.png"
+import SectionModalidade from "../PRINCIPAL/MODALIDADES/ModalidadesPrincipal.jsx"
+import BtnYellow from "../GERAL/BtnYellow"
 
 export default function MainPrincipal() {
     return (
-        <main className="p-8 pt-32 md:px-16 lg:px-32 bgMainPrincipal">
-            
-            <section className="grid grid-cols-1 md:grid-cols-2 poppins">
-                <div className="col-span-1 md:my-16 md:ml-32">
+        <main>
+            <section className="p-8 pt-32 md:px-16 lg:px-32 bgMainPrincipal">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 poppins">
                     
-                    <h1 className="text-[2.5rem] md:text-[3.0rem] leading-[3.5rem] font-bold tracking-tight text-white">
-                        <span className="text-amber-500">Seu empréstimo ONLINE</span> com múltiplas opções de créditos
-                    </h1>
+                    <div className="col-span-1 md:my-16 md:ml-32">
+                        <h1 className="text-[2.3rem] md:text-[3.0rem] leading-[45px] font-bold tracking-tight text-white text-center md:text-left">
+                            <span className="text-yellow-400">Seu empréstimo ONLINE</span> com múltiplas opções de créditos
+                        </h1>
+                        
+                        <h3 className="text-white leading-[20px] mt-8 text-md md:text-xl md:text-left text-center">
+                            Mais autonomia, muito mais controle e economia de tempo para você. Feito para o seu perfil.
+                        </h3>
+                        
+                        <div className="text-center md:text-left">
+                            <BtnYellow nome='Simule aqui'/>
+                        </div>
+                    </div>
                     
-                    <h3 className="text-white mt-8 text-xl">
-                        Mais autonomia, muito mais controle e economia de tempo para você. Feito para o seu perfil.
-                    </h3>
-                    
-                    <button className="bg-amber-500 rounded-2xl text-white py-3 px-20 mt-8 hover:bg-amber-600 duration-500">
-                        Simule aqui
-                    </button>
-                </div>
+                    <div className="m-auto mt-5">
+                        <Image width={200} height={395} src={cel} alt=''/>
+                    </div>
 
-                <div className="m-auto">
-                    <Image width={200} height={395} src={cel} alt=''/>
                 </div>
+                
             </section>
+            <SectionModalidade/>
         </main>
     )
 }

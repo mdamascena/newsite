@@ -28,7 +28,7 @@ export default function Home() {
           
           <div className="m-2 col-span-2 lg:h-[97.5vh] bg-gradient-to-br from-blue-600 via-blue-700 to-blue-700 saturate-150 rounded-xl">
             <div className="p-5">
-              <Image src={LogoB} width={110} height={24.19} />
+              <Image src={LogoB} width={110} height={24.19} alt=''/>
             </div>
           </div>
 
