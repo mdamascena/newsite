@@ -1,6 +1,6 @@
 import Image from "next/image"
-import ImgFGTS from '../../public/img/pers_notificacao_pix.png'
-import {FaCheck} from 'react-icons/fa'
+import imgFGTS from '../../../public/img/pers_notificacao_pix.png'
+import { FaCheck } from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
 
 const BtnCalc = tw.button`
@@ -37,9 +37,9 @@ export default function SectionDescFGTS() {
 
     return (
         <section className="bg-slate-50">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 mx-5 lg:mx-36 lg:px-6">
-                
+
                 <div className="col-span-1 poppins lg:order-2 lg:ml-10 lg:my-auto">
 
                     <div className="mb-10">
@@ -49,38 +49,38 @@ export default function SectionDescFGTS() {
 
                     <ul className="mt-5 lg:text-xl text-md">
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto"/>
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
                             <span className="my-auto text-blue-500 text-sm">Ser maior de 18 anos ou emancipado</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto"/>
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
                             <span className="my-auto text-blue-500 text-sm">Ter situação regular com a Receita Federal</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto"/>
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
                             <span className="my-auto text-blue-500 text-sm">Possuir conta corrente ou poupança</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto"/>
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
                             <span className="my-auto text-blue-500 text-sm">Ter saldo do FGTS em conta ativa ou inativa</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto"/>
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
                             <span className="my-auto text-blue-500 text-sm">Ser optante do Saque-Aniversário do FGTS</span>
                         </li>
                     </ul>
 
                     <div className='flex justify-center lg:justify-start'>
-                        <BtnCalc>Contrate agora</BtnCalc> 
+                        <BtnCalc>Contrate agora</BtnCalc>
                     </div>
 
                 </div>
 
-                <figure className="col-span-1 lg:order-1 px-11 lg:px-0 flex content-end lg:justify-end justify-center"> 
-                    <Image width={650} height={665} src={ImgFGTS} alt=""/>
+                <figure className="col-span-1 lg:order-1 px-11 lg:px-0 flex content-end lg:justify-end justify-center">
+                    <Image width={650} height={665} src={imgFGTS} alt="" />
                 </figure>
-                
-            
+
+
             </div>
 
         </section>

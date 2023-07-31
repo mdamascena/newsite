@@ -1,7 +1,5 @@
 import Head from "next/head"
-import Footer from "../components/GERAL/Footer"
-import Header from "../components/GERAL/Header"
-import MainPrincipal from "../components/PRINCIPAL/MainPrincipal"
+import IndexPrincipal from "../components/PRINCIPAL/IndexPRINCIPAL"
 
 export default function Principal() {
 
@@ -19,10 +17,7 @@ export default function Principal() {
                 <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
             </Head>
-
-            <Header />
-            <MainPrincipal />
-            <Footer />
+            <IndexPrincipal />
         </>
     )
 }

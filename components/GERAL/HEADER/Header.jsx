@@ -1,21 +1,10 @@
 import Image from 'next/image'
-import LogoB from '../../public/img/LOGO_BRANCO.png'
-import LogoA from '../../public/img/LOGO_AZUL.png'
+import LogoB from '../../../public/img/LOGO_BRANCO.png'
+import LogoA from '../../../public/img/LOGO_AZUL.png'
 import tw from 'tailwind-styled-components'
+import AlertI from '../ARLET/Alert'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
-import {MdOutlineClose} from 'react-icons/md'
-import AlertI from '../GERAL/AlertBlue'
-
-const Li = tw.li`
-    hover:scale-[1.2]
-    cursor-pointer 
-    my-auto 
-    transition-transform 
-    duration-500
-    text-sm
-    cursor-pointer
-`;
 
 const BtnMenu = tw.button`
     bg-gradient-to-r 
@@ -42,6 +31,16 @@ const BtnMenu = tw.button`
     hover:ring-amber-200
 `;
 
+const Li = tw.li`
+    hover:scale-[1.2]
+    cursor-pointer 
+    my-auto 
+    transition-transform 
+    duration-500
+    text-sm
+    cursor-pointer
+`;
+
 const LiSm = tw.li`
     py-2 
     transition-all 
@@ -58,7 +57,7 @@ const LiSm = tw.li`
 
 export default function Header() {
 
-    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
+    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black']);
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-0', true]);
     const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
 
@@ -68,10 +67,6 @@ export default function Header() {
         } else {
             setDropMenu(['h-0', true, 'hidden']);
         }
-    }
-
-    const btnClose = () =>{
-        setCloseAlert('hidden')
     }
 
     const btnClick = () => {
@@ -91,10 +86,11 @@ export default function Header() {
     useEffect(
         () => {
             window.addEventListener('scroll', () => {
+
                 if (window.scrollY > 0) {
-                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300']);
+                    setBgNavbar(['shadow-lg', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500', 'bg-white']);
                 } else {
-                    setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
+                    setBgNavbar(['bg-opacity-10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black']);
                 }
             });
         }, []
@@ -102,20 +98,20 @@ export default function Header() {
 
     return (
         <header>
-            <AlertI/>
-            <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-14 mx-4 bg-blue-600 duration-500`}>
-                
+            <AlertI />
+            <div id='menuBar' className={`${bgNavbar[0]} ${bgNavbar[5]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-2 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 duration-500`}>
+
                 <figure className='pr-8 pt-2 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt=''/>
+                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
                 </figure>
 
                 <nav className="hidden lg:block mx-auto">
-                    
+
                     <ul className={`${bgNavbar[1]} poppins flex gap-7`}>
                         <Li className={`${bgNavbar[4]}`}>Principal</Li>
                         <Li className={`${bgNavbar[4]}`}>Quem Somos</Li>
                         <Li className={`${bgNavbar[4]} flex group`}>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' /></Li>
-                        <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200  mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
+                        <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200 mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
                             <ul className={dropMenu[2]}>
                                 <LiSm>CredFGTS</LiSm>
                                 <LiSm>CredLuz</LiSm>
@@ -130,11 +126,7 @@ export default function Header() {
                 </nav>
 
                 <div className='justify-items-stretch'>
-                    
-                    <BtnMenu>
-                        Acessar
-                    </BtnMenu>
-                   
+                    <BtnMenu>Acessar</BtnMenu>
                 </div>
 
                 <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>
@@ -148,7 +140,7 @@ export default function Header() {
                 <ul className='poppins gap-7'>
                     <LiSm>Principal</LiSm>
                     <LiSm>Quem Somos</LiSm>
-                    <LiSm className='group text-center'>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500'/>
+                    <LiSm className='group text-center'>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
                         <div className="h-0 scale-y-0 group-hover:scale-y-95 group-hover:h-24 border-0 m-1 bg-blue-200 mx-7 rounded-[8px] transition-all duration-500 origin-top-right">
                             <ul className>
                                 <LiSm>CredFGTS</LiSm>

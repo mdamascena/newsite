@@ -1,4 +1,4 @@
-import GuruFinanceiro from '../../components/ANIMACOES/AnimeFinancial.jsx'
+import GuruFinanceiro from '../../ANIMACOES/AnimeFinancial.jsx'
 
 export default function SectionTaxa() {
     return (
@@ -7,24 +7,24 @@ export default function SectionTaxa() {
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 
                 <div className='col-span-1 mt-8 -mb-12 order-2 lg:order-1'>
-                    <GuruFinanceiro/>
+                    <GuruFinanceiro />
                 </div>
-                
+
                 <div className='col-span-2 my-auto poppins text-slate-400 lg:text-xl text-md order-1 lg:order-2'>
                     <p className='text-4xl mb-5 font-bold'>Não deixe o seu FGTS parado!</p>
 
-                    O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos. 
+                    O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos.
                     É uma das melhores opções de crédito sem comprometer sua renda com pagamento de parcelas!
                 </div>
-          
+
             </div>
 
             <div className='grid grid-cols-3 lg:mx-4 mb-10'>
 
                 <div className='lg:col-span-2 col-span-3 rounded-3xl bg-white p-7 my-4 lg:mr-6 shadow-lg order-2 lg:order-1'>
-                    
+
                     <h1 className='text-slate-400 poppins text-3xl font-bold tracking-tight mb-8'>Taxa de juros mensal</h1>
-                    
+
                     <div>
 
                         <div className='grid lg:grid-cols-6 grid-cols-1 my-4'>
@@ -38,7 +38,7 @@ export default function SectionTaxa() {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className='grid lg:grid-cols-6 grid-cols-1 my-4'>
                             <div className='lg:col-span-1 col-span-6 poppins leading-5 text-slate-400 font-bold mr-2'>
                                 Cheque especial
@@ -74,13 +74,13 @@ export default function SectionTaxa() {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div>
 
                 <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white poppins shadow-lg order-1 lg:order-2'>
-                    
+
                     <h1 className='text-center poppins text-white lg:text-4xl text-xl'>
                         Juros a partir de
                     </h1>
