@@ -48,11 +48,11 @@ const EmpTitle = tw.h1`
 export default function MainFGTS() {
 
     return (
-        <main className="bgMainFGTS">
+        <main>
 
-            <div className="px-4 lg:px-24 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
+            <div className="bgMainFGTS px-4 lg:px-40 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
 
-                <div className='poppins lg:my-auto mb-10 image.png'>
+                <div className='poppins lg:my-auto mb-10'>
                     <EmpTitle>Empréstimo</EmpTitle>
                     <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-extrabold'>
                         Saque Aniversário <span className='font-bold tracking-tighter'>FGTS</span>
@@ -72,11 +72,11 @@ export default function MainFGTS() {
                     <Image src={ImgMain} alt='' />
                 </div>
             </div>
+
             <SimuladorFGTS />
             <Vantagens />
             <Taxas />
             <Regras />
-
 
         </main>
     )

@@ -2,7 +2,7 @@ import { Input } from 'antd';
 import { AiOutlineUser } from 'react-icons/ai'
 import { AiOutlineMail } from 'react-icons/ai'
 import { AiOutlinePhone } from 'react-icons/ai'
-import Btn from '../../GERAL/Btn'
+import Btn from '../../GERAL/BUTTON/Btn'
 
 
 

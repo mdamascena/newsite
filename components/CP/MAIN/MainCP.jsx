@@ -57,36 +57,34 @@ const BtnHome = tw.button`
 export default function MainHome() {
 
   return (
-    <main className="bgMainHome">
+    <main className="">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="col-span-1 px-5 lg:pl-28 lg:pr-32 lg:mt-44 lg:mb-36 mb-[5vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
 
-          <div className="mt-24 lg:mt-0">
+            <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
 
-            <h1 className="text-white lg:text-4xl text-[30px] text-center lg:text-left poppins font-bold tracking-normal">
-              <span className="text-yellow-400">Seu Empréstimo ONLINE</span> com múltiplas opções de créditos
-            </h1>
+                <div className="mt-24 lg:mt-0">
+                    <h1 className="text-white lg:text-5xl text-[30px] text-center lg:text-left poppins font-bold tracking-normal">
+                        <span className="text-yellow-400">Seu Empréstimo ONLINE</span> com múltiplas opções de créditos
+                    </h1>
+                </div>
 
-          </div>
+                <div className="lg:mt-8 mt-64">
+                    <p className="text-white poppins lg:text-left text-justify lg:mx-0 mx-2 text-xl">
+                        Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
+                    </p>
+                    <BtnHome>Simular agora</BtnHome>
+                </div>
 
-          <div className="lg:mt-8 mt-64">
+            </div>
 
-            <p className="text-white poppins lg:text-left text-justify lg:mx-0 mx-2 text-sm">
-              Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
-            </p>
-
-            <BtnHome>Simular agora</BtnHome>
-
-          </div>
+            <div className="hidden lg:block col-span-1"></div>
 
         </div>
 
-        <div className="hidden lg:block col-span-1"></div>
-
-      </div>
-      <Modalidades />
-      <Simulador />
+        <Modalidades />
+        <Simulador />
+        
     </main>
 
   )

@@ -3,7 +3,7 @@ import styles from "../../../styles/Home.module.css";
 import Image from "next/image";
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png";
 import Brasao from "../../../public/img/BRASAO_CINZA.png";
-import StepUm from "../../../components/FORM/StepFGTS1"
+import StepUm from "../../../components/FGTS/FORM/StepFGTS1"
 
 
 export default function Home() {

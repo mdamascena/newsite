@@ -45,7 +45,7 @@ export default function SimuladorFGTS() {
     return (
         <section className="bg-blue-700 saturate-100 poppins">
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-24 py-8 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-40 py-8 lg:py-16">
 
                 <div className="col-span-3">
                     <h1 className="text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-bold ml-5">
