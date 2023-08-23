@@ -71,7 +71,7 @@ a {
   }
 }
 .bgMainPrincipal{
-  background-image: url(../public/img/bg_main_principal.png), radial-gradient(circle,  #1b116c 0%, #00024A 80%);
+  background-image: radial-gradient(circle,  #0009bb 0%, #00004b 100%);
   background-blend-mode: overlay;
   background-size: cover;
 }

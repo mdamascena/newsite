@@ -2,7 +2,7 @@ import GuruFinanceiro from '../../ANIMACOES/AnimeFinancial.jsx'
 
 export default function SectionTaxa() {
     return (
-        <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-24 p-4'>
+        <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-40 p-4'>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 
@@ -79,12 +79,12 @@ export default function SectionTaxa() {
 
                 </div>
 
-                <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white poppins shadow-lg order-1 lg:order-2'>
+                <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white poppins shadow-lg order-1 lg:order-2 pt-10 lg:pt-16'>
 
                     <h1 className='text-center poppins text-white lg:text-4xl text-xl'>
                         Juros a partir de
                     </h1>
-                    <h2 className='Gochi text-center text-7xl lg:text-9xl text-white'>
+                    <h2 className='Gochi text-center text-7xl lg:text-8xl text-white'>
                         1,59%<span className='text-3xl'> a.m.</span>
                     </h2>
                     <p className='text-center poppins text-white lg:text-lg text-md font-normal my-5'>
