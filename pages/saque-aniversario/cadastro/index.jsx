@@ -2,9 +2,7 @@ import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
 import Image from "next/image";
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png";
-import Brasao from "../../../public/img/BRASAO_CINZA.png";
-import StepUm from "../../../components/FGTS/FORM/StepFGTS1"
-
+import Cadastro from "../../../components/FGTS/FORM/Cadastro"
 
 export default function Home() {
   return (
@@ -24,22 +22,21 @@ export default function Home() {
 
       <main className="bg-slate-50 poppins">
 
-        <div className="grid grid-cols-1 lg:grid-cols-5">
-          
-          <div className="m-2 col-span-2 lg:h-[97.5vh] bg-gradient-to-br from-blue-600 via-blue-700 to-blue-700 saturate-150 rounded-xl">
-            <div className="p-5">
-              <Image src={LogoB} width={110} height={24.19} alt=''/>
+        <div className="grid grid-cols-1 lg:grid-cols-5 h-[100vh]">
+
+          <div className="m-2 col-span-2 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-700 saturate-150 rounded-xl">
+            <div className="">
+              <Image src={LogoB} width={110} height={24.19} alt='' />
             </div>
           </div>
 
-          <div className="col-span-1 lg:col-span-3 text-slate-400 lg:pr-64 lg:pl-16 h-screen">
-            <div className="p-5">
-              <StepUm/>
+          <div className="col-span-1 lg:col-span-3 text-slate-400 lg:max-w-3xl lg:px-10 mt-8">
+            <div className="">
+              <Cadastro />
             </div>
           </div>
 
         </div>
-      
       </main>
 
     </div>
