@@ -70,14 +70,59 @@ a {
     background-position: top;
   }
 }
+
+.bgBrasao{
+  background-image: url(../public/img/BRASAO_TESTE.png);
+  background-size: 80vh;
+  background-repeat: no-repeat;
+  background-position: 430px 60px;
+}
+
 .bgMainPrincipal{
   background-image: radial-gradient(circle,  #0009bb 0%, #00004b 100%);
   background-blend-mode: overlay;
   background-size: cover;
 }
+
+.bgComoFuncionaMain{
+  background-color: transparent;
+  background-image: url(../public/img/bg-notebook.png), linear-gradient(210deg, #00004b 45%, #ffee00 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center left;
+}
+
+.video-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media(max-width: 1024px){
   .bgMainPrincipal{
     background-position: bottom;
   }
-  
+
+  .bgBrasao{
+    background-size: 35vh;
+    background-position: 12px 0px;   
+  }
+
+  .bgComoFuncionaMain{
+    background-size: 100vh;
+  }
 }
