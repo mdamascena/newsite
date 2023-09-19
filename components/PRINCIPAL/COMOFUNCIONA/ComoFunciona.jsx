@@ -85,7 +85,7 @@ export default function ComoFunciona(){
 
                 <div className="hover:scale-110 col-span-1 duration-200">
                     <div className={`flex h-72 duration-1000 ease-in-out ${scrollCF}`}>
-                        <div className="bg-blue-700 p-5 mb-5 rounded-xl">
+                        <div className="bg-blue-700 p-5 mb-5 rounded-xl hover:shadow-2xl">
                             
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
@@ -112,7 +112,7 @@ export default function ComoFunciona(){
 
                 <div className="hover:scale-110 col-span-1 duration-200">
                     <div className={`flex h-72 duration-1000 ease-in-out delay-200 ${scrollCF}`}>
-                        <div className="bg-blue-700 p-5 mb-5 rounded-xl">
+                        <div className="bg-blue-700 p-5 mb-5 rounded-xl hover:shadow-2xl">
                             
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
@@ -139,7 +139,7 @@ export default function ComoFunciona(){
 
                 <div className="hover:scale-110 col-span-1 duration-200">
                     <div className={`flex h-72 duration-1000 ease-in-out delay-300 ${scrollCF}`}>
-                        <div className="bg-blue-700 p-5 mb-5 rounded-xl">
+                        <div className="bg-blue-700 p-5 mb-5 rounded-xl hover:shadow-2xl">
                             
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
@@ -166,7 +166,7 @@ export default function ComoFunciona(){
 
                 <div className="hover:scale-110 col-span-1 duration-200">
                     <div className={`flex h-72 duration-1000 ease-in-out delay-500 ${scrollCF}`}>
-                        <div className="bg-blue-700 p-5 mb-5 rounded-xl">
+                        <div className="bg-blue-700 p-5 mb-5 rounded-xl hover:shadow-2xl">
                             
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">

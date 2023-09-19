@@ -11,7 +11,7 @@ const Card = tw.div`
     rounded-xl 
     shadow-lg
     px-5 
-    py-3 
+    py-3
     duration-1000
 `
 
@@ -19,7 +19,7 @@ export default function Regras(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
     const [movCard, setMovCard] = useState ('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
-    const [movDesc, setMovDesc] = useState ('-translate-x-[150px] opacity-0');
+    const [movDesc, setMovDesc] = useState ('opacity-0');
 
     useEffect(
         () =>{
@@ -32,7 +32,7 @@ export default function Regras(){
             } else{
                 setMovImg('opacity-0 scale-0');
                 setMovCard('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
-                setMovDesc('-translate-x-[150px] opacity-0')
+                setMovDesc('opacity-0')
             }
         });
     },[]);
@@ -42,10 +42,10 @@ export default function Regras(){
             
             <div className='grid grid-cols-1 lg:grid-cols-2 py-16'>
                 <div className='col-span-1 mb-8 lg:mb-0'>
-                    <Image className={`rounded-2xl duration-1000 ${movImg}`} src={sma} alt='' />
+                    <Image className={`rounded-3xl duration-1000 ${movImg}`} src={sma} alt='' />
                 </div>
                 
-                <div className='col-span-1 lg:pl-5'>    
+                <div className='col-span-1 lg:pl-5 lg:my-auto'>    
                     <div className={`duration-1000 delay-500 ${movDesc}`}>
                         <h2 className="text-4xl text-blue-600 font-semibold mb-2 tracking-tight">Condiçoes Gerais</h2>
                         <p className=" text-slate-400 my-6">

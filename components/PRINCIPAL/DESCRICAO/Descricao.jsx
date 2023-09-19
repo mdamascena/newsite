@@ -3,6 +3,16 @@ import moeda from '../../../public/img/dinheiro.gif'
 import veloz from '../../../public/img/velocimetro.gif'
 import debito from '../../../public/img/flutuacao.gif'
 import parcela from '../../../public/img/amar.gif'
+import tw from 'tailwind-styled-components'
+
+const Card = tw.div`
+    col-span-1 
+    p-5 rounded-xl 
+    bg-white 
+    shadow
+    duration-200 
+    hover:scale-110
+`
 
 export default function Descricao(){
     return(
@@ -36,7 +46,7 @@ export default function Descricao(){
 
             <div className="grid grid-cols-2 lg:grid-cols-4 text-center gap-2 lg:gap-5">
 
-                <div className="col-span-1 p-5 rounded-xl bg-white shadow">
+                <Card>
                     <div className="flex justify-center">
                         <Image src={moeda} width={70} height={70} alt=""/>
                     </div>
@@ -48,9 +58,9 @@ export default function Descricao(){
                     <p className="text-sm leading-tight">
                         Não precisa comprovar renda! Basta ser o titular da conta de energia da sua residência. Simples assim!
                     </p>
-                </div>
+                </Card>
 
-                <div className="col-span-1 p-5 rounded-xl bg-white shadow">
+                <Card>
                     <div className="flex justify-center">
                         <Image src={veloz} width={70} height={70} alt=""/>
                     </div>
@@ -62,9 +72,9 @@ export default function Descricao(){
                     <p className="text-sm leading-tight">
                         Em até 24 horas, você já fica sabendo sobre a sua aprovação do seu pedido. O dinheiro é depositado em sua conta bancária.
                     </p>
-                </div>
+                </Card>
 
-                <div className="col-span-1 p-5 rounded-xl bg-white shadow">
+                <Card>
                     <div className="flex justify-center">
                         <Image src={debito} width={70} height={70} alt=""/>
                     </div>
@@ -75,9 +85,9 @@ export default function Descricao(){
                     <p className="text-sm leading-tight">
                         O débito é feito direto em sua conta de luz. Tudo muito bem explicado impresso em sua conta, mês a mês!
                     </p>
-                </div>
+                </Card>
 
-                <div className="col-span-1 p-5 rounded-xl bg-white shadow">
+                <Card>
                     <div className="flex justify-center">
                         <Image src={parcela} width={70} height={70} alt=""/>
                     </div>
@@ -88,7 +98,7 @@ export default function Descricao(){
                     <p className="text-sm leading-tight">
                         Limite de até R$ 1.500,00 parcelado em até 22 vezes com parcelas fixas. Sem susto!
                     </p>
-                </div>
+                </Card>
                 
             </div>
 
