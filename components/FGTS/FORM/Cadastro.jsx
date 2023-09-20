@@ -68,8 +68,6 @@ const Cadastro = () => {
                     />
                 </Form.Item>
 
-
-
                 <Form.Item
                     name='cpf'
                     className='mb-5 block'
