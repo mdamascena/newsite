@@ -2,7 +2,7 @@ import Image from "next/image"
 import { useCallback, useEffect, useState } from 'react'
 import celular from '../../../public/img/cel_principal_mockap.png'
 import{HiOutlineClipboardDocumentList} from 'react-icons/hi2'
-import {PiSignature} from 'react-icons/Pi'
+import {PiSignature} from 'react-icons/pi'
 import {HiOutlineIdentification} from 'react-icons/hi2'
 import {CiCalculator1} from 'react-icons/ci'
 import tw from 'tailwind-styled-components'
