@@ -7,6 +7,8 @@ import light from "../../../public/img/LAMPADA.png"
 import SectioDescrisao from "../DESCRICAO/Descricao"
 import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
+import SectioRegioes from "../REGIOES/Regioes"
+import SectioAnalise from "../ANALISE/Analise"
 import SectionModalidade from "../MODALIDADES/ModalidadesPrincipal.jsx"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 
@@ -53,6 +55,8 @@ export default function MainPrincipal() {
             <SectioDescrisao/>
             <SectioComoFunciona/>
             <SectioRegrasGerais/>
+            <SectioRegioes/>
+            <SectioAnalise/>
         </main>
     )
 }
