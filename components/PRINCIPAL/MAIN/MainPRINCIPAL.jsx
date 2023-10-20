@@ -19,7 +19,7 @@ export default function MainPrincipal() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 poppins bgBrasao">
 
-                    <figure className="ml-16 block lg:hidden my-4">
+                    <figure className="mx-auto pr-5 block lg:hidden my-4">
                         <Image src={light} width={200} height={160} alt='' />
                     </figure>
 
