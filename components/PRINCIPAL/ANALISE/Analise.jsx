@@ -12,7 +12,6 @@ const Card = tw.div`
     saturate-150 
     text-slate-400
     rounded-xl 
-    
     p-8
     duration-1000
 `
@@ -47,8 +46,7 @@ export default function Regras(){
     },[]);
 
     return(
-        <section className='poppins px-8 lg:px-44 bg-white select-none'>
-            
+        <section className='poppins px-8 lg:px-44 bg-slate-100 select-none'>
             <div className='grid grid-cols-1 lg:grid-cols-2 py-16'>
                 <div className='col-span-1 mb-8 lg:mb-0 flex lg:justify-end justify-center lg:mr-16'>
                     <div className="bg"></div>
@@ -57,37 +55,22 @@ export default function Regras(){
                     <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo}`} width={240} src={desc} alt='' />
                 </div>
                 
-                <div className='col-span-1 lg:pl-5 lg:my-auto'>    
+                <div className='col-span-1 lg:pl-5 '>    
                     <div className={`duration-1000 delay-500 ${movDesc}`}>
-                        <h2 className="text-4xl text-blue-600 font-semibold mb-2 tracking-tight">Não fique sem resposta</h2>
+                        <h2 className="text-4xl text-blue-600 font-semibold mb-4 tracking-tight">Não fique no escuro sem resposta do que está rolando</h2>
 
-                        <Card>
-                            <p className="mb-3">
-                                Sabemos que você precisa de respostas rápidas. Por isso, na Valor Real você pode acompanhar 
-                                a análise diretamente pelo site em tempo real. Assim, você não fica no 
-                                escuro e fica por dentro de tudo de forma simples e transparente.
+                        <div className="text-slate-400 mt-14">
+                            <p className="">
+                                Você precisa de respostas rápidas. Por isso, na Valor Real você pode acompanhar a análise diretamente pelo site em tempo real.
                             </p>
 
                             <p className="">
-                                Em todos os status, informamos prazos e qual é o próximo passo, dessa forma você 
-                                tem uma clara previsão de quanto tempo falta para receber seu dinheiro.
+                                Mas caso fique com alguma dúvida, poderá contar com nosso time de atendimento pelo 0800 ou WhatsApp.
                             </p>
-                        </Card>
-                        
-                        <p className=" text-slate-400 my-6">
-                            Mas caso fique com alguma dúvida, poderá contar com nosso time de atendimento pelo 0800 ou WhatsApp.
-                        </p>
-
+                        </div>           
                     </div>
-                    
-                   
-                    
-
                 </div>
-
             </div>
-
         </section>
-        
     )
 }

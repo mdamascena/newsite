@@ -2,8 +2,7 @@ import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
 import Image from "next/image";
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png";
-import Test from "../../../components/ANIMACOES/TesteLottie"
-import NTest from "../../../components/ANIMACOES/NovoTes"
+
 
 export default function Home() {
   return (
@@ -35,8 +34,7 @@ export default function Home() {
 
                 <div className="col-span-1 lg:col-span-3 text-slate-400 lg:max-w-3xl lg:px-10 mt-8">
                     <div className="">
-                        <Test/>
-                        <NTest/>
+                       
                     </div>
                 </div>
 

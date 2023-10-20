@@ -6,6 +6,8 @@ import {PiSignature} from 'react-icons/pi'
 import {HiOutlineIdentification} from 'react-icons/hi2'
 import {CiCalculator1} from 'react-icons/ci'
 import tw from 'tailwind-styled-components'
+import { Carousel } from "react-responsive-carousel"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 
 const NumCard = tw.span`
@@ -81,7 +83,7 @@ export default function ComoFunciona(){
                 </div>
             </div>
             
-            <div className="px-8 lg:px-44 grid grid-cols-1 lg:grid-cols-4 relative bottom-24 gap-x-2">
+            <div className="px-8 lg:px-44 lg:grid grid-cols-1 lg:grid-cols-4 relative bottom-24 gap-x-2 hidden">
 
                 <div className="hover:scale-110 col-span-1 duration-200">
                     <div className={`flex h-72 duration-1000 ease-in-out ${scrollCF}`}>
@@ -192,6 +194,106 @@ export default function ComoFunciona(){
                 </div>
 
             </div>
+
+            <Carousel autoPlay infiniteLoop centerMode showArrows={false} showStatus={false} showIndicators={false} className="lg:hidden poppins -mt-10">
+
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <CiCalculator1 className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Simule o crédito</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir em nosso simulador.
+                                </p>
+                            </div>
+
+                            <div className="absolute">
+                                <NumCard className="left-36">1</NumCard>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                            
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <HiOutlineClipboardDocumentList className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Preencha os dados</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Conte um pouco sobre você pra gente, informe alguns dados básicos. Assim agilizamos a sua análise de crédito.
+                                </p>
+                            </div>
+                                
+                            <div className="absolute">
+                                <NumCard className="left-28">2</NumCard>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+               
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                            
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <HiOutlineIdentification className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Envie documentos</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Após a pré-aprovação do seu pedido de empréstimo, faça o envio dos seus documentos pelo nosso site ou WhatsApp.
+                                </p>
+                            </div>
+                                
+                            <div className="absolute">
+                                <NumCard className="left-28">3</NumCard>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                            
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <PiSignature className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Assinatura Digital</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Empréstimo APROVADO! Agora só falta assinar o contrato usando nosso aplicativo na tela do seu smartphone.
+                                </p>
+                            </div>
+                                
+                            <div className="absolute">
+                                <NumCard className="left-28">4</NumCard>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </Carousel>
            
         </section>
        

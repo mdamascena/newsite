@@ -19,6 +19,7 @@
     "antd": "^5.3.3",
     "axios": "^1.5.0",
     "formik": "^2.4.3",
+    "lottie-react": "^2.4.0",
     "lottie-web": "^5.10.2",
     "next": "^13.4.19",
     "rc-field-form": "^1.37.0",
