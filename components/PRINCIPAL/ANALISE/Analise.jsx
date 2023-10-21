@@ -59,13 +59,13 @@ export default function Regras(){
                     <div className={`duration-1000 delay-500 ${movDesc}`}>
                         <h2 className="text-4xl text-blue-600 font-semibold mb-4 tracking-tight">Não fique no escuro sem resposta do que está rolando</h2>
 
-                        <div className="text-slate-400 mt-14">
-                            <p className="">
-                                Você precisa de respostas rápidas. Por isso, na Valor Real você pode acompanhar a análise diretamente pelo site em tempo real.
+                        <div className="text-slate-400 mt-8">
+                            <p className="mb-4">
+                                Você precisa de respostas rápidas. Por isso, na ValoReal você pode acompanhar a análise diretamente pelo site em tempo real.
                             </p>
 
                             <p className="">
-                                Mas caso fique com alguma dúvida, poderá contar com nosso time de atendimento pelo 0800 ou WhatsApp.
+                                Mas... pintou uma dúvida? É só chamar a gente pelo 0800 ou WhatsApp.
                             </p>
                         </div>           
                     </div>

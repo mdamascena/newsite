@@ -72,10 +72,10 @@ a {
 }
 
 .bgBrasao{
-  background-image: url(../public/img/bg-brasao-blend.png);
-  background-size: 80vh;
+  background-image: url(../public/img/bg-brasao.png);
+  background-size: 90vh;
   background-repeat: no-repeat;
-  background-position: 430px 60px;
+  background-position: 445px 80px;
 }
 
 .bgMainPrincipal{
@@ -118,8 +118,8 @@ a {
   }
 
   .bgBrasao{
-    background-size: 35vh;
-    background-position: 12px 0px;   
+    background-size: 60vh;
+    background-position: 20px 70px;   
   }
 
   .bgComoFuncionaMain{
