@@ -27,7 +27,7 @@ export default function MainPrincipal() {
                         <div className="col-span-1 md:my-16 md:ml-24">
                             <h1 className="text-[2rem] md:text-[3.0rem] leading-tight md:leading-[50px] font-bold tracking-tight text-center md:text-left text-white">
                                 <div className="text-yellow-400">
-                                    Crédito Pessoal<span className="font-extralight">ONLINE</span>
+                                    Crédito Pessoal
                                 </div>
                                 Débito na conta de<div className="text-7xl" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
                             </h1>
