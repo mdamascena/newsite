@@ -25,7 +25,6 @@ export default function Regras(){
     const [movStep, setMovStep] = useState ('opacity-0 scale-0');
     const [movInfo, setMovInfo] = useState ('opacity-0 scale-0');
     
-
     useEffect(
         () =>{
             window.addEventListener('scroll', () => {
