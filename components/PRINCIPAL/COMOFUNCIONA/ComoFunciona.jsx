@@ -13,7 +13,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 const NumCard = tw.span`
     relative 
     bottom-52
-    font-bold 
+    font-semibold 
     text-[15rem] 
     bg-clip-text 
     text-transparent 
@@ -56,11 +56,9 @@ export default function ComoFunciona(){
         <section className="poppins bg-white select-none">
             
             <div className="grid grid-cols-2 overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
-                <div className="col-span-1">
-
-                </div>
+                <div className="col-span-1"/>
                 <div className="col-span-1 text-white lg:text-start">
-                    <h3 className="text-2xl lg:text-5xl tracking-tight my-12 lg:my-32 font-semibold select-none">Como Funciona</h3>
+                    <h3 className="text-2xl lg:text-5xl tracking-tighter my-12 lg:my-32 font-semibold select-none">Como Funciona</h3>
                 </div>
             </div>
             
@@ -71,11 +69,11 @@ export default function ComoFunciona(){
                 </figure>
             
                 <div className="col-span-1 lg:hidden">
-                    <h4 className="font-bold text-3xl mb-6 text-center mt-9">É simples!</h4>
+                    <h4 className="font-semibold tracking-tighter text-3xl mb-6 text-center mt-9">É simples!</h4>
                 </div>
 
                 <div className={`lg:col-span-1 col-span-2 lg:mt-10 duration-1000 delay-1000 ${scrollDesc}`}>
-                    <h4 className="font-bold text-4xl mb-6 hidden lg:block">É super simples!</h4>
+                    <h4 className="font-semibold tracking-tighter text-4xl mb-6 hidden lg:block">É super simples!</h4>
                     <p className="lg:text-xl lg:bottom-0 bottom-16 relative select-none">
                         Todo processo é realizado ONLINE, pelo celular ou computador sem sair de casa.  
                         E, se surgirem dúvidas, a nossa equipe de consultores está pronta para te orientar passo a passo. 
@@ -92,7 +90,7 @@ export default function ComoFunciona(){
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
                                     <CiCalculator1 className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-xl tracking-tight font-bold ml-5 z-10">Simule o crédito</h5>
+                                    <h5 className="text-blue-200 text-xl tracking-tight font-semibold ml-5 z-10">Simule o crédito</h5>
                                 </div>
                             </div>
 
@@ -119,7 +117,7 @@ export default function ComoFunciona(){
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
                                     <HiOutlineClipboardDocumentList className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-xl tracking-tight font-bold ml-5 z-10">Preencha os dados</h5>
+                                    <h5 className="text-blue-200 text-xl tracking-tight font-semibold ml-5 z-10">Preencha os dados</h5>
                                 </div>
                             </div>
 
@@ -146,7 +144,7 @@ export default function ComoFunciona(){
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
                                     <HiOutlineIdentification className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-xl tracking-tight font-bold ml-5 z-10">Envie documentos</h5>
+                                    <h5 className="text-blue-200 text-xl tracking-tight font-semibold ml-5 z-10">Envie documentos</h5>
                                 </div>
                             </div>
 
@@ -173,7 +171,7 @@ export default function ComoFunciona(){
                             <div className="col-span-1 my-8">
                                 <div className="flex flex-row items-center">
                                     <PiSignature className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-xl tracking-tight font-bold ml-5 z-10">Assinatura Digital</h5>
+                                    <h5 className="text-blue-200 text-xl tracking-tight font-semibold ml-5 z-10">Assinatura Digital</h5>
                                 </div>
                             </div>
 
@@ -202,7 +200,7 @@ export default function ComoFunciona(){
                         <div className="col-span-1 my-8">
                             <div className="flex flex-row items-center">
                                 <CiCalculator1 className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Simule o crédito</h5>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Simule o crédito</h5>
                             </div>
                         </div>
 
@@ -226,7 +224,7 @@ export default function ComoFunciona(){
                         <div className="col-span-1 my-8">
                             <div className="flex flex-row items-center">
                                 <HiOutlineClipboardDocumentList className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Preencha os dados</h5>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Preencha os dados</h5>
                             </div>
                         </div>
 
@@ -251,7 +249,7 @@ export default function ComoFunciona(){
                         <div className="col-span-1 my-8">
                             <div className="flex flex-row items-center">
                                 <HiOutlineIdentification className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Envie documentos</h5>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Envie documentos</h5>
                             </div>
                         </div>
 
@@ -275,7 +273,7 @@ export default function ComoFunciona(){
                         <div className="col-span-1 my-8">
                             <div className="flex flex-row items-center">
                                 <PiSignature className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                <h5 className="text-blue-200 text-2xl tracking-tight font-bold ml-5 z-10">Assinatura Digital</h5>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Assinatura Digital</h5>
                             </div>
                         </div>
 

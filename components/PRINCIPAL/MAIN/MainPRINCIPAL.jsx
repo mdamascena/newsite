@@ -25,7 +25,7 @@ export default function MainPrincipal() {
                         </figure>
 
                         <div className="col-span-1 md:my-16 md:ml-24">
-                            <h1 className="text-[2rem] md:text-[3.0rem] leading-tight md:leading-[50px] font-bold tracking-tight text-center md:text-left text-white">
+                            <h1 className="text-[2rem] md:text-[3.0rem] leading-tight md:leading-[50px] font-semibold tracking-tight text-center md:text-left text-white">
                                 <div className="text-yellow-400">
                                     Crédito Pessoal
                                 </div>

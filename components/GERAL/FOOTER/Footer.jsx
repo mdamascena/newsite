@@ -16,7 +16,7 @@ export default function Footer() {
                 </h5>
             </div>
 
-            <h2 className="text-blue-400 poppins lg:mx-40 mx-8 font-bold text-xl">
+            <h2 className="text-blue-400 poppins lg:mx-40 mx-8 font-semibold text-xl">
                 NOSSOS CONTATOS
             </h2>
             <hr className="border-4 border-blue-700 border-opacity-20 rounded-full h-2 lg:mx-40 mx-8" />
@@ -68,7 +68,7 @@ export default function Footer() {
 
             </div>
 
-            <h2 className="text-blue-400 poppins lg:mx-40 mx-8 font-bold text-xl">
+            <h2 className="text-blue-400 poppins lg:mx-40 mx-8 font-semibold text-xl">
                 SOBRE NÓS
             </h2>
             <hr className="border-4 border-blue-700 border-opacity-75 rounded-full h-2 lg:mx-40 mx-8" />
