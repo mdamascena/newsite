@@ -5,7 +5,8 @@ import desc from '../../../public/img/exemp_desc.png'
 import {BsBroadcast} from 'react-icons/bs'
 import {BsAppIndicator} from 'react-icons/bs'
 import {BsChatLeftDots} from 'react-icons/bs'
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
+import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import tw from 'tailwind-styled-components'
 
 const Card = tw.div`
@@ -71,7 +72,7 @@ export default function Regras(){
 
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 mt-5">
                                 
-                                <div className="bg-slate-100 rounded-lg col-span-1 flex items-center p-3 shadow-md">
+                                <div className="bg-slate-100 rounded-lg col-span-1 flex items-center p-3 ">
                                     <div className="bg-blue-500 text-white text-2xl rounded-lg p-2 flex items-center">
                                         <BsBroadcast/>
                                     </div>
@@ -85,7 +86,7 @@ export default function Regras(){
                                     </div>
                                 </div>
                                 
-                                <div className="bg-slate-100 rounded-lg col-span-1 flex items-center p-3 shadow-md">
+                                <div className="bg-slate-100 rounded-lg col-span-1 flex items-center p-3 ">
                                     <div className="bg-blue-500 text-white text-2xl rounded-lg p-2 flex items-center">
                                         <BsAppIndicator/>
                                     </div>
@@ -94,7 +95,7 @@ export default function Regras(){
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-100 rounded-lg flex items-center p-3 shadow-md">
+                                <div className="bg-slate-100 rounded-lg flex items-center p-3 ">
                                     <div className="bg-blue-500 text-white text-2xl rounded-lg p-2 flex items-center">
                                         <BsChatLeftDots/>
                                     </div>
@@ -104,10 +105,11 @@ export default function Regras(){
                                 </div>
                             </div>
                         </div>
+                        <BtnYellow nome='Simular aqui'/>
                     </div>
 
                     <div className='col-span-1 flex lg:justify-center justify-center z-10 relative'>
-                        <div className="hidden lg:block">
+                        <div className="hidden lg:flex justify-center">
                             <div className="flex">
                                 <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={230} src={analise} alt=''/>
                                 <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={230} src={step} alt='' />
@@ -116,7 +118,7 @@ export default function Regras(){
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[13rem] absolute rounded-full bottom-6 shadow-xl duration-1000 ${movImg}`}/>
                         </div>
 
-                        <div className="mt-8 flex justify-center">
+                        <div className="mt-8 flex justify-center lg:hidden">
                             <div className="flex">
                                 <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={170} src={analise} alt=''/>
                                 <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={170} src={step} alt='' />
@@ -124,7 +126,6 @@ export default function Regras(){
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[9rem] absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>
                         </div>
-                        
                     </div>
                 </div>
             </div>

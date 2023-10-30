@@ -41,7 +41,7 @@ export default function SessaoModalidades() {
             <div className="p-4 lg:p-14 grid grid-cols-1 lg:grid-cols-2 poppins">
 
                 <div className="col-span-2 lg:col-span-1 p-2 text-center lg:text-right lg:mr-5">
-                    <p className="text-blue-200 text-2xl pb-2 tracking-tight font-bold mb-3">
+                    <p className="text-blue-200 text-2xl pb-2 tracking-tight font-semibold mb-3">
                         Crédito Pessoal do o seu jeito
                     </p>
 
@@ -64,7 +64,7 @@ export default function SessaoModalidades() {
 
                             <div className="text-center">
 
-                                <span className="poppins text-2xl lg:text-4xl text-blue-500 text-center font-bold m-3" id='rangeValue'>{'R$ ' + valorEmp + ".000"}</span>
+                                <span className="poppins text-2xl lg:text-4xl text-blue-500 text-center font-semibold m-3" id='rangeValue'>{'R$ ' + valorEmp + ".000"}</span>
 
                                 {/*<Box className="p-4 lg:my-3">
                                     <Slider 
@@ -92,7 +92,7 @@ export default function SessaoModalidades() {
                         <CardMod className="relative">
                             <div className="mb-12 mx-14 lg:mx-5 text-center group-hover:scale-0 duration-500 absolute">
                                 <RiLightbulbFlashLine className="text-5xl mb-2 inline-flex" />
-                                <h1 className="poppins text-4xl font-bold text-blue-200 mb-2">CredLuz</h1>
+                                <h1 className="poppins text-4xl font-semibold text-blue-200 mb-2">CredLuz</h1>
                                 <p className="text-blue-100">Empréstimo com débito em sua conta de luz</p>
                                 <BsPlusCircle className="mx-auto text-3xl relative top-10" />
                             </div>
@@ -118,7 +118,7 @@ export default function SessaoModalidades() {
                         <CardMod className="relative">
                             <div className="mb-12 mx-14 lg:mx-5 text-center group-hover:scale-0 duration-500 absolute">
                                 <RiBankLine className="text-5xl mb-2 inline-flex" />
-                                <h1 className="poppins text-4xl font-bold text-blue-200 mb-2">CredFGTS</h1>
+                                <h1 className="poppins text-4xl font-semibold text-blue-200 mb-2">CredFGTS</h1>
                                 <p className="text-blue-100">Antecipação do saque aniversário FGTS</p>
                                 <BsPlusCircle className="mx-auto text-3xl relative top-10" />
                             </div>
@@ -144,7 +144,7 @@ export default function SessaoModalidades() {
                         <CardMod className="relative">
                             <div className="mb-12 mx-14 lg:mx-5 text-center group-hover:scale-0 duration-500 absolute">
                                 <AiOutlineBarcode className="text-5xl mb-2 inline-flex" />
-                                <h1 className="poppins text-4xl font-bold text-blue-200 mb-2">CredBoleto</h1>
+                                <h1 className="poppins text-4xl font-semibold text-blue-200 mb-2">CredBoleto</h1>
                                 <p className="text-blue-100">Empréstimo pessoal com pagamento através de carnê</p>
                                 <BsPlusCircle className="mx-auto text-3xl relative top-10" />
                             </div>

@@ -8,8 +8,6 @@ import { RiShieldCheckLine } from 'react-icons/ri'
 import { IoPodiumOutline } from 'react-icons/io5'
 import { IoWalletOutline } from 'react-icons/io5'
 import { AiOutlineFieldTime } from 'react-icons/ai'
-import Image from 'next/image'
-import Pers from '../../../public/img/valoreal_mobile_s.png'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -50,7 +48,7 @@ const CardVant = tw.div`
 
 const TitleCard = tw.p`
     text-blue-500 
-    font-extrabold 
+    font-semibold 
     lg:text-2xl
     text-xl 
     mb-0 
@@ -103,7 +101,7 @@ export default function SessaoModalidades() {
                     <CardMod className='mb-5'>
                         <div className="p-3 duration-300 poppins text-left h-60">
                             <RiLightbulbFlashLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                            <p className="text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                            <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">na conta de luz</p>
                             <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Empréstimo com débita na conta de luz, sem comprovação de renda</p>
                         </div>
@@ -113,7 +111,7 @@ export default function SessaoModalidades() {
                     <CardMod className='mb-5'>
                         <div className="p-3 duration-300 poppins text-left">
                             <AiOutlineBarcode className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                            <p className="text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                            <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Pessoal CredBoleto</p>
                             <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
                         </div>
@@ -123,7 +121,7 @@ export default function SessaoModalidades() {
                     <CardMod className='mb-5'>
                         <div className="p-3 duration-300 poppins text-left">
                             <MdOutlineCake className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                            <p className="text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
+                            <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Saque-Aniversário FGTS</p>
                             <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
                         </div>
@@ -136,7 +134,7 @@ export default function SessaoModalidades() {
                                 <RiBankLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <span className='bg-red-600 text-white p-1 rounded-md text-[10px] h-5 my-auto ml-48'>EM BREVE</span>
                             </div>
-                            <p className="text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                            <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Consignado</p>
                             <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Para beneficiários do INSS com pagamento em 10 minutos</p>
                         </div>
@@ -153,7 +151,7 @@ export default function SessaoModalidades() {
                             <div className='flex justify-self-stretch mb-3'>
                                 <RiLightbulbFlashLine className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                                     <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">na conta de luz</p>
                                 </div>
                             </div>
@@ -167,7 +165,7 @@ export default function SessaoModalidades() {
                             <div className='flex justify-self-stretch mb-3'>
                                 <AiOutlineBarcode className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                                     <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">pessoal boleto</p>
                                 </div>
                             </div>
@@ -181,7 +179,7 @@ export default function SessaoModalidades() {
                             <div className='flex justify-self-stretch mb-3'>
                                 <MdOutlineCake className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
+                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
                                     <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Saque FGTS</p>
                                 </div>
                             </div>
@@ -195,7 +193,7 @@ export default function SessaoModalidades() {
                             <div className='flex justify-self-stretch mb-3'>
                                 <RiBankLine className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-bold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                                     <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Consignado</p>
                                 </div>
                             </div>
