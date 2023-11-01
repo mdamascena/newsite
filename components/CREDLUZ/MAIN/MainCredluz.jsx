@@ -20,8 +20,8 @@ export default function MainCredluz() {
                     
                     <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
                         
-                        <figure className="mx-auto ml-[80px] block lg:hidden mt-16">
-                            <Image src={light} width={220} alt="" />
+                        <figure className="mx-auto ml-[90px] block lg:hidden mt-14">
+                            <Image src={light} width={190} alt="" />
                         </figure>
 
                         <div className="col-span-1 my-auto px-8 text-white">
