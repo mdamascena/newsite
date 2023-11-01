@@ -7,7 +7,7 @@ const Btn = tw.button`
     py-5
     lg:py-6 
     px-3 
-    bg-[#000055ea]
+    bg-btncalc
     saturate-150
     hover:bg-yellow-300
     focus:bg-yellow-500
@@ -37,15 +37,11 @@ export default function SimuladorCredLuz(props) {
     const [titleCalc, setTitleCalc] = useState('Simule seu Empréstimo');
     const [titleParc, setTitleParc] = useState('Qual o valor desejado?');
 
-    const handleTitleCalc = (props)=>{
-        setTitleCalc('Simulação de ')
-    };
-
     return (
 
         <div className="max-w-md">
             
-            <h1 className='text-center text-xl text-white mb-3 poppins duration-150 bg-base-calc p-2 rounded-lg'>{titleCalc}</h1>
+            <h1 className='text-center text-lg text-white mb-3 poppins bg-base-calc p-1 rounded-lg'>{titleCalc}</h1>
             
             <div className='p-1 rounded-lg bg-base-calc'>
 
@@ -72,9 +68,6 @@ export default function SimuladorCredLuz(props) {
                             <Btn id="V1500" valor='R$ 1500' onClick={()=>setTitleCalc('Simulação de R$ 1.500,00')}>R$ 1500</Btn>
                         </div>
                     </div>
-
-                    
-
                 </div>
             </div>
 
