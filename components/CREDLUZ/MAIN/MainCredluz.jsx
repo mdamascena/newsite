@@ -20,8 +20,8 @@ export default function MainCredluz() {
                     
                     <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
                         
-                        <figure className="mx-auto block ml-[100px] lg:hidden mt-5">
-                            <Image src={light} width={175} alt="" />
+                        <figure className="mx-auto ml-[80px] block lg:hidden mt-16">
+                            <Image src={light} width={220} alt="" />
                         </figure>
 
                         <div className="col-span-1 my-auto px-8 text-white">
@@ -35,7 +35,7 @@ export default function MainCredluz() {
                                 <h2 className="font-semibold tracking-tighter text-4xl  mb-3 lg:mb-0">Débito na conta de 
                                     <span className="text-5xl" style={{ textShadow: "0px 0px 20px white" }}> LUZ</span>
                                 </h2>
-                                <h3 className="leading-5 mt-5 text-md hidden">
+                                <h3 className="leading-5 mt-5 text-md hidden lg:block">
                                     Sem comprovação de renda, basta ser o titular da conta de energia da sua residencia.
                                 </h3>
                             </div>
