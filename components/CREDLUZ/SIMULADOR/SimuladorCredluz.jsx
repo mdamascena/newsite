@@ -4,7 +4,8 @@ import { useState } from "react"
 
 const Btn = tw.button`
     col-span-1    
-    py-6 
+    py-5
+    lg:py-6 
     px-3 
     bg-[#000055ea]
     saturate-150
