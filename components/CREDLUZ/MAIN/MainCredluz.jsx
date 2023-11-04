@@ -16,7 +16,6 @@ export default function MainCredluz() {
             <section className="bgMainPrincipal">
             <div className="bgBrasao">
                 <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">
-                    
                     <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
                         
                         <figure className="mx-auto block lg:hidden mt-10">

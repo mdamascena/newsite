@@ -43,7 +43,7 @@ export default function MainPrincipal() {
                         </div>
 
                         <figure className="mx-auto mt-8 hidden lg:block">
-                            <Image width={500} height={530} src={cel} alt="" />
+                            <Image width={490} src={cel} alt="" />
                         </figure>
                     </div>
                 </div>

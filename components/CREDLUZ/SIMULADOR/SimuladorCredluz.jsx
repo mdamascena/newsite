@@ -53,7 +53,7 @@ export default function SimuladorCredLuz(props) {
                 <h2 className='text-center mb-2 poppins text-white'>{titleParc}</h2>
 
                 <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1'>
-                    <div className='delay-100 duration-200 hidden' id='valores'>
+                    <div className='delay-100 duration-200' id='valores'>
                         <div className="grid grid-cols-3 gap-1 mb-1">
                             <Btn id="V700" valorBtn='R$ 700' >R$ 700</Btn>
                             <Btn id="V800" valorBtn='R$ 800' onClick={()=>setTitleCalc('Simulação de R$ 800,00')}>R$ 800</Btn>
@@ -72,7 +72,7 @@ export default function SimuladorCredLuz(props) {
                             <Btn id="V1500" valor='R$ 1500' onClick={()=>setTitleCalc('Simulação de R$ 1.500,00')}>R$ 1500</Btn>
                         </div>
                     </div>
-                    {<PMT200/>}
+                    
                 </div>
                 
             </div>

@@ -50,7 +50,7 @@ export default function ComoFunciona(){
             if(entries.some((entry) => entry.isIntersecting)){
                 setScrollCF('');
             }else{
-                setScrollCF(' -translate-x-[150px] -translate-y-full opacity-0');
+                setScrollCF('-translate-x-[150px] -translate-y-full opacity-0');
             }
         
         });
