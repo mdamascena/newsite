@@ -29,40 +29,47 @@ export default function ComoFunciona(){
     const [scrollCel, setScrollCel] = useState('opacity-0 rotate-90 -translate-x-[450px]');
     const [scrollDesc, setScrollDesc] = useState('opacity-0 lg:translate-x-[170px] lg:translate-x-[170px]');
 
-    useEffect(
-        () => {
-            window.addEventListener('scroll', () => {
 
-                if (window.scrollY > 1000) {
-                    setScrollCel('');
-                    setScrollDesc('');
-                } else {
-                    setScrollCel('opacity-0 rotate-90 -translate-x-[450px]');
-                    setScrollDesc('opacity-0 lg:translate-x-[170px] lg:translate-x-[170px]');
-                }
-                
-                
-                if (window.scrollY > 1520) {
-                    setScrollCF('');
-                } else {
-                    setScrollCF(' -translate-x-[150px] -translate-y-full opacity-0');
-                }
-            });
-        }, []
-    )
+    useEffect(()=>{
+        const intersectionObserver = new IntersectionObserver((entries)=>{
+            if(entries.some((entry) => entry.isIntersecting)){
+                setScrollCel('');
+                setScrollDesc('');
+            }else{
+                setScrollCel('opacity-0 rotate-90 -translate-x-[450px]');
+                setScrollDesc('opacity-0 lg:translate-x-[170px] lg:translate-x-[170px]');
+            }
+        
+        });
+        intersectionObserver.observe(document.querySelector('#ComoFunciona'));
+        return () => intersectionObserver.disconnect();
+    });
+
+    useEffect(()=>{
+        const intersectionObserver = new IntersectionObserver((entries)=>{
+            if(entries.some((entry) => entry.isIntersecting)){
+                setScrollCF('');
+            }else{
+                setScrollCF(' -translate-x-[150px] -translate-y-full opacity-0');
+            }
+        
+        });
+        intersectionObserver.observe(document.querySelector('#passos'));
+        return () => intersectionObserver.disconnect();
+    });
 
     return(
         
         <section className="poppins bg-white select-none">
             
-            <div className="grid grid-cols-2 overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
+            <div id='ComoFunciona' className="grid grid-cols-2 overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
                 <div className="col-span-1"/>
                 <div className="col-span-1 text-white lg:text-start">
                     <h3 className="text-2xl lg:text-5xl tracking-tighter my-12 lg:my-32 font-semibold select-none">Como Funciona</h3>
                 </div>
             </div>
             
-            <div className="grid grid-cols-2 px-8 lg:px-44 text-slate-400">
+            <div className="grid grid-cols-2 px-8 lg:px-44 text-slate-400 h-80">
 
                 <figure className="col-span-1 relative bottom-20 lg:bottom-44 lg:w-96 w-36 lg:ml-40">
                     <Image className={`duration-1000 ${scrollCel}`} src={celular} alt=''/>
@@ -72,7 +79,7 @@ export default function ComoFunciona(){
                     <h4 className="font-semibold tracking-tighter text-3xl mb-6 text-center mt-9">É simples!</h4>
                 </div>
 
-                <div className={`lg:col-span-1 col-span-2 lg:mt-10 duration-1000 delay-1000 ${scrollDesc}`}>
+                <div className={`lg:col-span-1 col-span-2 lg:mt-10 duration-1000 delay-300 ${scrollDesc}`}>
                     <h4 className="font-semibold tracking-tighter text-4xl mb-6 hidden lg:block">É super simples!</h4>
                     <p className="lg:text-xl lg:bottom-0 bottom-16 relative select-none">
                         Todo processo é realizado ONLINE, pelo celular ou computador sem sair de casa.  
@@ -81,7 +88,7 @@ export default function ComoFunciona(){
                 </div>
             </div>
             
-            <div className="px-8 lg:px-44 lg:grid grid-cols-1 lg:grid-cols-4 relative bottom-24 gap-x-2 hidden">
+            <div id='passos' className="px-8 lg:px-44 lg:grid grid-cols-1 lg:grid-cols-4 relative gap-x-2 hidden">
 
                 <div className="hover:scale-110 col-span-1 duration-200">
                     <div className={`flex h-72 duration-1000 ease-in-out ${scrollCF}`}>
@@ -94,14 +101,14 @@ export default function ComoFunciona(){
                                 </div>
                             </div>
 
-                            <div className="text-center flex">
+                            <div className="text-center flex relative">
                                 <div className="z-10">
                                     <p className="tracking-tight leading-5 text-white text-sm">
                                         Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir em nosso simulador.
                                     </p>
                                 </div>
                                 
-                                <div className="absolute">
+                                <div className="absolute h-0">
                                     <NumCard className="left-36">1</NumCard>
                                 </div>
                             </div>
@@ -128,7 +135,7 @@ export default function ComoFunciona(){
                                     </p>
                                 </div>
                                 
-                                <div className="absolute">
+                                <div className="absolute h-0">
                                     <NumCard className="left-28">2</NumCard>
                                 </div>
                             </div>
@@ -155,7 +162,7 @@ export default function ComoFunciona(){
                                     </p>
                                 </div>
                                 
-                                <div className="absolute">
+                                <div className="absolute h-0">
                                     <NumCard className="left-28">3</NumCard>
                                 </div>
                             </div>
@@ -182,7 +189,7 @@ export default function ComoFunciona(){
                                     </p>
                                 </div>
                                 
-                                <div className="absolute">
+                                <div className="absolute h-0">
                                     <NumCard className="left-28">4</NumCard>
                                 </div>
                             </div>

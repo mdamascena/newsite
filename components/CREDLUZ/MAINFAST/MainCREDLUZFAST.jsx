@@ -5,7 +5,7 @@ import SectioDescrisao from "../DESCRICAO/Descricao"
 import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
-import SectioAnalise from "../ANALISE/Analise"
+import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 
 export default function MainPrincipal() {

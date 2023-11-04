@@ -25,29 +25,31 @@ export default function Regras(){
     const [movDesc, setMovDesc] = useState ('opacity-0');
     const [movStep, setMovStep] = useState ('opacity-0 scale-0');
     const [movInfo, setMovInfo] = useState ('opacity-0 scale-0');
-    
-    useEffect(
-        () =>{
-            window.addEventListener('scroll', () => {
-            
-            if(window.scrollY > 3200){
+
+    useEffect(()=>{
+        const intersectionObserver = new IntersectionObserver((entries)=>{
+            if(entries.some((entry) => entry.isIntersecting)){
                 setMovImg('');
                 setMovCard('');
                 setMovDesc('');
                 setMovStep('lg:translate-y-[115px] translate-y-[86px] lg:-translate-x-[50px] -translate-x-[30px]');
                 setMovInfo('lg:translate-y-[250px] translate-y-[186px] translate-x-[20px] lg:translate-x-[50px] ');
-            } else{
+                console.log('ta ai');
+            }else{
                 setMovImg('opacity-0 scale-0');
                 setMovCard('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
                 setMovDesc('opacity-0');
                 setMovStep('opacity-0 scale-0');
                 setMovInfo('opacity-0 scale-0');
             }
+        
         });
-    },[]);
+        intersectionObserver.observe(document.querySelector('#analise'));
+        return () => intersectionObserver.disconnect();
+    });
 
     return(
-        <section className='poppins bg-white select-none'>
+        <section id='analise' className='poppins bg-white select-none'>
             <div className="relative">
                 <div className='grid grid-cols-1 lg:grid-cols-3 lg:py-16 p-8 lg:px-44'>
                     

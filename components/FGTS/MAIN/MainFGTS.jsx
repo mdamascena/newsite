@@ -5,6 +5,7 @@ import SimuladorFGTS from '../FORM/SimuladorFGTS'
 import Vantagens from '../VANTAGENS/VantagensFGTS'
 import Taxas from '../TAXAS/TaxaFGTS'
 import Regras from '../REGRAS/RegrasGeraisFGTS'
+import Analise from '../../GERAL/ANALISE/Analise'
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 
@@ -76,8 +77,10 @@ export default function MainFGTS() {
             <SimuladorFGTS />
             <Vantagens />
             <Taxas />
+            <Analise/>
             <Regras />
-
+            
+            
         </main>
     )
 }

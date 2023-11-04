@@ -25,7 +25,7 @@ export default function Regras(){
         () =>{
             window.addEventListener('scroll', () => {
             
-            if(window.scrollY > 2180){
+            if(window.scrollY > 1950){
                 setMovImg('');
                 setMovCard('');
                 setMovDesc('');

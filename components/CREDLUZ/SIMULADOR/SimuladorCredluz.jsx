@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
 import { useState } from "react"
+import PMT200 from './Valor200'
 
 const Btn = tw.button`
     col-span-1    
@@ -37,23 +38,26 @@ export default function SimuladorCredLuz(props) {
     const [titleCalc, setTitleCalc] = useState('Simule seu Empréstimo');
     const [titleParc, setTitleParc] = useState('Qual o valor desejado?');
 
+    const handleTitleCalc = (valorBtn)=>{
+        setTitleCalc('Simulação de '+ props.valorBtn)
+    }
+
     return (
 
         <div className="max-w-md">
             
             <h1 className='text-center text-lg text-white mb-3 poppins bg-base-calc p-1 rounded-lg'>{titleCalc}</h1>
             
-            <div className='p-1 rounded-lg bg-base-calc'>
+            <div className='p-1 rounded-lg bg-base-calc overflow-hidden'>
 
                 <h2 className='text-center mb-2 poppins text-white'>{titleParc}</h2>
 
                 <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1'>
-                    
-                    <div id='valores'>
+                    <div className='delay-100 duration-200 hidden' id='valores'>
                         <div className="grid grid-cols-3 gap-1 mb-1">
-                            <Btn id="V700" valorBtn='R$ 700'onClick={()=>setTitleCalc('Simulação de R$ 700,00')}>R$ 700</Btn>
-                            <Btn id="V800" valorBtn='R$ 800'onClick={()=>setTitleCalc('Simulação de R$ 800,00')}>R$ 800</Btn>
-                            <Btn id="V900" valorBtn='R$ 900'onClick={()=>setTitleCalc('Simulação de R$ 900,00')}>R$ 900</Btn>
+                            <Btn id="V700" valorBtn='R$ 700' >R$ 700</Btn>
+                            <Btn id="V800" valorBtn='R$ 800' onClick={()=>setTitleCalc('Simulação de R$ 800,00')}>R$ 800</Btn>
+                            <Btn id="V900" valorBtn='R$ 900' onClick={()=>setTitleCalc('Simulação de R$ 900,00')}>R$ 900</Btn>
                         </div>
 
                         <div className="grid grid-cols-3 gap-1 mb-1">
@@ -68,7 +72,9 @@ export default function SimuladorCredLuz(props) {
                             <Btn id="V1500" valor='R$ 1500' onClick={()=>setTitleCalc('Simulação de R$ 1.500,00')}>R$ 1500</Btn>
                         </div>
                     </div>
+                    {<PMT200/>}
                 </div>
+                
             </div>
 
             <div className='bg-base-calc p-2 my-2 rounded-lg border-l-4 border-yellow-500'>

@@ -6,7 +6,7 @@ import SectioDescrisao from "../DESCRICAO/Descricao"
 import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
-import SectioAnalise from "../ANALISE/Analise"
+import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import Simulador from '../SIMULADOR/SimuladorCredluz'
 
 export default function MainCredluz() {
@@ -42,6 +42,10 @@ export default function MainCredluz() {
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 text-lg">Possibilidade para negativados</span>
                                 </div>
+                                <div className="leading-5 mt-2 text-md flex items-center">
+                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 text-lg">Liberação em até 24 horas</span>
+                                </div>
                             </div>
                             <div className="lg:hidden mb-7 text-center">
                                 <h1 className="text-white font-bold text-2xl tracking-tighter">
@@ -56,7 +60,7 @@ export default function MainCredluz() {
                             <Image width={450} src={cel} alt="" />
                         </figure>
 
-                        <div className="col-span-1 my-auto mx-4">
+                        <div className="col-span-1 my-auto mx-2.5 lg:mx-1">
                             <Simulador/>
                         </div>
                         

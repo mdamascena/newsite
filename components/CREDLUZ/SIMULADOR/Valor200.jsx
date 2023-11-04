@@ -32,36 +32,21 @@ const BtnVolta = tw.button`
 `
 
 export default function Valor200(){
+    const [titleCalc, setTitleCalc] = useState('Simule seu Empréstimo');
+    const [titleParc, setTitleParc] = useState('Qual o valor desejado?');
+    const title = 'Simulação de R$ 200,00'
+
     return(
         <>
-            <div id='calc_200' name='btnParc'>
+            <div id='calc_200' name='btnParc' className=''>
                 <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='btnCalc_200_8'>08 X</Btn>
-                    <Btn id='btnCalc_200_12'>12 X</Btn>
+                    <Btn id='pmt_200_8' parcela='555'>08 X</Btn>
+                    <Btn id='pmt_200_12'>12 X</Btn>
                 </div>
 
                 <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='btnCalc_200_15'>15 X</Btn>
-                    <Btn id='btnCalc_200_16'>16 X</Btn>
-                </div>
-
-                <div className="grid grid-cols-1 gap-1">
-                    <BtnVolta id='BtnVolta'>
-                        <HiArrowUturnLeft className='text-xl mr-2'/>
-                        Simular outro valor
-                    </BtnVolta>
-                </div>
-            </div>
-
-            <div id='calc_300' name='btnParc'>
-                <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='btnCalc_200_8'>08 X</Btn>
-                    <Btn id='btnCalc_200_12'>12 X</Btn>
-                </div>
-
-                <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='btnCalc_200_15'>15 X</Btn>
-                    <Btn id='btnCalc_200_16'>16 X</Btn>
+                    <Btn id='pmt_200_15'>15 X</Btn>
+                    <Btn id='pmt_200_16'>16 X</Btn>
                 </div>
 
                 <div className="grid grid-cols-1 gap-1">
