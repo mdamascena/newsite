@@ -2,6 +2,12 @@ import Modalidades from "../MODALIDADES/Modalidades"
 import Simulador from "../SIMULADOR/SimuladorGeral"
 import tw from 'tailwind-styled-components'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 const CardMod = tw.div`
   group
@@ -39,8 +45,6 @@ const BtnHome = tw.button`
   py-2
   px-20
   flex
-  poppins
-  font-semibold 
   rounded-2xl
   text-white 
   mt-8
@@ -57,35 +61,27 @@ const BtnHome = tw.button`
 export default function MainHome() {
 
   return (
-    <main className="">
-
+    <main className={mainFontFamily.className}>
         <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
-
             <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
-
                 <div className="mt-24 lg:mt-0">
-                    <h1 className="text-white lg:text-5xl text-[30px] text-center lg:text-left poppins font-medium tracking-tighter">
+                    <h1 className="text-white lg:text-5xl text-[30px] text-center lg:text-left font-semibold tracking-tight">
                         <span className="text-yellow-400">Seu Empréstimo ONLINE</span> com múltiplas opções de créditos
                     </h1>
                 </div>
 
                 <div className="lg:mt-8 mt-64">
-                    <p className="text-white poppins lg:text-left text-justify lg:mx-0 mx-2 text-xl">
+                    <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 text-xl">
                         Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
                     </p>
                     <BtnHome>Simular agora</BtnHome>
                 </div>
-
             </div>
-
             <div className="hidden lg:block col-span-1"></div>
-
         </div>
-
-        <Modalidades />
         <Simulador />
+		<Modalidades />
         
     </main>
-
   )
 }

@@ -12,8 +12,6 @@ const BtnSolic = tw.button`
     lg:text-2xl 
     py-3
     flex-1
-    poppins
-    font-semibold
     rounded-xl
     text-white
     border-b-2 
@@ -48,7 +46,7 @@ export default function SimuladorFGTS() {
             <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-40 py-8 lg:py-16">
 
                 <div className="col-span-3">
-                    <h1 className="text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-bold ml-5">
+                    <h1 className="text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-semibold ml-5">
                         Descubra o seu limite
                     </h1>
 
@@ -72,7 +70,7 @@ export default function SimuladorFGTS() {
 
                             <div className="content-end grid text-center lg:text-left my-2 lg:my-0">
                                 <p className="text-white text-xl">O seu limite é:</p>
-                                <p className="text-3xl tracking-tight font-extrabold text-white">R$ 00.000,00</p>
+                                <p className="text-3xl tracking-tight font-semibold text-white">R$ 00.000,00</p>
                             </div>
                         </div>
 

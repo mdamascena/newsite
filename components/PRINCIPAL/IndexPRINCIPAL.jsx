@@ -6,9 +6,9 @@ import MainPrincipal from "./MAIN/MainPRINCIPAL"
 export default function IndexPrincipal() {
     return (
         <>
-            <Header />
+            <Header/>
             <MainPrincipal />
-            <Footer />
+            <Footer/>
         </>
     )
 }

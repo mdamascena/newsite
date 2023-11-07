@@ -20,8 +20,8 @@ const CardMod = tw.div`
     text-white 
     hover:z-10
     p-2
-    mx-5
-    my-5
+    mx-2
+    my-2
     shadow-lg
     shadow-blue-800/30
     duration-300
@@ -142,69 +142,78 @@ export default function SessaoModalidades() {
                 </Carousel>
             </div>
 
-            <div className='hidden lg:block'>
+            <div className='hidden lg:block px-5 lg:px-40 lg:py-20'>
 
-                <div className="px-5 lg:px-24 grid grid-cols-1 md:grid-cols-2 ">
-                    {/*Energia*/}
-                    <CardMod>
-                        <div className="p-3 duration-300">
-                            <div className='flex justify-self-stretch mb-3'>
-                                <RiLightbulbFlashLine className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                                <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
-                                    <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">na conta de luz</p>
-                                </div>
-                            </div>
-                            <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
-                        </div>
-                    </CardMod>
+                <div className="grid grid-cols-1 lg:grid-cols-3 ">
+                    <div className='col-span-1'>
+                    </div>
 
-                    {/*Boleto*/}
-                    <CardMod>
-                        <div className="p-3 duration-300">
-                            <div className='flex justify-self-stretch mb-3'>
-                                <AiOutlineBarcode className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                                <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
-                                    <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">pessoal boleto</p>
+                    <div className='col-span-2'>
+                        <div className='grid grid-cols-2'>
+                            {/*FGTS*/}
+                            <CardMod>
+                                <div className="p-3 duration-300">
+                                    <div className='flex justify-self-stretch mb-3'>
+                                        <MdOutlineCake className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                        <div className='ml-4 self-center'>
+                                            <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
+                                            <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Saque FGTS</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
                                 </div>
-                            </div>
-                            <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
-                        </div>
-                    </CardMod>
+                            </CardMod>
 
-                    {/*FGTS*/}
-                    <CardMod>
-                        <div className="p-3 duration-300">
-                            <div className='flex justify-self-stretch mb-3'>
-                                <MdOutlineCake className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                                <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
-                                    <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Saque FGTS</p>
+                            {/*Energia*/}
+                            <CardMod>
+                                <div className="p-3 duration-300">
+                                    <div className='flex justify-self-stretch mb-3'>
+                                        <RiLightbulbFlashLine className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                        <div className='ml-4 self-center'>
+                                            <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                                            <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">na conta de luz</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
                                 </div>
-                            </div>
-                            <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
+                            </CardMod>
                         </div>
-                    </CardMod>
+                        <div className='grid grid-cols-2'>
+                            {/*Boleto*/}
+                            <CardMod>
+                                <div className="p-3 duration-300">
+                                    <div className='flex justify-self-stretch mb-3'>
+                                        <AiOutlineBarcode className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                        <div className='ml-4 self-center'>
+                                            <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                                            <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">pessoal boleto</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-400 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal</p>
+                                </div>
+                            </CardMod>
 
-                    {/*Consignado*/}
-                    <CardMod>
-                        <div className="p-3 duration-300">
-                            <div className='flex justify-self-stretch mb-3'>
-                                <RiBankLine className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                                <div className='ml-4 self-center'>
-                                    <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
-                                    <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Consignado</p>
+                            {/*Consignado*/}
+                            <CardMod>
+                                <div className="p-3 duration-300">
+                                    <div className='flex justify-self-stretch mb-3'>
+                                        <RiBankLine className="self-center text-5xl text-blue-600 z-10 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                        <div className='ml-4 self-center'>
+                                            <p className="self-center text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
+                                            <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Consignado</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-400 h-[84px] text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Para beneficiários do INSS com pagamento em 10 minutos</p>
+                                    {/*<span className='bg-red-600 text-white p-1 rounded-md text-[10px]'>EM BREVE</span>*/}
                                 </div>
-                            </div>
-                            <p className="text-slate-400 h-[84px] text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Para beneficiários do INSS com pagamento em 10 minutos</p>
-                            {/*<span className='bg-red-600 text-white p-1 rounded-md text-[10px]'>EM BREVE</span>*/}
+                            </CardMod>
                         </div>
-                    </CardMod>
+                    </div>
                 </div>
+
             </div>
 
-            <div className='poppins grid lg:grid-cols-5 grid-cols-2 justify-items-stretch items-stretch px-5 lg:px-28 relative lg:bottom-10 bottom-32'>
+            <div className='grid lg:grid-cols-4 grid-cols-2 justify-items-stretch items-stretch px-5 lg:px-44'>
 
                 {/*<figure className='justify-self-center col-span-1 lg:order-1 order-2 hidden lg:block'>
                     <Image src={Pers} alt='' />
@@ -212,7 +221,7 @@ export default function SessaoModalidades() {
 
                 <div className='col-span-4 grid grid-cols-4 self-start mt-24 lg:order-2 order-1'>
 
-                    <h1 className="col-span-4 lg:pl-5 text-slate-400 tracking-tight lg:text-4xl text-3xl self-end text-center lg:text-left mb-6">
+                    <h1 className="col-span-4 lg:pl-5 text-slate-400 tracking-tight lg:text-4xl text-3xl self-end text-center lg:text-left mb-5">
                         Aqui vc encontra <span className='text-blue-500 lg:text-5xl text-4xl'>muuuuito mais...</span>
                     </h1>
 

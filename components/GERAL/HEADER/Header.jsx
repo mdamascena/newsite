@@ -5,6 +5,12 @@ import tw from 'tailwind-styled-components'
 import AlertI from '../ARLET/Alert'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { Poppins } from 'next/font/google';
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 const BtnMenu = tw.button`
     bg-gradient-to-r 
@@ -15,7 +21,6 @@ const BtnMenu = tw.button`
     py-1
     lg:px-6
     px-4
-    poppins
     rounded-full
     text-white
     shadow-md
@@ -97,7 +102,7 @@ export default function Header() {
     )
 
     return (
-        <header>
+        <header className={mainFontFamily.className}>
             <AlertI />
             <div id='menuBar' className={`${bgNavbar[0]} ${bgNavbar[5]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 duration-500`}>
 
@@ -107,7 +112,7 @@ export default function Header() {
 
                 <nav className="hidden lg:block mx-auto">
 
-                    <ul className={`${bgNavbar[1]} poppins flex gap-7`}>
+                    <ul className={`${bgNavbar[1]} flex gap-7`}>
                         <Li className={`${bgNavbar[4]}`}>Principal</Li>
                         <Li className={`${bgNavbar[4]}`}>Quem Somos</Li>
                         <Li className={`${bgNavbar[4]} flex group`}>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' /></Li>
@@ -118,7 +123,7 @@ export default function Header() {
                                 <LiSm>CredBoleto</LiSm>
                             </ul>
                         </div>
-                        <Li className={`${bgNavbar[4]}`}>Como Funciona</Li>
+                        
                         <Li className={`${bgNavbar[4]}`}>Perguntas frequantes</Li>
                         <Li className={`${bgNavbar[4]}`}>Contato</Li>
                     </ul>
@@ -137,7 +142,7 @@ export default function Header() {
             </div>
 
             <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed mt-20 bg-white text-center z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
-                <ul className='poppins gap-7'>
+                <ul className='gap-7'>
                     <LiSm>Principal</LiSm>
                     <LiSm>Quem Somos</LiSm>
                     <LiSm className='group text-center'>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
@@ -150,7 +155,7 @@ export default function Header() {
                         </div>
                     </LiSm>
 
-                    <LiSm>Como Funciona</LiSm>
+                    
                     <LiSm>Perguntas frequantes</LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>

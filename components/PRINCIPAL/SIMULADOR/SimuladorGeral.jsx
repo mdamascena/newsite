@@ -8,12 +8,12 @@ import { BsPlusCircle } from 'react-icons/bs'
 
 const CardMod = tw.div`
     group
-    bg-opacity-20 
-    bg-blue-600 
-    hover:bg-blue-900
+    
+    bg-blue-700 
+    hover:bg-blue-800
     hover:scale-105 
     text-white 
-    rounded-md 
+    rounded-2xl 
     lg:p-7 
     p-4
     px-6 
@@ -36,27 +36,27 @@ export default function SessaoModalidades() {
     }
 
     return (
-        <section className="bg-gradient-to-l from-[#040D43] to-blue-900 saturate-150">
+        <section className="bg-gradient-to-l bg-white">
 
-            <div className="p-4 lg:p-14 grid grid-cols-1 lg:grid-cols-2 poppins">
+            <div className="p-4 lg:p-40 grid grid-cols-1 lg:grid-cols-5 poppins">
 
-                <div className="col-span-2 lg:col-span-1 p-2 text-center lg:text-right lg:mr-5">
-                    <p className="text-blue-200 text-2xl pb-2 tracking-tight font-semibold mb-3">
+                <div className="col-span-2 lg:col-span-2 p-2 text-center lg:text-right lg:mr-5">
+                    <h1 className="text-blue-500 text-4xl pb-2 tracking-tight font-semibold mb-3">
                         Crédito Pessoal do o seu jeito
-                    </p>
+                    </h1>
 
-                    <p className="text-white lg:pl-[12em]">
+                    <p className="text-slate-400 lg:pl-[12em]">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quasi
                         deserunt doloribus debitis eum, ab incidunt ullam e
                     </p>
 
                 </div>
 
-                <div className="col-span-1">
+                <div className="col-span-3">
 
-                    <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
 
-                        <div className="bg-white rounded-md lg:p-7 p-4 m-2 hover:scale-105 duration-700">
+                        <div className="bg-slate-200 rounded-2xl lg:p-7 p-4 m-2 hover:scale-105 duration-700">
 
                             <h1 className="text-blue-500 font-semibold poppins text-center text-md lg:text-lg mb-5">
                                 Simular oferta de empréstimo

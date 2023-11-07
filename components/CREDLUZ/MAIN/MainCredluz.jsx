@@ -25,7 +25,7 @@ export default function MainCredluz() {
                         <div className="col-span-1 my-auto text-white">
                             <div className="hidden lg:block">
                                 <h1 className="text-yellow-400 text-6xl tracking-tighter font-semibold">Empréstimo</h1>
-                                <h1 className="text-yellow-400 text-5xl font-medium tracking-tighter">
+                                <h1 className="text-yellow-400 text-5xl font-semibold tracking-tighter">
                                     Pessoal <span className="font-extralight text-white">Online</span>
                                 </h1>
                                 <div className="bg-yellow-400 p-[1px] lg:my-5 rounded-full"/>

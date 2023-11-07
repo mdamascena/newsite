@@ -121,7 +121,7 @@ export default function Header() {
                                 <LiSm>CredBoleto</LiSm>
                             </ul>
                         </div>
-                        <Li className={`${bgNavbar[4]}`}>Como Funciona</Li>
+                        
                         <Li className={`${bgNavbar[4]}`}>Perguntas frequantes</Li>
                         <Li className={`${bgNavbar[4]}`}>Contato</Li>
                     </ul>
@@ -157,7 +157,7 @@ export default function Header() {
                         </div>
                     </LiSm>
 
-                    <LiSm>Como Funciona</LiSm>
+                    
                     <LiSm>Perguntas frequantes</LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>
