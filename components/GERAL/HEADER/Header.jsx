@@ -74,7 +74,7 @@ const LiSm = tw.li`
 export default function Header() {
 
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black']);
-    const [mudaLinha, setMudaLinha] = useState(['w-6','','w-4','scale-0',true]);
+    const [mudaLinha, setMudaLinha] = useState(['w-6','','w-4','scale-y-0',true]);
 
     const btnClick = () => {
         if (mudaLinha[4]) {
@@ -108,9 +108,9 @@ export default function Header() {
             <AlertI />
             <div id='menuBar'className={`${bgNavbar[0]} ${bgNavbar[5]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 duration-500`}>
 
-                <figure className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
+                <Link href='/' passHref className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                     <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
-                </figure>
+                </Link>
 
                 <nav className="hidden lg:block mx-auto">
 
@@ -147,10 +147,10 @@ export default function Header() {
                 <ul className=''>
                     <Link href="/" passHref><LiSm>Principal</LiSm></Link>
                     <Link href='/' passHref><LiSm>Quem Somos</LiSm></Link>
-                    <LiSm className='group text-center justify-center items-center'>
+                    <LiSm className='group'>
                         Empréstimos +
-                        <div className='scale-y-0 h-0 group-hover:h-40 group-hover:scale-y-100 border-0 bg-slate-200 mx-4 py-1 rounded-[8px] duration-300'>
-                            <ul className>
+                        <div className='grid scale-y-0 h-0 group-hover:h-36 group-hover:scale-y-100 border-0 bg-slate-200 mx-4 rounded-[8px] duration-300'>
+                            <ul className='opacity-0 group-hover:opacity-100'>
                                 <Link href='/saque-aniversario' passHref>
                                     <LiSm className='hover:bg-white'>Saque antecipado FGTS</LiSm>
                                 </Link>
@@ -163,9 +163,6 @@ export default function Header() {
                             </ul>
                         </div>                     
                     </LiSm>
-                    
-
-                    
                     <LiSm>Perguntas frequantes</LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>

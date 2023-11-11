@@ -9,8 +9,9 @@ const Btn = tw.button`
     hover:bg-opacity-0 
     rounded-2xl 
     text-white 
-    py-3 
-    px-28 
+    py-3
+    px-24 
+    lg:px-28 
     mt-8 
     duration-500
 `

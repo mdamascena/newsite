@@ -5,7 +5,7 @@ import PMT200 from './Valor200'
 
 const Btn = tw.button`
     col-span-1    
-    py-5
+    py-6
     lg:py-6 
     px-3 
     bg-btncalc

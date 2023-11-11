@@ -7,6 +7,7 @@ import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
+import {HiCheck} from 'react-icons/hi'
 
 export default function MainPrincipal() {
   return (
@@ -19,26 +20,44 @@ export default function MainPrincipal() {
                             <Image src={light} width={200} height={160} alt="" />
                         </figure>
 
-                        <div className="col-span-1 md:my-16 md:ml-24">
+                        <div className="col-span-1 lg:my-auto lg:ml-14">
                             <h1 className="text-[2rem] md:text-[3.0rem] leading-tight md:leading-[50px] font-semibold tracking-tight text-center md:text-left text-white">
                                 <div className="text-yellow-400">
                                     Crédito Pessoal
                                 </div>
-                                Débito na conta de<div className="text-7xl" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
+                                <div className="lg:flex items-center">
+                                    Débito na conta de<div className="text-7xl ml-2" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
+                                </div>
+                                
                             </h1>
 
-                            <h3 className="text-white leading-[20px] mt-5 text-md md:text-xl md:text-left text-center">
-                                Sem a necessidade de comprovar renda e com possibilidade de
+                            <div className="text-white">
+                                <div className="leading-5 mt-5 text-md flex items-center">
+                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 lg:text-lg ">Sem comprovação de renda</span>
+                                </div>
+                                <div className="leading-5 mt-2 text-md flex items-center">
+                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 lg:text-lg">Possibilidade para negativados *</span>
+                                </div>
+                                <div className="leading-5 mt-2 text-md flex items-center">
+                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 lg:text-lg">Liberação em menos de 24h **</span>
+                                </div>
+                            </div>
+
+                            {/*<h3 className="text-white leading-[20px] mt-5 text-md md:text-xl md:text-left text-center">
+                                Sem comprovação de renda e com possibilidade de
                                 aprovação para negativados. Liberação no mesmo dia.
-                            </h3>
+                            </h3>*/}
 
                             <div className="text-center md:text-left">
                                 <BtnYellow nome="Simule aqui" />
                             </div>
 
                             <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">
-                                <p>Crédito sujeito à análise</p>
-                                <p>Liberações ocorrem em dias úteis</p>
+                                <p>Crédito sujeito à análise *</p>
+                                <p>Liberações ocorrem em dias úteis **</p>
                             </div>
                         </div>
 

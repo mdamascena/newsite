@@ -23,15 +23,6 @@ const Dropdown = tw.div`
     bg-white 
     shadow-md
 `
-const Li = tw.li`
-    hover:scale-[1.2]
-    cursor-pointer 
-    my-auto 
-    transition-transform 
-    duration-500
-    text-sm
-    cursor-pointer
-`;
 
 const LiDrop = tw.li`
     cursor-pointer 
@@ -68,32 +59,18 @@ const BtnMenu = tw.button`
 `;
 
 const LiSm = tw.li`
-    py-2 
-    transition-all 
-    rounded-md 
-    w-64 
-    mx-auto 
-    text-blue-500 
-    hover:scale-100 
-    hover:bg-blue-700 
-    hover:text-yellow-300
-    hover:font-semibold
+    m-2
+    py-2  
+    rounded-md
+    text-slate-400
+    hover:bg-slate-200
     cursor-pointer
 `;
 
 export default function Header() {
 
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
-    const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-0', true]);
-    const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
-
-    const abrirDrop = () => {
-        if (dropMenu[1]) {
-            setDropMenu(['h-32', false, 'block']);
-        } else {
-            setDropMenu(['h-0', true, 'hidden']);
-        }
-    }
+    const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-y-0', true]);
 
     const btnClose = () => {
         setCloseAlert('hidden')
@@ -130,9 +107,9 @@ export default function Header() {
             <AlertI />
             <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 bg-blue-600 duration-500`}>
 
-                <figure className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
+                <Link href='/' passHref className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                     <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
-                </figure>
+                </Link>
 
                 <nav className="hidden lg:block mx-auto">
 
@@ -150,13 +127,6 @@ export default function Header() {
                             </Dropdown>
                         </LiDrop>
 
-                        <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200  mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
-                            <ul className={dropMenu[2]}>
-                                <LiSm>CredFGTS</LiSm>
-                                <LiSm>CredLuz</LiSm>
-                                <LiSm>CredBoleto</LiSm>
-                            </ul>
-                        </div>
                         <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/" as='/perguntas-frequentes'>Perguntas frequentes</Link>
                         <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/" as='/Contato'>Contato</Link>
                     </ul>
@@ -178,21 +148,26 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed mt-20 bg-white text-center z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
-                <ul className='poppins gap-7'>
-                    <LiSm>Principal</LiSm>
-                    <LiSm>Quem Somos</LiSm>
-                    <LiSm className='group text-center'>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
-                        <div className="h-0 scale-y-0 group-hover:scale-y-95 group-hover:h-24 border-0 m-1 bg-blue-200 mx-7 rounded-[8px] transition-all duration-500 origin-top-right">
-                            <ul className>
-                                <LiSm>CredFGTS</LiSm>
-                                <LiSm>CredLuz</LiSm>
-                                <LiSm>CredBoleto</LiSm>
+            <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
+                <ul className=''>
+                    <Link href="/" passHref><LiSm>Principal</LiSm></Link>
+                    <Link href='/' passHref><LiSm>Quem Somos</LiSm></Link>
+                    <LiSm className='group'>
+                        Empréstimos +
+                        <div className='grid scale-y-0 h-0 group-hover:h-36 group-hover:scale-y-100 border-0 bg-slate-200 mx-4 rounded-[8px] duration-300'>
+                            <ul className='opacity-0 group-hover:opacity-100'>
+                                <Link href='/saque-aniversario' passHref>
+                                    <LiSm className='hover:bg-white'>Saque antecipado FGTS</LiSm>
+                                </Link>
+                                <Link href='/credluz' passHref>
+                                    <LiSm className='hover:bg-white'>Empréstimo na conta de luz</LiSm>
+                                </Link>
+                                <Link href='/cp' passHref>
+                                    <LiSm className='hover:bg-white'>Empréstimo no boleto</LiSm>
+                                </Link>
                             </ul>
-                        </div>
+                        </div>                     
                     </LiSm>
-
-                    
                     <LiSm>Perguntas frequantes</LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>
