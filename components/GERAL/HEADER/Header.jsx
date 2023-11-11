@@ -67,7 +67,7 @@ const LiSm = tw.li`
     py-2  
     rounded-md
     text-slate-400
-    hover:bg-white
+    hover:bg-slate-200
     cursor-pointer
 `;
 
@@ -75,16 +75,6 @@ export default function Header() {
 
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black']);
     const [mudaLinha, setMudaLinha] = useState(['w-6','','w-4','scale-0',true]);
-    const [dropMenu, setDropMenu] = useState([true,'scale-y-0 hidden']);
-    
-    const abrirDrop = () => {
-        if (dropMenu[0]) {
-            setDropMenu([false, 'scale-y-100']);
-          
-        } else {
-            setDropMenu([true, 'scale-y-0 hidden']);
-        }
-    }
 
     const btnClick = () => {
         if (mudaLinha[4]) {
@@ -153,20 +143,27 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
+            <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
                 <ul className=''>
-                    <LiSm>Principal</LiSm>
-                    <LiSm>Quem Somos</LiSm>
-                    <LiSm className='group text-center flex justify-center items-center' onClick={abrirDrop}>
-                        Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-200' />                        
+                    <Link href="/" passHref><LiSm>Principal</LiSm></Link>
+                    <Link href='/' passHref><LiSm>Quem Somos</LiSm></Link>
+                    <LiSm className='group text-center justify-center items-center'>
+                        Empréstimos +
+                        <div className='scale-y-0 h-0 group-hover:h-40 group-hover:scale-y-100 border-0 bg-slate-200 mx-4 py-1 rounded-[8px] duration-300'>
+                            <ul className>
+                                <Link href='/saque-aniversario' passHref>
+                                    <LiSm className='hover:bg-white'>Saque antecipado FGTS</LiSm>
+                                </Link>
+                                <Link href='/credluz' passHref>
+                                    <LiSm className='hover:bg-white'>Empréstimo na conta de luz</LiSm>
+                                </Link>
+                                <Link href='/cp' passHref>
+                                    <LiSm className='hover:bg-white'>Empréstimo no boleto</LiSm>
+                                </Link>
+                            </ul>
+                        </div>                     
                     </LiSm>
-                    <div className={`border-0 bg-slate-200 mx-4 py-1 rounded-[8px] transition-transform transform ${dropMenu[1]}`}>
-                        <ul className>
-                            <LiSm>Saque antecipado FGTS</LiSm>
-                            <LiSm>Empréstimo na conta de luz</LiSm>
-                            <LiSm>Empréstimo no boleto</LiSm>
-                        </ul>
-                    </div>
+                    
 
                     
                     <LiSm>Perguntas frequantes</LiSm>

@@ -74,7 +74,7 @@ const LiSm = tw.li`
     w-64 
     mx-auto 
     text-blue-500 
-    hover:scale-125 
+    hover:scale-100 
     hover:bg-blue-700 
     hover:text-yellow-300
     hover:font-semibold
