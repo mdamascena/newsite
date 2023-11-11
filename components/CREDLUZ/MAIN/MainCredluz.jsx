@@ -18,7 +18,7 @@ export default function MainCredluz() {
                 <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">
                     <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
                         
-                        <figure className="mx-auto block lg:hidden mt-10">
+                        <figure className="mx-auto block lg:hidden mt-14">
                             <Image src={light} width={185} alt="" />
                         </figure>
 
@@ -43,7 +43,7 @@ export default function MainCredluz() {
                                 </div>
                                 <div className="leading-5 mt-2 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
-                                    <span className="ml-2 text-lg">Liberação em até 24 horas</span>
+                                    <span className="ml-2 text-lg">Liberação em menos de 24h</span>
                                 </div>
                             </div>
                             <div className="lg:hidden mb-7 text-center">

@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import IndexPrincipal from "../components/PRINCIPAL/IndexPRINCIPAL"
 import { Poppins } from 'next/font/google'

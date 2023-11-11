@@ -31,8 +31,6 @@ a {
   font-family: 'Ubuntu', sans-serif;
 }
 
-
-
 .Gochi{
   font-family: 'Gochi Hand', cursive;
 }
@@ -136,7 +134,7 @@ a {
   }
 
   .bgBrasao{
-    background-size: 45vh;
-    background-position: 6px 70px;
+    background-size: 70vh;
+    background-position: 20px 70px;
   }
 }

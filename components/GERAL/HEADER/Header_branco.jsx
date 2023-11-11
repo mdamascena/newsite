@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import LogoB from '../../../public/img/LOGO_BRANCO.png'
 import LogoA from '../../../public/img/LOGO_AZUL.png'
@@ -6,8 +7,33 @@ import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import AlertI from '../ARLET/AlertBlue'
 
+const Dropdown = tw.div`
+    absolute 
+    duration-300
+    origin-top
+    delay-300 
+    opacity-0
+    scale-y-0
+    group-hover:opacity-100
+    group-hover:scale-y-100
+    mt-12 
+    z-10 
+    w-64
+    rounded-md 
+    bg-white 
+    shadow-md
+`
 const Li = tw.li`
     hover:scale-[1.2]
+    cursor-pointer 
+    my-auto 
+    transition-transform 
+    duration-500
+    text-sm
+    cursor-pointer
+`;
+
+const LiDrop = tw.li`
     cursor-pointer 
     my-auto 
     transition-transform 
@@ -110,10 +136,20 @@ export default function Header() {
 
                 <nav className="hidden lg:block mx-auto">
 
-                    <ul className={`${bgNavbar[1]} poppins flex gap-7`}>
-                        <Li className={`${bgNavbar[4]}`}>Principal</Li>
-                        <Li className={`${bgNavbar[4]}`}>Quem Somos</Li>
-                        <Li className={`${bgNavbar[4]} flex group`}>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' /></Li>
+                    <ul className={`${bgNavbar[1]} flex gap-7`}>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
+                        <LiDrop className={`${bgNavbar[4]} relative flex group`}>
+                            Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
+                            <Dropdown>
+                                <div className="p-1 text-sm">
+                                    <Link href="/saque-aniversario" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Saque antecipado FGTS</Link>
+                                    <Link href="/credluz" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo na conta de luz</Link>
+                                    <Link href="/cp" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo no boleto</Link>
+                                </div>
+                            </Dropdown>
+                        </LiDrop>
+
                         <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200  mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
                             <ul className={dropMenu[2]}>
                                 <LiSm>CredFGTS</LiSm>
@@ -121,9 +157,8 @@ export default function Header() {
                                 <LiSm>CredBoleto</LiSm>
                             </ul>
                         </div>
-                        
-                        <Li className={`${bgNavbar[4]}`}>Perguntas frequantes</Li>
-                        <Li className={`${bgNavbar[4]}`}>Contato</Li>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/" as='/perguntas-frequentes'>Perguntas frequentes</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/" as='/Contato'>Contato</Link>
                     </ul>
 
                 </nav>

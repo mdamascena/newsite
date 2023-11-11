@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from 'next/link'
 import styles from "../../../styles/Home.module.css"
 import Image from "next/image"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"

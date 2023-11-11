@@ -13,7 +13,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 const NumCard = tw.span`
     relative 
     bottom-52
-    font-[500]
+    font-semibold
     text-[15rem] 
     bg-clip-text 
     text-transparent 
