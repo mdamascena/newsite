@@ -75,6 +75,7 @@ export default function Header() {
 
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black']);
     const [mudaLinha, setMudaLinha] = useState(['w-6','','w-4','scale-y-0',true]);
+    const [dropdonw, setDropdonw] = useState([true,'hidden scale-y-0','opacity-0']);
 
     const btnClick = () => {
         if (mudaLinha[4]) {
@@ -87,6 +88,14 @@ export default function Header() {
             ])
         } else {
             setMudaLinha(['w-6', '', 'w-4', 'scale-y-0', true]);
+        }
+    }
+
+    const drop = ()=>{
+        if(dropdonw[0]){
+            setDropdonw([false,'scale-y-100','opacity-100'])
+        }else{
+            setDropdonw([true,'hidden scale-y-0','opacity-0'])
         }
     }
 
@@ -147,22 +156,27 @@ export default function Header() {
                 <ul className=''>
                     <Link href="/" passHref><LiSm>Principal</LiSm></Link>
                     <Link href='/' passHref><LiSm>Quem Somos</LiSm></Link>
-                    <LiSm className='group'>
-                        Empréstimos +
-                        <div className='grid scale-y-0 h-0 group-hover:h-36 group-hover:scale-y-100 border-0 bg-slate-200 mx-4 rounded-[8px] duration-300'>
-                            <ul className='opacity-0 group-hover:opacity-100'>
-                                <Link href='/saque-aniversario' passHref>
-                                    <LiSm className='hover:bg-white'>Saque antecipado FGTS</LiSm>
-                                </Link>
-                                <Link href='/credluz' passHref>
-                                    <LiSm className='hover:bg-white'>Empréstimo na conta de luz</LiSm>
-                                </Link>
-                                <Link href='/cp' passHref>
-                                    <LiSm className='hover:bg-white'>Empréstimo no boleto</LiSm>
-                                </Link>
-                            </ul>
-                        </div>                     
+                    <LiSm className='group' onClick={drop}>
+                        Empréstimos +                
                     </LiSm>
+                    <div className={`${dropdonw[1]} bg-slate-200 mx-3 py-1 rounded-lg duration-300`}>
+                        <ul className={`group ${dropdonw[2]}`}>
+                            <Link href='/saque-aniversario' passHref>
+                                <LiSm className='hover:bg-white'>Saque antecipado FGTS</LiSm>
+                            </Link>
+
+                            <Link href='/credluz' passHref>
+                                <LiSm className='hover:bg-white'>Empréstimo na conta de luz</LiSm>
+                            </Link>
+
+                            <Link href='/cp' passHref>
+                                <LiSm className='hover:bg-white'>Empréstimo no boleto</LiSm>
+                            </Link>
+                        </ul>
+                    </div> 
+
+                    
+
                     <LiSm>Perguntas frequantes</LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>
