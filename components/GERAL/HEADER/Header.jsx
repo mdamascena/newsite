@@ -7,6 +7,7 @@ import AlertI from '../ARLET/Alert'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { Poppins } from 'next/font/google'
+import 'animate.css'
 
 const mainFontFamily = Poppins({
     weight: ['100','200','300','400','500','600','700','800','900'],
@@ -75,7 +76,7 @@ export default function Header() {
 
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black']);
     const [mudaLinha, setMudaLinha] = useState(['w-6','','w-4','scale-y-0',true]);
-    const [dropdonw, setDropdonw] = useState([true,'hidden scale-y-0','opacity-0']);
+    const [dropdonw, setDropdonw] = useState([true,'scale-y-0 h-0 -mb-6','opacity-0']);
 
     const btnClick = () => {
         if (mudaLinha[4]) {
@@ -93,9 +94,9 @@ export default function Header() {
 
     const drop = ()=>{
         if(dropdonw[0]){
-            setDropdonw([false,'scale-y-100','opacity-100'])
+            setDropdonw([false,'h-44 scale-y-100','opacity-100'])
         }else{
-            setDropdonw([true,'hidden scale-y-0','opacity-0'])
+            setDropdonw([true,'h-0 scale-y-0 -mb-6','opacity-0'])
         }
     }
 
@@ -154,32 +155,36 @@ export default function Header() {
 
             <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
                 <ul className=''>
-                    <Link href="/" passHref><LiSm>Principal</LiSm></Link>
-                    <Link href='/' passHref><LiSm>Quem Somos</LiSm></Link>
+                    <LiSm><Link href="/" passHref>Principal</Link></LiSm>
+                    <LiSm><Link href='/' passHref>Quem Somos</Link></LiSm>
                     <LiSm className='group' onClick={drop}>
                         Empréstimos +                
                     </LiSm>
-                    <div className={`${dropdonw[1]} bg-slate-200 mx-3 py-1 rounded-lg duration-300`}>
-                        <ul className={`group ${dropdonw[2]}`}>
-                            <Link href='/saque-aniversario' passHref>
-                                <LiSm className='hover:bg-white'>Saque antecipado FGTS</LiSm>
-                            </Link>
+                </ul>
 
-                            <Link href='/credluz' passHref>
-                                <LiSm className='hover:bg-white'>Empréstimo na conta de luz</LiSm>
-                            </Link>
+                <div className={`${dropdonw[1]} bg-slate-200 mx-3 py-2 rounded-lg duration-300`}>
+                    <ul className={`${dropdonw[2]}`}>
+                            
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/saque-aniversario' passHref>Saque antecipado FGTS</Link>
+                        </LiSm>
 
-                            <Link href='/cp' passHref>
-                                <LiSm className='hover:bg-white'>Empréstimo no boleto</LiSm>
-                            </Link>
-                        </ul>
-                    </div> 
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/credluz' passHref>Empréstimo na conta de luz</Link>
+                        </LiSm>
+                            
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/cp' passHref>Empréstimo no boleto</Link>
+                        </LiSm>
+                            
+                    </ul>
+                </div> 
 
-                    
-
+                <ul>
                     <LiSm>Perguntas frequantes</LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>
+                
             </nav>
 
         </header>
