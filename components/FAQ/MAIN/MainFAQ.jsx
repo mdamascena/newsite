@@ -20,8 +20,8 @@ const InputSearch = tw.input`
     focus:ring-1 
     focus:ring-blue-600 
     ring-0 
-    p-4 
-    lg:p-5 
+    p-3 
+    lg:p-4 
     w-[40vh] 
     lg:w-[80vh] 
     rounded-xl 
@@ -33,8 +33,8 @@ const InputSearch = tw.input`
 export default function MainFAQ(){
     return(
         <main className={mainFontFamily.className}>
-            <div className='bgMainPrincipal'>
-                <div className='text-white py-44 px-4 lg:px-44 text-center'>
+            <div className='bgMainPrincipal select-none'>
+                <div className='text-white lg:py-44 py-36 px-4 lg:px-44 text-center'>
                     <h1 className='font-semibold tracking-tighter text-4xl lg:text-5xl'>
                         Ajuda <span className='font-thin'>| Valoreal</span>
                     </h1>
@@ -42,7 +42,7 @@ export default function MainFAQ(){
                     <form className='my-5'>
                         <div className='relative flex items-center justify-center'>
                             <div className='flex justify-end items-center'>
-                                <CiSearch className='absolute text-4xl mr-3'/>
+                                <CiSearch className='absolute text-4xl mr-3 cursor-pointer'/>
                                 <InputSearch type='text' name='search' autoComplete='off' placeholder='Digite aqui sua dúvida'/>
                             </div>
                         </div>
