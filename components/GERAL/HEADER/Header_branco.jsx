@@ -136,8 +136,8 @@ export default function Header() {
                             </Dropdown>
                         </LiDrop>
 
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/" as='/perguntas-frequentes'>Perguntas frequentes</Link>
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/" as='/Contato'>Contato</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/faq">Ajuda</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Contato</Link>
                     </ul>
 
                 </nav>
@@ -185,7 +185,7 @@ export default function Header() {
                 </div> 
 
                 <ul>
-                    <LiSm>Perguntas frequantes</LiSm>
+                    <LiSm><Link href='/faq' passHref>Ajuda</Link></LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>
                 

@@ -35,8 +35,6 @@ const BtnHome = tw.button`
   from-yellow-300 
   to-amber-500
   mx-auto
-  border-b-4
-  border-orange-700 
   text-2xl
   lg:py-2
   lg:px-32
@@ -54,8 +52,8 @@ const BtnHome = tw.button`
   focus:from-yellow-600
   focus:ring-offset-0
   focus:ring-opacity-70        
-  focus:ring-4
-  focus:ring-amber-200'
+  focus:ring-2
+  focus:ring-amber-200
 `;
 
 export default function MainHome() {
@@ -65,8 +63,11 @@ export default function MainHome() {
         <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
             <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
                 <div className="mt-24 lg:mt-0">
-                    <h1 className="text-white lg:text-5xl text-[30px] text-center lg:text-left font-semibold tracking-tight">
-                        <span className="text-yellow-400">Seu Empréstimo ONLINE</span> com múltiplas opções de créditos
+                    <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
+                        Seu Empréstimo ONLINE
+                    </h1>
+                    <h1 className="text-white lg:text-5xl text-2xl text-center lg:text-left font-normal tracking-tight">
+                        com múltiplas opções de créditos
                     </h1>
                 </div>
 
@@ -81,7 +82,6 @@ export default function MainHome() {
         </div>
         <Simulador />
 		<Modalidades />
-        
     </main>
   )
 }

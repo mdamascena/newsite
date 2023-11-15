@@ -51,7 +51,7 @@ const BtnMenu = tw.button`
     hover:to-amber-500 
     hover:from-yellow-400
     hover:ring-offset-0
-    hover:ring-4
+    hover:ring-2
     hover:ring-amber-200
 `;
 
@@ -137,7 +137,7 @@ export default function Header() {
                                 </div>
                             </Dropdown>
                         </LiDrop>
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Perguntas frequentes</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/faq">Ajuda</Link>
                         <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Contato</Link>
                     </ul>
                 </nav>
@@ -172,7 +172,7 @@ export default function Header() {
                         <LiSm className='hover:bg-white'>
                             <Link href='/credluz' passHref>Empréstimo na conta de luz</Link>
                         </LiSm>
-                            
+
                         <LiSm className='hover:bg-white'>
                             <Link href='/cp' passHref>Empréstimo no boleto</Link>
                         </LiSm>
@@ -181,7 +181,7 @@ export default function Header() {
                 </div> 
 
                 <ul>
-                    <LiSm>Perguntas frequantes</LiSm>
+                    <LiSm><Link href='/faq' passHref>Ajuda</Link></LiSm>
                     <LiSm>Contato</LiSm>
                 </ul>
                 
