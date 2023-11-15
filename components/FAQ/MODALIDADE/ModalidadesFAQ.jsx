@@ -79,7 +79,7 @@ export default function ModalidadesFAQ(){
                 </div>
             </div>
 
-            <Carousel className='relative bottom-24 hidden' centerMode autoPlay infiniteLoop showIndicators={false} showStatus={false}>
+            <Carousel className='relative bottom-24 lg:hidden' centerMode autoPlay infiniteLoop showIndicators={false} showStatus={false}>
                 <CardMod>
                     <div className="p-3 duration-300 poppins text-left">
                         <RiLightbulbFlashLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
