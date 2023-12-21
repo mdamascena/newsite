@@ -34,7 +34,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="col-span-1 lg:col-span-3 text-slate-400 lg:max-w-3xl lg:px-10 mt-8">
+                    <div className="col-span-1 lg:col-span-3 text-slate-400 lg:max-w-3xl lg:px-10">
                         <div className="">
                             <Cadastro />
                         </div>

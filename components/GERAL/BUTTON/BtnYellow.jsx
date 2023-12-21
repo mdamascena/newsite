@@ -13,7 +13,7 @@ const Btn = tw.button`
     px-24 
     lg:px-28 
     mt-8 
-    duration-500
+    duration-300
 `
 export default function BtnYellow (props){
     return(

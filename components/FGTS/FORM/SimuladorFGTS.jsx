@@ -3,6 +3,7 @@ import tw from 'tailwind-styled-components'
 import { useState, useEffect } from "react"
 import { MdOutlineEditCalendar } from 'react-icons/md'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
+import InputMask from "react-input-mask"
 
 const BtnSolic = tw.button`
     bg-gradient-to-r 
@@ -27,13 +28,13 @@ const BtnSolic = tw.button`
 const IntSolic = tw.input`
     w-full
     focus:outline-none
-    rounded-md
+    rounded-lg
     pr-3
     pl-10
     py-3
+    border-0
     placeholder-slate-400
-    focus:ring-4
-    focus:border-0
+    focus:ring-2
     focus:ring-blue-300
     focus:ring-opacity-70
 `

@@ -91,6 +91,14 @@ a {
   background-size: cover;
 }
 
+.bgMainAtendimento{
+  background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle,  #2b31a2 0%, #00004b 100%);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -20px;
+}
+
 .bgComoFuncionaMain{
   background-color: transparent;
   background-image: url(../public/img/bg-notebook.png), linear-gradient(210deg, #00004b 45%, #ffee00 100%);
