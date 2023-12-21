@@ -85,7 +85,7 @@ export default function MainFGTS() {
                         </h1>
                     </div>
                     
-                    <div className='my-5 gap-2 lg:gap-4 justify-center lg:justify-start lg:hidden flex'>
+                    <div className='my-5 gap-1 lg:gap-4 justify-center lg:justify-start lg:hidden flex'>
                         <Card>
                             <LuCheckCircle className='mr-2'/>
                             Aposentado
@@ -101,7 +101,7 @@ export default function MainFGTS() {
                     </div>
 
                     <p className='text-blue-500 lg:text-xl text-md lg:mt-7 lg:text-left lg:pr-20 text-center'>
-                        A melhor opção do mercado. Mais agilidade, mais tranquilidade, mais crédito com limite que atende às suas necessidades. 
+                        Mais agilidade, mais tranquilidade, mais crédito com limite que atende às suas necessidades. 
                     </p>
 
                     <div className='flex justify-center lg:justify-start'>
