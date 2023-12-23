@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import ImgMain from '../../../public/img/modelo_main_inss3.png'
 import tw from 'tailwind-styled-components'
+
 import Taxas from '../TAXA/TaxaINSS'
 import Analise from '../../GERAL/ANALISE/Analise'
 import { LuCheckCircle } from "react-icons/lu"
@@ -78,7 +79,7 @@ export default function MainFGTS() {
                         </Card>
                     </div>
 
-                    <div className='mt-6 lg:mt-0'>
+                    <div className=''>
                         <EmpTitle>Empréstimo</EmpTitle>
                         <h1 className='text-blue-600 lg:text-5xl text-4xl text-center lg:text-left font-semibold tracking-tighter'>
                             Consignado <span className='font-semibold tracking-tighter'>INSS</span>
@@ -110,10 +111,11 @@ export default function MainFGTS() {
 
                 </div>
 
-                <div className='-mb-1 justify-center flex lg:mt-6'>
-                    <Image width={550} src={ImgMain} alt='' />
+                <div className='-mb-1 flex lg:mt-6'>
+                    <Image width={580} src={ImgMain} alt='' />
                 </div>
             </div>
+            
             <Taxas />
             <Analise/>
         </main>

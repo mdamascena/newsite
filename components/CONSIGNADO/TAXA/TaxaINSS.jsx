@@ -1,8 +1,10 @@
 import GuruFinanceiro from '../../ANIMACOES/AnimeGuru.jsx'
+import Condicao from '../MAIN/CondicoesINSS.jsx'
 
 export default function SectionTaxa() {
     return (
         <section className='bg-gradient-to-t from-slate-50 to-slate-100 lg:px-40 p-4 select-none'>
+            <Condicao/>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 rounded-3xl lg:p-5 lg:mx-32 p-6'>
 
