@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import ImgMain from '../../../public/img/modelo_main_inss3.png'
 import tw from 'tailwind-styled-components'
-
 import Taxas from '../TAXA/TaxaINSS'
 import Analise from '../../GERAL/ANALISE/Analise'
 import { LuCheckCircle } from "react-icons/lu"
