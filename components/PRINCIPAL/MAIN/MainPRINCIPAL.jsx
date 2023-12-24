@@ -1,58 +1,87 @@
-import { Carousel } from "react-responsive-carousel"
-import Image from "next/image"
-import imageOne from "../../../public/img/BRASAO_CINZA.png"
-import imageTwo from "../../../public/img/BRASAO_AZUL.png"
-import cel from "../../../public/img/PERSO_LUZ_2.png"
-import light from "../../../public/img/LAMPADA.png"
-import SectioDescrisao from "../DESCRICAO/Descricao"
-import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
-import SectioRegrasGerais from "../REGRAS/RegrasGeais"
-import SectionModalidade from "../MODALIDADES/ModalidadesPrincipal.jsx"
-import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
+import Modalidades from "../MODALIDADES/Modalidades"
+import Simulador from "../SIMULADOR/SimuladorGeral"
+import tw from 'tailwind-styled-components'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Poppins } from 'next/font/google'
 
-export default function MainPrincipal() {
-    return (
-        <main>
-            <section className="pb-5 lg:pb-0 pt-20 px-8 md:px-16 lg:px-32 bgMainPrincipal">
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 poppins bgBrasao">
+const CardMod = tw.div`
+  group
+  bg-white
+  hover:bg-blue-800
+  hover:scale-110 
+  col-span-1
+  text-white 
+  hover:z-10
+  p-2
+  mx-1
+  shadow-lg
+  shadow-blue-800/30
+  duration-300
+  cursor-pointer 
+  flex 
+  justify-center 
+  items-center
+  rounded-md
+`;
 
-                    <figure className="ml-16 block lg:hidden my-4">
-                        <Image src={light} width={200} height={160} alt='' />
-                    </figure>
+const BtnHome = tw.button`
+  focus:outline-none
+  bg-gradient-to-r 
+  from-yellow-300 
+  to-amber-500
+  mx-auto
+  text-2xl
+  lg:py-2
+  lg:px-32
+  lg:mx-0
+  mb-14
+  py-2
+  px-20
+  flex
+  rounded-2xl
+  text-white 
+  mt-8
+  hover:to-amber-600 
+  hover:from-yellow-500
+  focus:to-amber-700 
+  focus:from-yellow-600
+  focus:ring-offset-0
+  focus:ring-opacity-70        
+  focus:ring-2
+  focus:ring-amber-200
+`;
 
-                    <div className="col-span-1 md:my-16 md:ml-24">
-                        <h1 className="text-[2rem] md:text-[3.0rem] leading-tight md:leading-[50px] font-bold tracking-tight text-center md:text-left text-white">
-                            <div className="text-yellow-400">
-                                Crédito Pessoal <span className="font-extralight">ONLINE</span>
-                            </div> 
-                            Débito na conta de <div className="text-7xl" style={{textShadow: "0px 0px 20px white"}}>LUZ</div>
-                        </h1>
+export default function MainHome() {
 
-                        <h3 className="text-white leading-[20px] mt-5 text-md md:text-xl md:text-left text-center">
-                            Sem a necessidade de comprovar renda e com possibilidade de aprovação para negativados. Liberação no mesmo dia.
-                        </h3>
-
-                        <div className="text-center md:text-left">
-                            <BtnYellow nome='Simule aqui' />
-                        </div>
-
-                        <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">
-                            <p>Crédito sujeito à análise</p>
-                            <p>Liberações ocorrem em dias úteis</p>
-                        </div>
-                    </div>
-
-                    <figure className="mx-auto mt-8 hidden lg:block">
-                        <Image width={500} height={530} src={cel} alt='' />
-                    </figure>
-                    
+  return (
+    <main className={mainFontFamily.className}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
+            <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
+                <div className="mt-24 lg:mt-0">
+                    <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
+                        Seu Empréstimo ONLINE
+                    </h1>
+                    <h1 className="text-white lg:text-5xl text-2xl text-center lg:text-left font-normal tracking-tight">
+                        com múltiplas opções de créditos
+                    </h1>
                 </div>
 
-            </section>
-            <SectioDescrisao/>
-            <SectioComoFunciona/>
-            <SectioRegrasGerais/>
-        </main>
-    )
+                <div className="lg:mt-8 mt-64">
+                    <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 text-xl">
+                        Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
+                    </p>
+                    <BtnHome>Simular agora</BtnHome>
+                </div>
+            </div>
+            <div className="hidden lg:block col-span-1"></div>
+        </div>
+        <Simulador />
+		<Modalidades />
+    </main>
+  )
 }

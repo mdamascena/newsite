@@ -30,7 +30,7 @@ const Card = tw.div`
 const CardFront = tw.div`
     self-center
     text-md 
-    font-bold
+    tracking-tighter
     mx-2 
     lg:mx-4 
     text-center 
@@ -42,11 +42,11 @@ const CardFront = tw.div`
 const CardBack = tw.div`
     px-2 
     self-center
-    poppins 
     text-center 
     lg:text-xl
     text-blue-400
-    text-md 
+    text-md
+    tracking-tighter
     mb-3 
     scale-0 
     group-hover:scale-100 
@@ -60,23 +60,23 @@ export default function SectionVantagens() {
             <div className='mx-4 lg:mx-40'>
 
                 <div className='text-justify lg:pt-8 pt-8 lg:mb-8'>
-                    <h1 className="text-blue-300 mx-4 lg:text-4xl text-2xl font-bold tracking-tight lg:mb-6 mb-2 p-3 text-center">
+                    <h1 className="text-blue-300 mx-4 lg:text-4xl text-2xl font-semibold tracking-tighter lg:mb-6 mb-2 p-3 text-center">
                         O que é a antecipação Saque-Aniversário?
                     </h1>
 
-                    <p className="text-white text-md lg:text-md lg:px-28 px-4">
+                    <p className="text-white text-md lg:text-xl lg:px-28 px-4">
                         É uma modalidade de empréstimo para quem tem saldo no FGTS em contas ativas ou inativas, e optou
                         pelo saque-aniversário. Vejam algunas vantagens do Empréstimo FGTS na ValoReal
                     </p>
                 </div>
 
-                <div className='grid lg:grid-cols-5 grid-cols-2'>
+                <div className='grid lg:grid-cols-5 grid-cols-2 select-none'>
 
                     <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-12 pt-8 lg:order-1'>
                         <Card>
                             <CardFront>
                                 <MdMoneyOff className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm font-bold tracking-tight m-3'>
+                                <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tighter m-3'>
                                     Sem mensalidades para pagar
                                 </h2>
 
@@ -93,7 +93,7 @@ export default function SectionVantagens() {
                         <Card>
                             <CardFront>
                                 <AiOutlineFieldTime className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm font-bold tracking-tight m-3'>
+                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>
                                     Liberação mais rápida do mercado
                                 </h2>
 
@@ -117,7 +117,7 @@ export default function SectionVantagens() {
                         <Card>
                             <CardFront>
                                 <GiMoneyStack className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tight m-3'>Antecipe até 12 saques do seu FGTS</h2>
+                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Antecipe até 12 saques do seu FGTS</h2>
 
                                 <div className='flex justify-end'>
                                     <HiOutlineArrowNarrowRight className='text-white text-xl' />
@@ -132,7 +132,7 @@ export default function SectionVantagens() {
                         <Card>
                             <CardFront>
                                 <VscSearchStop className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tight m-3'>Sem consulta de restrições no SPC/SERASA</h2>
+                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Sem consulta de restrições no SPC/SERASA</h2>
 
                                 <div className='flex justify-end'>
                                     <HiOutlineArrowNarrowRight className='text-white text-xl' />

@@ -1,5 +1,5 @@
 import Footer from "../GERAL/FOOTER/Footer";
-import Header from "../GERAL/HEADER/Header_branco";
+import Header from "../GERAL/HEADER/Header";
 import MainCredluz from "./MAIN/MainCredluz";
 
 export default function IndexCREDLUZ() {

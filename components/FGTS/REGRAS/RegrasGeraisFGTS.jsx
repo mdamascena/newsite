@@ -2,6 +2,12 @@ import Image from "next/image"
 import imgFGTS from '../../../public/img/pers_notificacao_pix.png'
 import { FaCheck } from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+})
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 
@@ -14,8 +20,6 @@ const BtnCalc = tw.button`
     py-3
     lg:flex-none
     flex-1
-    poppins
-    font-semibold
     rounded-xl
     text-white
     my-5
@@ -39,47 +43,39 @@ export default function SectionDescFGTS() {
         <section className="bg-slate-50">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 mx-5 lg:mx-36 lg:px-6">
-
-                <div className="col-span-1 poppins lg:order-2 lg:ml-10 lg:my-auto">
-
+                <div className="col-span-1 lg:order-2 lg:ml-10 lg:my-auto">
                     <div className="mb-10">
-                        <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-500 mb-2">Condições Gerais</h2>
-                        <p className="text-md lg:text-xl text-blue-400">O que precisa para fazer a antecipação do meu saque aniversário?</p>
+                        <h2 className="text-4xl lg:text-5xl font-semibold tracking-tighter text-blue-500 mb-2">Condições Gerais</h2>
+                        <p className="text-md lg:text-xl text-blue-500">O que precisa para fazer a antecipação do meu saque aniversário?</p>
                     </div>
 
                     <ul className="mt-5 lg:text-xl text-md">
                         <li className="flex my-2">
                             <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
-                            <span className="my-auto text-blue-500 text-sm">Ser maior de 18 anos ou emancipado</span>
+                            <span className="my-auto text-blue-500">Ser maior de 18 anos</span>
                         </li>
                         <li className="flex my-2">
                             <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
-                            <span className="my-auto text-blue-500 text-sm">Ter situação regular com a Receita Federal</span>
+                            <span className="my-auto text-blue-500">Possuir conta bancária</span>
                         </li>
                         <li className="flex my-2">
                             <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
-                            <span className="my-auto text-blue-500 text-sm">Possuir conta corrente ou poupança</span>
+                            <span className="my-auto text-blue-500">Ter saldo em conta do FGTS</span>
                         </li>
                         <li className="flex my-2">
                             <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
-                            <span className="my-auto text-blue-500 text-sm">Ter saldo do FGTS em conta ativa ou inativa</span>
-                        </li>
-                        <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
-                            <span className="my-auto text-blue-500 text-sm">Ser optante do Saque-Aniversário do FGTS</span>
+                            <span className="my-auto text-blue-500">Ser optante do Saque-Aniversário</span>
                         </li>
                     </ul>
 
                     <div className='flex justify-center lg:justify-start'>
                         <BtnCalc>Contrate agora</BtnCalc>
                     </div>
-
                 </div>
 
                 <figure className="col-span-1 lg:order-1 px-11 lg:px-0 flex content-end lg:justify-end justify-center">
                     <Image width={650} height={665} src={imgFGTS} alt="" />
                 </figure>
-
 
             </div>
 

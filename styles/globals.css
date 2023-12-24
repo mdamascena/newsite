@@ -31,12 +31,12 @@ a {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.poppins{
-  font-family: 'Poppins', sans-serif;
-}
-
 .Gochi{
   font-family: 'Gochi Hand', cursive;
+}
+
+.bg-base-calc{
+  background-image: linear-gradient(95deg, #ffffff4f 49%, #ffffff24 49%);
 }
 
 .bgMainHome{
@@ -71,17 +71,32 @@ a {
   }
 }
 
-.bgBrasao{
-  background-image: url(../public/img/BRASAO_TESTE.png);
-  background-size: 80vh;
+.bgBrasaoFast{
+  background-image: url(../public/img/bg-brasao.png);
+  background-size: 90vh;
   background-repeat: no-repeat;
-  background-position: 430px 60px;
+  background-position: 445px 80px;
+}
+
+.bgBrasao{
+  background-image: url(../public/img/bg-brasao.png);
+  background-size: 120vh;
+  background-repeat: no-repeat;
+  background-position: 130px 80px;
 }
 
 .bgMainPrincipal{
   background-image: radial-gradient(circle,  #0009bb 0%, #00004b 100%);
   background-blend-mode: overlay;
   background-size: cover;
+}
+
+.bgMainAtendimento{
+  background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle,  #2b31a2 0%, #00004b 100%);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -20px;
 }
 
 .bgComoFuncionaMain{
@@ -117,12 +132,17 @@ a {
     background-position: bottom;
   }
 
-  .bgBrasao{
-    background-size: 35vh;
-    background-position: 12px 0px;   
+  .bgBrasaoFast{
+    background-size: 60vh;
+    background-position: 20px 70px;   
   }
 
   .bgComoFuncionaMain{
     background-size: 100vh;
+  }
+
+  .bgBrasao{
+    background-size: 70vh;
+    background-position: 20px 70px;
   }
 }

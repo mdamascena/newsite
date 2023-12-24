@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import LogoB from '../../../public/img/LOGO_BRANCO.png'
 import LogoA from '../../../public/img/LOGO_AZUL.png'
@@ -6,8 +7,24 @@ import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import AlertI from '../ARLET/AlertBlue'
 
-const Li = tw.li`
-    hover:scale-[1.2]
+const Dropdown = tw.div`
+    absolute 
+    duration-300
+    origin-top
+    delay-300 
+    opacity-0
+    scale-y-0
+    group-hover:opacity-100
+    group-hover:scale-y-100
+    mt-12 
+    z-10 
+    w-64
+    rounded-md 
+    bg-white 
+    shadow-md
+`
+
+const LiDrop = tw.li`
     cursor-pointer 
     my-auto 
     transition-transform 
@@ -42,32 +59,19 @@ const BtnMenu = tw.button`
 `;
 
 const LiSm = tw.li`
-    py-2 
-    transition-all 
-    rounded-md 
-    w-64 
-    mx-auto 
-    text-blue-500 
-    hover:scale-125 
-    hover:bg-blue-700 
-    hover:text-yellow-300
-    hover:font-semibold
+    m-2
+    py-2  
+    rounded-md
+    text-slate-400
+    hover:bg-slate-200
     cursor-pointer
 `;
 
 export default function Header() {
 
     const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
-    const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-0', true]);
-    const [dropMenu, setDropMenu] = useState(['h-0', true, 'hidden']);
-
-    const abrirDrop = () => {
-        if (dropMenu[1]) {
-            setDropMenu(['h-32', false, 'block']);
-        } else {
-            setDropMenu(['h-0', true, 'hidden']);
-        }
-    }
+    const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-y-0', true]);
+    const [dropdonw, setDropdonw] = useState([true,'scale-y-0 h-0 -mb-6','opacity-0']);
 
     const btnClose = () => {
         setCloseAlert('hidden')
@@ -84,6 +88,14 @@ export default function Header() {
             ])
         } else {
             setMudaLinha(['w-6', '', 'w-4', 'scale-y-0', true]);
+        }
+    }
+
+    const drop = ()=>{
+        if(dropdonw[0]){
+            setDropdonw([false,'h-56 scale-y-100','opacity-100'])
+        }else{
+            setDropdonw([true,'h-0 scale-y-0 -mb-6','opacity-0'])
         }
     }
 
@@ -104,26 +116,29 @@ export default function Header() {
             <AlertI />
             <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 bg-blue-600 duration-500`}>
 
-                <figure className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
+                <Link href='/' passHref className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                     <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
-                </figure>
+                </Link>
 
                 <nav className="hidden lg:block mx-auto">
 
-                    <ul className={`${bgNavbar[1]} poppins flex gap-7`}>
-                        <Li className={`${bgNavbar[4]}`}>Principal</Li>
-                        <Li className={`${bgNavbar[4]}`}>Quem Somos</Li>
-                        <Li className={`${bgNavbar[4]} flex group`}>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' /></Li>
-                        <div className={`${dropMenu[0]} absolute top-14 left-96 border-0 m-1 bg-blue-200  mx-7 rounded-[8px] transition-all duration-500 origin-top-right`}>
-                            <ul className={dropMenu[2]}>
-                                <LiSm>CredFGTS</LiSm>
-                                <LiSm>CredLuz</LiSm>
-                                <LiSm>CredBoleto</LiSm>
-                            </ul>
-                        </div>
-                        <Li className={`${bgNavbar[4]}`}>Como Funciona</Li>
-                        <Li className={`${bgNavbar[4]}`}>Perguntas frequantes</Li>
-                        <Li className={`${bgNavbar[4]}`}>Contato</Li>
+                    <ul className={`${bgNavbar[1]} flex gap-7`}>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
+                        <LiDrop className={`${bgNavbar[4]} relative flex group`}>
+                            Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
+                            <Dropdown>
+                                <div className="p-1 text-sm">
+                                    <Link href="/saque-aniversario" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Saque antecipado FGTS</Link>
+                                    <Link href="../consignado-inss" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo consignado INSS</Link>
+                                    <Link href="/credluz" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo na conta de luz</Link>
+                                    <Link href="/cp" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo no boleto</Link>
+                                </div>
+                            </Dropdown>
+                        </LiDrop>
+
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/atendimento">Atendimento</Link>
+                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/faq">Ajuda</Link>
                     </ul>
 
                 </nav>
@@ -143,24 +158,44 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className={`${mudaLinha[3]} transition duration-500 origin-top fixed mt-20 bg-white text-center z-50 py-[12px] rounded-[10px] left-0 right-0 mx-4 shadow-md`}>
-                <ul className='poppins gap-7'>
-                    <LiSm>Principal</LiSm>
-                    <LiSm>Quem Somos</LiSm>
-                    <LiSm className='group text-center'>Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
-                        <div className="h-0 scale-y-0 group-hover:scale-y-95 group-hover:h-24 border-0 m-1 bg-blue-200 mx-7 rounded-[8px] transition-all duration-500 origin-top-right">
-                            <ul className>
-                                <LiSm>CredFGTS</LiSm>
-                                <LiSm>CredLuz</LiSm>
-                                <LiSm>CredBoleto</LiSm>
-                            </ul>
-                        </div>
+            <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
+                <ul className=''>
+                    <LiSm><Link href="/" passHref>Principal</Link></LiSm>
+                    <LiSm><Link href='/' passHref>Quem Somos</Link></LiSm>
+                    <LiSm className='group' onClick={drop}>
+                        Empréstimos +                
                     </LiSm>
-
-                    <LiSm>Como Funciona</LiSm>
-                    <LiSm>Perguntas frequantes</LiSm>
-                    <LiSm>Contato</LiSm>
                 </ul>
+
+                <div className={`${dropdonw[1]} bg-slate-200 mx-3 py-2 rounded-lg duration-300`}>
+                    <ul className={`${dropdonw[2]}`}>
+                            
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/saque-aniversario' passHref>Saque antecipado FGTS</Link>
+                        </LiSm>
+
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/consignado-inss' passHref>Empréstimo consignado INSS</Link>
+                        </LiSm>
+
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/credluz' passHref>Empréstimo na conta de luz</Link>
+                        </LiSm>
+                            
+                        <LiSm className='hover:bg-white'>
+                            <Link href='/cp' passHref>Empréstimo no boleto</Link>
+                        </LiSm>
+                            
+                    </ul>
+                </div> 
+
+                <ul>
+                    <LiSm>
+                        <Link href='/atendimento' passHref>Atendimento</Link>
+                    </LiSm>
+                    <LiSm><Link href='/faq' passHref>Ajuda</Link></LiSm>
+                </ul>
+                
             </nav>
 
         </header>
