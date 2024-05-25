@@ -53,9 +53,9 @@ const BtnMenu = tw.button`
     hover:bg-gradient-to-r 
     hover:to-amber-500 
     hover:from-yellow-400
-    hover:ring-offset-0
-    hover:ring-4
-    hover:ring-amber-200
+    hover:scale-105
+    active:scale-90
+    duration-150
 `;
 
 const LiSm = tw.li`
@@ -144,11 +144,9 @@ export default function Header() {
                 </nav>
 
                 <div className='justify-items-stretch'>
-
                     <BtnMenu>
-                        Acessar
+                        <Link href='/conta' passHref>Acessar</Link>
                     </BtnMenu>
-
                 </div>
 
                 <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>

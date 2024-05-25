@@ -5,7 +5,7 @@ export default function CondicoesINSS() {
 
     return (
         <section className='relative -top-10'>
-            <div className='bg-blue-600 text-white rounded-3xl text-center lg:py-16 py-8'>
+            <div className='bg-blue-600 text-white lg:rounded-3xl rounded-2xl text-center lg:py-16 py-8'>
                 
                 <div className='grid grid-cols-3'>
 
@@ -23,8 +23,6 @@ export default function CondicoesINSS() {
                     </div>
                     
                 </div>
-                
-                
             </div>
         </section>
     )

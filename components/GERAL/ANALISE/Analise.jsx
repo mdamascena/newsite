@@ -57,13 +57,13 @@ export default function Regras(){
                         <div className={`duration-1000 delay-500 ${movDesc} lg:mt-16`}>
                             
                             <div className="text-3xl lg:text-5xl font-bold mb-4 tracking-tighter">
-                                <span className="bg-clip-text text-transparent bg-gradient-to-br from-blue-800 via-blue-500 to-blue-300 saturate-150">
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-800 via-blue-600 to-blue-500 saturate-150">
                                     Não fique no escuro sem saber o que está rolando!
                                 </span>
                             </div>
                             
-                            <div className="text-slate-400 mt-8">
-                                <p className="mb-4">
+                            <div className="text-slate-400 mt-8 lg:text-lg text-md">
+                                <p className="mb-2">
                                     Aqui ValoReal você pode acompanhar a análise diretamente pelo site em tempo real.
                                 </p>
 

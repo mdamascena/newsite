@@ -1,6 +1,5 @@
 import tw from 'tailwind-styled-components'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
-import { useState } from "react"
 
 const Btn = tw.button`
     col-span-1    
@@ -17,46 +16,49 @@ const Btn = tw.button`
 `
 const BtnVolta = tw.button`
     col-span-1    
-    py-6 
-    px-3
-    flex
+    py-2
+    
+    flex-1
     justify-center 
     items-center
     saturate-150
     bg-blue-700
     hover:bg-blue-800 
-    focus:bg-blue-900
+    focus:bg-blue-950
     duration-300
     text-white 
     rounded-md
 `
 
-export default function Valor200(){
-    const [titleCalc, setTitleCalc] = useState('Simule seu Empréstimo');
-    const [titleParc, setTitleParc] = useState('Qual o valor desejado?');
-    const title = 'Simulação de R$ 200,00'
+export default function PMT900({setShowCalc}){
 
     return(
-        <>
-            <div id='calc_200' name='btnParc' className=''>
+        <div className='p-1'>
+
+            <h2 className='text-center mb-2 poppins text-white'>Selecione o prazo desejado</h2>
+
+            <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1'>
+
                 <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='pmt_200_8' parcela='555'>08 X</Btn>
-                    <Btn id='pmt_200_12'>12 X</Btn>
+                    <Btn id='pmt_900_12'>12 X</Btn>
+                    <Btn id='pmt_900_15'>15 X</Btn>
                 </div>
 
                 <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='pmt_200_15'>15 X</Btn>
-                    <Btn id='pmt_200_16'>16 X</Btn>
+                    <Btn id='pmt_900_16'>16 X</Btn>
+                    <Btn id='pmt_900_18'>18 X</Btn>
                 </div>
 
-                <div className="grid grid-cols-1 gap-1">
-                    <BtnVolta id='BtnVolta'>
-                        <HiArrowUturnLeft className='text-xl mr-2'/>
+                <div className="grid grid-cols-2 gap-1">
+                    <Btn id='pmt_900_20'>20 X</Btn>
+                    <BtnVolta id='BtnVolta' onClick={() => setShowCalc('Valores')}>
+                        <HiArrowUturnLeft className='text-xl mx-auto'/>
                         Simular outro valor
                     </BtnVolta>
                 </div>
+
             </div>
-        </>
-        
+
+        </div>
     )
 }

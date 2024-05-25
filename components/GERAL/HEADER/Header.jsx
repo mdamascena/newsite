@@ -50,10 +50,12 @@ const BtnMenu = tw.button`
     hover:bg-gradient-to-r 
     hover:to-amber-500 
     hover:from-yellow-400
-    hover:ring-offset-0
-    hover:ring-2
-    hover:ring-amber-200
+    hover:scale-105
+    active:scale-90
+    duration-150
 `;
+
+
 
 const LiDrop = tw.li`
     cursor-pointer 
@@ -113,6 +115,7 @@ export default function Header() {
         }, []
     )
 
+
     return (
         <header className={mainFontFamily.className}>
             <AlertI />
@@ -144,7 +147,9 @@ export default function Header() {
                 </nav>
 
                 <div className='justify-items-stretch'>
-                    <BtnMenu>Acessar</BtnMenu>
+                    <BtnMenu>
+                        <Link href='/conta' passHref>Acessar</Link>
+                    </BtnMenu>
                 </div>
 
                 <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>
@@ -189,7 +194,6 @@ export default function Header() {
                     <LiSm><Link href='/atendimento' passHref>Atendimento</Link></LiSm>
                     <LiSm><Link href='/faq' passHref>Ajuda</Link></LiSm>
                 </ul>
-                
             </nav>
 
         </header>

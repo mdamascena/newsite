@@ -1,5 +1,6 @@
 import Image from "next/image"
 import SectionCanais from '../CANAIS/CanaisAtendimento'
+import SectionChat from '../CANAIS/CanaisAtendimentoChat'
 import { PiHeadsetFill } from "react-icons/pi";
 import { IoMail } from "react-icons/io5";
 import { RiMessengerFill } from "react-icons/ri";
@@ -25,6 +26,7 @@ export default function MainAtendimento() {
                 </div>
             </section>
             <SectionCanais/>
+            <SectionChat/>
         </main>
     )
 }

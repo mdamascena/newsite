@@ -1,8 +1,12 @@
 import Modalidades from "../MODALIDADES/Modalidades"
 import Simulador from "../SIMULADOR/SimuladorGeral"
+import SlideModalidade from "../MODALIDADES/SlideModalidade"
+import SeuPotencial from "../SECTIONS/LiberePotencial"
 import tw from 'tailwind-styled-components'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Poppins } from 'next/font/google'
+import Taxa from "../SECTIONS/Taxas"
+import Mais from "../SECTIONS/Mais"
 
 const mainFontFamily = Poppins({
     weight: ['100','200','300','400','500','600','700','800','900'],
@@ -48,12 +52,9 @@ const BtnHome = tw.button`
   mt-8
   hover:to-amber-600 
   hover:from-yellow-500
-  focus:to-amber-700 
-  focus:from-yellow-600
-  focus:ring-offset-0
-  focus:ring-opacity-70        
-  focus:ring-2
-  focus:ring-amber-200
+  hover:scale-105
+  active:scale-90 
+  duration-150
 `;
 
 export default function MainHome() {
@@ -62,6 +63,7 @@ export default function MainHome() {
     <main className={mainFontFamily.className}>
         <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
             <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
+
                 <div className="mt-24 lg:mt-0">
                     <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
                         Seu Empréstimo ONLINE
@@ -77,11 +79,20 @@ export default function MainHome() {
                     </p>
                     <BtnHome>Simular agora</BtnHome>
                 </div>
+
             </div>
             <div className="hidden lg:block col-span-1"></div>
         </div>
+        <SlideModalidade/>
+        <Mais/>
+        <Taxa/>
+        <SeuPotencial/>
+        
         <Simulador />
-		<Modalidades />
+        <Modalidades />
+        
+        
+		
     </main>
   )
 }

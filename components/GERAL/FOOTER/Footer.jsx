@@ -18,6 +18,21 @@ const Rodape = tw.footer`
     to-blue-800 
     saturate-150
 `
+const BtnSocial = tw.button`
+    text-white 
+    bg-blue-600 
+    p-2 
+    text-xl 
+    m-1 
+    rounded-md
+    hover:bg-blue-500
+    active:bg-blue-800
+    hover:scale-110
+    active:scale-90 
+    duration-150
+    ease-in
+`
+
 export default function Footer() {
     return (
 
@@ -45,7 +60,7 @@ export default function Footer() {
                     </div>
 
                     <p className="text-center text-white text-[13px] mt-4">
-                        Horário de Atendimento de segunda a sexta-feira, das 9h às 18h. Exceção aos feriados.
+                        Horário de atendimento de segunda a sexta-feira, das 9h às 18h. Exceção aos feriados.
                     </p>
                 </div>
 
@@ -55,9 +70,9 @@ export default function Footer() {
                     </h4>
 
                     <div className="flex container justify-center my-3">
-                        <ImFacebook className='text-white bg-blue-600 hover:bg-blue-800 m-1 text-4xl p-2 rounded-md duration-200 hover:scale-110 cursor-pointer' />
-                        <SiInstagram className='text-white bg-blue-600 hover:bg-blue-800 m-1 text-4xl p-2 rounded-md duration-200 hover:scale-110 cursor-pointer' />
-                        <SiTiktok className='text-white bg-blue-600 hover:bg-blue-800 m-1 text-4xl p-2 rounded-md duration-200 hover:scale-110 cursor-pointer' />
+                        <BtnSocial><ImFacebook/></BtnSocial>
+                        <BtnSocial><SiInstagram/></BtnSocial>
+                        <BtnSocial><SiTiktok/></BtnSocial>
                     </div>
 
                     <p className="text-center text-white text-[13px]">
@@ -67,15 +82,13 @@ export default function Footer() {
 
                 <div className="col-span-1 my-5 text-center mx-4">
                     <h4 className="text-blue-400">
-                        Quer enviar um e-mail?
+                        Fale conosco
                     </h4>
 
-                    <div className="bg-blue-600 hover:bg-blue-800 w-44 mx-auto my-3 py-2 rounded-md text-white text-lg cursor-pointer duration-200 hover:scale-105">
-                        Clique aqui
-                    </div>
+                    <BtnSocial className='w-40 mx-auto my-3 py-2'>Suporte</BtnSocial>
 
                     <p className="text-white text-[13px]">
-                        Os e-mails são respondidos sempre em horário comercial, em um prazo de até 48h úteis.
+                        Respondemos em horário comercial, em um prazo de até 48h úteis.
                     </p>
                 </div>
 

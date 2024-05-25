@@ -28,9 +28,9 @@ const BtnCalc = tw.button`
     hover:bg-gradient-to-r 
     hover:to-amber-500 
     hover:from-yellow-400
-    hover:ring-offset-0
-    hover:ring-4
-    hover:ring-amber-200
+    hover:scale-105
+    active:scale-90 
+    duration-150
 `;
 
 const EmpTitle = tw.h1`

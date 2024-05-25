@@ -96,7 +96,7 @@ a {
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: -20px;
+  background-position: top;
 }
 
 .bgComoFuncionaMain{

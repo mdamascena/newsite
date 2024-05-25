@@ -8,30 +8,35 @@ import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 export default function MainPrincipal() {
   return (
-    <main>
+    <main className={mainFontFamily.className}>
         <section className="bgMainPrincipal">
             <div className="bgBrasaoFast">
                 <div className="pb-5 lg:pb-0 pt-20 px-8 md:px-16 lg:px-32">
                     <div className="grid grid-cols-1 lg:grid-cols-2 poppins">
-                        <figure className="mx-auto pr-7 block lg:hidden my-4">
+                        <figure className="mx-auto block lg:hidden mt-2">
                             <Image src={light} width={200} height={160} alt="" />
                         </figure>
 
                         <div className="col-span-1 lg:my-auto lg:ml-14">
-                            <h1 className="text-[2rem] md:text-[3.0rem] leading-tight md:leading-[50px] font-semibold tracking-tight text-center md:text-left text-white">
+                            <h1 className="text-[2rem] lg:text-[3.0rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-white">
                                 <div className="text-yellow-400">
                                     Crédito Pessoal
                                 </div>
                                 <div className="lg:flex items-center">
-                                    Débito na conta de<div className="text-7xl ml-2" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
+                                    Débito na conta de<div className="text-7xl ml-2 tracking-tighter" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
                                 </div>
-                                
                             </h1>
 
-                            <div className="text-white">
+                            <div className="text-white ml-5 lg:ml-0">
                                 <div className="leading-5 mt-5 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg ">Sem comprovação de renda</span>

@@ -6,6 +6,8 @@ import { AiOutlineWhatsApp } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa6";
 import Link from "next/link";
 import tw from "tailwind-styled-components";
+import Modal from "../../GERAL/MODAL/ModalSimples";
+import { useEffect, useState } from 'react';
 
 const Btn = tw.button`
     text-sm 
@@ -17,13 +19,20 @@ const Btn = tw.button`
     hover:bg-sky-500 
     active:bg-sky-700 
     hover:text-white 
-    duration-300
+    active:bg-blue-900
+    hover:bg-blue-700
+    hover:scale-105
+    active:scale-90 
+    duration-150 
 `
-
 export default function SectionAtendimento() {
 
+    const [open, setOpen] = useState(false);
+    const handleClickOpen = () => {setOpen(true);};
+    const handleClose = () => {setOpen(false);};
+
     return (
-        <section className="bg-slate-100 pt-16 pb-10 lg:px-44 px-4">
+        <section className="bg-slate-100 pt-16 pb-10 lg:px-56 px-4">
             <div className="">
                 <h1 className="text-slate-400 text-center text-3xl tracking-tighter font-semibold">Veja nossos canais de atendimento</h1>
                 <p className="text-slate-400 text-center tracking-tight font-light">Estamos disponíveis de segunda a sexta feira, das 09h às 18h, pelos seguintes canais:</p>
@@ -47,9 +56,8 @@ export default function SectionAtendimento() {
                             <IoMail className="text-5xl"/>
                             <h4 className="font-semibold tracking-tight text-2xl">Fale conosco</h4>
                         </div>
-                        <div className="text-slate-400">
-                            
-                            <Btn>Enviar e-mail</Btn>
+                        <div className="text-slate-400"> 
+                            <Btn onClick={handleClickOpen}>Enviar e-mail</Btn>
                             <p className="font-extralight mt-3">Envie e-mail para o nosso suporte</p>
                         </div>
                     </div>
