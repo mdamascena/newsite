@@ -3,8 +3,7 @@ import BtnVoltar from './BTN_VOLTAR'
 
 const Btn = tw.button`
     col-span-1    
-    py-5
-    lg:py-6 
+    py-6 
     px-3 
     bg-btncalc
     saturate-150
