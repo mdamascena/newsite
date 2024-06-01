@@ -1,13 +1,12 @@
 import Image from "next/image"
-import { PiHeadsetFill } from "react-icons/pi";
-import { IoMail } from "react-icons/io5";
-import { RiMessengerFill } from "react-icons/ri";
-import { AiOutlineWhatsApp } from "react-icons/ai";
-import { FaInstagram } from "react-icons/fa6";
-import Link from "next/link";
-import tw from "tailwind-styled-components";
-import Modal from "../../GERAL/MODAL/ModalSimples";
-import { useEffect, useState } from 'react';
+import { PiHeadsetFill } from "react-icons/pi"
+import { IoMail } from "react-icons/io5"
+import { RiMessengerFill } from "react-icons/ri"
+import { AiOutlineWhatsApp } from "react-icons/ai"
+import { FaInstagram } from "react-icons/fa6"
+import Link from "next/link"
+import tw from "tailwind-styled-components"
+import { useEffect, useState } from 'react'
 
 const Btn = tw.button`
     text-sm 

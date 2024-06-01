@@ -18,8 +18,8 @@ export default function MainCredluz() {
                 <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">
                     <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
                         
-                        <figure className="mx-auto block lg:hidden mt-14">
-                            <Image src={light} width={185} alt="" />
+                        <figure className="mx-auto block lg:hidden mt-14 animate__jackInTheBox">
+                            <Image className="" src={light} width={185} alt="" />
                         </figure>
 
                         <div className="col-span-1 my-auto text-white">

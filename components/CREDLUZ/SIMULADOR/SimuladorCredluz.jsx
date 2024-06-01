@@ -16,6 +16,10 @@ import PMT1800 from './PMT/PMT_1800'
 import PMT1900 from './PMT/PMT_1900'
 import PMT2000 from './PMT/PMT_2000'
 
+import tw from 'tailwind-styled-components'
+
+
+
 const containerVariants = {
     hidden: { opacity: 1, scale: 0 },
     visible: { opacity: 1, scale: 1, transition: {delayChildren: 0, staggerChildren: 0.1}}
@@ -98,11 +102,11 @@ export default function SimuladorCredLuz() {
 
         <div className="max-w-md">
 
-            <h1 className='text-center text-lg text-white mb-3 poppins bg-base-calc p-1 rounded-lg'>
+            <h1 className='text-center text-lg text-white mb-3 poppins bg-base-calc p-2 rounded-lg'>
                 {components[showCalc].title}
             </h1>
             
-            <div className='rounded-lg bg-base-calc '>
+            <div className='rounded-lg bg-base-calc'>
                 <AnimatePresence mode="wait">
                     <motion.div key={showCalc} initial="hidden" animate="visible" exit="exit" variants={containerVariants}>
                         {components[showCalc].component}

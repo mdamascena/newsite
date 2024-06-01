@@ -36,7 +36,7 @@ export default function PMT900({setShowCalc}){
 
             <h2 className='text-center mb-2 poppins text-white'>Selecione o prazo desejado</h2>
 
-            <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1'>
+            <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1 mb-2'>
 
                 <div className="grid grid-cols-2 gap-1 mb-1">
                     <Btn id='pmt_900_12'>12 X</Btn>
