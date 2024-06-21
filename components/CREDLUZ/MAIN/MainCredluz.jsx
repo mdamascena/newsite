@@ -9,6 +9,7 @@ import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import Simulador from '../SIMULADOR/SimuladorCredluz'
 
+
 export default function MainCredluz() {
 
     return (
@@ -18,7 +19,7 @@ export default function MainCredluz() {
                 <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">
                     <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
                         
-                        <figure className="mx-auto block lg:hidden mt-14 animate__jackInTheBox">
+                        <figure className="mx-auto block lg:hidden mt-14 pr-2">
                             <Image className="" src={light} width={185} alt="" />
                         </figure>
 
@@ -61,6 +62,7 @@ export default function MainCredluz() {
 
                         <div className="col-span-1 my-auto mx-2.5 lg:mx-1">
                             <Simulador/>
+                            
                         </div>
                         
                     </div>

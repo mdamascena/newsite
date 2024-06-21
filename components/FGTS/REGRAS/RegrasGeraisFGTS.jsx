@@ -40,7 +40,7 @@ const BtnCalc = tw.button`
 export default function SectionDescFGTS() {
 
     return (
-        <section className="bg-slate-50">
+        <section className="bg-slate-50 select-none">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 mx-5 lg:mx-36 lg:px-6">
                 <div className="col-span-1 lg:order-2 lg:ml-10 lg:my-auto">

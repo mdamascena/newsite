@@ -47,14 +47,14 @@ export default function SimuladorFGTS() {
             <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-40 py-8 lg:py-16">
 
                 <div className="col-span-3">
-                    <h1 className="text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-semibold ml-5">
+                    <h1 className="select-none text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-semibold ml-5">
                         Descubra o seu limite
                     </h1>
 
                     <div className=" rounded-2xl bg-blue-900 bg-opacity-50 p-4 lg:mr-5">
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div>
-                                <label className="text-blue-100 text-sm" htmlFor="saldo">Digite seu saldo FGTS</label>
+                                <label className="text-blue-100 text-sm select-none" htmlFor="saldo">Digite seu saldo FGTS</label>
                                 <div className="relative flex items-center">
                                     <MdOutlineAccountBalanceWallet className="w-6 h-6 absolute ml-3 text-slate-400" />
                                     <IntSolic placeholder='R$ 00.000,00' name="saldo" inputmode="numeric" />
@@ -77,7 +77,7 @@ export default function SimuladorFGTS() {
 
                     </div>
 
-                    <p className="text-xs text-blue-300 text-justify lg:mx-5 mt-2">
+                    <p className="text-xs text-blue-300 text-justify lg:mx-5 mt-2 select-none">
                         Os valores dessa simulação são calculados com base nos informados. O limite pode mudar de
                         acordo com o seu saldo no FGTS.
                     </p>
@@ -87,7 +87,7 @@ export default function SimuladorFGTS() {
 
                     <div className="text-justify mb-4 lg:mb-0">
 
-                        <p className="text-white hidden lg:block">
+                        <p className="text-white hidden lg:block select-none">
                             Grana extra para usar como quiser, sem comprometer sua renda com mensalidades. O desconto é feito diretamente no saldo do FGTS.
                         </p>
 

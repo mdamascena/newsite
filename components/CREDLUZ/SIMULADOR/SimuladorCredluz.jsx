@@ -15,6 +15,16 @@ import PMT1700 from './PMT/PMT_1700'
 import PMT1800 from './PMT/PMT_1800'
 import PMT1900 from './PMT/PMT_1900'
 import PMT2000 from './PMT/PMT_2000'
+import PMT2100 from './PMT/PMT_2100'
+import PMT2200 from './PMT/PMT_2200'
+import PMT2300 from './PMT/PMT_2300'
+import PMT2400 from './PMT/PMT_2400'
+import PMT2500 from './PMT/PMT_2500'
+import PMT2600 from './PMT/PMT_2600'
+import PMT2700 from './PMT/PMT_2700'
+import PMT2800 from './PMT/PMT_2800'
+import PMT2900 from './PMT/PMT_2900'
+import PMT3000 from './PMT/PMT_3000'
 
 import tw from 'tailwind-styled-components'
 
@@ -40,61 +50,102 @@ export default function SimuladorCredLuz() {
             component: <Valores setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simule seu Empréstimo'
         },
-        PMT700: {
+        700: {
             component: <PMT700 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 700,00'
         },
-        PMT800: {
+        800: {
             component: <PMT800 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 800,00'
         },
-        PMT900: {
+        900: {
             component: <PMT900 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 900,00'
         },
-        PMT1000: {
+        1000: {
             component: <PMT1000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.000,00'
         },
-        PMT1100: {
+        1100: {
             component: <PMT1100 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.100,00'
         },
-        PMT1200: {
+        1200: {
             component: <PMT1200 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.200,00'
         },
-        PMT1300: {
+        1300: {
             component: <PMT1300 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.300,00'
         },
-        PMT1400: {
+        1400: {
             component: <PMT1400 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.400,00'
         },
-        PMT1500: {
+        1500: {
             component: <PMT1500 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.500,00'
         },
-        PMT1600: {
+        1600: {
             component: <PMT1600 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.600,00'
         },
-        PMT1700: {
+        1700: {
             component: <PMT1700 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.700,00'
         },
-        PMT1800: {
+        1800: {
             component: <PMT1800 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.800,00'
         },
-        PMT1900: {
+        1900: {
             component: <PMT1900 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 1.900,00'
         },
-        PMT2000: {
+        
+        2000: {
             component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
             title: 'Simulação de R$ 2.000,00'
+        },
+        2100: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.100,00'
+        },
+        2200: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.200,00'
+        },
+        2300: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.300,00'
+        },
+        2400: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.400,00'
+        },
+        2500: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.500,00'
+        },
+        2600: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.600,00'
+        },
+        2700: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.700,00'
+        },
+        2800: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.800,00'
+        },
+        2900: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 2.900,00'
+        },
+        3000: {
+            component: <PMT2000 setShowCalc={setShowCalc} itemVariants={itemVariants} />,
+            title: 'Simulação de R$ 3.000,00'
         }
     };
 

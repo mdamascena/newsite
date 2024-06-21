@@ -50,7 +50,7 @@ export default function MainFGTS() {
     return (
         <main>
             <div className="bgMainFGTS px-6 lg:px-40 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
-                <div className='lg:my-auto mb-10'>
+                <div className='lg:my-auto mb-10 select-none'>
                     <EmpTitle>Empréstimo</EmpTitle>
                     <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-semibold tracking-tighter'>
                         Saque Aniversário <span className='font-semibold tracking-tighter'>FGTS</span>

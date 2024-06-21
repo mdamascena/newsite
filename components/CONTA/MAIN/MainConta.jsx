@@ -7,6 +7,7 @@ import Reset from '../FORM/Reset'
 import { useState } from 'react'
 import { BsWhatsapp } from "react-icons/bs"
 import { BsTelephone } from "react-icons/bs"
+import { Button } from "components/ui/button"
 
 const WP = 'https://bit.ly/wa-plancredi-api'
 const TEL = 'tel:8008789853'
@@ -77,6 +78,7 @@ export default function MainCONTA() {
             <div className='flex justify-center -my-40'>
                 <div className='bg-white rounded-md shadow-lg p-8 -top-10 lg:w-[35%] w-[90%]'>
                     <Pass/> 
+                    <Button className='hover:scale-110 duration-100'>Marcelo</Button>
                 </div>
             </div>
 

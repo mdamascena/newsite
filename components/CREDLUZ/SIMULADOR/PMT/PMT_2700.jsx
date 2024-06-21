@@ -13,7 +13,7 @@ const Btn = tw.button`
     text-white 
     rounded-md
 `
-export default function PMT1600({setShowCalc}){
+export default function PMT2700({setShowCalc}){
 
     return(
         <div className='p-1'>
@@ -23,13 +23,13 @@ export default function PMT1600({setShowCalc}){
             <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1 mb-2'>
 
                 <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='pmt_1600_16'>16 X</Btn>
-                    <Btn id='pmt_1600_18'>18 X</Btn>
+                    <Btn id='pmt_2000_16'>16 X</Btn>
+                    <Btn id='pmt_2000_18'>18 X</Btn>
                 </div>
 
                 <div className="grid grid-cols-2 gap-1 mb-1">
-                    <Btn id='pmt_1600_20'>20 X</Btn>
-                    <Btn id='pmt_1600_22'>22 X</Btn>
+                    <Btn id='pmt_2000_20'>20 X</Btn>
+                    <Btn id='pmt_2000_22'>22 X</Btn>
                 </div>
 
                 <div className="grid grid-cols-1 gap-1">
@@ -37,7 +37,7 @@ export default function PMT1600({setShowCalc}){
                 </div>
 
             </div>
-
+            
         </div>
     )
 }

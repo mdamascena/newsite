@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import LogoFB from '../../../public/img/LOGO_FULL_BRANCO.png'
 import tw from 'tailwind-styled-components'
+import modalSuporte from '../MODAL/ModalSuporte'
 import { SiInstagram } from "react-icons/si"
 import { ImFacebook } from 'react-icons/im'
 import { SiTiktok } from 'react-icons/si'
@@ -85,7 +86,7 @@ export default function Footer() {
                         Fale conosco
                     </h4>
 
-                    <BtnSocial className='w-40 mx-auto my-3 py-2'>Suporte</BtnSocial>
+                    <BtnSocial className='w-40 mx-auto my-3 py-2' >Suporte</BtnSocial>
 
                     <p className="text-white text-[13px]">
                         Respondemos em horário comercial, em um prazo de até 48h úteis.
@@ -128,7 +129,7 @@ export default function Footer() {
                     ©ValoReal - Todos os direitos reservados - VALOREAL INTERMEDIAÇÃO DE NEGOCIOS LTDA-ME
                 </p>
             </div>
-            
+            <modalSuporte/>           
         </Rodape>
     )
 }

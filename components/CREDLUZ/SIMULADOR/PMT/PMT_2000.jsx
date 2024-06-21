@@ -32,7 +32,7 @@ export default function PMT2000({setShowCalc}){
                     <Btn id='pmt_2000_22'>22 X</Btn>
                 </div>
 
-                <div className="grid grid-cols-2 gap-1">
+                <div className="grid grid-cols-1 gap-1">
                     <BtnVoltar setShowCalc={setShowCalc}/>
                 </div>
 

@@ -14,7 +14,6 @@ const Card = tw.div`
     py-3
     duration-1000
 `
-
 export default function Regras(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
