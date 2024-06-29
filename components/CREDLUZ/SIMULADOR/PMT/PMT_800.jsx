@@ -1,5 +1,8 @@
 import tw from 'tailwind-styled-components'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
+import React, { useState } from 'react'
+import { Dialog, DialogTrigger } from '../../../ui/dialog_noclose'
+import Modal from "./MODAL_CALC"
 
 const Btn = tw.button`
     col-span-1    
@@ -16,7 +19,6 @@ const Btn = tw.button`
 const BtnVolta = tw.button`
     col-span-1    
     py-2
-    
     flex-1
     justify-center 
     items-center

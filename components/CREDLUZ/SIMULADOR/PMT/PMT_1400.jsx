@@ -1,5 +1,8 @@
+import React, { useState } from 'react'
 import tw from 'tailwind-styled-components'
 import BtnVoltar from './BTN_VOLTAR'
+import { Dialog, DialogTrigger } from '../../../ui/dialog_noclose'
+import Modal from "./MODAL_CALC"
 
 const Btn = tw.button`
     col-span-1    
@@ -14,6 +17,14 @@ const Btn = tw.button`
     rounded-md
 `
 export default function PMT1400({setShowCalc}){
+
+    const [valorPmt, setValorPmt] = useState('');
+    const [valorFin, setValorFin] = useState('');
+
+    const getValor = (vlr, pmt) =>{
+        setValorFin(vlr)
+        setValorPmt(pmt)
+    }
 
     return(
         <div className='p-1'>

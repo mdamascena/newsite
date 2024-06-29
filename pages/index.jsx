@@ -6,7 +6,8 @@ import { Poppins } from 'next/font/google'
 
 const mainFontFamily = Poppins({
     weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
+    subsets: ['latin'],
+    variable: 'font-poppins'
 });
 
 export default function Principal() {
@@ -23,7 +24,7 @@ export default function Principal() {
                 <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
             </Head>
-            <div className={mainFontFamily.className}>
+            <div className={mainFontFamily.variable}>
                 <IndexPrincipal />
             </div>
         </div>

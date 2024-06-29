@@ -80,7 +80,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  Ubuntu, Poppins, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -106,6 +106,10 @@ a {
 
 .Gochi{
   font-family: 'Gochi Hand', cursive;
+}
+
+.Poppins{
+  font-family: 'Poppins', sans-serif;
 }
 
 .bg-base-calc{

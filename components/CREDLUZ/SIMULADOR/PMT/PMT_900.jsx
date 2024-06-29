@@ -1,5 +1,8 @@
 import tw from 'tailwind-styled-components'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
+import React, { useState } from 'react'
+import { Dialog, DialogTrigger } from '../../../ui/dialog_noclose'
+import Modal from "./MODAL_CALC"
 
 const Btn = tw.button`
     col-span-1    

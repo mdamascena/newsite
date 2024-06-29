@@ -84,7 +84,7 @@ export default function SimuladorCredLuz({setShowCalc, itemVariants}) {
                         {formatCurrency(values[0])}
                     </div>
 
-                    <motion>
+                    <div>
                         
                         <Slider
                             defaultValue={[700]}
@@ -113,7 +113,7 @@ export default function SimuladorCredLuz({setShowCalc, itemVariants}) {
                             <MotionBtn variants={itemVariants} onClick={()=>setShowCalc('PMT1400')}>R$ 1400</MotionBtn>
                             <MotionBtn variants={itemVariants} onClick={()=>setShowCalc('PMT1500')}>R$ 1500</MotionBtn>
                         </div> */}
-                    </motion>
+                    </div>
                     <div className='text-white text-center mt-6 font-light'>
                         Escolha um valor entre R$ 700 a R$ 3.000  
                     </div>

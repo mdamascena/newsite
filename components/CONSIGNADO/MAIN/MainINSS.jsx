@@ -39,7 +39,7 @@ const EmpTitle = tw.h1`
     text-[48px] 
     text-center 
     lg:text-left 
-    font-semibold
+    font-[600]
     tracking-tighter
 `;
 
@@ -54,7 +54,6 @@ const Card = tw.div`
     items-center
     
 `
-
 
 export default function MainFGTS() {
 
