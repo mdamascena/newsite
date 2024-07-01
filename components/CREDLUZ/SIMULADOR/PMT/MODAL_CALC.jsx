@@ -5,6 +5,12 @@ import tw from 'tailwind-styled-components'
 import { RiMoneyDollarCircleLine } from "react-icons/ri"
 import { HiArrowUturnLeft } from 'react-icons/hi2'
 import { IoIosCheckmarkCircle } from "react-icons/io"
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 const BtnSolicita = tw.button`
     bg-yellow-500
@@ -56,7 +62,7 @@ export default function Modal({valor, pmt, setShowCalc}){
     
     return(
 
-        <DialogContent className='sm:max-w-[500px] px-3 lg:px-5 py-5'>
+        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] px-3 lg:px-5 py-5`}>
             
             <DialogHeader className='select-none'>
                 
@@ -84,7 +90,7 @@ export default function Modal({valor, pmt, setShowCalc}){
 
                     <div className=" ml-3 justify-items-end grid">
                         <p className="text-slate-400 font-light">Simulação de crédito</p>
-                        <div className="text-blue-600 text-4xl font-[600] tracking-tight">
+                        <div className="text-blue-600 text-4xl font-semibold tracking-tight">
                             {valor}
                         </div>
                         <span className="border-b border-slate-400 border-dashed w-full"/>
