@@ -85,7 +85,7 @@ export default function PMT700({setShowCalc}){
                         </BtnVolta>
                     </div>
 
-                    <Modal valor={valorFin} pmt={valorPmt}/>
+                    <Modal valor={valorFin} pmt={valorPmt} setShowCalc={setShowCalc}/>
 
                 </Dialog>
                 

@@ -1,8 +1,8 @@
 import tw from 'tailwind-styled-components'
 import {useState} from "react"
 import { motion } from 'framer-motion'
-import { TbSquareRoundedArrowUp } from "react-icons/tb"
 import { Slider } from '../../ui/slider'
+import '../SIMULADOR/PMT/MODAL_CALC'
 
 const Btn = tw.button`
     col-span-1    
@@ -34,7 +34,6 @@ const BtnMaisValor = tw.button`
     active:scale-90 
     duration-150
 `
-
 const BtnCalc = tw.button`
     text-white
     text-xl
@@ -52,11 +51,10 @@ const BtnCalc = tw.button`
     active:scale-90 
     duration-300
 `
+const MotionBtn = motion(Btn); //Não está sendo usado
+const MotionMais = motion(BtnMaisValor); //Não está sendo usado
 
-const MotionBtn = motion(Btn);
-const MotionMais = motion(BtnMaisValor);
-
-export default function SimuladorCredLuz({setShowCalc, itemVariants}) {
+export default function Valores({setShowCalc, itemVariants}) {
     
     const [values, setValues] = useState([700]);
     
@@ -80,7 +78,7 @@ export default function SimuladorCredLuz({setShowCalc, itemVariants}) {
                 
                 <div className='rounded-lg bg-white/25 text-md pb-5 px-3 mx-1 mb-2'>
                 
-                    <div className=' text-white text-center font-medium text-3xl mx-1 py-5'>
+                    <div className=' text-white text-center font-medium tracking-tighter text-4xl mx-1 py-5'>
                         {formatCurrency(values[0])}
                     </div>
 
@@ -119,10 +117,7 @@ export default function SimuladorCredLuz({setShowCalc, itemVariants}) {
                     </div>
                     
                 </div>
-                
                 <BtnCalc onClick={()=>setShowCalc(values)}>Simular valor</BtnCalc>
-                
-
             </div>
         </div>
         

@@ -1,9 +1,9 @@
-import { DialogContent, DialogHeader, DialogDescription } from "../../../ui/dialog_noclose"
+import { DialogContent, DialogHeader, DialogDescription, DialogClose } from "../../../ui/dialog_noclose"
 import Image from "next/image"
 import LogoCrefaz from '../../../../public/img/LOGO_CREFAZ.png'
 import tw from 'tailwind-styled-components'
 import { RiMoneyDollarCircleLine } from "react-icons/ri"
-import {HiArrowUturnLeft} from 'react-icons/hi2'
+import { HiArrowUturnLeft } from 'react-icons/hi2'
 import { IoIosCheckmarkCircle } from "react-icons/io"
 
 const BtnSolicita = tw.button`
@@ -27,7 +27,6 @@ const BtnSolicita = tw.button`
     active:scale-90 
     duration-50    
 `
-
 const BtnRecalc = tw.button`
     flex 
     items-center 
@@ -47,16 +46,21 @@ const BtnRecalc = tw.button`
     duration-200
 `
 
-export default function Modal({ valor, pmt }){
+export default function Modal({valor, pmt, setShowCalc}){
+
+    const handleRecalcClick = () => {
+        setTimeout(() => {
+            setShowCalc('Valores');
+        }, 800);
+    };
     
     return(
 
-        <DialogContent className='Poppins sm:max-w-[500px] px-3 lg:px-5 py-5'>
+        <DialogContent className='sm:max-w-[500px] px-3 lg:px-5 py-5'>
             
             <DialogHeader className='select-none'>
                 
                 <DialogDescription>
-
                     <div className="bg-slate-200 p-2 rounded-md text-center">
                         <p className="text-slate-400 tracking-tight text-sm">
                             Empréstimo concedido pela financeira
@@ -66,12 +70,7 @@ export default function Modal({ valor, pmt }){
                             <Image src={LogoCrefaz} width={100} alt=""/>
                         </div>
                     </div>
-
                 </DialogDescription>
-
-                <h1 className="text-slate-400 text-2xl tracking-tighter text-center">
-                    Simulação do empréstimo
-                </h1>
 
             </DialogHeader>
 
@@ -84,7 +83,7 @@ export default function Modal({ valor, pmt }){
                 <div className="col-span-5">
 
                     <div className=" ml-3 justify-items-end grid">
-                        <p className="text-slate-400 font-light">Parcelamento</p>
+                        <p className="text-slate-400 font-light">Simulação de crédito</p>
                         <div className="text-blue-600 text-4xl font-[600] tracking-tight">
                             {valor}
                         </div>
@@ -95,7 +94,7 @@ export default function Modal({ valor, pmt }){
                         </div>
                     </div>
 
-                    <div className="text-[8px] lg:text-[10px] mt-2 p-2 bg-slate-100 rounded-lg ml-2 text-end">
+                    <div className="text-[8px] lg:text-[10px] mt-2 p-2 bg-slate-200 rounded-lg ml-2 text-end">
                         <p className="text-slate-400 font-light">
                             Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
                         </p>
@@ -104,10 +103,12 @@ export default function Modal({ valor, pmt }){
                 </div>
 
                 <div className="justify-center flex col-span-6">
-                    <BtnRecalc className="w-full">
-                        <HiArrowUturnLeft className="text-2xl mr-1"/>
-                        Simular outro valor
-                    </BtnRecalc>
+                    <DialogClose asChild>
+                        <BtnRecalc className="w-full" onClick={handleRecalcClick}>
+                            <HiArrowUturnLeft className="text-2xl mr-1"/>
+                            Simular outro valor
+                        </BtnRecalc>
+                    </DialogClose>
                 </div>
                 
             </div>
@@ -123,29 +124,29 @@ export default function Modal({ valor, pmt }){
             <ul className="text-slate-400 font-light ml-12 mt-3">
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-500"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                     Sem comprovação de renda
                 </li>
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-500"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                     Possibilidade para negativado*
                 </li>
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-500"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                     Liberação no mesmo dia
                 </li>
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-500"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                     Sem taxas antecipadas
                 </li>
 
             </ul>
             
             <div className="mt-2">
-                <p className="text-slate-400 text-sm">*Crédito sujeito a análise</p>
+                <p className="text-slate-400 text-sm text-end">*Crédito sujeito a análise</p>
             </div>
             
         </DialogContent>

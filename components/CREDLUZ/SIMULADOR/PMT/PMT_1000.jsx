@@ -60,7 +60,7 @@ export default function Valor1000({setShowCalc}){
                         <BtnVoltar setShowCalc={setShowCalc}/>
                     </div>
                     
-                    <Modal valor={valorFin} pmt={valorPmt}/>
+                    <Modal valor={valorFin} pmt={valorPmt} setShowCalc={setShowCalc}/>
 
                 </Dialog>
                 
