@@ -62,7 +62,7 @@ export default function Modal({valor, pmt, setShowCalc}){
     
     return(
 
-        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] px-3 lg:px-5 py-5`}>
+        <DialogContent className={`sm:max-w-[500px] px-3 lg:px-5 py-5 Poppins`}>
             
             <DialogHeader className='select-none'>
                 
@@ -83,7 +83,7 @@ export default function Modal({valor, pmt, setShowCalc}){
             <div className=" rounded-lg p-3 grid grid-cols-6 border-2 border-dashed border-slate-300">
 
                 <div className="overflow-hidden bg-blue-600 rounded-lg text-blue-200/50 col-span-1 justify-center items-center flex">
-                    <RiMoneyDollarCircleLine className="text-9xl relative bottom-8 right-6"/>
+                    <RiMoneyDollarCircleLine className="text-9xl relative"/>
                 </div>
 
                 <div className="col-span-5">
@@ -100,7 +100,7 @@ export default function Modal({valor, pmt, setShowCalc}){
                         </div>
                     </div>
 
-                    <div className="text-[8px] lg:text-[10px] mt-2 p-2 bg-slate-200 rounded-lg ml-2 text-end">
+                    <div className="text-[8px] lg:text-[10px] mt-2 p-2 bg-slate-200 rounded-lg ml-2 text-justify">
                         <p className="text-slate-400 font-light">
                             Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
                         </p>
@@ -108,7 +108,10 @@ export default function Modal({valor, pmt, setShowCalc}){
 
                 </div>
 
-                <div className="justify-center flex col-span-6">
+                
+                
+            </div>
+            <div className="justify-center flex -mt-4">
                     <DialogClose asChild>
                         <BtnRecalc className="w-full" onClick={handleRecalcClick}>
                             <HiArrowUturnLeft className="text-2xl mr-1"/>
@@ -116,18 +119,18 @@ export default function Modal({valor, pmt, setShowCalc}){
                         </BtnRecalc>
                     </DialogClose>
                 </div>
-                
-            </div>
 
             <h2 className="text-center text-slate-400">
                 Para solicitar esse valor, clique em botão abaixo
             </h2>
 
             <div className="justify-center flex">
-                <BtnSolicita className="animate-pulse duration-700 shadow-lg hover:animate-none">Solicitar Empréstimo</BtnSolicita>
+                <BtnSolicita className="animate-pulse duration-700 shadow-lg hover:animate-none">
+                    Solicitar Empréstimo
+                </BtnSolicita>
             </div>
 
-            <ul className="text-slate-400 font-light ml-12 mt-3">
+            <ul className="text-slate-400 font-light ml-6 mt-3">
 
                 <li className="flex items-center">
                     <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
@@ -146,7 +149,7 @@ export default function Modal({valor, pmt, setShowCalc}){
 
                 <li className="flex items-center">
                     <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
-                    Sem taxas antecipadas
+                    Limite de até R$ 3.300,00*
                 </li>
 
             </ul>

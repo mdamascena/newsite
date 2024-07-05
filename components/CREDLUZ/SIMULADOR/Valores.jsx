@@ -87,7 +87,7 @@ export default function Valores({setShowCalc, itemVariants}) {
                         <Slider
                             defaultValue={[700]}
                             min={700}
-                            max={3000}
+                            max={3300}
                             step={100}
                             onValueChange={handleValueChange}
                             value={values}

@@ -68,7 +68,7 @@ export default function MainHome() {
                     <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
                         Seu Empréstimo ONLINE
                     </h1>
-                    <h1 className="text-white lg:text-5xl text-2xl text-center lg:text-left font-normal tracking-tight">
+                    <h1 className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight">
                         com múltiplas opções de créditos
                     </h1>
                 </div>

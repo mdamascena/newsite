@@ -19,45 +19,57 @@ export default function MainPrincipal() {
   return (
     <main className={mainFontFamily.className}>
         <section className="bgMainPrincipal">
+            
             <div className="bgBrasaoFast">
+                
                 <div className="pb-5 lg:pb-0 pt-20 px-8 md:px-16 lg:px-32">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 poppins">
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                        
                         <figure className="mx-auto block lg:hidden mt-2">
                             <Image src={light} width={200} height={160} alt="" />
                         </figure>
 
-                        <div className="col-span-1 lg:my-auto lg:ml-14">
-                            <h1 className="text-[2rem] lg:text-[3.0rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-white">
-                                <div className="text-yellow-400">
-                                    Crédito Pessoal
-                                </div>
-                                <div className="lg:flex items-center">
-                                    Débito na conta de<div className="text-7xl ml-2 tracking-tighter" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
-                                </div>
+                        <figure className=" mt-8 hidden lg:flex justify-end">
+                            <Image className="" width={490} src={cel} alt="" />
+                        </figure>
+
+                        <div className="col-span-1 lg:my-auto select-none">
+
+                            <h1 className="text-[2.5rem] lg:text-[3.8rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-yellow-400 saturate-200">
+                                Empréstimo
                             </h1>
 
-                            <div className="text-white ml-5 lg:ml-0">
+                            <h2 className="lg:flex items-center text-[1.8rem] lg:text-[2.8rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-white">
+                                Débito na conta de<div className="text-7xl ml-2 tracking-tighter font-semibold" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
+                            </h2>
+
+                            <div className="text-white ml-2 lg:ml-0">
+                                
                                 <div className="leading-5 mt-5 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg ">Sem comprovação de renda</span>
                                 </div>
+                                
                                 <div className="leading-5 mt-2 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg">Possibilidade para negativados *</span>
                                 </div>
+                                
                                 <div className="leading-5 mt-2 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg">Liberação em menos de 24h **</span>
                                 </div>
+                                
+                                <div className="leading-5 mt-2 text-md flex items-center">
+                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 lg:text-lg">Limite de até R$ 3.300,00 *</span>
+                                </div>
+
                             </div>
 
-                            {/*<h3 className="text-white leading-[20px] mt-5 text-md md:text-xl md:text-left text-center">
-                                Sem comprovação de renda e com possibilidade de
-                                aprovação para negativados. Liberação no mesmo dia.
-                            </h3>*/}
-
                             <div className="text-center md:text-left">
-                                <BtnYellow nome="Simule aqui" />
+                                <BtnYellow nome="Solicite aqui" />
                             </div>
 
                             <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">
@@ -66,9 +78,7 @@ export default function MainPrincipal() {
                             </div>
                         </div>
 
-                        <figure className="mx-auto mt-8 hidden lg:block">
-                            <Image width={490} src={cel} alt="" />
-                        </figure>
+                        
                     </div>
                 </div>
             </div>

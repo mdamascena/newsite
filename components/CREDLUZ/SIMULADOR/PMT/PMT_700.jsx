@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import tw from 'tailwind-styled-components'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
 import { Dialog, DialogTrigger} from '../../../ui/dialog'

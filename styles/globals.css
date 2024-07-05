@@ -150,9 +150,9 @@ a {
 
 .bgBrasaoFast{
   background-image: url(../public/img/bg-brasao.png);
-  background-size: 90vh;
+  background-size: 120vh;
   background-repeat: no-repeat;
-  background-position: 445px 80px;
+  background-position: 310px 80px;
 }
 
 .bgBrasao{

@@ -14,7 +14,7 @@ const BtnCalc = tw.button`
     from-yellow-300 
     to-amber-500
     text-xl 
-    lg:text-2xl 
+    
     lg:py-3
     lg:px-12
     py-3

@@ -37,7 +37,7 @@ export default function Descricao(){
                         </p>
                         <p>
                             No mesmo dia você já fica sabendo se o seu crédito foi pré-aprovado. 
-                            Você escolhe, até R$1.500,00 e ainda pode parcelar em até 22 vezes.
+                            Você escolhe, até R$ 3.300,00 e ainda pode parcelar em até 22 vezes.
                         </p>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ export default function Descricao(){
                         Sem Aperto
                     </h5>
                     <p className="text-sm leading-tight">
-                        Limite de até R$ 1.500,00 parcelado em até 22 vezes com parcelas fixas. Sem susto!
+                        Limite de até R$ 3.300,00 parcelado em até 22 vezes com parcelas fixas. Sem susto!
                     </p>
                 </Card>
             </div>

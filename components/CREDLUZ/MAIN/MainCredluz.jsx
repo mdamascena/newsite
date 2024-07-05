@@ -23,30 +23,42 @@ export default function MainCredluz() {
                             <Image className="" src={light} width={185} alt="" />
                         </figure>
 
-                        <div className="col-span-1 my-auto text-white">
+                        <div className="col-span-1 my-auto text-white select-none">
                             <div className="hidden lg:block">
+                                
                                 <h1 className="text-yellow-400 text-6xl tracking-tighter font-semibold">Empréstimo</h1>
-                                <h1 className="text-yellow-400 text-5xl font-semibold tracking-tighter">
-                                    Pessoal <span className="font-extralight text-white">Online</span>
-                                </h1>
+                                
+                                <h2 className="font-semibold tracking-tighter text-4xl mb-3 lg:mb-0 flex items-center">Débito na conta de 
+                                    <span className="text-6xl ml-2" style={{ textShadow: "0px 0px 20px white" }}>LUZ</span>
+                                </h2>
                                 <div className="bg-yellow-400 p-[1px] lg:my-5 rounded-full"/>
 
-                                <h2 className="font-semibold tracking-tighter text-4xl mb-3 lg:mb-0 flex items-center">Débito na conta de 
-                                    <span className="text-5xl ml-2" style={{ textShadow: "0px 0px 20px white" }}>LUZ</span>
-                                </h2>
                                 <div className="leading-5 mt-5 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 text-lg">Sem comprovação de renda</span>
                                 </div>
+                                
                                 <div className="leading-5 mt-2 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
-                                    <span className="ml-2 text-lg">Possibilidade para negativados</span>
+                                    <span className="ml-2 text-lg">Possibilidade para negativados *</span>
                                 </div>
+                                
                                 <div className="leading-5 mt-2 text-md flex items-center">
                                     <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
-                                    <span className="ml-2 text-lg">Liberação em menos de 24h</span>
+                                    <span className="ml-2 text-lg">Liberação em menos de 24h **</span>
+                                </div>
+                                
+                                <div className="leading-5 mt-2 text-md flex items-center">
+                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 text-lg">Limite de até R$ 3.300,00 *</span>
+                                </div>
+
+                                <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">
+                                    <p>* Crédito sujeito à análise</p>
+                                    <p>** Liberações ocorrem em dias úteis</p>
                                 </div>
                             </div>
+                            
                             <div className="lg:hidden mb-7 text-center">
                                 <h1 className="text-white font-bold text-2xl tracking-tighter">
                                     Empréstimo <span className="font-light">Pessoal Online</span>
@@ -56,13 +68,12 @@ export default function MainCredluz() {
                             </div>
                         </div>
 
-                        <figure className="mt-10 col-span-1 mx-2 hidden lg:block">
+                        <figure className="mt-10 col-span-1 mx-2 hidden lg:flex justify-center">
                             <Image width={450} src={cel} alt="" />
                         </figure>
 
-                        <div className="col-span-1 my-auto mx-2.5 lg:mx-1">
+                        <div className="col-span-1 my-auto mx-2.5 lg:mx-1 justify-center flex">
                             <Simulador/>
-                            
                         </div>
                         
                     </div>
