@@ -62,7 +62,7 @@ export default function Modal({valor, pmt, setShowCalc}){
     
     return(
 
-        <DialogContent className={`sm:max-w-[500px] px-3 lg:px-5 py-5 Poppins`}>
+        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] px-3 lg:px-5 py-5`}>
             
             <DialogHeader className='select-none'>
                 
