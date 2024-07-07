@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import logoBranco from '../../../public/img/LOGO_FULL_BRANCO.png'
 import tw from 'tailwind-styled-components'
-import Pass from '../FORM/Pass'
+import Login from '../FORM/Login'
 import Reset from '../FORM/Reset'
 import { useState } from 'react'
 import { BsWhatsapp } from "react-icons/bs"
@@ -54,6 +54,7 @@ const BtnHelp = tw.button`
 export default function MainCONTA() {
 
     const [btnConta, setBtnConta] = useState('Simular empréstimo')
+    const [mudaComp, setMudaComp] = useState(true);
     
     return (
         <main>
@@ -77,8 +78,9 @@ export default function MainCONTA() {
 
             <div className='flex justify-center -my-40'>
                 <div className='bg-white rounded-md shadow-lg p-8 -top-10 lg:w-[35%] w-[90%]'>
-                    <Pass/> 
-                    <Button className='hover:scale-110 duration-100'>Marcelo</Button>
+                    
+                    
+                    
                 </div>
             </div>
 

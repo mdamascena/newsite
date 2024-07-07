@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import celular from '../../../public/img/cel_principal_mockap.png'
 import{HiOutlineClipboardDocumentList} from 'react-icons/hi2'
 import {PiSignature} from 'react-icons/pi'

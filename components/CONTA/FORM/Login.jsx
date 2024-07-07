@@ -3,6 +3,7 @@ import tw from 'tailwind-styled-components'
 import InputSimples from '../../GERAL/FORM/InputSimples'
 import { UserOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
+import Link from 'next/link'
 
 const Inp = tw.input`
     focus:outline-none
@@ -20,7 +21,7 @@ const Inp = tw.input`
     w-full
 `
 
-export default function FormReset() {
+export default function Login() {
 
     return (
         <div>
@@ -33,6 +34,9 @@ export default function FormReset() {
                 <span className='absolute left-0 p-5 pointer-events-none focus:translate-y-3'>Nome</span>
             </div>
             
+            <div className='text-center '>
+                Esqueci minha senha
+            </div>
             
         </div>
     )

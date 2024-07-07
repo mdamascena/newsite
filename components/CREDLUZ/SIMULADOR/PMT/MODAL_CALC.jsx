@@ -52,11 +52,11 @@ const BtnRecalc = tw.button`
     duration-200
 `
 
-export default function Modal({valor, pmt, setShowCalc}){
+export default function Modal({prazo, parcela, valor, showSimulador }){
 
     const handleRecalcClick = () => {
         setTimeout(() => {
-            setShowCalc('Valores');
+            showSimulador();
         }, 800);
     };
     
@@ -90,13 +90,16 @@ export default function Modal({valor, pmt, setShowCalc}){
 
                     <div className=" ml-3 justify-items-end grid">
                         <p className="text-slate-400 font-light">Simulação de crédito</p>
-                        <div className="text-blue-600 text-4xl font-semibold tracking-tight">
-                            {valor}
+                        <div className="text-blue-600 text-4xl font-[700] tracking-tight">
+                            {Number(valor).toLocaleString('pt-BR', {style:'currency', currency: 'BRL',})}
                         </div>
                         <span className="border-b border-slate-400 border-dashed w-full"/>
                             
                         <div className="text-blue-700 font-light mt-1 w-40 text-lg bg-blue-200 rounded-md">
-                            <div className="text-center">{pmt}</div>
+                            <div className="text-center">
+                                {prazo}X 
+                                de R$ {Number(parcela).toLocaleString('pt-BR')}
+                            </div>
                         </div>
                     </div>
 
@@ -130,26 +133,33 @@ export default function Modal({valor, pmt, setShowCalc}){
                 </BtnSolicita>
             </div>
 
-            <ul className="text-slate-400 font-light ml-6 mt-3">
+            <ul className="text-slate-400 font-light mx-5 mt-3">
 
-                <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
+                <li className="flex items-center justify-between">
+                    
                     Sem comprovação de renda
+                    <div className="border-b border-dashed border-slate-400 lg:w-24"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                 </li>
 
-                <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
+                <li className="flex items-center justify-between">
                     Possibilidade para negativado*
+                    <div className="border-b border-dashed border-slate-400 lg:w-24"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                 </li>
 
-                <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
+                <li className="flex items-center justify-between">
+                    
                     Liberação no mesmo dia
+                    <div className="border-b border-dashed border-slate-400 lg:w-24"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                 </li>
 
-                <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
+                <li className="flex items-center justify-between">
+                    
                     Limite de até R$ 3.300,00*
+                    <div className="border-b border-dashed border-slate-400 lg:w-24"/>
+                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-yellow-400"/>
                 </li>
 
             </ul>
