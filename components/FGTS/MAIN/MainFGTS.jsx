@@ -10,8 +10,7 @@ import Analise from '../../GERAL/ANALISE/Analise'
 const BtnCalc = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
-    to-amber-500
-    lg:text-2xl 
+    to-amber-500 
     text-xl 
     lg:px-32 
     py-3
@@ -22,7 +21,7 @@ const BtnCalc = tw.button`
     text-white
     mt-8
     shadow-md
-    shadow-amber-400 
+    shadow-amber-400/50
     border-b-2 
     border-amber-300
     focus:outline-none
@@ -37,7 +36,7 @@ const BtnCalc = tw.button`
 
 const EmpTitle = tw.h1`
     text-blue-600 
-    lg:text-6xl
+    lg:text-7xl
     text-[48px] 
     text-center 
     lg:text-left 

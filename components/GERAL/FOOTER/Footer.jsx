@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import LogoFB from '../../../public/img/LOGO_FULL_BRANCO.png'
 import tw from 'tailwind-styled-components'
-import modalSuporte from '../MODAL/ModalSuporte'
 import { SiInstagram } from "react-icons/si"
 import { ImFacebook } from 'react-icons/im'
 import { SiTiktok } from 'react-icons/si'
 import { MdHeadsetMic } from 'react-icons/md'
 import { Poppins } from 'next/font/google'
+import ModalFC from '../MODAL/ModalFaleConosco'
+import { Dialog, DialogTrigger } from '../../ui/dialog'
 
 const mainFontFamily = Poppins({
     weight: ['100','200','300','400','500','600','700','800','900'],
@@ -55,7 +56,7 @@ export default function Footer() {
                 <div className="col-span-1 my-5 px-2 text-center mx-4">
                     <h4 className="text-blue-400 mb-5">Central de Atendimento</h4>
 
-                    <div className='flex container justify-center'>
+                    <div className='flex justify-center'>
                         <MdHeadsetMic className='text-blue-600 text-3xl mr-1' />
                         <p className="text-white text-2xl cursor-pointer">0800-878-9853</p>
                     </div>
@@ -66,6 +67,7 @@ export default function Footer() {
                 </div>
 
                 <div className="col-span-1 my-5 mx-4">
+                    
                     <h4 className="text-center text-blue-400">
                         Siga-nos nas nossas Redes Sociais
                     </h4>
@@ -82,15 +84,26 @@ export default function Footer() {
                 </div>
 
                 <div className="col-span-1 my-5 text-center mx-4">
+                    
                     <h4 className="text-blue-400">
                         Fale conosco
                     </h4>
+                    
+                    <Dialog>
+                        
+                        <DialogTrigger asChild>
+                            <BtnSocial className='w-40 mx-auto my-3 py-2' >
+                                Suporte
+                            </BtnSocial>
+                        </DialogTrigger>
 
-                    <BtnSocial className='w-40 mx-auto my-3 py-2' >Suporte</BtnSocial>
-
+                        <ModalFC/>
+                    </Dialog>
+                      
                     <p className="text-white text-[13px]">
                         Respondemos em horário comercial, em um prazo de até 48h úteis.
                     </p>
+
                 </div>
 
             </div>
@@ -128,8 +141,7 @@ export default function Footer() {
                 <p className="text-blue-400 text-[10pt] text-center p-2">
                     ©ValoReal - Todos os direitos reservados - VALOREAL INTERMEDIAÇÃO DE NEGOCIOS LTDA-ME
                 </p>
-            </div>
-            <modalSuporte/>           
+            </div>         
         </Rodape>
     )
 }

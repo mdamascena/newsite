@@ -14,17 +14,17 @@ const BtnCalc = tw.button`
     from-yellow-300 
     to-amber-500
     text-xl 
-    
-    lg:py-3
-    lg:px-12
+    w-96
+    lg:py-4
     py-3
     lg:flex-none
     flex-1
     rounded-xl
     text-white
-    my-5
+    lg:mt-8
+    my-8
     shadow-md
-    shadow-amber-400 
+    shadow-amber-400/50 
     border-b-2 
     border-amber-300
     focus:outline-none
@@ -40,7 +40,7 @@ const BtnCalc = tw.button`
 export default function SectionDescFGTS() {
 
     return (
-        <section className="bg-slate-50 select-none">
+        <section className="bg-slate-50 select-none lg:pt-16">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 mx-5 lg:mx-36 lg:px-6">
                 <div className="col-span-1 lg:order-2 lg:ml-10 lg:my-auto">
@@ -51,19 +51,19 @@ export default function SectionDescFGTS() {
 
                     <ul className="mt-5 lg:text-xl text-md">
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mr-2 my-auto" />
                             <span className="my-auto text-slate-400">Ser maior de 18 anos</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mr-2 my-auto" />
                             <span className="my-auto text-slate-400">Possuir conta bancária</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mr-2 my-auto" />
                             <span className="my-auto text-slate-400">Ter saldo em conta do FGTS</span>
                         </li>
                         <li className="flex my-2">
-                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mx-2 my-auto" />
+                            <FaCheck className="p-1 rounded-full text-blue-600 bg-blue-200 text-3xl mr-1 lg:mr-2 my-auto" />
                             <span className="my-auto text-slate-400">Ser optante do Saque-Aniversário</span>
                         </li>
                     </ul>
@@ -73,8 +73,8 @@ export default function SectionDescFGTS() {
                     </div>
                 </div>
 
-                <figure className="col-span-1 lg:order-1 px-11 lg:px-0 flex content-end lg:justify-end justify-center">
-                    <Image width={650} height={665} src={imgFGTS} alt="" />
+                <figure className="col-span-1 lg:order-1 px-11 lg:px-0 content-end lg:justify-end justify-center">
+                    <Image src={imgFGTS} alt="" />
                 </figure>
 
             </div>

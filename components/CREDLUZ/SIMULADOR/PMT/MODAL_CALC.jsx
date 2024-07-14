@@ -67,12 +67,12 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
             <DialogHeader className='select-none'>
                 
                 <DialogDescription>
-                    <div className="bg-slate-200 p-2 rounded-md text-center">
-                        <p className="text-slate-400 tracking-tight text-sm">
+                    <div className="bg-slate-200 p-2 rounded-md text-center lg:flex justify-center lg:py-4">
+                        <p className="text-slate-400 tracking-tight text-md">
                             Empréstimo concedido pela financeira
                         </p>
 
-                        <div className="flex justify-center">
+                        <div className="flex justify-center lg:ml-2">
                             <Image src={LogoCrefaz} width={100} alt=""/>
                         </div>
                     </div>
@@ -93,12 +93,12 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
                         <div className="text-blue-600 text-4xl font-[700] tracking-tight">
                             {Number(valor).toLocaleString('pt-BR', {style:'currency', currency: 'BRL',})}
                         </div>
+                        
                         <span className="border-b border-slate-400 border-dashed w-full"/>
                             
                         <div className="text-blue-700 font-light mt-1 w-40 text-lg bg-blue-200 rounded-md">
                             <div className="text-center">
-                                {prazo}X 
-                                de R$ {Number(parcela).toLocaleString('pt-BR')}
+                                {prazo}X de R$ {Number(parcela).toLocaleString('pt-BR')}
                             </div>
                         </div>
                     </div>

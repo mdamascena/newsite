@@ -2,7 +2,6 @@ import tw from 'tailwind-styled-components'
 import {useState} from "react"
 import { motion } from 'framer-motion'
 import { Slider } from '../../ui/slider'
-import '../SIMULADOR/PMT/MODAL_CALC'
 
 const Btn = tw.button`
     col-span-1    
@@ -94,18 +93,18 @@ export default function Valores({showSimulador, itemVariants}) {
                             aria-label="Range Slider"
                         />
                         
-                        {/*<div className="grid grid-cols-3 gap-1 mb-1">
-                            <MotionBtn variants={itemVariants} onClick={()=>setShowCalc('PMT700')}>R$ 700</MotionBtn>
-                            <MotionBtn variants={itemVariants} onClick={()=>setShowCalc('PMT800')}>R$ 800</MotionBtn>
-                            <MotionBtn variants={itemVariants} onClick={()=>setShowCalc('PMT900')}>R$ 900</MotionBtn>
-                        </div>*/}
                     </div>
+                    
                     <div className='text-white text-center mt-6 font-light'>
-                        Escolha um valor entre R$ 700 a R$ 3.000  
+                        Escolha entre R$ 700,00 a R$ 3.300,00  
                     </div>
                     
                 </div>
-                <BtnCalc onClick={()=>showSimulador(values[0])}>Simular valor</BtnCalc>
+
+                <BtnCalc onClick={()=>showSimulador(values[0])}>
+                    Simular valor
+                </BtnCalc>
+                
             </div>
         </div>
         

@@ -9,8 +9,7 @@ const BtnSolic = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
     to-amber-500
-    text-xl 
-    lg:text-2xl 
+    text-xl
     py-3
     flex-1
     rounded-xl

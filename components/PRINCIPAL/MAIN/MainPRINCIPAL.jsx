@@ -39,15 +39,14 @@ const BtnHome = tw.button`
   from-yellow-300 
   to-amber-500
   mx-auto
-  text-2xl
-  lg:py-2
+  text-xl
   lg:px-32
   lg:mx-0
   mb-14
-  py-2
-  px-20
-  flex
-  rounded-2xl
+  py-4
+  lg:w-[450px]
+  w-full
+  rounded-xl
   text-white 
   mt-8
   hover:to-amber-600 

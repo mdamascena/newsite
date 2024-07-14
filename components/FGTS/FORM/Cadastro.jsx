@@ -58,6 +58,7 @@ const Cadastro = () => {
                         help={formik.touched.name && formik.errors.name}
                         className='block'
                         rules={[{ required: true, message: "Nome não foi preenchido" }]}>
+                        
                         <Input
                             name='name'
                             type='text'
@@ -78,6 +79,7 @@ const Cadastro = () => {
                         rules={[{ required: true, message: "CPF não foi preenchido" }]}
                         validateStatus={formik.errors.cpf && formik.touched.cpf ? 'error' : ''}
                         help={formik.touched.cpf && formik.errors.cpf}>
+                        
                         <InputMask
                             mask="999.999.999-99"
                             maskChar={null}

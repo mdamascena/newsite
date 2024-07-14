@@ -63,8 +63,8 @@ export default function PMTGERAL({valor, showSimulador}){
             <h2 className='text-center mb-2 poppins text-white'>Selecione o prazo desejado</h2>
 
             <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1 mb-2'>
+                
                 <Dialog>
-                    
                     <div className="grid grid-cols-2 gap-1">
                         
                         {data && data.map((item, index) => (
@@ -84,8 +84,8 @@ export default function PMTGERAL({valor, showSimulador}){
                     </div>
                     
                     <Modal parcela={selectedParcela} prazo={selectedPrazo} valor={selectedValor} showSimulador={() => showSimulador('Valores')}/>
-
                 </Dialog>
+                
             </div>
             
         </div>
