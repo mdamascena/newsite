@@ -4,6 +4,12 @@ import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabe
 import InputMask from 'react-input-mask';
 import { Textarea } from "../../ui/textarea";
 import tw from 'tailwind-styled-components';
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 const Btn = tw.button`
     bg-sky-500
@@ -28,12 +34,10 @@ const Btn = tw.button`
     duration-150    
 `
 
-
-
 export default function ModalFaleConosco(){
     
     return(
-        <DialogContent className='p-1 border-0 Poppins mx-5'>
+        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] p-1 border-0 Poppins`}>
             
             <DialogHeader className='bg-gradient-to-r from-blue-950 to-blue-800 saturate-150 rounded-t-md p-4'>
                 <h1 className='text-white text-xl'>Fale conosco</h1>
