@@ -4,6 +4,7 @@ import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabe
 import InputMask from 'react-input-mask';
 import { Textarea } from "../../ui/textarea";
 import tw from 'tailwind-styled-components';
+import { LiaTelegramPlane } from "react-icons/lia";
 import { Poppins } from 'next/font/google'
 
 const mainFontFamily = Poppins({
@@ -18,9 +19,6 @@ const Btn = tw.button`
     items-center 
     justify-center
     text-white
-    lg:text-md
-    text-sm 
-    tracking-tighter
     w-full
     lg:py-4
     py-3
@@ -79,7 +77,11 @@ export default function ModalFaleConosco(){
                 <Textarea className='bg-slate-200 h-56' placeholder='Escreva aqui sua mensagem' />
                 
                 <DialogFooter>
-                    <Btn className="mt-3">Enviar</Btn>
+                    <Btn className="mt-3">
+                        <LiaTelegramPlane className="mr-2 text-xl" />
+                        Enviar
+                        
+                    </Btn>
                 </DialogFooter>
             </div>
             
