@@ -7,7 +7,7 @@ import { SiTiktok } from 'react-icons/si'
 import { MdHeadsetMic } from 'react-icons/md'
 import { Poppins } from 'next/font/google'
 import ModalFC from '../MODAL/ModalFaleConosco'
-import { Dialog, DialogTrigger } from '../../ui/dialog'
+import { Dialog, DialogTrigger } from '../../ui/dialog_closeWhite'
 
 const mainFontFamily = Poppins({
     weight: ['100','200','300','400','500','600','700','800','900'],

@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader,DialogPortal } from "../../ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader} from "../../ui/dialog_closeWhite";
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/select";
 import InputMask from 'react-input-mask';
@@ -12,7 +12,7 @@ const mainFontFamily = Poppins({
 });
 
 const Btn = tw.button`
-    bg-sky-500
+    bg-blue-600
     saturate-150
     flex 
     items-center 
@@ -21,14 +21,13 @@ const Btn = tw.button`
     lg:text-md
     text-sm 
     tracking-tighter
-    lg:w-64
-    w-40
+    w-full
     lg:py-4
     py-3
     lg:px-5 
     rounded-md
-    active:bg-sky-900
-    hover:bg-sky-700
+    active:bg-blue-900
+    hover:bg-blue-800
     hover:scale-105
     active:scale-90 
     duration-150    
@@ -37,13 +36,14 @@ const Btn = tw.button`
 export default function ModalFaleConosco(){
     
     return(
-        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] p-1 border-0 Poppins`}>
+        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] p-0 border-0 Poppins`}>
             
-            <DialogHeader className='bg-gradient-to-r from-blue-950 to-blue-800 saturate-150 rounded-t-md p-4'>
+            <DialogHeader closed={false} className='bg-gradient-to-r from-blue-950 to-blue-800 saturate-150 rounded-t-md p-4'>
                 <h1 className='text-white text-xl'>Fale conosco</h1>
                 <DialogDescription className='text-blue-200 mt-0'>
                     Opá, diga o que precisa!
                 </DialogDescription>
+                
             </DialogHeader>
 
             <div className="mx-2 gap-y-2 grid p-3">
@@ -76,10 +76,10 @@ export default function ModalFaleConosco(){
                     Diga o que deseja:
                 </h1>
                 
-                <Textarea className='bg-slate-200 h-56' placeholder='ekdmekmde' />
+                <Textarea className='bg-slate-200 h-56' placeholder='Escreva aqui sua mensagem' />
                 
                 <DialogFooter>
-                    <Btn>ddedede</Btn>
+                    <Btn className="mt-3">Enviar</Btn>
                 </DialogFooter>
             </div>
             
