@@ -6,6 +6,8 @@ import { RiMoneyDollarCircleLine } from "react-icons/ri"
 import { HiArrowUturnLeft } from 'react-icons/hi2'
 import { IoIosCheckmarkCircle } from "react-icons/io"
 import { BsFillCalculatorFill } from "react-icons/bs"
+import { FaCheck } from "react-icons/fa6";
+import { BiMoneyWithdraw } from "react-icons/bi";
 import { Poppins } from 'next/font/google'
 
 const mainFontFamily = Poppins({
@@ -23,8 +25,8 @@ const BtnSolicita = tw.button`
     rounded-md
     mt-2
     bg-amber-400
-    active:bg-blue-600
-    hover:bg-blue-600
+    active:bg-amber-600
+    hover:bg-amber-600
     hover:scale-105
     active:scale-90 
     duration-200  
@@ -34,13 +36,15 @@ const BtnRecalc = tw.button`
     items-center 
     justify-center 
     
-    text-amber-400
+    text-yellow-400
     bg-white 
     py-3 
     px-2
     rounded-md
     mt-2
     hover:scale-105
+    active:bg-white/30
+    hover:bg-white/40
     active:scale-90 
     duration-200
 `
@@ -77,26 +81,41 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
 
             </DialogHeader>
 
-            <div className="py-5">
-                <p className="text-white font-light">Simulação</p>
-                       
-                <div className="flex">
-                            
-                    <div className="text-white text-6xl font-[700] tracking-tight">
-                        {/* {Number(valor).toLocaleString('pt-BR', {style:'currency', currency: 'BRL',})} */}
-                        R$ {valor}
+            <div className="">
+
+                <div className="flex items-center justify-between">
+                    
+                    <div className="py-3">
+
+                        <p className="text-white font-light mb-2">Simulação</p>
+
+                        <div className="text-white lg:text-5xl text-4xl font-[700] tracking-tight">
+                            {Number(valor).toLocaleString('pt-BR', {style:'currency', currency: 'BRL',})}
+                        </div>
+
+                        <div className="text-white lg:text-2xl text-xl flex mt-2">
+                            <div className="text-start">
+                                {prazo}X de R$ {Number(parcela).toLocaleString('pt-BR')}
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div className="text-white text-lg ml-2">
-                        <div className="text-start">
-                            {prazo} X
-                        </div>
-                        <div className="text-start">
-                            R$ {Number(parcela).toLocaleString('pt-BR')}
+                    <div className="">
+                        <div className="text-6xl bg-white/10 text-yellow-400 p-3 rounded-xl">
+                            <BiMoneyWithdraw />
                         </div>
                     </div>
 
                 </div>
+
+                <div className="lg:text-xs text-[10px]">
+                    <p className="text-white font-light">
+                        Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
+                    </p>
+                </div>
+                
+                <div className="border-b border-dashed border-white w-full my-5"/>
 
                 <div className="justify-center">
                     <BtnSolicita className="w-full">
@@ -110,42 +129,36 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
                     </DialogClose>
                 </div>
 
-                <div className="lg:text-xs text-[10px] mt-2">
-                    <p className="text-white font-light">
-                        Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
-                    </p>
-                </div>
+                
                         
             </div>
             
-            <div className="border-b border-dashed border-white w-full"/>
-
             
 
-            <ul className="text-white font-light mt-3">
+            <ul className="text-white font-light mt-3 gap-y-2 grid">
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-amber-400"/>
+                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Sem comprovação de renda
                 </li>
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-amber-400"/>
+                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Possibilidade para negativado*
                 </li>
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-amber-400"/>
+                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Liberação no mesmo dia
                 </li>
 
                 <li className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-3xl mr-1 text-amber-400"/>
+                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Limite de até R$ 3.300,00*
                 </li>
 
             </ul>
-            <div className="mt-2">
+            <div className="my-2">
                 <p className="text-white text-sm">*Crédito sujeito a análise</p>
             </div>
             

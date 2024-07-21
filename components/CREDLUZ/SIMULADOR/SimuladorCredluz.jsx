@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Valores from "./Valores"
 import PMTGERAL from "./PMT/PMT_GERAL"
 
-
 const containerVariants = { //Não está sendo usado
     hidden: { opacity: 1, scale: 0 },
     visible: { opacity: 1, scale: 1, transition: {delayChildren: 0, staggerChildren: 0.1}}
