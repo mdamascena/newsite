@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader} from "../../ui/dialog_closeWhite";
 import { Input } from "../../ui/input";
-import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/select";
+import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC";
 import InputMask from 'react-input-mask';
 import { Textarea } from "../../ui/textarea";
 import tw from 'tailwind-styled-components';
@@ -80,7 +80,6 @@ export default function ModalFaleConosco(){
                     <Btn className="mt-3">
                         <LiaTelegramPlane className="mr-2 text-xl" />
                         Enviar
-                        
                     </Btn>
                 </DialogFooter>
             </div>

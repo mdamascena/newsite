@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import LogoFB from '../../../public/img/LOGO_FULL_BRANCO.png'
 import tw from 'tailwind-styled-components'
 import { SiInstagram } from "react-icons/si"
@@ -6,8 +7,6 @@ import { ImFacebook } from 'react-icons/im'
 import { SiTiktok } from 'react-icons/si'
 import { MdHeadsetMic } from 'react-icons/md'
 import { Poppins } from 'next/font/google'
-import ModalFC from '../MODAL/ModalFaleConosco'
-import { Dialog, DialogTrigger } from '../../ui/dialog_closeWhite'
 
 const mainFontFamily = Poppins({
     weight: ['100','200','300','400','500','600','700','800','900'],
@@ -49,7 +48,8 @@ export default function Footer() {
             <h2 className="text-blue-400 lg:mx-40 mx-8 font-semibold text-xl">
                 NOSSOS CONTATOS
             </h2>
-            <hr className="border-4 border-blue-700 border-opacity-20 rounded-full h-2 lg:mx-40 mx-8" />
+
+            <hr className="border-4 border-blue-700 bg-blue-700 border-opacity-20 rounded-full h-2 lg:mx-40 mx-8" />
 
             <div className="grid lg:grid-cols-3 grid-cols-1 lg:mx-40 mx-8">
 
@@ -89,17 +89,12 @@ export default function Footer() {
                         Fale conosco
                     </h4>
                     
-                    <Dialog>
-                        
-                        <DialogTrigger asChild>
-                            <BtnSocial className='w-40 mx-auto my-3 py-2' >
-                                Suporte
-                            </BtnSocial>
-                        </DialogTrigger>
-
-                        <ModalFC/>
-                    </Dialog>
-                      
+                    <Link passHref href="/fale-conosco">
+                        <BtnSocial className='w-40 mx-auto my-3 py-2' >
+                            Suporte
+                        </BtnSocial>
+                    </Link>
+              
                     <p className="text-white text-[13px]">
                         Respondemos em horário comercial, em um prazo de até 48h úteis.
                     </p>

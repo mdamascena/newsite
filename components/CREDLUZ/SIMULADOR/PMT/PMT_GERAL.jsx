@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
 import React, { useState } from 'react'
 import { Dialog, DialogTrigger } from '../../../ui/dialog_noclose'
-import Modal from "./MODAL_CALC"
+import Modal from "./RESULT_CALC"
 
 const Btn = tw.button`
     w-full
