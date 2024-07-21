@@ -55,7 +55,7 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
     
     return(
 
-        <DialogContent className={`sm:max-w-[450px] px-5 lg:px-8 py-5 Poppins bg-[#000055ea] border-0`}>
+        <DialogContent className={`${mainFontFamily.className} sm:max-w-[450px] px-5 lg:px-8 py-5 Poppins bg-[#000055ea] border-0`}>
             
             <DialogHeader className='select-none'>
                 
