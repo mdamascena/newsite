@@ -80,13 +80,13 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
                 </DialogDescription>
 
             </DialogHeader>
-
+            
             <div className="">
 
                 <div className="flex items-center justify-between">
                     
-                    <div className="py-3">
-
+                    <div className="pb-3">
+                    
                         <p className="text-white font-light mb-2">Simulação</p>
 
                         <div className="text-white lg:text-5xl text-4xl font-[700] tracking-tight">
@@ -102,7 +102,7 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
                     </div>
 
                     <div className="">
-                        <div className="text-6xl bg-white/10 text-yellow-400 p-3 rounded-xl">
+                        <div className="text-6xl bg-blue-900 text-yellow-400 p-3 rounded-xl">
                             <BiMoneyWithdraw />
                         </div>
                     </div>
@@ -129,31 +129,27 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
                     </DialogClose>
                 </div>
 
-                
-                        
             </div>
             
-            
-
             <ul className="text-white font-light mt-3 gap-y-2 grid">
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
+                    <FaCheck className="bg-blue-900 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Sem comprovação de renda
                 </li>
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
+                    <FaCheck className="bg-blue-900 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Possibilidade para negativado*
                 </li>
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
+                    <FaCheck className="bg-blue-900 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Liberação no mesmo dia
                 </li>
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-white/10 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
+                    <FaCheck className="bg-blue-900 p-1 text-2xl rounded-lg text-yellow-400 mr-2"/>
                     Limite de até R$ 3.300,00*
                 </li>
 
