@@ -1,5 +1,8 @@
 import tw from 'tailwind-styled-components'
 import FormCF from '../FORM/Form'
+import { HiOutlineArrowLongLeft } from "react-icons/hi2"
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Title = tw.div`
     text-blue-700
@@ -13,11 +16,22 @@ const Title = tw.div`
 
 export default function MainFC() {
 
+    const router = useRouter();
+    const handleBack = () => {
+        router.back();
+    };
+
     return (
         <main>
+            
             <div className="px-6 lg:px-44 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
-
+                
                 <div className='lg:my-auto  col-span-1'>
+                    
+                    <button className='flex items-center lg:bottom-20 relative text-blue-500 bg-blue-50 lg:rounded-lg rounded-md py-1 px-4' onClick={handleBack}>
+                        <HiOutlineArrowLongLeft className='mr-2' />
+                        Voltar
+                    </button>
 
                     <div className='py-5'>
                         <Title>

@@ -9,7 +9,6 @@ import tw from 'tailwind-styled-components'
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-
 const NumCard = tw.span`
     relative 
     bottom-52
@@ -22,7 +21,6 @@ const NumCard = tw.span`
     via-blue-600/80
     to-blue-400
 `
-
 export default function ComoFunciona(){
 
     const [scrollCF, setScrollCF] = useState(' -translate-x-[150px] -translate-y-full opacity-0');

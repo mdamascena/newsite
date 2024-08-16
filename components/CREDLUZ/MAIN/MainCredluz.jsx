@@ -34,22 +34,22 @@ export default function MainCredluz() {
                                 <div className="bg-yellow-400 p-[1px] lg:my-5 rounded-full"/>
 
                                 <div className="leading-5 mt-5 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 text-lg">Sem comprovação de renda</span>
                                 </div>
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 text-lg">Possibilidade para negativados *</span>
                                 </div>
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
-                                    <span className="ml-2 text-lg">Liberação em menos de 24h **</span>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <span className="ml-2 text-lg">Liberação no mesmo dia **</span>
                                 </div>
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 text-lg">Limite de até R$ 3.300,00 *</span>
                                 </div>
 

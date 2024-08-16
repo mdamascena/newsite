@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       fontFamily:{
-        sans:['var(font-poppins)']
+        sans: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -26,7 +26,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        btncalc: '#000055ea',
+        btncalc: '#000055',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

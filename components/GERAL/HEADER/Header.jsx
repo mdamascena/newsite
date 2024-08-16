@@ -30,7 +30,6 @@ const Dropdown = tw.div`
     bg-white 
     shadow-md
 `
-
 const BtnMenu = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
@@ -54,8 +53,6 @@ const BtnMenu = tw.button`
     active:scale-90
     duration-150
 `;
-
-
 
 const LiDrop = tw.li`
     cursor-pointer 

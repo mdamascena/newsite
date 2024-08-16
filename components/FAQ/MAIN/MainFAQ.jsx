@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ModalidadesFAQ from '../MODALIDADE/ModalidadesFAQ';
@@ -23,14 +24,24 @@ const InputSearch = tw.input`
     p-3 
     lg:p-4 
     w-[40vh] 
-    lg:w-[80vh] 
+    lg:w-[30rem] 
     rounded-xl 
     lg:rounded-2xl 
     bg-blue-500/50
-`
+`;
 
-export default function MainFAQ(){
-    return(
+export default function MainFAQ() {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const clearInput = () => {
+        setInputValue('');
+    };
+
+    return (
         <main className={mainFontFamily.className}>
             <div className='bgMainPrincipal select-none'>
                 <div className='text-white lg:py-44 py-36 px-4 lg:px-44 text-center'>
@@ -41,16 +52,25 @@ export default function MainFAQ(){
                     <form className='my-5'>
                         <div className='relative flex items-center justify-center'>
                             <div className='flex justify-end items-center'>
-                                <IoCloseOutline className='absolute text-4xl mr-3 cursor-pointer hidden'/>
-                                <CiSearch className='absolute text-4xl mr-3 cursor-pointer'/>
-                                <InputSearch type='text' name='search' autoComplete='off' placeholder='Digite aqui sua dúvida'/>
+                                {inputValue ? (
+                                    <IoCloseOutline className='absolute text-4xl mr-3 cursor-pointer' onClick={clearInput}/>
+                                ) : (
+                                    <CiSearch className='absolute text-4xl mr-3 cursor-pointer'/>
+                                )}
+                                <InputSearch 
+                                    type='text' 
+                                    name='search' 
+                                    autoComplete='off' 
+                                    placeholder='Digite aqui sua dúvida' 
+                                    value={inputValue}
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
             <ModalidadesFAQ/>
-
         </main>
-    )
+    );
 }

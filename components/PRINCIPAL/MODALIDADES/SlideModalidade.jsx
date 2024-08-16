@@ -11,6 +11,7 @@ const LiMod = tw.li`
     lg:hover:border-blue-400
     cursor-pointer
     duration-150
+    
 `
 const Title = tw.h2`
     select-none
@@ -38,9 +39,12 @@ export default function ModSlide(){
                     Descubra uma variedade de opções de empréstimos,<span className='text-blue-400'> tudo em um só lugar!</span> 
                 </h1>
             </div>
+            
             <div>
+                
                 <div className='grid grid-cols-1 lg:grid-cols-2 lg:my-14 my-10'>
-                    <div className='col-span-1 mx-12'>
+
+                    <div className='col-span-1 mx-2 lg:mx-12'>
                         <div className='bg-blue-500 rounded-2xl h-80 lg:h-full'>
                         </div>
                         
@@ -53,7 +57,9 @@ export default function ModSlide(){
                         <div className='bg-green-500 rounded-2xl h-80 lg:h-full hidden'>
                         </div>
                     </div>
+
                     <div className='col-span-1'>
+                        
                         <ul>
                             <LiMod className='group/view'>
                                 <Title>Empréstimo da conta de luz</Title>
@@ -62,21 +68,24 @@ export default function ModSlide(){
                                     Antecipe seu saldo FGTS e realize o que quiser. S
                                 </Desc>
                             </LiMod>
-                            <LiMod className=''>
+                            
+                            <LiMod className='hidden lg:block'>
                                 <Title>Antecipação saque FGTS</Title>
                                 <Desc>
                                     Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                     Antecipe seu saldo FGTS e realize o que qu
                                 </Desc>
                             </LiMod>
-                            <LiMod className=''>
+                            
+                            <LiMod className='hidden lg:block'>
                                 <Title>Empréstimo consignado INSS</Title>
                                 <Desc>
                                     Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                     Antecipe seu saldo FGTS e real
                                 </Desc>
                             </LiMod>
-                            <LiMod className=''>
+                            
+                            <LiMod className='hidden lg:block'>
                                 <Title>Empréstimo Pessoal</Title>
                                 <Desc>
                                     Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
@@ -84,6 +93,7 @@ export default function ModSlide(){
                                 </Desc>
                             </LiMod>
                         </ul>
+
                         <div className='lg:hidden'>
                             <div className='flex justify-center gap-2'>
                                 <div className='h-2 w-12 bg-blue-600 rounded-2xl'/>

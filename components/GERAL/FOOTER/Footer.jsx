@@ -49,7 +49,7 @@ export default function Footer() {
                 NOSSOS CONTATOS
             </h2>
 
-            <hr className="border-4 border-blue-700 bg-blue-700 border-opacity-20 rounded-full h-2 lg:mx-40 mx-8" />
+            <hr className="border border-blue-700 bg-blue-700 border-opacity-20 rounded-full lg:mx-40 mx-8" />
 
             <div className="grid lg:grid-cols-3 grid-cols-1 lg:mx-40 mx-8">
 
@@ -106,7 +106,7 @@ export default function Footer() {
             <h2 className="text-blue-400 lg:mx-40 mx-8 font-semibold text-xl">
                 SOBRE NÓS
             </h2>
-            <hr className="border-4 border-blue-700 border-opacity-75 rounded-full h-2 lg:mx-40 mx-8" />
+            <hr className="border border-blue-700 border-opacity-75 rounded-full lg:mx-40 mx-8" />
 
             <div className="lg:mx-40 mx-8 mt-5">
                 <Image src={LogoFB} width={140} height={30} alt='' />

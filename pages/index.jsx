@@ -24,7 +24,7 @@ export default function Principal() {
                 <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
             </Head>
-            <div className={mainFontFamily.variable}>
+            <div className={mainFontFamily.className}>
                 <IndexPrincipal />
             </div>
         </div>

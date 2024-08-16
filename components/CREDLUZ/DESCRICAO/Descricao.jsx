@@ -36,7 +36,7 @@ export default function Descricao(){
                             As parcelas são debitadas direto na sua conta de luz.
                         </p>
                         <p>
-                            No mesmo dia você já fica sabendo se o seu crédito foi pré-aprovado. 
+                            Na mesma hora você já fica sabendo se o seu crédito foi pré-aprovado. 
                             Você escolhe, até R$ 3.300,00 e ainda pode parcelar em até 22 vezes.
                         </p>
                     </div>
