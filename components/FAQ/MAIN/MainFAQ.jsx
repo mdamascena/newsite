@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import ModalidadesFAQ from '../MODALIDADE/ModalidadesFAQ';
 import tw from 'tailwind-styled-components';
 import { Poppins } from 'next/font/google';

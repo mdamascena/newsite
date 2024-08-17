@@ -1,6 +1,5 @@
 import tw from 'tailwind-styled-components'
 import { HiOutlineKey } from "react-icons/hi2"
-import InputTW from '../../GERAL/FORM/InputTW'
 
 const BtnPass = tw.button`
     bg-blue-600
@@ -45,8 +44,8 @@ export default function FormPass() {
                 </p>
             </div>
             <div className='relative'>
-                <InputRest type="email" placeholder='Digite seu e-mail' inputmode='email'/>
-                <InputTW className="w-full"  placeholder='ddd'/>
+                
+                
                 <BtnPass>
                     Recuperar senha
                     <HiOutlineKey className='text-xl'/>

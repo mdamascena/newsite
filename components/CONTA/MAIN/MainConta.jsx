@@ -7,7 +7,6 @@ import Reset from '../FORM/Reset'
 import { useState } from 'react'
 import { BsWhatsapp } from "react-icons/bs"
 import { BsTelephone } from "react-icons/bs"
-import { Button } from "components/ui/button"
 
 const WP = 'https://bit.ly/wa-plancredi-api'
 const TEL = 'tel:8008789853'
@@ -76,10 +75,10 @@ export default function MainCONTA() {
                 </div>
             </div>
 
-            <div className='flex justify-center -my-40'>
+            <div className='flex justify-center -my-32'>
                 <div className='bg-white rounded-md shadow-lg p-8 -top-10 lg:w-[35%] w-[90%]'>
                     
-                    
+                    <Login/>
                     
                 </div>
             </div>
@@ -106,7 +105,7 @@ export default function MainCONTA() {
                     </Link>
                 </div>
                 
-                <div className='text-slate-400 text-center p-5'>
+                <div className='text-slate-400 text-center p-8'>
                     <p>Funcionamos de segunda a sexta-feira, das 9h as 18h exceto nos feriádos</p>
                 </div>
             </div>

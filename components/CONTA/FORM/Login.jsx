@@ -1,43 +1,77 @@
-import Image from 'next/image'
+import { useState } from 'react'
 import tw from 'tailwind-styled-components'
-import InputSimples from '../../GERAL/FORM/InputSimples'
-import { UserOutlined } from '@ant-design/icons'
-import { Input } from 'antd'
-import Link from 'next/link'
+import { Input } from '../../ui/input'
+import { PiEyeClosedBold, PiEye } from "react-icons/pi"
+import InputMask from 'react-input-mask'
 
-const Inp = tw.input`
-    focus:outline-none
-    focus:border-blue-600
-    rounded-lg 
-    bg-slate-200 
-    p-3
-    my-2
-    border
-    border-slate-400
-    focos
-    placeholder:text-slate-400 
-    placeholder:font-extralight 
-    placeholder:text-sm 
+const Btn = tw.button`
+    bg-blue-700
+    items-center 
+    justify-center
+    text-white
     w-full
-`
+    py-3
+    lg:px-5 
+    rounded-lg
+    active:bg-blue-900
+    hover:bg-blue-600
+    hover:scale-105
+    active:scale-90 
+    duration-150   
+`;
+
+const BtnReset = tw.button`
+    items-center 
+    justify-center
+    text-blue-700
+    w-full
+    py-2
+    lg:px-5 
+    rounded-lg
+    active:text-blue-900
+    hover:text-blue-600
+    hover:scale-105
+    active:scale-90 
+    duration-150
+`;
 
 export default function Login() {
+    const [passwordType, setPasswordType] = useState('password');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+        setPasswordType(passwordType === 'password' ? 'text' : 'password');
+    };
 
     return (
         <div>
-            <Input status='' className='bg-slate-300 my-2 placeholder:text-slate-300' size="large" placeholder="large size" prefix={<UserOutlined />} />
-    
-            <InputSimples/>
+            <form className='gap-y-3 grid'>
 
-            <div className='relative w-60'>
-                <Inp />
-                <span className='absolute left-0 p-5 pointer-events-none focus:translate-y-3'>Nome</span>
-            </div>
+                <InputMask 
+                    className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
+                    mask="999.999.999-99"
+                    placeholder='Digite seu CPF'
+                    inputMode='numeric'>
+
+                    {(inputProps) => <Input {...inputProps} />}
+                </InputMask>
+                
+                <div className='relative'>
+                    <Input type={passwordType} className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' placeholder='Digite sua senha'/>
+                    
+                    {isPasswordVisible ? (
+                        <PiEye className='absolute bottom-2 left-[90%] p-2 text-4xl text-slate-400 cursor-pointer' onClick={togglePasswordVisibility}/>
+                    ) : (
+                        <PiEyeClosedBold className='absolute bottom-2 left-[90%] p-2 text-4xl text-slate-400 cursor-pointer' onClick={togglePasswordVisibility}/>
+                    )}
+                    
+                </div>
+
+                <Btn type='submit'>Acessar</Btn>
+            </form>
             
-            <div className='text-center '>
-                Esqueci minha senha
-            </div>
-            
+            <BtnReset className='mt-2 hover:underline'>Esqueci senha</BtnReset>
         </div>
-    )
+    );
 }
