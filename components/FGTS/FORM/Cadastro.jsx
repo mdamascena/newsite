@@ -59,7 +59,7 @@ const Cadastro = () => {
                         maxLength={50}
                         showCount
                         className='text-slate-300 border-slate-300'
-                        placeholder="Seu nome completo"
+                        placeholder="Seu nome completoo"
                         prefix={<AiOutlineUser className='text-2xl' />}
                         size="large"
                         value={formik.values.name}
