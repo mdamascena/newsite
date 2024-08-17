@@ -64,7 +64,7 @@ const Cadastro = () => {
                             type='text'
                             maxLength={50}
                             className='py-3 rounded-xl'
-                            placeholder="Seu nome completo"
+                            placeholder="Seu nome completoo"
                             prefix={<AiOutlineUser className='text-2xl' />}
                             size={'large'}
                             value={formik.values.name}
