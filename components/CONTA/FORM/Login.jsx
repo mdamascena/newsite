@@ -3,6 +3,7 @@ import tw from 'tailwind-styled-components'
 import { Input } from '../../ui/input'
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import InputMask from 'react-input-mask'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Btn = tw.button`
     bg-blue-700
@@ -18,60 +19,71 @@ const Btn = tw.button`
     hover:scale-105
     active:scale-90 
     duration-150   
-`;
-
+`
 const BtnReset = tw.button`
-    items-center 
+    bg-blue-100
+    items-center
     justify-center
-    text-blue-700
+    text-blue-500
     w-full
-    py-2
+    py-3
     lg:px-5 
     rounded-lg
-    active:text-blue-900
-    hover:text-blue-600
+    active:bg-blue-300
+    hover:bg-blue-50
     hover:scale-105
     active:scale-90 
     duration-150
 `;
 
-export default function Login() {
-    const [passwordType, setPasswordType] = useState('password');
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+export default function Login({ setShowLogin }) {
+    const [passType, setPassType] = useState('password');
+    const [isPassVisible, setIsPassVisible] = useState(false);
 
-    const togglePasswordVisibility = () => {
-        setIsPasswordVisible(!isPasswordVisible);
-        setPasswordType(passwordType === 'password' ? 'text' : 'password');
+    const togglePassVisibility = () => {
+        setIsPassVisible(!isPassVisible);
+        setPassType(passType === 'password' ? 'text' : 'password');
+    };
+
+    const handleResetClick = () => {
+        setShowLogin(false);
     };
 
     return (
-        <div>
-            <form className='gap-y-3 grid'>
+        <AnimatePresence>
+            <motion.div
+                initial={ {scale: 0} }
+                animate={ {scale: 1 }}
+                transition={{type: "spring", stiffness: 260, damping: 20}}
+                exit={ {scale: 0 }}>
 
-                <InputMask 
-                    className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
-                    mask="999.999.999-99"
-                    placeholder='Digite seu CPF'
-                    inputMode='numeric'>
+                <form className='gap-y-3 grid'>
+                    <InputMask 
+                        className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
+                        mask="999.999.999-99"
+                        placeholder='Digite seu CPF'
+                        inputMode='numeric'>
 
-                    {(inputProps) => <Input {...inputProps} />}
-                </InputMask>
-                
-                <div className='relative'>
-                    <Input type={passwordType} className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' placeholder='Digite sua senha'/>
+                        {(inputProps) => <Input {...inputProps} />}
+                    </InputMask>
                     
-                    {isPasswordVisible ? (
-                        <PiEye className='absolute bottom-2 left-[90%] p-2 text-4xl text-slate-400 cursor-pointer' onClick={togglePasswordVisibility}/>
-                    ) : (
-                        <PiEyeClosedBold className='absolute bottom-2 left-[90%] p-2 text-4xl text-slate-400 cursor-pointer' onClick={togglePasswordVisibility}/>
-                    )}
-                    
-                </div>
+                    <div className='relative'>
+                        <Input type={passType} className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' placeholder='Digite sua senha'/>
+                        
+                        {isPassVisible ? (
+                            <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={togglePassVisibility}/>
+                        ) : (
+                            <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={togglePassVisibility}/>
+                        )}
+                        
+                    </div>
 
-                <Btn type='submit'>Acessar</Btn>
-            </form>
+                    <Btn type='submit'>Acessar</Btn>
+
+                </form>
+                <BtnReset className='mt-2' onClick={handleResetClick}>Esqueci senha</BtnReset>
+            </motion.div>
             
-            <BtnReset className='mt-2 hover:underline'>Esqueci senha</BtnReset>
-        </div>
+        </AnimatePresence>
     );
 }

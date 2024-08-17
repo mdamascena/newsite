@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader} from "../../ui/dialog_closeWhite"
 import tw from 'tailwind-styled-components'
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
@@ -89,7 +88,6 @@ export default function FormFC() {
                 
                 <AnimatePresence>
                     {(selectValue === 'quitacao' || selectValue === 'cancelamento' || selectValue ==='contrato') && (
-                        
                         <motion.div
                             initial={ {scale: 0} }
                             animate={ {scale: 1 }}
