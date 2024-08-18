@@ -1,4 +1,4 @@
-import { Input, Form, Checkbox } from 'antd';
+import { Input } from 'components/ui/input';
 import { useFormik } from 'formik';
 import ValidationStepOne from '../../../schema/validationFormFgts/validateCadastro';
 import { AiOutlineUser, AiOutlineCalendar, AiOutlineWhatsApp } from 'react-icons/ai';
@@ -50,9 +50,9 @@ const Cadastro = () => {
                     </p>
                 </div>
 
-                <Form className='h-[80vh]' name='cadastro' onFinish={formik.handleSubmit}>
+                <form className='h-[80vh]' name='cadastro' onFinish={formik.handleSubmit}>
 
-                    <Form.Item
+                    <div
                         name='name'
                         validateStatus={formik.errors.name && formik.touched.name ? 'error' : ''}
                         help={formik.touched.name && formik.errors.name}
@@ -71,9 +71,9 @@ const Cadastro = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                         />
-                    </Form.Item>
+                    </div>
 
-                    <Form.Item
+                    <div
                         name='cpf'
                         className='mb-8 block'
                         rules={[{ required: true, message: "CPF não foi preenchido" }]}
@@ -97,9 +97,9 @@ const Cadastro = () => {
 
                             />}
                         </InputMask>
-                    </Form.Item>
+                    </div>
 
-                    <Form.Item
+                    <div
                         name='data'
                         className='mb-8 block'
                         rules={[{ required: true, message: "Data de nascimento não foi preenchida" }]}
@@ -120,9 +120,9 @@ const Cadastro = () => {
                                 prefix={<AiOutlineCalendar className='text-2xl' />}
                             />}
                         </InputMask>
-                    </Form.Item>
+                    </div>
 
-                    <Form.Item
+                    <div
                         name="whatsapp"
                         className='mb-10 block'
                         rules={[{ required: true, message: "Whatsapp não foi preenchido" }]}
@@ -143,28 +143,28 @@ const Cadastro = () => {
                                 prefix={<AiOutlineWhatsApp className='text-2xl' />}
                             />}
                         </InputMask>
-                    </Form.Item>
+                    </div>
 
-                    <Form.Item
+                    <div
                         name='termos'
                         className='mb-1'
                         valuePropName="checked"
                         rules={[{ required: true, message: "É necessário aceitar o termo para continuar." }]}>
-                        <Checkbox name='termos' className='poppins text-slate-400'>
+                        <div name='termos' className='poppins text-slate-400'>
                             Li e aceito os termos de uso e política de privacida de <a href="#" className='font-bold'>Termos de uso</a> e a <a href="#" className='font-bold'>Política de Privacidade da</a> aplicação.
-                        </Checkbox>
-                    </Form.Item>
+                        </div>
+                    </div>
 
-                    <Form.Item
+                    <div
                         name="termosGoogle"
                         valuePropName="checked"
                         rules={[{ required: true, message: "É necessário aceitar o termo para continuar." }]}>
-                        <Checkbox className='poppins text-slate-400 '>
+                        <div className='poppins text-slate-400 '>
                             Aceito receber conteúdos via E-mail, SMS, RCS, WhatsApp, telefone e redes sociais.
-                        </Checkbox>
-                    </Form.Item>
+                        </div>
+                    </div>
                     <Btn className='' nome="Aceitar e continuar" type="submit" />
-                </Form >
+                </form >
             </div >
         </div>
     )

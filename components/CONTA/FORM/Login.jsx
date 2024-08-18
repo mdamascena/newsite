@@ -5,6 +5,7 @@ import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import InputMask from 'react-input-mask'
 import { motion, AnimatePresence } from 'framer-motion'
 
+
 const Btn = tw.button`
     bg-blue-700
     items-center 
@@ -80,8 +81,10 @@ export default function Login({ setShowLogin }) {
 
                     <Btn type='submit'>Acessar</Btn>
 
+
                 </form>
                 <BtnReset className='mt-2' onClick={handleResetClick}>Esqueci senha</BtnReset>
+                
             </motion.div>
             
         </AnimatePresence>

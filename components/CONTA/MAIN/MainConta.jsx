@@ -94,7 +94,7 @@ export default function MainCONTA() {
             </div>
 
             <div className='flex justify-center relative'>
-                <div className='absolute bg-white rounded-md shadow-lg p-8 -top-36 w-[90%] lg:w-[530px]'>
+                <div className='absolute bg-white rounded-md shadow-lg p-8 -top-40 w-[90%] lg:w-[530px]'>
                     {showLogin ? <Login setShowLogin={setShowLogin} /> : <Reset />}
                 </div>
             </div>
