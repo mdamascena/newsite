@@ -125,8 +125,8 @@ export default function Header() {
                 <nav className="hidden lg:block mx-auto">
 
                     <ul className={`${bgNavbar[1]} flex gap-7`}>
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
+                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
+                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
                         <LiDrop className={`${bgNavbar[4]} relative flex group`}>
                             Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-200' />
                             <Dropdown>
@@ -138,8 +138,8 @@ export default function Header() {
                                 </div>
                             </Dropdown>
                         </LiDrop>
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/atendimento">Atendimento</Link>
-                        <Link className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/faq">Ajuda</Link>
+                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/atendimento">Atendimento</Link>
+                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/faq">Ajuda</Link>
                     </ul>
                 </nav>
 
