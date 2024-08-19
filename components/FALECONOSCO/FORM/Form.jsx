@@ -97,6 +97,7 @@ export default function FormFC() {
                             <InputMask 
                                 className='bg-slate-200 focus-visible:ring-blue-500 placeholder:text-slate-400' 
                                 mask="999.999.999-99"
+                                maskChar = {null}
                                 placeholder='Seu CPF'
                                 inputMode='numeric'>
 

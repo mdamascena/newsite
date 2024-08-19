@@ -78,7 +78,7 @@ export default function MainCONTA() {
                     <div className='text-center text-white col-span-6 lg:col-span-2 order-3 lg:order-1 mt-8 lg:mt-0'>
                         <h1 className='font-semibold tracking-tighter text-2xl'>MINHA PROPOSTA</h1>
                         <p className='font-light tracking-tighter text-xl'>
-                            {showLogin ? 'Empréstimo Pessoal':'Recuperar Senha'}
+                            {showLogin ? 'Acesse sua conta':'Recuperar Senha'}
                         </p>
                     </div>
                     
@@ -94,7 +94,7 @@ export default function MainCONTA() {
             </div>
 
             <div className='flex justify-center relative'>
-                <div className='absolute bg-white rounded-md shadow-lg p-8 -top-40 w-[90%] lg:w-[530px]'>
+                <div className='absolute bg-white rounded-md shadow-lg p-5 lg:p-8 -top-32 w-[90%] lg:w-[530px]'>
                     {showLogin ? <Login setShowLogin={setShowLogin} /> : <Reset />}
                 </div>
             </div>

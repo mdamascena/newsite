@@ -84,6 +84,7 @@ export default function FormPass() {
                                 <InputMask 
                                     className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
                                     mask="999.999.999-99"
+                                    maskChar = {null}
                                     placeholder='Digite seu CPF'
                                     inputMode='numeric'>
 
@@ -105,7 +106,6 @@ export default function FormPass() {
                             <div className='text-slate-400 font-light text-xs text-center mt-2'>
                                 Se não tiver mais acesso ao e-mail ou a dica não ajudou, fale com nosso atendimento.
                             </div>
-                            
                         </div>
 
                         <DialogClose className='' asChild>
