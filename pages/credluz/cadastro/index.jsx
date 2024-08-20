@@ -30,7 +30,6 @@ const BtnSend = tw.button`
     active:scale-90 
     duration-300    
 `
-
 const BtnBack = tw.button`
     text-white 
     border-2 
@@ -82,14 +81,15 @@ export default function Cadastro() {
     return (
             <div className={mainFontFamily.className}>
                 <main className="bg-slate-50">
-                    <div className="grid grid-cols-1 lg:grid-cols-5 h-[100vh]">
-                        <div className="m-2 h-24 lg:h-[97.5vh] col-span-2 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-600 rounded-xl">
-                            <div className="p-8 flex justify-end">
-                                <Image src={LogoB} width={130} alt='' />
+                    <div className="grid grid-cols-1 lg:grid-cols-6 h-[100vh]">
+                        
+                        <div className="m-2 h-24 lg:h-[97.5vh] col-span-3 bgForm rounded-xl">
+                            <div className="p-16 flex justify-start">
+                                <Image src={LogoB} width={150} alt='' />
                             </div>
                         </div>
 
-                        <div className="col-span-1 lg:col-span-3 lg:max-w-3xl lg:px-10 mt-8">
+                        <div className="col-span-1 lg:col-span-3 lg:max-w-3xl lg:px-20 mt-8">
 
                             <FormProvider {...methods}>
                                 <form onSubmit={methods.handleSubmit(onSubmit)}>

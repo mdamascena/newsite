@@ -69,7 +69,9 @@ export default function FormCep() {
                 <div>
                     <InputMask
                         mask="99999-999"
-                        className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                        className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                            errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        }`}
                         placeholder='Digite seu CEP'
                         inputMode='numeric'
                         {...register("cep")}
@@ -90,7 +92,9 @@ export default function FormCep() {
                             defaultValue=""
                             render={({ field }) => (
                                 <Select {...field} onValueChange={ (value) => {field.onChange(value); setSelectedEstado(value)}} value={field.value}>
-                                    <SelectTrigger className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'>
+                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                                        errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                        }`}>
                                         <SelectValue placeholder="Estado *" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -113,7 +117,9 @@ export default function FormCep() {
                             defaultValue=""
                             render={({ field }) => (
                                 <Select {...field} onValueChange={field.onChange} value={field.value}>
-                                    <SelectTrigger className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'>
+                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                                        errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                        }`}>
                                         <SelectValue placeholder="Cidade *" />
                                     </SelectTrigger>
                                     <SelectContent>

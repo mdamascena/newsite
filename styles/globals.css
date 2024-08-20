@@ -168,6 +168,14 @@ a {
   background-size: cover;
 }
 
+.bgForm{
+  background-image: url(../public/img/bg-brasao.png), linear-gradient(180deg, #0009bb 0%, #00004b 100%);
+  background-blend-mode: overlay;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
 .bgMainAtendimento{
   background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle,  #2b31a2 0%, #00004b 100%);
   background-blend-mode: multiply;
