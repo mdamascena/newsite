@@ -6,25 +6,45 @@ export const cadastroSchema = z.object({
     nome: z.string().min(3, "O nome deve ter pelo menos 3 caracteres").refine(value => validateFullName(value), { message: "É preciso preencher o nome completo para solicitar o empréstimo!" }),
     email: z.string().email("Formato de e-mail inválido"),
     senha: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
-    senhaConfirmacao: z.string().min(6, "A confirmação de senha deve ter pelo menos 6 caracteres").refine(value => value.senha === value.senhaConfirmacao, {
-        message: "As senhas não correspondem",
-        path: ["senhaConfirmacao"],
-    }),
+    senhaConfirmacao: z.string().min(6, "A confirmação de senha deve ter pelo menos 6 caracteres"),
     termos: z.boolean().refine(val => val === true, {
         message: "É necessário aceitar o termo para continuar.",
     }),
-})
+}).refine(data => data.senha === data.senhaConfirmacao, {
+    message: "As senhas não correspondem",
+    path: ["senhaConfirmacao"],
+});
 
 export const cepSchema = z.object({
-    cep: z.string().optional().refine(value => {
-        if (value) {
-            return value.length === 9; // Valida que o CEP tem exatamente 9 caracteres
+    cep: z.string().optional(),
+    cidade: z.string().optional(),
+    uf: z.string().optional(),
+}).superRefine((data, ctx) => {
+    // Valida se o CEP foi fornecido e se tem exatamente 9 caracteres
+    if (data.cep && data.cep.length !== 9) {
+        ctx.addIssue({
+            path: ['cep'],
+            message: 'O CEP deve conter 9 caracteres.',
+        });
+    }
+
+    // Valida se cidade e uf estão preenchidos quando o CEP não é fornecido
+    if (!data.cep) {
+        if (!data.cidade) {
+            ctx.addIssue({
+                path: ['cidade'],
+                message: 'A cidade é obrigatória quando o CEP não é fornecido.',
+            });
         }
-        return true; // Se o CEP não for fornecido, não faz validação
-    }, { message: "O CEP deve conter 9 caracteres." }),
-    cidade: z.string(),
-    uf: z.string()
-})
+
+        if (!data.uf) {
+            ctx.addIssue({
+                path: ['uf'],
+                message: 'O estado (UF) é obrigatório quando o CEP não é fornecido.',
+            });
+        }
+    }
+});
 
 export const dadosPessoaisSchema = z.object({
     cpf: z.string().readonly(),

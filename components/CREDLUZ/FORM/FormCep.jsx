@@ -29,18 +29,18 @@ export default function FormCep() {
         }
     }, [selectedEstado]);
 
-    const [comCep, setComCep] = useState(false)
-    const [semCep, setSemCep] = useState(false)
+    const [comCep, setComCep] = useState(false);
+    const [semCep, setSemCep] = useState(false);
 
     function handleComCep() {
         setComCep(true)
         setSemCep(false)
-    }
+    };
 
     function hadleSemCep() {
         setComCep(false)
         setSemCep(true)
-    }
+    };
 
     return (
         <>
