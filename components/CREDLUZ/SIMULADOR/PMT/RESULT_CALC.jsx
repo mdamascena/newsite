@@ -101,7 +101,7 @@ export default function Modal({ prazo, parcela, valor, showSimulador }) {
                 <div className="border-b border-dashed border-white w-full my-5" />
 
                 <div className="justify-center">
-                    <Link href="credluz/cadastro">
+                    <Link href="credluz/cadastro" passHref>
                         <BtnSolicita className="w-full">
                             Solicitar Empréstimo
                         </BtnSolicita>

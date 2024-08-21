@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components'
 import { HiOutlineKey } from "react-icons/hi2"
 import { Input } from '../../ui/input'
+import InputMask from 'react-input-mask'
 import { motion, AnimatePresence } from 'framer-motion'
 import { DialogContent, DialogHeader, DialogDescription, DialogClose, Dialog, DialogTrigger } from '../../ui/dialog_noclose'
 import { Poppins } from 'next/font/google'
@@ -52,7 +53,7 @@ export default function FormPass() {
                 exit={ {scale: 0 }}>
             
                 <div className='bg-white border border-l-4 border-l-blue-600 rounded-md mb-5'>
-                    <p className='text-center py-4 px-8 text-slate-400 font-light text-sm'>
+                    <p className='text-center py-4 px-8 text-slate-400 font-light text-xs lg:text-sm'>
                         Informe o e-mail cadastrado que te enviaremos um link para você criar uma nova senha.
                     </p>
                 </div>
@@ -76,13 +77,40 @@ export default function FormPass() {
                         <DialogHeader className='select-none'>
                             <div className='bg-white border border-l-4 border-l-blue-600 rounded-md mb-5'>
                                 <p className='text-center py-4 px-8 text-slate-400 font-light text-sm'>
-                                    Informe o e-mail cadastrado que te enviaremos um link para você criar uma nova senha.
+                                    Informe o seu CPF para localizarmos seu cadastrado
                                 </p>
                             </div>
                             <DialogDescription>
-                                frfrfr
+                                <InputMask 
+                                    className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
+                                    mask="999.999.999-99"
+                                    maskChar = {null}
+                                    placeholder='Digite seu CPF'
+                                    inputMode='numeric'>
+
+                                    {(inputProps) => <Input {...inputProps} />}
+                                </InputMask>
                             </DialogDescription>
+                            <BtnPass>Localizar cadastro</BtnPass>
                         </DialogHeader>
+
+                        <div className='border border-slate-200 rounded-lg p-3'>
+                            <div className='text-slate-400 font-light text-sm text-center mb-2'>
+                                Dica do e-mail cadastrado para o CPF
+                            </div>
+                                
+                            <div className='text-center p-2 rounded-md bg-slate-100'>
+                                ms*******na@gmail.com
+                            </div>
+
+                            <div className='text-slate-400 font-light text-xs text-center mt-2'>
+                                Se não tiver mais acesso ao e-mail ou a dica não ajudou, fale com nosso atendimento.
+                            </div>
+                        </div>
+
+                        <DialogClose className='' asChild>
+                            <BtnReset>Fechar</BtnReset>
+                        </DialogClose>
             
                     </DialogContent>
                 

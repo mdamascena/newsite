@@ -43,27 +43,32 @@ export default function FormCadastro() {
 
                 <InputMask
                     mask="999.999.999-99"
-                    className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                    className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                        errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                    }`}
                     placeholder='Digite seu CPF'
                     inputMode='numeric'
-                    {...register("cpf")}
-                >
+                    maskChar = {null}
+                    {...register("cpf")}>
                     {(inputProps) => <Input {...inputProps} />}
                 </InputMask>
-
 
                 {errors.cpf && <p className="text-red-500 text-sm mt-1">{errors.cpf.message}</p>}
             </div>
 
             <div className="mb-5">
-                <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                        errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                    }`}
                     placeholder="Qual o seu nome completo?"
                     {...register('nome')} />
                 {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome.message}</p>}
             </div>
 
             <div className="mb-5">
-                <Input type="email" className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                <Input type="email" className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                        errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                    }`}
                     placeholder="Qual o seu e-mail?"
                     {...register('email')} />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
@@ -72,31 +77,42 @@ export default function FormCadastro() {
             <h5 className="mb-2 text-slate-900">Crie uma senha simples</h5>
 
             <div className="mb-5 flex w-100 gap-5">
-                <div className="w-full relative">
-                    <Input type={inputSenha} className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+
+                <div className="w-full">
+                    <div className="relative">
+                        <Input type={inputSenha} className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                            errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        }`}
                         placeholder="Digite uma senha"
                         {...register('senha')} />
 
-                    {visivelSenha ? (
-                        <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaVisibility} />
-                    ) : (
-                        <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaVisibility} />
-                    )}
+                        {visivelSenha ? (
+                            <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaVisibility} />
+                        ) : (
+                            <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaVisibility} />
+                        )}
+                        
+                    </div>
                     {errors.senha && <p className="text-red-500 text-sm mt-1">{errors.senha.message}</p>}
                 </div>
 
-                <div className="w-full relative">
-                    <Input type={inputSenhaConfirmacao} className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                <div className="w-full">
+                    <div className="relative">
+                    <Input type={inputSenhaConfirmacao} className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                            errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        }`}
                         {...register('senhaConfirmacao')}
                         placeholder="Confirme sua senha" />
 
-                    {visivelSenhaConfirmacao ? (
-                        <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
-                    ) : (
-                        <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
-                    )}
+                        {visivelSenhaConfirmacao ? (
+                            <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
+                        ) : (
+                            <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
+                        )}
+                    </div>
                     {errors.senhaConfirmacao && <p className="text-red-500 text-sm mt-1">{errors.senhaConfirmacao.message}</p>}
                 </div>
+
             </div>
 
             <div className="mb-5">

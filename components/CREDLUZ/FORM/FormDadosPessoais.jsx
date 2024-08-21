@@ -23,7 +23,9 @@ export default function FormDadosPessoais() {
                     <div className="w-full">
                         <InputMask
                             mask="99/99/9999"
-                            className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                                errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            }`}
                             placeholder='Nascimento *'
                             inputMode='numeric'
                             {...register("dataNascimento")}
@@ -50,7 +52,9 @@ export default function FormDadosPessoais() {
                             defaultValue=""
                             render={({ field }) => (
                                 <Select {...field} onValueChange={field.onChange} value={field.value}>
-                                    <SelectTrigger className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'>
+                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                                        errors.tipoOcupacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                        }`}>
                                         <SelectValue placeholder="Tipo de ocupação" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -84,7 +88,9 @@ export default function FormDadosPessoais() {
                     <div className="w-full">
                         <InputMask
                             mask="(99) 99999-9999"
-                            className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                                errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            }`}
                             placeholder='Celular *'
                             inputMode='numeric'
                             {...register("celular")}
@@ -97,7 +103,9 @@ export default function FormDadosPessoais() {
                     <div className="w-full">
                         <InputMask
                             mask="(99) 99999-9999"
-                            className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                                errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            }`}
                             placeholder='WhatsApp *'
                             inputMode='numeric'
                             {...register("whatsapp")}
@@ -117,7 +125,9 @@ export default function FormDadosPessoais() {
                 <div className="flex gap-5 mb-5">
 
                     <div className="w-full">
-                        <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                        <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                            errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        }`}
                             placeholder="Logradouro *"
                             {...register('logradouro')} />
                         {errors.logradouro && <p className="text-red-500 text-sm mt-1">{errors.logradouro.message}</p>}
@@ -139,7 +149,9 @@ export default function FormDadosPessoais() {
                 <div className="flex gap-5">
 
                     <div className="w-full">
-                        <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                        <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
+                            errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        }`}
                             placeholder="Bairro *"
                             {...register('bairro')} />
                         {errors.bairro && <p className="text-red-500 text-sm mt-1">{errors.bairro.message}</p>}
