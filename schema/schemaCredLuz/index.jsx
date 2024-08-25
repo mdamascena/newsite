@@ -19,33 +19,16 @@ export const cepSchema = z.object({
     cep: z.string().optional(),
     cidade: z.string().optional(),
     uf: z.string().optional(),
-}).superRefine((data, ctx) => {
-    // Valida se o CEP foi fornecido e se tem exatamente 9 caracteres
-    if (data.cep && data.cep.length !== 9) {
-        ctx.addIssue({
-            path: ['cep'],
-            message: 'O CEP deve conter 9 caracteres.',
-        });
-    }
+  }).refine((data) => {
+    const cepPreenchido = data.cep?.trim().length > 0;
+    const cidadeUfPreenchidos = data.cidade?.trim().length > 0 && data.uf?.trim().length > 0;
 
-    // Valida se cidade e uf estão preenchidos quando o CEP não é fornecido
-    if (!data.cep) {
-        if (!data.cidade) {
-            ctx.addIssue({
-                path: ['cidade'],
-                message: 'A cidade é obrigatória quando o CEP não é fornecido.',
-            });
-        }
-
-        if (!data.uf) {
-            ctx.addIssue({
-                path: ['uf'],
-                message: 'O estado (UF) é obrigatório quando o CEP não é fornecido.',
-            });
-        }
-    }
-});
-
+    return (
+      (!cepPreenchido && !cidadeUfPreenchidos) || (cepPreenchido && !cidadeUfPreenchidos) || (!cepPreenchido && cidadeUfPreenchidos) || (cepPreenchido && cidadeUfPreenchidos)
+    );
+  }, {
+    message: 'Preencha corretamente os campos.',
+  });
 export const dadosPessoaisSchema = z.object({
     cpf: z.string().readonly(),
     dataNascimento: z.string().length(10, { message: "Data de nascimento deve ter exatamente 10 caracteres." }),
@@ -61,6 +44,7 @@ export const dadosPessoaisSchema = z.object({
     numero: z.string().optional(),
     complemento: z.string().optional(),
     bairro: z.string().min(1, { message: "Selecione o bairro da sua cidade." }),
-    cidade: z.string().readonly(),
-    uf: z.string().readonly()
+    cidade: z.string().readonly().optional(),
+    uf: z.string().readonly().optional(),
+    cep: z.string().optional()
 })

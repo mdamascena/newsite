@@ -1,5 +1,4 @@
 import { useState, Suspense, lazy } from "react"
-import styles from "../../../styles/Home.module.css"
 import Image from "next/image"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { Poppins } from 'next/font/google'
@@ -62,13 +61,23 @@ export default function Cadastro() {
         mode: 'all',
     })
 
-    const nextStep = () => {
-        methods.trigger().then((isValid) => {
-            console.log('Validation status:', isValid);
-            if (isValid) {
-                setStep((prev) => Math.min(prev + 1, schemas.length - 1));
-            }
-        });
+    const { reset, getValues } = methods;
+
+    const nextStep = async () => {
+        const isValid = await methods.trigger();
+        console.log('Validation status:', isValid);
+        if (step === 1) {
+            const currentValues = getValues();
+            reset({
+                ...currentValues,
+                cep: '',
+                uf: '',
+                cidade: ''
+            });
+        }
+        if (isValid) {
+            setStep((prev) => Math.min(prev + 1, schemas.length - 1));
+        }
     };
 
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
@@ -79,53 +88,53 @@ export default function Cadastro() {
 
 
     return (
-            <div className={mainFontFamily.className}>
-                <main className="bg-slate-50">
-                    <div className="grid grid-cols-1 lg:grid-cols-6 h-[100vh]">
-                        
-                        <div className="m-2 h-24 lg:h-[97.5vh] col-span-3 bgForm rounded-xl">
-                            <div className="p-16 flex justify-start">
-                                <Image src={LogoB} width={150} alt='' />
-                            </div>
-                        </div>
+        <div className={mainFontFamily.className}>
+            <main className="bg-slate-50">
+                <div className="grid grid-cols-1 lg:grid-cols-6 h-[100vh]">
 
-                        <div className="col-span-1 lg:col-span-3 lg:max-w-3xl lg:px-20 mt-8">
-
-                            <FormProvider {...methods}>
-                                <form onSubmit={methods.handleSubmit(onSubmit)}>
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        {step === 0 && <Step1 />}
-                                        {step === 1 && <Step2 />}
-                                        {step === 2 && <Step3 />}
-                                    </Suspense>
-
-                                    <div className="flex mt-4">
-                                        {step == 0 &&
-                                            <div className="w-full">
-                                                <BtnSend className="w-1/2"  type="button" onClick={nextStep}>Avançar </BtnSend>
-                                            </div>
-                                        }
-
-                                        {step == 1 &&
-                                            <div className="w-full flex gap-5">
-                                                <BtnBack className="w-full" type="button" onClick={prevStep}>Back</BtnBack>
-                                                <BtnSend className="w-full" type="button" onClick={nextStep}>Avançar </BtnSend>
-                                            </div>
-                                        }
-
-                                        {step == 2 &&
-                                            <div className="w-full flex gap-5">
-                                                <BtnBack className="w-full" type="button" onClick={prevStep}>Back</BtnBack>
-                                                <BtnSend className="w-full" type="submit">Enviar para análise</BtnSend>
-                                            </div>
-                                        }
-
-                                    </div>
-                                </form>
-                            </FormProvider>
+                    <div className="m-2 h-24 lg:h-[97.5vh] col-span-3 bgForm rounded-xl">
+                        <div className="p-16 flex justify-start">
+                            <Image src={LogoB} width={150} alt='' />
                         </div>
                     </div>
-                </main>
-            </div>
+
+                    <div className="col-span-1 lg:col-span-3 lg:max-w-3xl lg:px-20 mt-8">
+
+                        <FormProvider {...methods}>
+                            <form onSubmit={methods.handleSubmit(onSubmit)}>
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    {step === 0 && <Step1 />}
+                                    {step === 1 && <Step2 />}
+                                    {step === 2 && <Step3 />}
+                                </Suspense>
+
+                                <div className="flex mt-4">
+                                    {step == 0 &&
+                                        <div className="w-full">
+                                            <BtnSend className="w-1/2" type="button" onClick={nextStep}>Avançar </BtnSend>
+                                        </div>
+                                    }
+
+                                    {step == 1 &&
+                                        <div className="w-full flex gap-5">
+                                            <BtnBack className="w-full" type="button" onClick={prevStep}>Back</BtnBack>
+                                            <BtnSend className="w-full" type="button" onClick={nextStep}>Avançar </BtnSend>
+                                        </div>
+                                    }
+
+                                    {step == 2 &&
+                                        <div className="w-full flex gap-5">
+                                            <BtnBack className="w-full" type="button" onClick={prevStep}>Back</BtnBack>
+                                            <BtnSend className="w-full" type="submit">Enviar para análise</BtnSend>
+                                        </div>
+                                    }
+
+                                </div>
+                            </form>
+                        </FormProvider>
+                    </div>
+                </div>
+            </main>
+        </div>
     );
 }

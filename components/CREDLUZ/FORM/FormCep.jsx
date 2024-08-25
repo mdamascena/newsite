@@ -6,31 +6,20 @@ import { useState, useEffect } from 'react';
 import { FaMapLocationDot } from "react-icons/fa6";
 import { LuMapPinOff } from "react-icons/lu"
 import InputMask from 'react-input-mask';
+import { DialogCep } from '../DIALOG/DialogCep';
 
 export default function FormCep() {
 
-    const { register, control, formState: { errors } } = useFormContext();
-
-    const [estados, setEstados] = useState([]);
-    const [cidades, setCidades] = useState([]);
-    const [selectedEstado, setSelectedEstado] = useState('');
-
-    useEffect(() => {
-        fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
-            .then((res) => res.json())
-            .then((data) => setEstados(data))
-    }, [])
-
-    useEffect(() => {
-        if (selectedEstado) {
-            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedEstado}/municipios`)
-                .then((res) => res.json())
-                .then((data) => setCidades(data));
-        }
-    }, [selectedEstado]);
+    const { setValue, control, formState: { errors } } = useFormContext();
 
     const [comCep, setComCep] = useState(false);
     const [semCep, setSemCep] = useState(false);
+    const [estados, setEstados] = useState([]);
+    const [cidades, setCidades] = useState([]);
+    const [selectedEstado, setSelectedEstado] = useState('');
+    const [cep, setCep] = useState('');
+
+    const [dialogOpen, setDialogOpen] = useState(false)
 
     function handleComCep() {
         setComCep(true)
@@ -41,6 +30,45 @@ export default function FormCep() {
         setComCep(false)
         setSemCep(true)
     };
+
+    useEffect(() => {
+        if (cep.length === 9 || semCep) {
+            fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
+                .then((res) => res.json())
+                .then((data) => setEstados(data))
+                .catch((error) => console.error('Erro ao buscar estados:', error));
+        }
+    }, [cep, semCep]);
+
+    useEffect(() => {
+        if (selectedEstado) {
+            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedEstado}/municipios`)
+                .then((res) => res.json())
+                .then((data) => setCidades(data))
+                .catch((error) => console.error('Erro ao buscar cidades:', error));
+        }
+    }, [selectedEstado]);
+
+    useEffect(() => {
+        if (comCep && cep.length === 9) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (!data.erro) {
+                        setValue('cep', data.cep)
+                        setSelectedEstado(data.uf);
+                        setValue('uf', data.uf);
+                        setValue('cidade', data.localidade);
+                        setValue('logradouro', data.logradouro)
+                        setValue('bairro', data.bairro)
+                    } else {
+                        console.log('Erro ao buscar CEP');
+                    }
+                })
+                .catch((error) => console.error('Erro na requisição:', error));
+        }
+    }, [cep, comCep, setValue, setSelectedEstado]);
+
 
     return (
         <>
@@ -69,13 +97,20 @@ export default function FormCep() {
                 <div>
                     <InputMask
                         mask="99999-999"
-                        className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
-                            errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                        }`}
+                        className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            }`}
                         placeholder='Digite seu CEP'
                         inputMode='numeric'
-                        {...register("cep")}
-                    >
+                        maskChar={null}
+                        value={cep}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setCep(value);
+                            if (value.length === 9) {
+                                setValue('cep', value);
+                            }
+                        }}>
+
                         {(inputProps) => <Input {...inputProps} />}
                     </InputMask>
                     {errors.cep && <p className="text-red-500 text-sm mt-1">{errors.cep.message}</p>}
@@ -91,9 +126,8 @@ export default function FormCep() {
                             control={control}
                             defaultValue=""
                             render={({ field }) => (
-                                <Select {...field} onValueChange={ (value) => {field.onChange(value); setSelectedEstado(value)}} value={field.value}>
-                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
-                                        errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                <Select {...field} onValueChange={(value) => { field.onChange(value); setSelectedEstado(value) }} value={field.value}>
+                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                         }`}>
                                         <SelectValue placeholder="Estado *" />
                                     </SelectTrigger>
@@ -117,8 +151,7 @@ export default function FormCep() {
                             defaultValue=""
                             render={({ field }) => (
                                 <Select {...field} onValueChange={field.onChange} value={field.value}>
-                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
-                                        errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                         }`}>
                                         <SelectValue placeholder="Cidade *" />
                                     </SelectTrigger>
@@ -134,9 +167,15 @@ export default function FormCep() {
                         />
                         {errors.cidade && <p className="text-red-500 text-sm mt-1">{errors.cidade.message}</p>}
                     </div>
-
                 </div>
+
             }
+            <div>
+
+                <button type='button' onClick={() => setDialogOpen(true)}>Abrir dialog</button>
+
+                <DialogCep open={dialogOpen} onOpenChange={setDialogOpen} />
+            </div>
 
         </>
     );
