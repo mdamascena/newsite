@@ -168,12 +168,24 @@ a {
   background-size: cover;
 }
 
-.bgForm{
-  background-image: url(../public/img/bg-brasao.png), linear-gradient(180deg, #0009bb 0%, #00004b 100%);
+.bgForm {
+  position: relative; /* Necessário para o posicionamento absoluto do background */
+  background: linear-gradient(180deg, #0009bb 0%, #00004b 100%);
   background-blend-mode: overlay;
-  background-size: auto;
+}
+
+.bgForm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('../public/img/BG-brasao.png');
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: left;
+  background-position: -35vh 1.5vh;
+  opacity: 0.5; /* Ajuste a opacidade se necessário */
 }
 
 .bgMainAtendimento{
@@ -230,4 +242,11 @@ a {
     background-size: 45vh;
     background-position: 5px 70px;
  }
+
+  .bgForm::before{
+    background-size: 180px;
+    background-repeat: no-repeat;
+    background-position: 2vh -1vh;
+  }
+
 }

@@ -3,10 +3,10 @@ import { validateCPF, validateFullName, validatePhoneNumber } from "schema/valid
 
 export const cadastroSchema = z.object({
     cpf: z.string().min(11, "O CPF deve ter pelo menos 11 dígitos").max(14, "O CPF deve ter no máximo 14 dígitos").refine(value => validateCPF(value), { message: "O CPF é inválido" }),
-    nome: z.string().min(3, "O nome deve ter pelo menos 3 caracteres").refine(value => validateFullName(value), { message: "É preciso preencher o nome completo para solicitar o empréstimo!" }),
+    nome: z.string().refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" }),
     email: z.string().email("Formato de e-mail inválido"),
-    senha: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
-    senhaConfirmacao: z.string().min(6, "A confirmação de senha deve ter pelo menos 6 caracteres").refine(value => value.senha === value.senhaConfirmacao, {
+    senha: z.string().min(3, "A senha deve ter pelo menos caracteres"),
+    senhaConfirmacao: z.string().min(0, "A confirmação de senha deve ter pelo menos 6 caracteres").refine(value => value.senha === value.senhaConfirmacao, {
         message: "As senhas não correspondem",
         path: ["senhaConfirmacao"],
     }),

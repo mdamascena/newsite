@@ -22,8 +22,7 @@ export default function FormCadastro() {
         setVisivelSenha(!visivelSenha);
 
         setInputSenha(inputSenha === 'password' ? 'text' : 'password');
-
-    };
+    }
 
     // Função para tornar o campo password type text
     const toggleSenhaConfirmacaoVisibility = () => {
@@ -32,12 +31,12 @@ export default function FormCadastro() {
     }
 
     return (
-        <>
-            <div className="mb-5">
-                <span className="text-slate-400">Já tenho conta? <Link className="text-blue-400" href="#">Acesse aqui</Link></span>
+        <div className="h-[60vh] lg:h-[80vh]">
+            <div className="mb-2">
+                <span className="text-slate-400 text-xl">Vamos começar!</span>
             </div>
 
-            <h5 className="text-slate-500 mb-5">Crie uma senha simples para você acessar a sua conta e acompanhar a sua solicitação</h5>
+            <h5 className="text-slate-400 mb-5 font-light lg:text-md text-sm">Crie uma senha simples para você acessar a sua proposta e acompanhar a análise</h5>
 
             <div className="mb-5">
 
@@ -53,7 +52,7 @@ export default function FormCadastro() {
                     {(inputProps) => <Input {...inputProps} />}
                 </InputMask>
 
-                {errors.cpf && <p className="text-red-500 text-sm mt-1">{errors.cpf.message}</p>}
+                {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
             </div>
 
             <div className="mb-5">
@@ -62,7 +61,7 @@ export default function FormCadastro() {
                     }`}
                     placeholder="Qual o seu nome completo?"
                     {...register('nome')} />
-                {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome.message}</p>}
+                {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
             </div>
 
             <div className="mb-5">
@@ -71,14 +70,14 @@ export default function FormCadastro() {
                     }`}
                     placeholder="Qual o seu e-mail?"
                     {...register('email')} />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
             </div>
 
-            <h5 className="mb-2 text-slate-900">Crie uma senha simples</h5>
+            <h5 className="mb-2 text-slate-400 font-light lg:text-md text-sm">Crie uma senha simples</h5>
 
-            <div className="mb-5 flex w-100 gap-5">
+            <div className="mb-5 flex-1 lg:flex w-100 gap-5">
 
-                <div className="w-full">
+                <div className="w-full mb-5">
                     <div className="relative">
                         <Input type={inputSenha} className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
                             errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
@@ -93,7 +92,7 @@ export default function FormCadastro() {
                         )}
                         
                     </div>
-                    {errors.senha && <p className="text-red-500 text-sm mt-1">{errors.senha.message}</p>}
+                    {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                 </div>
 
                 <div className="w-full">
@@ -110,19 +109,19 @@ export default function FormCadastro() {
                             <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
                         )}
                     </div>
-                    {errors.senhaConfirmacao && <p className="text-red-500 text-sm mt-1">{errors.senhaConfirmacao.message}</p>}
+                    {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
                 </div>
 
             </div>
 
             <div className="mb-5">
                 <input type="checkbox" id="termos" className="mr-2"  {...register('termos', { required: true })} />
-                <label htmlFor="termos">
+                <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
                     Li e aceito os termos de uso e política de privacidade.
                     <Link className="text-blue-400" href="#"> Ver termos de uso e política de privacidade.</Link>
                     {errors.termos && <p className="text-red-500 text-sm mt-1">{errors.termos.message}</p>}
                 </label>
             </div>
-        </>
+        </div>
     )
 }

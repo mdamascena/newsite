@@ -150,9 +150,9 @@ export default function Header() {
                 </nav>
 
                 <div className='justify-items-stretch'>
-                    <BtnMenu>
-                        <Link href='/conta' passHref>Acessar</Link>
-                    </BtnMenu>
+                    <Link href='/conta' passHref>
+                        <BtnMenu>Acessar</BtnMenu>
+                    </Link>
                 </div>
 
                 <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>

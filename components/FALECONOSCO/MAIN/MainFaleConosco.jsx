@@ -13,7 +13,6 @@ const Title = tw.div`
     font-[600]
     tracking-tighter
 `
-
 export default function MainFC() {
 
     const router = useRouter();

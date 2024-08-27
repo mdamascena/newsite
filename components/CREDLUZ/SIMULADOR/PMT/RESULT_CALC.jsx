@@ -124,22 +124,22 @@ export default function Modal({ prazo, parcela, valor, showSimulador }) {
             <ul className="text-white font-light mt-3 gap-y-2 grid">
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-yellow-200 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
+                    <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
                     Sem comprovação de renda
                 </li>
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-yellow-200 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
+                    <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
                     Possibilidade para negativado*
                 </li>
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-yellow-200 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
+                    <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
                     Liberação no mesmo dia
                 </li>
 
                 <li className="flex items-center">
-                    <FaCheck className="bg-yellow-200 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
+                    <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
                     Limite de até R$ 3.300,00*
                 </li>
 
