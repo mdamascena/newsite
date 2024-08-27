@@ -5,27 +5,30 @@ export const cadastroSchema = z.object({
     cpf: z.string().min(11, "O CPF deve ter pelo menos 11 dígitos").max(14, "O CPF deve ter no máximo 14 dígitos").refine(value => validateCPF(value), { message: "O CPF é inválido" }),
     nome: z.string().refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" }),
     email: z.string().email("Formato de e-mail inválido"),
-    senha: z.string().min(3, "A senha deve ter pelo menos caracteres"),
-    senhaConfirmacao: z.string().min(0, "A confirmação de senha deve ter pelo menos 6 caracteres").refine(value => value.senha === value.senhaConfirmacao, {
-        message: "As senhas não correspondem",
-        path: ["senhaConfirmacao"],
-    }),
+    senha: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+    senhaConfirmacao: z.string().min(6, "A confirmação de senha deve ter pelo menos 6 caracteres"),
     termos: z.boolean().refine(val => val === true, {
         message: "É necessário aceitar o termo para continuar.",
     }),
-})
+}).refine(data => data.senha === data.senhaConfirmacao, {
+    message: "As senhas não correspondem",
+    path: ["senhaConfirmacao"],
+});
 
 export const cepSchema = z.object({
-    cep: z.string().optional().refine(value => {
-        if (value) {
-            return value.length === 9; // Valida que o CEP tem exatamente 9 caracteres
-        }
-        return true; // Se o CEP não for fornecido, não faz validação
-    }, { message: "O CEP deve conter 9 caracteres." }),
-    cidade: z.string(),
-    uf: z.string()
-})
+    cep: z.string().optional(),
+    cidade: z.string().optional(),
+    uf: z.string().optional(),
+  }).refine((data) => {
+    const cepPreenchido = data.cep?.trim().length > 0;
+    const cidadeUfPreenchidos = data.cidade?.trim().length > 0 && data.uf?.trim().length > 0;
 
+    return (
+      (!cepPreenchido && !cidadeUfPreenchidos) || (cepPreenchido && !cidadeUfPreenchidos) || (!cepPreenchido && cidadeUfPreenchidos) || (cepPreenchido && cidadeUfPreenchidos)
+    );
+  }, {
+    message: 'Preencha corretamente os campos.',
+  });
 export const dadosPessoaisSchema = z.object({
     cpf: z.string().readonly(),
     dataNascimento: z.string().length(10, { message: "Data de nascimento deve ter exatamente 10 caracteres." }),
@@ -41,6 +44,7 @@ export const dadosPessoaisSchema = z.object({
     numero: z.string().optional(),
     complemento: z.string().optional(),
     bairro: z.string().min(1, { message: "Selecione o bairro da sua cidade." }),
-    cidade: z.string().readonly(),
-    uf: z.string().readonly()
+    cidade: z.string().readonly().optional(),
+    uf: z.string().readonly().optional(),
+    cep: z.string().optional()
 })

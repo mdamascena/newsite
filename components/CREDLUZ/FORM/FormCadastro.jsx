@@ -98,7 +98,7 @@ export default function FormCadastro() {
                 <div className="w-full">
                     <div className="relative">
                     <Input type={inputSenhaConfirmacao} className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${
-                            errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                         }`}
                         {...register('senhaConfirmacao')}
                         placeholder="Confirme sua senha" />

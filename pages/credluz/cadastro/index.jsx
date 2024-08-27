@@ -62,13 +62,23 @@ export default function Cadastro() {
         mode: 'all',
     })
 
-    const nextStep = () => {
-        methods.trigger().then((isValid) => {
-            console.log('Validation status:', isValid);
-            if (isValid) {
-                setStep((prev) => Math.min(prev + 1, schemas.length - 1));
-            }
-        });
+    const { reset, getValues } = methods;
+
+    const nextStep = async () => {
+        const isValid = await methods.trigger();
+        console.log('Validation status:', isValid);
+        if (step === 1) {
+            const currentValues = getValues();
+            reset({
+                ...currentValues,
+                cep: '',
+                uf: '',
+                cidade: ''
+            });
+        }
+        if (isValid) {
+            setStep((prev) => Math.min(prev + 1, schemas.length - 1));
+        }
     };
 
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
