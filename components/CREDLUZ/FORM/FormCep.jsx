@@ -7,8 +7,10 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { LuMapPinOff } from "react-icons/lu"
 import InputMask from 'react-input-mask';
 import { DialogCep } from '../DIALOG/DialogCep';
+import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
+import { Button } from "components/ui/button"
 
-export default function FormCep() {
+export default function FormCep({ onNext, backStep }) {
 
     const { setValue, control, formState: { errors } } = useFormContext();
 
@@ -61,6 +63,14 @@ export default function FormCep() {
                         setValue('cidade', data.localidade);
                         setValue('logradouro', data.logradouro)
                         setValue('bairro', data.bairro)
+
+                        console.log('Dados do CEP:', {
+                            cep: data.cep,
+                            uf: data.uf,
+                            cidade: data.localidade,
+                            logradouro: data.logradouro,
+                            bairro: data.bairro,
+                        });
                     } else {
                         console.log('Erro ao buscar CEP');
                     }
@@ -69,6 +79,10 @@ export default function FormCep() {
         }
     }, [cep, comCep, setValue, setSelectedEstado]);
 
+    const handleNext = () => {
+        console.log('Chamando onNext');
+        onNext();
+    };
 
     return (
         <div className='h-[60vh] lg:h-[80vh] grid items-center'>
@@ -95,7 +109,7 @@ export default function FormCep() {
                         </Card>
                     </div>
                 </div>
-
+            </div>
             {comCep &&
                 <div>
                     <InputMask
@@ -120,8 +134,8 @@ export default function FormCep() {
                 </div>
             }
 
-                {semCep &&
-                    <div className='flex gap-5'>
+            {semCep &&
+                <div className='flex gap-5'>
 
                     <div className="w-full">
                         <Controller
@@ -180,6 +194,16 @@ export default function FormCep() {
                 <DialogCep open={dialogOpen} onOpenChange={setDialogOpen} />
             </div>
 
-        </>
+            <div className="mt-5 gap-5 flex align-middle">
+                <div>
+                    <HiOutlineArrowLongLeft className='text-5xl text-black cursor-pointer' onClick={backStep} />
+                </div>
+
+                <div className="w-full">
+                    <HiOutlineArrowLongRight className='text-5xl text-black cursor-pointer' onClick={onNext} />
+                </div>
+            </div>
+
+        </div>
     );
 }
