@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import CharLG from "../../../components/CREDLUZ/FORM/ChartForm"
 import { cadastroSchema, cepSchema, dadosPessoaisSchema, generoSchema, tipoOcupacao, titularCia } from "../../../schema/schemaCredLuz"
+import { FormProviderLuz, useFormDataLuz } from "../../../context/FormContextLuz"
 
 
 const mainFontFamily = Poppins({
@@ -63,7 +64,7 @@ export default function Cadastro() {
     }
 
     return (
-        <div className={mainFontFamily.className}>
+        <FormProviderLuz className={mainFontFamily.className}>
 
             <main className="bg-slate-50">
 
@@ -107,6 +108,6 @@ export default function Cadastro() {
 
             </main>
 
-        </div>
+        </FormProviderLuz>
     );
 }
