@@ -14,11 +14,6 @@ const mainFontFamily = Poppins({
 
 export default function Cadastro() {
 
-    const onSubmit = (data) => {
-        atualizarForm(data)
-        console.log('DADOS FINAL', formData)
-    }
-
     const router = useRouter();
     const handleBack = () => {
         router.back();

@@ -40,6 +40,11 @@ export function FormCredLuz() {
         setStep((prevStep) => Math.max(prevStep - 1, 1));
     };
 
+    const onSubmit = (data) => {
+        atualizarForm(data)
+        console.log('DADOS FINAL', formData)
+    }
+
     return (
         <FormProvider {...methods}>
             <Suspense>
