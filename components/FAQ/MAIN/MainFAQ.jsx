@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import ModalidadesFAQ from '../MODALIDADE/ModalidadesFAQ';
 import tw from 'tailwind-styled-components';
-import { Poppins } from 'next/font/google';
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const InputSearch = tw.input`
     font-light 
@@ -40,7 +34,7 @@ export default function MainFAQ() {
     };
 
     return (
-        <main className={mainFontFamily.className}>
+        <main>
             <div className='bgMainPrincipal select-none'>
                 <div className='text-white lg:py-44 py-36 px-4 lg:px-44 text-center'>
                     <h1 className='font-semibold tracking-tighter text-4xl lg:text-5xl'>

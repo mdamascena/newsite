@@ -6,12 +6,6 @@ import { SiInstagram } from "react-icons/si"
 import { ImFacebook } from 'react-icons/im'
 import { SiTiktok } from 'react-icons/si'
 import { MdHeadsetMic } from 'react-icons/md'
-import { Poppins } from 'next/font/google'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const Rodape = tw.footer`
     bg-gradient-to-b 
@@ -37,7 +31,7 @@ const BtnSocial = tw.button`
 export default function Footer() {
     return (
 
-        <Rodape className={mainFontFamily.className}>
+        <Rodape>
 
             <div className="py-4">
                 <h5 className="text-blue-200 lg:p-2 p-4 rounded-lg bg-opacity-20 bg-blue-800 lg:mx-40 mx-8 text-center">
