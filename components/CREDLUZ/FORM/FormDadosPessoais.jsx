@@ -24,12 +24,12 @@ export default function FormDadosPessoais({ backStep, onNext }) {
     }, [])
 
     const onSubmit = (data) => {
-        console.log(data)
-        onNext();
+        console.log('dados recebidos', data)
+        onNext(data);
     }
 
     return (
-        <>
+        <form>
             <div className="mb-6">
 
                 <h5 className="text-blue-400 mb-2">Contatos</h5>
@@ -124,11 +124,11 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                 </div>
 
                 <div className="w-full">
-                    <Button type="submit" className="bg-gray-300 text-white w-full h-12">
+                    <Button type="submit" className="bg-gray-300 text-white w-full h-12" onClick={handleSubmit(onSubmit)}>
                         Começar análise
                     </Button>
                 </div>
             </div>
-        </>
+        </form>
     )
 }

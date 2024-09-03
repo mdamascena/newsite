@@ -1,18 +1,18 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { Input } from 'components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/select";
 import { Card, CardContent } from 'components/ui/card';
 import { useState, useEffect } from 'react';
-import { FaMapLocationDot } from "react-icons/fa6";
 import { LuMapPinOff } from "react-icons/lu"
 import InputMask from 'react-input-mask';
-import { DialogCep } from '../DIALOG/DialogCep';
 import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
-import { Button } from "components/ui/button"
+import { useFormDataLuz } from '../../../context/FormContextLuz';
 
 export default function FormCep({ onNext, backStep }) {
 
-    const { setValue, control, formState: { errors } } = useFormContext();
+    const { control, watch, setValue, formState: { errors } } = useFormContext();
+    const watchCidade = watch("cidade")
+
+    const { atualizarForm } = useFormDataLuz()
 
     const [comCep, setComCep] = useState(false);
     const [semCep, setSemCep] = useState(false);
@@ -24,7 +24,7 @@ export default function FormCep({ onNext, backStep }) {
     const [dialogOpen, setDialogOpen] = useState(false)
 
     function handleComCep() {
-        setComCep(true)
+        //setComCep(true)
         setSemCep(false)
     };
 
@@ -33,8 +33,9 @@ export default function FormCep({ onNext, backStep }) {
         setSemCep(true)
     };
 
+    //REQUISIÇÃO ESTADOS
     useEffect(() => {
-        if (cep.length === 9 || semCep) {
+        if (semCep) {
             fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
                 .then((res) => res.json())
                 .then((data) => setEstados(data))
@@ -42,6 +43,7 @@ export default function FormCep({ onNext, backStep }) {
         }
     }, [cep, semCep]);
 
+    //REQUISIÇÃO MUNICIPIOS DE ACORDO COM O ESTADO
     useEffect(() => {
         if (selectedEstado) {
             fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedEstado}/municipios`)
@@ -51,26 +53,18 @@ export default function FormCep({ onNext, backStep }) {
         }
     }, [selectedEstado]);
 
-    useEffect(() => {
-        if (comCep && cep.length === 9) {
-            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+     useEffect(() => {
+         if (comCep) {
+             fetch(`https://viacep.com.br/ws/${cep}/json/`)
                 .then((res) => res.json())
                 .then((data) => {
                     if (!data.erro) {
                         setValue('cep', data.cep)
-                        setSelectedEstado(data.uf);
                         setValue('uf', data.uf);
                         setValue('cidade', data.localidade);
                         setValue('logradouro', data.logradouro)
                         setValue('bairro', data.bairro)
 
-                        console.log('Dados do CEP:', {
-                            cep: data.cep,
-                            uf: data.uf,
-                            cidade: data.localidade,
-                            logradouro: data.logradouro,
-                            bairro: data.bairro,
-                        });
                     } else {
                         console.log('Erro ao buscar CEP');
                     }
@@ -79,26 +73,31 @@ export default function FormCep({ onNext, backStep }) {
         }
     }, [cep, comCep, setValue, setSelectedEstado]);
 
-    const handleNext = () => {
-        console.log('Chamando onNext');
+    const handleSubmit = () => {
+        const updatedData = {
+            cep,
+            uf: selectedEstado,
+            watchCidade: watchCidade
+        };
+        atualizarForm(updatedData);
         onNext();
     };
 
     return (
-        <div className='h-[60vh] lg:h-[80vh] grid items-center'>
+        <form className='h-[60vh] lg:h-[80vh] grid items-center'>
 
             <div className=''>
 
                 <div className='flex gap-5 mb-5 '>
 
-                    <div onClick={handleComCep} className='w-full cursor-pointer'>
+                    {/* <div onClick={handleComCep} className='w-full cursor-pointer'>
                         <Card>
                             <CardContent className="flex flex-col items-center justify-center h-full p-4">
                                 <FaMapLocationDot className='text-6xl text-blue-500 mb-5 ' />
                                 <h5 className='text-slate-600'>Usar meu CEP</h5>
                             </CardContent>
                         </Card>
-                    </div>
+                    </div> */}
 
                     <div onClick={hadleSemCep} className='w-full cursor-pointer'>
                         <Card >
@@ -110,7 +109,7 @@ export default function FormCep({ onNext, backStep }) {
                     </div>
                 </div>
             </div>
-            {comCep &&
+            {/* {comCep &&
                 <div>
                     <InputMask
                         mask="99999-999"
@@ -132,7 +131,7 @@ export default function FormCep({ onNext, backStep }) {
                     </InputMask>
                     {errors.cep && <p className="text-red-500 text-sm mt-1">{errors.cep.message}</p>}
                 </div>
-            }
+            } */}
 
             {semCep &&
                 <div className='flex gap-5'>
@@ -187,12 +186,6 @@ export default function FormCep({ onNext, backStep }) {
                 </div>
 
             }
-            <div>
-
-                <button type='button' onClick={() => setDialogOpen(true)}>Abrir dialog</button>
-
-                <DialogCep open={dialogOpen} onOpenChange={setDialogOpen} />
-            </div>
 
             <div className="mt-5 gap-5 flex align-middle">
                 <div>
@@ -200,10 +193,10 @@ export default function FormCep({ onNext, backStep }) {
                 </div>
 
                 <div className="w-full">
-                    <HiOutlineArrowLongRight className='text-5xl text-black cursor-pointer' onClick={onNext} />
+                    <HiOutlineArrowLongRight className='text-5xl text-black cursor-pointer' onClick={handleSubmit} />
                 </div>
             </div>
 
-        </div>
+        </form>
     );
 }
