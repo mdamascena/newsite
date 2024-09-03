@@ -5,13 +5,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const Title = tw.div`
-    text-blue-700
+    py-5
     lg:text-5xl
     text-3xl
     text-center 
     lg:text-left 
     font-[600]
     tracking-tighter
+    bg-clip-text 
+    text-transparent 
+    bg-gradient-to-r 
+    from-blue-800 
+    via-blue-500 
+    to-blue-200 
+    saturate-150
 `
 export default function MainFC() {
 

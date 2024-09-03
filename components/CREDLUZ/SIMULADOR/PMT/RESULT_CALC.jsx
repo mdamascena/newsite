@@ -4,13 +4,7 @@ import LogoCrefaz from '../../../../public/img/logocrefaz.png'
 import tw from 'tailwind-styled-components'
 import { FaCheck } from "react-icons/fa6"
 import { BiMoneyWithdraw } from "react-icons/bi"
-import { Poppins } from 'next/font/google'
 import Link from "next/link"
-
-const mainFontFamily = Poppins({
-    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-    subsets: ['latin']
-});
 
 const BtnSolicita = tw.button`
     flex 
@@ -54,7 +48,7 @@ export default function Modal({ prazo, parcela, valor, showSimulador }) {
 
     return (
 
-        <DialogContent className={` sm:max-w-[450px] px-5 lg:px-8 py-5 bg-btncalc border-0 select-none Poppins`}>
+        <DialogContent className='sm:max-w-[450px] px-5 lg:px-8 py-5 bg-btncalc border-0 select-none'>
 
             <DialogHeader className='select-none'>
                 <DialogDescription>

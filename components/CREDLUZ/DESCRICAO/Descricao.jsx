@@ -25,7 +25,7 @@ export default function Descricao(){
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3">
-                    <div className="col-span-1 text-6xl tracking-tighter text-center mb-5 lg:mb-0 mt-10">
+                    <div className="col-span-1 text-6xl font-semibold tracking-tighter text-center mb-5 lg:mb-0 mt-10">
                         É PRA VC!
                     </div>
 
@@ -94,9 +94,9 @@ export default function Descricao(){
             </div>
 
             <div className="text-[12px] mt-8">
-                <ul className="">
-                    <li className="mb-1">* Crédito destinado a pessoa física, de qualquer perfil econômico que possua conta ativa em uma concessionária de distribuição de energia elétrica conveniada.</li>
-                    <li className="mb-1">* Tempo estimado de analise, podendo superar o tempo acima. </li>
+                <ul>
+                    <li>* Crédito destinado a pessoa física, de qualquer perfil econômico que possua conta ativa em uma concessionária de distribuição de energia elétrica conveniada.</li>
+                    <li>* Tempo estimado de analise, podendo superar o tempo acima. </li>
                     <li>* Crédito sujeito a análise.</li>
                 </ul>
             </div>

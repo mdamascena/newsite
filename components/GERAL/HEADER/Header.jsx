@@ -6,13 +6,7 @@ import tw from 'tailwind-styled-components'
 import AlertI from '../ARLET/Alert'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
-import { Poppins } from 'next/font/google'
 import 'animate.css'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const Dropdown = tw.div`
     absolute 
@@ -114,7 +108,7 @@ export default function Header() {
 
 
     return (
-        <header className={mainFontFamily.className}>
+        <header>
             <AlertI />
             <div id='menuBar'className={`${bgNavbar[0]} ${bgNavbar[5]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 duration-500`}>
 

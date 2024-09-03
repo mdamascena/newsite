@@ -4,14 +4,8 @@ import SlideModalidade from "../MODALIDADES/SlideModalidade"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
 import tw from 'tailwind-styled-components'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { Poppins } from 'next/font/google'
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const CardMod = tw.div`
   group
@@ -59,7 +53,7 @@ const BtnHome = tw.button`
 export default function MainHome() {
 
   return (
-    <main className={mainFontFamily.className}>
+    <main>
         <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
             <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
 
