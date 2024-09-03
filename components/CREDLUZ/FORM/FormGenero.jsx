@@ -4,32 +4,23 @@ import { Label } from "components/ui/label"
 import { RadioGroup, RadioGroupItem } from "components/ui/radio-group"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { Button } from "components/ui/button"
+import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormGenero({ onNext, backStep }) {
 
     const { control, watch, setValue } = useFormContext();
+    const { atualizarForm } = useFormDataLuz();
     const tipoGenero = watch("genero");
 
     useEffect(() => {
-        // Carregar dados do localStorage quando o componente é montado
-        const salvarDados = localStorage.getItem('formData');
-        if (salvarDados) {
-            const parsedData = JSON.parse(salvarDados);
-            if (parsedData.genero) {
-                setValue("formData", parsedData.genero);
-            }
-        }
-    }, [setValue]);
-
-    useEffect(() => {
         if (tipoGenero) {
-            localStorage.setItem('formData', JSON.stringify({ genero: tipoGenero }));
+            atualizarForm({tipoGenero: tipoGenero})
             onNext()
         }
-    }, [tipoGenero, onNext])
+    }, [tipoGenero, atualizarForm, onNext])
 
     return (
-        <div>
+        <form>
             <Controller
                 name="genero" // Nome do campo no formulário
                 control={control}
@@ -76,6 +67,6 @@ export default function FormGenero({ onNext, backStep }) {
                     </Button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }

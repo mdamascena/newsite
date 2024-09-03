@@ -4,12 +4,14 @@ import { Input } from "components/ui/input";
 import InputMask from 'react-input-mask';
 import { useFormContext } from "react-hook-form";
 import { PiEyeClosedBold, PiEye } from "react-icons/pi";
+import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 
 export default function FormCadastro({ onNext }) {
 
     // Controle de formulario react-hook-form
     const { register, handleSubmit, formState: { errors } } = useFormContext();
+    const {atualizarForm} = useFormDataLuz();
 
     // State para definir o campo password visivel.
     const [inputSenha, setInputSenha] = useState('password');
@@ -31,7 +33,7 @@ export default function FormCadastro({ onNext }) {
     }
 
     const onSubmit = (data) => {
-        console.log(data)
+        atualizarForm(data)
         onNext();
     }
 
@@ -140,10 +142,7 @@ export default function FormCadastro({ onNext }) {
                 </div>
 
                 <div className="mb-5">
-                    <button
-                        type="submit"
-                        className="px-4 py-2 bg-blue-500 text-white rounded"
-                    >
+                    <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
                         Criar conta
                     </button>
                 </div>

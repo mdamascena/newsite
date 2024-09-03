@@ -8,7 +8,7 @@ const Step1 = lazy(() => import('../FORM/FormCadastro'));
 const Step2 = lazy(() => import('../FORM/FormTipoOcupacao'));
 const Step3 = lazy(() => import('../FORM/FormGenero'));
 const Step4 = lazy(() => import('../FORM/FormTitularCia'));
-const Step5 = lazy(() => import('../FORM/FormCep'));
+const Step5 = lazy(() => import('../FORM/FormEndereco'));
 const Step6 = lazy(() => import('../FORM/FormDadosPessoais'))
 
 const schemas = [cadastroSchema, tipoOcupacao, generoSchema, titularCia, cepSchema, dadosPessoaisSchema];
@@ -25,14 +25,15 @@ export function FormCredLuz() {
     })
 
     useEffect(() => {
-        if (step > 2) {
+        if (step >= 2) {
             methods.reset(formData);
         }
     }, [step, methods, formData]);
 
     const nextStep = (data) => {
-        console.log('Avançando para o proximo passo')
+        console.log(step)
         atualizarForm(data)
+        console.log(formData)
         setStep((prevStep) => Math.min(prevStep + 1, schemas.length));
     };
 
@@ -42,7 +43,7 @@ export function FormCredLuz() {
 
     const onSubmit = (data) => {
         atualizarForm(data)
-        console.log('DADOS FINAL', formData)
+        console.log(formData)
     }
 
     return (

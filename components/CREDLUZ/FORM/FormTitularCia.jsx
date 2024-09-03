@@ -4,22 +4,24 @@ import { Label } from "components/ui/label"
 import { RadioGroup, RadioGroupItem } from "components/ui/radio-group"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { Button } from "components/ui/button"
+import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormTitularCia({ onNext, backStep }) {
 
     const { control, watch } = useFormContext();
+    const { atualizarForm } = useFormDataLuz();
     const titularCia = watch("titularCia")
 
     useEffect(() => {
         if (titularCia) {
+            atualizarForm({titularCia: titularCia})
             onNext();
         }
-        localStorage.setItem('teste', titularCia)
-    }, [titularCia, onNext]);
+    }, [titularCia, atualizarForm, onNext]);
 
 
     return (
-        <div>
+        <form>
             <Controller
                 name="titularCia"
                 control={control}
@@ -66,6 +68,6 @@ export default function FormTitularCia({ onNext, backStep }) {
                     </Button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }

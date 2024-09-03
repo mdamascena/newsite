@@ -4,29 +4,21 @@ import { RadioGroup, RadioGroupItem } from "components/ui/radio-group";
 import { useEffect } from 'react';
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { Button } from "components/ui/button"
+import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormTipoOcupacao({ onNext, backStep }) {
 
     const { control, watch, setValue } = useFormContext();
+    const { atualizarForm } = useFormDataLuz()
     const tipoOcupacaoValue = watch("tipoOcupacao");
 
-    useEffect(() => {
-        // Carregar dados do localStorage quando o componente é montado
-        const salvarDados = localStorage.getItem('formData');
-        if (salvarDados) {
-            const parsedData = JSON.parse(salvarDados);
-            if (parsedData.tipoOcupacao) {
-                setValue("formData", parsedData.tipoOcupacao);
-            }
-        }
-    }, [setValue]);
 
     useEffect(() => {
         if (tipoOcupacaoValue) {
-            localStorage.setItem('formData', JSON.stringify({ tipoOcupacao: tipoOcupacaoValue }));
-            onNext()
+            atualizarForm({tipoOcupacaoValue: tipoOcupacaoValue});
+            onNext();
         }
-    }, [tipoOcupacaoValue, onNext])
+    }, [tipoOcupacaoValue, atualizarForm, onNext])
 
     return (
         <form>
