@@ -8,16 +8,11 @@ import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
-import { Poppins } from 'next/font/google'
 
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 export default function MainPrincipal() {
   return (
-    <main className={mainFontFamily.className}>
+    <main>
         <section className="bgMainPrincipal">
             
             <div className="bgBrasaoFast">

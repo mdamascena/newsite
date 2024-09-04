@@ -1,4 +1,5 @@
 import { Input } from "components/ui/input";
+import { useState } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC";
 import { Controller, useFormContext } from "react-hook-form";
 import InputMask from 'react-input-mask';
@@ -8,11 +9,17 @@ import { useEffect } from "react";
 
 export default function FormDadosPessoais({ backStep, onNext }) {
 
+    const [comCep, setComCep] = useState(false);
+
     const { register, watch, setValue, handleSubmit, formState: { errors } } = useFormContext();
     const cidade = watch('cidade');
     const uf = watch('uf');
     const logradouro = watch('logradouro')
     const bairro = watch('bairro')
+
+    const handleSpanClick = () => {
+        setComCep(prevState => !prevState);
+    };
 
     useEffect(() => {
         if (cidade && uf) {
@@ -21,7 +28,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
             setValue('logradouro', logradouro)
             setValue('bairro', bairro)
         }
-    }, [])
+    }, [cidade, uf, logradouro, bairro, setValue])
 
     const onSubmit = (data) => {
         console.log('dados recebidos', data)
@@ -71,9 +78,25 @@ export default function FormDadosPessoais({ backStep, onNext }) {
 
                 <h5 className="text-blue-400 mb-2">Endereço</h5>
 
-                <div className="flex gap-5 mb-5">
+                <div className="flex gap-3 mb-5">
+                    <button onClick={handleSpanClick} type="button" className="border border-blue-400 w-full py-8 rounded-lg text-blue-400">Com CEP</button>
+                    
 
-                    <div className="w-full">
+
+                    <button onClick={handleSpanClick} type="button" className="border border-blue-400 w-full py-8 rounded-lg text-blue-400">Sem CEP</button>
+
+                </div>
+
+
+                <div className="grid grid-cols-6 gap-4 mb-5">
+
+                    {comCep && (
+                        <input>
+                        
+                        </input>
+                    )}
+
+                    <div className="col-span-4">
                         <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Logradouro *"
@@ -81,28 +104,30 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                         {errors.logradouro && <p className="text-red-500 text-sm mt-1">{errors.logradouro.message}</p>}
                     </div>
 
-                    <div className="w-full">
+                    <div className="col-span-2">
                         <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
                             placeholder="N°"
                             {...register('numero')} />
                     </div>
 
-                    <div className="w-full">
+                    <div className="col-span-3">
                         <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
                             placeholder="Complemento"
                             {...register('complemento')} />
                     </div>
-                </div>
 
-                <div className="flex gap-5">
-
-                    <div className="w-full">
+                    <div className="col-span-3">
                         <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Bairro *"
                             {...register('bairro')} />
                         {errors.bairro && <p className="text-red-500 text-sm mt-1">{errors.bairro.message}</p>}
                     </div>
+                </div>
+
+                <div className="grid grid-cols-6 gap-5">
+
+                    
 
                     <div className="w-full">
                         <Input disabled className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'

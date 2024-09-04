@@ -17,7 +17,6 @@ const Card = tw.div`
     p-8
     duration-1000
 `
-
 export default function Regras(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
@@ -114,8 +113,8 @@ export default function Regras(){
                         <div className="hidden lg:flex justify-center">
                             <div className="flex">
                                 <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={230} src={analise} alt=''/>
-                                <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={230} src={step} alt='' />
-                                <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10`} width={240} src={desc} alt='' />
+                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={230} src={step} alt='' />
+                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10`} width={240} src={desc} alt='' />
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[13rem] absolute rounded-full bottom-6 shadow-xl duration-1000 ${movImg}`}/>
                         </div>

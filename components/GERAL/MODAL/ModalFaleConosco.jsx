@@ -1,16 +1,10 @@
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader} from "../../ui/dialog_closeWhite";
-import { Input } from "../../ui/input";
-import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC";
-import InputMask from 'react-input-mask';
-import { Textarea } from "../../ui/textarea";
-import tw from 'tailwind-styled-components';
-import { LiaTelegramPlane } from "react-icons/lia";
-import { Poppins } from 'next/font/google'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader} from "../../ui/dialog_closeWhite"
+import { Input } from "../../ui/input"
+import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
+import InputMask from 'react-input-mask'
+import { Textarea } from "../../ui/textarea"
+import tw from 'tailwind-styled-components'
+import { LiaTelegramPlane } from "react-icons/lia"
 
 const Btn = tw.button`
     bg-blue-600
@@ -34,7 +28,7 @@ const Btn = tw.button`
 export default function ModalFaleConosco(){
     
     return(
-        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] p-0 border-0 Poppins`}>
+        <DialogContent className='sm:max-w-[500px] p-0 border-0'>
             
             <DialogHeader closed={false} className='bg-gradient-to-r from-blue-950 to-blue-800 saturate-150 rounded-t-md p-4'>
                 <h1 className='text-white text-xl'>Fale conosco</h1>

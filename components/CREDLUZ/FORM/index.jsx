@@ -1,6 +1,6 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { cadastroSchema, tipoOcupacao, generoSchema, titularCia, cepSchema, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
+import { cadastroSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFormDataLuz } from '../../../context/FormContextLuz';
 
@@ -8,10 +8,9 @@ const Step1 = lazy(() => import('../FORM/FormCadastro'));
 const Step2 = lazy(() => import('../FORM/FormTipoOcupacao'));
 const Step3 = lazy(() => import('../FORM/FormGenero'));
 const Step4 = lazy(() => import('../FORM/FormTitularCia'));
-const Step5 = lazy(() => import('../FORM/FormEndereco'));
-const Step6 = lazy(() => import('../FORM/FormDadosPessoais'))
+const Step5 = lazy(() => import('../FORM/FormDadosPessoais'))
 
-const schemas = [cadastroSchema, tipoOcupacao, generoSchema, titularCia, cepSchema, dadosPessoaisSchema];
+const schemas = [cadastroSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema];
 
 export function FormCredLuz() {
 
@@ -53,8 +52,7 @@ export function FormCredLuz() {
                 {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
                 {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
                 {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
-                {step === 5 && <Step5 onNext={nextStep} backStep={prevStep} />}
-                {step === 6 && <Step6 onNext={onSubmit} backStep={prevStep} />}
+                {step === 5 && <Step5 onNext={onSubmit} backStep={prevStep} />}
             </Suspense>
         </FormProvider>
     )
