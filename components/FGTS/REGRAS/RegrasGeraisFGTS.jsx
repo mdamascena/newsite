@@ -2,12 +2,6 @@ import Image from "next/image"
 import imgFGTS from '../../../public/img/pers_notificacao_pix.png'
 import { FaCheck } from 'react-icons/fa'
 import tw from 'tailwind-styled-components'
-import { Poppins } from 'next/font/google'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-})
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 

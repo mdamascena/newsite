@@ -46,8 +46,8 @@ export default function FormCadastro({ onNext }) {
 
                 <h5 className="text-slate-400 mb-5 font-light lg:text-md text-sm">Crie uma senha simples para você acessar a sua proposta e acompanhar a análise</h5>
 
-                <div className="mb-5 flex gap-5">
-                    <div className="w-full">
+                <div className="grid grid-cols-6 gap-3">
+                    <div className="col-span-3">
                         <InputMask
                             mask="999.999.999-99"
                             className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
@@ -62,7 +62,7 @@ export default function FormCadastro({ onNext }) {
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
 
-                    <div className="w-full">
+                    <div className="col-span-3">
                         <InputMask
                             mask="99/99/9999"
                             className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''

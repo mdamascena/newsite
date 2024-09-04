@@ -45,7 +45,7 @@ export default function Cadastro() {
                     </div>
                 </div>
 
-                <div className="col-span-1 lg:px-28 items-center grid mt-3 px-8">
+                <div className="col-span-1 lg:px-28 items-center grid mt-3 px-5">
                     <FormProviderLuz className={mainFontFamily.className}>
                         <FormCredLuz />
                     </FormProviderLuz>

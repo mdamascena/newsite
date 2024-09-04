@@ -5,12 +5,6 @@ import tw from 'tailwind-styled-components'
 import { RiMoneyDollarCircleLine } from "react-icons/ri"
 import { HiArrowUturnLeft } from 'react-icons/hi2'
 import { IoIosCheckmarkCircle } from "react-icons/io"
-import { Poppins } from 'next/font/google'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const BtnSolicita = tw.button`
     bg-yellow-500
@@ -62,7 +56,7 @@ export default function Modal({prazo, parcela, valor, showSimulador }){
     
     return(
 
-        <DialogContent className={`${mainFontFamily.className} sm:max-w-[500px] px-3 lg:px-5 py-5`}>
+        <DialogContent className='sm:max-w-[500px] px-3 lg:px-5 py-5'>
             
             <DialogHeader className='select-none'>
                 

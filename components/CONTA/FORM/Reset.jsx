@@ -4,12 +4,6 @@ import { Input } from '../../ui/input'
 import InputMask from 'react-input-mask'
 import { motion, AnimatePresence } from 'framer-motion'
 import { DialogContent, DialogHeader, DialogDescription, DialogClose, Dialog, DialogTrigger } from '../../ui/dialog_noclose'
-import { Poppins } from 'next/font/google'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const BtnPass = tw.button`
     bg-blue-700
@@ -72,7 +66,7 @@ export default function FormPass() {
                         <BtnReset className='mt-2'>Esqueci o e-mail</BtnReset>
                     </DialogTrigger>
                     
-                    <DialogContent className={`${mainFontFamily.className}`}>
+                    <DialogContent>
             
                         <DialogHeader className='select-none'>
                             <div className='bg-white border border-l-4 border-l-blue-600 rounded-md mb-5'>

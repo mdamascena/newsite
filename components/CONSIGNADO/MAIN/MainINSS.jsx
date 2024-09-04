@@ -4,12 +4,6 @@ import tw from 'tailwind-styled-components'
 import Taxas from '../TAXA/TaxaINSS'
 import Analise from '../../GERAL/ANALISE/Analise'
 import { LuCheckCircle } from "react-icons/lu"
-import { Poppins } from 'next/font/google'
-
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-})
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 
@@ -63,7 +57,7 @@ const Card = tw.div`
 export default function MainFGTS() {
 
     return (
-        <main className={mainFontFamily.className}>
+        <main>
             <div className="bgMainFGTS px-6 lg:px-44 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
 
                 <div className='lg:my-auto mb-10'>

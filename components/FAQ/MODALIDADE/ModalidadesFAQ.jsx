@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import tw from 'tailwind-styled-components';
-import { Poppins } from 'next/font/google';
 import { RxArrowRight } from "react-icons/rx";
 import { RiLightbulbFlashLine } from 'react-icons/ri';
 import { MdOutlineCake } from 'react-icons/md';
@@ -9,10 +8,6 @@ import { AiOutlineBarcode } from "react-icons/ai";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const mainFontFamily = Poppins({
-    weight: ['100','200','300','400','500','600','700','800','900'],
-    subsets: ['latin']
-});
 
 const CardMod = tw.div`
     group
@@ -36,7 +31,7 @@ const CardMod = tw.div`
 
 export default function ModalidadesFAQ(){
     return(
-        <section className={mainFontFamily.className}>
+        <section>
 
             <div className='mx-4 lg:mx-44 select-none hidden lg:block'>
                 <div className='grid grid-cols-3 relative bottom-24'>
