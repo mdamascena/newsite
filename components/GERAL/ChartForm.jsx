@@ -1,4 +1,4 @@
-import { Progress } from "../../../components/ui/progress"
+import { Progress } from "../ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
 import {CircularProgress} from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -14,16 +14,13 @@ export default function Chatform ({className}) {
     return () => clearInterval(interval);
   }, []);
 
-
-
-
     return(
 
         <div className={`justify-center lg:justify-end grid ${className}`}>
                                         
-            <div className="bg-black/40 lg:p-5 px-3 py-2 m-3 lg:w-96 w-[22rem] rounded-xl relative">
+            <div className="lg:bg-blue-950/50 lg:saturate-200 bg-black/30 lg:p-5 px-3 py-2 m-3 lg:w-96 w-[22rem] rounded-xl relative">
                                             
-                <div className="items-center mb-5 hidden ">
+                <div className="items-center lg:mb-5 hidden lg:flex">
                     <PiClipboardTextLight className="p-1 bg-white rounded-md text-3xl text-blue-600"/>
                     <p className="text-white font-light ml-2">Preenchimento de proposta</p>
                 </div>

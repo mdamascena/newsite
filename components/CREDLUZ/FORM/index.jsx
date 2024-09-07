@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, startTransition , lazy } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { cadastroSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -47,13 +47,11 @@ export function FormCredLuz() {
 
     return (
         <FormProvider {...methods}>
-            <Suspense>
-                {step === 1 && <Step1 onNext={nextStep} />}
-                {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
-                {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
-                {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
-                {step === 5 && <Step5 onNext={onSubmit} backStep={prevStep} />}
-            </Suspense>
+            {step === 1 && <Step1 onNext={nextStep} />}
+            {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
+            {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
+            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
+            {step === 5 && <Step5 onNext={onSubmit} backStep={prevStep} />}
         </FormProvider>
     )
 }
