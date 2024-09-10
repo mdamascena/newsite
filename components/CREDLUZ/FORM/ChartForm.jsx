@@ -1,21 +1,7 @@
 import { Progress } from "../../../components/ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
-import {CircularProgress} from "@nextui-org/react";
-import { useEffect, useState } from "react";
 
-export default function Chatform ({className}) {
-    const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setValue((v) => (v >= 100 ? 0 : v + 20));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-
-
+export default function Chatform ({className, value }) {
 
     return(
 
@@ -29,23 +15,15 @@ export default function Chatform ({className}) {
                 </div>
                                             
                 <Progress value={value} />
-
-                {/* <CircularProgress
-                    aria-label="Loading..."
-                    size="lg"
-                    value={value}
-                    color="warning"
-                    showValueLabel={true}
-                /> */}
                                             
                 <div className="grid grid-cols-2 items-center mt-2">                      
                     
                     <ul className="text-white text-xs col-span-1 hidden lg:block">
-                        <li className={`${value >= 20 ? '' :'text-white/30'}`}>Criar login</li>
-                        <li className={`${value >= 40 ? '' :'text-white/30'}`}>Localidade</li>
-                        <li className={`${value >= 60 ? '' :'text-white/30'}`}>Dados pessoais</li>
-                        <li className={`${value >= 80 ? '' :'text-white/30'}`}>Envio de documentos</li>
-                        <li className={`${value >= 100 ? '' :'text-white/30'}`}>Simulação</li>
+                        <li className={`${value >= 20 ? '' :'text-white/20'}`}>Criar login</li>
+                        <li className={`${value >= 40 ? '' :'text-white/20'}`}>Localidade</li>
+                        <li className={`${value >= 60 ? '' :'text-white/20'}`}>Dados pessoais</li>
+                        <li className={`${value >= 80 ? '' :'text-white/20'}`}>Envio de documentos</li>
+                        <li className={`${value >= 100 ? '' :'text-white/20'}`}>Simulação</li>
                     </ul>
                     
                     <ul className="text-white text-sm col-span-1 lg:hidden block">

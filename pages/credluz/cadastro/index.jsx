@@ -6,6 +6,7 @@ import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import CharLG from "../../../components/CREDLUZ/FORM/ChartForm"
 import { FormProviderLuz } from "../../../context/FormContextLuz"
 import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
+import { useEffect, useState } from "react"
 
 const mainFontFamily = Poppins({
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -13,6 +14,12 @@ const mainFontFamily = Poppins({
 });
 
 export default function Cadastro() {
+
+    const [progress, setProgress] = useState(0);
+    
+    useEffect(() => {
+        console.log(progress)
+    }, [])
 
     const router = useRouter();
     const handleBack = () => {
@@ -41,13 +48,13 @@ export default function Cadastro() {
                                 </p>
                             </div>
                         </div>
-                        <CharLG className='lg:mt-36' />
+                        <CharLG value={progress} className='lg:mt-36' />
                     </div>
                 </div>
 
                 <div className="col-span-1 lg:px-28 items-center grid mt-3 px-5">
                     <FormProviderLuz className={mainFontFamily.className}>
-                        <FormCredLuz />
+                        <FormCredLuz progressChange={setProgress} />
                     </FormProviderLuz>
                 </div>
 

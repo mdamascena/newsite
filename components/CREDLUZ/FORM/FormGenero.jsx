@@ -1,5 +1,4 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { useEffect } from "react";
 import { Label } from "components/ui/label"
 import { RadioGroup, RadioGroupItem } from "components/ui/radio-group"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
@@ -8,19 +7,16 @@ import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormGenero({ onNext, backStep }) {
 
-    const { control, watch, setValue } = useFormContext();
+    const { control, handleSubmit } = useFormContext();
     const { atualizarForm } = useFormDataLuz();
-    const tipoGenero = watch("genero");
 
-    useEffect(() => {
-        if (tipoGenero) {
-            atualizarForm({tipoGenero: tipoGenero})
-            onNext()
-        }
-    }, [tipoGenero, atualizarForm, onNext])
+    function onSubmit(data){
+        atualizarForm(data);
+        onNext();
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
                 name="genero" // Nome do campo no formulário
                 control={control}
@@ -62,8 +58,8 @@ export default function FormGenero({ onNext, backStep }) {
                 </div>
 
                 <div className="w-full">
-                    <Button disabled className="bg-gray-300 text-gray-500 cursor-not-allowed w-full h-12">
-                        Começar análise
+                    <Button type="submit" className=" w-full h-12">
+                        Avançar
                     </Button>
                 </div>
             </div>
