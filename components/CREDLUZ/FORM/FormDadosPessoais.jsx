@@ -1,6 +1,7 @@
 import { Input } from "components/ui/input";
 import { useState } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC";
+import { useFormDataLuz } from "../../../context/FormContextLuz";
 import { Controller, useFormContext } from "react-hook-form";
 import InputMask from 'react-input-mask';
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
@@ -9,7 +10,8 @@ import { useEffect } from "react";
 
 export default function FormDadosPessoais({ backStep, onNext }) {
 
-    const { register, watch, setValue, handleSubmit, control, formState: { errors } } = useFormContext();
+    const { register, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
+    const { atualizarForm } = useFormDataLuz()
     const [comCep, setComCep] = useState(true);
     const [semCep, setSemCep] = useState(false)
     const [uf, setUf] = useState([]);
@@ -77,7 +79,11 @@ export default function FormDadosPessoais({ backStep, onNext }) {
     }, [selectedEstado])
 
     const onSubmit = (data) => {
-        console.log('dados recebidos', data)
+        atualizarForm(data)
+        console.log('dados context', getValues())
+        const dados = getValues();
+        console.log(dados, "Dados enviados.")
+
     }
 
     return (

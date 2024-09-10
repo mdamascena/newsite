@@ -50,11 +50,11 @@ export default function Cadastro() {
                             </div>
                             <div className="">
                                 <p className="text-sm text-white ml-2">
-                                    {progress === 20 ? login : ''}
-                                    {progress === 40 ? localidade : ''}
-                                    {progress === 60 ? dadosPessoais : ''}
-                                    {progress === 80 ? envioDoc : ''}
-                                    {progress === 100 ? final : ''}
+                                    {progress < 19  ? login : ''}
+                                    {progress === 20 ? localidade : ''}
+                                    {progress === 40 ? dadosPessoais : ''}
+                                    {progress === 60 ? envioDoc : ''}
+                                    {progress === 80 ? final : ''}
                                 </p>
                             </div>
                         </div>
