@@ -12,20 +12,20 @@ export const cadastroSchema = z.object({
     message: "É necessário aceitar o termo para continuar.",
   }),
 }).refine(data => data.senha === data.senhaConfirmacao, {
-  message: "As senhas não correspondem",
-  path: ["senhaConfirmacao"],
+    message: "As senhas não correspondem",
+    path: ["senhaConfirmacao"],
 });
 
 export const tipoOcupacao = z.object({
-  tipoOcupacao: z.enum(["1", "2", "3", "4", "5", "6"])
+    tipoOcupacao: z.enum(["1", "2", "3", "4", "5", "6"])
 })
 
 export const generoSchema = z.object({
-  genero: z.enum(["0", "1"]),
+    genero: z.enum(["0", "1"]),
 });
 
 export const titularCia = z.object({
-  titularCia: z.enum(["0", "1"])
+    titularCia: z.enum(["0", "1"])
 })
 
 export const dadosPessoaisSchema = z.object({

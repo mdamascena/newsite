@@ -117,7 +117,15 @@ a {
 }
 
 .bgMainHome{
-  background: url(../public/img/bgmain.png), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
+  background: url(../public/img/bgmain.png), linear-gradient(55deg, #00025e 40%, #2427fc31 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: top 100% right 10%;
+}
+
+.bgteste{
+  background: url(../public/img/facil2.jpg), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: overlay;

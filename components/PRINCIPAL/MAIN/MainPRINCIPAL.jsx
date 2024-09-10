@@ -2,59 +2,60 @@ import Modalidades from "../MODALIDADES/Modalidades"
 import Simulador from "../SIMULADOR/SimuladorGeral"
 import SlideModalidade from "../MODALIDADES/SlideModalidade"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
+import SeuPerfil from "../SECTIONS/Perfil"
 import tw from 'tailwind-styled-components'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
 
 const CardMod = tw.div`
-  group
-  bg-white
-  hover:bg-blue-800
-  hover:scale-110 
-  col-span-1
-  text-white 
-  hover:z-10
-  p-2
-  mx-1
-  shadow-lg
-  shadow-blue-800/30
-  duration-300
-  cursor-pointer 
-  flex 
-  justify-center 
-  items-center
-  rounded-md
+    group
+    bg-white
+    hover:bg-blue-800
+    hover:scale-110 
+    col-span-1
+    text-white 
+    hover:z-10
+    p-2
+    mx-1
+    shadow-lg
+    shadow-blue-800/30
+    duration-300
+    cursor-pointer 
+    flex 
+    justify-center 
+    items-center
+    rounded-md
 `;
 
 const BtnHome = tw.button`
-  focus:outline-none
-  bg-gradient-to-r 
-  from-yellow-300 
-  to-amber-500
-  mx-auto
-  text-xl
-  lg:px-32
-  lg:mx-0
-  mb-14
-  py-4
-  lg:w-[450px]
-  w-full
-  rounded-xl
-  text-white 
-  mt-8
-  hover:to-amber-600 
-  hover:from-yellow-500
-  hover:scale-105
-  active:scale-90 
-  duration-150
+    focus:outline-none
+    bg-gradient-to-r 
+    from-yellow-300 
+    to-amber-500
+    mx-auto
+    text-xl
+    lg:px-32
+    lg:mx-0
+    mb-14
+    py-4
+    lg:w-[450px]
+    w-full
+    rounded-xl
+    text-white 
+    mt-8
+    hover:to-amber-600 
+    hover:from-yellow-500
+    hover:scale-105
+    active:scale-90 
+    duration-150
 `;
 
 export default function MainHome() {
-
   return (
     <main>
         <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
+            
             <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
 
                 <div className="mt-24 lg:mt-0">
@@ -74,18 +75,16 @@ export default function MainHome() {
                 </div>
 
             </div>
+            
             <div className="hidden lg:block col-span-1"></div>
         </div>
         <SlideModalidade/>
         <Mais/>
         <Taxa/>
-        <SeuPotencial/>
-        
+        <SeuPerfil/> 
+        <SeuPotencial/>      
         <Simulador />
         <Modalidades />
-        
-        
-		
     </main>
   )
 }
