@@ -6,8 +6,8 @@ export const cadastroSchema = z.object({
     dataNascimento: z.string().length(10, { message: "Data de nascimento deve ter exatamente 10 caracteres." }),
     nome: z.string().refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" }),
     email: z.string().email("Formato de e-mail inválido"),
-    senha: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
-    senhaConfirmacao: z.string().min(6, "A confirmação de senha deve ter pelo menos 6 caracteres"),
+    senha: z.string().min(3, "A senha deve ter pelo menos 3 caracteres"),
+    senhaConfirmacao: z.string().min(3, "A confirmação de senha deve ter pelo menos 3 caracteres"),
     termos: z.boolean().refine(val => val === true, {
         message: "É necessário aceitar o termo para continuar.",
     }),
@@ -47,7 +47,7 @@ export const dadosPessoaisSchema = z.object({
     numero: z.string().optional(),
     complemento: z.string().optional(),
     bairro: z.string().min(1, { message: "Selecione o bairro da sua cidade." }),
-    cidade: z.string().readonly().optional(),
-    uf: z.string().readonly().optional(),
+    cidade: z.string().min(1, {message: "Selecione a cidade."}),
+    uf: z.string().min(1, {message: "Seleciona o estado."}),
     cep: z.string().optional()
 })

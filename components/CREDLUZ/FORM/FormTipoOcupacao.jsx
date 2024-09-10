@@ -8,20 +8,16 @@ import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormTipoOcupacao({ onNext, backStep }) {
 
-    const { control, watch, setValue } = useFormContext();
+    const { control, handleSubmit } = useFormContext()
     const { atualizarForm } = useFormDataLuz()
-    const tipoOcupacaoValue = watch("tipoOcupacao");
 
-
-    useEffect(() => {
-        if (tipoOcupacaoValue) {
-            atualizarForm({tipoOcupacaoValue: tipoOcupacaoValue});
-            onNext();
-        }
-    }, [tipoOcupacaoValue, atualizarForm, onNext])
+    function onSubmit(data){
+        atualizarForm(data)
+        onNext();
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
                 name="tipoOcupacao"
                 control={control}
@@ -113,8 +109,8 @@ export default function FormTipoOcupacao({ onNext, backStep }) {
                 </div>
 
                 <div className="w-full">
-                    <Button disabled className="bg-gray-300 text-gray-500 cursor-not-allowed w-full h-12">
-                        Começar análise
+                    <Button type="submit" className="w-full h-12">
+                        Avançar
                     </Button>
                 </div>
             </div>

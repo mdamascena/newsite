@@ -2,7 +2,7 @@
 
 export default function Pefil (){
     return(
-        <section className="bgteste h-[120vh]">
+        <section className="h-[120vh]">
             <div className="grid grid-cols-2">
                 
                 <div className="col-span-1">

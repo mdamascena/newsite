@@ -49,6 +49,8 @@ export default function FormCadastro({ onNext }) {
         setIsAccepted((prev) => !prev);
         setValue("termos", !isAccepted);
     };
+
+    const [titulo, setTitulo] = useState("Vamos começar")
     
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

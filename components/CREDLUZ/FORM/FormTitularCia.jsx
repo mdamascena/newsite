@@ -8,20 +8,16 @@ import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormTitularCia({ onNext, backStep }) {
 
-    const { control, watch } = useFormContext();
+    const { control, handleSubmit } = useFormContext();
     const { atualizarForm } = useFormDataLuz();
-    const titularCia = watch("titularCia")
 
-    useEffect(() => {
-        if (titularCia) {
-            atualizarForm({titularCia: titularCia})
-            onNext();
-        }
-    }, [titularCia, atualizarForm, onNext]);
-
+    function onSubmit(data){
+        atualizarForm(data);
+        onNext();
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
                 name="titularCia"
                 control={control}
@@ -63,8 +59,8 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 <div className="w-full">
-                    <Button disabled className="bg-gray-300 text-gray-500 cursor-not-allowed w-full h-12">
-                        Começar análise
+                    <Button type="submit" className="w-full h-12">
+                        Avançar
                     </Button>
                 </div>
             </div>

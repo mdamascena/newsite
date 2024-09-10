@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useEffect, useState } from "react"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { useRouter } from 'next/router'
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
@@ -9,11 +10,22 @@ import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
 
 export default function Cadastro() {
 
+    const [progress, setProgress] = useState(0);
     const router = useRouter();
+
+    useEffect(() => {
+        console.log(progress, 'progresssss')
+    }, [])
     
     const handleBack = () => {
         router.back();
     }
+
+    const login = "Crie seu Login";
+    const localidade = "Agora diz a sua ocupaçao";
+    const dadosPessoais = "Informe seu Genero";
+    const envioDoc = "Você é o titular da conta ?"
+    const final = "Agora vamos fazer a simulação"
 
     return (
         <main className="bg-slate-50">
@@ -34,16 +46,21 @@ export default function Cadastro() {
                                 <h1 className="text-white font-extralight lg:font-semibold lg:text-3xl text-md ml-2">
                                     Vamos criar a sua conta
                                 </h1>
+
                             </div>
                             <div className="">
                                 <p className="text-sm text-white ml-2">
-                                    Primeiro passo. Vamos criar o seu login de acesso
+                                    {progress === 20 ? login : ''}
+                                    {progress === 40 ? localidade : ''}
+                                    {progress === 60 ? dadosPessoais : ''}
+                                    {progress === 80 ? envioDoc : ''}
+                                    {progress === 100 ? final : ''}
                                 </p>
                             </div>
                         </div>
                         
                         <div className="content-end items-center lg:pb-5">
-                            <CharLG className='' />
+                            <CharLG value={progress} />
                         </div>
 
                     </div>
@@ -52,7 +69,7 @@ export default function Cadastro() {
 
                 <div className="col-span-1 lg:px-28 items-center grid px-5">
                     <FormProviderLuz>
-                        <FormCredLuz />
+                        <FormCredLuz progressChange={setProgress} />
                     </FormProviderLuz>
                 </div>
 
