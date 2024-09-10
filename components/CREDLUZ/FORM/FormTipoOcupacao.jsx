@@ -7,7 +7,7 @@ import { useFormDataLuz } from "../../../context/FormContextLuz";
 
 export default function FormTipoOcupacao({ onNext, backStep }) {
 
-    const { control, handleSubmit } = useFormContext();
+    const { control, handleSubmit } = useFormContext()
     const { atualizarForm } = useFormDataLuz()
 
     function onSubmit(data){

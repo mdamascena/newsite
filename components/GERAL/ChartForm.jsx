@@ -1,18 +1,7 @@
-import { Progress } from "../ui/progress"
+import { Progress } from "../../components/ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
-import {CircularProgress} from "@nextui-org/react";
-import { useEffect, useState } from "react";
 
-export default function Chatform ({className}) {
-    const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setValue((v) => (v >= 100 ? 0 : v + 20));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+export default function Chatform ({className, value }) {
 
     return(
 
@@ -20,20 +9,12 @@ export default function Chatform ({className}) {
                                         
             <div className="lg:bg-blue-950/50 lg:saturate-200 bg-black/30 lg:p-5 px-3 py-2 m-3 lg:w-96 w-[22rem] rounded-xl relative">
                                             
-                <div className="items-center lg:mb-5 hidden lg:flex">
+                <div className="items-center lg:mb-5 lg:flex hidden">
                     <PiClipboardTextLight className="p-1 bg-white rounded-md text-3xl text-blue-600"/>
                     <p className="text-white font-light ml-2">Preenchimento de proposta</p>
                 </div>
                                             
                 <Progress value={value} />
-
-                {/* <CircularProgress
-                    aria-label="Loading..."
-                    size="lg"
-                    value={value}
-                    color="warning"
-                    showValueLabel={true}
-                /> */}
                                             
                 <div className="grid grid-cols-2 items-center mt-2">                      
                     

@@ -58,7 +58,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 <div className="w-full">
-                    <Button type="sumit" className="w-full h-12">
+                    <Button type="submit" className="w-full h-12">
                         Avançar
                     </Button>
                 </div>

@@ -1,6 +1,7 @@
 import { Input } from "components/ui/input";
 import { useState } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC";
+import { useFormDataLuz } from "../../../context/FormContextLuz";
 import { Controller, useFormContext } from "react-hook-form";
 import InputMask from 'react-input-mask';
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
@@ -9,23 +10,23 @@ import { useEffect } from "react";
 
 export default function FormDadosPessoais({ backStep, onNext }) {
 
+    const { register, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
+    const { atualizarForm } = useFormDataLuz()
     const [comCep, setComCep] = useState(true);
     const [semCep, setSemCep] = useState(false)
     const [uf, setUf] = useState([]);
     const [cidade, setCidade] = useState([]);
     const [selectedEstado, setSelectedEstado] = useState('');
 
-    const { register, watch, setValue, handleSubmit, control, formState: { errors } } = useFormContext();
-
     const handleComCep = () => {
         setSemCep(true)
     };
 
     const handleSemCep = () => {
-       setSemCep(false)
-       setComCep(true)
+        setSemCep(false)
+        setComCep(true)
     };
-    
+
     useEffect(() => {
         setValue('cep', ''),
         setValue('uf', ''),
@@ -38,29 +39,29 @@ export default function FormDadosPessoais({ backStep, onNext }) {
 
     const handleCepBlur = (e) => {
         const inputCep = e.target.value.replace('-', '');
-        
-        if (inputCep.length === 8) {
-          fetch(`https://viacep.com.br/ws/${inputCep}/json/`)
-            .then((res) => res.json())
-            .then((data) => {
-              if (!data.erro) {
-                setSemCep(true);
-                setValue('cep', data.cep);
-                setValue('uf', data.uf);
-                setSelectedEstado(data.uf);
-                setValue('cidade', data.localidade);
-                setValue('logradouro', data.logradouro);
-                setValue('bairro', data.bairro);
-              } else {
-                console.log('Erro ao buscar CEP');
-              }
-            })
-            .catch((error) => console.error('Erro na requisição:', error));
-        } else {
-          console.log('CEP incompleto');
-        }
-      };
 
+        if (inputCep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${inputCep}/json/`)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (!data.erro) {
+                        setSemCep(true);
+                        setValue('cep', data.cep);
+                        setValue('uf', data.uf);
+                        setSelectedEstado(data.uf);
+                        setValue('cidade', data.localidade);
+                        setValue('logradouro', data.logradouro);
+                        setValue('bairro', data.bairro);
+                    } else {
+                        console.log('Erro ao buscar CEP');
+                    }
+                })
+                .catch((error) => console.error('Erro na requisição:', error));
+        } else {
+            console.log('CEP incompleto');
+        }
+    };
+    
     useEffect(() => {
         fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
             .then(response => response.json())
@@ -78,8 +79,11 @@ export default function FormDadosPessoais({ backStep, onNext }) {
     }, [selectedEstado])
 
     const onSubmit = (data) => {
-        console.log('dados recebidos', data)
-        onNext(data);
+        atualizarForm(data)
+        console.log('dados context', getValues())
+        const dados = getValues();
+        console.log(dados, "Dados enviados.")
+
     }
 
     return (
@@ -128,8 +132,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                 {comCep && (
                     <div className="flex gap-3 mb-3">
                         <div className="flex gap-5 w-full">
-
-                            <div className="w-1/3">
+                        <div className="w-1/3">
                                 <InputMask
                                     mask="99999-999"
                                     className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
@@ -144,12 +147,11 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                                 {errors.cep && <p className="text-red-500 text-sm mt-1">{errors.cep.message}</p>}
                             </div>
 
-                        {!semCep && (
+                            {!semCep && (
                             <div className="flex w-1/3 items-center">
                                 <Button onClick={handleComCep} type="button" className="border py-5 w-full rounded-lg">Não sei meu Cep</Button>
                             </div>
                         )}
-
                         </div>
                     </div>
                 )}
@@ -161,8 +163,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                                 <Button onClick={handleSemCep} type="button" className="border py-5 w-full rounded-lg">Preencher com CEP</Button>
                             </div>
                         )}
-                        
-                        
+
                         <div className="flex gap-3 mb-3">
                             <div className="w-full">
                                 <Controller
@@ -246,9 +247,6 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                         </div>
                     </>
                 )}
-
-
-
             </div>
 
             <div className="gap-5 flex items-center">

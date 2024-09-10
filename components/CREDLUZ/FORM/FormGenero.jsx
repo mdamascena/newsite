@@ -18,9 +18,9 @@ export default function FormGenero({ onNext, backStep }) {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
-                name="genero" // Nome do campo no formulário
+                name="genero" 
                 control={control}
-                defaultValue="" // Valor padrão
+                defaultValue=""
                 render={({ field: { onChange, value } }) => (
                     <RadioGroup value={value} onValueChange={onChange}>
                         <div className="flex gap-5 mb-5 justify-center">

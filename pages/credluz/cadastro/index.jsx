@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useEffect, useState } from "react"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { useRouter } from 'next/router'
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
@@ -11,16 +12,21 @@ import { useEffect, useState } from "react"
 export default function Cadastro() {
 
     const [progress, setProgress] = useState(0);
-    
-    useEffect(() => {
-        console.log(progress)
-    }, [])
-
     const router = useRouter();
+
+    useEffect(() => {
+        console.log(progress, 'progresssss')
+    }, [])
     
     const handleBack = () => {
         router.back();
     }
+
+    const login = "Crie seu Login";
+    const localidade = "Agora diz a sua ocupaçao";
+    const dadosPessoais = "Informe seu Genero";
+    const envioDoc = "Você é o titular da conta ?"
+    const final = "Agora vamos fazer a simulação"
 
     return (
         <main className="bg-slate-50">
@@ -41,20 +47,29 @@ export default function Cadastro() {
                                 <h1 className="text-white font-extralight lg:font-semibold lg:text-3xl text-md ml-2">
                                     Vamos criar a sua conta
                                 </h1>
+
                             </div>
                             <div className="">
                                 <p className="text-sm text-white ml-2">
-                                    Primeiro passo. Vamos criar o seu login de acesso
+                                    {progress < 19  ? login : ''}
+                                    {progress === 20 ? localidade : ''}
+                                    {progress === 40 ? dadosPessoais : ''}
+                                    {progress === 60 ? envioDoc : ''}
+                                    {progress === 80 ? final : ''}
                                 </p>
                             </div>
                         </div>
-                        <CharLG value={progress} className='lg:mt-36' />
+                        
+                        <div className="content-end items-center lg:pb-5">
+                            <CharLG value={progress} />
+                        </div>
+
                     </div>
                     
                 </div>
 
-                <div className="col-span-1 lg:px-28 items-center grid mt-3 px-5">
-                    <FormProviderLuz className={mainFontFamily.className}>
+                <div className="col-span-1 lg:px-28 items-center grid px-5">
+                    <FormProviderLuz>
                         <FormCredLuz progressChange={setProgress} />
                     </FormProviderLuz>
                 </div>
