@@ -23,7 +23,6 @@ export default function FormCadastro({ onNext }) {
     // Função para tornar o campo password type text
     const toggleSenhaVisibility = () => {
         setVisivelSenha(!visivelSenha);
-
         setInputSenha(inputSenha === 'password' ? 'text' : 'password');
     }
 
@@ -44,15 +43,11 @@ export default function FormCadastro({ onNext }) {
     const handleAccept = () => {
         setIsAccepted(true);
         setValue("termos", true);
-        console.log('Termos aceitos!');
     };   
     
     const handleCheckboxChange = () => {
         setIsAccepted((prev) => !prev);
         setValue("termos", !isAccepted);
-        if (!isAccepted) {
-          console.log('Termos aceitos!');
-        }
     };
     
     return (
@@ -157,11 +152,8 @@ export default function FormCadastro({ onNext }) {
 
                     <div className="col-span-6 mt-2">
                         
-                        <Checkbox 
-                            defaultSelected
-                            id="termos" 
-                            className=""
-                            color={"#0070F3"}
+                        <Checkbox
+                            id="termos"
                             radius="md"
                             isSelected={isAccepted} 
                             onValueChange={handleCheckboxChange}
@@ -170,7 +162,11 @@ export default function FormCadastro({ onNext }) {
                         
                         <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
                             Li e aceito os termos de uso e política de privacidade.
-                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}> Ver termos de uso e política de privacidade.</Link>
+                            
+                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}> 
+                                Ver termos de uso e política de privacidade.
+                            </Link>
+
                             {errors.termos && <p className="text-red-500 text-sm mt-1">{errors.termos.message}</p>}
                         </label>
 

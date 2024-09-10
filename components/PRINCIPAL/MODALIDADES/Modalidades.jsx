@@ -284,7 +284,7 @@ export default function SessaoModalidades() {
 
             </div>
 
-            <div className='bg-[url(../public/img/note_fgts.png)] bg-no-repeat bg-auto h-96 '></div>
+            <div className='bg-[url(../public/img/facil.jpg)] bg-no-repeat bg-auto h-96 '></div>
 
         </section>
     )
