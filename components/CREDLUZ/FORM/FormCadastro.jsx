@@ -66,7 +66,7 @@ export default function FormCadastro({ onNext }) {
                     </p>
                 </div>
 
-                <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center">
+                <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center min-h-[60vh]">
                         
                     <div className="col-span-3">
                         <InputMask
