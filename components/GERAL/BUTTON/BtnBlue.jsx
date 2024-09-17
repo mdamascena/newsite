@@ -6,17 +6,18 @@ const Btn = tw.button`
     items-center 
     justify-center
     text-white
+    flex
     w-full
-    py-3
-    lg:px-5 
+    py-3 
     rounded-lg
     active:bg-blue-900
     hover:bg-blue-600
     hover:scale-105
     active:scale-90 
-    duration-150   
+    duration-150
+    disabled:opacity-50  
 `
 
-export default function BtnBlue ({nome}){
-    return <Btn>{nome}</Btn>
+export default function BtnBlue ({nome, disabled}){
+    return <Btn >{nome}</Btn>
 }

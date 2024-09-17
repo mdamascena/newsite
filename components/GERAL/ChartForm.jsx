@@ -20,19 +20,19 @@ export default function Chatform ({className, value }) {
                     
                     <ul className="text-white text-xs col-span-1 hidden lg:block">
                         <li className={`${value >= 20 ? '' :'text-white/30'}`}>Criar login</li>
-                        <li className={`${value >= 40 ? '' :'text-white/30'}`}>Localidade</li>
-                        <li className={`${value >= 60 ? '' :'text-white/30'}`}>Dados pessoais</li>
+                        <li className={`${value >= 40 ? '' :'text-white/30'}`}>Perfil ocupacional</li>
+                        <li className={`${value >= 60 ? '' :'text-white/30'}`}>Gênero</li>
                         <li className={`${value >= 80 ? '' :'text-white/30'}`}>Envio de documentos</li>
                         <li className={`${value >= 100 ? '' :'text-white/30'}`}>Simulação</li>
                     </ul>
                     
                     <ul className="text-white text-sm col-span-1 lg:hidden block">
                         {/* Mobile */}
-                        <li className={`${value === 20 ? '' : 'hidden'}`}>Criar login</li>
-                        <li className={`${value === 40 ? '' : 'hidden'}`}>Localidade</li>
-                        <li className={`${value === 60 ? '' : 'hidden'}`}>Dados pessoais</li>
-                        <li className={`${value === 80 ? '' : 'hidden'}`}>Envio de documentos</li>
-                        <li className={`${value === 100 ? '' : 'hidden'}`}>Simulação</li>
+                        <li className={`${value === 0 ? '' : 'hidden'}`}>Criar login</li>
+                        <li className={`${value === 20 ? '' : 'hidden'}`}>Perfil ocupacional</li>
+                        <li className={`${value === 40 ? '' : 'hidden'}`}>Gênero</li>
+                        <li className={`${value === 60 ? '' : 'hidden'}`}>Envio de documentos</li>
+                        <li className={`${value === 80 ? '' : 'hidden'}`}>Simulação</li>
                     </ul>
                                                 
                     <div className="text-end text-white lg:text-4xl text-xl col-span-1">

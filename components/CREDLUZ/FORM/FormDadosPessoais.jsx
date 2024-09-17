@@ -1,12 +1,16 @@
-import { Input } from "components/ui/input";
-import { useState } from "react";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC";
-import { useFormDataLuz } from "../../../context/FormContextLuz";
-import { Controller, useFormContext } from "react-hook-form";
-import InputMask from 'react-input-mask';
+import { Input } from "components/ui/input"
+import { useState } from "react"
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC"
+import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { Controller, useFormContext } from "react-hook-form"
+import InputMask from 'react-input-mask'
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { Button } from "components/ui/button"
-import { useEffect } from "react";
+import { useEffect } from "react"
+import { motion, AnimatePresence } from 'framer-motion'
+import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+
 
 export default function FormDadosPessoais({ backStep, onNext }) {
 
@@ -83,183 +87,234 @@ export default function FormDadosPessoais({ backStep, onNext }) {
         console.log('dados context', getValues())
         const dados = getValues();
         console.log(dados, "Dados enviados.")
+    }
 
+    const container = {
+        hidden: {y: 50, opacity: 0 },
+        visible: {y: 0, opacity: 1, 
+            transition: {delayChildren: 0.3, staggerChildren: 0.2,},
+        },
+    }
+      
+    const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {y: 0, opacity: 1,
+            transition: {duration: 0.5, ease:"easeOut"},
+        },
     }
 
     return (
-        <form>
-            <div className="mb-6">
+        <form className="lg:min-h-[100vh] lg:overflow-y-hidden">
 
-                <h5 className="text-blue-400 mb-2">Contatos</h5>
+            <motion.div
+                initial={'hidden'} 
+                animate={'visible'}
+                variants={container} 
+                className="grid grid-cols-6 xl:px-7"
+                >
 
-                <div className="flex gap-5">
-
-                    <div className="w-full">
-                        <InputMask
-                            mask="(99) 99999-9999"
-                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                }`}
-                            placeholder='Celular *'
-                            inputMode='numeric'
-                            {...register("celular")}
-                        >
-                            {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
-                        {errors.celular && <p className="text-red-500 text-sm mt-1">{errors.celular.message}</p>}
+                {/*Titulo do step*/}
+                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
+                    <div className="flex items-end mb-2 relative">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                            Estamos quase lá!
+                        </h1>
                     </div>
-
-                    <div className="w-full">
-                        <InputMask
-                            mask="(99) 99999-9999"
-                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                }`}
-                            placeholder='WhatsApp *'
-                            inputMode='numeric'
-                            {...register("whatsapp")}
-                        >
-                            {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
-                        {errors.whatsapp && <p className="text-red-500 text-sm mt-1">{errors.whatsapp.message}</p>}
-                    </div>
-
+                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
+                        Agora só precisamos dos seus dados de contato e endereço concluir os dados cadastrais.
+                    </p>
                 </div>
-            </div>
 
-            <div className="mb-12">
+                {/*Form do step*/}
+                <div className="col-span-6 grid grid-cols-6 content-center lg:min-h-[60vh] min-h-[55vh]">
+        
+                    <div className="col-span-6 grid grid-cols-6 mb-4">
 
-                <h5 className="text-blue-400 mb-2">Endereço</h5>
+                        <h5 className="col-span-6 text-slate-400 mb-2">Contatos</h5>
 
-                {comCep && (
-                    <div className="flex gap-3 mb-3">
-                        <div className="flex gap-5 w-full">
-                        <div className="w-1/3">
+                        <div className="col-span-6 grid grid-cols-6 gap-2.5">
+
+                            <div className="col-span-3">
                                 <InputMask
-                                    mask="99999-999"
-                                    className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                    mask="(99) 99999-9999"
+                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                         }`}
-                                    placeholder='CEP *'
+                                    maskChar={null}
+                                    placeholder='Celular *'
                                     inputMode='numeric'
-                                    {...register("cep")}
-                                    onBlur={(e) => handleCepBlur(e)}
+                                    {...register("celular")}
                                 >
                                     {(inputProps) => <Input {...inputProps} />}
                                 </InputMask>
-                                {errors.cep && <p className="text-red-500 text-sm mt-1">{errors.cep.message}</p>}
+                                {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
                             </div>
 
-                            {!semCep && (
-                            <div className="flex w-1/3 items-center">
-                                <Button onClick={handleComCep} type="button" className="border py-5 w-full rounded-lg">Não sei meu Cep</Button>
+                            <div className="col-span-3">
+                                <InputMask
+                                    mask="(99) 99999-9999"
+                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                        }`}
+                                    maskChar={null}
+                                    placeholder='WhatsApp *'
+                                    inputMode='numeric'
+                                    {...register("whatsapp")}
+                                >
+                                    {(inputProps) => <Input {...inputProps} />}
+                                </InputMask>
+                                {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp.message}</p>}
                             </div>
-                        )}
+
                         </div>
+
                     </div>
-                )}
 
-                {semCep && (
-                    <>
-                        {comCep || semCep && (
-                            <div className="flex w-1/3 items-center mb-3">
-                                <Button onClick={handleSemCep} type="button" className="border py-5 w-full rounded-lg">Preencher com CEP</Button>
+                    <div className="col-span-6 grid grid-cols-6">
+
+                        <h5 className="text-slate-400 col-span-6 mb-2">Endereço</h5>
+
+                        {comCep && (
+                            <div className="col-span-6 mb-3">
+
+                                <div className="grid grid-cols-6 gap-2.5">
+
+                                    <div className="col-span-3">
+                                            <InputMask
+                                                mask="99999-999"
+                                                className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                                    }`}
+                                                placeholder='CEP *'
+                                                inputMode='numeric'
+                                                maskChar={null}
+                                                {...register("cep")}
+                                                onBlur={(e) => handleCepBlur(e)}
+                                            >
+                                                {(inputProps) => <Input {...inputProps} />}
+                                            </InputMask>
+                                            {errors.cep && <p className="text-red-500 text-sm mt-1">{errors.cep.message}</p>}
+                                    </div>
+
+                                    {!semCep && (
+                                        <div className="col-span-3 items-center">
+                                            <BtnBack onClick={handleComCep} type="button" nome={'Não sei meu CEP'}/>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         )}
 
-                        <div className="flex gap-3 mb-3">
-                            <div className="w-full">
-                                <Controller
-                                    name="uf"
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <Select {...field} onValueChange={(value) => { field.onChange(value); setSelectedEstado(value) }} value={field.value}>
-                                            <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                                }`}>
-                                                <SelectValue placeholder="Estado *" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {uf.map((estado) => (
-                                                    <SelectItem key={estado.id} value={estado.sigla}>
-                                                        {estado.nome}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    )}
-                                />
-                                {errors.uf && <p className="text-red-500 text-sm mt-1">{errors.uf.message}</p>}
-                            </div>
+                        {semCep && (
+                            
+                            <div className="col-span-6 grid grid-cols-6">
+                                
+                                {comCep || semCep && (
+                                    <div className="flex w-1/3 items-center mb-3">
+                                        <Button onClick={handleSemCep} type="button" className="border py-5 w-full rounded-lg">Preencher com CEP</Button>
+                                    </div>
+                                )}
 
-                            <div className="w-full">    
-                                <Controller
-                                    name="cidade"
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <Select {...field} onValueChange={field.onChange} value={field.value}>
-                                            <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                                }`}>
-                                                <SelectValue placeholder="Cidade *" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {cidade.map((cidade) => (
-                                                    <SelectItem key={cidade.id} value={cidade.nome}>
-                                                        {cidade.nome}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    )}
-                                />
-                                {errors.cidade && <p className="text-red-500 text-sm mt-1">{errors.cidade.message}</p>}
-                            </div>
-                        </div>
+                                <div className="grid grid-cols-6 mb-3">
+                                    
+                                    <div className="col-span-6">
+                                        <Controller
+                                            name="uf"
+                                            control={control}
+                                            defaultValue=""
+                                            render={({ field }) => (
+                                                <Select {...field} onValueChange={(value) => { field.onChange(value); setSelectedEstado(value) }} value={field.value}>
+                                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                                        }`}>
+                                                        <SelectValue placeholder="Estado *" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        {uf.map((estado) => (
+                                                            <SelectItem key={estado.id} value={estado.sigla}>
+                                                                {estado.nome}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            )}
+                                        />
+                                        {errors.uf && <p className="text-red-500 text-sm mt-1">{errors.uf.message}</p>}
+                                    </div>
 
-                        <div className="flex gap-3 mb-3">
-                            <div className="w-full">
-                                <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                    }`}
-                                    placeholder="Logradouro *"
-                                    {...register('logradouro')} />
-                                {errors.logradouro && <p className="text-red-500 text-sm mt-1">{errors.logradouro.message}</p>}
-                            </div>
+                                    <div className="w-full">    
+                                        <Controller
+                                            name="cidade"
+                                            control={control}
+                                            defaultValue=""
+                                            render={({ field }) => (
+                                                <Select {...field} onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                                        }`}>
+                                                        <SelectValue placeholder="Cidade *" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        {cidade.map((cidade) => (
+                                                            <SelectItem key={cidade.id} value={cidade.nome}>
+                                                                {cidade.nome}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            )}
+                                        />
+                                        {errors.cidade && <p className="text-red-500 text-sm mt-1">{errors.cidade.message}</p>}
+                                    </div>
+                                </div>
 
-                            <div>
-                                <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
-                                    placeholder="N°"
-                                    {...register('numero')} />
-                            </div>
-                        </div>
+                                <div className="flex gap-3 mb-3">
+                                    <div className="w-full">
+                                        <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                            }`}
+                                            placeholder="Logradouro *"
+                                            {...register('logradouro')} />
+                                        {errors.logradouro && <p className="text-red-500 text-sm mt-1">{errors.logradouro.message}</p>}
+                                    </div>
 
-                        <div className="flex gap-3">
-                            <div className="w-full">
-                                <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
-                                    placeholder="Complemento"
-                                    {...register('complemento')} />
-                            </div>
+                                    <div>
+                                        <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                                            placeholder="N°"
+                                            {...register('numero')} />
+                                    </div>
+                                </div>
 
-                            <div className="w-full">
-                                <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                    }`}
-                                    placeholder="Bairro *"
-                                    {...register('bairro')} />
-                                {errors.bairro && <p className="text-red-500 text-sm mt-1">{errors.bairro.message}</p>}
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
+                                <div className="flex gap-3">
+                                    <div className="w-full">
+                                        <Input className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500'
+                                            placeholder="Complemento"
+                                            {...register('complemento')} />
+                                    </div>
 
-            <div className=" gap-5 flex align-middle">
-                <div>
-                    <HiOutlineArrowLongLeft className='text-5xl text-black cursor-pointer' onClick={backStep} />
+                                    <div className="w-full">
+                                        <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                            }`}
+                                            placeholder="Bairro *"
+                                            {...register('bairro')} />
+                                        {errors.bairro && <p className="text-red-500 text-sm mt-1">{errors.bairro.message}</p>}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                 </div>
 
-                <div className="w-full">
-                    <Button type="submit" className="bg-gray-300 text-white w-full h-12" onClick={handleSubmit(onSubmit)}>
-                        Começar análise
-                    </Button>
+                {/*Botões*/}
+                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                    <div className="col-span-2">
+                        <BtnBack nome={'Voltar'} event={backStep}/>
+                    </div>
+
+                    <div className="col-span-5">
+                        <BtnNext nome={'Enviar para análise'} type="submit" onClick={handleSubmit(onSubmit)}/>
+                    </div>
                 </div>
-            </div>
+
+            </motion.div>
+
+
+
         </form>
     )
 }
