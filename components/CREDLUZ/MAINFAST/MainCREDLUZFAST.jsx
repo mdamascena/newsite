@@ -10,7 +10,6 @@ import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
 
-
 export default function MainPrincipal() {
   return (
     <main>
