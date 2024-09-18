@@ -6,6 +6,7 @@ import { FaFemale } from "react-icons/fa"
 import { MdOutlineHandyman } from "react-icons/md"
 import { FaUserTie } from "react-icons/fa6"
 import { BsPersonBadgeFill } from "react-icons/bs"
+import { IoIosArrowBack } from "react-icons/io"
 import { FaMale } from "react-icons/fa"
 import { motion, AnimatePresence } from 'framer-motion'
 import tw from 'tailwind-styled-components'
@@ -80,7 +81,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                     </div>
                     
                     <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
-                        Selecione a opção que melhor corresponde à sua ocupação atua
+                        Selecione a opção que melhor corresponde à sua ocupação atual.
                     </p>
                 </div>
 
@@ -218,7 +219,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
 
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep}/> 
+                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
                     </div>
 
                     <div className="col-span-5">

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import cel from "../../../public/img/PERSO_LUZ_2.png"
 import light from "../../../public/img/LAMPADA.png"
 import SectioDescrisao from "../DESCRICAO/Descricao"
@@ -42,29 +43,31 @@ export default function MainPrincipal() {
                             <div className="text-white ml-2 lg:ml-0">
                                 
                                 <div className="leading-5 mt-5 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg ">Sem comprovação de renda</span>
                                 </div>
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg">Possibilidade para negativados *</span>
                                 </div>
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg">Liberação em menos de 24h **</span>
                                 </div>
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
-                                    <HiCheck className="rounded-full bg-yellow-100 text-yellow-500 text-2xl"/>
+                                    <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
                                     <span className="ml-2 lg:text-lg">Limite de até R$ 3.300,00 *</span>
                                 </div>
 
                             </div>
 
                             <div className="text-center md:text-left">
-                                <BtnYellow nome="Solicite aqui" />
+                                <Link href="credluz/cadastro" passHref>
+                                    <BtnYellow nome="Solicite aqui" />
+                                </Link>
                             </div>
 
                             <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">

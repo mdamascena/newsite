@@ -5,6 +5,7 @@ const BtnReset = tw.button`
     bg-blue-100
     items-center
     justify-center
+    flex
     text-blue-500
     w-full
     py-3
@@ -17,9 +18,12 @@ const BtnReset = tw.button`
     duration-150
 `;
 
-export default function BtnBlue ({nome, event}){
+export default function BtnBlue ({nome, icon, event}){
     return(
-        <BtnReset onClick={event}>{nome}</BtnReset>
+        <BtnReset onClick={event}>
+            {icon}
+            {nome}
+        </BtnReset>
     )
 }
 

@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import { motion, AnimatePresence } from 'framer-motion'
 import { RiUserFollowLine } from "react-icons/ri"
-import { RiUserForbidLine } from "react-icons/ri";
+import { RiUserForbidLine } from "react-icons/ri"
+import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
 import BtnNext from '../../GERAL/BUTTON/BtnBlue'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
@@ -12,7 +13,8 @@ const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    p-3
+    px-3
+    py-4
     items-center 
     justify-center 
     text-slate-400 
@@ -60,7 +62,8 @@ export default function FormTitularCia({ onNext, backStep }) {
                 animate={'visible'}
                 variants={container}
                 className='grid grid-cols-6 select-none xl:px-5'
-            >
+                >
+
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-end">
                     <div className="flex items-end mb-2 relative">
@@ -76,7 +79,7 @@ export default function FormTitularCia({ onNext, backStep }) {
 
                 {/*Opções*/}
                 <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
-
+                    
                     <Controller
                         name="titularCia"
                         control={control}
@@ -126,7 +129,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 {/*Botões*/}
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep}/>  
+                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
                     </div>
 
                     <div className="col-span-5">
@@ -135,6 +138,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
             </motion.div>
+
         </form>
     )
 }

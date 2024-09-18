@@ -8,6 +8,7 @@ import BtnNext from '../../GERAL/BUTTON/BtnBlue'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
+import { IoIosArrowBack } from "react-icons/io"
 import { TbMessage2Question } from "react-icons/tb"
 
 const OptLabel = tw(motion.label)`
@@ -159,7 +160,7 @@ export default function FormGenero({ onNext, backStep }) {
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
 
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep}/> 
+                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
                     </div>
 
                     <div className="col-span-5">

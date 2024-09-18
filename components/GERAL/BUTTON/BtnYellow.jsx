@@ -3,7 +3,8 @@ import tw from 'tailwind-styled-components'
 const Btn = tw.button`
     bg-yellow-400
     rounded-xl 
-    text-white 
+    text-white
+    text-xl
     py-4
     lg:w-96
     w-[100%]
@@ -16,8 +17,8 @@ const Btn = tw.button`
     duration-150
     shadow-lg
 `
-export default function BtnYellow (props){
+export default function BtnYellow ({nome}){
     return(
-        <Btn className=''>{props.nome}</Btn>
+        <Btn>{nome}</Btn>
     )
 }
