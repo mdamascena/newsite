@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
-import { cadastroSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
-import { zodResolver } from "@hookform/resolvers/zod"
+import { tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
+import { cadastroSchema } from '../../../schema/schemaCadastro';
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormDataLuz } from '../../../context/FormContextLuz';
 
 const Step1 = dynamic(() => import('../FORM/FormCadastro'));

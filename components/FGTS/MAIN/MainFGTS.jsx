@@ -6,6 +6,7 @@ import Vantagens from '../VANTAGENS/VantagensFGTS'
 import Taxas from '../TAXAS/TaxaFGTS'
 import Regras from '../REGRAS/RegrasGeraisFGTS'
 import Analise from '../../GERAL/ANALISE/Analise'
+import { useRouter } from 'next/router'
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 
@@ -46,6 +47,13 @@ const EmpTitle = tw.h1`
 
 export default function MainFGTS() {
 
+    const router = useRouter();
+
+    const handleRedirect = () => {
+        router.push('saque-aniversario/cadastro');
+    }
+
+
     return (
         <main>
             <div className="bgMainFGTS px-6 lg:px-40 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
@@ -58,7 +66,7 @@ export default function MainFGTS() {
                         Antecipe seu <b className='text-2xl'>FGTS</b>, até <span className='text-2xl font-bold tracking-tighter'>12 parcelas</span> com a melhor taxa do mercado e sem descontos mensais!
                     </p>
                     <div className='flex justify-center lg:justify-start'>
-                        <BtnCalc>Contrate agora</BtnCalc>
+                        <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@ import InputMask from 'react-input-mask'
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
-import {Button, useDisclosure, Checkbox} from "@nextui-org/react"
+import {Button, Checkbox, useDisclosure} from "@nextui-org/react"
 import ModalOpt from '../../GERAL/ModalOpt'
 
 export default function FormCadastro({ onNext }) {
@@ -49,8 +49,6 @@ export default function FormCadastro({ onNext }) {
         setIsAccepted((prev) => !prev);
         setValue("termos", !isAccepted);
     };
-
-    const [titulo, setTitulo] = useState("Vamos começar")
     
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
