@@ -1,14 +1,60 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { Label } from "components/ui/label";
-import { RadioGroup, RadioGroupItem } from "components/ui/radio-group";
-import { HiOutlineArrowLongLeft } from "react-icons/hi2"
-import { Button } from "components/ui/button"
-import { useFormDataLuz } from "../../../context/FormContextLuz";
+import { Controller, useFormContext } from "react-hook-form"
+import { useState } from "react"
+import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { MdOutlineMilitaryTech } from "react-icons/md"
+import { FaFemale } from "react-icons/fa"
+import { MdOutlineHandyman } from "react-icons/md"
+import { FaUserTie } from "react-icons/fa6"
+import { BsPersonBadgeFill } from "react-icons/bs"
+import { IoIosArrowBack } from "react-icons/io"
+import { FaMale } from "react-icons/fa"
+import { motion, AnimatePresence } from 'framer-motion'
+import tw from 'tailwind-styled-components'
+import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
-export default function FormTipoOcupacao({ onNext, backStep }) {
+const OptLabel = tw(motion.label)`
+    bg-white
+    grid
+    grid-cols-6
+    lg:h-24 
+    h-16
+    px-3
+    items-center 
+    justify-center 
+    text-slate-400 
+    shadow-md
+    rounded-md
+    cursor-pointer
+    duration-100
+    hover:ring-2
+    hover:ring-blue-500
+    hover:bg-blue-100
+    hover:text-blue-500
+    peer-checked:bg-blue-600 
+    peer-checked:text-white
+    peer-checked:shadow-nome
+    
+`
+const container = {
+    hidden: {y: 50, opacity: 0 },
+    visible: {y: 0, opacity: 1, 
+        transition: {delayChildren: 0.3, staggerChildren: 0.2,},
+    },
+};
+  
+const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {y: 0, opacity: 1,
+        transition: {duration: 0.5, ease:"easeOut"},
+    },
+};
 
-    const { control, handleSubmit } = useFormContext()
-    const { atualizarForm } = useFormDataLuz()
+export default function FormTipoOcupacao({onNext, backStep}) {
+
+    const {control, handleSubmit} = useFormContext()
+    const {atualizarForm} = useFormDataLuz()
+    const [btnAtivo, setBtnAtivo] = useState (true)
 
     function onSubmit(data){
         atualizarForm(data)
@@ -16,103 +62,174 @@ export default function FormTipoOcupacao({ onNext, backStep }) {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-                name="tipoOcupacao"
-                control={control}
-                defaultValue=""
-                render={({ field: { onChange, value } }) => (
-                    <RadioGroup value={value} onValueChange={onChange}>
-                        <div className="flex gap-5 mb-5 justify-center">
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="1" id="assalariado" />
-                                <Label
-                                    className={`w-40 h-24 items-center justify-center text-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "1" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="assalariado"
-                                    onClick={() => onChange("1")}
-                                >
-                                    Assalariado
-                                </Label>
-                            </div>
+        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="2" id="servidor" />
-                                <Label
-                                    className={`w-40 h-24 items-center justify-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "2" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="servidor"
-                                    onClick={() => onChange("2")}
-                                >
-                                    Servidor
-                                </Label>
-                            </div>
+            <motion.div 
+                initial={'hidden'} 
+                animate={'visible'}
+                variants={container}
+                className='grid grid-cols-6 select-none xl:px-5'
+                >
+                
+                {/*Titulo do step*/}
+                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
 
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="3" id="aposentado" />
-                                <Label
-                                    className={`w-40 h-24 items-center justify-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "3" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="aposentado"
-                                    onClick={() => onChange("3")}
-                                >
-                                    Aposentado
-                                </Label>
-                            </div>
-                        </div>
-
-                        <div className="flex gap-5 justify-center">
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="4" id="pensionista" />
-                                <Label
-                                    className={`w-40 h-24 items-center justify-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "4" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="pensionista"
-                                    onClick={() => onChange("4")}
-                                >
-                                    Pensionista
-                                </Label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="5" id="autonomo" />
-                                <Label
-                                    className={`w-40 h-24 items-center justify-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "5" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="autonomo"
-                                    onClick={() => onChange("5")}
-                                >
-                                    Autônomo
-                                </Label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="6" id="militar" />
-                                <Label
-                                    className={`w-40 h-24 items-center justify-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "6" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="militar"
-                                    onClick={() => onChange("6")}
-                                >
-                                    Militar
-                                </Label>
-                            </div>
-                        </div>
-                    </RadioGroup>
-                )}
-            />
-
-            <div className="mt-5 gap-5 flex align-middle">
-                <div>
-                    <HiOutlineArrowLongLeft className='text-5xl text-black cursor-pointer' onClick={backStep} />
+                    <div className="flex items-end mb-2 relative">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                            Qual é a sua ocupação?
+                        </h1>
+                    </div>
+                    
+                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
+                        Selecione a opção que melhor corresponde à sua ocupação atual.
+                    </p>
                 </div>
 
-                <div className="w-full">
-                    <Button type="submit" className="w-full h-12">
-                        Avançar
-                    </Button>
+                {/*Opções do step*/}   
+                <div className="col-span-6 content-center lg:min-h-[60vh] min-h-[55vh]">
+                        
+                    <Controller
+                        name="tipoOcupacao"
+                        control={control}
+                        defaultValue=""
+                        render={({ field: { onChange, value } }) => (
+                                
+                            <div value={value} onValueChange={onChange}>
+                                    
+                                <div className="grid grid-cols-4 gap-3 items-center">
+
+                                    {/*opção assalariado*/}        
+                                    <motion.div className="lg:col-span-2 col-span-4" key="assalariado" variants={item}>
+                                        <input type="radio" className="hidden peer" name='status' value="1" id="assalariado" />
+                                        <OptLabel htmlFor="assalariado" onClick={() => onChange("1")}>
+                                            <div className="col-span-2">
+                                                <BsPersonBadgeFill className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+
+                                            <div className="col-span-4">
+                                                <p className="font-semibold">
+                                                    Assalariado
+                                                </p>
+                                                <span className="text-xs font-light">
+                                                    Vínculo CLT
+                                                </span>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    {/*opção servidor*/}
+                                    <motion.div className="lg:col-span-2 col-span-4" key="servidor" variants={item}>
+                                        <input type="radio" className="hidden peer" name='status' value="2" id="servidor" />
+                                        <OptLabel className="justify-items-stretch" htmlFor="servidor" onClick={() => onChange("2")}>
+                                            <div className="col-span-2">
+                                                <FaUserTie className="text-5xl p-3 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-4">
+                                                <p className="font-semibold">
+                                                    Servidor Público
+                                                </p>
+                                                <span className="text-xs font-light">
+                                                    Ativo ou inativo
+                                                </span>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    {/*opção aposentado*/}
+                                    <motion.div className="lg:col-span-2 col-span-4" key="aposentado" variants={item}>
+                                        <input type="radio" className="hidden peer" name='status' value="3" id="aposentado" />
+                                        <OptLabel className="justify-items-stretch" htmlFor="aposentado" onClick={() => onChange("3")}> 
+                                            <div className="col-span-2">
+                                                <FaMale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-4">
+                                                <p className="font-semibold">
+                                                    Aposentado
+                                                </p>
+                                                <span className="text-xs font-light">
+                                                    Benefício INSS / LOAS
+                                                </span>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    {/*opção pensionista*/}
+                                    <motion.div className="lg:col-span-2 col-span-4" key="pensionista" variants={item}>
+                                        <input type="radio" className="hidden peer" name='status' value="4" id="pensionista" />
+                                        <OptLabel className="justify-items-stretch" htmlFor="pensionista" onClick={() => onChange("4")}>
+                                            <div className="col-span-2">
+                                                <FaFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-4">
+                                                <p className="font-semibold">
+                                                    Pensionista
+                                                </p>
+                                                <span className="text-xs font-light">
+                                                    Pensão / Pensão INSS
+                                                </span>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    {/*opção autônomo*/}
+                                    <motion.div className="lg:col-span-2 col-span-4" key="autonomo" variants={item} exit={{opacity:0}}>
+                                        <input type="radio" className="hidden peer" name='status' value="5" id="autonomo" />
+                                        <OptLabel className="justify-items-stretch" htmlFor="autonomo" onClick={() => onChange("5")}>
+                                            <div className="col-span-2">
+                                                <MdOutlineHandyman className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-4">
+                                                <p className="font-semibold">
+                                                    Autônomo
+                                                </p>
+                                                <span className="text-xs font-light">
+                                                    Prof. liberal / Empresário
+                                                </span>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    {/*opção militar*/}
+                                    <motion.div className="lg:col-span-2 col-span-4" key="militar" variants={item} exit={{opacity:0}}>
+                                        <input type="radio" className="hidden peer" name='status' value="6" id="militar" />
+                                        <OptLabel className="justify-items-stretch" htmlFor="militar" onClick={() => onChange("6")}>
+                                            <div className="col-span-2">
+                                                <MdOutlineMilitaryTech className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-4">
+                                                <p className="font-semibold">
+                                                    Militar
+                                                </p>
+                                                <span className="text-xs font-light">
+                                                    Forças Armadas
+                                                </span>
+                                            </div>
+                                            </OptLabel>
+                                    </motion.div>
+
+                                </div>
+                                
+                            </div>
+                        )}
+                    />
+
                 </div>
-            </div>
+                
+                {/*Botões*/}
+                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+
+                    <div className="col-span-2">
+                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
+                    </div>
+
+                    <div className="col-span-5">
+                        <BtnNext nome={'Avançar'} type="submit"/>
+                    </div>
+      
+                </div>
+
+            </motion.div>
+
         </form>
     );
 }

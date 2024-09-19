@@ -5,8 +5,10 @@ import InputMask from 'react-input-mask'
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
-import {Button, Checkbox, useDisclosure} from "@nextui-org/react"
+import {useDisclosure, Checkbox} from "@nextui-org/react"
+import { motion, AnimatePresence } from 'framer-motion'
 import ModalOpt from '../../GERAL/ModalOpt'
+import BtnNext from '../../GERAL/BUTTON/BtnBlue'
 
 export default function FormCadastro({ onNext }) {
 
@@ -49,27 +51,50 @@ export default function FormCadastro({ onNext }) {
         setIsAccepted((prev) => !prev);
         setValue("termos", !isAccepted);
     };
+
+    const container = {
+        hidden: {y: 50, opacity: 0 },
+        visible: {y: 0, opacity: 1, 
+            transition: {delayChildren: 0.3, staggerChildren: 0.2,},
+        },
+    };
+      
+    const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {y: 0, opacity: 1,
+            transition: {duration: 0.5, ease:"easeOut"},
+        },
+    }
     
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
             
-            <div className="h-[60vh] lg:h-[97.5vh] grid grid-cols-6">
+            <motion.div
+                initial={'hidden'} 
+                animate={'visible'}
+                variants={container} 
+                className="grid grid-cols-6 xl:px-7"
+                >
                 
-                <div className="col-span-6 content-start lg:mt-8 mt-2 mb-8">
-                    <h1 className="text-slate-400 text-xl mb-2">
-                        Vamos começar!
-                    </h1>
+                {/*Titulo do step*/}
+                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
+                    <div className="flex items-end mb-2 relative">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                            Cadastro de conta
+                        </h1>
+                    </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
                         Crie uma senha simples para você acessar a sua proposta e acompanhar a análise
                     </p>
                 </div>
 
-                <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center">
+                {/*Form do step*/}
+                <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center lg:min-h-[60vh] min-h-[55vh]">
                         
                     <div className="col-span-3">
                         <InputMask
                             mask="999.999.999-99"
-                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                             placeholder='Digite seu CPF'
                             inputMode='numeric'
@@ -83,7 +108,7 @@ export default function FormCadastro({ onNext }) {
                     <div className="col-span-3">
                         <InputMask
                             mask="99/99/9999"
-                            className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                             placeholder='Nascimento *'
                             inputMode='numeric'
@@ -96,7 +121,7 @@ export default function FormCadastro({ onNext }) {
                     </div>
 
                     <div className="col-span-6">
-                        <Input className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Qual o seu nome completo?"
                             {...register('nome')} 
@@ -105,7 +130,7 @@ export default function FormCadastro({ onNext }) {
                     </div>
 
                     <div className="col-span-6">
-                        <Input type="email" className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                        <Input type="email" className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Qual o seu e-mail?"
                             {...register('email')} 
@@ -119,7 +144,7 @@ export default function FormCadastro({ onNext }) {
                     
                     <div className="col-span-6 lg:col-span-3">
                         <div className="relative">
-                            <Input type={inputSenha} className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            <Input type={inputSenha} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 placeholder="Digite uma senha"
                                 {...register('senha')} 
@@ -136,7 +161,7 @@ export default function FormCadastro({ onNext }) {
                     
                     <div className="col-span-6 lg:col-span-3">
                         <div className="relative">
-                            <Input type={inputSenhaConfirmacao} className={`py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            <Input type={inputSenhaConfirmacao} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 {...register('senhaConfirmacao')}
                                 placeholder="Confirme sua senha" />
@@ -174,13 +199,12 @@ export default function FormCadastro({ onNext }) {
                     <ModalOpt isOpen={isOpen} onOpenChange={onOpenChange} onAccept={handleAccept}/>
                 </div>
 
-                <div className="col-span-6 content-end lg:mb-8 mt-8">
-                    <Button type="submit" className="w-full bg-blue-500 text-white rounded">
-                        Criar conta
-                    </Button>
+                {/*Botão do step*/}
+                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center">
+                    <BtnNext nome={'Criar conta'} type="submit"/>
                 </div>
             
-            </div>
+            </motion.div>
 
         </form>
     )

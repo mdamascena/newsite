@@ -1,9 +1,48 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { Label } from "components/ui/label"
-import { RadioGroup, RadioGroupItem } from "components/ui/radio-group"
-import { HiOutlineArrowLongLeft } from "react-icons/hi2"
-import { Button } from "components/ui/button"
-import { useFormDataLuz } from "../../../context/FormContextLuz";
+import { Controller, useFormContext } from "react-hook-form"
+import { useEffect, useState } from "react"
+import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { motion, AnimatePresence } from 'framer-motion'
+import { RiUserFollowLine } from "react-icons/ri"
+import { RiUserForbidLine } from "react-icons/ri"
+import { IoIosArrowBack } from "react-icons/io"
+import tw from 'tailwind-styled-components'
+import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+
+const OptLabel = tw(motion.label)`
+    bg-white
+    grid
+    grid-cols-6
+    px-3
+    py-4
+    items-center 
+    justify-center 
+    text-slate-400 
+    shadow-md
+    rounded-md
+    cursor-pointer
+    duration-100
+    hover:ring-2
+    hover:ring-blue-500
+    hover:bg-blue-100
+    hover:text-blue-500
+    peer-checked:bg-blue-600 
+    peer-checked:text-white
+    peer-checked:shadow-nome   
+`
+const container = {
+    hidden: {y: 50, opacity: 0 },
+    visible: {y: 0, opacity: 1, 
+        transition: {delayChildren: 0.3, staggerChildren: 0.2,},
+    },
+}
+  
+const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {y: 0, opacity: 1,
+        transition: {duration: 0.5, ease:"easeOut"},
+    },
+}
 
 export default function FormTitularCia({ onNext, backStep }) {
 
@@ -16,53 +55,90 @@ export default function FormTitularCia({ onNext, backStep }) {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-                name="titularCia"
-                control={control}
-                defaultValue=""
-                render={({ field: { onChange, value } }) => (
-                    <RadioGroup value={value} onValueChange={onChange}>
-                        <div className="flex gap-5 mb-5 justify-center">
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="0" id="titularCia" />
-                                <Label
-                                    className={`w-50 h-24 items-center justify-center text-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "0" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="titularCia"
-                                    onClick={() => onChange("0")}
-                                >
-                                    Sou titular da conta
-                                </Label>
-                            </div>
+        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem className="hidden" value="1" id="naoTitularCia" />
-                                <Label
-                                    className={`w-50 h-24 items-center justify-center flex py-4 px-8 border border-slate-200 rounded-lg cursor-pointer 
-                                    ${value === "1" ? "text-black border-blue-500" : "bg-white text-black"}`}
-                                    htmlFor="naoTitularCia"
-                                    onClick={() => onChange("1")}
-                                >
-                                    Não sou titular da conta
-                                </Label>
-                            </div>
-                        </div>
-                    </RadioGroup>
-                )}
-            />
+            <motion.div
+                initial={'hidden'} 
+                animate={'visible'}
+                variants={container}
+                className='grid grid-cols-6 select-none xl:px-5'
+                >
 
-            <div className=" gap-5 flex align-middle">
-                <div>
-                    <HiOutlineArrowLongLeft className='text-5xl text-black cursor-pointer' onClick={backStep} />
+                {/*Titulo do step*/}
+                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-end">
+                    <div className="flex items-end mb-2 relative">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                            Titularidade conta de luz
+                        </h1>
+                    </div>
+        
+                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
+                        A conta de energia da sua residência está registrada no seu nome?
+                    </p>
                 </div>
 
-                <div className="w-full">
-                    <Button type="submit" className="w-full h-12">
-                        Avançar
-                    </Button>
+                {/*Opções*/}
+                <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
+                    
+                    <Controller
+                        name="titularCia"
+                        control={control}
+                        defaultValue=""
+                        render={({ field: { onChange, value } }) => (
+                            
+                            <div value={value} onValueChange={onChange}>
+                                
+                                <div className="grid grid-cols-4 gap-3 items-center">
+                                    
+                                    <motion.div className="col-span-2" variants={item}>
+                                        <input type="radio" className="hidden peer" name='status' value="0" id="titularCia"/>
+                                        <OptLabel htmlFor="titularCia" onClick={() => onChange("0")}>
+                                            <div className="col-span-6 flex justify-center mb-2">
+                                                <RiUserFollowLine className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-6 text-center">
+                                                <p className="">
+                                                    <span className="text-blue-400 font-semibold">SIM</span> sou o titular
+                                                </p>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    <motion.div className="col-span-2" variants={item}>
+                                        <input type="radio" className="hidden peer" name='status' value="1" id="naoTitularCia"/>
+                                        <OptLabel htmlFor="naoTitularCia" onClick={() => onChange("1")}>
+                                            <div className="col-span-6 flex justify-center mb-2">
+                                                <RiUserForbidLine  className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-6 text-center">
+                                                <p className="">
+                                                    <span className="text-blue-400 font-semibold">NÃO</span> sou o titular
+                                                </p>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                </div>
+
+                            </div>
+                        )}
+                    />
+
                 </div>
-            </div>
+
+                {/*Botões*/}
+                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                    <div className="col-span-2">
+                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
+                    </div>
+
+                    <div className="col-span-5">
+                        <BtnNext nome={'Avançar'} type="submit"/>
+                    </div>
+                </div>
+
+            </motion.div>
+
         </form>
     )
 }
