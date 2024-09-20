@@ -18,7 +18,6 @@ export default function Consignado() {
             <meta name="theme-color" content="#1242cf"></meta>
             <link rel="preconnect" href="https://fonts.googleapis.com"></link>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>
-            <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
         </Head>
         <div className={mainFontFamily.className}>   

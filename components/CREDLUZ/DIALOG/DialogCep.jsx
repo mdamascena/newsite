@@ -18,7 +18,7 @@ export function DialogCep({ open, onOpenChange }) {
                             </div>
                             
                             <div className="w-full h-full flex">
-                               <span className="w-full ml-5 flex text-xl text-center text-gray-400">Enel Rio de Janeiro</span>
+                               <span className="w-full ml-5 flex text-xl text-center text-gray-400">Enel Rio de Janeiroo</span>
                             </div>
 
                         </div>
