@@ -98,7 +98,7 @@ export default function FormGenero({ onNext, backStep }) {
                         className='grid grid-cols-6 select-none'
                         render={({ field: { onChange, value } }) => (
                             
-                            <div value={value} onValueChange={onChange}>
+                            <div value={value} onChange={onChange}>
 
                                 <div className="grid grid-cols-4 gap-3 items-center">
 

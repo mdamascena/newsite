@@ -181,7 +181,7 @@ export default function FormCadastro({ onNext }) {
                             id="termos"
                             radius="md"
                             isSelected={isAccepted} 
-                            onValueChange={handleCheckboxChange}
+                            onChange={handleCheckboxChange}
                             {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
                         />
                         

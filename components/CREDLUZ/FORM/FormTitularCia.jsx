@@ -86,7 +86,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                         defaultValue=""
                         render={({ field: { onChange, value } }) => (
                             
-                            <div value={value} onValueChange={onChange}>
+                            <div value={value} onChange={onChange}>
                                 
                                 <div className="grid grid-cols-4 gap-3 items-center">
                                     

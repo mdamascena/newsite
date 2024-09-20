@@ -57,7 +57,7 @@ export default function FormFC() {
                         
             <form className="gap-y-2 grid" >
 
-                <Select className='placeholder:text-slate-400' value={selectValue} onValueChange={handleSelectChange} >
+                <Select className='placeholder:text-slate-400' value={selectValue} onChange={handleSelectChange} >
 
                     <SelectTrigger className="bg-slate-200 text-slate-500 focus:ring-1 focus:ring-blue-500">
                         <SelectValue placeholder="Escolha o assunto" />
