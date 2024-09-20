@@ -69,7 +69,7 @@ export default function Valores({showSimulador, itemVariants}) {
     };
 
     return (
-        
+        //initial="hidden" animate="visible" variants={itemVariants}
         <div>
 
             <div className='p-1'>
