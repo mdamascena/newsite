@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useState } from "react"
 import cel from "../../../public/img/PERSO_LUZ_3.png"
 import light from "../../../public/img/LAMPADA.png"
 import {HiCheck} from 'react-icons/hi'
@@ -9,8 +10,14 @@ import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import Simulador from '../SIMULADOR/SimuladorCredluz'
 
-
 export default function MainCredluz() {
+
+    const [showModal, setShowModal] = useState(false);
+
+    const HandleShowModal = () =>{
+        setShowModal(true)
+    }
+
 
     return (
         <main>

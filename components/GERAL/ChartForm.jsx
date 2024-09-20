@@ -20,15 +20,7 @@ export default function Chatform ({className, value }) {
                 <div className="grid grid-cols-2 items-center mt-2">                      
                     
                     <ul className="text-white text-xs col-span-1 hidden lg:block">
-                        <li className={`grid grid-cols-3 items-center ${value >= 20 ? '' :'text-white/30'}`}>
-                            <div className="col-span-2">
-                                Registrar conta
-                            </div>
-                            <div className="col-span-1">
-                            <BsCheckLg className="ml-5 text-lg"/>
-                            </div>
-                            
-                        </li>
+                        <li className={`${value >= 20 ? '' :'text-white/30'}`}>Registrar conta</li>
                         <li className={`${value >= 40 ? '' :'text-white/30'}`}>Perfil ocupacional</li>
                         <li className={`${value >= 60 ? '' :'text-white/30'}`}>Gênero</li>
                         <li className={`${value >= 80 ? '' :'text-white/30'}`}>Registro da conta de luz</li>

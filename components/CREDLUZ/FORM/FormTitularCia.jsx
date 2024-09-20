@@ -6,7 +6,7 @@ import { RiUserFollowLine } from "react-icons/ri"
 import { RiUserForbidLine } from "react-icons/ri"
 import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
 const OptLabel = tw(motion.label)`
@@ -129,7 +129,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 {/*Botões*/}
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
+                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
                     </div>
 
                     <div className="col-span-5">

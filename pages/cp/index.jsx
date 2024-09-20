@@ -1,5 +1,11 @@
 import Head from 'next/head'
 import IndexCP from '../../components/CP/IndexCP'
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 export default function Home() {
   return (
@@ -12,10 +18,11 @@ export default function Home() {
             <meta name="theme-color" content="#00024A" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-            <script src="https://kit.fontawesome.com/8d9284e27b.js" crossOrigin="anonymous" async></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
         </Head>
-        <IndexCP />
+        <div className={mainFontFamily.className}>   
+            <IndexCP />
+        </div>
     </div>
 
   )

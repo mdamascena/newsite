@@ -4,7 +4,7 @@ import { useFormDataLuz } from "../../../context/FormContextLuz"
 import {Accordion, AccordionItem} from "@nextui-org/react"
 import { motion, AnimatePresence } from 'framer-motion'
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
@@ -160,7 +160,7 @@ export default function FormGenero({ onNext, backStep }) {
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
 
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
+                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
                     </div>
 
                     <div className="col-span-5">

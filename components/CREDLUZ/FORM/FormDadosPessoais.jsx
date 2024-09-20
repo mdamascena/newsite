@@ -10,7 +10,7 @@ import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinAreaLight } from "react-icons/pi";
 import { useEffect } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
-import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
 export default function FormDadosPessoais({ backStep, onNext }) {
@@ -307,7 +307,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                 {/*Botões*/}
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>
+                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>
                     </div>
 
                     <div className="col-span-5">

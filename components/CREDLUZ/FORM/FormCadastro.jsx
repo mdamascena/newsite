@@ -8,7 +8,7 @@ import { useFormDataLuz } from "../../../context/FormContextLuz"
 import {useDisclosure, Checkbox} from "@nextui-org/react"
 import { motion, AnimatePresence } from 'framer-motion'
 import ModalOpt from '../../GERAL/ModalOpt'
-import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 
 export default function FormCadastro({ onNext }) {
 
