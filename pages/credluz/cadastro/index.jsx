@@ -7,6 +7,12 @@ import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import CharLG from "../../../components/GERAL/ChartForm"
 import { FormProviderLuz } from "../../../context/FormContextLuz"
 import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
+import { Poppins } from 'next/font/google'
+
+const mainFontFamily = Poppins({
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    subsets: ['latin']
+});
 
 
 export default function Cadastro() {
@@ -41,7 +47,7 @@ export default function Cadastro() {
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></link>
             </Head>
             
-            <main className="bg-slate-100 min-h-[100vh]">
+            <main className={`bg-slate-100 min-h-[100vh] ${mainFontFamily.className}`}>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[100vh]">
                     
