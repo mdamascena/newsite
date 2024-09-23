@@ -61,7 +61,7 @@ export default function PMTGERAL({valor, showSimulador}){
     return(
         <div className='p-1'>
 
-            <h2 className='text-center mb-2 poppins text-white'>Selecione o prazo desejado</h2>
+            <h2 className='text-center mb-2 text-white'>Selecione o prazo desejado</h2>
 
             <div className='rounded-lg bg-white/25 text-md py-4 px-1 mx-1 mb-2'>
                 

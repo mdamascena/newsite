@@ -73,7 +73,7 @@ export default function Valores({showSimulador, itemVariants}) {
         <div initial="hidden" animate="visible" variants={itemVariants}>
 
             <div className='p-1'>
-                <h2 className='text-center mt-2 mb-3 poppins text-white'>Qual o valor desejado?</h2>
+                <h2 className='text-center mt-2 mb-3 text-white'>Qual o valor desejado?</h2>
                 
                 <div className='rounded-lg bg-white/25 text-md pb-5 px-3 mx-1 mb-2'>
                 

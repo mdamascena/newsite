@@ -48,7 +48,7 @@ export default function Regras(){
     });
 
     return(
-        <section id='analise' className='poppins bg-white select-none'>
+        <section id='analise' className='bg-white select-none'>
             <div className="relative">
                 <div className='grid grid-cols-1 lg:grid-cols-3 lg:py-16 p-8 lg:px-44'>
                     

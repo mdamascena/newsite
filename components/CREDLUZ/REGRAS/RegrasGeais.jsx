@@ -37,7 +37,7 @@ export default function Regras(){
     },[]);
 
     return(
-        <section className='poppins px-8 lg:px-44 bg-white select-none'>
+        <section className='px-8 lg:px-44 bg-white select-none'>
             
             <div className='grid grid-cols-1 lg:grid-cols-2 py-16'>
                 

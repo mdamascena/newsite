@@ -64,7 +64,7 @@ export default function FormFC() {
                     </SelectTrigger>
                                     
                     <SelectContent >
-                        <SelectGroup className="Poppins text-slate-400">
+                        <SelectGroup className="text-slate-400">
                             <SelectLabel>Selecione o assunto</SelectLabel>
                             <SelectItem value="quitacao">Quitação</SelectItem>
                             <SelectItem value="cancelamento">Cancelamento</SelectItem>

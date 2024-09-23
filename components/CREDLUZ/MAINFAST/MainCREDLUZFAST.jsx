@@ -69,7 +69,7 @@ export default function MainPrincipal() {
                                 </Link>
                             </div>
 
-                            <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">
+                            <div className="text-[12px] text-white mt-5 text-center lg:text-start">
                                 <p>Crédito sujeito à análise *</p>
                                 <p>Liberações ocorrem em dias úteis **</p>
                             </div>

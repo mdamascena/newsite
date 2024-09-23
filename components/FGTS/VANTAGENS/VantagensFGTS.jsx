@@ -23,7 +23,6 @@ const Card = tw.div`
     saturate-100
     lg:h-[30vh]
     h-[24vh]
-    poppins
     relative
 `;
 
@@ -55,7 +54,7 @@ const CardBack = tw.div`
 
 export default function SectionVantagens() {
     return (
-        <section className='poppins bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600 saturate-100'>
+        <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600 saturate-100'>
             
             <div className='mx-4 lg:mx-40'>
 

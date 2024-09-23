@@ -39,7 +39,6 @@ const BtnRecalc = tw.button`
     active:scale-90 
     duration-200
 `
-
 export default function App({ show, fechar, onOpenChange, prazo, parcela, valor, showSimulador }) {
 
     const [data, setData] = useState([]);
@@ -78,25 +77,6 @@ export default function App({ show, fechar, onOpenChange, prazo, parcela, valor,
             backdrop="opaque"
             placement="center"
             radius="sm"
-            motionProps={{
-                variants: {
-                  enter: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                      duration: 0.3,
-                      ease: "easeOut",
-                    },
-                  },
-                  exit: {
-                    y: -20,
-                    opacity: 0,
-                    transition: {
-                      duration: 0.2,
-                      ease: "easeIn",
-                    },
-                  },
-                }}}
             >
 
             <ModalContent className="bg-btncalc py-3 select-none m-2">

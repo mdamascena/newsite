@@ -44,7 +44,7 @@ export default function AlertTaxa() {
       <div className="bg-blue-600 p-3 lg:p-4">
 
         <div className="flex">
-          <div className="poppins text-white lg:text-md text-sm text-center flex-1">
+          <div className="text-white lg:text-md text-sm text-center flex-1">
             A ValoReal não cobra nenhum valor antecipado para liberação de
             empréstimo!
           </div>

@@ -4,7 +4,6 @@ import SlideModalidade from "../MODALIDADES/SlideModalidade"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
 import SeuPerfil from "../SECTIONS/Perfil"
 import tw from 'tailwind-styled-components'
-import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
 

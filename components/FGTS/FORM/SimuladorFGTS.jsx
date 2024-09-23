@@ -41,7 +41,7 @@ const IntSolic = tw.input`
 export default function SimuladorFGTS() {
 
     return (
-        <section className="bg-blue-700 saturate-100 poppins">
+        <section className="bg-blue-700 saturate-100">
 
             <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-40 py-8 lg:py-16">
 

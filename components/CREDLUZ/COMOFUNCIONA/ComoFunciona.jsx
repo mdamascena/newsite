@@ -58,7 +58,7 @@ export default function ComoFunciona(){
 
     return(
         
-        <section className="poppins bg-white select-none">
+        <section className="bg-white select-none">
             
             <div id='ComoFunciona' className="grid grid-cols-2 overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
                 <div className="col-span-1"/>
@@ -198,7 +198,16 @@ export default function ComoFunciona(){
 
             </div>
 
-            <Carousel autoPlay infiniteLoop centerMode showArrows={false} showStatus={false} showIndicators={false} className="lg:hidden poppins -mt-10">
+            <Carousel 
+                autoPlay 
+                infiniteLoop 
+                centerMode 
+                showArrows={false} 
+                showStatus={false} 
+                showIndicators={false}
+                showThumbs={false}
+                className="lg:hidden -mt-10"
+                >
 
                 <div className="flex h-72 mx-2">
                     <div className="bg-blue-700 p-5 mb-5 rounded-2xl">

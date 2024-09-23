@@ -50,7 +50,7 @@ export default function ModalFaleConosco(){
                     </SelectTrigger>
                     
                     <SelectContent>
-                        <SelectGroup className="Poppins text-slate-400">
+                        <SelectGroup className="text-slate-400">
                             <SelectLabel>Assunto</SelectLabel>
                             <SelectItem value="quitacao">Quitação</SelectItem>
                             <SelectItem value="cancelamentos">Cancelamentos</SelectItem>

@@ -10,7 +10,7 @@ export default function SectionTaxa() {
                     <GuruFinanceiro />
                 </div>
 
-                <div className='col-span-2 my-auto poppins text-slate-400 lg:text-xl text-md order-1 lg:order-2'>
+                <div className='col-span-2 my-auto text-slate-400 lg:text-xl text-md order-1 lg:order-2'>
                     <h1 className='text-4xl mb-5 font-semibold tracking-tighter'>Não deixe o seu FGTS parado!</h1>
 
                     O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos.
