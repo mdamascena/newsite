@@ -14,7 +14,6 @@ const mainFontFamily = Poppins({
     subsets: ['latin']
 });
 
-
 export default function Cadastro() {
 
     const [progress, setProgress] = useState(0);
@@ -55,9 +54,9 @@ export default function Cadastro() {
                         
                         <div className="relative lg:mx-14">
                             
-                            <div className="flex justify-between items-center px-5 pt-3 lg:px-0 lg:pt-0 lg:min-h-[25vh]">
+                            <div className="flex justify-between items-center px-5 pt-2 lg:px-0 lg:pt-0 lg:min-h-[25vh]">
                                 <HiOutlineArrowLongLeft className='text-6xl text-white cursor-pointer lg:p-2 w-10 lg:w-20' onClick={handleBack} />
-                                <Image className="w-32 lg:w-40" src={LogoB} width={200} alt='' />
+                                <Image className="w-28 lg:w-40" src={LogoB} width={200} alt='' />
                             </div>
                             
                             <div className="text-end hidden lg:block content-center lg:min-h-[30vh]">
@@ -65,7 +64,6 @@ export default function Cadastro() {
                                     <h1 className="text-white font-extralight lg:font-semibold lg:text-3xl text-md ml-2">
                                         Vamos criar a sua conta
                                     </h1>
-
                                 </div>
                                 <div className="">
                                     <p className="text-sm text-white ml-2">

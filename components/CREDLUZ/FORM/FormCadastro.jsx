@@ -77,9 +77,9 @@ export default function FormCadastro({ onNext }) {
                 >
                 
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
-                    <div className="flex items-end mb-2 relative">
-                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center mb-3 lg:mb-0">
+                    <div className="flex items-end">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Cadastro de conta
                         </h1>
                     </div>
@@ -138,15 +138,15 @@ export default function FormCadastro({ onNext }) {
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                     </div>
                     
-                    <h5 className="col-span-6 mb-2 mt-5 text-slate-400 font-light lg:text-md text-sm">
+                    <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-md text-sm">
                         Crie uma senha simples
                     </h5>
                     
-                    <div className="col-span-6 lg:col-span-3">
+                    <div className="col-span-3">
                         <div className="relative">
                             <Input type={inputSenha} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
-                                placeholder="Digite uma senha"
+                                placeholder="Senha"
                                 {...register('senha')} 
                             />
 
@@ -159,12 +159,12 @@ export default function FormCadastro({ onNext }) {
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                     </div>
                     
-                    <div className="col-span-6 lg:col-span-3">
+                    <div className="col-span-3">
                         <div className="relative">
                             <Input type={inputSenhaConfirmacao} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 {...register('senhaConfirmacao')}
-                                placeholder="Confirme sua senha" />
+                                placeholder="Confirme" />
 
                             {visivelSenhaConfirmacao ? (
                                 <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />

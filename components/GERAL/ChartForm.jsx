@@ -8,7 +8,7 @@ export default function Chatform ({className, value }) {
 
         <div className={`justify-center lg:justify-end grid ${className}`}>
                                         
-            <div className="lg:bg-blue-950/50 lg:saturate-200 bg-black/30 lg:p-5 px-3 py-2 m-3 lg:w-96 w-[22rem] rounded-xl relative">
+            <div className="lg:bg-blue-950/50 lg:saturate-200 bg-black/30 lg:p-5 px-3 py-2 lg:m-3 mb-1 lg:w-96 w-[22rem] rounded-xl relative">
                                             
                 <div className="items-center lg:mb-5 lg:flex hidden">
                     <PiClipboardTextLight className="p-1 bg-white rounded-md text-3xl text-blue-600"/>

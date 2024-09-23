@@ -74,8 +74,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
 
-                    <div className="flex items-end mb-2 relative">
-                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                    <div className="flex items-end mb-2 lg:mb-0">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Qual é a sua ocupação?
                         </h1>
                     </div>
@@ -94,13 +94,13 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                         defaultValue=""
                         render={({ field: { onChange, value } }) => (
                                 
-                            <div value={value} onValueChange={onChange}>
+                            <div value={value} onChange={onChange}>
                                     
                                 <div className="grid grid-cols-4 gap-3 items-center">
 
                                     {/*opção assalariado*/}        
                                     <motion.div className="lg:col-span-2 col-span-4" key="assalariado" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="1" id="assalariado" />
+                                        <input type="radio" className="hidden peer col-span-2" name='status' value="1" id="assalariado" />
                                         <OptLabel htmlFor="assalariado" onClick={() => onChange("1")}>
                                             <div className="col-span-2">
                                                 <BsPersonBadgeFill className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
