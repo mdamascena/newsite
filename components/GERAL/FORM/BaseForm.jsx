@@ -12,21 +12,12 @@ export default function BaseForm({steps, titulo, descricao}) {
   const [progress, setProgress] = useState(0);
   const router = useRouter();
 
-  // useEffect(() => {
-  //     console.log(progress, 'progresssss')
-  // }, [])
-
   const handleBack = () => {
     router.back();
   };
 
-//   const login = "Crie seu Login";
-//   const localidade = "Agora diz a sua ocupaçao";
-//   const dadosPessoais = "Informe seu Genero";
-//   const envioDoc = "Você é o titular da conta ?";
-//   const final = "Agora vamos fazer a simulação";
-
   return (
+    
     <main className="bg-slate-100 min-h-[100vh] select-none">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[100vh]">

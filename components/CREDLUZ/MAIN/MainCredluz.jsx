@@ -20,7 +20,7 @@ export default function MainCredluz() {
 
 
     return (
-        <main>
+        <main className="select-none">
             <section className="bgMainPrincipal">
                 <div className="bgBrasao">
                     <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">

@@ -18,7 +18,7 @@ export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDesc
     //Titulos que devem ser redenrizados no form Base
     useEffect(() => {
         setTitulo("Onde você está no mapa?");    
-        setDescricao("Queremos saber onde te encontrar e como falamos com você");
+        setDescricao("Queremos saber onde mora e como falamos com você");
     }, [setTitulo, setDescricao]);
 
     const { register, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();

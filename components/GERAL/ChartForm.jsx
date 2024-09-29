@@ -1,11 +1,9 @@
 import { Progress } from "../../components/ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
-import { BsCheckLg } from "react-icons/bs"
 
 export default function Chatform ({className, value }) {
 
     return(
-
         <div className={`justify-center lg:justify-end grid ${className}`}>
                                         
             <div className="lg:bg-blue-950/50 lg:saturate-200 bg-black/30 lg:p-5 px-3 py-2 lg:m-3 mb-2 mx-2 lg:mx-0 lg:mb-0 lg:w-96 rounded-xl relative">

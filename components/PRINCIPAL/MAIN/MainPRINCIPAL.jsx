@@ -54,7 +54,7 @@ export default function MainHome() {
   return (
     <main>
         <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
-            
+
             <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
 
                 <div className="mt-24 lg:mt-0">
