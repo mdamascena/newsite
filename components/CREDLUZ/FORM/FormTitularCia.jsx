@@ -13,7 +13,7 @@ const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    px-3
+    px-2
     py-4
     items-center 
     justify-center 
@@ -44,7 +44,13 @@ const item = {
     },
 }
 
-export default function FormTitularCia({ onNext, backStep }) {
+export default function FormTitularCia({ onNext, backStep, setTitulo, setDescricao }) {
+
+    //Titulos que devem ser redenrizados no form Base
+    useEffect(() => {
+        setTitulo("Quem paga a luz?");    
+        setDescricao("É você que manda apagar a luz para não vir caro? Conta pra gente!");
+    }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit } = useFormContext();
     const { atualizarForm } = useFormDataLuz();
@@ -56,7 +62,6 @@ export default function FormTitularCia({ onNext, backStep }) {
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-
             <motion.div
                 initial={'hidden'} 
                 animate={'visible'}
@@ -86,10 +91,9 @@ export default function FormTitularCia({ onNext, backStep }) {
                         defaultValue=""
                         render={({ field: { onChange, value } }) => (
                             
-                            <div value={value} onValueChange={onChange}>
+                            <div value={value} onChange={onChange}>
                                 
                                 <div className="grid grid-cols-4 gap-3 items-center">
-                                    
                                     <motion.div className="col-span-2" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="0" id="titularCia"/>
                                         <OptLabel htmlFor="titularCia" onClick={() => onChange("0")}>
@@ -117,7 +121,6 @@ export default function FormTitularCia({ onNext, backStep }) {
                                             </div>
                                         </OptLabel>
                                     </motion.div>
-
                                 </div>
 
                             </div>

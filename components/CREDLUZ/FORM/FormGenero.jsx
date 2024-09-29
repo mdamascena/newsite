@@ -45,7 +45,13 @@ const item = {
     },
 }
 
-export default function FormGenero({ onNext, backStep }) {
+export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }) {
+
+    //Titulos que devem ser redenrizados no form Base
+    useEffect(() => {
+        setTitulo("Um pouco mais sobre você");    
+        setDescricao("Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?");
+    }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit } = useFormContext();
     const { atualizarForm } = useFormDataLuz();
@@ -98,7 +104,7 @@ export default function FormGenero({ onNext, backStep }) {
                         className='grid grid-cols-6 select-none'
                         render={({ field: { onChange, value } }) => (
                             
-                            <div value={value} onValueChange={onChange}>
+                            <div value={value} onChange={onChange}>
 
                                 <div className="grid grid-cols-4 gap-3 items-center">
 

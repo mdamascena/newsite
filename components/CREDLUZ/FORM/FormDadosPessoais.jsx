@@ -7,13 +7,19 @@ import InputMask from 'react-input-mask'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { MdWhatsapp } from "react-icons/md"
 import { IoIosArrowBack } from "react-icons/io"
-import { PiMapPinAreaLight } from "react-icons/pi";
+import { PiMapPinAreaLight } from "react-icons/pi"
 import { useEffect } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
-export default function FormDadosPessoais({ backStep, onNext }) {
+export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDescricao }) {
+
+    //Titulos que devem ser redenrizados no form Base
+    useEffect(() => {
+        setTitulo("Onde você está no mapa?");    
+        setDescricao("Queremos saber onde te encontrar e como falamos com você");
+    }, [setTitulo, setDescricao]);
 
     const { register, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
     const { atualizarForm } = useFormDataLuz()

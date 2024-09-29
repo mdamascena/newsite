@@ -60,11 +60,10 @@ export default function ComoFunciona(){
         
         <section className="bg-white select-none">
             
-            <div id='ComoFunciona' className="grid grid-cols-2 overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
-                <div className="col-span-1"/>
-                <div className="col-span-1 text-white lg:text-start">
-                    <h3 className="text-2xl lg:text-5xl tracking-tighter my-12 lg:my-32 font-semibold select-none">Como Funciona</h3>
-                </div>
+            <div id='ComoFunciona' className="justify-center flex overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
+                <h1 className="text-white text-2xl lg:text-5xl lg:ml-80 ml-32 tracking-tighter my-12 lg:my-32 font-semibold select-none">
+                    Como Funciona
+                </h1>
             </div>
             
             <div className="grid grid-cols-2 px-8 lg:px-44 text-slate-400 h-80">

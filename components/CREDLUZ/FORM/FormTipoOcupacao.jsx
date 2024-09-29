@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from "react-hook-form"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import { MdOutlineMilitaryTech } from "react-icons/md"
 import { FaFemale } from "react-icons/fa"
@@ -17,9 +17,8 @@ const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    lg:h-24 
-    h-16
-    px-3
+    p-3
+    lg:py-6
     items-center 
     justify-center 
     text-slate-400 
@@ -50,7 +49,13 @@ const item = {
     },
 };
 
-export default function FormTipoOcupacao({onNext, backStep}) {
+export default function FormTipoOcupacao({onNext, backStep, setTitulo, setDescricao}) {
+
+    //Titulos que devem ser redenrizados no form Base
+    useEffect(() => {
+        setTitulo("O que você faz da vida?");    
+        setDescricao("Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!");
+    }, [setTitulo, setDescricao]);
 
     const {control, handleSubmit} = useFormContext()
     const {atualizarForm} = useFormDataLuz()
@@ -99,18 +104,18 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                 <div className="grid grid-cols-4 gap-3 items-center">
 
                                     {/*opção assalariado*/}        
-                                    <motion.div className="lg:col-span-2 col-span-4" key="assalariado" variants={item}>
+                                    <motion.div className="col-span-2" key="assalariado" variants={item}>
                                         <input type="radio" className="hidden peer col-span-2" name='status' value="1" id="assalariado" />
-                                        <OptLabel htmlFor="assalariado" onClick={() => onChange("1")}>
-                                            <div className="col-span-2">
-                                                <BsPersonBadgeFill className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                        <OptLabel className="justify-items-stretch" htmlFor="assalariado" onClick={() => onChange("1")}>
+                                            <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
+                                                <BsPersonBadgeFill className="lg:text-5xl text-4xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
 
-                                            <div className="col-span-4">
-                                                <p className="font-semibold">
+                                            <div className="col-span-6 lg:col-span-4 text-center lg:text-start">
+                                                <p className="font-semibold text-sm lg:text-medium">
                                                     Assalariado
                                                 </p>
-                                                <span className="text-xs font-light">
+                                                <span className="text-xs font-light hidden lg:block">
                                                     Vínculo CLT
                                                 </span>
                                             </div>
@@ -118,53 +123,53 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                     </motion.div>
 
                                     {/*opção servidor*/}
-                                    <motion.div className="lg:col-span-2 col-span-4" key="servidor" variants={item}>
+                                    <motion.div className="col-span-2" key="servidor" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="2" id="servidor" />
                                         <OptLabel className="justify-items-stretch" htmlFor="servidor" onClick={() => onChange("2")}>
-                                            <div className="col-span-2">
-                                                <FaUserTie className="text-5xl p-3 bg-blue-500 rounded-md text-white"/>
+                                            <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
+                                                <FaUserTie className="lg:text-5xl text-4xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
-                                            <div className="col-span-4">
-                                                <p className="font-semibold">
+                                            <div className="col-span-6 lg:col-span-4 text-center lg:text-start">
+                                                <p className="font-semibold text-sm lg:text-medium">
                                                     Servidor Público
                                                 </p>
-                                                <span className="text-xs font-light">
-                                                    Ativo ou inativo
+                                                <span className="text-xs font-light hidden lg:block">
+                                                    Ativo / inativo
                                                 </span>
                                             </div>
                                         </OptLabel>
                                     </motion.div>
 
                                     {/*opção aposentado*/}
-                                    <motion.div className="lg:col-span-2 col-span-4" key="aposentado" variants={item}>
+                                    <motion.div className="col-span-2" key="aposentado" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="3" id="aposentado" />
                                         <OptLabel className="justify-items-stretch" htmlFor="aposentado" onClick={() => onChange("3")}> 
-                                            <div className="col-span-2">
-                                                <FaMale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
+                                                <FaMale className="lg:text-5xl text-4xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
-                                            <div className="col-span-4">
-                                                <p className="font-semibold">
+                                            <div className="col-span-6 lg:col-span-4 text-center lg:text-start">
+                                                <p className="font-semibold text-sm lg:text-medium">
                                                     Aposentado
                                                 </p>
-                                                <span className="text-xs font-light">
-                                                    Benefício INSS / LOAS
+                                                <span className="text-xs font-light hidden lg:block">
+                                                    Beneficiário INSS / LOAS
                                                 </span>
                                             </div>
                                         </OptLabel>
                                     </motion.div>
 
                                     {/*opção pensionista*/}
-                                    <motion.div className="lg:col-span-2 col-span-4" key="pensionista" variants={item}>
+                                    <motion.div className="col-span-2" key="pensionista" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="4" id="pensionista" />
                                         <OptLabel className="justify-items-stretch" htmlFor="pensionista" onClick={() => onChange("4")}>
-                                            <div className="col-span-2">
-                                                <FaFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
+                                                <FaFemale className="lg:text-5xl text-4xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
-                                            <div className="col-span-4">
-                                                <p className="font-semibold">
+                                            <div className="col-span-6 lg:col-span-4 text-center lg:text-start">
+                                                <p className="font-semibold text-sm lg:text-medium">
                                                     Pensionista
                                                 </p>
-                                                <span className="text-xs font-light">
+                                                <span className="text-xs font-light hidden lg:block">
                                                     Pensão / Pensão INSS
                                                 </span>
                                             </div>
@@ -172,17 +177,17 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                     </motion.div>
 
                                     {/*opção autônomo*/}
-                                    <motion.div className="lg:col-span-2 col-span-4" key="autonomo" variants={item} exit={{opacity:0}}>
+                                    <motion.div className="col-span-2" key="autonomo" variants={item} exit={{opacity:0}}>
                                         <input type="radio" className="hidden peer" name='status' value="5" id="autonomo" />
                                         <OptLabel className="justify-items-stretch" htmlFor="autonomo" onClick={() => onChange("5")}>
-                                            <div className="col-span-2">
-                                                <MdOutlineHandyman className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
+                                                <MdOutlineHandyman className="lg:text-5xl text-4xl p-1 bg-blue-500 rounded-md text-white"/>
                                             </div>
-                                            <div className="col-span-4">
-                                                <p className="font-semibold">
+                                            <div className="col-span-6 lg:col-span-4 text-center lg:text-start">
+                                                <p className="font-semibold text-sm lg:text-medium">
                                                     Autônomo
                                                 </p>
-                                                <span className="text-xs font-light">
+                                                <span className="text-xs font-light hidden lg:block">
                                                     Prof. liberal / Empresário
                                                 </span>
                                             </div>
@@ -190,17 +195,17 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                     </motion.div>
 
                                     {/*opção militar*/}
-                                    <motion.div className="lg:col-span-2 col-span-4" key="militar" variants={item} exit={{opacity:0}}>
+                                    <motion.div className="col-span-2" key="militar" variants={item} exit={{opacity:0}}>
                                         <input type="radio" className="hidden peer" name='status' value="6" id="militar" />
                                         <OptLabel className="justify-items-stretch" htmlFor="militar" onClick={() => onChange("6")}>
-                                            <div className="col-span-2">
-                                                <MdOutlineMilitaryTech className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
+                                                <MdOutlineMilitaryTech className="lg:text-5xl text-4xl p-1 bg-blue-500 rounded-md text-white"/>
                                             </div>
-                                            <div className="col-span-4">
-                                                <p className="font-semibold">
+                                            <div className="col-span-6 lg:col-span-4 text-center lg:text-start">
+                                                <p className="font-semibold text-sm lg:text-medium">
                                                     Militar
                                                 </p>
-                                                <span className="text-xs font-light">
+                                                <span className="text-xs font-light hidden lg:block">
                                                     Forças Armadas
                                                 </span>
                                             </div>

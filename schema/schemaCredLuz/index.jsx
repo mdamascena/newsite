@@ -6,6 +6,7 @@ export const cadastroSchema = z.object({
     dataNascimento: z.string().length(10, { message: "Data de nascimento deve ter exatamente 10 caracteres." }),
     nome: z.string().refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" }),
     email: z.string().email("Formato de e-mail inválido"),
+    celular: z.string().length(15, { message: "Celular deve conter 9 números sem contar o DDD" }).refine(value => validatePhoneNumber(value), { message: "Número de celular inválido" }),
     senha: z.string().min(3, "A senha deve ter pelo menos 3 caracteres"),
     senhaConfirmacao: z.string().min(3, "A confirmação de senha deve ter pelo menos 3 caracteres"),
     termos: z.boolean().refine(val => val === true, {
