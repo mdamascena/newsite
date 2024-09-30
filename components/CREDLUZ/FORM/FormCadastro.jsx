@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Input } from "components/ui/input"
 import InputMask from 'react-input-mask'
+import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
@@ -9,11 +10,14 @@ import {useDisclosure, Checkbox} from "@nextui-org/react"
 import { motion, AnimatePresence } from 'framer-motion'
 import ModalOpt from '../../GERAL/ModalOpt'
 import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import { boolean } from "zod"
 
 export default function FormCadastro({ onNext }) {
 
     // Controle de formulario react-hook-form
     const { register, handleSubmit, formState: { errors }, setValue } = useFormContext();
+    const registerWithMask = useHookFormMask(register);
+
     const {atualizarForm} = useFormDataLuz();
 
     // State para definir o campo password visivel.
@@ -47,9 +51,9 @@ export default function FormCadastro({ onNext }) {
         setValue("termos", true);
     };   
     
-    const handleCheckboxChange = () => {
-        setIsAccepted((prev) => !prev);
-        setValue("termos", !isAccepted);
+    const handleCheckboxChange = (event) => {
+        setIsAccepted(event.target.checked);
+        setValue("termos", event.target.checked);
     };
 
     const container = {
@@ -90,33 +94,24 @@ export default function FormCadastro({ onNext }) {
 
                 {/*Form do step*/}
                 <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center lg:min-h-[60vh] min-h-[55vh]">
-                        
+
                     <div className="col-span-3">
-                        <InputMask
-                            mask="999.999.999-99"
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                }`}
+                        <Input
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
                             placeholder='Digite seu CPF'
-                            inputMode='numeric'
-                            maskChar={null}
-                            {...register("cpf")}>
-                            {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
+                            {...registerWithMask("cpf", ['999.999.999-99'])}
+                        />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
 
                     <div className="col-span-3">
-                        <InputMask
-                            mask="99/99/9999"
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                }`}
-                            placeholder='Nascimento *'
-                            inputMode='numeric'
-                            maskChar={null}
-                            {...register("dataNascimento")}
-                            >
-                            {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
+                        <Input 
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            placeholder="Nascimento *"
+                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
+                        />
                         {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
                     </div>
 
@@ -177,13 +172,14 @@ export default function FormCadastro({ onNext }) {
 
                     <div className="col-span-6 mt-2">
                         
-                        <Checkbox
+                        <input
+                            type="checkbox"
                             id="termos"
                             radius="md"
-                            isSelected={isAccepted} 
-                            onValueChange={handleCheckboxChange}
-                            {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
-                        />
+                            checked={isAccepted}
+                            className="mr-2"
+                            onChange={handleCheckboxChange}
+                            {...register("termos", { required: "Você deve aceitar os termos para continuar." })}/>
                         
                         <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
                             Li e aceito os termos de uso e política de privacidade.

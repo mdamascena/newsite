@@ -8,6 +8,7 @@ import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
 import BtnNext from '../../GERAL/BUTTON/BtnBlue'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert';
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -46,13 +47,32 @@ const item = {
 
 export default function FormTitularCia({ onNext, backStep }) {
 
-    const { control, handleSubmit } = useFormContext();
-    const { atualizarForm } = useFormDataLuz();
+    const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
+    const { atualizarForm, formData } = useFormDataLuz();
+    const [showAlert, setShowAlert] = useState(false);
 
     function onSubmit(data){
         atualizarForm(data);
         onNext();
     }
+
+    useEffect(() => {
+        if(formData.titularCia){
+            setValue("tipoCia", formData.titularCia)
+        }
+    }, [formData.titularCia, setValue])
+
+     
+    useEffect(() => {
+        if (errors.titularCia) {
+        setShowAlert(true);
+        const timeoutId = setTimeout(() => {
+            setShowAlert(false);
+        }, 5000);
+
+        return () => clearTimeout(timeoutId);
+        }
+    }, [errors.titularCia]);
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
@@ -79,6 +99,12 @@ export default function FormTitularCia({ onNext, backStep }) {
 
                 {/*Opções*/}
                 <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
+                    {showAlert && errors.titularCia && (
+                        <Alert className="mb-5 bg-red-100" onClose={() => setShowAlert(false)}>
+                            <AlertTitle>Erro</AlertTitle>
+                            <AlertDescription>{errors.titularCia.message}</AlertDescription>
+                        </Alert>
+                    )}
                     
                     <Controller
                         name="titularCia"
@@ -91,8 +117,8 @@ export default function FormTitularCia({ onNext, backStep }) {
                                 <div className="grid grid-cols-4 gap-3 items-center">
                                     
                                     <motion.div className="col-span-2" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="0" id="titularCia"/>
-                                        <OptLabel htmlFor="titularCia" onClick={() => onChange("0")}>
+                                        <input type="radio" className="hidden peer" name='status' value="0" id="titularCia" checked={value === "0"} onChange={() => onChange("0")}/>
+                                        <OptLabel htmlFor="titularCia">
                                             <div className="col-span-6 flex justify-center mb-2">
                                                 <RiUserFollowLine className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
@@ -105,8 +131,8 @@ export default function FormTitularCia({ onNext, backStep }) {
                                     </motion.div>
 
                                     <motion.div className="col-span-2" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="1" id="naoTitularCia"/>
-                                        <OptLabel htmlFor="naoTitularCia" onClick={() => onChange("1")}>
+                                        <input type="radio" className="hidden peer" name='status' value="1" id="naoTitularCia" checked={value === "1"} onChange={() => onChange("1")}/>
+                                        <OptLabel htmlFor="naoTitularCia">
                                             <div className="col-span-6 flex justify-center mb-2">
                                                 <RiUserForbidLine  className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
@@ -133,7 +159,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                     </div>
 
                     <div className="col-span-5">
-                        <BtnNext nome={'Avançar'} type="submit"/>
+                        <BtnNext event={handleSubmit(onSubmit)} nome={'Avançar'} type="submit"/>
                     </div>
                 </div>
 

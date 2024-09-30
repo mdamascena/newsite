@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
 import { tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
@@ -26,9 +27,6 @@ export function FormCredLuz( { progressChange }) {
     })
 
     useEffect(() => {
-        if (step >= 2) {
-            methods.reset(formData);
-        }
         progressChange(((step - 1) / schemas.length) * 100)
     }, [step, methods, formData, progressChange]);
 
@@ -48,7 +46,7 @@ export function FormCredLuz( { progressChange }) {
                 {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
                 {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
                 {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
-                {step === 5 && <Step5 onNext={nextStep} backStep={prevStep} />}
+                {step === 5 && <Step5 backStep={prevStep} />}
         </FormProvider>
     )
 }

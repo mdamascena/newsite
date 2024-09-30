@@ -18,6 +18,6 @@ const Btn = tw.button`
     disabled:opacity-50  
 `
 
-export default function BtnBlue ({nome, disabled}){
-    return <Btn >{nome}</Btn>
+export default function BtnBlue ({nome, event}){
+    return <Btn onClick={event}>{nome}</Btn>
 }

@@ -20,7 +20,7 @@ const BtnReset = tw.button`
 
 export default function BtnBlue ({nome, icon, event}){
     return(
-        <BtnReset onClick={event}>
+        <BtnReset type='button' onClick={event}>
             {icon}
             {nome}
         </BtnReset>

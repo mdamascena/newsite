@@ -4,90 +4,92 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "c
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import { Controller, useFormContext } from "react-hook-form"
 import InputMask from 'react-input-mask'
+import { useHookFormMask } from "use-mask-input"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { MdWhatsapp } from "react-icons/md"
 import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinAreaLight } from "react-icons/pi";
 import { useEffect } from "react"
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlue'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
 export default function FormDadosPessoais({ backStep, onNext }) {
 
-    const { register, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
+    const { register, watch, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
+    const registerWithMask = useHookFormMask(register);
+
     const { atualizarForm } = useFormDataLuz()
     const [comCep, setComCep] = useState(true);
     const [semCep, setSemCep] = useState(false)
     const [uf, setUf] = useState([]);
     const [cidade, setCidade] = useState([]);
-    const [selectedEstado, setSelectedEstado] = useState('');
+
+    const cep = watch('cep')
+    const ufWatch = watch('uf')
 
     const handleComCep = () => {
         setSemCep(true)
     };
 
-    const handleSemCep = () => {
-        setSemCep(false)
-        setComCep(true)
-    };
+    //RESETAR OS CAMPOS
+    useEffect(() => {
+        const resetFields = ['cep', 'uf', 'cidade', 'logradouro', 'bairro', 'complemento', 'whatsapp', 'celular'];
+        resetFields.forEach(field => setValue(field, ''));
+    }, [comCep, setValue]);
+
 
     useEffect(() => {
-        setValue('cep', ''),
-        setValue('uf', ''),
-        setValue('cidade', '')
-        setValue('logradouro', '')
-        setValue('bairro', ''),
-        setValue('complemento', '')
-        setValue('numero', '')
-    }, [comCep, setValue])
-
-    const handleCepBlur = (e) => {
-        const inputCep = e.target.value.replace('-', '');
-
-        if (inputCep.length === 8) {
-            fetch(`https://viacep.com.br/ws/${inputCep}/json/`)
-                .then((res) => res.json())
-                .then((data) => {
-                    if (!data.erro) {
+        if(cep && cep.length === 8){
+            const fetchAddress = async () => {
+                try{
+                    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    const data = await response.json();
+                    if(data.erro) {
+                        console.log('erro')
+                    } else {
                         setSemCep(true);
                         setValue('cep', data.cep);
                         setValue('uf', data.uf);
-                        setSelectedEstado(data.uf);
-                        setValue('cidade', data.localidade);
+                        setValue('cidade', data.localidade)
                         setValue('logradouro', data.logradouro);
                         setValue('bairro', data.bairro);
-                    } else {
-                        console.log('Erro ao buscar CEP');
+
+                        const cidadeEncontrada = cidade.find(x => x.nome === data.localidade);
+                        if (cidadeEncontrada) {
+                            setValue('cidade', cidadeEncontrada.nome);
+                        }
                     }
-                })
-                .catch((error) => console.error('Erro na requisição:', error));
-        } else {
-            console.log('CEP incompleto');
+                } catch (err) {
+                    setSemCep(true)
+                    console.log(err)
+                }
+            };
+            fetchAddress();
         }
-    };
+    }, [cep, setValue])
     
     useEffect(() => {
-        fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
+            fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
             .then(response => response.json())
             .then(data => setUf(data))
             .catch(error => console.log('Erro ao buscar UF', error))
     }, [])
 
     useEffect(() => {
-        if (selectedEstado) {
-            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedEstado}/municipios`)
+        if (ufWatch) {
+            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufWatch}/municipios`)
                 .then(response => response.json())
                 .then(data => setCidade(data))
                 .catch(error => console.log('Erro ao buscar cidades', error))
         }
-    }, [selectedEstado])
+    }, [ufWatch])
 
     const onSubmit = (data) => {
-        atualizarForm(data)
-        console.log('dados context', getValues())
+        atualizarForm(data);
+        console.log('dados context', getValues());
         const dados = getValues();
-        console.log(dados, "Dados enviados.")
+        console.log(dados, "Dados enviados.");
     }
 
     const container = {
@@ -134,33 +136,26 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                     <div className="col-span-6 grid grid-cols-6 gap-2.5">
 
                         <div className="col-span-3 relative">
-                            <InputMask
-                                mask="(99) 99999-9999"
-                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                    }`}
-                                maskChar={null}
-                                placeholder='Celular *'
-                                inputMode='numeric'
-                                {...register("celular")}>
-                                        
-                                {(inputProps) => <Input {...inputProps} />}
-                            </InputMask>
+
+                            <Input 
+                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                type="text"
+                                placeholder="Celular *"
+                                {...registerWithMask("celular", ['99 99999-9999'])}
+                            />
                             <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : 'text-slate-400'}`} />
                             {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
+                
                         </div>
 
                         <div className="col-span-3 relative">
-                            <InputMask
-                                mask="(99) 99999-9999"
-                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                    }`}
-                                maskChar={null}
-                                placeholder='WhatsApp *'
-                                inputMode='numeric'
-                                {...register("whatsapp")}
-                                >
-                                {(inputProps) => <Input {...inputProps} />}
-                            </InputMask>
+
+                            <Input 
+                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                type="text"
+                                placeholder="WhatsApp *"
+                                {...registerWithMask("whatsapp", ['99 99999-9999'])}
+                            />
                             <MdWhatsapp className={`absolute top-3 left-2 text-2xl ${errors.whatsapp ? 'text-red-500' : 'text-slate-400'}`} />
                             {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp.message}</p>}
                         </div>
@@ -171,24 +166,17 @@ export default function FormDadosPessoais({ backStep, onNext }) {
 
                     {comCep && (
                         <div className="grid grid-cols-6 gap-2.5 col-span-6 mb-3">
-                            
+
                             <div className="col-span-3 relative">
-                                <InputMask
-                                    mask="99999-999"
-                                    className={`py-6 pl-11 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                        }`}
-                                    placeholder='CEP'
-                                    inputMode='numeric'
-                                    maskChar={null}
-                                    {...register("cep")}
-                                    onBlur={(e) => handleCepBlur(e)}
-                                    >
-
-                                    {(inputProps) => <Input {...inputProps} />}
-                                </InputMask>
-
-                                <PiMapPinAreaLight className={`absolute top-3 left-3 text-2xl ${errors.cep ? 'text-red-500' : 'text-slate-400'}`}/>
-                                {errors.cep && <p className="text-red-500 text-sm mt-1">{errors.cep.message}</p>}
+                                <Input 
+                                    className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                    type="text"
+                                    placeholder="Cep *"
+                                    maxLength={9}
+                                    {...register("cep", ['99999-999'])}
+                                />
+                                <PiMapPinAreaLight className={`absolute top-3 left-2 text-2xl ${errors.cep ? 'text-red-500' : 'text-slate-400'}`} />
+                                {errors.cep && <p className="text-red-500 text-xs mt-1">{errors.cep.message}</p>}
                             </div>
                             
                             {!semCep && (
@@ -200,17 +188,9 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                     )}
 
                     {semCep && (
-                        <div className="col-span-6 grid grid-cols-6">
-                                
-                            {/* {comCep || semCep && (
-                                <div className="items-center mb-3 col-span-6">
-                                    <Button onClick={handleSemCep} type="button" className="border py-5 w-full rounded-lg">
-                                        Preencher com CEP
-                                    </Button>
-                                </div>
-                            )} */}
+                        <div className="col-span-6 grid grid-cols-6">             
 
-                            <div className="grid grid-cols-6 col-span-6 gap-2.5 mb-3">
+                           <div className="grid grid-cols-6 col-span-6 gap-2.5 mb-3">
                                     
                                 <motion.div className="col-span-3" variants={item}>
                                     <Controller
@@ -219,7 +199,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                                         defaultValue=""
                                         render={({ field }) => (
                                                 
-                                            <Select {...field} onValueChange={(value) => { field.onChange(value); setSelectedEstado(value) }} value={field.value}>
+                                            <Select {...field} onValueChange={(value) => { field.onChange(value); }} value={field.value}>
                                                         
                                                 <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     <SelectValue placeholder="Estado *" />
@@ -311,7 +291,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                     </div>
 
                     <div className="col-span-5">
-                        <BtnNext nome={'Enviar para análise'} type="submit" onClick={handleSubmit(onSubmit)}/>
+                        <BtnNext nome={'Enviar para análise'} type="submit" event={handleSubmit(onSubmit)}/>
                     </div>
                 </div>
 
