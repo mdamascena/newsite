@@ -24,7 +24,7 @@ export default function Regioes() {
     },[])
 
     return(
-        <section className="poppins bg-slate-100">
+        <section className="bg-slate-100 select-none">
             <div className="grid grid-cols-1 lg:grid-cols-2 px-8 lg:px-52 py-8 lg:py-16">
                 <div className={`col-span-1 duration-1000 delay-300 ${movDesc}`}>
                     <h2 className="text-4xl text-blue-600 font-semibold mb-4 tracking-tight border-l-4 border-blue-500 pl-2">Regiões<br/>atendidas</h2>
@@ -76,37 +76,37 @@ export default function Regioes() {
                 <div className="grid grid-cols-4 gap-2 lg:hidden">
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">RJ</span>
+                        <span className="text-slate-400 text-lg px-1">RJ</span>
                     </div>
 
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">SP</span>
+                        <span className="text-slate-400 text-lg px-1">SP</span>
                     </div>
 
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">CE</span>
+                        <span className="text-slate-400 text-lg px-1">CE</span>
                     </div>
 
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">PE</span>
+                        <span className="text-slate-400 text-lg px-1">PE</span>
                     </div>
 
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">BA</span>
+                        <span className="text-slate-400 text-lg px-1">BA</span>
                     </div>
 
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">RN</span>
+                        <span className="text-slate-400 text-lg px-1">RN</span>
                     </div>
 
                     <div className="bg-slate-200 rounded-xl flex items-center p-1">
                         <PiMapPinFill className="text-blue-600 text-2xl"/>
-                        <span className="poppins text-slate-400 text-lg px-1">RS</span>
+                        <span className="text-slate-400 text-lg px-1">RS</span>
                     </div>
                 </div>
                 

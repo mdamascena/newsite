@@ -83,23 +83,22 @@ export default function SessaoModalidades() {
     }
 
     return (
-        <section className="bg-slate-50 poppins">
+        <section className="bg-slate-50">
 
             <div className='lg:hidden'>
                 <Carousel className="grid grid-cols-1 "
-                    autoPlay={'true'}
-                    infiniteLoop={'true'}
-                    centerMode={'true'}
+                    autoPlay={true}
+                    infiniteLoop={true}
+                    centerMode={true}
                     centerSlidePercentage={90}
-                    showThumbs={'true'}
-                    showStatus={''}
-                    showIndicators={''}
+                    showThumbs={false}
                     interval={5000}
-                    dynamicHeight={'true'}>
+                    dynamicHeight={true}
+                    >
 
                     {/*Energia*/}
                     <CardMod className='mb-5'>
-                        <div className="p-3 duration-300 poppins text-left h-60">
+                        <div className="p-3 duration-300 text-left h-60">
                             <RiLightbulbFlashLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                             <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">na conta de luz</p>
@@ -109,7 +108,7 @@ export default function SessaoModalidades() {
 
                     {/*Boleto*/}
                     <CardMod className='mb-5'>
-                        <div className="p-3 duration-300 poppins text-left">
+                        <div className="p-3 duration-300 text-left">
                             <AiOutlineBarcode className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                             <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Pessoal CredBoleto</p>
@@ -119,7 +118,7 @@ export default function SessaoModalidades() {
 
                     {/*FGTS*/}
                     <CardMod className='mb-5'>
-                        <div className="p-3 duration-300 poppins text-left">
+                        <div className="p-3 duration-300 text-left">
                             <MdOutlineCake className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                             <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
                             <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Saque-Aniversário FGTS</p>
@@ -129,7 +128,7 @@ export default function SessaoModalidades() {
 
                     {/*Consignado*/}
                     <CardMod className='mb-5'>
-                        <div className="p-3 duration-300 poppins text-left">
+                        <div className="p-3 duration-300 text-left">
                             <div className='flex'>
                                 <RiBankLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <span className='bg-red-600 text-white p-1 rounded-md text-[10px] h-5 my-auto ml-48'>EM BREVE</span>
@@ -203,8 +202,9 @@ export default function SessaoModalidades() {
                                             <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Consignado</p>
                                         </div>
                                     </div>
-                                    <p className="text-slate-400 h-[84px] text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">Para beneficiários do INSS com pagamento em 10 minutos</p>
-                                    {/*<span className='bg-red-600 text-white p-1 rounded-md text-[10px]'>EM BREVE</span>*/}
+                                    <p className="text-slate-400 h-[84px] text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">
+                                        Para beneficiários do INSS com pagamento em 10 minutos
+                                    </p>
                                 </div>
                             </CardMod>
                         </div>

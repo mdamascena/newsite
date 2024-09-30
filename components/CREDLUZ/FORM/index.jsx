@@ -15,7 +15,7 @@ const Step5 = dynamic(() => import('../FORM/FormDadosPessoais'))
 
 const schemas = [cadastroSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema];
 
-export function FormCredLuz( { progressChange }) {
+export function FormCredLuz( { progressChange, setTitulo, setDescricao }) {
 
     const [step, setStep] = useState(1);
     const { formData, atualizarForm } = useFormDataLuz();
@@ -42,11 +42,11 @@ export function FormCredLuz( { progressChange }) {
     return (
 
         <FormProvider {...methods}>
-                {step === 1 && <Step1 onNext={nextStep} />}
-                {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
-                {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
-                {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
-                {step === 5 && <Step5 backStep={prevStep} />}
+            {step === 1 && <Step1 onNext={nextStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
+            {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
+            {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
+            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
+            {step === 5 && <Step5 onNext={onSubmit} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
         </FormProvider>
     )
 }

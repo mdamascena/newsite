@@ -1,7 +1,7 @@
 import React from 'react'
 import tw from 'tailwind-styled-components'
 
-const BtnReset = tw.button`
+const BtnBack = tw.button`
     bg-blue-100
     items-center
     justify-center
@@ -18,12 +18,14 @@ const BtnReset = tw.button`
     duration-150
 `;
 
-export default function BtnBlue ({nome, icon, event}){
+export default function BtnBlueBack
+ ({nome, event, iconLeft, iconRight}){
     return(
-        <BtnReset type='button' onClick={event}>
-            {icon}
+        <BtnBack type='button' onClick={event}>
+            {iconLeft}
             {nome}
-        </BtnReset>
+            {iconRight}
+        </BtnBack>
     )
 }
 

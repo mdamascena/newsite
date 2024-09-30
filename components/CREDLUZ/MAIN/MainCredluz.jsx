@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useState } from "react"
 import cel from "../../../public/img/PERSO_LUZ_3.png"
 import light from "../../../public/img/LAMPADA.png"
 import {HiCheck} from 'react-icons/hi'
@@ -9,15 +10,21 @@ import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/ANALISE/Analise"
 import Simulador from '../SIMULADOR/SimuladorCredluz'
 
-
 export default function MainCredluz() {
 
+    const [showModal, setShowModal] = useState(false);
+
+    const HandleShowModal = () =>{
+        setShowModal(true)
+    }
+
+
     return (
-        <main>
+        <main className="select-none">
             <section className="bgMainPrincipal">
                 <div className="bgBrasao">
                     <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 poppins">
+                        <div className="grid grid-cols-1 lg:grid-cols-3">
                             
                             <figure className="mx-auto block lg:hidden mt-14 pr-2">
                                 <Image className="" src={light} width={185} alt="" />
@@ -53,7 +60,7 @@ export default function MainCredluz() {
                                         <span className="ml-2 text-lg">Limite de até R$ 3.300,00 *</span>
                                     </div>
 
-                                    <div className="text-[12px] text-white poppins mt-5 text-center lg:text-start">
+                                    <div className="text-[12px] text-white mt-5 text-center lg:text-start">
                                         <p>* Crédito sujeito à análise</p>
                                         <p>** Liberações ocorrem em dias úteis</p>
                                     </div>

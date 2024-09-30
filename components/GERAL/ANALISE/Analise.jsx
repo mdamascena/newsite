@@ -48,7 +48,7 @@ export default function Regras(){
     });
 
     return(
-        <section id='analise' className='poppins bg-white select-none'>
+        <section id='analise' className='bg-white select-none'>
             <div className="relative">
                 <div className='grid grid-cols-1 lg:grid-cols-3 lg:py-16 p-8 lg:px-44'>
                     
@@ -122,8 +122,8 @@ export default function Regras(){
                         <div className="mt-8 flex justify-center lg:hidden">
                             <div className="flex">
                                 <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={170} src={analise} alt=''/>
-                                <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={170} src={step} alt='' />
-                                <Image className={`border-slate-300 border-5 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10`} width={180} src={desc} alt='' />
+                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={170} src={step} alt='' />
+                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10`} width={180} src={desc} alt='' />
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[9rem] absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>
                         </div>

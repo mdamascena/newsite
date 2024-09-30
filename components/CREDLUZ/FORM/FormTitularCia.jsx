@@ -6,7 +6,7 @@ import { RiUserFollowLine } from "react-icons/ri"
 import { RiUserForbidLine } from "react-icons/ri"
 import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert';
 
@@ -14,7 +14,7 @@ const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    px-3
+    px-2
     py-4
     items-center 
     justify-center 
@@ -45,7 +45,13 @@ const item = {
     },
 }
 
-export default function FormTitularCia({ onNext, backStep }) {
+export default function FormTitularCia({ onNext, backStep, setTitulo, setDescricao }) {
+
+    //Titulos que devem ser redenrizados no form Base
+    useEffect(() => {
+        setTitulo("Quem paga a luz?");    
+        setDescricao("É você que manda apagar a luz para não vir caro? Conta pra gente!");
+    }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();
@@ -76,7 +82,6 @@ export default function FormTitularCia({ onNext, backStep }) {
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-
             <motion.div
                 initial={'hidden'} 
                 animate={'visible'}
@@ -112,10 +117,9 @@ export default function FormTitularCia({ onNext, backStep }) {
                         defaultValue=""
                         render={({ field: { onChange, value } }) => (
                             
-                            <div value={value} onValueChange={onChange}>
+                            <div value={value} onChange={onChange}>
                                 
                                 <div className="grid grid-cols-4 gap-3 items-center">
-                                    
                                     <motion.div className="col-span-2" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="0" id="titularCia" checked={value === "0"} onChange={() => onChange("0")}/>
                                         <OptLabel htmlFor="titularCia">
@@ -143,7 +147,6 @@ export default function FormTitularCia({ onNext, backStep }) {
                                             </div>
                                         </OptLabel>
                                     </motion.div>
-
                                 </div>
 
                             </div>
@@ -155,7 +158,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 {/*Botões*/}
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
+                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
                     </div>
 
                     <div className="col-span-5">

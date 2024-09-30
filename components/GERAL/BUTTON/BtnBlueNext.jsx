@@ -1,7 +1,7 @@
 import React from 'react'
 import tw from 'tailwind-styled-components'
 
-const Btn = tw.button`
+const BtnNext = tw.button`
     bg-blue-700
     items-center 
     justify-center
@@ -18,6 +18,12 @@ const Btn = tw.button`
     disabled:opacity-50  
 `
 
-export default function BtnBlue ({nome, event}){
-    return <Btn onClick={event}>{nome}</Btn>
+export default function BtnBlueNext ({nome, event, iconLeft, iconRight}){
+    return(
+        <BtnNext onClick={event}>
+            {iconLeft}
+            {nome}
+            {iconRight}
+        </BtnNext>
+    ) 
 }

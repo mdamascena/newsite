@@ -16,7 +16,7 @@ const Card = tw.div`
 
 export default function Descricao(){
     return(
-        <section className="bg-slate-100 poppins text-slate-400 px-8 lg:px-40 py-16 select-none">
+        <section className="bg-slate-100 text-slate-400 px-8 lg:px-40 py-16 select-none">
             
             <div className="mb-10 lg:mb-16">
                 

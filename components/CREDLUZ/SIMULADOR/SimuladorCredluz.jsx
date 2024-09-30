@@ -142,7 +142,7 @@ export default function SimuladorCredLuz() {
 
         <div className="max-w-md">
 
-            <h1 className='text-center text-lg text-white mb-3 poppins bg-base-calc p-2 rounded-lg'>
+            <h1 className='text-center text-lg text-white mb-3 bg-base-calc p-2 rounded-lg'>
                 {components[mudarComp].title}
             </h1>
             

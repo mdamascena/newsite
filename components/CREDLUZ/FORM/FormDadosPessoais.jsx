@@ -8,17 +8,22 @@ import { useHookFormMask } from "use-mask-input"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { MdWhatsapp } from "react-icons/md"
 import { IoIosArrowBack } from "react-icons/io"
-import { PiMapPinAreaLight } from "react-icons/pi";
+import { PiMapPinAreaLight } from "react-icons/pi"
 import { useEffect } from "react"
-import { motion } from 'framer-motion'
-import BtnNext from '../../GERAL/BUTTON/BtnBlue'
+import { motion, AnimatePresence } from 'framer-motion'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
-export default function FormDadosPessoais({ backStep, onNext }) {
+export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDescricao }) {
+
+    useEffect(() => {
+        setTitulo("Onde você está no mapa?");    
+        setDescricao("Queremos saber onde mora e como falamos com você");
+    }, [setTitulo, setDescricao]);
 
     const { register, watch, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
     const registerWithMask = useHookFormMask(register);
-
+    
     const { atualizarForm } = useFormDataLuz()
     const [comCep, setComCep] = useState(true);
     const [semCep, setSemCep] = useState(false)
@@ -199,7 +204,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                                         defaultValue=""
                                         render={({ field }) => (
                                                 
-                                            <Select {...field} onValueChange={(value) => { field.onChange(value); }} value={field.value}>
+                                            <Select {...field} onChange={(value) => { field.onChange(value); }} value={field.value}>
                                                         
                                                 <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     <SelectValue placeholder="Estado *" />
@@ -225,7 +230,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                                         control={control}
                                         defaultValue=""
                                         render={({ field }) => (
-                                            <Select {...field} onValueChange={field.onChange} value={field.value}>
+                                            <Select {...field} onChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={`col-span-6 py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                                     }`}>
                                                     <SelectValue placeholder="Cidade *" />
@@ -287,7 +292,7 @@ export default function FormDadosPessoais({ backStep, onNext }) {
                 {/*Botões*/}
                 <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} icon={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>
+                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>
                     </div>
 
                     <div className="col-span-5">

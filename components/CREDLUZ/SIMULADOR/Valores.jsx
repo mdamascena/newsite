@@ -69,8 +69,8 @@ export default function Valores({showSimulador, itemVariants}) {
     };
 
     return (
-        
-        <div initial="hidden" animate="visible" variants={itemVariants}>
+        //initial="hidden" animate="visible" variants={itemVariants}
+        <div>
 
             <div className='p-1'>
                 <h2 className='text-center mt-2 mb-3 poppins text-white'>Qual o valor desejado?</h2>
@@ -88,7 +88,7 @@ export default function Valores({showSimulador, itemVariants}) {
                             min={700}
                             max={3300}
                             step={100}
-                            onValueChange={handleValueChange}
+                            onChange={handleValueChange}
                             value={values}
                             aria-label="Range Slider"
                         />
@@ -101,12 +101,12 @@ export default function Valores({showSimulador, itemVariants}) {
                     
                 </div>
 
-                <BtnCalc onClick={()=>showSimulador(values[0])}>
-                    Simular valor
-                </BtnCalc>
+            <BtnCalc onClick={()=>showSimulador(values[0])}>
+                Simular valor
+            </BtnCalc>
                 
-            </div>
         </div>
+        
         
     )
 }

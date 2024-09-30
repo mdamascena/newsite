@@ -97,7 +97,7 @@ export default function ModalidadesFAQ(){
                 showStatus={false}
                 >
                 <CardMod>
-                    <div className="p-3 duration-300 poppins text-left">
+                    <div className="p-3 duration-300 text-left">
                         <RiLightbulbFlashLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                         <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                         <p className="text-lg text-slate-400 mb-2 group-hover:text-white">na conta de luz</p>
@@ -108,7 +108,7 @@ export default function ModalidadesFAQ(){
                 </CardMod>
 
                 <CardMod>
-                    <div className="p-3 duration-300 poppins text-left">
+                    <div className="p-3 duration-300 text-left">
                         <MdOutlineCake className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                         <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Antecipação</p>
                         <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Saque-Aniversário FGTS</p>
@@ -119,7 +119,7 @@ export default function ModalidadesFAQ(){
                 </CardMod>
 
                 <CardMod>
-                    <div className="p-3 duration-300 poppins text-left">
+                    <div className="p-3 duration-300 text-left">
                         <AiOutlineBarcode className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                         <p className="text-xl font-semibold text-slate-400 mb-0 group-hover:text-white">Empréstimo</p>
                         <p className="text-lg text-slate-400 mb-2 group-hover:text-white">Pessoal CredBoleto</p>

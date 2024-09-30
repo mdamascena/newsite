@@ -12,7 +12,7 @@ export default function SectionTaxa() {
                     <GuruFinanceiro />
                 </div>
 
-                <div className='col-span-2 my-auto poppins text-slate-400 lg:text-xl text-md order-1 lg:order-2'>
+                <div className='col-span-2 my-auto text-slate-400 lg:text-xl text-md order-1 lg:order-2'>
                     <h1 className='text-4xl mb-5 font-semibold tracking-tighter'>Equilibre as sua contas e viva a tranquilidade</h1>
                     As melhores taxas de juros para aposentados e pensionistas do INSS, BPC/LOAS
                 </div>
