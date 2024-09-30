@@ -50,7 +50,7 @@ const item = {
     },
 };
 
-export default function FormTipoOcupacao({onNext, backStep}) {
+export default function FormTipoOcupacao({onNext, backStep, setTitulo, setDescricao}) {
 
     useEffect(() => {
         setTitulo("O que você faz da vida?");    
@@ -58,8 +58,9 @@ export default function FormTipoOcupacao({onNext, backStep}) {
     }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
-    const {atualizarForm} = useFormDataLuz()
+    const {atualizarForm, formData} = useFormDataLuz()
     const [btnAtivo, setBtnAtivo] = useState (true)
+    const [showAlert, setShowAlert] = useState(false);
 
     function onSubmit(data){
         atualizarForm(data)

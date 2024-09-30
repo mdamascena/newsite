@@ -46,7 +46,7 @@ export function FormCredLuz( { progressChange, setTitulo, setDescricao }) {
             {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
             {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
             {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
-            {step === 5 && <Step5 onNext={onSubmit} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
+            {step === 5 && <Step5 backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
         </FormProvider>
     )
 }

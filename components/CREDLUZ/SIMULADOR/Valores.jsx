@@ -98,15 +98,15 @@ export default function Valores({showSimulador, itemVariants}) {
                     <div className='text-white text-center mt-6 font-light'>
                         Escolha entre R$ 700,00 a R$ 3.300,00  
                     </div>
-                    
+                
                 </div>
 
             <BtnCalc onClick={()=>showSimulador(values[0])}>
                 Simular valor
             </BtnCalc>
                 
+            </div> {/* Fechando a div correspondente ao primeiro div */}
+        
         </div>
-        
-        
     )
 }
