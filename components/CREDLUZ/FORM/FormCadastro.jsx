@@ -22,8 +22,10 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
     }, [setTitulo, setDescricao]);
 
     // Controle de formulario react-hook-form
-    const { register, handleSubmit, formState: { errors }, setValue } = useFormContext();
+    const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
     const registerWithMask = useHookFormMask(register);
+
+    const acceptedTerms = watch("termos");
 
     const {atualizarForm} = useFormDataLuz();
 
@@ -59,8 +61,8 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
     };   
     
     const handleCheckboxChange = (event) => {
-        setIsAccepted(event.target.checked);
-        setValue("termos", event.target.checked);
+        setIsAccepted(true);
+        setValue("termos", true);
     };
 
     const container = {
@@ -143,17 +145,12 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
                         </div>
 
                         <div className="col-span-3 relative">
-                            <InputMask
-                                mask="(99) 99999-9999"
-                                className={`py-6 pl-8 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                    }`}
-                                maskChar={null}
-                                placeholder='Telefone *'
-                                inputMode='numeric'
-                                {...register("celular")}
-                                >
-                                {(inputProps) => <Input {...inputProps} />}
-                            </InputMask>
+                            <Input 
+                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                type="text"
+                                placeholder="Celular *"
+                                {...registerWithMask("celular", ['99 99999-9999'])}
+                            />
                             <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : 'text-slate-400'}`} />
                             {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
                         </div>
@@ -199,14 +196,15 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
 
                     <div className="col-span-6 mt-2">
                         
-                        <input
-                            type="checkbox"
-                            id="termos"
-                            radius="md"
-                            checked={isAccepted}
-                            className="mr-2"
-                            onChange={handleCheckboxChange}
-                            {...register("termos", { required: "Você deve aceitar os termos para continuar." })}/>
+                    <input
+                        type="checkbox"
+                        name="termos"
+                        id="termos"
+                        className="mr-2"
+                        checked={acceptedTerms}
+                        onChange={handleCheckboxChange} // Usar a função para atualizar o valor
+                        {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
+                    />
                         
                         <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
                             Li e aceito os termos de uso e política de privacidade.

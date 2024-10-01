@@ -39,7 +39,7 @@ export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDesc
 
     //RESETAR OS CAMPOS
     useEffect(() => {
-        const resetFields = ['cep', 'uf', 'cidade', 'logradouro', 'bairro', 'complemento', 'whatsapp', 'celular'];
+        const resetFields = ['cep', 'uf', 'cidade', 'logradouro', 'bairro', 'complemento', 'numero', 'whatsapp'];
         resetFields.forEach(field => setValue(field, ''));
     }, [comCep, setValue]);
 
