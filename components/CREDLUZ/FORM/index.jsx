@@ -15,7 +15,7 @@ const Step5 = dynamic(() => import('../FORM/FormDadosPessoais'))
 
 const schemas = [cadastroSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema];
 
-export function FormCredLuz( { progressChange, setTitulo, setDescricao }) {
+export function FormCredLuz( { setProgressChange, setTitulo, setDescricao }) {
 
     const [step, setStep] = useState(1);
     const { formData, atualizarForm } = useFormDataLuz();
@@ -27,8 +27,8 @@ export function FormCredLuz( { progressChange, setTitulo, setDescricao }) {
     })
 
     useEffect(() => {
-        progressChange(((step - 1) / schemas.length) * 100)
-    }, [step, methods, formData, progressChange]);
+        setProgressChange(((step - 1) / schemas.length) * 100)
+    }, [step, methods, formData, setProgressChange]);
 
     const nextStep = (data) => {
         atualizarForm(data)
@@ -42,11 +42,11 @@ export function FormCredLuz( { progressChange, setTitulo, setDescricao }) {
     return (
 
         <FormProvider {...methods}>
-            {step === 1 && <Step1 onNext={nextStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
-            {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
-            {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
-            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
-            {step === 5 && <Step5 backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} />}
+            {step === 1 && <Step1 onNext={nextStep} setTitulo={setTitulo} setDescricao={setDescricao} setProgressChange={setProgressChange} />}
+            {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} setProgressChange={setProgressChange} />}
+            {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} setProgressChange={setProgressChange} />}
+            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} setProgressChange={setProgressChange} />}
+            {step === 5 && <Step5 backStep={prevStep} setTitulo={setTitulo} setDescricao={setDescricao} setProgressChange={setProgressChange} />}
         </FormProvider>
     )
 }

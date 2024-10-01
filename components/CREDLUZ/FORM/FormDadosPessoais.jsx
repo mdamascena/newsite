@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 
-export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDescricao }) {
+export default function FormDadosPessoais({ backStep, setTitulo, setDescricao }) {
 
     useEffect(() => {
         setTitulo("Onde você está no mapa?");    
