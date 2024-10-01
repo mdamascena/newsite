@@ -225,7 +225,7 @@ export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDesc
                                         defaultValue=""
                                         render={({ field }) => (
                                                 
-                                            <Select {...field} onValueChange={(value) => { field.onChange(value); setSelectedEstado(value) }} value={field.value}>
+                                            <Select {...field} onChange={(value) => { field.onChange(value); setSelectedEstado(value) }} value={field.value}>
                                                         
                                                 <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     <SelectValue placeholder="Estado *" />
@@ -251,7 +251,7 @@ export default function FormDadosPessoais({ backStep, onNext, setTitulo, setDesc
                                         control={control}
                                         defaultValue=""
                                         render={({ field }) => (
-                                            <Select {...field} onValueChange={field.onChange} value={field.value}>
+                                            <Select {...field} onChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={`col-span-6 py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                                     }`}>
                                                     <SelectValue placeholder="Cidade *" />

@@ -78,15 +78,20 @@ export default function Valores({showSimulador, itemVariants}) {
                     <div className=' text-white text-center font-medium tracking-tighter text-4xl mx-1 py-5'>
                         {formatCurrency(values[0])}
                     </div>
-    
-                    <Slider
-                        defaultValue={[700]}
-                        min={700}
-                        max={3300}
-                        step={100}
-                        onValueChange={handleValueChange}
-                        value={values}
-                    />
+
+                    <div>
+                        
+                        <Slider
+                            defaultValue={[700]}
+                            min={700}
+                            max={3300}
+                            step={100}
+                            onValueChange={handleValueChange}
+                            value={values}
+                            aria-label="Range Slider"
+                        />
+                        
+                    </div>
                     
                     <div className='text-white text-center mt-6 font-light'>
                         Escolha entre R$ 700,00 a R$ 3.300,00  
