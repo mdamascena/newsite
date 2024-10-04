@@ -194,21 +194,23 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
                         {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
                     </div>
 
-                    <div className="col-span-6 mt-2">
+                    <div className="col-span-6 mt-3 flex items-center">
                         
-                    <input
-                        type="checkbox"
-                        name="termos"
-                        id="termos"
-                        className="mr-2"
-                        checked={acceptedTerms}
-                        onChange={handleCheckboxChange} // Usar a função para atualizar o valor
-                        {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
-                    />
+                        <input
+                            type="checkbox"
+                            name="termos"
+                            id="termos"
+                            className="text-blue-600 h-8 w-8 lg:h-5 lg:w-5 mr-4 ml-2"
+                            checked={acceptedTerms}
+                            onChange={handleCheckboxChange} // Usar a função para atualizar o valor
+                            {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
+                        />
                         
-                        <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
-                            Li e aceito os termos de uso e política de privacidade.
-                            
+                        <label className='text-slate-400 font-light lg:text-md text-sm' htmlFor="termos">
+                            <span className="mr-2">
+                                Li e aceito os termos.
+                            </span>
+                         
                             <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}> 
                                 Ver termos de uso e política de privacidade.
                             </Link>

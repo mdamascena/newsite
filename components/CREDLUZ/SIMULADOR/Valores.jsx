@@ -69,44 +69,39 @@ export default function Valores({showSimulador, itemVariants}) {
     };
 
     return (
-        //initial="hidden" animate="visible" variants={itemVariants}
-        <div>
-
-            <div className='p-1'>
-                <h2 className='text-center mt-2 mb-3 poppins text-white'>Qual o valor desejado?</h2>
+        
+        <div className='p-1'>
+            <h2 className='text-center mt-2 mb-3 poppins text-white'>
+                Qual o valor desejado?
+            </h2>
                 
-                <div className='rounded-lg bg-white/25 text-md pb-5 px-3 mx-1 mb-2'>
+            <div className='rounded-lg bg-white/25 text-md pb-5 px-3 mx-1 mb-2'>
                 
-                    <div className=' text-white text-center font-medium tracking-tighter text-4xl mx-1 py-5'>
-                        {formatCurrency(values[0])}
-                    </div>
-
-                    <div>
-                        
-                        <Slider
-                            defaultValue={[700]}
-                            min={700}
-                            max={3300}
-                            step={100}
-                            onChange={handleValueChange}
-                            value={values}
-                            aria-label="Range Slider"
-                        />
-                        
-                    </div>
-                    
-                    <div className='text-white text-center mt-6 font-light'>
-                        Escolha entre R$ 700,00 a R$ 3.300,00  
-                    </div>
-                
+                <div className=' text-white text-center font-medium tracking-tighter text-4xl mx-1 py-5'>
+                    {formatCurrency(values[0])}
                 </div>
+
+                <Slider
+                    defaultValue={[700]}
+                    min={700}
+                    max={3300}
+                    step={100}
+                    onValueChange={handleValueChange}
+                    value={values}
+                    aria-label="Range Slider"
+                />
+               
+                <div className='text-white text-center mt-6 font-light'>
+                    Escolha entre R$ 700,00 a R$ 3.300,00
+                </div>
+                
+            </div>
 
             <BtnCalc onClick={()=>showSimulador(values[0])}>
                 Simular valor
             </BtnCalc>
                 
-            </div> {/* Fechando a div correspondente ao primeiro div */}
+        </div> 
         
-        </div>
     )
 }
