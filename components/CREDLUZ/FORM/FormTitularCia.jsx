@@ -45,13 +45,13 @@ const item = {
     },
 }
 
-export default function FormTitularCia({ onNext, backStep, setTitulo, setDescricao }) {
+export default function FormTitularCia({ onNext, backStep }) {
 
     //Titulos que devem ser redenrizados no form Base
-    useEffect(() => {
-        setTitulo("Quem paga a luz?");    
-        setDescricao("É você que manda apagar a luz para não vir caro? Conta pra gente!");
-    }, [setTitulo, setDescricao]);
+    // useEffect(() => {
+    //     setTitulo("Quem paga a luz?");    
+    //     setDescricao("É você que manda apagar a luz para não vir caro? Conta pra gente!");
+    // }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();

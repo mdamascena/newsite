@@ -46,13 +46,13 @@ const item = {
     },
 }
 
-export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }) {
+export default function FormGenero({ onNext, backStep }) {
 
     //Titulos que devem ser redenrizados no form Base
-    useEffect(() => {
-        setTitulo("Um pouco mais sobre você");    
-        setDescricao("Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?");
-    }, [setTitulo, setDescricao]);
+    // useEffect(() => {
+    //     setTitulo("Um pouco mais sobre você");    
+    //     setDescricao("Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?");
+    // }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();

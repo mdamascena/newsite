@@ -50,12 +50,12 @@ const item = {
     },
 };
 
-export default function FormTipoOcupacao({onNext, backStep, setTitulo, setDescricao}) {
+export default function FormTipoOcupacao({onNext, backStep}) {
 
-    useEffect(() => {
-        setTitulo("O que você faz da vida?");    
-        setDescricao("Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!");
-    }, [setTitulo, setDescricao]);
+    // useEffect(() => {
+    //     setTitulo("O que você faz da vida?");    
+    //     setDescricao("Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!");
+    // }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const {atualizarForm, formData} = useFormDataLuz()

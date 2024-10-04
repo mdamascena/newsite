@@ -13,13 +13,13 @@ import ModalOpt from '../../GERAL/ModalOpt'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import { boolean } from "zod"
 
-export default function FormCadastro({onNext, setTitulo, setDescricao}) {
+export default function FormCadastro({onNext}) {
 
     //Titulos que devem ser redenrizados no form Base
-    useEffect(() => {
-        setTitulo("Vamos começar!");    
-        setDescricao("Preencha seus dados iniciais para criarmos a sua conta");
-    }, [setTitulo, setDescricao]);
+    // useEffect(() => {
+    //     setTitulo("Vamos começar!");    
+    //     setDescricao("Preencha seus dados iniciais para criarmos a sua conta");
+    // }, [setTitulo, setDescricao]);
 
     // Controle de formulario react-hook-form
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();

@@ -7,8 +7,16 @@ import BaseForm from "../../../components/GERAL/FORM/BaseForm"
 export default function IndexFormCredLux() {
 
     const [countProgress, setCountProgress] = useState(0)
-    const [copyTitulo, setCopyTitulo] = useState('');
-    const [copyDescricao, copySetDescricao] = useState('');
+    const [copyTitulo, setCopyTitulo] = useState([]);
+    const [copyDescricao, copySetDescricao] = useState([]);
+    const [copyStepCurrent, setCopyStepCurrent] = useState([])
+
+    useEffect(() => {
+        copyStepCurrent
+        console.log(copyStepCurrent, 'hey');
+        console.log(copyTitulo, 'titulo' )
+    }, [console.log(copyStepCurrent, 'hey'),
+        console.log(copyTitulo, 'titulo' )])
 
     return (
         <>
@@ -18,6 +26,7 @@ export default function IndexFormCredLux() {
             </Head>
 
             <BaseForm
+                stepCurrent={copyStepCurrent}
                 titulo={copyTitulo}
                 descricao={copyDescricao}
                 progress={countProgress}
@@ -25,6 +34,7 @@ export default function IndexFormCredLux() {
                 steps={
                     <FormProviderLuz>
                         <FormCredLuz 
+                            setStepCurrent={setCopyStepCurrent}
                             setProgressChange={setCountProgress}
                             setTitulo={setCopyTitulo} 
                             setDescricao={copySetDescricao}

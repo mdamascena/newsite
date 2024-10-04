@@ -3,18 +3,17 @@ import { useEffect, useState } from "react"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { useRouter } from "next/router"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
-import CharLG from "../../../components/GERAL/ChartForm"
+import CharForm from "../../../components/GERAL/ChartForm"
 import { FormProviderLuz } from "../../../context/FormContextLuz"
 import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
 
-export default function BaseForm({steps, titulo, descricao, progress}) {
+export default function BaseForm({steps, titulo, descricao, progress, stepCurrent}) {
   
   const router = useRouter();
 
   const handleBack = () => {
     router.back();
   };
-
 
   return (
     
@@ -48,7 +47,9 @@ export default function BaseForm({steps, titulo, descricao, progress}) {
                     </div>
 
                     <div className="content-end lg:min-h-[40vh]">
-                        <CharLG value={progress} />
+                        <CharForm
+                            stepsChart={stepCurrent}
+                            value={progress} />
                     </div>
                 </div>
             </div>
