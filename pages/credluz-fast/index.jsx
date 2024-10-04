@@ -3,7 +3,6 @@ import IndexCREDLUZ from '../../components/CREDLUZ/IndexCREDLUZFAST'
 
 export default function Home() {
     return (
-<<<<<<< HEAD
     <div>
         <Head>
             <title>Empréstimo na conta de luz</title>
@@ -11,9 +10,6 @@ export default function Home() {
         </Head>
         <IndexCREDLUZ />
     </div>
-=======
-        <>
-        </>
     // <div>
     //     <Head>
     //         <title>Empréstimo na conta de luz</title>
@@ -29,6 +25,5 @@ export default function Home() {
     //         <IndexCREDLUZ />
     //     </div>
     // </div>
->>>>>>> main
   )
 }

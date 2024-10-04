@@ -21,7 +21,7 @@ const BtnBack = tw.button`
 export default function BtnBlueBack
  ({nome, event, iconLeft, iconRight}){
     return(
-        <BtnBack onClick={event}>
+        <BtnBack type='button' onClick={event}>
             {iconLeft}
             {nome}
             {iconRight}

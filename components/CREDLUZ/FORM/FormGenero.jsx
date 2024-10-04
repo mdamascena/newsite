@@ -10,6 +10,7 @@ import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
 import { IoIosArrowBack } from "react-icons/io"
 import { TbMessage2Question } from "react-icons/tb"
+import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert';
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -53,13 +54,32 @@ export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }
         setDescricao("Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?");
     }, [setTitulo, setDescricao]);
 
-    const { control, handleSubmit } = useFormContext();
-    const { atualizarForm } = useFormDataLuz();
+    const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
+    const { atualizarForm, formData } = useFormDataLuz();
+    const [showAlert, setShowAlert] = useState(false);
 
     function onSubmit(data){
         atualizarForm(data);
         onNext();
     }
+
+    useEffect(() => {
+        if(formData.genero){
+            setValue('genero', formData.genero);
+        }
+    }, [formData.genero, setValue])
+
+     
+    useEffect(() => {
+        if (errors.genero) {
+        setShowAlert(true);
+        const timeoutId = setTimeout(() => {
+            setShowAlert(false);
+        }, 5000);
+
+        return () => clearTimeout(timeoutId);
+        }
+    }, [errors.genero]);
 
     const textoGenero = 'Sabemos que existem mais identidades de gênero além de masculino e feminino. No entanto, para fins de preenchimento da proposta, utilizamos o gênero de nascimento. Isso nos ajuda a seguir a forma atual utilizado no processo de análise.' 
 
@@ -96,6 +116,12 @@ export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }
 
                 {/*Opções*/}
                 <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
+                    {showAlert && errors.genero && (
+                        <Alert className="mb-5 bg-red-100" onClose={() => setShowAlert(false)}>
+                            <AlertTitle>Erro</AlertTitle>
+                            <AlertDescription>{errors.genero.message}</AlertDescription>
+                        </Alert>
+                    )}
 
                     <Controller
                         name="genero"
@@ -109,8 +135,8 @@ export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }
                                 <div className="grid grid-cols-4 gap-3 items-center">
 
                                     <motion.div className="col-span-2" key="masculino" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="0" id="masculino" />
-                                        <OptLabel htmlFor="masculino" onClick={() => onChange("0")}>
+                                        <input type="radio" className="hidden peer" name='status' value="0" id="masculino" checked={value === "0"} onChange={() => onChange("0")} />
+                                        <OptLabel htmlFor="masculino">
                                             <div className="col-span-6 flex justify-center mb-2">
                                                 <IoIosMale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
@@ -123,8 +149,8 @@ export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }
                                     </motion.div>
 
                                     <motion.div className="col-span-2" key="feminino" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="1" id="feminino" />
-                                        <OptLabel htmlFor="feminino" onClick={() => onChange("1")}>
+                                        <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
+                                        <OptLabel htmlFor="feminino">
                                             <div className="col-span-6 flex justify-center mb-2">
                                                 <IoIosFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                             </div>
@@ -170,7 +196,7 @@ export default function FormGenero({ onNext, backStep, setTitulo, setDescricao }
                     </div>
 
                     <div className="col-span-5">
-                        <BtnNext nome={'Avançar'} type="submit"/>
+                        <BtnNext event={handleSubmit(onSubmit)} nome={'Avançar'} type="submit"/>
                     </div>
       
                 </div>

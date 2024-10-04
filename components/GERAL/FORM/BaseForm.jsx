@@ -7,14 +7,14 @@ import CharLG from "../../../components/GERAL/ChartForm"
 import { FormProviderLuz } from "../../../context/FormContextLuz"
 import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
 
-export default function BaseForm({steps, titulo, descricao}) {
+export default function BaseForm({steps, titulo, descricao, progress}) {
   
-  const [progress, setProgress] = useState(0);
   const router = useRouter();
 
   const handleBack = () => {
     router.back();
   };
+
 
   return (
     

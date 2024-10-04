@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Input } from "components/ui/input"
 import InputMask from 'react-input-mask'
+import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
@@ -10,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import ModalOpt from '../../GERAL/ModalOpt'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
+import { boolean } from "zod"
 
 export default function FormCadastro({onNext, setTitulo, setDescricao}) {
 
@@ -20,7 +22,11 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
     }, [setTitulo, setDescricao]);
 
     // Controle de formulario react-hook-form
-    const { register, handleSubmit, formState: { errors }, setValue } = useFormContext();
+    const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
+    const registerWithMask = useHookFormMask(register);
+
+    const acceptedTerms = watch("termos");
+
     const {atualizarForm} = useFormDataLuz();
 
     // State para definir o campo password visivel.
@@ -54,9 +60,9 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
         setValue("termos", true);
     };   
     
-    const handleCheckboxChange = () => {
-        setIsAccepted((prev) => !prev);
-        setValue("termos", !isAccepted);
+    const handleCheckboxChange = (event) => {
+        setIsAccepted(true);
+        setValue("termos", true);
     };
 
     const container = {
@@ -98,32 +104,24 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
 
                 {/*Form do step*/}
                 <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center lg:min-h-[60vh] min-h-[55vh]">
+
                     <div className="col-span-3">
-                        <InputMask
-                            mask="999.999.999-99"
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                }`}
-                            placeholder='Digite seu CPF *'
-                            inputMode='numeric'
-                            maskChar={null}
-                            {...register("cpf")}>
-                            {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
+                        <Input
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            placeholder='Digite seu CPF'
+                            {...registerWithMask("cpf", ['999.999.999-99'])}
+                        />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
 
                     <div className="col-span-3">
-                        <InputMask
-                            mask="99/99/9999"
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                }`}
-                            placeholder='Nascimento *'
-                            inputMode='numeric'
-                            maskChar={null}
-                            {...register("dataNascimento")}
-                            >
-                            {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
+                        <Input 
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            placeholder="Nascimento *"
+                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
+                        />
                         {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
                     </div>
 
@@ -147,17 +145,12 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
                         </div>
 
                         <div className="col-span-3 relative">
-                            <InputMask
-                                mask="(99) 99999-9999"
-                                className={`py-6 pl-8 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                    }`}
-                                maskChar={null}
-                                placeholder='Telefone *'
-                                inputMode='numeric'
-                                {...register("celular")}
-                                >
-                                {(inputProps) => <Input {...inputProps} />}
-                            </InputMask>
+                            <Input 
+                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                type="text"
+                                placeholder="Celular *"
+                                {...registerWithMask("celular", ['99 99999-9999'])}
+                            />
                             <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : 'text-slate-400'}`} />
                             {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
                         </div>
@@ -201,18 +194,23 @@ export default function FormCadastro({onNext, setTitulo, setDescricao}) {
                         {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
                     </div>
 
-                    <div className="col-span-6 mt-2">
-                        <Checkbox
+                    <div className="col-span-6 mt-3 flex items-center">
+                        
+                        <input
+                            type="checkbox"
+                            name="termos"
                             id="termos"
-                            radius="md"
-                            isSelected={isAccepted} 
-                            onChange={handleCheckboxChange}
+                            className="text-blue-600 h-8 w-8 lg:h-5 lg:w-5 mr-4 ml-2"
+                            checked={acceptedTerms}
+                            onChange={handleCheckboxChange} // Usar a função para atualizar o valor
                             {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
                         />
                         
-                        <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
-                            Li e aceito os termos de uso e política de privacidade.
-                            
+                        <label className='text-slate-400 font-light lg:text-md text-sm' htmlFor="termos">
+                            <span className="mr-2">
+                                Li e aceito os termos.
+                            </span>
+                         
                             <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}> 
                                 Ver termos de uso e política de privacidade.
                             </Link>
