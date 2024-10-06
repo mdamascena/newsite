@@ -37,7 +37,7 @@ const OptLabel = tw(motion.label)`
     peer-checked:shadow-nome   
 `
 
-export default function FormIdentificacao({onNext, backStep, setTitulo, setDescricao}) {
+export default function FormIdentificacao({onNext, backStep}) {
 
     //Titulos que devem ser redenrizados no form Base
 
@@ -45,11 +45,6 @@ export default function FormIdentificacao({onNext, backStep, setTitulo, setDescr
     const { atualizarForm, formData } = useFormDataLuz();
     const [showAlert, setShowAlert] = useState(false);
     const registerWithMask = useHookFormMask(register);
-
-    useEffect(() => {
-        setTitulo("Um pouco mais sobre você!");    
-        setDescricao("Aqui queremos saber um pouco mais sobre você. Simples, né?");
-    }, [setTitulo, setDescricao]);
 
     const onSubmit = (data) => {
         atualizarForm(data)

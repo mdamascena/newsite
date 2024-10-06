@@ -47,12 +47,6 @@ const item = {
 
 export default function FormTitularCia({ onNext, backStep }) {
 
-    //Titulos que devem ser redenrizados no form Base
-    // useEffect(() => {
-    //     setTitulo("Quem paga a luz?");    
-    //     setDescricao("É você que manda apagar a luz para não vir caro? Conta pra gente!");
-    // }, [setTitulo, setDescricao]);
-
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();
     const [showAlert, setShowAlert] = useState(false);
@@ -64,7 +58,7 @@ export default function FormTitularCia({ onNext, backStep }) {
 
     useEffect(() => {
         if(formData.titularCia){
-            setValue("tipoCia", formData.titularCia)
+            setValue("titularCia", formData.titularCia)
         }
     }, [formData.titularCia, setValue])
 
@@ -132,17 +126,12 @@ export default function FormTitularCia({ onNext, backStep }) {
 
                 {/*Opções*/}
                 <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
-                    {showAlert && errors.titularCia && (
-                        <Alert className="mb-5 bg-red-100" onClose={() => setShowAlert(false)}>
-                            <AlertTitle>Erro</AlertTitle>
-                            <AlertDescription>{errors.titularCia.message}</AlertDescription>
-                        </Alert>
-                    )}
                     
                     <Controller
                         name="titularCia"
                         control={control}
                         defaultValue=""
+                        rules={{ required: "Selecione sua titularidade." }}
                         render={({ field: { onChange, value } }) => (
                             
                             <div value={value} onChange={onChange}>

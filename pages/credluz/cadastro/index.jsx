@@ -11,13 +11,6 @@ export default function IndexFormCredLux() {
     const [copyDescricao, copySetDescricao] = useState([]);
     const [copyStepCurrent, setCopyStepCurrent] = useState([])
 
-    useEffect(() => {
-        copyStepCurrent
-        console.log(copyStepCurrent, 'hey');
-        console.log(copyTitulo, 'titulo' )
-    }, [console.log(copyStepCurrent, 'hey'),
-        console.log(copyTitulo, 'titulo' )])
-
     return (
         <>
             <Head>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
-import { cadastroSchema } from '../../../schema/schemaCadastro';
+import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormDataLuz } from '../../../context/FormContextLuz';
 import BaseForm from '../../GERAL/FORM/BaseForm';
@@ -13,7 +13,7 @@ const Step3 = dynamic(() => import('../FORM/FormTipoOcupacao'));
 const Step4 = dynamic(() => import('../FORM/FormTitularCia'));
 const Step5 = dynamic(() => import('../FORM/FormDadosPessoais'))
 
-const schemas = [cadastroSchema, identificacaoSchema, tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema];
+const schemas = [cadastroSchema, identificacaoSchema, tipoOcupacao, titularCia, dadosPessoaisSchema];
 
 export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
@@ -22,24 +22,24 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
 
     const credLuzSteps = [
         "Registrar conta",
+        "Identificação",
         "Perfil ocupacional",
-        "Gênero",
         "Registro da conta de luz",
         "Contato e localidade",
     ];
 
     const credLuzTitle = [
         "Vamos começar!",
-        "O que você faz da vida?",
         "Um pouco mais sobre você",
+        "O que você faz da vida?",
         "Quem paga a luz?",
         "Onde você está no mapa?"
     ];
 
     const credLuzDescription = [
         "Preencha seus dados iniciais para criarmos a sua conta",
-        "Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!",
         "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
+        "Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!",
         "É você que manda apagar a luz para não vir caro? Conta pra gente!",
         "Queremos saber onde mora e como falamos com você"
     ];
