@@ -7,8 +7,8 @@ import BaseForm from "../../../components/GERAL/FORM/BaseForm"
 export default function IndexFormCredLux() {
 
     const [countProgress, setCountProgress] = useState(0)
-    const [copyTitulo, setCopyTitulo] = useState('');
-    const [copyDescricao, copySetDescricao] = useState('');
+    const [copyTitulo, setCopyTitulo] = useState('')
+    const [copyDescricao, copySetDescricao] = useState('')
 
     return (
         <>

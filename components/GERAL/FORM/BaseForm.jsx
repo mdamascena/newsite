@@ -10,11 +10,7 @@ import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
 export default function BaseForm({steps, titulo, descricao, progress}) {
   
   const router = useRouter();
-
-  const handleBack = () => {
-    router.back();
-  };
-
+  const handleBack = () => {router.back()}
 
   return (
     

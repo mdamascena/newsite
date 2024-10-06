@@ -1,15 +1,13 @@
 import { Input } from "components/ui/input"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import { Controller, useFormContext } from "react-hook-form"
-import InputMask from 'react-input-mask'
 import { useHookFormMask } from "use-mask-input"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { MdWhatsapp } from "react-icons/md"
 import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinAreaLight } from "react-icons/pi"
-import { useEffect } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'

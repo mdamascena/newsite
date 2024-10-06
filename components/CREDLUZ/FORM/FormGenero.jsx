@@ -1,9 +1,9 @@
-import { Controller, useFormContext } from "react-hook-form"
 import { useState, useEffect } from "react"
+import tw from 'tailwind-styled-components'
+import { Controller, useFormContext } from "react-hook-form"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import {Accordion, AccordionItem} from "@nextui-org/react"
 import { motion, AnimatePresence } from 'framer-motion'
-import tw from 'tailwind-styled-components'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { IoIosFemale } from "react-icons/io"

@@ -2,8 +2,8 @@ import { Controller, useFormContext } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import { motion, AnimatePresence } from 'framer-motion'
-import { RiUserFollowLine } from "react-icons/ri"
-import { RiUserForbidLine } from "react-icons/ri"
+import { RiUserFollowLine, RiUserForbidLine } from "react-icons/ri"
+import { PiWarningCircleLight } from "react-icons/pi"
 import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
@@ -82,12 +82,40 @@ export default function FormTitularCia({ onNext, backStep, setTitulo, setDescric
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-            <motion.div
+            
+            <motion.div 
                 initial={'hidden'} 
-                animate={'visible'}
-                variants={container}
+                animate={'visible'} 
+                variants={container} 
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
+
+                {/*Alerta erro*/}
+                <AnimatePresence mode="wait">
+                    {showAlert && errors.titularCia && (
+                        <motion.div 
+                            initial={{x:100}}
+                            animate={{x:0}}
+                            exit={{opacity:0, x:100}}
+                            >
+                            <Alert className="lg:mt-5 mt-[12vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
+                                <div className="">
+                                    <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
+                                </div>
+                                    
+                                <div className="">
+                                    <AlertTitle className='text-red-500 font-semibold'>
+                                        Opção inválida
+                                    </AlertTitle>
+                                    <AlertDescription className='text-red-500 font-light flex'>
+                                        {errors.titularCia.message}
+                                    </AlertDescription>
+                                </div>
+                            </Alert>
+
+                        </motion.div>
+                    )}
+                </AnimatePresence> 
 
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-end">
