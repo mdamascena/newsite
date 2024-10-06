@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Input } from "components/ui/input"
-import InputMask from 'react-input-mask'
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
-import {useDisclosure, Checkbox} from "@nextui-org/react"
-import { motion, AnimatePresence } from 'framer-motion'
+import {useDisclosure} from "@nextui-org/react"
+import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import ModalOpt from '../../GERAL/ModalOpt'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
@@ -82,7 +81,7 @@ export default function FormCadastro({onNext}) {
     return (
 
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-            
+
             <motion.div
                 initial={'hidden'} 
                 animate={'visible'}
@@ -105,7 +104,7 @@ export default function FormCadastro({onNext}) {
                 {/*Form do step*/}
                 <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center lg:min-h-[60vh] min-h-[55vh]">
 
-                    <div className="col-span-3">
+                    <div className="col-span-6">
                         <Input
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
@@ -115,7 +114,7 @@ export default function FormCadastro({onNext}) {
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
 
-                    <div className="col-span-3">
+                    {/* <div className="col-span-3">
                         <Input 
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
@@ -123,19 +122,19 @@ export default function FormCadastro({onNext}) {
                             {...registerWithMask("dataNascimento", ['99/99/9999'])}
                         />
                         {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
-                    </div>
+                    </div> */}
 
-                    <div className="col-span-6">
+                    {/* <div className="col-span-6">
                         <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Seu nome completo? *"
                             {...register('nome')} 
                         />
                         {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
-                    </div>
+                    </div> */}
 
                     <div className="col-span-6 grid grid-cols-6 gap-2.5">
-                        <div className="col-span-3">
+                        <div className="lg:col-span-3 col-span-6">
                             <Input type="email" className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 placeholder="Seu e-mail? *"
@@ -144,7 +143,7 @@ export default function FormCadastro({onNext}) {
                             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                         </div>
 
-                        <div className="col-span-3 relative">
+                        <div className="lg:col-span-3 col-span-6 relative">
                             <Input 
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
@@ -160,11 +159,11 @@ export default function FormCadastro({onNext}) {
                         Crie uma senha simples
                     </h5>
                     
-                    <div className="col-span-3">
+                    <div className="lg:col-span-3 col-span-6">
                         <div className="relative">
                             <Input type={inputSenha} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
-                                placeholder="Senha"
+                                placeholder="Digite uma senha"
                                 {...register('senha')} 
                             />
 
@@ -177,12 +176,12 @@ export default function FormCadastro({onNext}) {
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                     </div>
                     
-                    <div className="col-span-3">
+                    <div className="lg:col-span-3 col-span-6">
                         <div className="relative">
                             <Input type={inputSenhaConfirmacao} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 {...register('senhaConfirmacao')}
-                                placeholder="Confirme" 
+                                placeholder="Confirme sua senha" 
                             />
 
                             {visivelSenhaConfirmacao ? (
@@ -194,21 +193,23 @@ export default function FormCadastro({onNext}) {
                         {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
                     </div>
 
-                    <div className="col-span-6 mt-2">
+                    <div className="col-span-6 mt-3 flex items-center">
                         
-                    <input
-                        type="checkbox"
-                        name="termos"
-                        id="termos"
-                        className="mr-2"
-                        checked={acceptedTerms}
-                        onChange={handleCheckboxChange} // Usar a função para atualizar o valor
-                        {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
-                    />
+                        <input
+                            type="checkbox"
+                            name="termos"
+                            id="termos"
+                            className="text-blue-600 h-8 w-8 lg:h-5 lg:w-5 mr-4 ml-2"
+                            checked={acceptedTerms}
+                            onChange={handleCheckboxChange} // Usar a função para atualizar o valor
+                            {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
+                        />
                         
-                        <label className='text-slate-400 mb-5 font-light lg:text-md text-sm' htmlFor="termos">
-                            Li e aceito os termos de uso e política de privacidade.
-                            
+                        <label className='text-slate-400 font-light lg:text-md text-sm' htmlFor="termos">
+                            <span className="mr-2">
+                                Li e aceito os termos.
+                            </span>
+                         
                             <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}> 
                                 Ver termos de uso e política de privacidade.
                             </Link>

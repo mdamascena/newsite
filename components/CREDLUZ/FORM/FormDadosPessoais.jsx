@@ -1,15 +1,13 @@
 import { Input } from "components/ui/input"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
 import { Controller, useFormContext } from "react-hook-form"
-import InputMask from 'react-input-mask'
 import { useHookFormMask } from "use-mask-input"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { MdWhatsapp } from "react-icons/md"
 import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinAreaLight } from "react-icons/pi"
-import { useEffect } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
@@ -43,7 +41,6 @@ export default function FormDadosPessoais({ backStep }) {
         resetFields.forEach(field => setValue(field, ''));
     }, [comCep, setValue]);
 
-
     useEffect(() => {
         if(cep && cep.length === 8){
             const fetchAddress = async () => {
@@ -72,7 +69,7 @@ export default function FormDadosPessoais({ backStep }) {
             };
             fetchAddress();
         }
-    }, [cep, setValue])
+    }, [cep, cidade, setValue])
     
     useEffect(() => {
             fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
@@ -176,7 +173,7 @@ export default function FormDadosPessoais({ backStep }) {
                                 <Input 
                                     className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                     type="text"
-                                    placeholder="Cep *"
+                                    placeholder="CEP *"
                                     maxLength={9}
                                     {...register("cep", ['99999-999'])}
                                 />

@@ -1,18 +1,18 @@
 import { Controller, useFormContext } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { useFormDataLuz } from "../../../context/FormContextLuz"
-import { MdOutlineMilitaryTech } from "react-icons/md"
 import { FaFemale } from "react-icons/fa"
-import { MdOutlineHandyman } from "react-icons/md"
+import { MdOutlineHandyman, MdOutlineMilitaryTech } from "react-icons/md"
 import { FaUserTie } from "react-icons/fa6"
 import { BsPersonBadgeFill } from "react-icons/bs"
 import { IoIosArrowBack } from "react-icons/io"
+import { PiWarningCircleLight } from "react-icons/pi"
 import { FaMale } from "react-icons/fa"
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import tw from 'tailwind-styled-components'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
-import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert';
+import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -42,7 +42,7 @@ const container = {
         transition: {delayChildren: 0.3, staggerChildren: 0.2,},
     },
 };
-  
+
 const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {y: 0, opacity: 1,
@@ -59,12 +59,10 @@ export default function FormTipoOcupacao({onNext, backStep}) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const {atualizarForm, formData} = useFormDataLuz()
-    const [btnAtivo, setBtnAtivo] = useState (true)
     const [showAlert, setShowAlert] = useState(false);
 
     function onSubmit(data){
         atualizarForm(data)
-        console.log(data)
         onNext();
     }
 
@@ -95,6 +93,33 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 variants={container}
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
+                    {/*Alerta erro*/}
+                    <AnimatePresence mode="wait">
+                        {showAlert && errors.tipoOcupacao && (
+                            <motion.div 
+                                initial={{x:100}}
+                                animate={{x:0}}
+                                exit={{opacity:0, x:100}}
+                                >
+            
+                                <Alert className="lg:mt-5 mt-[12vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
+                                    <div className="">
+                                        <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
+                                    </div>
+                                    
+                                    <div className="">
+                                        <AlertTitle className='text-red-500 font-semibold'>
+                                            Opção inválida
+                                        </AlertTitle>
+                                        <AlertDescription className='text-red-500 font-light flex'>
+                                            {errors.tipoOcupacao.message}
+                                        </AlertDescription>
+                                    </div>
+                                </Alert>
+
+                            </motion.div>
+                        )}
+                    </AnimatePresence> 
                 
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
@@ -112,13 +137,9 @@ export default function FormTipoOcupacao({onNext, backStep}) {
 
                 {/*Opções do step*/}   
                 <div className="col-span-6 content-center lg:min-h-[60vh] min-h-[55vh] ">
-                    {showAlert && errors.tipoOcupacao && (
-                    <Alert className="mb-5 bg-red-100" onClose={() => setShowAlert(false)}>
-                        <AlertTitle>Erro</AlertTitle>
-                        <AlertDescription>{errors.tipoOcupacao.message}</AlertDescription>
-                    </Alert>
-                    )}
-                        
+                    
+                    
+
                     <Controller
                         name="tipoOcupacao"
                         control={control}

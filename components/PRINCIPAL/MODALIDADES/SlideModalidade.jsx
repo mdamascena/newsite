@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import { motion } from 'framer-motion';
+import { IoIosArrowForward } from "react-icons/io";
 
 const LiMod = tw.li`
     select-none
@@ -38,7 +39,7 @@ export default function ModSlide() {
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prevIndex) => (prevIndex + 1) % 4);
-        }, 5000); // Troca de slide a cada 5 segundos
+        }, 500000); // Troca de slide a cada 5 segundos
 
         return () => clearInterval(interval);
     }, []);
@@ -59,8 +60,20 @@ export default function ModSlide() {
             <div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 lg:my-14 my-10'>
                     <div className='col-span-1 mx-2 lg:mx-12'>
-                        <div className={`bg-blue-500 rounded-2xl h-80 lg:h-full ${activeIndex === 0 ? 'block' : 'hidden'}`} />
-                        <div className={`bg-yellow-500 rounded-2xl h-80 lg:h-full ${activeIndex === 1 ? 'block' : 'hidden'}`} />
+                        <div className={`bg-[url(../public/img/modelo_credluz.png)] bg-cover bg-no-repeat group overflow-hidden relative rounded-2xl h-80 lg:h-full ${activeIndex === 0 ? 'block' : 'hidden'}`}>
+                            <div className='h-0 group-hover:h-28 transform duration-400 bg-black/30 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
+                                
+                                
+                                <div className='grid grid-cols-5'>
+                                    <p className='text-white p-5 col-span-4'>Empréstimo débito na conta de luz</p>
+                                    <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
+                                        <IoIosArrowForward/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={`bg-blue-500 rounded-2xl h-80 lg:h-full ${activeIndex === 1 ? 'block' : 'hidden'}`} />
                         <div className={`bg-red-500 rounded-2xl h-80 lg:h-full ${activeIndex === 2 ? 'block' : 'hidden'}`} />
                         <div className={`bg-green-500 rounded-2xl h-80 lg:h-full ${activeIndex === 3 ? 'block' : 'hidden'}`} />
                     </div>

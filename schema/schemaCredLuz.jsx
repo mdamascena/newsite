@@ -3,7 +3,7 @@ import { validatePhoneNumber } from "schema/validations";
 
 export const tipoOcupacao = z.object({
     tipoOcupacao: z.enum(["1", "2", "3", "4", "5", "6"], {
-        errorMap: () => ({ message: "Selecione um tipo de ocupação válido" }),
+        errorMap: () => ({ message: "Selecione um tipo de ocupação" }),
     })
 })
 
