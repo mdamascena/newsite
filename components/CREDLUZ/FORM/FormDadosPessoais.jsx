@@ -82,7 +82,7 @@ export default function FormDadosPessoais({ backStep }) {
         if (ufWatch) {
             fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufWatch}/municipios`)
                 .then(response => response.json())
-                .then(data => setCidade(data))
+                .then(data => {setCidade(data); console.log(data) })
                 .catch(error => console.log('Erro ao buscar cidades', error))
         }
     }, [ufWatch])
@@ -195,49 +195,46 @@ export default function FormDadosPessoais({ backStep }) {
                            <div className="grid grid-cols-6 col-span-6 gap-2.5 mb-3">
                                     
                                 <motion.div className="col-span-3" variants={item}>
-                                    <Controller
-                                        name="uf"
-                                        control={control}
-                                        defaultValue=""
-                                        render={({ field }) => (
-                                                
-                                            <Select {...field} onChange={(value) => { field.onChange(value); }} value={field.value}>
-                                                        
-                                                <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
-                                                    <SelectValue placeholder="Estado *" />
-                                                </SelectTrigger>
-                                                        
-                                                <SelectContent>
-                                                    {uf.map((estado) => (
-                                                        <SelectItem key={estado.id} value={estado.sigla}>
-                                                            {estado.nome}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
+                                <Controller
+                                    name="uf"
+                                    control={control}
+                                    defaultValue=""
+                                    render={({ field }) => (
+                                        <Select onValueChange={field.onChange} value={field.value}>
+                                            <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.uf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
+                                                <SelectValue placeholder="Estado *" />
+                                            </SelectTrigger>
 
-                                            </Select>
-                                        )}
-                                    />
+                                            <SelectContent>
+                                                {uf.map((estado) => (
+                                                    <SelectItem key={estado.id} value={estado.sigla}>
+                                                        {estado.nome}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    )}
+                                />
                                     {errors.uf && <p className="text-red-500 text-sm mt-1">{errors.uf.message}</p>}
                                 </motion.div>
 
-                                <motion.div className="col-span-3" variants={item}>    
+                                <motion.div className="col-span-3" variants={item}>
                                     <Controller
                                         name="cidade"
                                         control={control}
                                         defaultValue=""
                                         render={({ field }) => (
-                                            <Select {...field} onChange={field.onChange} value={field.value}>
+                                            <Select onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={`col-span-6 py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                                     }`}>
                                                     <SelectValue placeholder="Cidade *" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    {cidade.map((cidade) => (
-                                                        <SelectItem key={cidade.id} value={cidade.nome}>
-                                                            {cidade.nome}
-                                                        </SelectItem>
-                                                    ))}
+                                                {Array.isArray(cidade) && cidade.map((cidadeItem) => (
+                                                    <SelectItem key={cidadeItem.id} value={cidadeItem.nome}>
+                                                        {cidadeItem.nome}
+                                                    </SelectItem>
+                                                ))}
                                                 </SelectContent>
                                             </Select>
                                         )}
