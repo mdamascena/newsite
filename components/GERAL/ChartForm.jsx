@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { Progress } from "../../components/ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
 
-export default function Chatform ({className, value, currentStep, stepsChart }) {
+export default function Chatform ({className, value, stepsChart }) {
 
     return(
         <div className={`justify-center lg:justify-end grid ${className}`}>
@@ -19,20 +19,20 @@ export default function Chatform ({className, value, currentStep, stepsChart }) 
                 <div className="grid grid-cols-2 items-center mt-2">                      
                     
                     <ul className="text-white text-xs col-span-1 hidden lg:block">
-                        <li className={`${value >= 20 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 40 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 60 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 80 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 100 ? '' :'text-white/30'}`}>{stepsChart}</li>
+                        {stepsChart.map((step, index) => (
+                            <li key={index} className={`${value >= step.thresholds ? '' : 'text-white/30'}`}>
+                                {step.key}
+                            </li>
+                        ))}
                     </ul>
                     
                     <ul className="text-white text-sm col-span-1 lg:hidden block">
                         {/* Mobile */}
-                        <li className={`${value >= 20 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 40 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 60 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 80 ? '' :'text-white/30'}`}>{stepsChart}</li>
-                        <li className={`${value >= 100 ? '' :'text-white/30'}`}>{stepsChart}</li>
+                        {stepsChart.map((step, index) => (
+                            <li key={index} className={`${value >= step.thresholds ? '' : 'text-white/30'}`}>
+                                {step.key}
+                            </li>
+                        ))}
                     </ul>
                                                 
                     <div className="text-end text-white lg:text-4xl text-xl col-span-1">

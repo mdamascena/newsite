@@ -21,11 +21,11 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
     const { formData, atualizarForm } = useFormDataLuz();
 
     const credLuzSteps = [
-        "Registrar conta",
-        "Identificação",
-        "Perfil ocupacional",
-        "Registro da conta de luz",
-        "Contato e localidade",
+        {key: "Registrar conta", thresholds : 0},
+        {key: "Identificação", thresholds : 20},
+        {key: "Perfil ocupacional", thresholds : 40},
+        {key: "Registro da conta de luz", thresholds : 60},
+        {key: "Contato e localidade", thresholds : 80}
     ];
 
     const credLuzTitle = [
@@ -58,8 +58,8 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         setProgressChange(((step - 1) / (schemas.length)) * 100);
         setTitulo(credLuzTitle[step - 1]);
         setDescricao(credLuzDescription[step - 1]);
-        setStepCurrent(credLuzSteps[step - 1])
-    }, [step, setProgressChange, setTitulo, setDescricao, methods, formData]);
+        setStepCurrent(credLuzSteps)
+    }, [step, setProgressChange, setTitulo, setDescricao, setStepCurrent, methods, formData]);
 
     const nextStep = (data) => {
         atualizarForm(data)
