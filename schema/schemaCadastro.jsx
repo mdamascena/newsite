@@ -22,6 +22,8 @@ export const cadastroSchema = z.object({
 
 export const identificacaoSchema = z.object({
   nome: z.string().refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" }),
+  nome: z.string().regex(/^[A-Za-zÀ-ÖØ-öø-ÿ]+$/, { message: "O campo deve conter apenas letras." }),
+  nome: z.string().regex(/^[A-Za-z]+$/, { message: "O campo deve conter apenas letras." }),
   dataNascimento: z
     .string()
     .length(10, { message: "Digite uma data válida." })

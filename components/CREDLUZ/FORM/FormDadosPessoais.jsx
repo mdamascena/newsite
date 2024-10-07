@@ -143,6 +143,7 @@ export default function FormDadosPessoais({ backStep }) {
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
                                 placeholder="Celular *"
+                                inputmode="numeric"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />
                             <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : 'text-slate-400'}`} />
@@ -156,6 +157,7 @@ export default function FormDadosPessoais({ backStep }) {
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
                                 placeholder="WhatsApp *"
+                                inputmode="numeric"
                                 {...registerWithMask("whatsapp", ['99 99999-9999'])}
                             />
                             <MdWhatsapp className={`absolute top-3 left-2 text-2xl ${errors.whatsapp ? 'text-red-500' : 'text-slate-400'}`} />
@@ -173,6 +175,7 @@ export default function FormDadosPessoais({ backStep }) {
                                 <Input 
                                     className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                     type="text"
+                                    inputmode="numeric"
                                     placeholder="CEP *"
                                     maxLength={9}
                                     {...register("cep", ['99999-999'])}
@@ -192,29 +195,29 @@ export default function FormDadosPessoais({ backStep }) {
                     {semCep && (
                         <div className="col-span-6 grid grid-cols-6">             
 
-                           <div className="grid grid-cols-6 col-span-6 gap-2.5 mb-3">
-                                    
+                            <div className="grid grid-cols-6 col-span-6 gap-2.5 mb-3">
                                 <motion.div className="col-span-3" variants={item}>
-                                <Controller
-                                    name="uf"
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <Select onValueChange={field.onChange} value={field.value}>
-                                            <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.uf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
-                                                <SelectValue placeholder="Estado *" />
-                                            </SelectTrigger>
+                                    <Controller
+                                        name="uf"
+                                        control={control}
+                                        defaultValue=""
+                                        render={({ field }) => (
+                                            
+                                            <Select onValueChange={field.onChange} value={field.value}>
+                                                <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.uf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
+                                                    <SelectValue placeholder="Estado *" />
+                                                </SelectTrigger>
 
-                                            <SelectContent>
-                                                {uf.map((estado) => (
-                                                    <SelectItem key={estado.id} value={estado.sigla}>
-                                                        {estado.nome}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    )}
-                                />
+                                                <SelectContent>
+                                                    {uf.map((estado) => (
+                                                        <SelectItem key={estado.id} value={estado.sigla}>
+                                                            {estado.nome}
+                                                        </SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                        )}
+                                    />
                                     {errors.uf && <p className="text-red-500 text-sm mt-1">{errors.uf.message}</p>}
                                 </motion.div>
 
@@ -225,16 +228,16 @@ export default function FormDadosPessoais({ backStep }) {
                                         defaultValue=""
                                         render={({ field }) => (
                                             <Select onValueChange={field.onChange} value={field.value}>
-                                                <SelectTrigger className={`col-span-6 py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                                                    }`}>
+                                                <SelectTrigger className={`col-span-6 py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     <SelectValue placeholder="Cidade *" />
                                                 </SelectTrigger>
+
                                                 <SelectContent>
-                                                {Array.isArray(cidade) && cidade.map((cidadeItem) => (
-                                                    <SelectItem key={cidadeItem.id} value={cidadeItem.nome}>
-                                                        {cidadeItem.nome}
-                                                    </SelectItem>
-                                                ))}
+                                                    {Array.isArray(cidade) && cidade.map((cidadeItem) => (
+                                                        <SelectItem key={cidadeItem.id} value={cidadeItem.nome}>
+                                                            {cidadeItem.nome}
+                                                        </SelectItem>
+                                                    ))}
                                                 </SelectContent>
                                             </Select>
                                         )}
@@ -256,6 +259,7 @@ export default function FormDadosPessoais({ backStep }) {
                                 <motion.div className="col-span-2 lg:col-span-1" variants={item}>
                                     <Input className='py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500'
                                         placeholder="N°"
+                                        inputmode="numeric"
                                         {...register('numero')} 
                                     />
                                 </motion.div>

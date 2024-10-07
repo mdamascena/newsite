@@ -144,6 +144,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                         <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Seu nome completo? *"
+                            pattern="[a-zA-Z\s]*" 
                             {...register('nome')} 
                         />
                         {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
@@ -153,6 +154,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                         <Input 
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
+                            inputmode="numeric"
                             placeholder="Nascimento *"
                             {...registerWithMask("dataNascimento", ['99/99/9999'])}
                         />

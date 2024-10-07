@@ -109,35 +109,18 @@ export default function FormCadastro({onNext}) {
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             placeholder='Digite seu CPF'
+                            inputmode="numeric"
                             {...registerWithMask("cpf", ['999.999.999-99'])}
                         />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
-
-                    {/* <div className="col-span-3">
-                        <Input 
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            placeholder="Nascimento *"
-                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
-                        />
-                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
-                    </div> */}
-
-                    {/* <div className="col-span-6">
-                        <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                            }`}
-                            placeholder="Seu nome completo? *"
-                            {...register('nome')} 
-                        />
-                        {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
-                    </div> */}
 
                     <div className="col-span-6 grid grid-cols-6 gap-2.5">
                         <div className="lg:col-span-3 col-span-6">
                             <Input type="email" className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 placeholder="Seu e-mail? *"
+                                inputmode="email"
                                 {...register('email')} 
                             />
                             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -147,6 +130,7 @@ export default function FormCadastro({onNext}) {
                             <Input 
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
+                                inputmode="numeric"
                                 placeholder="Celular *"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />

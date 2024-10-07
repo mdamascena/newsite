@@ -84,12 +84,31 @@ export default function ModSlide() {
                         </div>
                     </div>
                         
-                    <div className={`bg-red-500 rounded-2xl h-80 lg:h-full ${activeIndex === 2 ? 'block' : 'hidden'}`} />
-                    <div className={`bg-green-500 rounded-2xl h-80 lg:h-full ${activeIndex === 3 ? 'block' : 'hidden'}`} />
+                    <div className={`bg-[url(../public/img/modelo_inss.png)] bg-cover bg-no-repeat group overflow-hidden relative rounded-2xl h-80 lg:h-full ${activeIndex === 2 ? 'block' : 'hidden'}`}>
+                        <div className='h-0 group-hover:h-28 transform duration-400 bg-black/30 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
+                            <div className='grid grid-cols-5'>
+                                <p className='text-white p-5 col-span-4'>Empréstimo Consignado INSS</p>
+                                <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
+                                    <IoIosArrowForward/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className={`bg-[url(../public/img/modelo_ep.png)] bg-cover bg-no-repeat group overflow-hidden relative rounded-2xl h-80 lg:h-full ${activeIndex === 3 ? 'block' : 'hidden'}`}>
+                        <div className='h-0 group-hover:h-28 transform duration-400 bg-black/30 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
+                            <div className='grid grid-cols-5'>
+                                <p className='text-white p-5 col-span-4'>Empréstimo Pessoal</p>
+                                <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
+                                    <IoIosArrowForward/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 
                 </div>
 
-                <div className='col-span-1 pr-16'>
+                <div className='col-span-1 lg:pr-16'>
                     <ul>
                         <LiMod $isActive={activeIndex === 0} onClick={() => setActiveIndex(0)} className={`lg:block ${activeIndex === 0 ? 'block' : 'hidden'}`}>
                             <Title>Empréstimo da conta de luz</Title>
