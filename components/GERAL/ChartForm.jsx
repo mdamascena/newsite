@@ -29,7 +29,7 @@ export default function Chatform ({className, value, stepsChart }) {
                     <ul className="text-white text-sm col-span-1 lg:hidden block">
                         {/* Mobile */}
                         {stepsChart.map((step, index) => (
-                            <li key={index} className={`${value >= step.thresholds ? '' : 'text-white/30'}`}>
+                            <li key={index} className={`${value === step.thresholds ? '' : 'hidden'}`}>
                                 {step.key}
                             </li>
                         ))}

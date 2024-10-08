@@ -111,7 +111,6 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                         </AlertDescription>
                                     </div>
                                 </Alert>
-
                             </motion.div>
                         )}
                     </AnimatePresence> 
@@ -119,7 +118,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
 
-                    <div className="flex items-end mb-2 lg:mb-0">
+                    <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Qual é a sua ocupação?
                         </h1>

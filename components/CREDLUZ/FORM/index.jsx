@@ -24,7 +24,7 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         {key: "Registrar conta", thresholds : 0},
         {key: "Identificação", thresholds : 20},
         {key: "Perfil ocupacional", thresholds : 40},
-        {key: "Registro da conta de luz", thresholds : 60},
+        {key: "Titular da fatura", thresholds : 60},
         {key: "Contato e localidade", thresholds : 80}
     ];
 

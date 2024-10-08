@@ -120,24 +120,22 @@ export default function FormDadosPessoais({ backStep }) {
 
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
-                    <div className="flex items-end mb-2 relative">
-                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
+                    <div className="flex items-end">
+                        <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Estamos quase lá!
                         </h1>
                     </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
-                        Agora só precisamos dos seus dados de contato e endereço concluir os dados cadastrais.
+                        Agora só precisamos do seu contato e endereço para prosseguir
                     </p>
                 </div>
 
                 {/*Form do step*/}
-                <div className="col-span-6 grid grid-cols-6 content-start pt-10 lg:pt-0 lg:content-center lg:min-h-[60vh] min-h-[55vh]">
-        
-                    <h5 className="col-span-6 text-slate-400 mb-2">Contatos</h5>
+                <div className="col-span-6 grid grid-cols-6 content-start lg:content-center pt-5 lg:min-h-[60vh] min-h-[55vh]"> 
 
                     <div className="col-span-6 grid grid-cols-6 gap-2.5">
 
-                        <div className="col-span-3 relative">
+                        <div className="lg:col-span-3 col-span-6 relative">
 
                             <Input 
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
@@ -151,7 +149,7 @@ export default function FormDadosPessoais({ backStep }) {
                 
                         </div>
 
-                        <div className="col-span-3 relative">
+                        <div className="lg:col-span-3 col-span-6 relative">
 
                             <Input 
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.whatsapp ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}

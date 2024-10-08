@@ -14,8 +14,8 @@ const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    px-2
-    py-4
+    p-3
+    lg:py-4
     items-center 
     justify-center 
     text-slate-400 
@@ -29,8 +29,9 @@ const OptLabel = tw(motion.label)`
     hover:text-blue-500
     peer-checked:bg-blue-600 
     peer-checked:text-white
-    peer-checked:shadow-nome   
-`
+    peer-checked:shadow-nome
+    
+`  
 const container = {
     hidden: {y: 50, opacity: 0 },
     visible: {y: 0, opacity: 1, 
@@ -92,7 +93,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                             animate={{x:0}}
                             exit={{opacity:0, x:100}}
                             >
-                            <Alert className="lg:mt-5 mt-[12vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
+                            <Alert className="lg:mt-5 mt-[15vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
                                 <div className="">
                                     <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
                                 </div>
@@ -113,7 +114,7 @@ export default function FormTitularCia({ onNext, backStep }) {
 
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-end">
-                    <div className="flex items-end mb-2 relative">
+                    <div className="flex items-end relative">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
                             Titularidade conta de luz
                         </h1>
@@ -125,7 +126,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 {/*Opções*/}
-                <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
+                <div className="col-span-6 content-center lg:content-center lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
                     
                     <Controller
                         name="titularCia"
@@ -145,7 +146,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                                             </div>
                                             <div className="col-span-6 text-center">
                                                 <p className="">
-                                                    <span className="text-blue-400 font-semibold">SIM</span> sou o titular
+                                                    <span className="text-blue-400">SIM</span> sou o titular
                                                 </p>
                                             </div>
                                         </OptLabel>
@@ -159,7 +160,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                                             </div>
                                             <div className="col-span-6 text-center">
                                                 <p className="">
-                                                    <span className="text-blue-400 font-semibold">NÃO</span> sou o titular
+                                                    <span className="text-blue-400">NÃO</span> sou o titular
                                                 </p>
                                             </div>
                                         </OptLabel>

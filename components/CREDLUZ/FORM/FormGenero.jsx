@@ -10,7 +10,7 @@ import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
 import { IoIosArrowBack } from "react-icons/io"
 import { TbMessage2Question } from "react-icons/tb"
-import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert';
+import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -47,12 +47,6 @@ const item = {
 }
 
 export default function FormGenero({ onNext, backStep }) {
-
-    //Titulos que devem ser redenrizados no form Base
-    // useEffect(() => {
-    //     setTitulo("Um pouco mais sobre você");    
-    //     setDescricao("Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?");
-    // }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();

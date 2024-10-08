@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import {useDisclosure} from "@nextui-org/react"
 import tw from 'tailwind-styled-components'
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
@@ -13,14 +14,15 @@ import { IoIosMale } from "react-icons/io"
 import {Accordion, AccordionItem} from "@nextui-org/react"
 import { TbMessage2Question } from "react-icons/tb"
 import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
-import { PiWarningCircleLight } from "react-icons/pi";
+import { PiWarningCircleLight } from "react-icons/pi"
+import ModalGenero from '../../GERAL/MODAL/ModalGenero'
 
 const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    lg:p-4
     p-3
+    lg:py-4
     items-center 
     justify-center 
     text-slate-400 
@@ -34,17 +36,15 @@ const OptLabel = tw(motion.label)`
     hover:text-blue-500
     peer-checked:bg-blue-600 
     peer-checked:text-white
-    peer-checked:shadow-nome   
+    peer-checked:shadow-nome
 `
-
 export default function FormIdentificacao({onNext, backStep}) {
-
-    //Titulos que devem ser redenrizados no form Base
 
     const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();
     const [showAlert, setShowAlert] = useState(false);
     const registerWithMask = useHookFormMask(register);
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     const onSubmit = (data) => {
         atualizarForm(data)
@@ -130,11 +130,11 @@ export default function FormIdentificacao({onNext, backStep}) {
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center mb-3 lg:mb-0">
                     <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                            Identificação
+                            Dados pessoais
                         </h1>
                     </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
-                        Informe sua identificação como gênero e nome conforme registrado no nascimento.
+                        Informe sua identificação conforme registrado no nascimento.
                     </p>
                 </div>
 
@@ -204,20 +204,13 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 </motion.div>
 
                                 <motion.div className="col-span-6 lg:mt-5 mt-1" variants={item}>
-                                    <Accordion isCompact itemClasses={itemClasses}>
-                                        <AccordionItem 
-                                            className="text-slate-400 text-sm placeholder:text-sm" 
-                                            key="1" 
-                                            aria-label="" 
-                                            title="Por que apenas essas opções ?"
-                                            startContent={<TbMessage2Question className="text-blue-500 text-2xl" />}
-                                            >
-                                            <div className="bg-white p-5 rounded-md border-l-4 border-blue-500">
-                                                {textoGenero}
-                                            </div>
-                                        </AccordionItem>
-                                    </Accordion>
+                                    <div className="flex text-blue-500 cursor-pointer text-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
+                                        <TbMessage2Question className="text-2xl mr-5"/>
+                                        <p>Por que apenas essas opções ?</p>
+                                    </div>
+                                    <ModalGenero isOpen={isOpen} onOpenChange={onOpenChange}/>
                                 </motion.div>
+                                
                             </div>
                             
                         )}

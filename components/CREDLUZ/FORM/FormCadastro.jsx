@@ -8,17 +8,11 @@ import { useFormDataLuz } from "../../../context/FormContextLuz"
 import {useDisclosure} from "@nextui-org/react"
 import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
-import ModalOpt from '../../GERAL/ModalOpt'
+import ModalOpt from '../../GERAL/MODAL/ModalOpt'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import { boolean } from "zod"
 
 export default function FormCadastro({onNext}) {
-
-    //Titulos que devem ser redenrizados no form Base
-    // useEffect(() => {
-    //     setTitulo("Vamos começar!");    
-    //     setDescricao("Preencha seus dados iniciais para criarmos a sua conta");
-    // }, [setTitulo, setDescricao]);
 
     // Controle de formulario react-hook-form
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
@@ -143,11 +137,11 @@ export default function FormCadastro({onNext}) {
                         Crie uma senha simples
                     </h5>
                     
-                    <div className="lg:col-span-3 col-span-6">
+                    <div className="col-span-3">
                         <div className="relative">
                             <Input type={inputSenha} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
-                                placeholder="Digite uma senha"
+                                placeholder="Senha"
                                 {...register('senha')} 
                             />
 
@@ -160,12 +154,12 @@ export default function FormCadastro({onNext}) {
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                     </div>
                     
-                    <div className="lg:col-span-3 col-span-6">
+                    <div className="col-span-3">
                         <div className="relative">
                             <Input type={inputSenhaConfirmacao} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 {...register('senhaConfirmacao')}
-                                placeholder="Confirme sua senha" 
+                                placeholder="Confirme" 
                             />
 
                             {visivelSenhaConfirmacao ? (
