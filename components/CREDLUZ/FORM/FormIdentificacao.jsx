@@ -82,8 +82,6 @@ export default function FormIdentificacao({onNext, backStep}) {
         },
     }
 
-    const textoGenero = 'Sabemos que existem mais identidades de gênero além de masculino e feminino. No entanto, para fins de preenchimento da proposta, utilizamos o gênero de nascimento. Isso nos ajuda a seguir a forma atual utilizado no processo de análise.' 
-
     const itemClasses = {
         title: "text-blue-500 text-medium",
         indicator: "text-medium text-blue-500"
@@ -203,9 +201,9 @@ export default function FormIdentificacao({onNext, backStep}) {
                                     </OptLabel>
                                 </motion.div>
 
-                                <motion.div className="col-span-6 lg:mt-5 mt-1" variants={item}>
-                                    <div className="flex text-blue-500 cursor-pointer text-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
-                                        <TbMessage2Question className="text-2xl mr-5"/>
+                                <motion.div className="col-span-6 lg:mt-5 mt-1 mx-auto" variants={item}>
+                                    <div className="flex text-blue-500 cursor-pointer text-center items-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
+                                        <TbMessage2Question className="text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
                                         <p>Por que apenas essas opções ?</p>
                                     </div>
                                     <ModalGenero isOpen={isOpen} onOpenChange={onOpenChange}/>

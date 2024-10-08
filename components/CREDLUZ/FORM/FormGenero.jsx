@@ -73,9 +73,7 @@ export default function FormGenero({ onNext, backStep }) {
 
         return () => clearTimeout(timeoutId);
         }
-    }, [errors.genero]);
-
-    const textoGenero = 'Sabemos que existem mais identidades de gênero além de masculino e feminino. No entanto, para fins de preenchimento da proposta, utilizamos o gênero de nascimento. Isso nos ajuda a seguir a forma atual utilizado no processo de análise.' 
+    }, [errors.genero]); 
 
     const itemClasses = {
         title: "text-blue-500 text-medium",

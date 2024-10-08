@@ -21,7 +21,7 @@ export default function App({ isOpen, onOpenChange }) {
                     {(onClose) => (
                         <>
                             <ModalHeader className="flex justify-center font-semibold">
-                                <PiQuestionMarkBold className="absolute -top-10 text-[5rem] p-2 rounded-lg bg-pink-500 text-white"/>
+                                <PiQuestionMarkBold className="absolute -top-10 text-[5rem] p-2 rounded-xl bg-pink-500 text-white"/>
                             </ModalHeader>
 
                             <ModalBody className="m-3">
@@ -35,7 +35,7 @@ export default function App({ isOpen, onOpenChange }) {
                                 </p>
                             </ModalBody>
                             
-                            <ModalFooter>
+                            <ModalFooter className="mx-auto">
 
                                 <Button color="danger" radius="sm" variant="light" onPress={onClose}>
                                     Fechar explicação

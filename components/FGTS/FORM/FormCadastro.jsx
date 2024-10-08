@@ -8,7 +8,7 @@ import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { MdEmail, MdDateRange } from "react-icons/md";
 import { FaUser, FaIdCard } from "react-icons/fa";
 import { GiPadlock } from "react-icons/gi";
-import ModalOpt from '../../GERAL/ModalOpt'
+import ModalOpt from '../../GERAL/MODAL/ModalOpt'
 
 export default function FormCadastro() {
     const { register, handleSubmit, formState: { errors }, setValue } = useFormContext();
