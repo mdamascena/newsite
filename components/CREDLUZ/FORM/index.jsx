@@ -50,10 +50,6 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         defaultValues: formData
     })
 
-    // useEffect(() => {
-    //     setProgressChange(((step - 1) / schemas.length) * 100)
-    // }, [step, methods, formData, setProgressChange]);
-
     useEffect(() => {
         setProgressChange(((step - 1) / (schemas.length)) * 100);
         setTitulo(credLuzTitle[step - 1]);
