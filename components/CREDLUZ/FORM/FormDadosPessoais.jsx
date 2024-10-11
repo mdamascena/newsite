@@ -11,13 +11,9 @@ import { PiMapPinAreaLight } from "react-icons/pi"
 import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import { getCidade, getEnderecoCep, getEstado } from "../../../services/servicesCredLuz/apiCep"
 
 export default function FormDadosPessoais({ backStep }) {
-
-    // useEffect(() => {
-    //     setTitulo("Onde você está no mapa?");    
-    //     setDescricao("Queremos saber onde mora e como falamos com você");
-    // }, [setTitulo, setDescricao]);
 
     const { register, watch, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
     const registerWithMask = useHookFormMask(register);
@@ -25,10 +21,18 @@ export default function FormDadosPessoais({ backStep }) {
     const { atualizarForm } = useFormDataLuz()
     const [comCep, setComCep] = useState(true);
     const [semCep, setSemCep] = useState(false)
-    const [uf, setUf] = useState([]);
-    const [cidade, setCidade] = useState([]);
 
-    const cep = watch('cep')
+    //Armazenamento de dados para requisições via CEP
+    const [cep, setCep] = useState('');
+    const [logradouroCep, setLogradouroCep] = useState('');
+    const [bairroCep, setBairroCep] = useState('');
+    const [cidadeCep, setCidadeCep] = useState('');
+    const [estadoCep, setEstadoCep] = useState('');
+
+    const [ufs, setUfs] = useState([]);
+    const [cidades, setCidades] = useState([]);
+    
+    const cepWatch = watch('cep')
     const ufWatch = watch('uf')
 
     const handleComCep = () => {
@@ -42,48 +46,37 @@ export default function FormDadosPessoais({ backStep }) {
     }, [comCep, setValue]);
 
     useEffect(() => {
-        if(cep && cep.length === 8){
-            const fetchAddress = async () => {
-                try{
-                    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-                    const data = await response.json();
-                    if(data.erro) {
-                        console.log('erro')
-                    } else {
-                        setSemCep(true);
-                        setValue('cep', data.cep);
-                        setValue('uf', data.uf);
-                        setValue('cidade', data.localidade)
-                        setValue('logradouro', data.logradouro);
-                        setValue('bairro', data.bairro);
+        if(cepWatch && cepWatch.length === 8){
+            getEnderecoCep(cepWatch)
+                .then((data) => {
+                    setSemCep(true);
 
-                        const cidadeEncontrada = cidade.find(x => x.nome === data.localidade);
-                        if (cidadeEncontrada) {
-                            setValue('cidade', cidadeEncontrada.nome);
-                        }
-                    }
-                } catch (err) {
-                    setSemCep(true)
-                    console.log(err)
-                }
-            };
-            fetchAddress();
+                    setCep(data.cep)
+                    setEstadoCep(data.estado);
+                    setCidadeCep(data.localidade);
+                    setValue('logradouro', data.logradouro)
+                    setValue('bairro', data.bairro)
+                })
+                .catch((err) => {
+                    setSemCep(true);
+                    console.log('Erro ao buscar endereço:', err)
+                });
         }
-    }, [cep, cidade, setValue])
+    }, [cepWatch])
     
-    useEffect(() => {
-            fetch('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
-            .then(response => response.json())
-            .then(data => setUf(data))
-            .catch(error => console.log('Erro ao buscar UF', error))
-    }, [])
+    // useEffect(() => {
+    //     if(semCep){
+    //         getEstado()
+    //             .then((data) => setUfs(data))
+    //             .catch((err) => console.log('Erro ao buscar Uf', err))
+    //     }
+    // }, [semCep])
 
     useEffect(() => {
-        if (ufWatch) {
-            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufWatch}/municipios`)
-                .then(response => response.json())
-                .then(data => {setCidade(data); console.log(data) })
-                .catch(error => console.log('Erro ao buscar cidades', error))
+        if(ufWatch){
+            getCidade(ufWatch)
+                .then((data) => setCidades(data))
+                .catch((err) => console.log('Erro ao buscar cidade', err))
         }
     }, [ufWatch])
 
@@ -198,7 +191,7 @@ export default function FormDadosPessoais({ backStep }) {
                                     <Controller
                                         name="uf"
                                         control={control}
-                                        defaultValue=""
+                                        defaultValue={estadoCep || ""}
                                         render={({ field }) => (
                                             
                                             <Select onValueChange={field.onChange} value={field.value}>
@@ -207,11 +200,13 @@ export default function FormDadosPessoais({ backStep }) {
                                                 </SelectTrigger>
 
                                                 <SelectContent>
-                                                    {uf.map((estado) => (
-                                                        <SelectItem key={estado.id} value={estado.sigla}>
-                                                            {estado.nome}
-                                                        </SelectItem>
-                                                    ))}
+                                                {ufs && ufs.length > 0 ? (
+                                                    ufs.map((uf) => (
+                                                        <SelectItem key={uf.id} value={uf.sigla}>{uf.sigla}</SelectItem>
+                                                    ))
+                                                ) : (
+                                                    <SelectItem value={estadoCep}>{estadoCep}</SelectItem>
+                                                )}
                                                 </SelectContent>
                                             </Select>
                                         )}
@@ -223,7 +218,7 @@ export default function FormDadosPessoais({ backStep }) {
                                     <Controller
                                         name="cidade"
                                         control={control}
-                                        defaultValue=""
+                                        defaultValue={cidadeCep || ""}
                                         render={({ field }) => (
                                             <Select onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className={`col-span-6 py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
@@ -231,11 +226,13 @@ export default function FormDadosPessoais({ backStep }) {
                                                 </SelectTrigger>
 
                                                 <SelectContent>
-                                                    {Array.isArray(cidade) && cidade.map((cidadeItem) => (
-                                                        <SelectItem key={cidadeItem.id} value={cidadeItem.nome}>
-                                                            {cidadeItem.nome}
-                                                        </SelectItem>
-                                                    ))}
+                                                {cidades && cidades.length > 0 ? (
+                                                    cidades.map((cidade) => (
+                                                        <SelectItem key={cidade.id} value={cidade.nome}>{cidade.nome}</SelectItem>
+                                                    ))
+                                                ) : (
+                                                    <SelectItem value={cidadeCep}>{cidadeCep}</SelectItem>
+                                                )}
                                                 </SelectContent>
                                             </Select>
                                         )}
