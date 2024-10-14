@@ -96,7 +96,7 @@ export default function FormCadastro({onNext}) {
                 </div>
 
                 {/*Form do step*/}
-                <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center lg:min-h-[60vh] min-h-[55vh]">
+                <div className="col-span-6 grid grid-cols-6 gap-2.5 lg:content-center content-start lg:min-h-[60vh] min-h-[55vh]">
 
                     <div className="col-span-6">
                         <Input

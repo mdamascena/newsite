@@ -25,7 +25,7 @@ export default function Regioes() {
 
     return(
         <section className="bg-slate-100 select-none">
-            <div className="grid grid-cols-1 lg:grid-cols-2 px-8 lg:px-52 py-8 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 py-8 lg:py-16 mx-auto lg:max-w-[1265px] max-w-[355px]">
                 <div className={`col-span-1 duration-1000 delay-300 ${movDesc}`}>
                     <h2 className="text-4xl text-blue-600 font-semibold mb-4 tracking-tight border-l-4 border-blue-500 pl-2">Regiões<br/>atendidas</h2>
                     <p className="text-2xl text-slate-400 mb-2 tracking-tight">Atendemos nas seguintes regiões do Brasil</p>

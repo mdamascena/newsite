@@ -18,7 +18,7 @@ const Card = tw.div`
 export default function Regras(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
-    const [movCard, setMovCard] = useState ('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
+    const [movCard, setMovCard] = useState ('-translate-x-[50px] lg:translate-x-[50px] opacity-0');
     const [movDesc, setMovDesc] = useState ('opacity-0');
 
     useEffect(
@@ -31,18 +31,18 @@ export default function Regras(){
                 setMovDesc('');
             } else{
                 setMovImg('opacity-0 scale-0');
-                setMovCard('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
+                setMovCard('-translate-x-[50px] lg:translate-x-[50px] opacity-0');
                 setMovDesc('opacity-0')
             }
         });
     },[]);
 
     return(
-        <section className='px-8 lg:px-44 bg-white select-none'>
+        <section className='bg-white select-none'>
             
-            <div className='grid grid-cols-1 lg:grid-cols-2 py-16'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 py-36 lg:max-w-[1265px] max-w-[380px] mx-auto'>
                 
-                <div className='col-span-1 mb-8 lg:mb-0 flex lg:justify-end'>
+                <div className='col-span-1 mb-8 lg:mb-0 flex lg:justify-start'>
                     <Image className={`rounded-3xl duration-1000 ${movImg}`} src={sma} width={584} alt='' />
                 </div>
                 

@@ -17,14 +17,15 @@ const Card = tw.div`
     mb-4
     rounded-xl 
     p-2 
-    bg-blue-500 
-    bg-opacity-25
+    bg-black/10
+    border
+    border-blue-500
     hover:bg-blue-50
-    saturate-100
-    lg:h-[30vh]
+    lg:h-[230px]
+    lg:w-[230px]
     h-[24vh]
     relative
-`;
+`
 
 const CardFront = tw.div`
     self-center
@@ -36,34 +37,33 @@ const CardFront = tw.div`
     group-hover:scale-0 
     absolute 
     duration-500
-`;
+`
 
 const CardBack = tw.div`
     px-2 
     self-center
     text-center 
-    lg:text-xl
-    text-blue-400
+    lg:text-lg
+    text-slate-400
     text-md
-    tracking-tighter
-    mb-3 
+    tracking-tighter 
     scale-0 
     group-hover:scale-100 
     duration-500
-`;
+`
 
 export default function SectionVantagens() {
     return (
-        <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600 saturate-100'>
+        <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600'>
             
-            <div className='mx-4 lg:mx-40'>
+            <div className='lg:max-w-[1265px] max-w-[380px] mx-auto'>
 
                 <div className='text-justify lg:pt-8 pt-8 lg:mb-8'>
                     <h1 className="text-blue-300 mx-4 lg:text-4xl text-2xl font-semibold tracking-tighter lg:mb-6 mb-2 p-3 text-center">
                         O que é a antecipação Saque-Aniversário?
                     </h1>
 
-                    <p className="text-white text-md lg:text-xl lg:px-28 px-4">
+                    <p className="text-white text-xs lg:text-lg text-center lg:px-28 px-4">
                         É uma modalidade de empréstimo para quem tem saldo no FGTS em contas ativas ou inativas, e optou
                         pelo saque-aniversário. Vejam algunas vantagens do Empréstimo FGTS na ValoReal
                     </p>
@@ -74,13 +74,13 @@ export default function SectionVantagens() {
                     <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-12 pt-8 lg:order-1'>
                         <Card>
                             <CardFront>
-                                <MdMoneyOff className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
+                                <MdMoneyOff className='text-5xl text-white mx-auto mb-3' />
                                 <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tighter m-3'>
                                     Sem mensalidades para pagar
                                 </h2>
 
                                 <div className='flex justify-end'>
-                                    <HiOutlineArrowNarrowRight className='text-white text-xl' />
+                                    <HiOutlineArrowNarrowRight className='text-white text-lg' />
                                 </div>
                             </CardFront>
 
@@ -91,7 +91,7 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <AiOutlineFieldTime className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
+                                <AiOutlineFieldTime className='text-5xl text-white mx-auto mb-3' />
                                 <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>
                                     Liberação mais rápida do mercado
                                 </h2>
@@ -107,7 +107,7 @@ export default function SectionVantagens() {
                         </Card>
                     </div>
 
-                    <div className='pt-0 lg:pt-8 lg:px-4 lg:col-span-3 col-span-2 grid justify-center lg:order-2 order-3'>
+                    <div className='pt-0 lg:pt-8 content-end lg:px-4 lg:col-span-3 col-span-2 grid justify-center lg:order-2 order-3'>
                         <Image src={Persona} alt='' />
                     </div>
 
@@ -115,7 +115,7 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <GiMoneyStack className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
+                                <GiMoneyStack className='text-5xl text-white mx-auto mb-3' />
                                 <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Antecipe até 12 saques do seu FGTS</h2>
 
                                 <div className='flex justify-end'>
@@ -130,8 +130,8 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <VscSearchStop className='lg:text-6xl text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Sem consulta de restrições no SPC/SERASA</h2>
+                                <VscSearchStop className='text-5xl text-white mx-auto mb-3' />
+                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Sem consulta no SPC/SERASA</h2>
 
                                 <div className='flex justify-end'>
                                     <HiOutlineArrowNarrowRight className='text-white text-xl' />

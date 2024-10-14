@@ -49,8 +49,10 @@ export default function Regras(){
 
     return(
         <section id='analise' className='bg-white select-none'>
-            <div className="relative">
-                <div className='grid grid-cols-1 lg:grid-cols-3 lg:py-16 p-8 lg:px-44'>
+            
+            <div className="relative lg:max-w-[1265px] max-w-[380px] lg:py-28 py-8 mx-auto">
+                
+                <div className='grid grid-cols-1 lg:grid-cols-3'>
                     
                     <div className='col-span-2 z-10 lg:mr-20'>    
                         <div className={`duration-1000 delay-500 ${movDesc} lg:mt-16`}>
@@ -128,6 +130,7 @@ export default function Regras(){
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[9rem] absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </section>

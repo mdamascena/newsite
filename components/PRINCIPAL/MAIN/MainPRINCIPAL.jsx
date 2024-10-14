@@ -36,7 +36,6 @@ const BtnHome = tw.button`
     text-xl
     lg:px-32
     lg:mx-0
-    mb-14
     py-4
     lg:w-[450px]
     w-full
@@ -53,37 +52,44 @@ const BtnHome = tw.button`
 export default function MainHome() {
   return (
     <main>
-        <div className="grid grid-cols-1 lg:grid-cols-2 bgMainHome">
-
-            <div className="col-span-1 px-5 lg:pl-40 lg:pr-10 lg:mt-44 lg:mb-36 mb-[5vh]">
-
-                <div className="mt-24 lg:mt-0">
-                    <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
-                        Empréstimo <span className="font-extralight">ONLINE</span>
-                    </h1>
-                    <h1 className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight">
-                        com múltiplas opções de créditos
-                    </h1>
-                </div>
-
-                <div className="lg:mt-8 mt-64">
-                    <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 text-xl">
-                        Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
-                    </p>
-                    <BtnHome>Simular agora</BtnHome>
-                </div>
-
-            </div>
+        <div className="bgMainHome">
             
-            <div className="hidden lg:block col-span-1"></div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[1265px] max-w-[380px] lg:mx-auto mx-4 lg:h-[100vh] h-[85vh]">
+                
+                <div className="col-span-1 grid grid-cols-1 lg:h-[50%] h-[100%] my-auto">
+
+                    <div className="content-center col-span-1">
+                        <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
+                            Empréstimo <span className="font-extralight">ONLINE</span>
+                        </h1>
+                        <h1 className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight">
+                            com múltiplas opções de créditos
+                        </h1>
+                    </div>
+
+                    <div className="lg:content-start content-end col-span-1">
+                        <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 text-xl col-span-1">
+                            Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
+                        </p>
+                        <div className="pb-8 lg:pb-0">
+                            <BtnHome>Simular agora</BtnHome>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div className="hidden lg:block col-span-1"></div>
+            </div>
         </div>
+
         <SlideModalidade/>
         <Mais/>
         <Taxa/>
         <SeuPerfil/> 
         <SeuPotencial/>      
-        <Simulador />
-        <Modalidades />
+        <Simulador/>
+        <Modalidades/>
+
     </main>
   )
 }

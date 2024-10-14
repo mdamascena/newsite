@@ -33,7 +33,7 @@ const BtnCalc = tw.button`
     hover:scale-105
     active:scale-90
     duration-150
-`;
+`
 
 const EmpTitle = tw.h1`
     text-blue-600 
@@ -43,7 +43,7 @@ const EmpTitle = tw.h1`
     lg:text-left 
     font-semibold
     tracking-tighter
-`;
+`
 
 export default function MainFGTS() {
 
@@ -56,23 +56,27 @@ export default function MainFGTS() {
 
     return (
         <main>
-            <div className="bgMainFGTS px-6 lg:px-40 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
-                <div className='lg:my-auto mb-10 select-none'>
-                    <EmpTitle>Empréstimo</EmpTitle>
-                    <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-semibold tracking-tighter'>
-                        Saque Aniversário <span className='font-semibold tracking-tighter'>FGTS</span>
-                    </h1>
-                    <p className='text-blue-600 lg:text-xl text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center'>
-                        Antecipe seu <b className='text-2xl'>FGTS</b>, até <span className='text-2xl font-bold tracking-tighter'>12 parcelas</span> com a melhor taxa do mercado e sem descontos mensais!
-                    </p>
-                    <div className='flex justify-center lg:justify-start'>
-                        <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
+            <div className="bgMainFGTS">
+                
+                <div className='lg:mx-auto mx-4 lg:pt-24 pt-20 grid grid-cols-1 lg:grid-cols-2 lg:max-w-[1265px] max-w-[380px]'>
+                    <div className='lg:my-auto mb-10 select-none'>
+                        <EmpTitle>Empréstimo</EmpTitle>
+                        <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-semibold tracking-tighter'>
+                            Saque Aniversário <span className='font-semibold tracking-tighter'>FGTS</span>
+                        </h1>
+                        <p className='text-blue-600 lg:text-xl text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center'>
+                            Antecipe seu <b className='text-2xl'>FGTS</b>, até <span className='text-2xl font-bold tracking-tighter'>12 parcelas</span> com a melhor taxa do mercado e sem descontos mensais!
+                        </p>
+                        <div className='flex justify-center lg:justify-start'>
+                            <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
+                        </div>
+                    </div>
+
+                    <div>
+                        <Image width={600} src={ImgMain} alt='' />
                     </div>
                 </div>
 
-                <div className='-mb-1'>
-                    <Image width={600} src={ImgMain} alt='' />
-                </div>
             </div>
 
             <SimuladorFGTS />

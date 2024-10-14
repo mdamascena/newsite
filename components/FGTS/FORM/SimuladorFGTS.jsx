@@ -41,16 +41,16 @@ const IntSolic = tw.input`
 export default function SimuladorFGTS() {
 
     return (
-        <section className="bg-blue-700 saturate-100">
+        <section className="bgMainPrincipal">
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 mx-4 lg:mx-40 py-8 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-5 py-8 lg:py-16 mx-auto lg:max-w-[1265px] max-w-[355px]">
 
                 <div className="col-span-3">
-                    <h1 className="select-none text-blue-300 text-center lg:text-left text-3xl mb-2 tracking-tighter font-semibold ml-5">
+                    <h1 className="select-none text-white text-center lg:text-left text-3xl mb-2 tracking-tighter font-semibold lg:ml-5">
                         Descubra o seu limite
                     </h1>
 
-                    <div className=" rounded-2xl bg-blue-900 bg-opacity-50 p-4 lg:mr-5">
+                    <div className=" rounded-2xl bg-base-calc p-4 lg:mr-5">
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div>
                                 <label className="text-blue-100 text-sm select-none" htmlFor="saldo">Digite seu saldo FGTS</label>
@@ -76,7 +76,7 @@ export default function SimuladorFGTS() {
 
                     </div>
 
-                    <p className="text-xs text-blue-300 text-justify lg:mx-5 mt-2 select-none">
+                    <p className="text-xs text-white/50 text-justify mt-5 select-none">
                         Os valores dessa simulação são calculados com base nos informados. O limite pode mudar de
                         acordo com o seu saldo no FGTS.
                     </p>

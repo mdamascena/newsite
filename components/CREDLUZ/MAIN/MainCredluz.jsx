@@ -23,7 +23,7 @@ export default function MainCredluz() {
         <main className="select-none">
             <section className="bgMainPrincipal">
                 <div className="bgBrasao">
-                    <div className="pb-5 lg:pb-0 lg:pt-20 pt-10 lg:px-32">
+                    <div className="pb-5 lg:pb-0 lg:pt-28 pt-10 lg:max-w-[1265px] max-w-[380px] mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-3">
                             
                             <figure className="mx-auto block lg:hidden mt-14 pr-2">
@@ -85,8 +85,7 @@ export default function MainCredluz() {
                             
                         </div>
                         
-                    </div>
-                    
+                    </div>   
                 </div>
             </section>
             <SectioDescrisao />

@@ -9,24 +9,19 @@ import Image from 'next/image'
 
 const CardVant = tw.div`
     col-span-1
-    bg-[#0005a0]
-    col-span-2
+    
+    bg-[#0006b0]
     rounded-xl 
-    p-5
-    rounded-md
-    duration-300
-    mb-3
-    flex 
-    items-center
+    lg:p-6
+    p-3 
+    lg:h-52
 `;
 
 const DesCard = tw.p`
-    text-white 
+    text-blue-400
     text-left
     text-[15px]
     lg:text-sm
-    tracking-tight 
-    font-extralight
     leading-tight
 `;
 
@@ -47,83 +42,91 @@ const Btn = tw.button`
   active:scale-90
   active:bg-blue-800
   duration-150
-`;
-
+`
 
 export default function Mais (){
     return(
         <section className='bgMainPrincipal select-none'>
 
-            <div className='px-6 lg:px-44 lg:pt-20 pt-12'>
+            <div className='lg:max-w-[1265px] max-w-[380px] lg:h-[100vh] py-[10vh] grid lg:mx-auto mx-4'>
 
-                <div className='grid grid-cols-2'>
+                <div className='grid grid-cols-2 content-center items-center'>
 
-                    <div className='col-span-2 lg:col-span-1 mb-14'>
+                    <div className='col-span-2 lg:col-span-1'>
 
-                        <div>
-                            <h1 className="text-white tracking-tight lg:text-4xl text-3xl mb-6">
-                                Aqui vc encontra <span className='text-blue-600 lg:text-5xl text-4xl'>muuuuito mais...</span>
-                            </h1>
-                        </div>
-
-                        <CardVant className=''>
-                            <div className='text-5xl text-blue-600 pr-5'>
-                                <IoWalletOutline/>
-                            </div>
-                            <div className=''>
-                                <h1 className='text-blue-600 text-2xl font-semibold'>Mais Opções</h1>
-                                <div className='items-center flex'>
-                                    <DesCard>Diversas modalidades de empréstimo ao seu alcance em um só lugar</DesCard>
-                                </div>
-                            </div>
-                        </CardVant>
-
-                        <CardVant>
-                            <div className='text-5xl text-blue-600 pr-5'>
-                                <AiOutlineFieldTime/>
-                            </div>
-                            <div className=''>
-                                <h1 className='text-blue-600 text-2xl font-semibold'>Mais Rápido</h1>
-                                <div className='items-center flex'>
-                                    <DesCard>A gente faz tudo mais rápido para seu empréstimo ser liberado</DesCard>
-                                </div>
-                            </div>
-                        </CardVant>
-
-                        <CardVant>
-                            <div className='text-5xl text-blue-600 pr-5'>
-                                <IoPodiumOutline/>
-                            </div>
-                            <div className=''>
-                                <h1 className='text-blue-600 text-2xl font-semibold'>Mais Ofertas</h1>
-                                <div className='items-center flex'>
-                                    <DesCard>Os melhores bancos com as melhores ofertas de crédito do mercado</DesCard>
-                                </div>
-                            </div>
-                        </CardVant>
-
-                        <CardVant className=''>
-                            <div className='text-5xl text-blue-600 pr-5'>
-                                <RiShieldCheckLine/>
-                            </div>
-                            <div className=''>
-                                <h1 className='text-blue-600 text-2xl font-semibold'>Mais Seguro</h1>
-                                <div className='items-center flex'>
-                                    <DesCard>
-                                        Desde 2015 no mercado. Levando crédito seguro e confiável
-                                    </DesCard>
-                                </div>
-                            </div>
-                        </CardVant>
-
-                        <div className='mt-5 justify-center'>
+                        <h1 className="text-blue-600 tracking-tight lg:text-4xl text-3xl">
+                            Aqui vc encontra <span className='text-white lg:text-5xl text-4xl'>muuuuito mais...</span>
+                        </h1>
+                        <h2 className='text-white text-xs lg:text-base my-4 lg:mr-12'>
+                            Aqui, você resolve tudo: crédito rápido, seguro e com as melhores 
+                            opções do mercado, sem complicação. Fácil, do seu jeito!
+                        </h2>
+                        
+                        <div className='mt-5 justify-center hidden lg:block'>
                             <Btn>Solicite agora</Btn>
                         </div>
 
                     </div>
 
-                    <div className='lg:grid col-span-1 hidden justify-center items-end'>
-                        <Image src={celulares} width={500} alt=''/>
+                    <div className='lg:grid lg:col-span-1 col-span-2 justify-center items-end'>
+                        {/* <Image src={celulares} width={500} alt=''/> */}
+                        <div className='grid grid-cols-2 gap-3 lg:p-3'>
+
+                            <CardVant className='hover:rotate-12 hover:shadow-md duration-200'>
+                                <div className='text-3xl text-white pb-3'>
+                                    <IoWalletOutline/>
+                                </div>
+                                <div>
+                                    <h1 className='text-white text-xl font-semibold mb-3'>Mais Opções</h1>
+                                    <div className='items-center flex'>
+                                        <DesCard>Diversas modalidades de empréstimo ao seu alcance em um só lugar</DesCard>
+                                    </div>
+                                </div>
+                            </CardVant>
+
+                            <CardVant className='hover:-rotate-6 hover:shadow-md duration-200'>
+                                <div className='text-3xl text-white pb-3'>
+                                    <AiOutlineFieldTime/>
+                                </div>
+                                <div>
+                                    <h1 className='text-white text-xl font-semibold mb-3'>Mais Rápido</h1>
+                                    <div className='items-center flex'>
+                                        <DesCard>A gente faz tudo mais rápido para seu empréstimo ser liberado</DesCard>
+                                    </div>
+                                </div>
+                            </CardVant>
+
+                            <CardVant className='hover:scale-110 hover:shadow-md duration-200'>
+                                <div className='text-3xl text-white pb-3'>
+                                    <IoPodiumOutline/>
+                                </div>
+                                <div>
+                                    <h1 className='text-white text-xl font-semibold mb-3'>Mais Ofertas</h1>
+                                    <div className='items-center flex'>
+                                        <DesCard>Os melhores bancos com as melhores ofertas de crédito do mercado</DesCard>
+                                    </div>
+                                </div>
+                            </CardVant>
+
+                            <CardVant className='hover:bg-black/50 hover:shadow-md duration-200'>
+                                <div className='text-3xl text-white pb-3'>
+                                    <RiShieldCheckLine/>
+                                </div>
+                                <div>
+                                    <h1 className='text-white text-xl font-semibold mb-3'>Mais Seguro</h1>
+                                    <div className='items-center flex'>
+                                        <DesCard>
+                                            Desde 2015 no mercado. Levando crédito seguro e confiável
+                                        </DesCard>
+                                    </div>
+                                </div>
+                            </CardVant>
+                            
+                        </div>
+
+                        <div className='mt-5 justify-center lg:hidden block'>
+                            <Btn>Solicite agora</Btn>
+                        </div>
                     </div>
 
                 </div>

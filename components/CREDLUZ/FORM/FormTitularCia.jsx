@@ -93,7 +93,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                             animate={{x:0}}
                             exit={{opacity:0, x:100}}
                             >
-                            <Alert className="lg:mt-5 mt-[15vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
+                            <Alert className="lg:mt-5 mt-[10vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
                                 <div className="">
                                     <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
                                 </div>
@@ -126,7 +126,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 {/*Opções*/}
-                <div className="col-span-6 content-center lg:content-center lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
+                <div className="col-span-6 content-center lg:content-center lg:min-h-[60vh] min-h-[55vh]">
                     
                     <Controller
                         name="titularCia"
