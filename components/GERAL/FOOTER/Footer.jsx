@@ -33,7 +33,7 @@ export default function Footer() {
 
         <Rodape>
 
-            <div className='lg:max-w-[1265px] max-w-[380px] lg:mx-auto mx-4 pt-6'>
+            <div className='container-custom pt-6'>
                 
                 <div className="pb-4">
                     <h5 className="text-blue-200 lg:p-2 p-4 rounded-lg bg-opacity-20 bg-blue-800 text-center">

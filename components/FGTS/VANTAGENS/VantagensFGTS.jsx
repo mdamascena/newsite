@@ -17,9 +17,7 @@ const Card = tw.div`
     mb-4
     rounded-xl 
     p-2 
-    bg-black/10
-    border
-    border-blue-500
+    bg-blue-600
     hover:bg-blue-50
     lg:h-[230px]
     lg:w-[230px]
@@ -56,7 +54,7 @@ export default function SectionVantagens() {
     return (
         <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600'>
             
-            <div className='lg:max-w-[1265px] max-w-[380px] mx-auto'>
+            <div className='container-custom'>
 
                 <div className='text-justify lg:pt-8 pt-8 lg:mb-8'>
                     <h1 className="text-blue-300 mx-4 lg:text-4xl text-2xl font-semibold tracking-tighter lg:mb-6 mb-2 p-3 text-center">
@@ -69,7 +67,7 @@ export default function SectionVantagens() {
                     </p>
                 </div>
 
-                <div className='grid lg:grid-cols-5 grid-cols-2 select-none'>
+                <div className='grid lg:grid-cols-5 grid-cols-2 select-none justify-items-center lg:mx-20'>
 
                     <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-12 pt-8 lg:order-1'>
                         <Card>

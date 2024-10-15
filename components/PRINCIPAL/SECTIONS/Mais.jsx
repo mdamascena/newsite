@@ -48,7 +48,7 @@ export default function Mais (){
     return(
         <section className='bgMainPrincipal select-none'>
 
-            <div className='lg:max-w-[1265px] max-w-[380px] lg:h-[100vh] py-[10vh] grid lg:mx-auto mx-4'>
+            <div className='container-custom py-[10vh] grid'>
 
                 <div className='grid grid-cols-2 content-center items-center'>
 

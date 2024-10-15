@@ -3,9 +3,9 @@ import ImgMain from '../../../public/img/pers_home1.png'
 import tw from 'tailwind-styled-components'
 import SimuladorFGTS from '../FORM/SimuladorFGTS'
 import Vantagens from '../VANTAGENS/VantagensFGTS'
-import Taxas from '../TAXAS/TaxaFGTS'
 import Regras from '../REGRAS/RegrasGeraisFGTS'
-import Analise from '../../GERAL/ANALISE/Analise'
+import Analise from '../../GERAL/SECTION/Analise'
+import TaxaGuru from '../../GERAL/SECTION/TaxaGuru'
 import { useRouter } from 'next/router'
 
 const BtnCalc = tw.button`
@@ -48,18 +48,18 @@ const EmpTitle = tw.h1`
 export default function MainFGTS() {
 
     const router = useRouter();
-
     const handleRedirect = () => {
         router.push('saque-aniversario/cadastro');
     }
-
-
+    
+    const Desc = 'O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos. É uma das melhores opções de crédito sem comprometer sua renda com pagamento de parcelas!'
+    const DescT = 'A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.'
     return (
         <main>
             <div className="bgMainFGTS">
                 
-                <div className='lg:mx-auto mx-4 lg:pt-24 pt-20 grid grid-cols-1 lg:grid-cols-2 lg:max-w-[1265px] max-w-[380px]'>
-                    <div className='lg:my-auto mb-10 select-none'>
+                <div className='lg:pt-24 pt-20 grid grid-cols-1 lg:grid-cols-2 container-custom'>
+                    <div className='lg:my-auto mb-10 lg:ml-5 select-none'>
                         <EmpTitle>Empréstimo</EmpTitle>
                         <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-semibold tracking-tighter'>
                             Saque Aniversário <span className='font-semibold tracking-tighter'>FGTS</span>
@@ -72,7 +72,7 @@ export default function MainFGTS() {
                         </div>
                     </div>
 
-                    <div>
+                    <div className='flex justify-center'>
                         <Image width={600} src={ImgMain} alt='' />
                     </div>
                 </div>
@@ -81,7 +81,13 @@ export default function MainFGTS() {
 
             <SimuladorFGTS />
             <Vantagens />
-            <Taxas />
+            <TaxaGuru 
+                TituloGuru={'Não deixe o seu FGTS parado!'} 
+                DescrisaoGuro={Desc} 
+                DescrisaoProduto={'Antecipação do saque FGTS'} 
+                Taxa={'1,59%'} 
+                DescrisaoTaxa={DescT}
+            />
             <Analise/>
             <Regras />
             

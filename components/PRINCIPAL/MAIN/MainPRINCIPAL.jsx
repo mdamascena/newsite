@@ -54,7 +54,7 @@ export default function MainHome() {
     <main>
         <div className="bgMainHome">
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[1265px] max-w-[380px] lg:mx-auto mx-4 lg:h-[100vh] h-[85vh]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 container-custom lg:h-[100vh] h-[85vh]">
                 
                 <div className="col-span-1 grid grid-cols-1 lg:h-[50%] h-[100%] my-auto">
 
@@ -68,7 +68,7 @@ export default function MainHome() {
                     </div>
 
                     <div className="lg:content-start content-end col-span-1">
-                        <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 text-xl col-span-1">
+                        <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 lg:text-xl col-span-1">
                             Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
                         </p>
                         <div className="pb-8 lg:pb-0">
@@ -78,7 +78,7 @@ export default function MainHome() {
 
                 </div>
                 
-                <div className="hidden lg:block col-span-1"></div>
+                
             </div>
         </div>
 

@@ -28,7 +28,7 @@ export default function SectionAtendimento() {
     return (
         <section className="bg-slate-200">
 
-            <div className="lg:max-w-[1265px] lg:mx-auto max-w-[380px] mx-4 py-[10vh] grid">
+            <div className="container-custom py-[10vh] grid">
                 <div className="content-center">
                     <div className="">
                         <h1 className="text-slate-400 text-center text-3xl tracking-tighter font-semibold">Atendimento Online via Chat</h1>

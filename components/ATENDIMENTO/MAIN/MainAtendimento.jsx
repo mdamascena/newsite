@@ -12,7 +12,7 @@ export default function MainAtendimento() {
     return (
         <main>
             <section className="bgMainAtendimento overflow-y-hidden lg:bg-fixed">
-                <div className='lg:h-[100vh] lg:max-w-[1265px] max-w-[380px] lg:mx-auto mx-4 grid'>
+                <div className='container-custom grid'>
                     <div className="text-center pt-44 pb-36 px-5 content-center">
                         <h1 className="text-3xl lg:text-5xl text-yellow-400 tracking-tighter font-semibold">Quer falar com a gente?</h1>
                         <h2 className="text-2xl text-white tracking-tight">Fale com um dos nossos Consultores Especializados</h2>

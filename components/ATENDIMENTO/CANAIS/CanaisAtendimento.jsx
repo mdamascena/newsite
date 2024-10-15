@@ -33,7 +33,7 @@ export default function SectionAtendimento() {
     return (
         <section className="bg-slate-100">
             
-            <div className="lg:max-w-[1265px] lg:mx-auto max-w-[380px] mx-4 py-[10vh] grid">
+            <div className="container-custom py-[10vh] grid">
                 <div className="">
                     <h1 className="text-slate-400 text-center text-3xl tracking-tighter font-semibold">Veja nossos canais de atendimento</h1>
                     <p className="text-slate-400 text-center tracking-tight font-light">Estamos disponíveis de segunda a sexta feira, das 09h às 18h, pelos seguintes canais:</p>

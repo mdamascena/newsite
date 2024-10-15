@@ -18,7 +18,7 @@ export default function Descricao(){
     return(
         <section className="bg-slate-100 text-slate-400 select-none grid">
 
-            <div className="lg:max-w-[1265px] lg:mx-auto max-w-[380px] mx-4 lg:py-[15vh] py-[10vh] content-center">
+            <div className="container-custom lg:py-[15vh] py-[10vh] content-center">
 
                 <div className="mb-10 lg:mb-16">
                     

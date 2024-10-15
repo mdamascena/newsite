@@ -66,7 +66,7 @@ export default function ComoFunciona(){
                 </h1>
             </div>
 
-            <div className="lg:max-w-[1265px] max-w-[380px] mx-auto">
+            <div className="container-custom">
 
                 <div className="grid grid-cols-2 text-slate-400 h-80">
 

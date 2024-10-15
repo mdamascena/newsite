@@ -12,7 +12,7 @@ const BtnSolic = tw.button`
     text-xl
     py-3
     flex-1
-    rounded-xl
+    rounded-lg
     text-white
     border-b-2 
     border-amber-300
@@ -43,15 +43,15 @@ export default function SimuladorFGTS() {
     return (
         <section className="bgMainPrincipal">
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 py-8 lg:py-16 mx-auto lg:max-w-[1265px] max-w-[355px]">
+            <div className="grid grid-cols-1 lg:grid-cols-5 py-8 lg:py-16 container-custom lg:px-24 px-2">
 
                 <div className="col-span-3">
                     <h1 className="select-none text-white text-center lg:text-left text-3xl mb-2 tracking-tighter font-semibold lg:ml-5">
                         Descubra o seu limite
                     </h1>
 
-                    <div className=" rounded-2xl bg-base-calc p-4 lg:mr-5">
-                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                    <div className=" rounded-lg bg-base-calc p-4 lg:mr-5">
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                             <div>
                                 <label className="text-blue-100 text-sm select-none" htmlFor="saldo">Digite seu saldo FGTS</label>
                                 <div className="relative flex items-center">
@@ -68,31 +68,38 @@ export default function SimuladorFGTS() {
                                 </div>
                             </div>
 
-                            <div className="content-end grid text-center lg:text-left my-2 lg:my-0">
-                                <p className="text-white text-xl">O seu limite é:</p>
-                                <p className="text-3xl tracking-tight font-semibold text-white">R$ 00.000,00</p>
-                            </div>
+                            
                         </div>
 
                     </div>
 
-                    <p className="text-xs text-white/50 text-justify mt-5 select-none">
+                    <p className="text-xs text-white text-justify mt-5 select-none hidden lg:block">
                         Os valores dessa simulação são calculados com base nos informados. O limite pode mudar de
                         acordo com o seu saldo no FGTS.
                     </p>
                 </div>
 
-                <div className="lg:col-span-2 col-span-1 lg:px-20">
+                <div className="lg:col-span-2 col-span-1 lg:pl-20">
 
                     <div className="text-justify mb-4 lg:mb-0">
 
-                        <p className="text-white hidden lg:block select-none">
+                        {/* <p className="text-white hidden lg:block select-none">
                             Grana extra para usar como quiser, sem comprometer sua renda com mensalidades. O desconto é feito diretamente no saldo do FGTS.
-                        </p>
+                        </p> */}
+
+                        <div className="content-center grid text-center my-2 lg:my-0 p-3 rounded-md">
+                            <p className="text-white text-xl">Você pode receber até:</p>
+                            <p className="text-3xl tracking-tight font-semibold text-white">R$ 00.000,00</p>
+                        </div>
 
                         <div className="col-span-1 mt-5 flex">
                             <BtnSolic>Solicitar agora</BtnSolic>
                         </div>
+
+                        <p className="text-xs text-white text-justify mt-5 select-none lg:hidden block">
+                            Os valores dessa simulação são calculados com base nos informados. O limite pode mudar de
+                            acordo com o seu saldo no FGTS.
+                        </p>
 
                     </div>
 

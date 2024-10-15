@@ -25,7 +25,7 @@ const Btn = tw.button`
 export default function SeuPotencial(){
     return(
         <section className='lg:px-56 bg-slate-200'>
-            <div className='lg:pt-48 pt-8 lg:max-w-[1265px] max-w-[380px] mx-auto'>
+            <div className='lg:pt-48 pt-8 container-custom'>
                 
                 <div className='bg-white lg:h-96 h-[45rem] lg:w-[1000px] rounded-3xl mx-auto shadow-lg'/>
                     

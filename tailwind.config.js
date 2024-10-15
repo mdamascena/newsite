@@ -5,6 +5,7 @@ module.exports = {
     './pages/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
     './app/**/*.{js,jsx}',
+    './styles/globals.css',
     './src/**/*.{js,jsx}',
     "./node_modules/@nextui-org/theme/dist/**/*.{js, jsx}",
   ],

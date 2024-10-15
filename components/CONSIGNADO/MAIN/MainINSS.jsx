@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import ImgMain from '../../../public/img/modelo_main_inss3.png'
 import tw from 'tailwind-styled-components'
-import Taxas from '../TAXA/TaxaINSS'
-import Analise from '../../GERAL/ANALISE/Analise'
+import Analise from '../../GERAL/SECTION/Analise'
+import TaxaGuru from '../../GERAL/SECTION/TaxaGuru'
 import { LuCheckCircle } from "react-icons/lu"
 
 const BtnCalc = tw.button`
@@ -113,7 +113,13 @@ export default function MainFGTS() {
                 </div>
             </div>
             
-            <Taxas />
+            <TaxaGuru 
+                TituloGuru={'Equilibre as sua contas e viva a tranquilidade'} 
+                DescrisaoGuro={'As melhores taxas de juros para aposentados e pensionistas do INSS, BPC/LOAS'} 
+                DescrisaoProduto={'Empréstimo Consignado'} 
+                Taxa={'1,50%'} 
+                DescrisaoTaxa={'A melhor taxa entre empréstimos para aposentados e pensionistas INSS, BPC/LOAS.'}
+            />
             <Analise/>
         </main>
     )

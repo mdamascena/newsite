@@ -51,7 +51,7 @@ export default function ModSlide() {
     return (
         <section>
 
-            <div className='lg:max-w-[1265px] lg:mx-auto max-w-[380px] mx-4 h-[100vh] grid'>
+            <div className='container-custom h-[100vh] grid'>
                 
                 <div className='content-center'>
                     <h1 className='text-blue-950 saturate-150 lg:text-4xl text-2xl font-semibold tracking-tight text-center lg:mb-24 mb-8 lg:mx-24'>

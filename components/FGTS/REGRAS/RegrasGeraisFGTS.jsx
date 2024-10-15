@@ -36,7 +36,7 @@ export default function SectionDescFGTS() {
     return (
         <section className="bg-slate-50 select-none lg:pt-16">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[1265px] max-w-[380px] lg:mx-auto mx-4">
+            <div className="grid grid-cols-1 container-custom">
                 <div className="col-span-1 lg:order-2 lg:ml-10 lg:my-auto">
                     <div className="mb-10">
                         <h2 className="text-4xl lg:text-5xl font-semibold tracking-tighter text-blue-500 mb-2 pt-8 lg:pt-0">Condições Gerais</h2>
