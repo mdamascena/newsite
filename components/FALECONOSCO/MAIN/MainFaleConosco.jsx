@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const Title = tw.div`
-    py-5
+    pt-5
     lg:text-5xl
     text-3xl
     text-center 
@@ -30,7 +30,7 @@ export default function MainFC() {
     return (
         <main>
             
-            <div className="px-6 lg:px-44 lg:pt-20 pt-20 grid grid-cols-1 lg:grid-cols-2">
+            <div className="container-custom lg:pt-36 pt-20 grid grid-cols-1 lg:grid-cols-2">
                 
                 <div className='lg:my-auto  col-span-1'>
                     

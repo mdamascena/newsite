@@ -50,7 +50,7 @@ export default function Regras(){
     return(
         <section id='analise' className='bg-white select-none'>
             
-            <div className="relative container-custom">
+            <div className="relative container-custom lg:py-[15vh] py-5">
                 
                 <div className='grid grid-cols-1 lg:grid-cols-3'>
                     

@@ -7,17 +7,15 @@ import SectioDescrisao from "../DESCRICAO/Descricao"
 import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
-import SectioAnalise from "../../GERAL/ANALISE/Analise"
+import SectioAnalise from "../../GERAL/SECTION/Analise"
 import Simulador from '../SIMULADOR/SimuladorCredluz'
 
 export default function MainCredluz() {
 
     const [showModal, setShowModal] = useState(false);
-
     const HandleShowModal = () =>{
         setShowModal(true)
     }
-
 
     return (
         <main className="select-none">
