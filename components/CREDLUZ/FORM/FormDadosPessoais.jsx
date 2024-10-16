@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { getCidade, getEnderecoCep, getEstado } from "../../../services/servicesCredLuz/apiCep"
+import { toast, ToastContainer } from "react-toastify"
 
 export default function FormDadosPessoais({ backStep }) {
 
@@ -50,7 +51,6 @@ export default function FormDadosPessoais({ backStep }) {
             getEnderecoCep(cepWatch)
                 .then((data) => {
                     setSemCep(true);
-
                     setCep(data.cep)
                     setEstadoCep(data.estado);
                     setCidadeCep(data.localidade);
@@ -60,17 +60,26 @@ export default function FormDadosPessoais({ backStep }) {
                 .catch((err) => {
                     setSemCep(true);
                     console.log('Erro ao buscar endereço:', err)
+                    toast.info('Erro ao buscar endereço. Verifique o CEP ou preencha seu endereço.', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 });
         }
     }, [cepWatch])
     
-    // useEffect(() => {
-    //     if(semCep){
-    //         getEstado()
-    //             .then((data) => setUfs(data))
-    //             .catch((err) => console.log('Erro ao buscar Uf', err))
-    //     }
-    // }, [semCep])
+    useEffect(() => {
+        if(semCep){
+            getEstado()
+                .then((data) => setUfs(data))
+                .catch((err) => console.log('Erro ao buscar Uf', err))
+        }
+    }, [semCep])
 
     useEffect(() => {
         if(ufWatch){
@@ -110,6 +119,8 @@ export default function FormDadosPessoais({ backStep }) {
                 variants={container} 
                 className="grid grid-cols-6 xl:px-7"
                 >
+                
+                <ToastContainer />
 
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
