@@ -13,7 +13,6 @@ const LiMod = tw.li`
     ${(p) => (p.$isActive ? 'text-blue-500' : 'text-slate-300 hover:text-blue-500')}
     ${(p) => (p.$isActive ? 'lg:border-l-4 lg:border-blue-500' : 'lg:hover:border-l-4 lg:hover:border-blue-500')}
 `
-
 const Title = tw.h2`
     select-none
     text-2xl
@@ -51,10 +50,11 @@ export default function ModSlide() {
     return (
         <section>
 
-            <div className='container-custom h-[100vh] grid'>
+            <div className='container-custom lg:px-8 py-[10vh] grid'>
                 
                 <div className='content-center'>
-                    <h1 className='text-blue-950 saturate-150 lg:text-4xl text-2xl font-semibold tracking-tight text-center lg:mb-24 mb-8 lg:mx-24'>
+
+                    <h1 className='text-blue-950 saturate-150 lg:text-4xl text-2xl font-semibold tracking-tight text-center lg:mb-10 mb-8 lg:mx-24'>
                         Descubra uma variedade de opções de empréstimos,
                         <span className='text-blue-400'> tudo em um só lugar!</span> 
                     </h1>

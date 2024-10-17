@@ -1,11 +1,11 @@
-import Modalidades from "../MODALIDADES/Modalidades"
 import Simulador from "../SIMULADOR/SimuladorGeral"
-import SlideModalidade from "../MODALIDADES/SlideModalidade"
-import SeuPotencial from "../SECTIONS/LiberePotencial"
 import SeuPerfil from "../SECTIONS/Perfil"
 import tw from 'tailwind-styled-components'
+import Modalidades from "../MODALIDADES/Modalidades"
+import SlideModalidade from "../SECTIONS/SlideModalidade"
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
+import SeuPotencial from "../SECTIONS/LiberePotencial"
 
 const CardMod = tw.div`
     group

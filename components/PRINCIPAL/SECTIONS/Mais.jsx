@@ -9,7 +9,6 @@ import Image from 'next/image'
 
 const CardVant = tw.div`
     col-span-1
-    
     bg-[#0006b0]
     rounded-xl 
     lg:p-6
