@@ -13,9 +13,9 @@ import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
 import {Accordion, AccordionItem} from "@nextui-org/react"
 import { TbMessage2Question } from "react-icons/tb"
-import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
-import { PiWarningCircleLight } from "react-icons/pi"
 import ModalGenero from '../../GERAL/MODAL/ModalGenero'
+import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
+import { PiWarningCircleLight } from "react-icons/pi";
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -42,7 +42,6 @@ export default function FormIdentificacao({onNext, backStep}) {
 
     const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormDataLuz();
-    const [showAlert, setShowAlert] = useState(false);
     const registerWithMask = useHookFormMask(register);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -59,12 +58,15 @@ export default function FormIdentificacao({onNext, backStep}) {
 
     useEffect(() => {
         if (errors.genero) {
-        setShowAlert(true);
-        const timeoutId = setTimeout(() => {
-            setShowAlert(false);
-        }, 5000);
-
-        return () => clearTimeout(timeoutId);
+            toast.error(errors.genero.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }, [errors.genero]);
 
@@ -95,34 +97,9 @@ export default function FormIdentificacao({onNext, backStep}) {
                 initial={'hidden'} 
                 animate={'visible'}
                 variants={container} 
-                className="grid grid-cols-6 xl:px-7"
-                >
-                    <AnimatePresence mode="wait">
-                        {showAlert && errors.genero && (
-                            <motion.div 
-                                initial={{x:100}}
-                                animate={{x:0}}
-                                exit={{opacity:0, x:100}}
-                                >
-            
-                                <Alert className="lg:mt-5 mt-[12vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
-                                    <div className="">
-                                        <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
-                                    </div>
-                                    
-                                    <div className="">
-                                        <AlertTitle className='text-red-500 font-semibold'>
-                                            Opção inválida
-                                        </AlertTitle>
-                                        <AlertDescription className='text-red-500 font-light flex'>
-                                            {errors.genero?.message}
-                                        </AlertDescription>
-                                    </div>
-                                </Alert>
-
-                            </motion.div>
-                        )}
-                    </AnimatePresence> 
+                className="grid grid-cols-6 xl:px-7">
+                
+                <ToastContainer />
                 
                 {/*Titulo do step*/}
                 <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center mb-3 lg:mb-0">
