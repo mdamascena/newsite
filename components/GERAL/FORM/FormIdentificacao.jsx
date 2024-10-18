@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import {useDisclosure} from "@nextui-org/react"
 import tw from 'tailwind-styled-components'
 import { Input } from "components/ui/input"
@@ -6,14 +6,14 @@ import { useHookFormMask } from "use-mask-input"
 import { useFormContext, Controller} from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { motion, AnimatePresence } from 'framer-motion'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import BtnNext from '../BUTTON/BtnBlueNext'
+import BtnBack from '../BUTTON/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
 import { TbMessage2Question } from "react-icons/tb"
 import { toast, ToastContainer } from "react-toastify"
-import ModalGenero from '../../GERAL/MODAL/ModalGenero'
+import ModalGenero from '../MODAL/ModalGenero'
 
 
 const OptLabel = tw(motion.label)`

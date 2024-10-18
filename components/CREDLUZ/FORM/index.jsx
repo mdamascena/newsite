@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
@@ -8,7 +8,7 @@ import { useFormData } from '../../../context/FormContext';
 import BaseForm from '../../GERAL/FORM/BaseForm';
 
 const Step1 = dynamic(() => import('../../GERAL/FORM/FormCadastro'));
-const Step2 = dynamic(() => import('../FORM/FormIdentificacao'));
+const Step2 = dynamic(() => import('../../GERAL/FORM/FormIdentificacao'));
 const Step3 = dynamic(() => import('../FORM/FormTipoOcupacao'));
 const Step4 = dynamic(() => import('../FORM/FormTitularCia'));
 const Step5 = dynamic(() => import('../FORM/FormDadosPessoais'))
@@ -20,29 +20,29 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
     const [step, setStep] = useState(1);
     const { formData, atualizarForm } = useFormData();
 
-    const credLuzSteps = [
+    const credLuzSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
         {key: "Identificação", thresholds : 20},
         {key: "Perfil ocupacional", thresholds : 40},
         {key: "Titular da fatura", thresholds : 60},
         {key: "Contato e localidade", thresholds : 80}
-    ];
+    ], []);
 
-    const credLuzTitle = [
+    const credLuzTitle = useMemo(() => [
         "Vamos começar!",
         "Um pouco mais sobre você",
         "O que você faz da vida?",
         "Quem paga a luz?",
         "Onde você está no mapa?"
-    ];
+    ], []);
 
-    const credLuzDescription = [
+    const credLuzDescription = useMemo(() => [
         "Preencha seus dados iniciais para criarmos a sua conta",
         "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
         "Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!",
         "É você que manda apagar a luz para não vir caro? Conta pra gente!",
         "Queremos saber onde mora e como falamos com você"
-    ];
+    ], []);
 
     const methods = useForm({
         resolver: zodResolver(schemas[step - 1]),
@@ -55,7 +55,7 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         setTitulo(credLuzTitle[step - 1]);
         setDescricao(credLuzDescription[step - 1]);
         setStepCurrent(credLuzSteps)
-    }, [step, setProgressChange, setTitulo, setDescricao, setStepCurrent, methods, formData]);
+    }, [step, setProgressChange, setTitulo, setDescricao, setStepCurrent, credLuzTitle, credLuzDescription, credLuzSteps ]);
 
     const nextStep = (data) => {
         atualizarForm(data)
