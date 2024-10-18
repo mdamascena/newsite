@@ -84,7 +84,7 @@ export default function FormCadastro({onNext}) {
                 >
                 
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center mb-3 lg:mb-0">
+                <div className="container-form-head">
                     <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Cadastro de conta
@@ -96,7 +96,7 @@ export default function FormCadastro({onNext}) {
                 </div>
 
                 {/*Form do step*/}
-                <div className="col-span-6 grid grid-cols-6 gap-2.5 lg:content-center content-start lg:min-h-[60vh] min-h-[55vh]">
+                <div className="grid-cols-6 container-form-body">
 
                     <div className="col-span-6">
                         <Input
@@ -137,11 +137,11 @@ export default function FormCadastro({onNext}) {
                         Crie uma senha simples
                     </h5>
                     
-                    <div className="col-span-3">
+                    <div className="lg:col-span-3 col-span-6">
                         <div className="relative">
                             <Input type={inputSenha} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
-                                placeholder="Senha"
+                                placeholder="Digite uma senha"
                                 {...register('senha')} 
                             />
 
@@ -154,12 +154,12 @@ export default function FormCadastro({onNext}) {
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                     </div>
                     
-                    <div className="col-span-3">
+                    <div className="lg:col-span-3 col-span-6">
                         <div className="relative">
                             <Input type={inputSenhaConfirmacao} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 {...register('senhaConfirmacao')}
-                                placeholder="Confirme" 
+                                placeholder="Confirme a senha" 
                             />
 
                             {visivelSenhaConfirmacao ? (
@@ -200,7 +200,7 @@ export default function FormCadastro({onNext}) {
                 </div>
 
                 {/*Botão do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center">
+                <div className="!grid-cols-1 container-form-footer">
                     <BtnNext nome={'Criar conta'} type="submit"/>
                 </div>
             

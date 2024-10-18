@@ -75,24 +75,24 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                theme:"colored",
             });
         }
     }, [errors.tipoOcupacao]);
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-
+            <ToastContainer />
+            
             <motion.div 
                 initial={'hidden'} 
                 animate={'visible'}
                 variants={container}
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
-                
-                <ToastContainer />
-                
+      
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
+                <div className="container-form-head">
 
                     <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
@@ -106,10 +106,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 </div>
 
                 {/*Opções do step*/}   
-                <div className="col-span-6 content-center lg:min-h-[60vh] min-h-[55vh] ">
-                    
-                    
-
+                <div className="container-form-body">
+               
                     <Controller
                         name="tipoOcupacao"
                         control={control}
@@ -238,7 +236,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 </div>
                 
                 {/*Botões*/}
-                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                <div className="container-form-footer">
 
                     <div className="col-span-2">
                         <BtnBack type="button" nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 

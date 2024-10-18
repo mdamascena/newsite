@@ -6,7 +6,7 @@ import SectioDescrisao from "../DESCRICAO/Descricao"
 import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
-import SectioAnalise from "../../GERAL/ANALISE/Analise"
+import SectioAnalise from "../../GERAL/SECTION/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
 
@@ -17,7 +17,7 @@ export default function MainPrincipal() {
             
             <div className="bgBrasaoFast">
                 
-                <div className="pb-5 lg:pb-0 pt-20 px-8 md:px-16 lg:px-32">
+                <div className="pb-5 lg:pb-0 pt-20 container-custom">
                     
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                         

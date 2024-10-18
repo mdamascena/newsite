@@ -11,11 +11,10 @@ import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
-import {Accordion, AccordionItem} from "@nextui-org/react"
 import { TbMessage2Question } from "react-icons/tb"
+import { toast, ToastContainer } from "react-toastify"
 import ModalGenero from '../../GERAL/MODAL/ModalGenero'
-import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
-import { PiWarningCircleLight } from "react-icons/pi";
+
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -61,11 +60,14 @@ export default function FormIdentificacao({onNext, backStep}) {
             toast.error(errors.genero.message, {
                 position: "top-right",
                 autoClose: 5000,
+                type: "error",
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
+                theme:"colored",
                 progress: undefined,
+                
             });
         }
     }, [errors.genero]);
@@ -93,16 +95,17 @@ export default function FormIdentificacao({onNext, backStep}) {
 
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
             
+            <ToastContainer/>
+            
             <motion.div
                 initial={'hidden'} 
                 animate={'visible'}
                 variants={container} 
-                className="grid grid-cols-6 xl:px-7">
-                
-                <ToastContainer />
-                
+                className="grid grid-cols-6 xl:px-7"
+                >
+
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center mb-3 lg:mb-0">
+                <div className="container-form-head">
                     <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Dados pessoais
@@ -114,7 +117,8 @@ export default function FormIdentificacao({onNext, backStep}) {
                 </div>
 
                 {/*Form do step*/}
-                <div className="col-span-6 grid grid-cols-6 gap-2.5 content-center lg:min-h-[60vh] min-h-[55vh]">
+                <div className="container-form-body">
+                    
                     <div className="lg:col-span-4 col-span-6">
                         <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
@@ -147,7 +151,6 @@ export default function FormIdentificacao({onNext, backStep}) {
                         className='col-span-6 grid grid-cols-6 select-none'
                         render={({ field: { onChange, value } }) => (
                                 
-                            
                             <div value={value} onChange={onChange} className="grid grid-cols-6 col-span-6 gap-3 items-center">
                                     
                                 <motion.div className="col-span-3" key="masculino" variants={item}>
@@ -194,7 +197,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                 </div>
 
                 {/*Botão do step*/}
-                <div className="grid grid-cols-7 gap-2.5 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center">
+                <div className="container-form-footer">
                     <div className="col-span-2">
                         <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
                     </div>
@@ -203,7 +206,6 @@ export default function FormIdentificacao({onNext, backStep}) {
                         <BtnNext event={handleSubmit(onSubmit)} nome={'Avançar'} type="submit"/>
                     </div>
                 </div>
-            
             </motion.div>
 
         </form>

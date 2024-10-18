@@ -40,7 +40,7 @@ export default function Regras(){
     return(
         <section className='bg-white select-none'>
             
-            <div className='grid grid-cols-1 lg:grid-cols-2 py-36 container-custom'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 lg:py-36 py-10 container-custom'>
                 
                 <div className='col-span-1 mb-8 lg:mb-0 flex lg:justify-start'>
                     <Image className={`rounded-3xl duration-1000 ${movImg}`} src={sma} width={584} alt='' />

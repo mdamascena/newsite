@@ -71,6 +71,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                theme:"colored",
             });
         }
     }, [errors.titularCia]);
@@ -78,17 +79,17 @@ export default function FormTitularCia({ onNext, backStep }) {
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
             
+            <ToastContainer />
+
             <motion.div 
                 initial={'hidden'} 
                 animate={'visible'} 
                 variants={container} 
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
-                
-                <ToastContainer />
 
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-end">
+                <div className="container-form-head">
                     <div className="flex items-end relative">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
                             Titularidade conta de luz
@@ -101,7 +102,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 {/*Opções*/}
-                <div className="col-span-6 content-center lg:content-center lg:min-h-[60vh] min-h-[55vh]">
+                <div className="container-form-body">
                     
                     <Controller
                         name="titularCia"
@@ -149,7 +150,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 {/*Botões*/}
-                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                <div className="container-form-footer">
                     <div className="col-span-2">
                         <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
                     </div>

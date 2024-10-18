@@ -27,7 +27,6 @@ export default function ComoFunciona(){
     const [scrollCel, setScrollCel] = useState('opacity-0 rotate-90 -translate-x-[170px]');
     const [scrollDesc, setScrollDesc] = useState('opacity-0 lg:translate-x-[30px]');
 
-
     useEffect(()=>{
         const intersectionObserver = new IntersectionObserver((entries)=>{
             if(entries.some((entry) => entry.isIntersecting)){
@@ -199,6 +198,9 @@ export default function ComoFunciona(){
 
                 </div>
 
+                
+            </div>
+            
                 <Carousel 
                     autoPlay 
                     infiniteLoop 
@@ -307,9 +309,6 @@ export default function ComoFunciona(){
                     </div>
 
                 </Carousel>
-                
-            </div>
-            
            
         </section>
        

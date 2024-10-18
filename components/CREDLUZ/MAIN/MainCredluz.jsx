@@ -77,7 +77,7 @@ export default function MainCredluz() {
                                 <Image width={450} src={cel} alt="" />
                             </figure>
 
-                            <div className="col-span-1 my-auto mx-2.5 lg:mx-1 justify-center flex">
+                            <div className="col-span-1 my-auto lg:mx-1 justify-center flex">
                                 <Simulador/>
                             </div>
                             

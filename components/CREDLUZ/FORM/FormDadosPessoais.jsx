@@ -71,7 +71,7 @@ export default function FormDadosPessoais({ backStep }) {
                     });
                 });
         }
-    }, [cepWatch])
+    }, [cepWatch, setValue])
     
     useEffect(() => {
         if(semCep){
@@ -123,7 +123,7 @@ export default function FormDadosPessoais({ backStep }) {
                 <ToastContainer />
 
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
+                <div className="container-form-head">
                     <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Estamos quase lá!
@@ -135,7 +135,7 @@ export default function FormDadosPessoais({ backStep }) {
                 </div>
 
                 {/*Form do step*/}
-                <div className="col-span-6 grid grid-cols-6 content-start lg:content-center pt-5 lg:min-h-[60vh] min-h-[55vh]"> 
+                <div className="container-form-body"> 
 
                     <div className="col-span-6 grid grid-cols-6 gap-2.5">
 
@@ -294,7 +294,7 @@ export default function FormDadosPessoais({ backStep }) {
                 </div>
 
                 {/*Botões*/}
-                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                <div className="container-form-footer">
                     <div className="col-span-2">
                         <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>
                     </div>
