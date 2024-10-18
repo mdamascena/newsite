@@ -1,26 +1,23 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import {useDisclosure} from "@nextui-org/react"
 import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
-import ModalOpt from '../../GERAL/MODAL/ModalOpt'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import { boolean } from "zod"
+import ModalOpt from '../ModalOpt'
+import BtnNext from '../BUTTON/BtnBlueNext'
 
 export default function FormCadastro({onNext}) {
 
-    // Controle de formulario react-hook-form
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
     const registerWithMask = useHookFormMask(register);
 
     const acceptedTerms = watch("termos");
-
-    const {atualizarForm} = useFormDataLuz();
+    const {atualizarForm} = useFormData();
 
     // State para definir o campo password visivel.
     const [inputSenha, setInputSenha] = useState('password');
@@ -159,7 +156,7 @@ export default function FormCadastro({onNext}) {
                             <Input type={inputSenhaConfirmacao} className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                                 }`}
                                 {...register('senhaConfirmacao')}
-                                placeholder="Confirme a senha" 
+                                placeholder="Confirme sua senha" 
                             />
 
                             {visivelSenhaConfirmacao ? (

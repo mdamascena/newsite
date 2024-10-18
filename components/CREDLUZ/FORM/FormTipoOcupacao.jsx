@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import { FaFemale } from "react-icons/fa"
 import { MdOutlineHandyman, MdOutlineMilitaryTech } from "react-icons/md"
 import { FaUserTie } from "react-icons/fa6"
@@ -52,7 +52,7 @@ const item = {
 export default function FormTipoOcupacao({onNext, backStep}) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
-    const {atualizarForm, formData} = useFormDataLuz()
+    const {atualizarForm, formData} = useFormData()
 
     function onSubmit(data){
         atualizarForm(data)

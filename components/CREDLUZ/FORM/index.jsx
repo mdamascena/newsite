@@ -4,10 +4,10 @@ import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
 import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useFormDataLuz } from '../../../context/FormContextLuz';
+import { useFormData } from '../../../context/FormContext';
 import BaseForm from '../../GERAL/FORM/BaseForm';
 
-const Step1 = dynamic(() => import('../FORM/FormCadastro'));
+const Step1 = dynamic(() => import('../../GERAL/FORM/FormCadastro'));
 const Step2 = dynamic(() => import('../FORM/FormIdentificacao'));
 const Step3 = dynamic(() => import('../FORM/FormTipoOcupacao'));
 const Step4 = dynamic(() => import('../FORM/FormTitularCia'));
@@ -18,7 +18,7 @@ const schemas = [cadastroSchema, identificacaoSchema, tipoOcupacao, titularCia, 
 export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
     const [step, setStep] = useState(1);
-    const { formData, atualizarForm } = useFormDataLuz();
+    const { formData, atualizarForm } = useFormData();
 
     const credLuzSteps = [
         {key: "Registrar conta", thresholds : 0},
