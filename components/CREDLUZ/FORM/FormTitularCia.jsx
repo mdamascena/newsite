@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import { motion, AnimatePresence } from 'framer-motion'
 import { RiUserFollowLine, RiUserForbidLine } from "react-icons/ri"
 import { IoIosArrowBack } from "react-icons/io"
@@ -47,7 +47,7 @@ const item = {
 export default function FormTitularCia({ onNext, backStep }) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormDataLuz();
+    const { atualizarForm, formData } = useFormData();
 
     function onSubmit(data){
         atualizarForm(data);

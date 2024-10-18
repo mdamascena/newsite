@@ -3,7 +3,7 @@ import tw from 'tailwind-styled-components'
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext, Controller} from "react-hook-form"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
@@ -39,7 +39,7 @@ const OptLabel = tw(motion.label)`
 export default function FormIdentificacao({onNext, backStep}) {
 
     const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormDataLuz();
+    const { atualizarForm, formData } = useFormData();
     const registerWithMask = useHookFormMask(register);
 
     const onSubmit = (data) => {

@@ -1,7 +1,7 @@
 import { Input } from "components/ui/input"
 import { useEffect, useState } from "react"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "components/ui/selectFC"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import { Controller, useFormContext } from "react-hook-form"
 import { useHookFormMask } from "use-mask-input"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
@@ -19,7 +19,7 @@ export default function FormDadosPessoais({ backStep }) {
     const { register, watch, setValue, handleSubmit, control, formState: { errors }, getValues } = useFormContext();
     const registerWithMask = useHookFormMask(register);
     
-    const { atualizarForm } = useFormDataLuz()
+    const { atualizarForm } = useFormData()
     const [comCep, setComCep] = useState(true);
     const [semCep, setSemCep] = useState(false)
 

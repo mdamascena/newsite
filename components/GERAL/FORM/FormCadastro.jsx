@@ -1,32 +1,23 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import {useDisclosure} from "@nextui-org/react"
 import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
-import ModalOpt from '../../GERAL/ModalOpt'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import { boolean } from "zod"
+import ModalOpt from '../ModalOpt'
+import BtnNext from '../BUTTON/BtnBlueNext'
 
 export default function FormCadastro({onNext}) {
 
-    //Titulos que devem ser redenrizados no form Base
-    // useEffect(() => {
-    //     setTitulo("Vamos começar!");    
-    //     setDescricao("Preencha seus dados iniciais para criarmos a sua conta");
-    // }, [setTitulo, setDescricao]);
-
-    // Controle de formulario react-hook-form
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
     const registerWithMask = useHookFormMask(register);
 
     const acceptedTerms = watch("termos");
-
-    const {atualizarForm} = useFormDataLuz();
+    const {atualizarForm} = useFormData();
 
     // State para definir o campo password visivel.
     const [inputSenha, setInputSenha] = useState('password');

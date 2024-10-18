@@ -1,10 +1,10 @@
 import { createContext, useContext, useState } from "react";
 
-const FormLuzContext = createContext();
+const FormDataContext = createContext();
 
-export const useFormDataLuz = () => useContext(FormLuzContext);
+export const useFormData = () => useContext(FormDataContext);
 
-export const FormProviderLuz = ({ children }) => {
+export const FormDataProvider = ({ children }) => {
 
     const [formData, setFormData] = useState({})
 
@@ -16,8 +16,8 @@ export const FormProviderLuz = ({ children }) => {
     }
 
     return (
-        <FormLuzContext.Provider value={{ formData, atualizarForm }}>
+        <FormDataContext.Provider value={{ formData, atualizarForm }}>
             {children}
-        </FormLuzContext.Provider>
+        </FormDataContext.Provider>
     )
-}
+};

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import tw from 'tailwind-styled-components'
 import { Controller, useFormContext } from "react-hook-form"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import {Accordion, AccordionItem} from "@nextui-org/react"
 import { motion, AnimatePresence } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
@@ -55,7 +55,7 @@ export default function FormGenero({ onNext, backStep }) {
     // }, [setTitulo, setDescricao]);
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormDataLuz();
+    const { atualizarForm, formData } = useFormData();
     const [showAlert, setShowAlert] = useState(false);
 
     function onSubmit(data){
