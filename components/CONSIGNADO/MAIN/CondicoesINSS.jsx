@@ -4,7 +4,7 @@ import tw from 'tailwind-styled-components'
 export default function CondicoesINSS() {
 
     return (
-        <section className='relative -top-10'>
+        <section className='-mt-8 -mb-28 relative z-10'>
             <div className='bg-blue-600 text-white lg:rounded-3xl rounded-2xl text-center lg:py-16 py-8'>
                 
                 <div className='grid grid-cols-3'>

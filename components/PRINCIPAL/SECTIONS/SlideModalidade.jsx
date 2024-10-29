@@ -5,6 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const LiMod = tw.li`
     select-none
+    group
     lg:pl-8
     py-3
     my-6
@@ -27,7 +28,7 @@ const Title = tw.h2`
 const Desc = tw.p`
     select-none
     font-light
-    ${(p) => (p.$isActive ? 'text-slate-200' : 'text-slate-400 font-semibold hover:font-semibold hover:text-slate-400')}
+    ${(p) => (p.$isActive ? 'text-slate-400' : 'text-slate-200 group-hover:text-slate-400')}
     text-center
     lg:text-left
 `

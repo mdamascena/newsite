@@ -28,8 +28,9 @@
 
 .container-form-body{
   @apply
-  lg:content-center 
+  lg:content-start 
   lg:min-h-[60vh]
+  lg:pt-8
   content-start
   min-h-[55vh]
   col-span-6

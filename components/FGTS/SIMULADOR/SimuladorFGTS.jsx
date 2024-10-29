@@ -3,7 +3,7 @@ import tw from 'tailwind-styled-components'
 import { useState, useEffect } from "react"
 import { MdOutlineEditCalendar } from 'react-icons/md'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
-import InputMask from "react-input-mask"
+
 
 const BtnSolic = tw.button`
     bg-gradient-to-r 
@@ -50,7 +50,8 @@ export default function SimuladorFGTS() {
                         Descubra o seu limite
                     </h1>
 
-                    <div className=" rounded-lg bg-base-calc p-4 lg:mr-5">
+                    <div className=" rounded-lg bg-base-calc p-4 lg:mr-5 border border-white/50">
+                        
                         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                             <div>
                                 <label className="text-blue-100 text-sm select-none" htmlFor="saldo">Digite seu saldo FGTS</label>
@@ -67,8 +68,6 @@ export default function SimuladorFGTS() {
                                     <IntSolic placeholder='00/00/0000' name="nascimento" inputmode="numeric" />
                                 </div>
                             </div>
-
-                            
                         </div>
 
                     </div>
@@ -82,10 +81,6 @@ export default function SimuladorFGTS() {
                 <div className="lg:col-span-2 col-span-1 lg:pl-20">
 
                     <div className="text-justify mb-4 lg:mb-0">
-
-                        {/* <p className="text-white hidden lg:block select-none">
-                            Grana extra para usar como quiser, sem comprometer sua renda com mensalidades. O desconto é feito diretamente no saldo do FGTS.
-                        </p> */}
 
                         <div className="content-center grid text-center my-2 lg:my-0 p-3 rounded-md">
                             <p className="text-white text-xl">Você pode receber até:</p>

@@ -1,11 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { useForm, FormProvider, useFormContext } from 'react-hook-form';
-import { tipoOcupacao, generoSchema, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
+import { useForm, FormProvider } from 'react-hook-form';
+import { tipoOcupacao, titularCia, dadosPessoaisSchema } from '../../../schema/schemaCredLuz';
 import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormData } from '../../../context/FormContext';
-import BaseForm from '../../GERAL/FORM/BaseForm';
 
 const Step1 = dynamic(() => import('../../GERAL/FORM/FormCadastro'));
 const Step2 = dynamic(() => import('../../GERAL/FORM/FormIdentificacao'));
