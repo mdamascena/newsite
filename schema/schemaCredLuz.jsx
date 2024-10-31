@@ -19,7 +19,7 @@ export const titularCia = z.object({
     })
 })
 
-export const dadosPessoaisSchema = z.object({
+export const dadosPessoaisCredLuz = z.object({
     celular: z.string().length(13, { message: "Celular deve conter 9 números sem contar o DDD" }).refine(value => validatePhoneNumber(value), { message: "Número de celular inválido" }),
     whatsapp: z.string().length(13, { message: "WhatsApp deve conter 9 números sem contar o DDD" }).refine(value => validatePhoneNumber(value), { message: "Número de celular inválido" }),
     logradouro: z.string().min(1, { message: "Digite o logradouro." }),
