@@ -9,7 +9,7 @@ const Card = tw.div`
     col-span-1 
     p-5 rounded-xl 
     bg-white 
-    shadow
+    shadow-lg
     duration-200 
     hover:scale-110
 `
