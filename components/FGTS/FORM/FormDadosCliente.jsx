@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
-import { Controller } from "react-hook-form";
 import { useFormData } from "../../../context/FormContext"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue} from "components/ui/select"
 import { Input } from "components/ui/input"
 import { motion } from 'framer-motion'
 import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
@@ -11,10 +9,10 @@ import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 
 export default function FormDadosCliente({onNext, backStep}) {
-
-    const { register, control, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
+const { register, control, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
     const { atualizarForm, formData } = useFormData();
     const registerWithMask = useHookFormMask(register);
+    
     
     const container = {
         hidden: {y: 50, opacity: 0 },
@@ -49,32 +47,6 @@ export default function FormDadosCliente({onNext, backStep}) {
             </div>
 
             <div className="grid-cols-6 container-form-body">
-                <div className="col-span-6">
-                    <Controller
-                        name="estadoCivil"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                        <Select onValueChange={field.onChange} value={field.value}>
-                            <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Estado Civil" />
-                            </SelectTrigger>
-                            
-                            <SelectContent>
-                            <SelectGroup>
-                                <SelectLabel>Selecione...</SelectLabel>
-                                <SelectItem value="1">Solteiro(a)</SelectItem>
-                                <SelectItem value="2">Casado(a)</SelectItem>
-                                <SelectItem value="3">Divorciado(a)</SelectItem>
-                                <SelectItem value="4">Viúvo(a)</SelectItem>
-                                <SelectItem value="5">Separado(a)</SelectItem>
-                                <SelectItem value="6">União estável</SelectItem>
-                            </SelectGroup>
-                            </SelectContent>
-                        </Select>
-                        )}
-                    />
-                </div>
 
                 <div className="col-span-6 grid grid-cols-6 gap-2.5">
                         <div className="lg:col-span-3 col-span-6">
