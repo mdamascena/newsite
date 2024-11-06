@@ -8,15 +8,12 @@ const BtnCalc = tw.button`
     from-yellow-300 
     to-amber-500
     text-xl 
-    w-96
+    w-full
+    lg:w-96
     lg:py-4
     py-3
-    lg:flex-none
-    flex-1
     rounded-xl
     text-white
-    lg:mt-8
-    my-8
     shadow-md
     shadow-amber-400/50 
     border-b-2 
@@ -34,16 +31,18 @@ const BtnCalc = tw.button`
 export default function SectionDescFGTS() {
 
     return (
-        <section className="bg-slate-50 select-none lg:pt-16">
+        <section className="bg-slate-50 select-none">
 
-            <div className="grid grid-cols-1 container-custom">
-                <div className="col-span-1 lg:order-2 lg:ml-10 lg:my-auto">
-                    <div className="mb-10">
+            <div className="grid grid-cols-2 lg:pt-16 container-custom">
+                
+                <div className="lg:col-span-1 col-span-2 lg:order-2 lg:ml-10 px-2 grid content-center">
+                    
+                    <div>
                         <h2 className="text-4xl lg:text-5xl font-semibold tracking-tighter text-blue-500 mb-2 pt-8 lg:pt-0">Condições Gerais</h2>
                         <p className="text-md lg:text-xl text-slate-400">O que precisa para fazer a antecipação do meu saque aniversário?</p>
                     </div>
 
-                    <ul className="mt-5 lg:text-xl text-md">
+                    <ul className="lg:text-xl text-md my-8">
                         <li className="flex my-2">
                             <HiCheck className="p-1 rounded-lg text-blue-600 bg-blue-200 text-3xl mr-1 lg:mr-2 my-auto" />
                             <span className="my-auto text-slate-400">Ser maior de 18 anos</span>
@@ -67,7 +66,7 @@ export default function SectionDescFGTS() {
                     </div>
                 </div>
 
-                <figure className="col-span-1 lg:order-1 px-11 lg:px-0 content-end lg:justify-end justify-center">
+                <figure className="lg:col-span-1 col-span-2 lg:order-1 px-8 lg:px-10 mt-5 lg:mt-0 lg:justify-end justify-center">
                     <Image src={imgFGTS} alt="" />
                 </figure>
 

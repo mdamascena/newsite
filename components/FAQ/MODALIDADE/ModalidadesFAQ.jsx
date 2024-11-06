@@ -8,7 +8,6 @@ import { AiOutlineBarcode } from "react-icons/ai";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-
 const CardMod = tw.div`
     group
     bg-white
@@ -28,65 +27,68 @@ const CardMod = tw.div`
     rounded-lg
 `;
 
-
 export default function ModalidadesFAQ(){
     return(
-        <section>
+        <section className='select-none'>
 
-            <div className='mx-4 lg:mx-44 select-none hidden lg:block'>
-                <div className='grid grid-cols-3 relative bottom-24'>
+            <div className='container-custom'>
 
-                    <CardMod>
-                        <div className="pt-12 pb-8 duration-300 flex items-center justify-center">
-                            <RiLightbulbFlashLine className="text-5xl mr-5 text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                            <div>
-                                <p className="text-xl font-semibold text-slate-400 group-hover:text-white">Empréstimo</p>
-                                <p className="text-lg text-slate-400 group-hover:text-white">Débito na conta de luz</p>
+                <div className='hidden lg:block'>
+
+                    <div className='grid grid-cols-3 relative bottom-24'>
+                        <CardMod>
+                            <div className="pt-12 pb-8 duration-300 flex items-center justify-center">
+                                <RiLightbulbFlashLine className="text-5xl mr-5 text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                <div>
+                                    <p className="text-xl font-semibold text-slate-400 group-hover:text-white">Empréstimo</p>
+                                    <p className="text-lg text-slate-400 group-hover:text-white">Débito na conta de luz</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className='text-blue-600 group-hover:text-white mr-10 mb-2'>
-                            <Link className='flex items-center justify-end' passHref href="#">
-                                Saiba mais
-                                <RxArrowRight className='ml-2 group-hover:rotate-90 duration-200'/>
-                            </Link> 
-                        </div>
-                    </CardMod>
-
-                    <CardMod>
-                        <div className="pt-12 pb-8 duration-300 flex items-center justify-center">
-                            <MdOutlineCake className="text-5xl mr-5 text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                            <dib>
-                                <p className="text-xl font-semibold text-slate-400 group-hover:text-white">Antecipação</p>
-                                <p className="text-lg text-slate-400 group-hover:text-white">Saque-Aniversário FGTS</p>
-                            </dib>
-                        </div>
-                        <div className='text-blue-600 group-hover:text-white mr-10 mb-2'>
-                            <Link className='flex items-center justify-end' passHref href="#">
-                                Saiba mais
-                                <RxArrowRight className='ml-2 group-hover:rotate-90 duration-200' /> 
-                            </Link> 
-                        </div>
-                    </CardMod>
-
-                    <CardMod>
-                        <div className="pt-12 pb-8 duration-300 flex items-center justify-center">
-                            <AiOutlineBarcode className="text-5xl mr-5 text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
-                            <div>
-                                <p className="text-xl font-semibold text-slate-400 mr-5 group-hover:text-white">Empréstimo</p>
-                                <p className="text-lg text-slate-400 group-hover:text-white">Parcelas pagas no carnê</p>
+                            <div className='text-blue-600 group-hover:text-white mr-10 mb-2'>
+                                <Link className='flex items-center justify-end' passHref href="#">
+                                    Saiba mais
+                                    <RxArrowRight className='ml-2 group-hover:rotate-90 duration-200'/>
+                                </Link> 
                             </div>
-                        </div>
-                        <div className='text-blue-600 group-hover:text-white mr-10 mb-2'>
-                            <Link className='flex items-center justify-end' passHref href="#">
-                                Saiba mais
-                                <RxArrowRight className='ml-2 group-hover:rotate-90 duration-200' /> 
-                            </Link> 
-                        </div>
-                    </CardMod>
-                    
+                        </CardMod>
+
+                        <CardMod>
+                            <div className="pt-12 pb-8 duration-300 flex items-center justify-center">
+                                <MdOutlineCake className="text-5xl mr-5 text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                <dib>
+                                    <p className="text-xl font-semibold text-slate-400 group-hover:text-white">Antecipação</p>
+                                    <p className="text-lg text-slate-400 group-hover:text-white">Saque-Aniversário FGTS</p>
+                                </dib>
+                            </div>
+                            <div className='text-blue-600 group-hover:text-white mr-10 mb-2'>
+                                <Link className='flex items-center justify-end' passHref href="#">
+                                    Saiba mais
+                                    <RxArrowRight className='ml-2 group-hover:rotate-90 duration-200' /> 
+                                </Link> 
+                            </div>
+                        </CardMod>
+
+                        <CardMod>
+                            <div className="pt-12 pb-8 duration-300 flex items-center justify-center">
+                                <AiOutlineBarcode className="text-5xl mr-5 text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
+                                <div>
+                                    <p className="text-xl font-semibold text-slate-400 mr-5 group-hover:text-white">Empréstimo</p>
+                                    <p className="text-lg text-slate-400 group-hover:text-white">Parcelas pagas no carnê</p>
+                                </div>
+                            </div>
+                            <div className='text-blue-600 group-hover:text-white mr-10 mb-2'>
+                                <Link className='flex items-center justify-end' passHref href="#">
+                                    Saiba mais
+                                    <RxArrowRight className='ml-2 group-hover:rotate-90 duration-200' /> 
+                                </Link> 
+                            </div>
+                        </CardMod>
+                    </div>
+
                 </div>
-            </div>
 
+            </div>
+            
             <Carousel 
                 className='relative bottom-24 lg:hidden' 
                 centerMode 
@@ -96,6 +98,7 @@ export default function ModalidadesFAQ(){
                 showIndicators={false} 
                 showStatus={false}
                 >
+
                 <CardMod>
                     <div className="p-3 duration-300 text-left">
                         <RiLightbulbFlashLine className="text-5xl mb-2 text-blue-600 z-50 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
@@ -128,7 +131,9 @@ export default function ModalidadesFAQ(){
                         </p>
                     </div>
                 </CardMod>
+                
             </Carousel>
+
         </section>
     )
 }

@@ -4,8 +4,6 @@ import { IoPodiumOutline } from 'react-icons/io5'
 import { IoWalletOutline } from 'react-icons/io5'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import celulares from '../../../public/img/model_cel.png'
-import Image from 'next/image'
 
 const CardVant = tw.div`
     col-span-1

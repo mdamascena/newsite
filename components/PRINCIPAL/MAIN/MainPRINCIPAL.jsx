@@ -6,6 +6,7 @@ import SlideModalidade from "../SECTIONS/SlideModalidade"
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
+import Protecao from "../SECTIONS/Protecao"
 
 const CardMod = tw.div`
     group
@@ -85,6 +86,7 @@ export default function MainHome() {
         <SlideModalidade/>
         <Mais/>
         <Taxa/>
+        <Protecao/>
         <SeuPerfil/> 
         <SeuPotencial/>      
         <Simulador/>

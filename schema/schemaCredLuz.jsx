@@ -7,12 +7,6 @@ export const tipoOcupacao = z.object({
     })
 })
 
-export const generoSchema = z.object({
-    genero: z.enum(["0", "1"], {
-        errorMap: () => ({ message: "Selecione um genêro" }),
-    })
-});
-
 export const titularCia = z.object({
     titularCia: z.enum(["0", "1"], {
         errorMap: () => ({ message: "Selecione sua titularidade" }),

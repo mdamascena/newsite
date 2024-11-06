@@ -18,6 +18,8 @@ const Card = tw.div`
     rounded-xl 
     p-2 
     bg-blue-600
+    shadow-lg
+    shadow-blue-700
     hover:bg-blue-50
     lg:h-[230px]
     lg:w-[230px]

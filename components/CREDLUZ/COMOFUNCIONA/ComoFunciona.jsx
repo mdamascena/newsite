@@ -61,7 +61,7 @@ export default function ComoFunciona(){
 
             <div id='ComoFunciona' className="justify-center flex overflow-y-hidden lg:bg-fixed bgComoFuncionaMain">
                 <h1 className="text-white text-2xl lg:text-5xl lg:ml-80 ml-32 tracking-tighter my-12 lg:my-32 font-semibold select-none">
-                    Como Funciona
+                    Como Funciona ?
                 </h1>
             </div>
 
