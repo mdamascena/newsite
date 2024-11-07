@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Link from "next/link"
+import tw from 'tailwind-styled-components'
 import cel from "../../../public/img/PERSO_LUZ_2.png"
 import light from "../../../public/img/LAMPADA.png"
 import SectioDescrisao from "../DESCRICAO/Descricao"
@@ -9,8 +9,42 @@ import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/SECTION/Analise"
 import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
+import { useRouter } from 'next/router'
+
+const BtnCalc = tw.button`
+    bg-gradient-to-r 
+    from-yellow-300 
+    to-amber-500 
+    text-xl 
+    lg:px-32 
+    py-3
+    px-18
+    lg:flex-none
+    flex-1
+    rounded-xl
+    text-white
+    mt-8
+    shadow-md
+    shadow-amber-400/50
+    border-b-2 
+    border-amber-300
+    focus:outline-none
+    hover:shadow-md
+    hover:bg-gradient-to-r 
+    hover:to-amber-500 
+    hover:from-yellow-400
+    hover:scale-105
+    active:scale-90
+    duration-150
+`
 
 export default function MainPrincipal() {
+
+    const router = useRouter();
+    const handleRedirect = () => {
+        router.push('credluz-fast/cadastro');
+    }
+
   return (
     <main>
         <section className="bgMainPrincipal">
@@ -64,9 +98,7 @@ export default function MainPrincipal() {
                             </div>
 
                             <div className="text-center md:text-left">
-                                <Link href="credluz/cadastro" passHref>
-                                    <BtnYellow nome="Solicite aqui" />
-                                </Link>
+                                <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
                             </div>
 
                             <div className="text-[12px] text-white mt-5 text-center lg:text-start">

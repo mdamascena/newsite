@@ -4,6 +4,7 @@ import tw from 'tailwind-styled-components'
 import Condicoes from './CondicoesINSS'
 import TaxaGuru from '../../GERAL/SECTION/TaxaGuru'
 import { LuCheckCircle } from "react-icons/lu"
+import { useRouter } from 'next/router'
 
 const BtnCalc = tw.button`
     bg-gradient-to-r 
@@ -56,6 +57,11 @@ const Card = tw.div`
 
 export default function MainFGTS() {
 
+    const router = useRouter();
+    const handleRedirect = () => {
+        router.push('consignado-inss/cadastro');
+    }
+
     return (
         <main>
             <div className="bgMainFGTS">
@@ -105,7 +111,7 @@ export default function MainFGTS() {
                         </p>
 
                         <div className='flex justify-center lg:justify-start'>
-                            <BtnCalc>Contrate agora</BtnCalc>
+                            <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
                         </div>
 
                     </div>
