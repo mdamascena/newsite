@@ -5,22 +5,10 @@ import{HiOutlineClipboardDocumentList} from 'react-icons/hi2'
 import {PiSignature} from 'react-icons/pi'
 import {HiOutlineIdentification} from 'react-icons/hi2'
 import {CiCalculator1} from 'react-icons/ci'
-import tw from 'tailwind-styled-components'
+import { NumCard } from "../STYLES"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-const NumCard = tw.span`
-    relative 
-    bottom-52
-    font-semibold
-    text-[15rem] 
-    bg-clip-text 
-    text-transparent 
-    bg-gradient-to-t 
-    from-blue-600/10
-    via-blue-600/80
-    to-blue-400
-`
 export default function ComoFunciona(){
 
     const [scrollCF, setScrollCF] = useState(' -translate-x-[50px] -translate-y-full opacity-0');

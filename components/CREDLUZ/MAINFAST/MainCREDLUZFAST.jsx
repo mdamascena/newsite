@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Link from "next/link"
+import { BtnCalc } from "../STYLES"
 import cel from "../../../public/img/PERSO_LUZ_2.png"
 import light from "../../../public/img/LAMPADA.png"
 import SectioDescrisao from "../DESCRICAO/Descricao"
@@ -7,10 +7,16 @@ import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/SECTION/Analise"
-import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
+import { useRouter } from 'next/router'
 
 export default function MainPrincipal() {
+
+    const router = useRouter();
+    const handleRedirect = () => {
+        router.push('credluz-fast/cadastro');
+    }
+
   return (
     <main>
         <section className="bgMainPrincipal">
@@ -64,9 +70,7 @@ export default function MainPrincipal() {
                             </div>
 
                             <div className="text-center md:text-left">
-                                <Link href="credluz/cadastro" passHref>
-                                    <BtnYellow nome="Solicite aqui" />
-                                </Link>
+                                <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
                             </div>
 
                             <div className="text-[12px] text-white mt-5 text-center lg:text-start">

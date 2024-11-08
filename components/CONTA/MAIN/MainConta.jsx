@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import logoBranco from '../../../public/img/LOGO_FULL_BRANCO.png'
-import tw from 'tailwind-styled-components'
+import { BtnHelp, BtnConta } from '../STYLES'
 import Login from '../FORM/Login'
 import Reset from '../FORM/Reset'
 import { useState } from 'react'
@@ -13,44 +13,7 @@ import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 const WP = 'https://bit.ly/wa-plancredi-api'
 const TEL = 'tel:8008789853'
 
-const BtnConta = tw.button`
-    text-white 
-    border-2 
-    text-sm 
-    border-white
-    tracking-tighter 
-    p-2 
-    px-2 
-    lg:px-5 
-    rounded-md 
-    hover:bg-white 
-    hover:text-blue-600 
-    hover:scale-105
-    active:scale-90 
-    duration-300    
-`
-const BtnHelp = tw.button`
-    bg-sky-500
-    saturate-150
-    flex 
-    items-center 
-    justify-center
-    text-white
-    lg:text-md
-    text-sm 
-    tracking-tighter
-    lg:w-64
-    w-40
-    lg:py-4
-    py-3
-    lg:px-5 
-    rounded-md
-    active:bg-sky-900
-    hover:bg-sky-700
-    hover:scale-105
-    active:scale-90 
-    duration-150    
-`
+
 
 export default function MainCONTA() {
 

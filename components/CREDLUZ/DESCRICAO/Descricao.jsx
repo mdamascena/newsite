@@ -3,16 +3,8 @@ import moeda from '../../../public/img/dinheiro.gif'
 import veloz from '../../../public/img/velocimetro.gif'
 import debito from '../../../public/img/flutuacao.gif'
 import parcela from '../../../public/img/amar.gif'
-import tw from 'tailwind-styled-components'
+import { Card } from "../STYLES"
 
-const Card = tw.div`
-    col-span-1 
-    p-5 rounded-xl 
-    bg-white 
-    shadow-lg
-    duration-200 
-    hover:scale-110
-`
 
 export default function Descricao(){
     return(

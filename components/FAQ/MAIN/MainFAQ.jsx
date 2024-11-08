@@ -1,26 +1,8 @@
 import React, { useState } from 'react';
+import { InputSearch } from '../STYLES';
 import ModalidadesFAQ from '../MODALIDADE/ModalidadesFAQ';
-import tw from 'tailwind-styled-components';
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
-
-const InputSearch = tw.input`
-    font-light 
-    text-white 
-    placeholder-white 
-    border-none 
-    focus:outline-none 
-    focus:ring-1 
-    focus:ring-blue-600 
-    ring-0 
-    p-3 
-    lg:p-4 
-    w-[40vh] 
-    lg:w-[30rem] 
-    rounded-xl 
-    lg:rounded-2xl 
-    bg-blue-500/50
-`;
 
 export default function MainFAQ() {
     const [inputValue, setInputValue] = useState('');

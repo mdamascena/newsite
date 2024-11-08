@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import map from '../../../public/img/map_br.png'
 import{BsCheck} from 'react-icons/bs'
 import{PiMapPinFill} from 'react-icons/pi'

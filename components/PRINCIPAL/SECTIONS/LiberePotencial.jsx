@@ -1,26 +1,6 @@
 import Image from 'next/image';
 import Modelo from '../../../public/img/perso_secion.png'
-import Link from 'next/link';
-import tw from 'tailwind-styled-components';
-
-const Btn = tw.button`
-    bg-blue-500
-    saturate-150
-    flex 
-    items-center 
-    justify-center
-    text-white 
-    tracking-tighter
-    w-72
-    py-3
-    lg:px-5 
-    rounded-3xl
-    active:bg-blue-900
-    hover:bg-blue-700
-    hover:scale-105
-    active:scale-90 
-    duration-150      
-`
+import { Btn } from '../STYLES';
 
 export default function SeuPotencial(){
     return(

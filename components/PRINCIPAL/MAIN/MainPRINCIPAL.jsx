@@ -1,57 +1,21 @@
 import Simulador from "../SIMULADOR/SimuladorGeral"
 import SeuPerfil from "../SECTIONS/Perfil"
-import tw from 'tailwind-styled-components'
+import { BtnHome } from "../STYLES"
 import Modalidades from "../MODALIDADES/Modalidades"
 import SlideModalidade from "../SECTIONS/SlideModalidade"
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
 import Protecao from "../SECTIONS/Protecao"
-import { SlLock } from "react-icons/sl"
-
-const CardMod = tw.div`
-    group
-    bg-white
-    hover:bg-blue-800
-    hover:scale-110 
-    col-span-1
-    text-white 
-    hover:z-10
-    p-2
-    mx-1
-    shadow-lg
-    shadow-blue-800/30
-    duration-300
-    cursor-pointer 
-    flex 
-    justify-center 
-    items-center
-    rounded-md
-`;
-
-const BtnHome = tw.button`
-    focus:outline-none
-    bg-gradient-to-r 
-    from-yellow-300 
-    to-amber-500
-    mx-auto
-    text-xl
-    lg:px-32
-    lg:mx-0
-    py-4
-    lg:w-[450px]
-    w-full
-    rounded-xl
-    text-white 
-    mt-8
-    hover:to-amber-600 
-    hover:from-yellow-500
-    hover:scale-105
-    active:scale-90 
-    duration-150
-`;
+import { useRouter } from 'next/router'
+import { MarqueeDemo } from "../../GERAL/MarqueeDemo"
 
 export default function MainHome() {
+
+    const router = useRouter();
+    const handleRedirect = () => {
+        router.push('cadastro');
+    }
   return (
     <main>
         <div className="bgMainHome">
@@ -74,11 +38,7 @@ export default function MainHome() {
                             Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
                         </p>
                         <div className="pb-8 lg:pb-0">
-                            <BtnHome>Simular agora</BtnHome>
-                            <div className="flex text-white items-center font-light justify-center lg:justify-start mt-5">
-                                <SlLock />
-                                <p className="ml-2">Site Seguro</p>
-                            </div>
+                            <BtnHome onClick={handleRedirect}>Simular agora</BtnHome>
                         </div>
                     </div>
 
@@ -90,6 +50,7 @@ export default function MainHome() {
         <SlideModalidade/>
         <Mais/>
         <Taxa/>
+        <MarqueeDemo />
         <Protecao/>
         <SeuPerfil/> 
         <SeuPotencial/>      

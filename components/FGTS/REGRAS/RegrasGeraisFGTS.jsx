@@ -1,32 +1,7 @@
 import Image from "next/image"
 import imgFGTS from '../../../public/img/pers_notificacao_pix.png'
 import {HiCheck} from 'react-icons/hi'
-import tw from 'tailwind-styled-components'
-
-const BtnCalc = tw.button`
-    bg-gradient-to-r 
-    from-yellow-300 
-    to-amber-500
-    text-xl 
-    w-full
-    lg:w-96
-    lg:py-4
-    py-3
-    rounded-xl
-    text-white
-    shadow-md
-    shadow-amber-400/50 
-    border-b-2 
-    border-amber-300
-    focus:outline-none
-    hover:shadow-md
-    hover:bg-gradient-to-r 
-    hover:to-amber-500 
-    hover:from-yellow-400
-    hover:scale-105
-    active:scale-90
-    duration-150
-`;
+import { BtnCalcRegras } from "../STYLES"
 
 export default function SectionDescFGTS() {
 
@@ -62,7 +37,7 @@ export default function SectionDescFGTS() {
                     </ul>
 
                     <div className='flex justify-center lg:justify-start'>
-                        <BtnCalc>Contrate agora</BtnCalc>
+                        <BtnCalcRegras>Contrate agora</BtnCalcRegras>
                     </div>
                 </div>
 

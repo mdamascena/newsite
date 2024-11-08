@@ -1,31 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import tw from 'tailwind-styled-components';
+import { CardMod } from '../STYLES';
 import { RxArrowRight } from "react-icons/rx";
 import { RiLightbulbFlashLine } from 'react-icons/ri';
 import { MdOutlineCake } from 'react-icons/md';
 import { AiOutlineBarcode } from "react-icons/ai";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-const CardMod = tw.div`
-    group
-    bg-white
-    hover:bg-blue-800
-    hover:scale-105
-    hover:saturate-500
-    col-span-1
-    text-white 
-    hover:z-10
-    p-2
-    mx-2
-    my-2
-    shadow-lg
-    shadow-blue-800/30
-    duration-300
-    cursor-pointer
-    rounded-lg
-`;
 
 export default function ModalidadesFAQ(){
     return(
