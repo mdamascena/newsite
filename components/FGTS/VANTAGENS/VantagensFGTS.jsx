@@ -1,56 +1,13 @@
 import Image from 'next/image'
 import Persona from '../../../public/img/mulher_azul.png'
-import tw from 'tailwind-styled-components'
+import { Card, CardFront, CardBack } from '../STYLES'
 import { MdMoneyOff } from 'react-icons/md'
 import { VscSearchStop } from 'react-icons/vsc'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GiMoneyStack } from 'react-icons/gi'
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
-const Card = tw.div`
-    flex 
-    justify-center
-    items-stretch
-    group
-    hover:scale-110
-    duration-300
-    mb-4
-    rounded-xl 
-    p-2 
-    bg-blue-600
-    shadow-lg
-    shadow-blue-700
-    hover:bg-blue-50
-    lg:h-[230px]
-    lg:w-[230px]
-    h-[24vh]
-    relative
-`
 
-const CardFront = tw.div`
-    self-center
-    text-md 
-    tracking-tighter
-    mx-2 
-    lg:mx-4 
-    text-center 
-    group-hover:scale-0 
-    absolute 
-    duration-500
-`
-
-const CardBack = tw.div`
-    px-2 
-    self-center
-    text-center 
-    lg:text-lg
-    text-slate-400
-    text-md
-    tracking-tighter 
-    scale-0 
-    group-hover:scale-100 
-    duration-500
-`
 
 export default function SectionVantagens() {
     return (

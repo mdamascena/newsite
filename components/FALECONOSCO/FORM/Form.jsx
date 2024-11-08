@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import tw from 'tailwind-styled-components'
+import { Btn } from '../STYLES'
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
@@ -8,25 +8,6 @@ import InputMask from 'react-input-mask'
 import { Textarea } from "../../ui/textarea"
 import { motion, AnimatePresence } from 'framer-motion'
 import * as yup from 'yup'
-
-const Btn = tw.button`
-    bg-blue-600
-    saturate-150
-    flex 
-    items-center 
-    justify-center
-    text-white
-    w-full
-    lg:py-4
-    py-3
-    lg:px-5 
-    rounded-md
-    active:bg-blue-900
-    hover:bg-blue-500
-    hover:scale-105
-    active:scale-90 
-    duration-150    
-`
 
 export default function FormFC() {
 

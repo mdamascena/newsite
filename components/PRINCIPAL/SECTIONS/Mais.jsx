@@ -1,45 +1,9 @@
-import tw from 'tailwind-styled-components'
 import { RiShieldCheckLine } from 'react-icons/ri'
 import { IoPodiumOutline } from 'react-icons/io5'
 import { IoWalletOutline } from 'react-icons/io5'
 import { AiOutlineFieldTime } from 'react-icons/ai'
+import { CardVantMais, DesCardMais, BtnMais } from '../STYLES'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-
-const CardVant = tw.div`
-    col-span-1
-    bg-[#0006b0]
-    rounded-xl 
-    lg:p-6
-    p-3 
-    lg:h-52
-`;
-
-const DesCard = tw.p`
-    text-blue-400
-    text-left
-    text-[15px]
-    lg:text-sm
-    leading-tight
-`;
-
-const Btn = tw.button`
-  focus:outline-none
-  bg-blue-700
-  text-lg
-  lg:px-32
-  lg:mx-0
-  py-3
-  mt-3
-  w-full
-  lg:w-96
-  rounded-lg
-  text-white
-  hover:bg-blue-500
-  hover:scale-105
-  active:scale-90
-  active:bg-blue-800
-  duration-150
-`
 
 export default function Mais (){
     return(
@@ -60,7 +24,7 @@ export default function Mais (){
                         </h2>
                         
                         <div className='mt-5 justify-center hidden lg:block'>
-                            <Btn>Solicite agora</Btn>
+                            <BtnMais>Solicite agora</BtnMais>
                         </div>
 
                     </div>
@@ -69,60 +33,60 @@ export default function Mais (){
                         {/* <Image src={celulares} width={500} alt=''/> */}
                         <div className='grid grid-cols-2 gap-3 lg:p-3'>
 
-                            <CardVant className='hover:rotate-12 hover:shadow-md duration-200'>
+                            <CardVantMais className='hover:rotate-12 hover:shadow-md duration-200'>
                                 <div className='text-3xl text-white pb-3'>
                                     <IoWalletOutline/>
                                 </div>
                                 <div>
                                     <h1 className='text-white text-xl font-semibold mb-3'>Mais Opções</h1>
                                     <div className='items-center flex'>
-                                        <DesCard>Diversas modalidades de empréstimo ao seu alcance em um só lugar</DesCard>
+                                        <DesCardMais>Diversas modalidades de empréstimo ao seu alcance em um só lugar</DesCardMais>
                                     </div>
                                 </div>
-                            </CardVant>
+                            </CardVantMais>
 
-                            <CardVant className='hover:-rotate-6 hover:shadow-md duration-200'>
+                            <CardVantMais className='hover:-rotate-6 hover:shadow-md duration-200'>
                                 <div className='text-3xl text-white pb-3'>
                                     <AiOutlineFieldTime/>
                                 </div>
                                 <div>
                                     <h1 className='text-white text-xl font-semibold mb-3'>Mais Rápido</h1>
                                     <div className='items-center flex'>
-                                        <DesCard>A gente faz tudo mais rápido para seu empréstimo ser liberado</DesCard>
+                                        <DesCardMais>A gente faz tudo mais rápido para seu empréstimo ser liberado</DesCardMais>
                                     </div>
                                 </div>
-                            </CardVant>
+                            </CardVantMais>
 
-                            <CardVant className='hover:scale-110 hover:shadow-md duration-200'>
+                            <CardVantMais className='hover:scale-110 hover:shadow-md duration-200'>
                                 <div className='text-3xl text-white pb-3'>
                                     <IoPodiumOutline/>
                                 </div>
                                 <div>
                                     <h1 className='text-white text-xl font-semibold mb-3'>Mais Ofertas</h1>
                                     <div className='items-center flex'>
-                                        <DesCard>Os melhores bancos com as melhores ofertas de crédito do mercado</DesCard>
+                                        <DesCardMais>Os melhores bancos com as melhores ofertas de crédito do mercado</DesCardMais>
                                     </div>
                                 </div>
-                            </CardVant>
+                            </CardVantMais>
 
-                            <CardVant className='hover:bg-black/50 hover:shadow-md duration-200'>
+                            <CardVantMais className='hover:bg-black/50 hover:shadow-md duration-200'>
                                 <div className='text-3xl text-white pb-3'>
                                     <RiShieldCheckLine/>
                                 </div>
                                 <div>
                                     <h1 className='text-white text-xl font-semibold mb-3'>Mais Seguro</h1>
                                     <div className='items-center flex'>
-                                        <DesCard>
+                                        <DesCardMais>
                                             Desde 2015 no mercado. Levando crédito seguro e confiável
-                                        </DesCard>
+                                        </DesCardMais>
                                     </div>
                                 </div>
-                            </CardVant>
+                            </CardVantMais>
                             
                         </div>
 
                         <div className='mt-5 justify-center lg:hidden block'>
-                            <Btn>Solicite agora</Btn>
+                            <BtnMais>Solicite agora</BtnMais>
                         </div>
                     </div>
 

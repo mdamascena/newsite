@@ -9,70 +9,8 @@ import { IoPodiumOutline } from 'react-icons/io5'
 import { IoWalletOutline } from 'react-icons/io5'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { Carousel } from 'react-responsive-carousel'
+import { CardMod, CardVant, TitleCard, DesCard, Circle } from '../STYLES'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-const CardMod = tw.div`
-    group
-    bg-white
-    hover:bg-blue-800
-    hover:scale-110 
-    col-span-1
-    text-white 
-    hover:z-10
-    p-2
-    mx-2
-    my-2
-    shadow-lg
-    shadow-blue-800/30
-    duration-300
-    cursor-pointer 
-    flex 
-    justify-center 
-    items-center
-    rounded-md
-`;
-
-const CardVant = tw.div`
-    justify-self-center 
-    self-center 
-    lg:col-span-1
-    col-span-2 
-    p-5 
-    lg:m-2
-    m-0
-    rounded-md
-    hover:shadow-lg 
-    hover:bg-white
-    duration-300
-`;
-
-const TitleCard = tw.p`
-    text-blue-500 
-    font-semibold 
-    lg:text-2xl
-    text-xl 
-    mb-0 
-    self-center
-`;
-
-const DesCard = tw.p`
-    text-slate-400 
-    text-left
-    text-sm
-    lg:text-md
-`;
-
-const Circle = tw.span`
-    lg:p-8
-    p-6 
-    rounded-full 
-    bg-blue-200
-    absolute 
-    lg:right-7
-    lg:top-2
-    right-1
-    mix-blend-multiply
-`;
 
 export default function SessaoModalidades() {
 

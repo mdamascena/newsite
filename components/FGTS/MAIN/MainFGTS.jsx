@@ -1,49 +1,12 @@
 import Image from 'next/image'
 import ImgMain from '../../../public/img/pers_home1.png'
-import tw from 'tailwind-styled-components'
+import { BtnCalc, EmpTitle } from '../STYLES'
 import SimuladorFGTS from '../SIMULADOR/SimuladorFGTS'
 import Vantagens from '../VANTAGENS/VantagensFGTS'
 import Regras from '../REGRAS/RegrasGeraisFGTS'
 import Analise from '../../GERAL/SECTION/Analise'
 import TaxaGuru from '../../GERAL/SECTION/TaxaGuru'
 import { useRouter } from 'next/router'
-
-const BtnCalc = tw.button`
-    bg-gradient-to-r 
-    from-yellow-300 
-    to-amber-500 
-    text-xl 
-    lg:px-32 
-    py-3
-    px-18
-    lg:flex-none
-    flex-1
-    rounded-xl
-    text-white
-    mt-8
-    shadow-md
-    shadow-amber-400/50
-    border-b-2 
-    border-amber-300
-    focus:outline-none
-    hover:shadow-md
-    hover:bg-gradient-to-r 
-    hover:to-amber-500 
-    hover:from-yellow-400
-    hover:scale-105
-    active:scale-90
-    duration-150
-`
-
-const EmpTitle = tw.h1`
-    text-blue-600 
-    lg:text-7xl
-    text-[48px] 
-    text-center 
-    lg:text-left 
-    font-semibold
-    tracking-tighter
-`
 
 export default function MainFGTS() {
 

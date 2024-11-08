@@ -2,36 +2,7 @@ import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import { motion } from 'framer-motion';
 import { IoIosArrowForward } from "react-icons/io";
-
-const LiMod = tw.li`
-    select-none
-    group
-    lg:pl-8
-    py-3
-    my-6
-    cursor-pointer
-    duration-150
-    ${(p) => (p.$isActive ? 'text-blue-500' : 'text-slate-300 hover:text-blue-500')}
-    ${(p) => (p.$isActive ? 'lg:border-l-4 lg:border-blue-500' : 'lg:hover:border-l-4 lg:hover:border-blue-500')}
-`
-const Title = tw.h2`
-    select-none
-    text-2xl
-    tracking-tight
-    font-semibold
-    text-center
-    lg:text-left
-    mb-3
-    lg:mb-0
-`
-
-const Desc = tw.p`
-    select-none
-    font-light
-    ${(p) => (p.$isActive ? 'text-slate-400' : 'text-slate-200 group-hover:text-slate-400')}
-    text-center
-    lg:text-left
-`
+import { LiMod, Title, Desc } from '../STYLES';
 
 export default function ModSlide() {
     const [activeIndex, setActiveIndex] = useState(0);

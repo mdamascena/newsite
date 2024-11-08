@@ -1,26 +1,6 @@
-import tw from 'tailwind-styled-components'
 import { HiArrowTrendingUp } from "react-icons/hi2"
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { IoArrowDownOutline } from "react-icons/io5"
-
-const Btn = tw.button`
-    bg-blue-500
-    saturate-150
-    flex 
-    items-center 
-    justify-center
-    text-white 
-    tracking-tighter
-    w-72
-    py-3
-    lg:px-5 
-    rounded-3xl
-    active:bg-blue-900
-    hover:bg-blue-700
-    hover:scale-105
-    active:scale-90 
-    duration-150      
-`
 
 export default function SeuPotencial(){
     return(
@@ -63,7 +43,6 @@ export default function SeuPotencial(){
                                 </div>
 
                                 <div className='col-span-2 text-start -rotate-12'>
-
                                     <div className='bg-white shadow-xl rounded-xl p-5'>
                                         <div className='flex items-center'>
                                             <p className='font-semibold tracking-tighter'>Total de limite</p>
@@ -79,16 +58,12 @@ export default function SeuPotencial(){
                                             <p className='text-sm'>1,59% a.m</p>
                                         </div>
                                     </div>
-
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                
             </div>
 
         </section>

@@ -3,18 +3,9 @@ import sma from '../../../public/img/men_happy.png'
 import {HiOutlineIdentification} from 'react-icons/hi2'
 import {LuUsers} from 'react-icons/lu'
 import { useEffect, useState } from 'react'
-import tw from 'tailwind-styled-components'
+import { CardRegras } from "../STYLES"
 import { HiCheck } from "react-icons/hi"
 
-const Card = tw.div`
-    bg-blue-800 
-    saturate-150 
-    rounded-xl 
-    shadow-lg
-    px-5 
-    py-3
-    duration-1000
-`
 export default function Regras(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
@@ -58,7 +49,7 @@ export default function Regras(){
                     </div>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <Card className={`delay-200 ${movCard}`}>
+                        <CardRegras className={`delay-200 ${movCard}`}>
                             <div>
                                 <div className='border-b-2 border-blue-300 flex items-center py-2 mb-5'>
                                     <LuUsers className='inline-block align-middle text-4xl text-blue-300 mr-2'/>
@@ -81,9 +72,9 @@ export default function Regras(){
                                     </ul>
                                 </div>
                             </div>
-                        </Card>
+                        </CardRegras>
 
-                        <Card className={`delay-700 ${movCard}`}>
+                        <CardRegras className={`delay-700 ${movCard}`}>
                             <div>
                                 <div className='border-b-2 border-blue-300 flex items-center py-2 mb-5'>
                                     <HiOutlineIdentification className='inline-block align-middle text-4xl text-blue-300 mr-2'/>
@@ -104,7 +95,7 @@ export default function Regras(){
                                     </li>
                                 </ul>
                             </div>
-                        </Card>
+                        </CardRegras>
 
                     </div>
                 </div>

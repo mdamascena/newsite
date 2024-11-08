@@ -1,5 +1,5 @@
 import Image from "next/image"
-import tw from 'tailwind-styled-components'
+import { BtnCalc } from "../STYLES"
 import cel from "../../../public/img/PERSO_LUZ_2.png"
 import light from "../../../public/img/LAMPADA.png"
 import SectioDescrisao from "../DESCRICAO/Descricao"
@@ -7,36 +7,8 @@ import SectioComoFunciona from "../COMOFUNCIONA/ComoFunciona"
 import SectioRegrasGerais from "../REGRAS/RegrasGeais"
 import SectioRegioes from "../REGIOES/Regioes"
 import SectioAnalise from "../../GERAL/SECTION/Analise"
-import BtnYellow from "../../GERAL/BUTTON/BtnYellow"
 import {HiCheck} from 'react-icons/hi'
 import { useRouter } from 'next/router'
-
-const BtnCalc = tw.button`
-    bg-gradient-to-r 
-    from-yellow-300 
-    to-amber-500 
-    text-xl 
-    lg:px-32 
-    py-3
-    px-18
-    lg:flex-none
-    flex-1
-    rounded-xl
-    text-white
-    mt-8
-    shadow-md
-    shadow-amber-400/50
-    border-b-2 
-    border-amber-300
-    focus:outline-none
-    hover:shadow-md
-    hover:bg-gradient-to-r 
-    hover:to-amber-500 
-    hover:from-yellow-400
-    hover:scale-105
-    active:scale-90
-    duration-150
-`
 
 export default function MainPrincipal() {
 

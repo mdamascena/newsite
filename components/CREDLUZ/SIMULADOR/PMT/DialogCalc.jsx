@@ -3,42 +3,11 @@ import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import LogoCrefaz from '../../../../public/img/logocrefaz.png'
-import tw from 'tailwind-styled-components'
+import { BtnSolicita, BtnRecalc } from "../../STYLES"
 import { FaCheck } from "react-icons/fa6"
 import { BiMoneyWithdraw } from "react-icons/bi"
 import Link from "next/link"
 
-const BtnSolicita = tw.button`
-    flex 
-    items-center 
-    justify-center 
-    text-white
-    py-3
-    px-2
-    rounded-md
-    mt-2
-    bg-amber-400
-    active:bg-amber-600
-    hover:bg-amber-600
-    hover:scale-105
-    active:scale-90 
-    duration-200  
-`
-const BtnRecalc = tw.button`
-    flex 
-    items-center 
-    justify-center
-    text-yellow-400
-    bg-white 
-    py-3 
-    px-2
-    rounded-md
-    mt-2
-    hover:scale-105
-    active:bg-slate-200
-    active:scale-90 
-    duration-200
-`
 export default function App({ show, fechar, onOpenChange, prazo, parcela, valor, showSimulador }) {
 
     const [data, setData] = useState([]);
