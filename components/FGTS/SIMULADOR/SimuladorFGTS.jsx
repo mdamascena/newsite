@@ -50,7 +50,7 @@ export default function SimuladorFGTS() {
                         Descubra o seu limite
                     </h1>
 
-                    <div className=" rounded-lg bg-base-calc p-4 lg:mr-5 border border-white/50">
+                    <div className=" rounded-lg bg-base-calc p-4 lg:mr-5 ">
                         
                         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                             <div>

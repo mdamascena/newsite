@@ -7,6 +7,7 @@ import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
 import Protecao from "../SECTIONS/Protecao"
+import { SlLock } from "react-icons/sl"
 
 const CardMod = tw.div`
     group
@@ -74,11 +75,14 @@ export default function MainHome() {
                         </p>
                         <div className="pb-8 lg:pb-0">
                             <BtnHome>Simular agora</BtnHome>
+                            <div className="flex text-white items-center font-light justify-center lg:justify-start mt-5">
+                                <SlLock />
+                                <p className="ml-2">Site Seguro</p>
+                            </div>
                         </div>
                     </div>
 
                 </div>
-                
                 
             </div>
         </div>
