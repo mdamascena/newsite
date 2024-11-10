@@ -1,7 +1,7 @@
 export default function Taxa() {
     return(
         <section>
-            <div className='grid grid-col-1 lg:grid-cols-2 container-custom lg:h-[100vh] h-[85vh] content-center'>
+            <div className='grid grid-col-1 lg:grid-cols-2 container-custom lg:h-[100vh] h-[70vh] content-center'>
                 
                 <div className='col-span-1 mb-20 lg:mb-0'>
                     <h1 className='text-3xl lg:text-5xl text-blue-600 tracking-tighter'>

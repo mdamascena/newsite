@@ -8,7 +8,7 @@ import Mais from "../SECTIONS/Mais"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
 import Protecao from "../SECTIONS/Protecao"
 import { useRouter } from 'next/router'
-import { MarqueeDemo } from "../../GERAL/MarqueeDemo"
+import { MarqueeDemo } from "../MarqueeDemo"
 
 export default function MainHome() {
 
@@ -49,13 +49,14 @@ export default function MainHome() {
 
         <SlideModalidade/>
         <Mais/>
-        <Taxa/>
-        <MarqueeDemo />
+        <Taxa/> 
         <Protecao/>
         <SeuPerfil/> 
-        <SeuPotencial/>      
-        <Simulador/>
-        <Modalidades/>
+        <MarqueeDemo />
+        <SeuPotencial/>
+              
+        {/* <Simulador/>
+        <Modalidades/> */}
 
     </main>
   )

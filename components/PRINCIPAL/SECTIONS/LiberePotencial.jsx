@@ -4,7 +4,7 @@ import { Btn } from '../STYLES';
 
 export default function SeuPotencial(){
     return(
-        <section className='lg:px-56 bg-slate-200'>
+        <section className='lg:px-56 bg-slate-100'>
             
             <div className='lg:pt-48 pt-8 container-custom'>
                 
