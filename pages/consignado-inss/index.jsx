@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexINSS from '../../components/CONSIGNADO/IndexINSS'
+import IndexINSS from '../../components/consignado/IndexINSS'
 
 export default function Consignado() {
     return (

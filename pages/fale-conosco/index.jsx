@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexFC from '../../components/FALECONOSCO/IndexFaleConosco';
+import IndexFC from '../../components/faleconosco/IndexFaleConosco';
 
 export default function Contact() {
     return (

@@ -6,11 +6,11 @@ import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadas
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormData } from '../../../context/FormContext';
 
-const Step1 = dynamic(() => import('../../GERAL/FORM/FormCadastro'));
-const Step2 = dynamic(() => import('../../GERAL/FORM/FormIdentificacao'));
-const Step3 = dynamic(() => import('../FORM/FormTipoOcupacao'));
-const Step4 = dynamic(() => import('../FORM/FormTitularCia'));
-const Step5 = dynamic(() => import('../FORM/FormDadosPessoais'))
+const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
+const Step2 = dynamic(() => import('../../geral/form/FormIdentificacao'));
+const Step3 = dynamic(() => import('./FormTipoOcupacao'));
+const Step4 = dynamic(() => import('./FormTitularCia'));
+const Step5 = dynamic(() => import('./FormDadosPessoais'))
 
 const schemas = [cadastroSchema, identificacaoSchema, tipoOcupacao, titularCia, dadosPessoaisCredLuz];
 

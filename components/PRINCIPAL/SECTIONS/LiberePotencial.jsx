@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Modelo from '../../../public/img/perso_secion.png'
-import { Btn } from '../STYLES';
+import { Btn } from '../styles';
 
 export default function SeuPotencial(){
     return(

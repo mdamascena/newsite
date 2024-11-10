@@ -1,6 +1,6 @@
-import Footer from "../GERAL/FOOTER/Footer";
-import Header from "../GERAL/HEADER/Header";
-import MainCredluz from "./MAIN/MainCredluz";
+import Footer from "../geral/footer/Footer";
+import Header from "../geral/header/Header";
+import MainCredluz from "./MainCredluz";
 
 export default function IndexCREDLUZ() {
     return (

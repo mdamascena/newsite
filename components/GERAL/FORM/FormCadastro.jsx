@@ -8,7 +8,7 @@ import { useFormData } from "../../../context/FormContext"
 import {useDisclosure} from "@nextui-org/react"
 import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
-import ModalOpt from '../../GERAL/MODAL/ModalOpt'
+import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../BUTTON/BtnBlueNext'
 
 export default function FormCadastro({onNext}) {

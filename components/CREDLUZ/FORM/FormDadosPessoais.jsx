@@ -7,8 +7,8 @@ import { useHookFormMask } from "use-mask-input"
 import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinAreaLight } from "react-icons/pi"
 import { motion } from 'framer-motion'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/button/BtnBlueBack'
 import { getCidade, getEnderecoCep, getEstado } from "../../../services/servicesCredLuz/apiCep"
 import { debounce } from 'lodash';
 import { toast, ToastContainer } from "react-toastify"

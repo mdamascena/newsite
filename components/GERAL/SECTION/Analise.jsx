@@ -6,7 +6,7 @@ import {BsBroadcast} from 'react-icons/bs'
 import {BsAppIndicator} from 'react-icons/bs'
 import {BsChatLeftDots} from 'react-icons/bs'
 import { useEffect, useState } from 'react'
-import BtnYellow from "../BUTTON/BtnYellow"
+import BtnYellow from "../button/BtnYellow"
 import tw from 'tailwind-styled-components'
 
 const Card = tw.div`
