@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import tw from 'tailwind-styled-components';
-import { motion } from 'framer-motion';
-import { IoIosArrowForward } from "react-icons/io";
-import { LiMod, Title, Desc } from '../STYLES';
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { IoIosArrowForward } from "react-icons/io"
+import { LiMod, Title, Desc } from '../STYLES'
 
 export default function ModSlide() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -85,7 +84,7 @@ export default function ModSlide() {
                             <ul>
                                 <LiMod $isActive={activeIndex === 0} onClick={() => setActiveIndex(0)} className={`lg:block ${activeIndex === 0 ? 'block' : 'hidden'}`}>
                                     <Title>Empréstimo da conta de luz</Title>
-                                    <Desc>
+                                    <Desc $isActive={activeIndex === 0}>
                                         Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                         Antecipe seu saldo FGTS e realize o que quiser. S
                                     </Desc>
@@ -93,7 +92,7 @@ export default function ModSlide() {
                                     
                                 <LiMod $isActive={activeIndex === 1} onClick={() => setActiveIndex(1)} className={`lg:block ${activeIndex === 1 ? 'block' : 'hidden'}`}>
                                     <Title>Antecipação saque FGTS</Title>
-                                    <Desc>
+                                    <Desc $isActive={activeIndex === 1}>
                                         Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                         Antecipe seu saldo FGTS e realize o que qu
                                     </Desc>
@@ -101,7 +100,7 @@ export default function ModSlide() {
                                     
                                 <LiMod $isActive={activeIndex === 2} onClick={() => setActiveIndex(2)} className={`lg:block ${activeIndex === 2 ? 'block' : 'hidden'}`}>
                                     <Title>Empréstimo consignado INSS</Title>
-                                    <Desc>
+                                    <Desc $isActive={activeIndex === 2}>
                                         Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                         Antecipe seu saldo FGTS e real
                                     </Desc>
@@ -109,7 +108,7 @@ export default function ModSlide() {
                                     
                                 <LiMod $isActive={activeIndex === 3} onClick={() => setActiveIndex(3)} className={`lg:block ${activeIndex === 3 ? 'block' : 'hidden'}`}>
                                     <Title>Empréstimo Pessoal</Title>
-                                    <Desc>
+                                    <Desc $isActive={activeIndex === 3}>
                                         Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                         Antecipe seu saldo FGTS e rea
                                     </Desc>

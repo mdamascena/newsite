@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { BtnCalc } from "../STYLES"
+import { BtnCalcFast } from "../STYLES"
 import cel from "../../../public/img/PERSO_LUZ_2.png"
 import light from "../../../public/img/LAMPADA.png"
 import SectioDescrisao from "../DESCRICAO/Descricao"
@@ -70,7 +70,7 @@ export default function MainPrincipal() {
                             </div>
 
                             <div className="text-center md:text-left">
-                                <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
+                                <BtnCalcFast onClick={handleRedirect}>Contrate agora</BtnCalcFast>
                             </div>
 
                             <div className="text-[12px] text-white mt-5 text-center lg:text-start">

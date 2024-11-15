@@ -20,7 +20,20 @@ export default function SeuPotencial(){
                     </div>
 
                     <div className='col-span-1 rounded-xl bg-slate-100 p-5 text-slate-400'>
-                        e3e3
+                        <div className="relative flex flex-col gap-2">
+                            <div className="bg-white rounded-lg shadow-lg h-16 top-1">
+                                Limite 1
+                            </div>
+                            <div className="bg-white rounded-lg shadow-lg h-16 top-1">
+                                Limite 2
+                            </div>
+                            <div className="bg-white rounded-lg shadow-lg h-16">
+                                Limite 3
+                            </div>
+                            <div className="bg-white rounded-lg shadow-lg h-16">
+                                Limite 4
+                            </div>
+                        </div>
                     </div>
 
                     <div className='col-span-1 rounded-xl bg-slate-100 p-5 text-slate-400'>

@@ -25,7 +25,7 @@ const reviews = [
         body: "Prático e rápido! Recomendo.",
         img: jose,
         avaliacao:"⭐⭐⭐⭐⭐",
-        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-2xl"/>,
+        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>,
     },
     {
         name: "Maria Clara",
@@ -33,7 +33,7 @@ const reviews = [
         body: "Ótimo atendimento e muito confiável!",
         img: maria,
         avaliacao:"⭐⭐⭐⭐⭐",
-        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-2xl"/>
+        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
     {
         name: "Renato Jirari",
@@ -41,7 +41,7 @@ const reviews = [
         body: "Bom, mas o site poderia ser mais intuitivo.",
         img: renato,
         avaliacao:"⭐⭐⭐⭐",
-        rede:<FaXTwitter className="text-black ml-auto text-2xl"/>
+        rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
     {
         name: "Ana Paula Fonseca",
@@ -49,7 +49,7 @@ const reviews = [
         body: "Uso há anos, sempre seguro e eficaz",
         img: anaPaula,
         avaliacao:"⭐⭐⭐⭐",
-        rede:<FaXTwitter className="text-black ml-auto text-2xl"/>
+        rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
     {
         name: "Evaldo Moreira",
@@ -57,7 +57,7 @@ const reviews = [
         body: "Simples e direto, mas o limite poderia ser melhor.",
         img: evaldo,
         avaliacao:"⭐⭐⭐⭐",
-        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-2xl"/>
+        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
     {
         name: "Arlete Felix",
@@ -65,7 +65,7 @@ const reviews = [
         body: "A taxa de juros poderia ser melhor.",
         img: arlete,
         avaliacao:"⭐⭐",
-        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-2xl"/>
+        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
     {
         name: "Maria da Penha",
@@ -73,7 +73,7 @@ const reviews = [
         body: "Eu gostei bastante, foi tudo bem. Chamei no ZAP",
         img: penha,
         avaliacao:"⭐⭐⭐⭐⭐",
-        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-2xl"/>
+        rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
     {
         name: "Eduardo Gomes",
@@ -81,7 +81,7 @@ const reviews = [
         body: "Demorou mais que o esperado desta vez!!!",
         img: eduardo,
         avaliacao:"⭐⭐⭐",
-        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-2xl"/>
+        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>
     },
     {
         name: "Sandra Andrade",
@@ -89,7 +89,7 @@ const reviews = [
         body: "Já sou cliente deles a bastante tempo, não tive problemas",
         img: sandra,
         avaliacao:"⭐⭐⭐⭐⭐",
-        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-2xl"/>
+        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>
     },
     {
         name: "Marcelo da Silva",
@@ -97,7 +97,7 @@ const reviews = [
         body: "Sempre confiei neles. Rápido e seguro!",
         img: marcelo,
         avaliacao:"⭐⭐⭐⭐⭐",
-        rede:<FaXTwitter className="text-black ml-auto text-2xl"/>
+        rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
     {
         name: "Fernanda Barbosa",
@@ -105,7 +105,7 @@ const reviews = [
         body: "Achei super de boa, não tive problema nenhum",
         img: fernanda,
         avaliacao:"⭐⭐⭐⭐⭐",
-        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-2xl"/>
+        rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>
     },
     {
         name: "Renan Pereira",
@@ -113,7 +113,7 @@ const reviews = [
         body: "Até que liberou um limite. Mas eu precisava de mais",
         img: renan,
         avaliacao:"⭐⭐⭐",
-        rede:<FaXTwitter className="text-black ml-auto text-2xl"/>
+        rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
 ];
 
@@ -166,7 +166,7 @@ export function MarqueeDemo() {
   return (
     <div className="bg-white select-none">
 
-        <div className="relative flex py-24 lg:w-full flex-col items-center justify-center overflow-x-hidden bg-slate-50 container-custom">
+        <div className="relative flex py-24 lg:w-full flex-col items-center justify-center overflow-x-hidden bg-slate-100 container-custom">
             
             <div className="lg:mb-10 mb-5 -mt-5 mx-12">
                 <h1 className="text-slate-400 text-center lg:text-4xl text-2xl tracking-tight font-semibold">
@@ -188,6 +188,7 @@ export function MarqueeDemo() {
                     <ReviewCard key={review.username} {...review} />
                 ))}
             </Marquee>
+            
             <div className="pointer-events-none absolute inset-y-0 left-0 lg:w-1/3 w-16 bg-gradient-to-r from-white"></div>
             <div className="pointer-events-none absolute inset-y-0 right-0 lg:w-1/3 w-16 bg-gradient-to-l from-white"></div>
     

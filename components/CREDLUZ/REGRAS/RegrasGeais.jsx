@@ -49,7 +49,7 @@ export default function Regras(){
                     </div>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <CardRegras className={`delay-200 ${movCard}`}>
+                        <CardRegras className={`delay-200 ${movCard} duration-400`}>
                             <div>
                                 <div className='border-b-2 border-blue-300 flex items-center py-2 mb-5'>
                                     <LuUsers className='inline-block align-middle text-4xl text-blue-300 mr-2'/>
@@ -74,7 +74,7 @@ export default function Regras(){
                             </div>
                         </CardRegras>
 
-                        <CardRegras className={`delay-700 ${movCard}`}>
+                        <CardRegras className={`delay-700 ${movCard} duration-400`}>
                             <div>
                                 <div className='border-b-2 border-blue-300 flex items-center py-2 mb-5'>
                                     <HiOutlineIdentification className='inline-block align-middle text-4xl text-blue-300 mr-2'/>

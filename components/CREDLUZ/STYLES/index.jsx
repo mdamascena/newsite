@@ -175,3 +175,19 @@ export const BtnVolta = tw.button`
     text-white 
     rounded-md
 `
+export const BtnCalcFast = tw.button`
+    bg-yellow-400 
+    rounded-xl 
+    text-white 
+    py-4 
+    lg:w-96 
+    w-[100%] 
+    lg:px-28 
+    mt-8 
+    hover:bg-yellow-500 
+    hover:scale-105 
+    active:scale-90 
+    active:bg-yellow-600 
+    duration-150 
+    shadow-lg
+`
