@@ -26,17 +26,19 @@ export const CardMod = tw.div`
     group
     bg-white
     hover:bg-blue-800
-    hover:scale-105
+    hover:scale-110
     hover:saturate-500
     col-span-1
-    text-white 
+    lg:h-44
+    mx-1
+    lg:mx-0
+    px-2
     hover:z-10
-    p-2
-    mx-2
-    my-2
+    flex
     shadow-lg
-    shadow-blue-800/30
     duration-300
     cursor-pointer
     rounded-lg
+    items-center 
+    justify-center
 `;

@@ -44,7 +44,7 @@ const reviews = [
         rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
     {
-        name: "Ana Paula Fonseca",
+        name: "Ana Paula Souza",
         username: "@paulaMed32",
         body: "Uso há anos, sempre seguro e eficaz",
         img: anaPaula,

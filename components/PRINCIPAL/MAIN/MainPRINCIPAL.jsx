@@ -3,10 +3,11 @@ import SeuPerfil from "../SECTIONS/Perfil"
 import { BtnHome } from "../STYLES"
 import Modalidades from "../MODALIDADES/Modalidades"
 import SlideModalidade from "../SECTIONS/SlideModalidade"
+import Frases from "../SECTIONS/SlideFrases"
 import Taxa from "../SECTIONS/Taxas"
 import Mais from "../SECTIONS/Mais"
 import SeuPotencial from "../SECTIONS/LiberePotencial"
-import Protecao from "../SECTIONS/Protecao"
+import Escolha from "../SECTIONS/Escolha"
 import { useRouter } from 'next/router'
 import { MarqueeDemo } from "../MarqueeDemo"
 
@@ -50,7 +51,8 @@ export default function MainHome() {
         <SlideModalidade/>
         <Mais/>
         <Taxa/> 
-        <Protecao/>
+        <Escolha/>
+        <Frases/>
         <SeuPerfil/> 
         <MarqueeDemo />
         <SeuPotencial/>

@@ -21,7 +21,7 @@ export default function ModSlide() {
     return (
         <section>
 
-            <div className='container-custom lg:px-8 py-[10vh] grid'>
+            <div className='container-custom lg:px-16 py-[10vh] grid'>
                 
                 <div className='content-center'>
 
@@ -59,7 +59,7 @@ export default function ModSlide() {
                             <div className={`bg-[url(../public/img/modelo_inss.png)] bg-cover bg-no-repeat group overflow-hidden relative rounded-2xl h-80 lg:h-full ${activeIndex === 2 ? 'block' : 'hidden'}`}>
                                 <div className='h-0 group-hover:h-28 transform duration-400 bg-black/30 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
                                     <div className='grid grid-cols-5'>
-                                        <p className='text-white p-5 col-span-4'>Empréstimo Consignado INSS</p>
+                                        <p className='text-white p-5 col-span-4'>Empréstimo Consignado INSS/LOAS</p>
                                         <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
                                             <IoIosArrowForward/>
                                         </button>
@@ -67,10 +67,10 @@ export default function ModSlide() {
                                 </div>
                             </div>
                             
-                            <div className={`bg-[url(../public/img/modelo_ep.png)] bg-cover bg-no-repeat group overflow-hidden relative rounded-2xl h-80 lg:h-full ${activeIndex === 3 ? 'block' : 'hidden'}`}>
+                            <div className={`bg-[url(../public/img/modelo_pix.png)] bg-cover bg-no-repeat group overflow-hidden relative rounded-2xl h-80 lg:h-full ${activeIndex === 3 ? 'block' : 'hidden'}`}>
                                 <div className='h-0 group-hover:h-28 transform duration-400 bg-black/30 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
                                     <div className='grid grid-cols-5'>
-                                        <p className='text-white p-5 col-span-4'>Empréstimo Pessoal</p>
+                                        <p className='text-white p-5 col-span-4'>Pix Parcelado</p>
                                         <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
                                             <IoIosArrowForward/>
                                         </button>
@@ -99,7 +99,7 @@ export default function ModSlide() {
                                 </LiMod>
                                     
                                 <LiMod $isActive={activeIndex === 2} onClick={() => setActiveIndex(2)} className={`lg:block ${activeIndex === 2 ? 'block' : 'hidden'}`}>
-                                    <Title>Empréstimo consignado INSS</Title>
+                                    <Title>Empréstimo consignado</Title>
                                     <Desc $isActive={activeIndex === 2}>
                                         Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                         Antecipe seu saldo FGTS e real
@@ -107,7 +107,7 @@ export default function ModSlide() {
                                 </LiMod>
                                     
                                 <LiMod $isActive={activeIndex === 3} onClick={() => setActiveIndex(3)} className={`lg:block ${activeIndex === 3 ? 'block' : 'hidden'}`}>
-                                    <Title>Empréstimo Pessoal</Title>
+                                    <Title>Pix Parcelado</Title>
                                     <Desc $isActive={activeIndex === 3}>
                                         Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal
                                         Antecipe seu saldo FGTS e rea

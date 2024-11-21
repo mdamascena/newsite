@@ -1,4 +1,3 @@
-import tw from 'tailwind-styled-components'
 import { useState, useEffect } from "react"
 import { AiOutlineBarcode } from "react-icons/ai"
 import { RiBankLine } from "react-icons/ri"
