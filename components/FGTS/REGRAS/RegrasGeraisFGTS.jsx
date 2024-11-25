@@ -6,7 +6,7 @@ import { BtnCalcRegras } from "../STYLES"
 export default function SectionDescFGTS() {
 
     return (
-        <section className="bg-slate-50 select-none">
+        <section className="bg-slate-100 select-none">
 
             <div className="grid grid-cols-2 lg:pt-16 container-custom">
                 

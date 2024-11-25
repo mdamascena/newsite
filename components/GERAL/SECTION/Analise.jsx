@@ -8,6 +8,9 @@ import {BsChatLeftDots} from 'react-icons/bs'
 import { useEffect, useState } from 'react'
 import BtnYellow from "../BUTTON/BtnYellow"
 import tw from 'tailwind-styled-components'
+import { useRouter } from 'next/router'
+import Link from "next/link"
+import Page from "../../../pages/PageTransicao"
 
 const Card = tw.div`
     bg-slate-200 
@@ -108,7 +111,9 @@ export default function Regras(){
                                 </div>
                             </div>
                         </div>
-                        <BtnYellow nome='Simular aqui'/>
+                        <Link href='../PageTransicao' passHref>
+                            <BtnYellow nome='Simular aqui'/>
+                        </Link>
                     </div>
 
                     <div className='col-span-1 flex lg:justify-center justify-center z-10 relative'>

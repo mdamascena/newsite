@@ -11,7 +11,7 @@ const FlickeringGrid = ({
   squareSize = 4,
   gridGap = 6,
   flickerChance = 0.3,
-  color = "rgb(0, 0, 0)",
+  color = "rgba(0, 0, 0, 0.081)",
   width,
   height,
   className,
@@ -155,7 +155,7 @@ const FlickeringGrid = ({
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
 
   return (
-    (<div ref={containerRef} className={`w-full h-full ${className}`}>
+    (<div ref={containerRef} className={` ${className}`}>
       <canvas
         ref={canvasRef}
         className="pointer-events-none"
