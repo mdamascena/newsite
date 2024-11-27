@@ -55,3 +55,18 @@ export const identificacaoSchema = z.object({
     }, { message: "Idade deve estar entre 21 e 84 anos." }),
   genero: z.enum(["0", "1"], { errorMap: () => ({ message: "Selecione um gênero" }) }),
 });
+
+export const enderecoSchema = z.object({
+  //cepOption: z.enum(['1', '2'], { errorMap: () => ({ message: "Selecione uma opção" }) }),
+  cep: z.string().optional(),
+  estadoCep: z.string().optional(),
+  cidadeCep: z.string().optional(),
+  estado: z.string().optional(),
+  cidade: z.string().optional(),
+  logradouro: z.string().optional(),
+  numero: z.string().optional(),
+  bairro: z.string().optional(),
+  complemento: z.string().optional(),
+});
+
+

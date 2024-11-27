@@ -101,7 +101,6 @@ export default function FormCadastro({onNext}) {
                             type="text"
                             placeholder='Digite seu CPF'
                             value={watch('cpf') || ''}
-                            inputMode="numeric"
                             {...registerWithMask("cpf", ['999.999.999-99'])}
                         />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
@@ -113,7 +112,6 @@ export default function FormCadastro({onNext}) {
                                 type="email"
                                 value={watch('email') || ''}
                                 placeholder="Seu e-mail? *"
-                                inputMode="email"
                                 {...register('email')} 
                             />
                             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -124,7 +122,6 @@ export default function FormCadastro({onNext}) {
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
                                 value={watch('celular') || ''}
-                                inputMode="numeric"
                                 placeholder="Celular *"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />
