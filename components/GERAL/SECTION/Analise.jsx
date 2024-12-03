@@ -10,7 +10,6 @@ import BtnYellow from "../BUTTON/BtnYellow"
 import tw from 'tailwind-styled-components'
 import { useRouter } from 'next/router'
 import Link from "next/link"
-import Page from "../../../pages/PageTransicao"
 
 const Card = tw.div`
     bg-slate-200 
