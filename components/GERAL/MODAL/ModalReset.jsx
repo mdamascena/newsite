@@ -42,8 +42,7 @@ export default function App({isOpen,onClose}) {
                                 className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
                                 mask="999.999.999-99"
                                 maskChar = {null}
-                                placeholder='Digite seu CPF'
-                                inputMode='numeric'>
+                                placeholder='Digite seu CPF'>
 
                                 {(inputProps) => <Input {...inputProps} />}
                             </InputMask>

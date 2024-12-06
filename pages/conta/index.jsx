@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexCONTA from '../../components/CONTA/IndexCONTA'
+import IndexCONTA from '../../components/conta/IndexCONTA'
 
 export default function Login() {
     return (

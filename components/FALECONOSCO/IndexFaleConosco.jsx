@@ -1,5 +1,5 @@
-import Header from "../GERAL/HEADER/Header_branco"
-import MainFaleConosco from "./MAIN/MainFaleConosco"
+import Header from "../geral/header/Header_branco"
+import MainFaleConosco from "./MainFaleConosco"
 
 export default function IndexFAQ() {
     return (

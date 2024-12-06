@@ -1,5 +1,5 @@
 import Head from "next/head"
-import IndexPrincipal from "../components/PRINCIPAL/IndexPRINCIPAL"
+import IndexPrincipal from "../components/principal/IndexPRINCIPAL"
 
 export default function Principal() {
     return (

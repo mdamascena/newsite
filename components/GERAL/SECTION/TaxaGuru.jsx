@@ -1,4 +1,4 @@
-import GuruFinanceiro from '../../ANIMACOES/AnimeGuru.jsx'
+import GuruFinanceiro from '../../animacoes/AnimeGuru.jsx'
 
 export default function SectionTaxa({TituloGuru, DescrisaoGuro, DescrisaoProduto, Taxa, DescrisaoTaxa}) {
     return (

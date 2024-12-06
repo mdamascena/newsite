@@ -1,6 +1,6 @@
-import Header from "../GERAL/HEADER/Header_branco"
-import MainFGTS from "./MAIN/MainFGTS"
-import Footer from "../GERAL/FOOTER/Footer"
+import Header from "../geral/header/Header_branco"
+import MainFGTS from "./MainFGTS"
+import Footer from "../geral/footer/Footer"
 
 export default function IndexFGTS() {
     return (

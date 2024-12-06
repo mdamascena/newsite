@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexCREDLUZ from '../../components/CREDLUZ/IndexCREDLUZ'
+import IndexCREDLUZ from '../../components/credluz/IndexCREDLUZ'
 
 export default function CredLuz() {
     return (

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import LogoB from "../../../../public/img/LOGO_FULL_BRANCO.png";
-import Address from '../../../../components/FGTS/FORM/Address';
+import Address from '../../../../components/fgts/form/Address';
 
 
 <div className="grid grid-cols-1 lg:grid-cols-5 h-[100vh]">

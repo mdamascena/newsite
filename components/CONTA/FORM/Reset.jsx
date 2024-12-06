@@ -3,7 +3,7 @@ import { BtnPass, BtnReset } from '../STYLES'
 import { HiOutlineKey } from "react-icons/hi2"
 import { Input } from '../../ui/input'
 import { motion, AnimatePresence } from 'framer-motion'
-import ModalReset from '../../GERAL/MODAL/ModalReset'
+import ModalReset from '../../geral/MODAL/ModalReset'
 import { useState } from 'react'
 
 export default function FormPass() {

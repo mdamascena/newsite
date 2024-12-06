@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexFGTS from '../../components/FGTS/IndexFGTS'
+import IndexFGTS from '../../components/fgts/IndexFGTS'
 
 export default function FGTS() {
     return (

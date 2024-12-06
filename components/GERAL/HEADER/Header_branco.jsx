@@ -5,7 +5,7 @@ import LogoA from '../../../public/img/LOGO_AZUL.png'
 import tw from 'tailwind-styled-components'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
-import AlertI from '../ARLET/AlertBlue'
+import AlertI from '../alert/AlertBlue'
 
 const Dropdown = tw.div`
     absolute 
