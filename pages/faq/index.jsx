@@ -1,5 +1,5 @@
 import Head from "next/head"
-import IndexFAQ from "../../components/faq/indexFAQ"
+import IndexFAQ from "../../components/FAQ/indexFAQ"
 
 export default function FAQ() {
     return (

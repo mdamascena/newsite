@@ -1,4 +1,4 @@
-import Footer from "../geral/header/Footer"
+import Footer from "../geral/footer/Footer"
 import Header from "../geral/header/Header"
 import Main from "./MainFAQ"
 

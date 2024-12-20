@@ -1,14 +1,14 @@
 import Simulador from "./SimuladorGeral"
-import SeuPerfil from "./sections/Perfil"
-import { BtnHome } from "./styles"
+import SeuPerfil from "./SECTIONS/Perfil"
+import { BtnHome } from "./STYLES"
 import Modalidades from "./Modalidades"
-import SlideModalidade from "./sections/SlideModalidade"
-import Taxa from "./sections/Taxas"
-import Mais from "./sections/Mais"
-import SeuPotencial from "./sections/LiberePotencial"
-import Protecao from "./sections/Protecao"
+import SlideModalidade from "./SECTIONS/SlideModalidade"
+import Taxa from "./SECTIONS/Taxas"
+import Mais from "./SECTIONS/Mais"
+import SeuPotencial from "./SECTIONS/LiberePotencial"
+import Escolha from "./SECTIONS/Escolha"
 import { useRouter } from 'next/router'
-import { MarqueeDemo } from "../geral/MarqueeDemo"
+import { MarqueeDemo } from "./MarqueeDemo"
 
 export default function MainHome() {
 
@@ -52,7 +52,7 @@ export default function MainHome() {
         <Mais/>
         <Taxa/>
         <MarqueeDemo />
-        <Protecao/>
+        <Escolha/>
         <SeuPerfil/> 
         <SeuPotencial/>      
         <Simulador/>
