@@ -2,7 +2,7 @@ import { RiShieldCheckLine } from 'react-icons/ri'
 import { IoPodiumOutline } from 'react-icons/io5'
 import { IoWalletOutline } from 'react-icons/io5'
 import { AiOutlineFieldTime } from 'react-icons/ai'
-import { CardVantMais, DesCardMais, BtnMais } from '../STYLES'
+import { CardVantMais, DesCardMais, BtnMais } from '../styles'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 export default function Mais (){

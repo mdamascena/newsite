@@ -1,6 +1,6 @@
-import Footer from "../GERAL/FOOTER/Footer"
-import Header from "../GERAL/HEADER/Header"
-import MainPrincipal from "./MAIN/MainPRINCIPAL"
+import Footer from "../geral/footer/Footer"
+import Header from "../geral/header/Header"
+import MainPrincipal from "./MainPRINCIPAL"
 
 export default function IndexPrincipal() {
     return (

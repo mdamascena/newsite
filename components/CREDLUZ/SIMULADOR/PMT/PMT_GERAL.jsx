@@ -1,4 +1,4 @@
-import { BtnPmtGeral, BtnVolta } from '../../STYLES'
+import { BtnPmtGeral, BtnVolta } from '../../styles'
 import { useEffect } from 'react'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
 import React, { useState } from 'react'

@@ -2,10 +2,6 @@ import { z } from "zod";
 import { validateFullName } from "schema/validations";
 
 export const dadosPessoaisFgts = z.object({
-
-    estadoCivil: z.enum(["1", "2", "3", "4", "5", "6"], {
-        errorMap: () => ({ message: "Selecione um tipo de ocupação" }),
-    }),
     
     registroGeral: z
         .string()
@@ -17,3 +13,10 @@ export const dadosPessoaisFgts = z.object({
     .refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" })
     .refine(value => /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(value), { message: "O campo deve conter apenas letras.." })
 })
+
+export const pagamentoPix = z.object({
+    tipoDeChave: z.string().min(1, "Selecione o tipo de chave"), // Este campo é obrigatório
+    chaveCpf: z.string().optional(), // Torna o campo opcional
+    chaveCel: z.string().optional(), // Torna o campo opcional
+    chaveEmail: z.string().optional(), // Torna o campo opcional
+});

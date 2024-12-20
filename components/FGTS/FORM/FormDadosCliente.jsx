@@ -4,28 +4,28 @@ import { useFormContext } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { Input } from "components/ui/input"
 import { motion } from 'framer-motion'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import BtnNext from '../../geral/BUTTON/BtnBlueNext'
+import BtnBack from '../../geral/BUTTON/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 
 export default function FormDadosCliente({onNext, backStep}) {
-const { register, control, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
+
+    const { register, control, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
     const { atualizarForm, formData } = useFormData();
     const registerWithMask = useHookFormMask(register);
-    
-    
-    const container = {
-        hidden: {y: 50, opacity: 0 },
-        visible: {y: 0, opacity: 1, 
-            transition: {delayChildren: 0.3, staggerChildren: 0.2,},
-        },
-    };
 
     const onSubmit = (data) => {
         atualizarForm(data)
         onNext();
     }
 
+    const container = {
+        hidden: {y: 50, opacity: 0 },
+        visible: {y: 0, opacity: 1, 
+            transition: {delayChildren: 0.3, staggerChildren: 0.2,},
+        },
+    };
+    
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
             <motion.div

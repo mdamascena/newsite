@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexCP from '../../components/CP/IndexCP'
+import IndexCP from '../../components/boleto/IndexCP'
 
 export default function Home() {
   return (

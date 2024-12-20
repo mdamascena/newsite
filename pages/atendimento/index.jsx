@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import IndexAtendimento from '../../components/ATENDIMENTO/IndexAtendimento'
+import IndexAtendimento from '../../components/atendimento/IndexAtendimento'
 
 export default function Atendimento() {
     return (

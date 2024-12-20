@@ -62,7 +62,7 @@ export default function ModalFaleConosco(){
 
                 </Select>
 
-                <Input className='bg-slate-200 focus-visible:ring-blue-500 placeholder:text-slate-400' inputmode='numeric' type='numero' placeholder='Seu CPF'/>
+                <Input className='bg-slate-200 focus-visible:ring-blue-500 placeholder:text-slate-400' type='numero' placeholder='Seu CPF'/>
                 
                 <h1 className="text-center p-3 tracking-tight text-slate-400">
                     Diga o que deseja:

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { Btn } from '../STYLES'
+import { Btn } from '../styles'
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
@@ -79,8 +79,7 @@ export default function FormFC() {
                                 className='bg-slate-200 focus-visible:ring-blue-500 placeholder:text-slate-400' 
                                 mask="999.999.999-99"
                                 maskChar = {null}
-                                placeholder='Seu CPF'
-                                inputMode='numeric'>
+                                placeholder='Seu CPF'>
 
                                 {(inputProps) => <Input {...inputProps} />}
                             </InputMask>

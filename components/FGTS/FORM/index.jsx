@@ -3,14 +3,16 @@ import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useFormData } from "../../../context/FormContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
-import { dadosPessoaisFgts } from '../../../schema/schemaFgts';
+import { cadastroSchema, enderecoSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
+import { dadosPessoaisFgts, pagamentoPix } from '../../../schema/schemaFgts';
 
-const Step1 = dynamic(() => import('../../GERAL/FORM/FormCadastro'));
-const Step2 = dynamic(() => import('../../GERAL/FORM/FormIdentificacao'))
-const Step3 = dynamic(() => import('./FormDadosCliente'))
+const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
+const Step2 = dynamic(() => import('../../geral/form/FormIdentificacao'))
+const Step3 = dynamic(() => import('../../geral/form/FormEndereco'))
+const Step4 = dynamic(() => import('./FormDadosCliente'))
+const Step5 = dynamic(() => import('./FormPagamento'));
 
-const schemas = [cadastroSchema, identificacaoSchema, dadosPessoaisFgts];
+const schemas = [cadastroSchema, identificacaoSchema, enderecoSchema, dadosPessoaisFgts, pagamentoPix ];
 
 export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
@@ -19,21 +21,27 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
 
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
-        {key: "Identificação", thresholds : 50},
-        {key: "Dados Pessoais", thresholds: 100}
+        {key: "Identificação", thresholds : 20},
+        {key: "Endereço", thresholds: 40},
+        {key: "Dados Pessoais", thresholds: 60},
+        {key: "Pagamento Pix", thresholds: 80}
     ], []);
     
 
     const fgtsTitle = useMemo(() => [
         "Vamos começar!",
         "Um pouco mais sobre você",
-        "Seus dados pessoais"
+        "Onde você está no mapa?",
+        "Seus dados pessoais",
+        "Informe seu Pix",
     ], []);
 
     const fgtsDescription = useMemo(() => [
         "Preencha seus dados iniciais para criarmos a sua conta",
         "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
-        "Informe seus dados pessoais"
+        "Queremos saber onde mora e como falamos com você",
+        "Informe seus dados pessoais",
+        "Queremos saber como depositar seu crédito",
     ], []);
 
     const methods = useForm({
@@ -63,6 +71,8 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
             {step === 1 && <Step1 onNext={nextStep}  />}
             {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
+            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep}/>}
+            {step === 5 && <Step5 onNext={nextStep} backStep={prevStep}/>}
         </FormProvider>
     )
 }
