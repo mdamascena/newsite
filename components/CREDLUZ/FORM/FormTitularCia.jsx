@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { RiUserFollowLine, RiUserForbidLine } from "react-icons/ri"
 import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../geral/button/BtnBlueNext'
-import BtnBack from '../../geral/button/BtnBlueBack'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
+import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { toast, ToastContainer } from "react-toastify"
 
 const OptLabel = tw(motion.label)`

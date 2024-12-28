@@ -9,8 +9,8 @@ import { IoIosArrowBack } from "react-icons/io"
 import { FaMale } from "react-icons/fa"
 import { motion } from 'framer-motion'
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../geral/button/BtnBlueNext'
-import BtnBack from '../../geral/button/BtnBlueBack'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
+import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { toast, ToastContainer } from "react-toastify"
 
 const OptLabel = tw(motion.label)`
@@ -82,6 +82,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+            
             <ToastContainer />
             
             <motion.div 
@@ -131,7 +132,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Assalariado
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light ">
                                                     Vínculo CLT
                                                 </span>
                                             </div>
@@ -149,7 +150,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Servidor Público
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light">
                                                     Ativo / inativo
                                                 </span>
                                             </div>
@@ -167,8 +168,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Aposentado
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
-                                                    Beneficiário INSS / LOAS
+                                                <span className="text-xs font-light">
+                                                    Benefic. INSS / LOAS
                                                 </span>
                                             </div>
                                         </OptLabel>
@@ -185,7 +186,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Pensionista
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light">
                                                     Pensão / Pensão INSS
                                                 </span>
                                             </div>
@@ -203,8 +204,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Autônomo
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
-                                                    Prof. liberal / Empresário
+                                                <span className="text-xs font-light">
+                                                    P. Liberal / Empresário
                                                 </span>
                                             </div>
                                         </OptLabel>
@@ -221,7 +222,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Militar
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light">
                                                     Forças Armadas
                                                 </span>
                                             </div>

@@ -1,5 +1,5 @@
-import { Title } from './styles'
-import FormCF from './Form'
+import { Title } from '../FALECONOSCO/STYLES'
+import FormCF from '../FALECONOSCO/FORM/Form'
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { useRouter } from 'next/router'
 

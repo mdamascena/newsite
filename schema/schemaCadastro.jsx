@@ -15,6 +15,9 @@ export const cadastroSchema = z.object({
   termos: z.boolean().refine(val => val === true, {
     message: "É necessário aceitar o termo para continuar.",
   }),
+  aceite_whatsapp: z.boolean().refine(val => val === true, {
+    message: "É necessário aceitar o termo para continuar.",
+  }),
 }).refine(data => data.senha === data.senhaConfirmacao, {
   message: "As senhas não correspondem",
   path: ["senhaConfirmacao"],

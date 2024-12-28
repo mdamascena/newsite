@@ -51,12 +51,12 @@ export default function MainHome() {
         <SlideModalidade/>
         <Mais/>
         <Taxa/>
-        <MarqueeDemo />
         <Escolha/>
         <SeuPerfil/> 
+        <MarqueeDemo />
         <SeuPotencial/>      
-        <Simulador/>
-        <Modalidades/>
+        {/* <Simulador/>
+        <Modalidades/> */}
 
     </main>
   )

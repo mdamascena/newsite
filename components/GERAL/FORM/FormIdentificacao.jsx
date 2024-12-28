@@ -6,14 +6,14 @@ import { useHookFormMask } from "use-mask-input"
 import { useFormContext, Controller} from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { motion, AnimatePresence } from 'framer-motion'
-import BtnNext from '../BUTTON/BtnBlueNext'
-import BtnBack from '../BUTTON/BtnBlueBack'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
+import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
 import { TbMessage2Question } from "react-icons/tb"
 import { toast, ToastContainer } from "react-toastify"
-import ModalGenero from '../MODAL/ModalGenero'
+import ModalGenero from '../../GERAL/MODAL/ModalGenero'
 
 
 const OptLabel = tw(motion.label)`
@@ -155,11 +155,11 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 <motion.div className="col-span-3" key="masculino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="0" id="masculino" checked={value === "0"} onChange={() => onChange("0")} />
                                     <OptLabel htmlFor="masculino">
-                                        <div className="lg:col-span-6 col-span-2 flex justify-center lg:mb-2">
+                                        <div className="col-span-6 flex justify-center mb-2">
                                             <IoIosMale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="lg:col-span-6 col-span-4 lg:text-center text-end">
-                                            <p className="font-semibold">
+                                        <div className="col-span-6 text-center">
+                                            <p className="">
                                                 Masculino
                                             </p>
                                         </div>
@@ -169,18 +169,18 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 <motion.div className="col-span-3" key="feminino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
                                     <OptLabel htmlFor="feminino">
-                                        <div className="lg:col-span-6 col-span-2 flex justify-center lg:mb-2">
+                                        <div className="col-span-6 flex justify-center mb-2">
                                             <IoIosFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="lg:col-span-6 col-span-4 lg:text-center text-end">
-                                            <p className="font-semibold">
+                                        <div className="col-span-6 text-center">
+                                            <p className="">
                                                 Feminino
                                             </p>
                                         </div>
                                     </OptLabel>
                                 </motion.div>
 
-                                <motion.div className="col-span-6 lg:mt-5 mt-1 mx-auto" variants={item}>
+                                <motion.div className="col-span-6 lg:mt-5 mt-5 mx-auto" variants={item}>
                                     <div className="flex text-blue-500 cursor-pointer text-center items-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
                                         <TbMessage2Question className="text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
                                         <p>Por que apenas essas opções ?</p>

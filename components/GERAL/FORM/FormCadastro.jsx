@@ -8,8 +8,8 @@ import { useFormData } from "../../../context/FormContext"
 import {useDisclosure} from "@nextui-org/react"
 import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
-import ModalOpt from '../modal/ModalOpt'
-import BtnNext from '../BUTTON/BtnBlueNext'
+import ModalOpt from '../../GERAL/MODAL/ModalOpt'
+import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
 
 export default function FormCadastro({onNext}) {
 
@@ -17,6 +17,7 @@ export default function FormCadastro({onNext}) {
     const registerWithMask = useHookFormMask(register);
 
     const acceptedTerms = watch("termos");
+    const acceptedWhatsapp = watch("aceite_whatsapp");
     const {atualizarForm} = useFormData();
 
     // State para definir o campo password visivel.
@@ -182,7 +183,7 @@ export default function FormCadastro({onNext}) {
                             {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
                         />
                         
-                        <label className='text-slate-400 font-light lg:text-md text-sm' htmlFor="termos">
+                        <label className='text-slate-400 font-light lg:text-md text-sm w-96' htmlFor="termos">
                             <span className="mr-2">
                                 Li e aceito os termos.
                             </span>
@@ -196,6 +197,25 @@ export default function FormCadastro({onNext}) {
                     </div>
 
                     <ModalOpt isOpen={isOpen} onOpenChange={onOpenChange} onAccept={handleAccept}/>
+
+                    <div className="col-span-6 my-2 flex items-center">
+                        <input 
+                            type="checkbox"
+                            name="aceite_whatsapp"
+                            id="aceite_whatsapp"
+                            className="text-blue-600 h-8 w-8 lg:h-5 lg:w-5 mr-4 ml-2"
+                            checked={acceptedWhatsapp || false}
+                            onChange={handleCheckboxChange} // Usar a função para atualizar o valor
+                            {...register("aceite_whatsapp", { required: "Você deve aceitar os termos para continuar." })}
+                        />
+                        <label className='text-slate-400 font-light lg:text-md text-sm w-96' htmlFor="aceite_whatsapp">
+                            <span className="mr-2">
+                                Autorizo a Valoreal entrar em contato comigo por celular, e-mail ou WhatsApp.
+                            </span>
+                            {errors.aceite_whatsapp && <p className="text-red-500 text-sm mt-1">{errors.aceite_whatsapp.message}</p>}
+                        </label>
+                    </div>
+
                 </div>
 
                 {/*Botão do step*/}
