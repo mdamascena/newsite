@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from "react"
 import { FormDataProvider } from "../../../context/FormContext"
 import BaseForm from "../../../components/geral/form/BaseForm"
-import { FormBoleto } from "../../../components/boleto/form/index"
+import { FormBoleto } from "../../../components/boleto/form/FormBoleto"
 
 export default function Cadastro() {
 

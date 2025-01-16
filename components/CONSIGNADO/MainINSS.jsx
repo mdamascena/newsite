@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import ImgMain from '../../public/img/modelo_main_inss3.png'
-import { BtnCalc, Card, EmpTitle } from './styles'
+import { BtnCalc, Card, EmpTitle } from './STYLES'
 import Condicoes from './CondicoesINSS'
 import TaxaGuru from '../geral/section/TaxaGuru'
-import { LuCheckCircle } from "react-icons/lu"
+import { LuCircleCheck  } from "react-icons/lu"
 import { useRouter } from 'next/router'
 
 export default function MainFGTS() {
@@ -22,15 +22,15 @@ export default function MainFGTS() {
                     <div className='lg:my-auto mb-10'>
                         <div className='my-5 gap-2 lg:gap-4 justify-center lg:justify-start hidden lg:flex'>
                             <Card>
-                                <LuCheckCircle className='mr-2'/>
+                                <LuCircleCheck className='mr-2'/>
                                 Aposentado
                             </Card>
                             <Card>
-                                <LuCheckCircle className='mr-2'/>
+                                <LuCircleCheck className='mr-2'/>
                                 Pensionista
                             </Card>
                             <Card>
-                                <LuCheckCircle className='mr-2'/>
+                                <LuCircleCheck className='mr-2'/>
                                 LOAS/BPC
                             </Card>
                         </div>
@@ -43,16 +43,16 @@ export default function MainFGTS() {
                         </div>
                         
                         <div className='my-5 gap-1 lg:gap-4 justify-center lg:justify-start lg:hidden flex'>
-                            <Card>
-                                <LuCheckCircle className='mr-2'/>
+                             <Card>
+                                <LuCircleCheck className='mr-2'/>
                                 Aposentado
                             </Card>
                             <Card>
-                                <LuCheckCircle className='mr-2'/>
+                                <LuCircleCheck className='mr-2'/>
                                 Pensionista
                             </Card>
                             <Card>
-                                <LuCheckCircle className='mr-2'/>
+                                <LuCircleCheck className='mr-2'/>
                                 LOAS/BPC
                             </Card>
                         </div>
@@ -75,6 +75,9 @@ export default function MainFGTS() {
             <div className='container-custom'>
                 <Condicoes />
             </div>
+            
+            
+            
             <TaxaGuru 
                 TituloGuru={'Equilibre as sua contas e viva a tranquilidade'} 
                 DescrisaoGuro={'As melhores taxas de juros para aposentados e pensionistas do INSS, BPC/LOAS'} 

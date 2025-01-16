@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 //MAIN
 //MAIN FALE CONOSCO
 export const Title = tw.div`
-    pt-5
+    py-5
     lg:text-5xl
     text-3xl
     text-center 

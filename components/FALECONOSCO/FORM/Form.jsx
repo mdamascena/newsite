@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { Btn } from '../styles'
+import { Btn } from '../STYLES'
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
@@ -8,6 +8,7 @@ import InputMask from 'react-input-mask'
 import { Textarea } from "../../ui/textarea"
 import { motion, AnimatePresence } from 'framer-motion'
 import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function FormFC() {
 
@@ -16,12 +17,14 @@ export default function FormFC() {
         email: yup.string().email('Digite um e-mail válido').required('O e-mail é obrigatório'),
     });
 
-    const MeuFormulario = () => {
-        const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema)})
-    }
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ resolver: yupResolver(schema) })
       
     const onSubmit = (data) => {
-        console.log(data);
+        console.log({ ...data, assunto: selectValue })
     }
 
     const [selectValue, setSelectValue] = useState('')
@@ -34,11 +37,11 @@ export default function FormFC() {
 
     return (
          
-        <div className='rounded-xl shadow-lg p-5 lg:ml-14'>
+        <div className='rounded-xl shadow-lg p-5 lg:ml-14 bg-white'>
                         
-            <form className="gap-y-2 grid" >
+            <form onSubmit={handleSubmit(onSubmit)} className="gap-y-2 grid" >
 
-                <Select className='placeholder:text-slate-400' value={selectValue} onChange={handleSelectChange} >
+                <Select className='placeholder:text-slate-400' value={selectValue} onValueChange={handleSelectChange} >
 
                     <SelectTrigger className="bg-slate-200 text-slate-500 focus:ring-1 focus:ring-blue-500">
                         <SelectValue placeholder="Escolha o assunto" />
@@ -85,7 +88,7 @@ export default function FormFC() {
                             </InputMask>
 
                         </motion.div>
-                    ) }
+                    )}
                 </AnimatePresence>
                 
                 <h1 className="text-center p-3 tracking-tight text-slate-400">
@@ -94,7 +97,7 @@ export default function FormFC() {
                 
                 <Textarea className='bg-slate-200 h-32 focus-visible:ring-blue-500' placeholder='Escreva aqui sua mensagem' />
                                 
-                <Btn className="mt-3" onClick={()=>{console.log(selectValue)}}>
+                <Btn type="submit" className="mt-3" onClick={()=>{console.log(selectValue)}}>
                     <LiaTelegramPlane className="mr-2 text-xl" />
                     Enviar
                 </Btn>

@@ -1,22 +1,24 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { BtnCalc, EmpTitle } from './STYLES'
 import ImgMain from '../../public/img/pers_home1.png'
-import { BtnCalc, EmpTitle } from './styles'
 import SimuladorFGTS from './SimuladorFGTS'
 import Vantagens from './VantagensFGTS'
 import Regras from './RegrasGeraisFGTS'
 import Analise from '../geral/section/Analise'
 import TaxaGuru from '../geral/section/TaxaGuru'
-import { useRouter } from 'next/router'
 
 export default function MainFGTS() {
 
     const router = useRouter();
+    
     const handleRedirect = () => {
         router.push('saque-aniversario/cadastro');
     }
     
     const Desc = 'O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos. É uma das melhores opções de crédito sem comprometer sua renda com pagamento de parcelas!'
     const DescT = 'A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.'
+    
     return (
         <main>
             <div className="bgMainFGTS">

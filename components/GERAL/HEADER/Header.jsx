@@ -128,7 +128,7 @@ export default function Header() {
                                     <Link href="../saque-aniversario" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Saque antecipado FGTS</Link>
                                     <Link href="../consignado-inss" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo consignado INSS</Link>
                                     <Link href="../credluz" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo na conta de luz</Link>
-                                    <Link href="../credluz-fast" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">PixCard Parcelado</Link>
+                                    <Link href="../credluz-fast" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">PIX parcelado</Link>
                                 </div>
                             </Dropdown>
                         </LiDrop>
@@ -179,7 +179,7 @@ export default function Header() {
                         </LiSm>
 
                         <LiSm className='hover:bg-white'>
-                            <Link href='/credluz-fast' passHref>PixCard Parcelado</Link>
+                            <Link href='/credluz-fast' passHref>PIX parcelado</Link>
                         </LiSm>
                             
                     </ul>

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Progress } from "../../components/ui/progress"
+import { Progress } from "../ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
 
 export default function Chatform ({className, value, stepsChart }) {

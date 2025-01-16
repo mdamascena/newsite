@@ -4,8 +4,8 @@ import { useFormContext } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { Input } from "components/ui/input"
 import { motion } from 'framer-motion'
-import BtnNext from '../../geral/BUTTON/BtnBlueNext'
-import BtnBack from '../../geral/BUTTON/BtnBlueBack'
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/button/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 
 export default function FormDadosCliente({onNext, backStep}) {

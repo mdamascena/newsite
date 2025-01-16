@@ -7,8 +7,8 @@ import tw from 'tailwind-styled-components'
 import { motion } from 'framer-motion'
 import { getCidade, getEnderecoCep, getEstado } from '../../../services/servicesCredLuz/apiCep'
 import { Select, SelectTrigger, SelectContent, SelectItem } from "components/ui/select"
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import BtnNext from '../button/BtnBlueNext'
+import BtnBack from '../button/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 import { toast, ToastContainer } from "react-toastify"
 import { PiMapPinSimpleAreaFill } from "react-icons/pi"
@@ -250,7 +250,6 @@ export default function FormEndereco({ onNext, backStep }) {
 
                         {selectedOption === "1" && (
                             <>
-                            
                                 <motion.div
                                     initial={'hidden'} 
                                     animate={'visible'}
@@ -286,8 +285,8 @@ export default function FormEndereco({ onNext, backStep }) {
                                             
                                             <Select
                                                 onValueChange={(value) => {
-                                                    field.onChange(value); // Atualiza o valor do formulário
-                                                    setSelectedEstado(value); // Atualiza o estado selecionado
+                                                field.onChange(value); // Atualiza o valor do formulário
+                                                setSelectedEstado(value); // Atualiza o estado selecionado
                                                 }}
                                                 defaultValue={field.value}
                                                 >
@@ -303,7 +302,6 @@ export default function FormEndereco({ onNext, backStep }) {
                                                         </SelectItem>
                                                     ))}
                                                 </SelectContent>
-
                                             </Select>
                                         )}
                                     />
@@ -315,6 +313,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     animate={'visible'}
                                     variants={container}
                                     className="lg:col-span-3 col-span-6">
+                                    
                                     <Controller
                                         name="cidade"
                                         control={control}
@@ -344,8 +343,7 @@ export default function FormEndereco({ onNext, backStep }) {
 
                         {showAddressFields && (
                             <>
-                                
-                                <div className="lg:col-span-3 col-span-4">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-4">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -353,19 +351,19 @@ export default function FormEndereco({ onNext, backStep }) {
                                         {...register("logradouro")}
                                         />
                                     {errors.logradouro && <p className="text-red-500 text-xs mt-1">{errors.logradouro.message}</p>}
-                                </div>
+                                </motion.div>
 
-                                <div className="lg:col-span-1 col-span-2">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container}  className="lg:col-span-1 col-span-2">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.numero ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
-                                        placeholder="Nº"
+                                        placeholder="Nº *"
                                         {...register("numero")}
                                     />
                                     {errors.numero && <p className="text-red-500 text-xs mt-1">{errors.numero.message}</p>}
-                                </div>
+                                </motion.div>
 
-                                <div className="lg:col-span-2 col-span-3">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container}  className="lg:col-span-2 col-span-3">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.complemento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -373,9 +371,9 @@ export default function FormEndereco({ onNext, backStep }) {
                                         {...register("complemento")}
                                     />
                                     {errors.complemento && <p className="text-red-500 text-xs mt-1">{errors.complemento.message}</p>}
-                                </div>
+                                </motion.div>
 
-                                <div className="lg:col-span-2 col-span-3">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container}  className="lg:col-span-2 col-span-3">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -383,11 +381,12 @@ export default function FormEndereco({ onNext, backStep }) {
                                         {...register("bairro")}
                                         />
                                     {errors.bairro && <p className="text-red-500 text-xs mt-1">{errors.bairro.message}</p>}
-                                </div>
+                                </motion.div>
+                                
 
                                 {cepDigitado.length === 8 && selectedOption === "1" && (
                                     <>
-                                        <div className="lg:col-span-3 col-span-4">
+                                        <motion.div initial={'hidden'} animate={'visible'} variants={container}  className="lg:col-span-3 col-span-4">
                                             <Input
                                                 className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cidadeCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                                 type="text"
@@ -395,9 +394,9 @@ export default function FormEndereco({ onNext, backStep }) {
                                                 {...register("cidadeCep")}
                                             />
                                             {errors.cidadeCep && <p className="text-red-500 text-xs mt-1">{errors.cidadeCep.message}</p>}
-                                        </div>
+                                        </motion.div>
                                         
-                                        <div className="lg:col-span-1 col-span-2">
+                                        <motion.div initial={'hidden'} animate={'visible'} variants={container}  className="lg:col-span-1 col-span-2">
                                             <Input
                                                 className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.estado ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                                 type="text"
@@ -405,7 +404,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                                 {...register("estadoCep")}
                                             />
                                             {errors.cidadeCep && <p className="text-red-500 text-xs mt-1">{errors.cidadeCep.message}</p>}
-                                        </div>
+                                        </motion.div>
         
                                     </>
                                 )}

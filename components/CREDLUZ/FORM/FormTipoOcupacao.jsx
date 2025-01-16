@@ -9,8 +9,8 @@ import { IoIosArrowBack } from "react-icons/io"
 import { FaMale } from "react-icons/fa"
 import { motion } from 'framer-motion'
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/button/BtnBlueBack'
 import { toast, ToastContainer } from "react-toastify"
 
 const OptLabel = tw(motion.label)`

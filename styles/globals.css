@@ -80,6 +80,16 @@
       --ring: 222.2 84% 4.9%;
 
       --radius: 0.5rem;
+
+      --color-1: 0 100% 63%;
+
+      --color-2: 270 100% 63%;
+
+      --color-3: 210 100% 63%;
+
+      --color-4: 195 100% 63%;
+
+      --color-5: 90 100% 63%;
     }
 
     .dark {
@@ -110,6 +120,11 @@
       --border: 217.2 32.6% 17.5%;
       --input: 217.2 32.6% 17.5%;
       --ring: 212.7 26.8% 83.9%;
+      --color-1: 0 100% 63%;
+      --color-2: 270 100% 63%;
+      --color-3: 210 100% 63%;
+      --color-4: 195 100% 63%;
+      --color-5: 90 100% 63%;
     }
   }
 
@@ -342,4 +357,29 @@ a {
 
 .animate-scroll-infinite {
   animation: scrollInfinite 20s linear infinite;
+}
+.bg-modelo-credluz{
+  background-image: url(../public/img/modelo_credluz.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-modelo-fgts{
+  background-image: url(../public/img/modelo_fgts.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-modelo-inss{
+  background-image: url(../public/img/modelo_inss.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-modelo-pix{
+  background-image: url(../public/img/modelo_pix.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

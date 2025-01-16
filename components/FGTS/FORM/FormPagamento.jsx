@@ -3,8 +3,8 @@ import { useFormData } from "../../../context/FormContext"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "components/ui/select"
 import { Input } from "components/ui/input";
 import { useEffect } from "react";
-import BtnNext from '../../geral/BUTTON/BtnBlueNext'
-import BtnBack from '../../geral/button/BtnBlueBack'
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/BUTTON/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 
 export default function FormPagamento({ onNext, backStep }) {

@@ -1,14 +1,25 @@
 import Simulador from "./SimuladorGeral"
-import SeuPerfil from "./SECTIONS/Perfil"
+import SeuPerfil from "./sections/Perfil"
 import { BtnHome } from "./STYLES"
 import Modalidades from "./Modalidades"
-import SlideModalidade from "./SECTIONS/SlideModalidade"
-import Taxa from "./SECTIONS/Taxas"
-import Mais from "./SECTIONS/Mais"
-import SeuPotencial from "./SECTIONS/LiberePotencial"
-import Escolha from "./SECTIONS/Escolha"
+import SlideModalidade from "./sections/SlideModalidade"
+import Taxa from "./sections/Taxas"
+import Mais from "./sections/Mais"
+import SeuPotencial from "./sections/LiberePotencial"
+import Escolha from "./sections/Escolha"
 import { useRouter } from 'next/router'
 import { MarqueeDemo } from "./MarqueeDemo"
+import { RainbowButton } from "../ui/rainbow-button"
+import WordRotate from "../ui/word-rotate"
+
+const texts = [
+    "Crédito na conta de LUZ",
+    "Consignado para LOAS",
+    "Saque Antecipado do FGTS",
+    "Consignado do INSS",
+    "Parcelamento de PIX",
+    
+]
 
 export default function MainHome() {
 
@@ -28,17 +39,17 @@ export default function MainHome() {
                         <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
                             Empréstimo <span className="font-extralight">ONLINE</span>
                         </h1>
-                        <h1 className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight">
-                            com múltiplas opções de créditos
-                        </h1>
+                        <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/>
                     </div>
 
-                    <div className="lg:content-start content-end col-span-1">
-                        <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 lg:text-xl col-span-1">
-                            Mais autonomia, muito mais controle e economia de tempo para você. Feito para seu perfil.
+                    <div className="lg:content-start content-end col-span-1 select-none">
+                        <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 lg:text-xl col-span-1 lg:pr-14">
+                            Diversas modalidades de empréstimo, pensadas para atender diferentes necessidades, tudo em um só lugar!
                         </p>
                         <div className="pb-8 lg:pb-0">
-                            <BtnHome onClick={handleRedirect}>Simular agora</BtnHome>
+                            <BtnHome onClick={handleRedirect}>
+                                Simular agora
+                            </BtnHome>
                         </div>
                     </div>
 

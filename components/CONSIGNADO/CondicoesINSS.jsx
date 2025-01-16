@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import tw from 'tailwind-styled-components'
-
 export default function CondicoesINSS() {
 
     return (

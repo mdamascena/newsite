@@ -1,7 +1,7 @@
 import Image from "next/image"
 import imgFGTS from '../../public/img/pers_notificacao_pix.png'
 import {HiCheck} from 'react-icons/hi'
-import { BtnCalcRegras } from "./styles"
+import { BtnCalcRegras } from "./STYLES"
 
 export default function SectionDescFGTS() {
 

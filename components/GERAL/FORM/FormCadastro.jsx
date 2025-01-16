@@ -8,8 +8,8 @@ import { useFormData } from "../../../context/FormContext"
 import {useDisclosure} from "@nextui-org/react"
 import { motion } from 'framer-motion'
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
-import ModalOpt from '../../GERAL/MODAL/ModalOpt'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
+import ModalOpt from '../modal/ModalOpt'
+import BtnNext from '../button/BtnBlueNext'
 
 export default function FormCadastro({onNext}) {
 
@@ -112,7 +112,7 @@ export default function FormCadastro({onNext}) {
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="email"
                                 value={watch('email') || ''}
-                                placeholder="Seu e-mail? *"
+                                placeholder="Seu e-mail *"
                                 {...register('email')} 
                             />
                             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -123,7 +123,7 @@ export default function FormCadastro({onNext}) {
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
                                 value={watch('celular') || ''}
-                                placeholder="Celular *"
+                                placeholder="Seu celular *"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />
                             <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : 'text-slate-400'}`} />

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import logoBranco from '../../public/img/LOGO_FULL_BRANCO.png'
-import { BtnHelp, BtnConta } from './styles'
+import { BtnHelp, BtnConta } from './STYLES'
 import Login from './form/Login'
 import Reset from './form/Reset'
 import { useState } from 'react'
@@ -12,8 +12,6 @@ import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 
 const WP = 'https://bit.ly/wa-plancredi-api'
 const TEL = 'tel:8008789853'
-
-
 
 export default function MainCONTA() {
 

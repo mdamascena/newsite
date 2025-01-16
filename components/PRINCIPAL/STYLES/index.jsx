@@ -154,8 +154,10 @@ export const LiMod = tw.li`
     py-3
     my-6
     cursor-pointer
+    hidden
+    lg:block
     duration-150
-    ${(p) => (p.$isActive ? 'text-blue-500' : 'text-slate-300 hover:text-blue-500')}
+    ${(p) => (p.$isActive ? 'text-blue-500 block' : 'text-slate-300 hover:text-blue-500')}
     ${(p) => (p.$isActive ? 'lg:border-l-4 lg:border-blue-500' : 'lg:hover:border-l-4 lg:hover:border-blue-500')}
 `
 
@@ -171,9 +173,9 @@ export const Title = tw.h2`
 `
 
 export const Desc = tw.p`
-select-none
-font-light
-${(p) => (p.$isActive ? 'text-slate-400' : 'text-slate-200 group-hover:text-slate-400')}
-text-center
-lg:text-left
+    select-none
+    font-light
+    ${(p) => (p.$isActive ? 'text-slate-400' : 'text-slate-200 group-hover:text-slate-400')}
+    text-center
+    lg:text-left
 `

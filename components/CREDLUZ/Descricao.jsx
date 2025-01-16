@@ -1,9 +1,9 @@
 import Image from "next/image"
-import moeda from '../../public/img/dinheiro.gif'
+import moeda from "../../public/img/dinheiro.gif"
 import veloz from '../../public/img/velocimetro.gif'
 import debito from '../../public/img/flutuacao.gif'
 import parcela from '../../public/img/amar.gif'
-import { Card } from "./styles"
+import { Card } from './styles'
 
 
 export default function Descricao(){
@@ -94,10 +94,7 @@ export default function Descricao(){
                         <li>* Crédito sujeito a análise.</li>
                     </ul>
                 </div>
-
             </div>
-            
-            
         </section>
     )
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import Valores from "./Valores"
-import PMTGERAL from "./PMT/PMT_GERAL"
+import PMTGERAL from "./pmt/PMT_GERAL"
 
 const containerVariants = { //Não está sendo usado
     hidden: { opacity: 1, scale: 0 },

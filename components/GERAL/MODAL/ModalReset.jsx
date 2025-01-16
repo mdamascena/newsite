@@ -1,11 +1,9 @@
 import React from "react"
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react"
-import { useState, useEffect } from "react"
 import InputMask from "react-input-mask"
 import { Input } from "../../ui/input"
-import BtnBack from '../BUTTON/BtnBlueBack'
-import BtnNext from '../BUTTON/BtnBlueNext'
-import { Backpack } from "lucide-react"
+import BtnBack from '../button/BtnBlueBack'
+import BtnNext from '../button/BtnBlueNext'
 
 export default function App({isOpen,onClose}) {
    

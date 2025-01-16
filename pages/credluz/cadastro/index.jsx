@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState } from "react"
 import { FormDataProvider } from "../../../context/FormContext"
-import { FormCredLuz } from "../../../components/credluz/FORM"
+import { FormCredLuz } from "../../../components/credluz/form"
 import BaseForm from "../../../components/geral/form/BaseForm"
 
 export default function IndexFormCredLux() {

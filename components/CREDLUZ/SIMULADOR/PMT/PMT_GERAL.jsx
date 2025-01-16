@@ -2,7 +2,7 @@ import { BtnPmtGeral, BtnVolta } from '../../styles'
 import { useEffect } from 'react'
 import {HiArrowUturnLeft} from 'react-icons/hi2'
 import React, { useState } from 'react'
-import Modal from '../PMT/DialogCalc'
+import Modal from './DialogCalc'
 
 export default function PMTGERAL({valor, showSimulador}){
 

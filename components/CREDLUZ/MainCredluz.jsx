@@ -3,11 +3,11 @@ import { useState } from "react"
 import cel from "../../public/img/PERSO_LUZ_3.png"
 import light from "../../public/img/LAMPADA.png"
 import {HiCheck} from 'react-icons/hi'
-import SectioDescrisao from "./Descricao"
-import SectioComoFunciona from "./ComoFunciona"
-import SectioRegrasGerais from "./RegrasGeais"
-import SectioRegioes from "./Regioes"
-import SectioAnalise from "../geral/section/Analise"
+import SectionDescricao from './Descricao'
+import SectionComoFunciona from "./ComoFunciona"
+import SectionRegrasGerais from "./RegrasGeais"
+import SectionRegioes from "./Regioes"
+import SectionAnalise from "../geral/section/Analise"
 import Simulador from './simulador/SimuladorCredluz'
 
 export default function MainCredluz() {
@@ -86,11 +86,11 @@ export default function MainCredluz() {
                     </div>   
                 </div>
             </section>
-            <SectioDescrisao />
-            <SectioComoFunciona />
-            <SectioRegrasGerais />
-            <SectioRegioes />
-            <SectioAnalise />
+            <SectionDescricao />
+            <SectionComoFunciona />
+            <SectionRegrasGerais />
+            <SectionRegioes />
+            <SectionAnalise />
         </main>
     )
 }

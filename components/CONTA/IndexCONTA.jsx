@@ -1,4 +1,4 @@
-import MainConta from "../CONTA/MainConta"
+import MainConta from "./MainConta"
 import Footer from "../geral/footer/Footer"
 
 export default function IndexFGTS() {
