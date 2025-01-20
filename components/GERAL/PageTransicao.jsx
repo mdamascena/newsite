@@ -3,7 +3,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import FlickeringGrid from "../ui/flickering-grid"
 import AnimatedCircularProgressBar from "../ui/animated-circular-progress-bar"
-import LogoValoreal from '../public/img/LOGO_FULL_BRANCO.png'
+import LogoValoreal from '../../public/img/LOGO_FULL_BRANCO.png'
 
 const messages = [
     { text: "Perfeito!", duration: 1000 },

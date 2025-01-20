@@ -3,6 +3,7 @@ import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { useRouter } from "next/router"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import CharForm from "../ChartForm"
+import PageTrans from "../PageTransicao"
 
 export default function BaseForm({steps, titulo, descricao, progress, stepCurrent}) {
   

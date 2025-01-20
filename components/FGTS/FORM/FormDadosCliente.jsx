@@ -28,14 +28,14 @@ export default function FormDadosCliente({onNext, backStep}) {
     
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+            
             <motion.div
                 initial={'hidden'} 
                 animate={'visible'}
                 variants={container} 
-                className="grid grid-cols-6 xl:px-7"
-                >
+                className="grid grid-cols-6 xl:px-7">
             
-            <div className="container-form-head">
+                <div className="container-form-head">
                     <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Seus dados
@@ -44,11 +44,11 @@ export default function FormDadosCliente({onNext, backStep}) {
                     <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
                         Envie seus dados !
                     </p>
-            </div>
+                </div>
 
-            <div className="grid-cols-6 container-form-body">
+                <div className="grid-cols-6 container-form-body">
 
-                <div className="col-span-6 grid grid-cols-6 gap-2.5">
+                    <div className="col-span-6 grid grid-cols-6 gap-2.5">
                         <div className="lg:col-span-3 col-span-6">
                             <Input 
                                 className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.registroGeral ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
@@ -69,6 +69,7 @@ export default function FormDadosCliente({onNext, backStep}) {
                             {errors.nomeMae && <p className="text-red-500 text-xs mt-1">{errors.nomeMae.message}</p>}
                         </div>
                     </div>
+
                 </div>
            
                 <div className="container-form-footer">

@@ -30,8 +30,7 @@ export default function Descricao(){
                                 As parcelas são debitadas direto na sua conta de luz.
                             </p>
                             <p>
-                                Na mesma hora você já fica sabendo se o seu crédito foi pré-aprovado. 
-                                Você escolhe, até R$ 3.300,00 e ainda pode parcelar em até 22 vezes.
+                                Saiba na hora se foi pré-aprovado. Limite até R$ 3.300,00, com parcelamento em até 22x. Simples assim!
                             </p>
                         </div>
                     </div>
@@ -46,7 +45,7 @@ export default function Descricao(){
                             Crédito Fácil
                         </h5>
                         <p className="text-sm leading-tight">
-                            Não precisa comprovar renda! Basta ser o titular da conta de energia da sua residência. Simples assim!
+                            Não precisa comprovar renda! Basta ser o titular da conta de energia!
                         </p>
                     </Card>
 
@@ -58,7 +57,7 @@ export default function Descricao(){
                             Rápido
                         </h5>
                         <p className="text-sm leading-tight">
-                            Em até 24 horas, você já fica sabendo sobre a sua aprovação do seu pedido. O dinheiro é depositado em sua conta bancária.
+                            O empréstimo é liberado no mesmo dia. O crédito é depositado na sua conta.
                         </p>
                     </Card>
 
@@ -70,7 +69,7 @@ export default function Descricao(){
                             Débito Automático
                         </h5>
                         <p className="text-sm leading-tight">
-                            O débito é feito direto em sua conta de luz. Tudo muito bem explicado impresso em sua conta, mês a mês!
+                            O débito é feito direto em sua conta de luz. Simples assim!
                         </p>
                     </Card>
 
@@ -87,7 +86,7 @@ export default function Descricao(){
                     </Card>
                 </div>
 
-                <div className="text-[12px] mt-8">
+                <div className="text-[10px] mt-8">
                     <ul>
                         <li>* Crédito destinado a pessoa física, de qualquer perfil econômico que possua conta ativa em uma concessionária de distribuição de energia elétrica conveniada.</li>
                         <li>* Tempo estimado de analise, podendo superar o tempo acima. </li>

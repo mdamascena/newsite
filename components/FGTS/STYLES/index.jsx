@@ -109,14 +109,13 @@ export const Card = tw.div`
     hover:scale-110
     duration-300
     mb-4
-    rounded-xl 
-    p-2 
+    rounded-2xl 
     bg-blue-600
     shadow-lg
     shadow-blue-700
     hover:bg-blue-50
-    lg:h-[230px]
-    lg:w-[230px]
+    lg:h-[200px]
+    lg:w-[220px]
     h-[24vh]
     relative
 `
@@ -125,9 +124,8 @@ export const CardFront = tw.div`
     self-center
     text-md 
     tracking-tighter
-    mx-2 
-    lg:mx-4 
-    text-center 
+    mx-4 
+    lg:mx-5
     group-hover:scale-0 
     absolute 
     duration-500

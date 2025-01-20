@@ -73,7 +73,7 @@ export default function FormCadastro({onNext}) {
     return (
 
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-
+                
             <motion.div
                 initial={'hidden'} 
                 animate={'visible'}

@@ -6,6 +6,7 @@ import { VscSearchStop } from 'react-icons/vsc'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GiMoneyStack } from 'react-icons/gi'
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { PiPlus } from "react-icons/pi";
 
 export default function SectionVantagens() {
     return (
@@ -26,17 +27,13 @@ export default function SectionVantagens() {
 
                 <div className='grid lg:grid-cols-5 grid-cols-2 select-none justify-items-center lg:mx-20'>
 
-                    <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-12 pt-8 lg:order-1'>
+                    <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-0 pt-8 lg:order-1'>
                         <Card>
                             <CardFront>
-                                <MdMoneyOff className='text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm tracking-tighter m-3'>
+                                <MdMoneyOff className='text-5xl text-blue-300'/>
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
                                     Sem mensalidades para pagar
                                 </h2>
-
-                                <div className='flex justify-end'>
-                                    <HiOutlineArrowNarrowRight className='text-white text-lg' />
-                                </div>
                             </CardFront>
 
                             <CardBack>
@@ -46,14 +43,10 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <AiOutlineFieldTime className='text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>
+                                <AiOutlineFieldTime className='text-5xl text-blue-300'/>
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
                                     Liberação mais rápida do mercado
                                 </h2>
-
-                                <div className='flex justify-end'>
-                                    <HiOutlineArrowNarrowRight className='text-white text-xl' />
-                                </div>
                             </CardFront>
 
                             <CardBack>
@@ -62,20 +55,18 @@ export default function SectionVantagens() {
                         </Card>
                     </div>
 
-                    <div className='pt-0 lg:pt-8 content-end lg:px-4 lg:col-span-3 col-span-2 grid justify-center lg:order-2 order-3'>
+                    <div className='pt-0 lg:pt-20 content-end lg:px-4 lg:col-span-3 col-span-2 grid justify-center lg:order-2 order-3'>
                         <Image src={Persona} alt='' />
                     </div>
 
-                    <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-12 pt-8 lg:order-3'>
+                    <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-0 pt-8 lg:order-3'>
 
                         <Card>
                             <CardFront>
-                                <GiMoneyStack className='text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Antecipe até 12 saques do seu FGTS</h2>
-
-                                <div className='flex justify-end'>
-                                    <HiOutlineArrowNarrowRight className='text-white text-xl' />
-                                </div>
+                                <GiMoneyStack className='text-5xl text-blue-300' />
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
+                                    Antecipe até 12 saques do seu FGTS
+                                </h2>
                             </CardFront>
 
                             <CardBack>
@@ -85,12 +76,10 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <VscSearchStop className='text-5xl text-white mx-auto mb-3' />
-                                <h2 className='text-blue-300 lg:text-2xl text-sm m-3'>Sem consulta no SPC/SERASA</h2>
-
-                                <div className='flex justify-end'>
-                                    <HiOutlineArrowNarrowRight className='text-white text-xl' />
-                                </div>
+                                <VscSearchStop className='text-5xl text-blue-300' />
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
+                                    Sem consulta no SPC/SERASA
+                                </h2>
                             </CardFront>
 
                             <CardBack>

@@ -87,6 +87,7 @@ export default function FormEndereco({ onNext, backStep }) {
                 })
                 .catch((e) => console.log(e))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOption])
 
     //Resetar o campo cidade caso troque de estado e faz a requisição novamente.
