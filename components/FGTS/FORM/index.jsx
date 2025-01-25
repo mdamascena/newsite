@@ -3,16 +3,15 @@ import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useFormData } from "../../../context/FormContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { cadastroSchema, enderecoSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
-import { dadosPessoaisFgts, pagamentoPix } from '../../../schema/schemaFgts';
+import { cadastroSchema, enderecoSchema } from '../../../schema/schemaCadastro';
+import { pagamentoPix, identificacaoSchema } from '../../../schema/schemaFgts';
 
 const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
-const Step2 = dynamic(() => import('../../geral/form/FormIdentificacao'))
+const Step2 = dynamic(() => import('./FormIdentificacao'))
 const Step3 = dynamic(() => import('../../geral/form/FormEndereco'))
-const Step4 = dynamic(() => import('./FormDadosCliente'))
-const Step5 = dynamic(() => import('./FormPagamento'));
+const Step4 = dynamic(() => import('./FormPagamento'));
 
-const schemas = [cadastroSchema, identificacaoSchema, enderecoSchema, dadosPessoaisFgts, pagamentoPix ];
+const schemas = [cadastroSchema, identificacaoSchema, enderecoSchema, pagamentoPix ];
 
 export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
@@ -72,7 +71,6 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
             {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
             {step === 4 && <Step4 onNext={nextStep} backStep={prevStep}/>}
-            {step === 5 && <Step5 onNext={nextStep} backStep={prevStep}/>}
         </FormProvider>
     )
 }
