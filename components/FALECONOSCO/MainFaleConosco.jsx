@@ -1,5 +1,5 @@
 import { Title } from './STYLES'
-import FormCF from './FORM/Form'
+import FormCF from './form/Form'
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { useRouter } from 'next/router'
 import Ripple from "../ui/ripple";
