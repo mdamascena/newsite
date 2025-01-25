@@ -15,7 +15,6 @@ import { TbMessage2Question } from "react-icons/tb"
 import { toast, ToastContainer } from "react-toastify"
 import ModalGenero from '../../geral/modal/ModalGenero'
 
-
 const OptLabel = tw(motion.label)`
     bg-white
     grid
