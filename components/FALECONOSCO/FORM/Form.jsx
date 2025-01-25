@@ -1,45 +1,62 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { Btn } from '../styles'
+import { Btn } from '../STYLES';
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
 import InputMask from 'react-input-mask'
 import { Textarea } from "../../ui/textarea"
 import { motion, AnimatePresence } from 'framer-motion'
-import * as yup from 'yup'
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const schema = z.object({
+    subject: z.string().nonempty('O assunto é obrigatório'),
+    nome: z.string().nonempty('O nome é obrigatório'),
+    email: z.string().email('Digite um e-mail válido'),
+    cpf: z.string().optional().refine(
+        (cpf) => {
+          if (!cpf) return true;
+          return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf);
+        },
+        { message: 'CPF inválido' }
+      ),
+    message: z.string().nonempty('A mensagem é obrigatória'),
+  });
 
 export default function FormFC() {
 
-    const schema = yup.object().shape({
-        nome: yup.string().required('O nome é obrigatório'),
-        email: yup.string().email('Digite um e-mail válido').required('O e-mail é obrigatório'),
-    });
-
-    const MeuFormulario = () => {
-        const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema)})
-    }
+    const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({resolver: zodResolver(schema)})
+    
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
       
-    const onSubmit = (data) => {
-        console.log(data);
-    }
+            if (response.ok) {
+                alert('Mensagem enviada com sucesso!');
+            } else {
+              alert('Erro ao enviar a mensagem.');
+            }
+            } 
+          
+        catch (error) {
+            console.error('Erro no envio:', error);
+          }
+    };
 
-    const [selectValue, setSelectValue] = useState('')
-    const [nome, setNome] = useState('');
-
-    const handleSelectChange = (value) => {
-        setSelectValue(value);
-        console.log(value)
-    }
+    const selectValue = watch('subject');
 
     return (
          
         <div className='rounded-xl shadow-lg p-5 lg:ml-14'>
                         
-            <form className="gap-y-2 grid" >
+            <form onSubmit={handleSubmit(onSubmit)} className="gap-y-2 grid" >
 
-                <Select className='placeholder:text-slate-400' value={selectValue} onChange={handleSelectChange} >
-
+                <Select className='placeholder:text-slate-400'  {...register('subject')} onValueChange={(value) => setValue('subject', value)} >
                     <SelectTrigger className="bg-slate-200 text-slate-500 focus:ring-1 focus:ring-blue-500">
                         <SelectValue placeholder="Escolha o assunto" />
                     </SelectTrigger>
@@ -54,18 +71,24 @@ export default function FormFC() {
                             <SelectItem value="outros">Outros assuntos</SelectItem>
                         </SelectGroup>
                     </SelectContent>
-
                 </Select>
+                {errors.subject && <span className="text-red-500">{errors.subject.message}</span>}
                                 
                 <Input 
                     className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
                     type='text' 
                     placeholder='Seu nome completo'
-                    value={nome}
-                    onChange={(e)=>setNome(e.target.value)}
+                    {...register('nome')}
                 />
+                {errors.nome && <span className="text-red-500">{errors.nome.message}</span>}
                 
-                <Input className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' type='email' placeholder='Seu e-mail'/>
+                <Input 
+                    className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
+                    type='email' 
+                    placeholder='Seu e-mail'
+                    {...register('email')}
+                />
+                {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                 
                 <AnimatePresence>
                     {(selectValue === 'quitacao' || selectValue === 'cancelamento' || selectValue ==='contrato') && (
@@ -79,14 +102,16 @@ export default function FormFC() {
                                 className='bg-slate-200 focus-visible:ring-blue-500 placeholder:text-slate-400' 
                                 mask="999.999.999-99"
                                 maskChar = {null}
-                                placeholder='Seu CPF'>
-
+                                placeholder='Seu CPF'
+                                {...register('cpf')}>
+                                
                                 {(inputProps) => <Input {...inputProps} />}
                             </InputMask>
 
                         </motion.div>
                     ) }
                 </AnimatePresence>
+                {errors.cpf && <span className="text-red-500">{errors.cpf.message}</span>}
                 
                 <h1 className="text-center p-3 tracking-tight text-slate-400">
                     Diga o que deseja:
