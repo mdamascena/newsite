@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useFormData } from "../../../context/FormContext";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { cadastroSchema, enderecoSchema } from '../../../schema/schemaCadastro';
 import { pagamentoPix, identificacaoSchema } from '../../../schema/schemaFgts';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
 const Step2 = dynamic(() => import('./FormIdentificacao'))
@@ -43,8 +43,8 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
         "Queremos saber como depositar seu crédito",
     ], []);
 
-    const methods = useForm({
-        resolver: zodResolver(schemas[step - 1]),
+    const methods = useForm({   
+        resolver: yupResolver(schemas[step - 1]),
         mode: 'onChange',
         defaultValues: formData
     })
