@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import tw from 'tailwind-styled-components'
+import { Btn } from '../STYLES'
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
@@ -8,25 +8,7 @@ import InputMask from 'react-input-mask'
 import { Textarea } from "../../ui/textarea"
 import { motion, AnimatePresence } from 'framer-motion'
 import * as yup from 'yup'
-
-const Btn = tw.button`
-    bg-blue-600
-    saturate-150
-    flex 
-    items-center 
-    justify-center
-    text-white
-    w-full
-    lg:py-4
-    py-3
-    lg:px-5 
-    rounded-md
-    active:bg-blue-900
-    hover:bg-blue-500
-    hover:scale-105
-    active:scale-90 
-    duration-150    
-`
+import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function FormFC() {
 
@@ -35,30 +17,25 @@ export default function FormFC() {
         email: yup.string().email('Digite um e-mail válido').required('O e-mail é obrigatório'),
     });
 
-    const MeuFormulario = () => {
-        const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema)})
-    }
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ resolver: yupResolver(schema) })
       
     const onSubmit = (data) => {
-        console.log(data);
+        console.log({ ...data, assunto: selectValue })
     }
 
-    const [selectValue, setSelectValue] = useState('')
-    const [nome, setNome] = useState('');
-
-    const handleSelectChange = (value) => {
-        setSelectValue(value);
-        console.log(value)
-    }
+    const selectValue = watch('subject');
 
     return (
          
-        <div className='rounded-xl shadow-lg p-5 lg:ml-14'>
+        <div className='rounded-xl shadow-lg p-5 lg:ml-14 bg-white'>
                         
-            <form className="gap-y-2 grid" >
+            <form onSubmit={handleSubmit(onSubmit)} className="gap-y-2 grid" >
 
-                <Select className='placeholder:text-slate-400' value={selectValue} onChange={handleSelectChange} >
-
+                <Select className='placeholder:text-slate-400'  {...register('subject')} onValueChange={(value) => setValue('subject', value)} >
                     <SelectTrigger className="bg-slate-200 text-slate-500 focus:ring-1 focus:ring-blue-500">
                         <SelectValue placeholder="Escolha o assunto" />
                     </SelectTrigger>
@@ -73,18 +50,24 @@ export default function FormFC() {
                             <SelectItem value="outros">Outros assuntos</SelectItem>
                         </SelectGroup>
                     </SelectContent>
-
                 </Select>
+                {errors.subject && <span className="text-red-500">{errors.subject.message}</span>}
                                 
                 <Input 
                     className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
                     type='text' 
                     placeholder='Seu nome completo'
-                    value={nome}
-                    onChange={(e)=>setNome(e.target.value)}
+                    {...register('nome')}
                 />
+                {errors.nome && <span className="text-red-500">{errors.nome.message}</span>}
                 
-                <Input className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' type='email' placeholder='Seu e-mail'/>
+                <Input 
+                    className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
+                    type='email' 
+                    placeholder='Seu e-mail'
+                    {...register('email')}
+                />
+                {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                 
                 <AnimatePresence>
                     {(selectValue === 'quitacao' || selectValue === 'cancelamento' || selectValue ==='contrato') && (
@@ -99,14 +82,15 @@ export default function FormFC() {
                                 mask="999.999.999-99"
                                 maskChar = {null}
                                 placeholder='Seu CPF'
-                                inputMode='numeric'>
-
+                                {...register('cpf')}>
+                                
                                 {(inputProps) => <Input {...inputProps} />}
                             </InputMask>
 
                         </motion.div>
-                    ) }
+                    )}
                 </AnimatePresence>
+                {errors.cpf && <span className="text-red-500">{errors.cpf.message}</span>}
                 
                 <h1 className="text-center p-3 tracking-tight text-slate-400">
                     Diga o que deseja:
@@ -114,7 +98,7 @@ export default function FormFC() {
                 
                 <Textarea className='bg-slate-200 h-32 focus-visible:ring-blue-500' placeholder='Escreva aqui sua mensagem' />
                                 
-                <Btn className="mt-3" onClick={()=>{console.log(selectValue)}}>
+                <Btn type="submit" className="mt-3" onClick={()=>{console.log(selectValue)}}>
                     <LiaTelegramPlane className="mr-2 text-xl" />
                     Enviar
                 </Btn>

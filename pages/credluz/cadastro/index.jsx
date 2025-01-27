@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { useEffect, useState } from "react"
-import { FormProviderLuz } from "../../../context/FormContextLuz"
-import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
-import BaseForm from "../../../components/GERAL/FORM/BaseForm"
+import { useState } from "react"
+import { FormDataProvider } from "../../../context/FormContext"
+import { FormCredLuz } from "../../../components/credluz/form"
+import BaseForm from "../../../components/geral/form/BaseForm"
 
 export default function IndexFormCredLux() {
 
@@ -25,14 +25,14 @@ export default function IndexFormCredLux() {
                 progress={countProgress}
                 
                 steps={
-                    <FormProviderLuz>
+                    <FormDataProvider>
                         <FormCredLuz 
                             setStepCurrent={setCopyStepCurrent}
                             setProgressChange={setCountProgress}
                             setTitulo={setCopyTitulo} 
                             setDescricao={copySetDescricao}
                         />
-                    </FormProviderLuz>
+                    </FormDataProvider>
                 }
                 
             />

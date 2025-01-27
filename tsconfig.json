@@ -27,9 +27,7 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-, "components/GERAL/BUTTON/BtnBlueNext.jsx"  ],
+  ],
   "exclude": [
     "node_modules"
   ]

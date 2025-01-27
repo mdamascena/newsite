@@ -1,6 +1,6 @@
-import Footer from "../GERAL/FOOTER/Footer"
-import Header from "../GERAL/HEADER/Header"
-import MainAtendimento from "./MAIN/MainAtendimento"
+import Footer from "../geral/footer/Footer"
+import Header from "../geral/header/Header"
+import MainAtendimento from "./MainAtendimento"
 
 export default function IndexFAQ() {
     return (

@@ -1,18 +1,17 @@
 import { Controller, useFormContext } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import { FaFemale } from "react-icons/fa"
 import { MdOutlineHandyman, MdOutlineMilitaryTech } from "react-icons/md"
 import { FaUserTie } from "react-icons/fa6"
 import { BsPersonBadgeFill } from "react-icons/bs"
 import { IoIosArrowBack } from "react-icons/io"
-import { PiWarningCircleLight } from "react-icons/pi"
 import { FaMale } from "react-icons/fa"
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
-import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert'
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/button/BtnBlueBack'
+import { toast, ToastContainer } from "react-toastify"
 
 const OptLabel = tw(motion.label)`
     bg-white
@@ -53,8 +52,7 @@ const item = {
 export default function FormTipoOcupacao({onNext, backStep}) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
-    const {atualizarForm, formData} = useFormDataLuz()
-    const [showAlert, setShowAlert] = useState(false);
+    const {atualizarForm, formData} = useFormData()
 
     function onSubmit(data){
         atualizarForm(data)
@@ -67,59 +65,37 @@ export default function FormTipoOcupacao({onNext, backStep}) {
         }
     }, [formData.tipoOcupacao, setValue])
 
-    //Alerta de erro de validação
     useEffect(() => {
         if (errors.tipoOcupacao) {
-        setShowAlert(true);
-        const timeoutId = setTimeout(() => {
-            setShowAlert(false);
-        }, 5000);
-
-        return () => clearTimeout(timeoutId);
+            toast.error(errors.tipoOcupacao.message, {
+                position: "top-right", // Posição do toast
+                autoClose: 5000, // Fechar automaticamente em 5 segundos
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme:"colored",
+            });
         }
     }, [errors.tipoOcupacao]);
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-
+            
+            <ToastContainer />
+            
             <motion.div 
                 initial={'hidden'} 
                 animate={'visible'}
                 variants={container}
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
-                    {/*Alerta erro*/}
-                    <AnimatePresence mode="wait">
-                        {showAlert && errors.tipoOcupacao && (
-                            <motion.div 
-                                initial={{x:100}}
-                                animate={{x:0}}
-                                exit={{opacity:0, x:100}}
-                                >
-            
-                                <Alert className="lg:mt-5 mt-[12vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
-                                    <div className="">
-                                        <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
-                                    </div>
-                                    
-                                    <div className="">
-                                        <AlertTitle className='text-red-500 font-semibold'>
-                                            Opção inválida
-                                        </AlertTitle>
-                                        <AlertDescription className='text-red-500 font-light flex'>
-                                            {errors.tipoOcupacao.message}
-                                        </AlertDescription>
-                                    </div>
-                                </Alert>
-
-                            </motion.div>
-                        )}
-                    </AnimatePresence> 
-                
+      
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] lg:content-end content-center">
+                <div className="container-form-head">
 
-                    <div className="flex items-end mb-2 lg:mb-0">
+                    <div className="flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Qual é a sua ocupação?
                         </h1>
@@ -131,10 +107,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 </div>
 
                 {/*Opções do step*/}   
-                <div className="col-span-6 content-center lg:min-h-[60vh] min-h-[55vh] ">
-                    
-                    
-
+                <div className="container-form-body">
+               
                     <Controller
                         name="tipoOcupacao"
                         control={control}
@@ -158,7 +132,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Assalariado
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light ">
                                                     Vínculo CLT
                                                 </span>
                                             </div>
@@ -176,7 +150,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Servidor Público
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light">
                                                     Ativo / inativo
                                                 </span>
                                             </div>
@@ -194,8 +168,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Aposentado
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
-                                                    Beneficiário INSS / LOAS
+                                                <span className="text-xs font-light">
+                                                    Benefic. INSS / LOAS
                                                 </span>
                                             </div>
                                         </OptLabel>
@@ -212,7 +186,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Pensionista
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light">
                                                     Pensão / Pensão INSS
                                                 </span>
                                             </div>
@@ -230,8 +204,8 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Autônomo
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
-                                                    Prof. liberal / Empresário
+                                                <span className="text-xs font-light">
+                                                    P. Liberal / Empresário
                                                 </span>
                                             </div>
                                         </OptLabel>
@@ -248,7 +222,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                                 <p className="font-semibold text-sm lg:text-medium">
                                                     Militar
                                                 </p>
-                                                <span className="text-xs font-light hidden lg:block">
+                                                <span className="text-xs font-light">
                                                     Forças Armadas
                                                 </span>
                                             </div>
@@ -263,7 +237,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                 </div>
                 
                 {/*Botões*/}
-                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                <div className="container-form-footer">
 
                     <div className="col-span-2">
                         <BtnBack type="button" nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 

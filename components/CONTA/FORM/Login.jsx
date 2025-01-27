@@ -1,41 +1,10 @@
 import { useState } from 'react'
-import tw from 'tailwind-styled-components'
+import { Btn, BtnReset } from '../STYLES'
 import { Input } from '../../ui/input'
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import InputMask from 'react-input-mask'
 import { motion, AnimatePresence } from 'framer-motion'
 
-
-const Btn = tw.button`
-    bg-blue-700
-    items-center 
-    justify-center
-    text-white
-    w-full
-    py-3
-    lg:px-5 
-    rounded-lg
-    active:bg-blue-900
-    hover:bg-blue-600
-    hover:scale-105
-    active:scale-90 
-    duration-150   
-`
-const BtnReset = tw.button`
-    bg-blue-100
-    items-center
-    justify-center
-    text-blue-500
-    w-full
-    py-3
-    lg:px-5 
-    rounded-lg
-    active:bg-blue-300
-    hover:bg-blue-50
-    hover:scale-105
-    active:scale-90 
-    duration-150
-`;
 
 export default function Login({ setShowLogin }) {
     const [passType, setPassType] = useState('password');
@@ -63,8 +32,7 @@ export default function Login({ setShowLogin }) {
                         className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
                         mask="999.999.999-99"
                         maskChar = {null}
-                        placeholder='Digite seu CPF'
-                        inputMode='numeric'>
+                        placeholder='Digite seu CPF'>
 
                         {(inputProps) => <Input {...inputProps} />}
                     </InputMask>

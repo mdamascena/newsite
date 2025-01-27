@@ -1,21 +1,20 @@
 import { Controller, useFormContext } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { useFormDataLuz } from "../../../context/FormContextLuz"
+import { useFormData } from "../../../context/FormContext"
 import { motion, AnimatePresence } from 'framer-motion'
 import { RiUserFollowLine, RiUserForbidLine } from "react-icons/ri"
-import { PiWarningCircleLight } from "react-icons/pi"
 import { IoIosArrowBack } from "react-icons/io"
 import tw from 'tailwind-styled-components'
-import BtnNext from '../../GERAL/BUTTON/BtnBlueNext'
-import BtnBack from '../../GERAL/BUTTON/BtnBlueBack'
-import { Alert, AlertTitle, AlertDescription } from '../../../components/ui/alert';
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/button/BtnBlueBack'
+import { toast, ToastContainer } from "react-toastify"
 
 const OptLabel = tw(motion.label)`
     bg-white
     grid
     grid-cols-6
-    px-2
-    py-4
+    p-3
+    lg:py-4
     items-center 
     justify-center 
     text-slate-400 
@@ -29,8 +28,9 @@ const OptLabel = tw(motion.label)`
     hover:text-blue-500
     peer-checked:bg-blue-600 
     peer-checked:text-white
-    peer-checked:shadow-nome   
-`
+    peer-checked:shadow-nome
+    
+`  
 const container = {
     hidden: {y: 50, opacity: 0 },
     visible: {y: 0, opacity: 1, 
@@ -48,8 +48,7 @@ const item = {
 export default function FormTitularCia({ onNext, backStep }) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormDataLuz();
-    const [showAlert, setShowAlert] = useState(false);
+    const { atualizarForm, formData } = useFormData();
 
     function onSubmit(data){
         atualizarForm(data);
@@ -62,21 +61,26 @@ export default function FormTitularCia({ onNext, backStep }) {
         }
     }, [formData.titularCia, setValue])
 
-     
     useEffect(() => {
         if (errors.titularCia) {
-        setShowAlert(true);
-        const timeoutId = setTimeout(() => {
-            setShowAlert(false);
-        }, 5000);
-
-        return () => clearTimeout(timeoutId);
+            toast.error(errors.titularCia.message, {
+                position: "top-right", // Posição do toast
+                autoClose: 5000, // Fechar automaticamente em 5 segundos
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme:"colored",
+            });
         }
     }, [errors.titularCia]);
-
+    
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
             
+            <ToastContainer />
+
             <motion.div 
                 initial={'hidden'} 
                 animate={'visible'} 
@@ -84,36 +88,9 @@ export default function FormTitularCia({ onNext, backStep }) {
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
 
-                {/*Alerta erro*/}
-                <AnimatePresence mode="wait">
-                    {showAlert && errors.titularCia && (
-                        <motion.div 
-                            initial={{x:100}}
-                            animate={{x:0}}
-                            exit={{opacity:0, x:100}}
-                            >
-                            <Alert className="lg:mt-5 mt-[12vh] lg:w-96 w-80 absolute p-2 lg:p-3 bg-red-100 border-0 border-l-5 border-red-500 flex items-center" onClose={() => setShowAlert(false)} variants={item}>
-                                <div className="">
-                                    <PiWarningCircleLight className="text-red-500 lg:text-4xl text-2xl lg:mr-3 mr-2"/>
-                                </div>
-                                    
-                                <div className="">
-                                    <AlertTitle className='text-red-500 font-semibold'>
-                                        Opção inválida
-                                    </AlertTitle>
-                                    <AlertDescription className='text-red-500 font-light flex'>
-                                        {errors.titularCia.message}
-                                    </AlertDescription>
-                                </div>
-                            </Alert>
-
-                        </motion.div>
-                    )}
-                </AnimatePresence> 
-
                 {/*Titulo do step*/}
-                <div className="col-span-6 lg:min-h-[20vh] min-h-[10vh] content-end">
-                    <div className="flex items-end mb-2 relative">
+                <div className="container-form-head">
+                    <div className="flex items-end relative">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
                             Titularidade conta de luz
                         </h1>
@@ -125,7 +102,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 {/*Opções*/}
-                <div className="col-span-6 content-start lg:content-center pt-10 lg:pt-0 lg:min-h-[60vh] min-h-[55vh]">
+                <div className="container-form-body">
                     
                     <Controller
                         name="titularCia"
@@ -145,7 +122,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                                             </div>
                                             <div className="col-span-6 text-center">
                                                 <p className="">
-                                                    <span className="text-blue-400 font-semibold">SIM</span> sou o titular
+                                                    <span className="text-blue-400">SIM</span> sou o titular
                                                 </p>
                                             </div>
                                         </OptLabel>
@@ -159,7 +136,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                                             </div>
                                             <div className="col-span-6 text-center">
                                                 <p className="">
-                                                    <span className="text-blue-400 font-semibold">NÃO</span> sou o titular
+                                                    <span className="text-blue-400">NÃO</span> sou o titular
                                                 </p>
                                             </div>
                                         </OptLabel>
@@ -173,7 +150,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                 </div>
 
                 {/*Botões*/}
-                <div className="grid grid-cols-7 col-span-6 lg:min-h-[20vh] min-h-[10vh] content-center gap-2">
+                <div className="container-form-footer">
                     <div className="col-span-2">
                         <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
                     </div>

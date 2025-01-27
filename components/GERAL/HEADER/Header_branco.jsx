@@ -5,7 +5,7 @@ import LogoA from '../../../public/img/LOGO_AZUL.png'
 import tw from 'tailwind-styled-components'
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
-import AlertI from '../ARLET/AlertBlue'
+import AlertI from '../alert/AlertBlue'
 
 const Dropdown = tw.div`
     absolute 
@@ -113,13 +113,15 @@ export default function Header() {
     return (
         <header>
             <AlertI />
-            <div id='menuBar' className={`${bgNavbar[0]} flex flex-row mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center lg:mx-32 mx-4 bg-blue-600 duration-500`}>
-
+            <div id='menuBar' className={`${bgNavbar[0]} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center duration-500 container-custom bg-blue-600`}>
+                
+                {/*Logo*/}
                 <Link href='/' passHref className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                     <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
                 </Link>
 
-                <nav className="hidden lg:block mx-auto">
+                {/*Menu desktop*/}
+                <nav className="hidden lg:block ml-auto">
 
                     <ul className={`${bgNavbar[1]} flex gap-7`}>
                         <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
@@ -131,7 +133,7 @@ export default function Header() {
                                     <Link href="/saque-aniversario" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Saque antecipado FGTS</Link>
                                     <Link href="../consignado-inss" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo consignado INSS</Link>
                                     <Link href="/credluz" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo na conta de luz</Link>
-                                    <Link href="/credluz-fast" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo no boleto</Link>
+                                    <Link href="/credluz-fast" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">PIX parcelado</Link>
                                 </div>
                             </Dropdown>
                         </LiDrop>
@@ -142,20 +144,23 @@ export default function Header() {
 
                 </nav>
 
-                <div className='justify-items-stretch'>
+                {/*Botão conta*/}
+                <div className='ml-auto'>
                     <Link href='/conta' passHref>
                         <BtnMenu>Acessar</BtnMenu>
                     </Link>
                 </div>
 
-                <div className='space-y-[5px] ml-5 cursor-pointer overflow-hidden lg:hidden' onClick={btnClick}>
+                {/*Botão menu mobile*/}
+                <div className='space-y-[5px] cursor-pointer overflow-hidden lg:hidden ml-5' onClick={btnClick}>
                     <span className={`transition duration-700 block ${bgNavbar[2]} rounded-full h-[3px] ${mudaLinha[0]}`}></span>
                     <span className={`transition duration-700 block w-6 h-[3px] ${bgNavbar[2]} rounded-full ${mudaLinha[1]}`}></span>
                     <span className={`transition duration-700 block ${bgNavbar[2]} rounded-full h-[3px] ${mudaLinha[2]}`}></span>
                 </div>
             </div>
-
-            <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
+            
+            {/*dropdonw*/}
+            <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 md:mx-6 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
                 <ul className=''>
                     <LiSm><Link href="/" passHref>Principal</Link></LiSm>
                     <LiSm><Link href='/' passHref>Quem Somos</Link></LiSm>
@@ -180,7 +185,7 @@ export default function Header() {
                         </LiSm>
                             
                         <LiSm className='hover:bg-white'>
-                            <Link href='/credluz-fast' passHref>Empréstimo no boleto</Link>
+                            <Link href='/credluz-fast' passHref>PIX parcelado</Link>
                         </LiSm>
                             
                     </ul>

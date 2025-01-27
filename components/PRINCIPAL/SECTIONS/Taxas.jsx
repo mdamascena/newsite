@@ -1,7 +1,8 @@
+
 export default function Taxa() {
     return(
         <section>
-            <div className='grid grid-col-1 lg:grid-cols-2 lg:my-32 my-16 lg:px-44 px-8'>
+            <div className='grid grid-col-1 lg:grid-cols-2 container-custom lg:pt-44 pt-16 content-center'>
                 
                 <div className='col-span-1 mb-20 lg:mb-0'>
                     <h1 className='text-3xl lg:text-5xl text-blue-600 tracking-tighter'>
@@ -12,29 +13,33 @@ export default function Taxa() {
                     </p>
                 </div>
 
-                <div className='col-span-1'>
-                    <div className='grid grid-cols-3 h-64'>
-                        <div className='col-span-1 bg-blue-600 rounded-md lg:mx-5 mx-2 mt-52'>
-                            <div className='text-blue-600 text-center -top-8 relative lg:text-xl text-md'>1,59% a.m</div>
-                            <div className='bottom-5 relative text-center text-white lg:px-2 lg:font-semibold lg:text-md text-sm'>
-                                Empréstimo Valoreal
-                            </div>
-                        </div>
+                <div className="bg-gradient-to-t from-slate-200 to-slate-100 pt-14 pb-5 rounded-xl">
 
-                        <div className='col-span-1 bg-slate-400 rounded-md lg:mx-5 mx-2 mt-40'>
-                            <div className='text-slate-400 text-center -top-8 relative lg:text-xl text-md'>8,00% a.m</div>
-                            <div className='bottom-5 relative text-center text-white lg:px-2 lg:font-semibold lg:text-md text-sm'>
-                                Empréstimo pessoal
+                    <div className='col-span-1'>
+                        <div className='grid grid-cols-3 h-64'>
+                            <div className='col-span-1 bg-blue-500 rounded-md lg:mx-5 mx-2 mt-52'>
+                                <div className='text-blue-500 text-center -top-8 relative lg:text-xl text-md'>1,59% a.m</div>
+                                <div className='bottom-5 relative text-center text-white lg:px-2 lg:font-semibold lg:text-md text-sm'>
+                                    Empréstimo Valoreal
+                                </div>
                             </div>
-                        </div>
 
-                        <div className='col-span-1 bg-slate-600 rounded-md lg:mx-5 mx-2'>
-                            <div className='text-slate-600 text-center -top-8 relative lg:text-xl text-md'>28,00% a.m</div>
-                            <div className='bottom-5 relative text-center text-white lg:px-5 lg:font-semibold lg:text-md text-sm px-2'>
-                                Cartão de crédito
+                            <div className='col-span-1 bg-slate-400 rounded-md lg:mx-5 mx-2 mt-40'>
+                                <div className='text-slate-400 text-center -top-8 relative lg:text-xl text-md'>8,00% a.m</div>
+                                <div className='bottom-5 relative text-center text-white lg:px-2 lg:font-semibold lg:text-md text-sm'>
+                                    Empréstimo pessoal
+                                </div>
+                            </div>
+
+                            <div className='col-span-1 bg-slate-600 rounded-md lg:mx-5 mx-2'>
+                                <div className='text-slate-600 text-center -top-8 relative lg:text-xl text-md'>28,00% a.m</div>
+                                <div className='bottom-5 relative text-center text-white lg:px-5 lg:font-semibold lg:text-md text-sm px-2'>
+                                    Cartão de crédito
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </section>

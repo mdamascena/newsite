@@ -1,5 +1,3 @@
-
-
 export default function Pefil (){
     return(
         <section className="h-[120vh]">

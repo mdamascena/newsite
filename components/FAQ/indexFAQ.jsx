@@ -1,6 +1,6 @@
-import Footer from "../GERAL/FOOTER/Footer"
-import Header from "../GERAL/HEADER/Header"
-import Main from "./MAIN/MainFAQ"
+import Footer from "../geral/footer/Footer"
+import Header from "../geral/header/Header"
+import Main from "./MainFAQ"
 
 
 export default function IndexFAQ() {

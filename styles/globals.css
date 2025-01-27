@@ -3,6 +3,52 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.container-custom {
+  @apply
+  xl:max-w-[1265px] 
+  xl:mx-auto
+  lg:max-w-[1024px] 
+  lg:mx-8
+  md:max-w-[768px] 
+  md:mx-6
+  max-w-[425px] 
+  mx-4
+}
+
+.container-form-head{
+  @apply
+  lg:min-h-[20vh]
+  lg:content-end
+  lg:mb-0
+  min-h-[10vh] 
+  content-start
+  mb-4
+  col-span-6 
+}
+
+.container-form-body{
+  @apply
+  lg:content-start 
+  lg:min-h-[60vh]
+  lg:pt-8
+  content-start
+  min-h-[55vh]
+  col-span-6
+  gap-2.5
+  grid
+}
+
+.container-form-footer{
+  @apply
+  lg:min-h-[20vh] 
+  min-h-[10vh] 
+  content-center
+  col-span-6
+  grid 
+  grid-cols-7 
+  gap-2.5
+}
+
 @layer base {
     :root {
       --background: 0 0% 100%;
@@ -34,6 +80,16 @@
       --ring: 222.2 84% 4.9%;
 
       --radius: 0.5rem;
+
+      --color-1: 0 100% 63%;
+
+      --color-2: 270 100% 63%;
+
+      --color-3: 210 100% 63%;
+
+      --color-4: 195 100% 63%;
+
+      --color-5: 90 100% 63%;
     }
 
     .dark {
@@ -64,6 +120,11 @@
       --border: 217.2 32.6% 17.5%;
       --input: 217.2 32.6% 17.5%;
       --ring: 212.7 26.8% 83.9%;
+      --color-1: 0 100% 63%;
+      --color-2: 270 100% 63%;
+      --color-3: 210 100% 63%;
+      --color-4: 195 100% 63%;
+      --color-5: 90 100% 63%;
     }
   }
 
@@ -196,6 +257,32 @@ a {
   opacity: 0.5; /* Ajuste a opacidade se necessário */
 }
 
+.bgPage {
+  position: relative; /* Necessário para o posicionamento absoluto do background */
+  background: linear-gradient(180deg, #0009bb 25%, #00004b 100%);
+  background-blend-mode: overlay;
+}
+
+.bgPage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('../public/img/bg-brasao.png');
+  background-size: 90vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5; /* Ajuste a opacidade se necessário */
+}
+
+@media(max-width: 720px){
+  .bgPage::before {
+    background-size: 50vh;  
+  }
+}
+
 .bgMainAtendimento{
   background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle,  #2b31a2 0%, #00004b 100%);
   background-blend-mode: multiply;
@@ -257,4 +344,42 @@ a {
     background-position: 2vh -1vh;
   }
 
+}
+
+@keyframes scrollInfinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scrollInfinite 20s linear infinite;
+}
+.bg-modelo-credluz{
+  background-image: url(../public/img/modelo_credluz.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-modelo-fgts{
+  background-image: url(../public/img/modelo_fgts.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-modelo-inss{
+  background-image: url(../public/img/modelo_inss.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-modelo-pix{
+  background-image: url(../public/img/modelo_pix.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

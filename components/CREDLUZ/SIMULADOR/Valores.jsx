@@ -1,55 +1,8 @@
-import tw from 'tailwind-styled-components'
+import { BtnMaisValor, Btn, BtnCalcValores } from '../styles'
 import {useState} from "react"
 import { motion } from 'framer-motion'
 import { Slider } from '../../ui/slider'
 
-const Btn = tw.button`
-    col-span-1    
-    py-6
-    lg:py-6 
-    px-3 
-    bg-btncalc
-    saturate-150
-    hover:bg-yellow-300
-    focus:bg-yellow-500
-    duration-300
-    text-white 
-    rounded-md
-`
-const BtnMaisValor = tw.button`
-    bg-white/30
-    flex
-    items-center 
-    justify-center
-    text-white
-    lg:text-md
-    text-sm 
-    tracking-tighter
-    py-1
-    px-12
-    rounded-md
-    hover:bg-sky-500
-    hover:scale-105
-    active:scale-90 
-    duration-150
-`
-const BtnCalc = tw.button`
-    text-white
-    text-xl
-    w-[98%]
-    mx-1
-    mb-2
-    mt-1
-    py-6
-    bg-yellow-400
-    saturate-150
-    tracking-tighter
-    rounded-lg
-    hover:bg-yellow-500
-    hover:scale-105
-    active:scale-90 
-    duration-300
-`
 const MotionBtn = motion(Btn); //Não está sendo usado
 const MotionMais = motion(BtnMaisValor); //Não está sendo usado
 
@@ -71,7 +24,9 @@ export default function Valores({showSimulador, itemVariants}) {
     return (
         
         <div className='p-1'>
-            <h2 className='text-center mt-2 mb-3 text-white'>Qual o valor desejado?</h2>
+            <h2 className='text-center mt-2 mb-3 text-white'>
+                Qual o valor desejado?
+            </h2>
                 
             <div className='rounded-lg bg-white/25 text-md pb-5 px-3 mx-1 mb-2'>
                 
@@ -95,9 +50,9 @@ export default function Valores({showSimulador, itemVariants}) {
                 
             </div>
 
-            <BtnCalc onClick={()=>showSimulador(values[0])}>
+            <BtnCalcValores onClick={()=>showSimulador(values[0])}>
                 Simular valor
-            </BtnCalc>
+            </BtnCalcValores>
                 
         </div> 
         

@@ -1,32 +1,36 @@
-import { z } from "zod";
+import * as Yup from "yup";
 import { validatePhoneNumber } from "schema/validations";
 
-export const tipoOcupacao = z.object({
-    tipoOcupacao: z.enum(["1", "2", "3", "4", "5", "6"], {
-        errorMap: () => ({ message: "Selecione um tipo de ocupação" }),
-    })
-})
+export const tipoOcupacao = Yup.object().shape({
+    tipoOcupacao: Yup.string()
+      .oneOf(["1", "2", "3", "4", "5", "6"], "Selecione um tipo de ocupação"),
+  })
 
-export const generoSchema = z.object({
-    genero: z.enum(["0", "1"], {
-        errorMap: () => ({ message: "Selecione um genêro" }),
-    })
+export const titularCia = Yup.object().shape({
+    titularCia: Yup.string()
+    .oneOf(["0", "1"], "Selecione sua titularidade"),
 });
 
-export const titularCia = z.object({
-    titularCia: z.enum(["0", "1"], {
-        errorMap: () => ({ message: "Selecione sua titularidade" }),
-    })
-})
-
-export const dadosPessoaisSchema = z.object({
-    celular: z.string().length(13, { message: "Celular deve conter 9 números sem contar o DDD" }).refine(value => validatePhoneNumber(value), { message: "Número de celular inválido" }),
-    whatsapp: z.string().length(13, { message: "WhatsApp deve conter 9 números sem contar o DDD" }).refine(value => validatePhoneNumber(value), { message: "Número de celular inválido" }),
-    logradouro: z.string().min(1, { message: "Digite o logradouro." }),
-    numero: z.string().optional(),
-    complemento: z.string().optional(),
-    bairro: z.string().min(1, { message: "Selecione o bairro da sua cidade." }),
-    cidade: z.string().min(1, {message: "Selecione a cidade."}),
-    uf: z.string().min(1, {message: "Seleciona o estado."}),
-    cep: z.string().optional()
-})
+export const dadosPessoaisCredLuz = Yup.object().shape({
+    celular: Yup.string()
+      .length(13, "Celular deve conter 9 números sem contar o DDD")
+      .test("is-valid-phone", "Número de celular inválido", (value) => validatePhoneNumber(value)),
+    whatsapp: Yup.string()
+      .length(13, "WhatsApp deve conter 9 números sem contar o DDD")
+      .test("is-valid-phone", "Número de celular inválido", (value) => validatePhoneNumber(value)),
+    logradouro: Yup.string()
+      .min(1, "Digite o logradouro."),
+    numero: Yup.string()
+      .optional(),
+    complemento: Yup.string()
+      .optional(),
+    bairro: Yup.string()
+      .min(1, "Selecione o bairro da sua cidade."),
+    cidade: Yup.string()
+      .min(1, "Selecione a cidade."),
+    uf: Yup.string()
+      .min(1, "Selecione o estado."),
+    cep: Yup.string()
+      .optional(),
+  });
+  

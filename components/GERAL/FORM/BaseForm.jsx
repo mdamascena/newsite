@@ -1,11 +1,9 @@
 import Image from "next/image"
-import { useEffect, useState } from "react"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { useRouter } from "next/router"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
-import CharForm from "../../../components/GERAL/ChartForm"
-import { FormProviderLuz } from "../../../context/FormContextLuz"
-import { FormCredLuz } from "../../../components/CREDLUZ/FORM"
+import CharForm from "../ChartForm"
+import PageTrans from "../PageTransicao"
 
 export default function BaseForm({steps, titulo, descricao, progress, stepCurrent}) {
   
@@ -47,9 +45,7 @@ export default function BaseForm({steps, titulo, descricao, progress, stepCurren
                     </div>
 
                     <div className="content-end lg:min-h-[40vh]">
-                        <CharForm
-                            stepsChart={stepCurrent}
-                            value={progress} />
+                        <CharForm stepsChart={stepCurrent} value={progress} />
                     </div>
                 </div>
             </div>

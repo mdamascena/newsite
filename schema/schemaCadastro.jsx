@@ -1,55 +1,131 @@
-import { z } from "zod";
+import * as yup from "yup";
 import { validateCPF, validateFullName, validatePhoneNumber } from "schema/validations";
 import { differenceInYears, parse, isBefore } from "date-fns";
+
 
 // Definindo os limites de idade
 const MIN_AGE = 21; // Idade mínima em anos
 const MAX_AGE = 84; // Idade máxima em anos
 
-export const cadastroSchema = z.object({
-  cpf: z.string().min(11, "O CPF deve ter pelo menos 11 dígitos").max(14, "O CPF deve ter no máximo 14 dígitos").refine(value => validateCPF(value), { message: "O CPF é inválido" }),
-  email: z.string().email("Formato de e-mail inválido"),
-  celular: z.string().length(13, { message: "Celular deve conter 9 números sem contar o DDD" }).refine(value => validatePhoneNumber(value), { message: "Número de celular inválido" }),
-  senha: z.string().min(3, "A senha deve ter pelo menos 3 caracteres"),
-  senhaConfirmacao: z.string().min(3, "A confirmação de senha deve ter pelo menos 3 caracteres"),
-  termos: z.boolean().refine(val => val === true, {
-    message: "É necessário aceitar o termo para continuar.",
-  }),
-}).refine(data => data.senha === data.senhaConfirmacao, {
-  message: "As senhas não correspondem",
-  path: ["senhaConfirmacao"],
+export const cadastroSchema = yup.object().shape({
+  cpf: yup.string()
+    .min(11, "O CPF deve ter pelo menos 11 dígitos")
+    .max(14, "O CPF deve ter no máximo 14 dígitos")
+    .test("is-valid-cpf", "O CPF é inválido", (value) => validateCPF(value)),
+  email: yup.string()
+    .email("Formato de e-mail inválido"),
+  celular: yup.string()
+    .length(13, "Celular deve conter 9 números sem contar o DDD")
+    .test("is-valid-phone", "Número de celular inválido", (value) => validatePhoneNumber(value)),
+  senha: yup.string()
+    .min(3, "A senha deve ter pelo menos 3 caracteres"),
+  senhaConfirmacao: yup.string()
+    .min(3, "A confirmação de senha deve ter pelo menos 3 caracteres")
+    .oneOf([yup.ref("senha"), null], "As senhas não correspondem"),
+  termos: yup.boolean()
+    .oneOf([true], "É necessário aceitar o termo para continuar."),
+  aceite_whatsapp: yup.boolean()
+    .oneOf([true], "É necessário aceitar o termo para continuar."),
 });
 
-export const identificacaoSchema = z.object({
-  nome: z.string().refine(value => validateFullName(value), { message: "Preencha o seu nome completo!" }),
-  dataNascimento: z
-    .string()
-    .length(10, { message: "Digite uma data válida." })
-    .refine((value) => {
-      // Parsing da data no formato dd/MM/yyyy
+export const identificacaoSchema = yup.object().shape({
+  nome: yup.string()
+    .test("is-full-name", "Preencha o seu nome completo!", (value) => validateFullName(value))
+    .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "O campo deve conter apenas letras."),
+  dataNascimento: yup.string()
+    .length(10, "Digite uma data válida.")
+    .test("is-valid-date", "Idade deve estar entre 21 e 84 anos.", (value) => {
+      if (!value) return true; // Permitir campo vazio
+      
       const parsedDate = parse(value, "dd/MM/yyyy", new Date());
+      if (isNaN(parsedDate.getTime())) return false;
 
-      // Verificando se a data é válida
-      if (isNaN(parsedDate.getTime())) {
+      const today = new Date();
+      const ageInYears = differenceInYears(today, parsedDate);
+
+      if (
+        ageInYears < MIN_AGE || 
+        (ageInYears === MIN_AGE && isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MIN_AGE)))
+      ) {
         return false;
       }
 
-      const today = new Date();
-
-      // Calcula a diferença exata em anos
-      const ageInYears = differenceInYears(today, parsedDate);
-
-      // Verifica se a idade está abaixo do limite de 21 anos
-      if (ageInYears < MIN_AGE || (ageInYears === MIN_AGE && isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MIN_AGE)))) {
-        throw new z.ZodError([{ message: "Idade menor que 21 anos, não permitida", path: ["dataNascimento"] }]);
-      }
-
-      // Verifica se a idade está acima do limite de 84 anos
-      if (ageInYears > MAX_AGE || (ageInYears === MAX_AGE && !isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MAX_AGE)))) {
-        throw new z.ZodError([{ message: "Idade maior que 84 anos, não permitida", path: ["dataNascimento"] }]);
+      if (
+        ageInYears > MAX_AGE || 
+        (ageInYears === MAX_AGE && !isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MAX_AGE)))
+      ) {
+        return false;
       }
 
       return true;
     }),
-  genero: z.enum(["0", "1"], { errorMap: () => ({ message: "Selecione um gênero" }) }),
+  genero: yup.string()
+    .oneOf(["0", "1"], "Selecione um gênero"),
 });
+
+export const enderecoSchema = yup.object({
+  cepOption: yup.string().required('Escolha uma opção de CEP').oneOf(['1', '2', '3'], 'Selecione uma opção válida'),
+
+  /* COM CEP */
+  cep: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().required("CEP é obrigatório")
+  }),
+  logradouro: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().required("Logradouro é obrigatório")
+  }),
+  bairro: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().required("Bairro é obrigatório")
+  }),
+  numero: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().optional()
+  }),
+  complemento: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().optional()
+  }),
+  estadoCep: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().required("Estado é obrigatório")
+  }),
+  cidadeCep: yup.string().when("cepOption", {
+    is: (value) => value === "1",
+    then: () => yup.string().required("Cidade é obrigatório"),
+  }),
+
+  /* SEM CEP */
+  estado: yup.string().when("cepOption", {
+    is: (value) => value === "2",
+    then: () => yup.string().required("Estado é obrigatório")
+  }),
+  cidade: yup.string().when("cepOption", {
+    is: (value) => value === "2",
+    then: () => yup.string().required("Cidade é obrigatório")
+  }),
+  logradouroSemCep: yup.string().when("cepOption", {
+    is: (value) => value === "2",
+    then: () => yup.string().required("Logradouro é obrigatório")
+  }),
+  bairroSemCep: yup.string().when("cepOption", {
+    is: (value) => value === "2",
+    then: () => yup.string().required("Bairro é obrigatório")
+  }),
+  numeroSemCep: yup.string().when("cepOption", {
+    is: (value) => value === "2",
+    then: () => yup.string().optional()
+  }),
+  complementoSemCep: yup.string().when("cepOption", {
+    is: (value) => value === "2",
+    then: () => yup.string().optional()
+  }),
+
+
+});
+
+
+
+
+
