@@ -122,7 +122,7 @@ export default function Header() {
                         <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
                         <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
                         <LiDrop className={`${bgNavbar[4]} relative flex group`}>
-                            Empréstimos<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-200' />
+                            Para você<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-200' />
                             <Dropdown>
                                 <div className="p-1 text-sm">
                                     <Link href="../saque-aniversario" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Saque antecipado FGTS</Link>
@@ -159,7 +159,7 @@ export default function Header() {
                     <LiSm><Link href="/" passHref>Principal</Link></LiSm>
                     <LiSm><Link href='/' passHref>Quem Somos</Link></LiSm>
                     <LiSm className='group' onClick={drop}>
-                        Empréstimos +                
+                        Para você                
                     </LiSm>
                 </ul>
 

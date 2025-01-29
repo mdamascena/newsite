@@ -185,6 +185,13 @@ a {
   background-position: top 100% right 10%;
 }
 
+.bgSectionPrincipal{
+  background: url(../public/img/bg_principal_pre.png), linear-gradient(55deg, #000147 40%, #c3b6002b 70%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+}
+
 /* .bgteste{
   background: url(../public/img/facil2.jpg), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
   background-size: cover;
@@ -214,6 +221,12 @@ a {
     background-size: cover;
     background-blend-mode: multiply;
     background-position: top;
+  }
+
+  .bgSectionPrincipal{
+    background: url(../public/img/bg_principal_pre.png), linear-gradient(55deg, #000147 40%, #c3b6002b 70%);
+    background-size: cover;
+    background-position: top 100% right 45%;
   }
 }
 
