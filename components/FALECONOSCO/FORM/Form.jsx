@@ -27,13 +27,7 @@ export default function FormFC() {
         console.log({ ...data, assunto: selectValue })
     }
 
-    const [selectValue, setSelectValue] = useState('')
-    const [nome, setNome] = useState('');
-
-    const handleSelectChange = (value) => {
-        setSelectValue(value);
-        console.log(value)
-    }
+    const selectValue = watch('subject');
 
     return (
          
@@ -41,8 +35,7 @@ export default function FormFC() {
                         
             <form onSubmit={handleSubmit(onSubmit)} className="gap-y-2 grid" >
 
-                <Select className='placeholder:text-slate-400' value={selectValue} onValueChange={handleSelectChange} >
-
+                <Select className='placeholder:text-slate-400'  {...register('subject')} onValueChange={(value) => setValue('subject', value)} >
                     <SelectTrigger className="bg-slate-200 text-slate-500 focus:ring-1 focus:ring-blue-500">
                         <SelectValue placeholder="Escolha o assunto" />
                     </SelectTrigger>
@@ -57,18 +50,24 @@ export default function FormFC() {
                             <SelectItem value="outros">Outros assuntos</SelectItem>
                         </SelectGroup>
                     </SelectContent>
-
                 </Select>
+                {errors.subject && <span className="text-red-500">{errors.subject.message}</span>}
                                 
                 <Input 
                     className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
                     type='text' 
                     placeholder='Seu nome completo'
-                    value={nome}
-                    onChange={(e)=>setNome(e.target.value)}
+                    {...register('nome')}
                 />
+                {errors.nome && <span className="text-red-500">{errors.nome.message}</span>}
                 
-                <Input className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' type='email' placeholder='Seu e-mail'/>
+                <Input 
+                    className='bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' 
+                    type='email' 
+                    placeholder='Seu e-mail'
+                    {...register('email')}
+                />
+                {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                 
                 <AnimatePresence>
                     {(selectValue === 'quitacao' || selectValue === 'cancelamento' || selectValue ==='contrato') && (
@@ -82,14 +81,16 @@ export default function FormFC() {
                                 className='bg-slate-200 focus-visible:ring-blue-500 placeholder:text-slate-400' 
                                 mask="999.999.999-99"
                                 maskChar = {null}
-                                placeholder='Seu CPF'>
-
+                                placeholder='Seu CPF'
+                                {...register('cpf')}>
+                                
                                 {(inputProps) => <Input {...inputProps} />}
                             </InputMask>
 
                         </motion.div>
                     )}
                 </AnimatePresence>
+                {errors.cpf && <span className="text-red-500">{errors.cpf.message}</span>}
                 
                 <h1 className="text-center p-3 tracking-tight text-slate-400">
                     Diga o que deseja:
