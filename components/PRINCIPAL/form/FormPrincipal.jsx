@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useFormData } from "../../../context/FormContext";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
 
 const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
@@ -32,7 +32,7 @@ export function FormPrincipal({ setProgressChange, setTitulo, setDescricao, setS
     ], []);
 
     const methods = useForm({
-        resolver: zodResolver(schemas[step - 1]),
+        resolver: yupResolver(schemas[step - 1]),
         mode: 'onChange',
         defaultValues: formData
     })

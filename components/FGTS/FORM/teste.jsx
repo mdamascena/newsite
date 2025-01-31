@@ -6,7 +6,6 @@ import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { IoIosArrowBack } from "react-icons/io";
 import { Input } from "components/ui/input";
-import { useEffect } from "react";
 
 export default function FormPagamento({ onNext, backStep }) {
     const { register, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
@@ -20,7 +19,7 @@ export default function FormPagamento({ onNext, backStep }) {
         onNext();
     };
 
-    const pixSelecionado = (keyType) => {
+    const handleKeySelection = (keyType) => {
         setValue("tipoDeChave", keyType);
 
         const data = getValues();
@@ -29,7 +28,7 @@ export default function FormPagamento({ onNext, backStep }) {
             setValue("chaveCpf", data.cpf)
         } else if(keyType === "Celular"){
             setValue("chaveCel", data.celular)
-        } else if(keyType === "Email"){
+        } else if(watchChavePix === "Email"){
             setValue("chaveEmail", data.email)
         }
     };
@@ -67,20 +66,20 @@ export default function FormPagamento({ onNext, backStep }) {
                     <div className="grid grid-cols-3 gap-4 col-span-6">
                         <div
                             className={`p-4 border-2 rounded-lg cursor-pointer ${selectedKey === "CPF" ? "border-blue-600 bg-blue-50" : "border-slate-300"}`}
-                            onClick={() => pixSelecionado("CPF")}
+                            onClick={() => handleKeySelection("CPF")}
                         >
 
                             <p className="text-center font-medium text-blue-600">CPF</p>
                         </div>
                         <div
                             className={`p-4 border-2 rounded-lg cursor-pointer ${selectedKey === "Celular" ? "border-blue-600 bg-blue-50" : "border-slate-300"}`}
-                            onClick={() => pixSelecionado("Celular")}
+                            onClick={() => handleKeySelection("Celular")}
                         >
                             <p className="text-center font-medium text-blue-600">Celular</p>
                         </div>
                         <div
                             className={`p-4 border-2 rounded-lg cursor-pointer ${selectedKey === "Email" ? "border-blue-600 bg-blue-50" : "border-slate-300"}`}
-                            onClick={() => pixSelecionado("Email")}
+                            onClick={() => handleKeySelection("Email")}
                         >
                             <p className="text-center font-medium text-blue-600">Email</p>
                         </div>

@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
-import { tipoOcupacao, titularCia, dadosPessoaisCredLuz } from '../../../schema/schemaCredLuz';
+import { tipoOcupacao, titularCia } from '../../../schema/schemaCredLuz';
 import { cadastroSchema, identificacaoSchema, enderecoSchema } from '../../../schema/schemaCadastro';
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormData } from '../../../context/FormContext';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
 const Step2 = dynamic(() => import('../../geral/form/FormIdentificacao'));
@@ -44,7 +44,7 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
     ], []);
 
     const methods = useForm({
-        resolver: zodResolver(schemas[step - 1]),
+        resolver: yupResolver(schemas[step - 1]),
         mode: 'onChange',
         defaultValues: formData
     })
@@ -71,7 +71,7 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
             {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
             {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
-            {step === 5 && <Step5 backStep={prevStep} />}
+            {step === 5 && <Step5 onNext={nextStep} backStep={prevStep} />}
         </FormProvider>
     )
 }
