@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IoIosArrowForward } from "react-icons/io";
-import { LiMod, Title, Desc } from '../STYLES';
+import { LiMod, Title, Desc } from '../styles';
 
 export default function ModSlide() {
     const [activeIndex, setActiveIndex] = useState(0);

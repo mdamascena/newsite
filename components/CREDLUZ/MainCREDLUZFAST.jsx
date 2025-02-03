@@ -70,7 +70,7 @@ export default function MainPrincipal() {
                             </div>
 
                             <div className="text-center md:text-left">
-                                <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
+                                <BtnCalc>Contrate agora</BtnCalc>
                             </div>
 
                             <div className="text-[12px] text-white mt-5 text-center lg:text-start">

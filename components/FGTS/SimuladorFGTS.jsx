@@ -1,6 +1,6 @@
 import { MdOutlineEditCalendar } from 'react-icons/md'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
-import { BtnSolic, IntSolic } from "./STYLES"
+import { BtnSolic, IntSolic } from "./styles"
 
 export default function SimuladorFGTS() {
 

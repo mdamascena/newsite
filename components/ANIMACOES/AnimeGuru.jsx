@@ -1,7 +1,7 @@
-import React from "react";
-import Lottie from "lottie-react";
-import Animation from '../../public/img/guru-animation-cor.json';
+// import React from "react";
+// import Lottie from "lottie-react";
+// import Animation from '../../public/img/guru-animation-cor.json';
 
-const App = () => <Lottie animationData={Animation} loop={true} />;
+// const App = () => <Lottie animationData={Animation} loop={true} />;
 
-export default App;
+// export default App;

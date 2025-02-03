@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { Btn } from '../STYLES'
+import { Btn } from '../styles'
 import { LiaTelegramPlane } from "react-icons/lia"
 import { Input } from "../../ui/input";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
@@ -19,6 +19,8 @@ export default function FormFC() {
 
     const {
         register,
+        watch,
+        setValue,
         handleSubmit,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema) })

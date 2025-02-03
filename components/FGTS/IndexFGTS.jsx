@@ -6,7 +6,7 @@ export default function IndexFGTS() {
     return (
         <>
             <Header />
-            <MainFGTS />
+            {/* <MainFGTS /> */}
             <Footer />
         </>
     )

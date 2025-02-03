@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Btn, BtnReset } from '../STYLES'
+import { Btn, BtnReset } from '../styles'
 import { Input } from '../../ui/input'
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import InputMask from 'react-input-mask'

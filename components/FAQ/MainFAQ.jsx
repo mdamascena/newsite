@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InputSearch } from './STYLES';
+import { InputSearch } from './styles';
 import ModalidadesFAQ from './ModalidadesFAQ';
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";

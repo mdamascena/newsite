@@ -1,4 +1,4 @@
-import { Title } from './STYLES'
+import { Title } from './styles'
 import FormCF from './form/Form'
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import { useRouter } from 'next/router'

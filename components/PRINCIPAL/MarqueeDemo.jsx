@@ -5,25 +5,13 @@ import { FaInstagram } from "react-icons/fa"
 import { FaFacebookSquare } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
 import Image from "next/image"
-import jose from '../../public/img/avatar_jose.png'
-import maria from '../../public/img/avatar_maria.png'
-import renato from '../../public/img/avatar_renato.png'
-import anaPaula from '../../public/img/avatar_anapaula.png'
-import eduardo from '../../public/img/avatar_eduardo.png'
-import evaldo from '../../public/img/avatar_evaldo.png'
-import arlete from '../../public/img/avatar_arlete.png'
-import sandra from '../../public/img/avatar_sandra.png'
-import penha from '../../public/img/avatar_penha.png'
-import marcelo from '../../public/img/avatar_marcelo.png'
-import fernanda from '../../public/img/avatar_fernanda.png'
-import renan from '../../public/img/avatar_renan.png'
 
 const reviews = [
     {
         name: "Jose Silverio Lima",
         username: "@joseLima",
         body: "Prático e rápido! Recomendo.",
-        img: jose,
+        img: "/img/avatar_jose.png",
         avaliacao:"⭐⭐⭐⭐⭐",
         rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>,
     },
@@ -31,7 +19,7 @@ const reviews = [
         name: "Maria Clara",
         username: "@mariaClarinha",
         body: "Ótimo atendimento e muito confiável!",
-        img: maria,
+        img: "/img/avatar_maria.png",
         avaliacao:"⭐⭐⭐⭐⭐",
         rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
@@ -39,7 +27,7 @@ const reviews = [
         name: "Renato Jirari",
         username: "@JirariR",
         body: "Bom, mas o site poderia ser mais intuitivo.",
-        img: renato,
+        img: "/img/avatar_renato.png",
         avaliacao:"⭐⭐⭐⭐",
         rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
@@ -47,7 +35,7 @@ const reviews = [
         name: "Ana Paula Souza",
         username: "@paulaMed32",
         body: "Uso há anos, sempre seguro e eficaz",
-        img: anaPaula,
+        img: "/img/avatar_anapaula.png",
         avaliacao:"⭐⭐⭐⭐",
         rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
@@ -55,7 +43,7 @@ const reviews = [
         name: "Evaldo Moreira",
         username: "@evaldoM88",
         body: "Simples e direto, mas o limite poderia ser melhor.",
-        img: evaldo,
+        img: "/img/avatar_evaldo.png",
         avaliacao:"⭐⭐⭐⭐",
         rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
@@ -63,7 +51,7 @@ const reviews = [
         name: "Arlete Felix",
         username: "@arleteF56",
         body: "A taxa de juros poderia ser melhor.",
-        img: arlete,
+        img: "/img/avatar_arlete.png",
         avaliacao:"⭐⭐",
         rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
@@ -71,7 +59,7 @@ const reviews = [
         name: "Maria da Penha",
         username: "@penhaTia",
         body: "Eu gostei bastante, foi tudo bem. Chamei no ZAP",
-        img: penha,
+        img: "/img/avatar_penha.png",
         avaliacao:"⭐⭐⭐⭐⭐",
         rede:<FaFacebookSquare className="text-blue-700 ml-auto text-3xl"/>
     },
@@ -79,7 +67,7 @@ const reviews = [
         name: "Eduardo Gomes",
         username: "@EduardoGomes5",
         body: "Demorou mais que o esperado desta vez!!!",
-        img: eduardo,
+        img: "/img/avatar_eduardo.png",
         avaliacao:"⭐⭐⭐",
         rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>
     },
@@ -87,7 +75,7 @@ const reviews = [
         name: "Sandra Andrade",
         username: "@sanadrade10",
         body: "Já sou cliente deles a bastante tempo, não tive problemas",
-        img: sandra,
+        img: "/img/avatar_sandra.png",
         avaliacao:"⭐⭐⭐⭐⭐",
         rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>
     },
@@ -95,7 +83,7 @@ const reviews = [
         name: "Marcelo da Silva",
         username: "@marcelosd",
         body: "Sempre confiei neles. Rápido e seguro!",
-        img: marcelo,
+        img: "/img/avatar_marcelo.png",
         avaliacao:"⭐⭐⭐⭐⭐",
         rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },
@@ -103,7 +91,7 @@ const reviews = [
         name: "Fernanda Barbosa",
         username: "@nandablima38",
         body: "Achei super de boa, não tive problema nenhum",
-        img: fernanda,
+        img: "/img/avatar_fernanda.png",
         avaliacao:"⭐⭐⭐⭐⭐",
         rede:<FaInstagram className="text-fuchsia-700 ml-auto text-3xl"/>
     },
@@ -111,7 +99,7 @@ const reviews = [
         name: "Renan Pereira",
         username: "@renanPG",
         body: "Até que liberou um limite. Mas eu precisava de mais",
-        img: renan,
+        img: "/img/avatar_renan.png",
         avaliacao:"⭐⭐⭐",
         rede:<FaXTwitter className="text-black ml-auto text-3xl"/>
     },

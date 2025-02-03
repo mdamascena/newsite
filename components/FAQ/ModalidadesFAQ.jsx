@@ -1,4 +1,4 @@
-import { CardMod } from './STYLES'
+import { CardMod } from './styles'
 import { RiLightbulbFlashLine } from 'react-icons/ri'
 import { MdOutlineCake } from 'react-icons/md'
 import { SiPix } from "react-icons/si";

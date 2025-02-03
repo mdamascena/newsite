@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import ImgMain from '../../public/img/modelo_main_inss3.png'
-import { BtnCalc, Card, EmpTitle } from './STYLES'
-import Condicoes from './CondicoesINSS'
+import { BtnCalc, Card, EmpTitle } from './styles'
 import TaxaGuru from '../geral/section/TaxaGuru'
 import { LuCircleCheck  } from "react-icons/lu"
 import { useRouter } from 'next/router'
+import CondicoesINSS from './CondicoesINSS'
 
 export default function MainFGTS() {
 
@@ -62,7 +62,7 @@ export default function MainFGTS() {
                         </p>
 
                         <div className='flex justify-center lg:justify-start'>
-                            <BtnCalc onClick={handleRedirect}>Contrate agora</BtnCalc>
+                            <BtnCalc>Contrate agora</BtnCalc>
                         </div>
 
                     </div>
@@ -73,17 +73,15 @@ export default function MainFGTS() {
                 </div>
             </div>
             <div className='container-custom'>
-                <Condicoes />
+                <CondicoesINSS />
             </div>
             
-            
-            
             <TaxaGuru 
-                TituloGuru={'Equilibre as sua contas e viva a tranquilidade'} 
-                DescrisaoGuro={'As melhores taxas de juros para aposentados e pensionistas do INSS, BPC/LOAS'} 
-                DescrisaoProduto={'Empréstimo Consignado'} 
-                Taxa={'1,50%'} 
-                DescrisaoTaxa={'A melhor taxa entre empréstimos para aposentados e pensionistas INSS, BPC/LOAS.'}
+                TituloGuru='Equilibre as sua contas e viva a tranquilidade'
+                DescricaoGuru='As melhores taxas de juros para aposentados e pensionistas do INSS, BPC/LOAS'
+                DescrisaoProduto='Empréstimo Consignado'
+                Taxa='1,50%'
+                DescrisaoTaxa="A melhor taxa entre empréstimos para aposentados e pensionistas INSS, BPC/LOAS."
             />
             
         </main>

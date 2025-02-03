@@ -1,4 +1,4 @@
-import { BtnPass, BtnReset } from '../STYLES'
+import { BtnPass, BtnReset } from '../styles'
 import { HiOutlineKey } from "react-icons/hi2"
 import { Input } from '../../ui/input'
 import { motion, AnimatePresence } from 'framer-motion'

@@ -26,6 +26,7 @@ export default function FormEndereco({ onNext, backStep }) {
     const [cepDigitado, setCepDigitado] = useState("");
     const [selectedEstado, setSelectedEstado] = useState("");
 
+    const watchCep = watch("cep")
     const cidadeSelecionada = watch("cidade");
     const watchOption = watch("cepOption")
     console.log(cepDigitado)
@@ -34,7 +35,7 @@ export default function FormEndereco({ onNext, backStep }) {
     useEffect(() => {
         const currentCep = getValues("cep");
         setCepDigitado(currentCep ? currentCep : ""); // Atualiza o estado com uma string vazia se estiver indefinido
-      }, [watch("cep")]);
+      },  [watchCep, getValues ]);
       
     //Busca o endereço de acordo com o CEP digitado.
     const handleCepChange = (e) => {
@@ -120,7 +121,7 @@ export default function FormEndereco({ onNext, backStep }) {
         } if(cidadeSelecionada) {
             clearErrors(["logradouroSemCep", "bairroSemCep"])
         }
-    }, [cepDigitado, cidadeSelecionada]);
+    }, [cepDigitado, cidadeSelecionada, clearErrors]);
 
     
     useEffect(() => {

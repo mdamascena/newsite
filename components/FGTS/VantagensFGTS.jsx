@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Persona from '../../public/img/mulher_azul.png'
-import { Card, CardFront, CardBack } from './STYLES'
+import { Card, CardFront, CardBack } from './styles'
 import { MdMoneyOff } from 'react-icons/md'
 import { VscSearchStop } from 'react-icons/vsc'
 import { AiOutlineFieldTime } from 'react-icons/ai'

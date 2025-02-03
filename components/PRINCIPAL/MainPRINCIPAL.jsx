@@ -1,6 +1,6 @@
 import Simulador from "./SimuladorGeral"
 import SeuPerfil from "./sections/Perfil"
-import { BtnHome } from "./STYLES"
+import { BtnHome } from "./styles"
 import Modalidades from "./Modalidades"
 import SlideModalidade from "./sections/SlideModalidade"
 import Taxa from "./sections/Taxas"
@@ -39,7 +39,7 @@ export default function MainHome() {
                         <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
                             Empréstimo <span className="font-extralight">ONLINE</span>
                         </h1>
-                        <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/>
+                        {/* <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/> */}
                     </div>
 
                     <div className="lg:content-start content-end col-span-1 select-none">
