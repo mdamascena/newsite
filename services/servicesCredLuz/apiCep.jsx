@@ -7,7 +7,7 @@ export const getEnderecoCep = (cep) => {
 }
 
 export const getEstado = () => {
-    return axios.get('https:servicodados.ibge.gov.br/api/v1/localidades/estados')
+    return axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
         .then(res => {return res.data;})
         .catch(err => {console.log('Erro', err)})
 }
