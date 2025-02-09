@@ -3,7 +3,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import LogoCrefaz from '../../../../public/img/logocrefaz.png'
-import { BtnSolicita, BtnRecalc } from "../../styles"
+import { BtnSolicita, BtnRecalc } from "../../STYLES"
 import { FaCheck } from "react-icons/fa6"
 import { BiMoneyWithdraw } from "react-icons/bi"
 import Link from "next/link"
@@ -83,23 +83,7 @@ export default function App({ show, fechar, onOpenChange, prazo, parcela, valor,
 
                     <div className="border-b border-dashed border-white w-full my-2"/>
 
-                    <div className="justify-center">
-                        <Link href="credluz/cadastro" passHref>
-                            <BtnSolicita className="w-full">
-                                Solicitar Empréstimo
-                            </BtnSolicita>
-                        </Link>
-                
-                        <BtnRecalc className="w-full" onClick={handleRecalcClick}>
-                            Simular outro valor
-                        </BtnRecalc>                
-                    </div>
        
-                    <div className="text-[10px] select-none">
-                        <p className="text-white font-light">
-                            Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
-                        </p>
-                    </div>
 
                     <ul className="text-white font-light mt-3 gap-y-2 grid">
                         <li className="flex items-center">
@@ -122,6 +106,22 @@ export default function App({ show, fechar, onOpenChange, prazo, parcela, valor,
                             Limite de até R$ 3.300,00*
                         </li>
                     </ul>
+                    <div className="justify-center">
+                        <Link href="credluz/cadastro" passHref>
+                            <BtnSolicita className="w-full">
+                                Solicitar Empréstimo
+                            </BtnSolicita>
+                        </Link>
+                
+                        <BtnRecalc className="w-full" onClick={handleRecalcClick}>
+                            Simular outro valor
+                        </BtnRecalc>                
+                    </div>
+                    <div className="text-[10px] select-none">
+                        <p className="text-white font-light">
+                            Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
+                        </p>
+                    </div>
                                     
                     <div className="my-2">
                         <p className="text-white text-sm">*Crédito sujeito a análise</p>
