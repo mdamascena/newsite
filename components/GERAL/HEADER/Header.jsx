@@ -120,7 +120,7 @@ export default function Header() {
                 <nav className="hidden lg:block ml-auto">
                     <ul className={`${bgNavbar[1]} flex gap-7`}>
                         <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
-                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
+                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/quem-somos">Quem Somos</Link>
                         <LiDrop className={`${bgNavbar[4]} relative flex group`}>
                             Para você<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-200' />
                             <Dropdown>
@@ -157,7 +157,7 @@ export default function Header() {
                 
                 <ul className=''>
                     <LiSm><Link href="/" passHref>Principal</Link></LiSm>
-                    <LiSm><Link href='/' passHref>Quem Somos</Link></LiSm>
+                    <LiSm><Link href='/quem-somos' passHref>Quem Somos</Link></LiSm>
                     <LiSm className='group' onClick={drop}>
                         Para você                
                     </LiSm>
@@ -186,8 +186,12 @@ export default function Header() {
                 </div> 
 
                 <ul>
-                    <LiSm><Link href='/atendimento' passHref>Atendimento</Link></LiSm>
-                    <LiSm><Link href='/faq' passHref>Ajuda</Link></LiSm>
+                    <LiSm>
+                        <Link href='/atendimento' passHref>Atendimento</Link>
+                    </LiSm>
+                    <LiSm>
+                        <Link href='/faq' passHref>Ajuda</Link>
+                    </LiSm>
                 </ul>
             </nav>
 

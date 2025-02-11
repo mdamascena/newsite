@@ -13,12 +13,12 @@ export default function MainAtendimento() {
             <section className="bgMainAtendimento lg:h-[70vh] h-[80vh]">
                 <div className='container-custom grid grid-cols-2 h-full'>
                     <div className='lg:col-span-1 col-span-2 mb-72 lg:mb-0'/>
-                    <div className="text-center lg:px-8 lg:col-span-1 col-span-2 my-auto backdrop-blur-md lg:mx-8 lg:p-5 p-3 bg-white/10 rounded-xl">
-                        <h1 className="text-3xl lg:text-5xl text-yellow-400 tracking-tight lg:mb-2 font-semibold">
-                            Precisando de ajuda?
+                    <div className="text-center lg:px-8 lg:col-span-1 col-span-2 my-auto backdrop-blur-md lg:mx-8 lg:p-5 p-3 rounded-xl">
+                        <h1 className="text-3xl lg:text-4xl text-yellow-400 tracking-tight lg:mb-2 font-semibold">
+                            Central de atendimento
                         </h1>
                         <h2 className="lg:text-xl text-md text-white tracking-tight lg:mb-5">
-                            Fale com um dos nossos Consultores Especializados
+                            Fale em um dos nossos canais de atendimento
                         </h2>
                         <div className="flex justify-around items-center text-white lg:text-3xl text-2xl bg-white/10 p-3 rounded-md">
                             <PiHeadsetFill/>

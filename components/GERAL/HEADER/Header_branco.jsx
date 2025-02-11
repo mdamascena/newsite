@@ -125,13 +125,13 @@ export default function Header() {
 
                     <ul className={`${bgNavbar[1]} flex gap-7`}>
                         <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Principal</Link>
-                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/">Quem Somos</Link>
+                        <Link passHref className={`${bgNavbar[4]} hover:scale-[1.2] cursor-pointer my-auto duration-500 text-sm`} href="/quem-somos">Quem Somos</Link>
                         <LiDrop className={`${bgNavbar[4]} relative flex group`}>
                             Para você<RiArrowDownSLine className='text-lg group-hover:rotate-180 duration-500' />
                             <Dropdown>
                                 <div className="p-1 text-sm">
                                     <Link href="/saque-aniversario" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Saque antecipado FGTS</Link>
-                                    <Link href="../consignado-inss" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo consignado INSS</Link>
+                                    <Link href="/consignado-inss" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo consignado INSS</Link>
                                     <Link href="/credluz" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">Empréstimo na conta de luz</Link>
                                     <Link href="/credluz-fast" className="text-slate-400 block px-4 py-2 duration-500 hover:bg-slate-200 m-1 rounded-md">PIX parcelado</Link>
                                 </div>
@@ -163,7 +163,7 @@ export default function Header() {
             <nav className={`${mudaLinha[3]} duration-500 origin-top fixed mt-[4.2rem] bg-white text-center z-50 md:mx-6 mx-4 p-3 rounded-lg left-0 right-0 shadow-md`}>
                 <ul className=''>
                     <LiSm><Link href="/" passHref>Principal</Link></LiSm>
-                    <LiSm><Link href='/' passHref>Quem Somos</Link></LiSm>
+                    <LiSm><Link href='/quem-somos' passHref>Quem Somos</Link></LiSm>
                     <LiSm className='group' onClick={drop}>
                         Para você                
                     </LiSm>
@@ -195,7 +195,9 @@ export default function Header() {
                     <LiSm>
                         <Link href='/atendimento' passHref>Atendimento</Link>
                     </LiSm>
-                    <LiSm><Link href='/faq' passHref>Ajuda</Link></LiSm>
+                    <LiSm>
+                        <Link href='/faq' passHref>Ajuda</Link>
+                    </LiSm>
                 </ul>
                 
             </nav>
