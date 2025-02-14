@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from "react"
 import { FormDataProvider } from "../../../context/FormContext"
 import BaseForm from "../../../components/geral/form/BaseForm"
-import { FormConsignado } from "../../../components/consignado/form/index"
+import { FormConsignado } from "../../../components/consignado/form/FormConsignado"
 
 export default function Cadastro() {
 

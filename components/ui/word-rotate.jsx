@@ -1,6 +1,6 @@
 "use client";;
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { cn } from "components/lib/utils";
 const randomBetween = (min, max) => Math.random() * (max - min) + min
