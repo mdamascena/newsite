@@ -1,4 +1,4 @@
-import { BtnMaisValor, Btn, BtnCalcValores } from '../STYLES'
+import { BtnMaisValor, Btn, BtnCalcValores } from '../styles'
 import {useState} from "react"
 import { motion } from 'framer-motion'
 import { Slider } from '../../ui/slider'

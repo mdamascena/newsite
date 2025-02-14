@@ -5,7 +5,7 @@ import{HiOutlineClipboardDocumentList} from 'react-icons/hi2'
 import {PiSignature} from 'react-icons/pi'
 import {HiOutlineIdentification} from 'react-icons/hi2'
 import {CiCalculator1} from 'react-icons/ci'
-import { NumCard } from "./STYLES"
+import { NumCard } from "./styles"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 

@@ -3,7 +3,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import LogoCrefaz from '../../../../public/img/logocrefaz.png'
-import { BtnSolicita, BtnRecalc } from "../../STYLES"
+import { BtnSolicita, BtnRecalc } from "../../styles"
 import { FaCheck } from "react-icons/fa6"
 import { BiMoneyWithdraw } from "react-icons/bi"
 import Link from "next/link"
