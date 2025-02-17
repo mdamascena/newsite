@@ -8,7 +8,7 @@ export default function SeuPotencial(){
             
             <div className='lg:pt-48 pt-8 container-custom'>
                 
-                <div className='bg-white lg:h-96 h-[45rem] lg:w-[1000px] rounded-3xl mx-auto shadow-lg'/>
+                <div className='bg-blue-700 lg:h-96 h-[45rem] lg:w-[1000px] rounded-3xl mx-auto shadow-lg'/>
                     
                 <div className='grid lg:grid-cols-2 grid-cols-1 mt-[-42rem] lg:mt-[-29.5rem]'>
 
@@ -18,7 +18,7 @@ export default function SeuPotencial(){
                         
                     <div className='col-span-1 content-center lg:w-[420px] lg:ml-5 mx-8'>
                         <div className='lg:text-4xl text-3xl font-medium tracking-tight text-center lg:text-left'>
-                            <h1 className='text-slate-500'>Libere o potencial</h1>
+                            <h1 className='text-white'>Libere o potencial</h1>
                             <h1 className='text-blue-600'>do seu crédito</h1>
                         </div>
 

@@ -8,7 +8,7 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
 
                 <div className='grid grid-cols-1 lg:grid-cols-3 lg:mx-48'>
                     <div className='col-span-1 order-2 lg:order-1 mx-5 lg:mx-0'>
-                        {/* <GuruFinanceiro /> */}
+                        <GuruFinanceiro />
                     </div>
 
                     <div className='col-span-2 text-slate-400 lg:text-xl text-sm order-1 lg:order-2 my-auto mx-3 lg:mx-0'>

@@ -45,7 +45,7 @@ export default function MainFGTS() {
             <Vantagens />
             <TaxaGuru 
                 TituloGuru='Não deixe o seu FGTS parado!'
-                DescrisaoGuro='O Saque-Aniversário FGTS antecipado é fácil, rápido e você não tem dor de cabeça com imprevistos. É uma das melhores opções de crédito sem comprometer sua renda com pagamento de parcelas!' 
+                DescricaoGuru='Utilize o seu saldo e fique tranquilo com suas finanças ou realize seus planos.' 
                 DescrisaoProduto='Antecipação do saque FGTS'
                 Taxa='1,59%'
                 DescrisaoTaxa='A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.'

@@ -67,7 +67,7 @@ export default function Regras(){
                             
                             <div className="text-slate-400 mt-8 lg:text-lg text-md">
                                 <p className="mb-2">
-                                    Aqui ValoReal você pode acompanhar a análise diretamente pelo site em tempo real.
+                                    Aqui você acompanha a análise diretamente pelo site em tempo real.
                                 </p>
 
                                 <p className="">

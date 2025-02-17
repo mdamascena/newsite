@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useState } from "react"
 import cel from "../../public/img/PERSO_LUZ_3.png"
 import light from "../../public/img/LAMPADA.png"
+import variada from "../../public/img/VARIADAS.png"
 import {HiCheck} from 'react-icons/hi'
 import SectionDescricao from './Descricao'
 import SectionComoFunciona from "./ComoFunciona"
@@ -29,14 +30,19 @@ export default function MainCredluz() {
                             </figure>
 
                             <div className="col-span-1 my-auto text-white select-none">
-                                <div className="hidden lg:block">
+                                <div className="hidden lg:block relative">
                                     
                                     <h1 className="text-yellow-400 text-6xl tracking-tighter font-semibold">Empréstimo</h1>
                                     
                                     <h2 className="font-semibold tracking-tighter text-4xl mb-3 lg:mb-0 flex items-center">Débito na conta de 
-                                        <span className="text-6xl ml-2" style={{ textShadow: "0px 0px 20px white" }}>LUZ</span>
+                                        <span className="text-6xl ml-2 z-10" style={{ textShadow: "0px 0px 20px white" }}>LUZ</span>
                                     </h2>
                                     <div className="bg-yellow-400 p-[1px] lg:my-5 rounded-full"/>
+
+                                    <Image className="absolute -top-10 left-40" src={variada} width={900} alt=""/>
+                                    <Image className="absolute -top-2 left-52" src={variada} width={500} alt=""/>
+                                    <Image className="absolute -top-2 left-52" src={variada} width={500} alt=""/>
+                                    <Image className="absolute -top-8 left-60" src={variada} width={900} alt=""/>
 
                                     <div className="leading-5 mt-5 text-md flex items-center">
                                         <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
