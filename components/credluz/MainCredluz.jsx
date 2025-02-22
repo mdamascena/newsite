@@ -41,7 +41,6 @@ export default function MainCredluz() {
 
                                     <Image className="absolute -top-10 left-40" src={variada} width={900} alt=""/>
                                     <Image className="absolute -top-2 left-52" src={variada} width={500} alt=""/>
-                                    <Image className="absolute -top-2 left-52" src={variada} width={500} alt=""/>
                                     <Image className="absolute -top-8 left-60" src={variada} width={900} alt=""/>
 
                                     <div className="leading-5 mt-5 text-md flex items-center">
