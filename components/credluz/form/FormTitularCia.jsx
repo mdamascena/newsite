@@ -1,49 +1,16 @@
-import { Controller, useFormContext } from "react-hook-form"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useFormData } from "../../../context/FormContext"
-import { motion, AnimatePresence } from 'framer-motion'
+import { Controller, useFormContext } from "react-hook-form"
 import { RiUserFollowLine, RiUserForbidLine } from "react-icons/ri"
 import { IoIosArrowBack } from "react-icons/io"
-import tw from 'tailwind-styled-components'
+import { ToastContainer } from "react-toastify"
+import { toastErrorColored } from "shared/toastUtils/toastValidation"
+import { motion } from 'framer-motion'
+import { container, item } from "shared/motionUtils/motionTransation"
+import { OptLabel } from "components/geral/style"
 import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
-import { toast, ToastContainer } from "react-toastify"
 
-const OptLabel = tw(motion.label)`
-    bg-white
-    grid
-    grid-cols-6
-    p-3
-    lg:py-4
-    items-center 
-    justify-center 
-    text-slate-400 
-    shadow-md
-    rounded-md
-    cursor-pointer
-    duration-100
-    hover:ring-2
-    hover:ring-blue-500
-    hover:bg-blue-100
-    hover:text-blue-500
-    peer-checked:bg-blue-600 
-    peer-checked:text-white
-    peer-checked:shadow-nome
-    
-`  
-const container = {
-    hidden: {y: 50, opacity: 0 },
-    visible: {y: 0, opacity: 1, 
-        transition: {delayChildren: 0.3, staggerChildren: 0.2,},
-    },
-}
-  
-const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {y: 0, opacity: 1,
-        transition: {duration: 0.5, ease:"easeOut"},
-    },
-}
 
 export default function FormTitularCia({ onNext, backStep }) {
 
@@ -63,16 +30,7 @@ export default function FormTitularCia({ onNext, backStep }) {
 
     useEffect(() => {
         if (errors.titularCia) {
-            toast.error(errors.titularCia.message, {
-                position: "top-right", // Posição do toast
-                autoClose: 5000, // Fechar automaticamente em 5 segundos
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme:"colored",
-            });
+            toastErrorColored(errors.titularCia.message);
         }
     }, [errors.titularCia]);
     

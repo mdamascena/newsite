@@ -51,4 +51,6 @@ export const pagamentoPix = Yup.object().shape({
   chaveCpf: Yup.string().optional(), // Campo opcional
   chaveCel: Yup.string().optional(), // Campo opcional
   chaveEmail: Yup.string().optional(), // Campo opcional
+  // banco: Yup.string()
+  //   .oneOf(["0", "1", "2", "3", "4"], "Selecione um Banco"),
 });

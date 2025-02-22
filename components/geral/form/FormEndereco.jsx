@@ -3,22 +3,24 @@ import { useFormContext, Controller } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { useHookFormMask } from "use-mask-input"
 import { Input } from "components/ui/input"
-import tw from 'tailwind-styled-components'
-import { motion } from 'framer-motion'
 import { getCidade, getEnderecoCep, getEstado } from '../../../services/servicesCredLuz/apiCep'
 import { Select, SelectTrigger, SelectContent, SelectItem } from "components/ui/select"
-import BtnNext from '../button/BtnBlueNext'
-import BtnBack from '../button/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
-import { toast, ToastContainer } from "react-toastify"
 import { PiMapPinSimpleAreaFill } from "react-icons/pi"
 import { VscMap } from "react-icons/vsc"
+import { ToastContainer } from "react-toastify"
+import { toastErrorColored, toastWarningColored } from 'shared/toastUtils/toastValidation'
+import { motion } from 'framer-motion'
+import { container, item } from 'shared/motionUtils/motionTransation'
+import { OptLabel } from '../style/index'
+import BtnNext from '../button/BtnBlueNext'
+import BtnBack from '../button/BtnBlueBack'
 
 
 export default function FormEndereco({ onNext, backStep }) {
 
     const { control, handleSubmit, clearErrors, watch, register, getValues, setValue, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormData();
+    const { atualizarForm } = useFormData();
     const registerWithMask = useHookFormMask(register);
 
     const [estados, setEstados] = useState([]);
@@ -29,7 +31,6 @@ export default function FormEndereco({ onNext, backStep }) {
     const watchCep = watch("cep")
     const cidadeSelecionada = watch("cidade");
     const watchOption = watch("cepOption")
-    console.log(cepDigitado)
 
     //Atualizar os dados de CEP ao retornar de um STEP
     useEffect(() => {
@@ -50,33 +51,16 @@ export default function FormEndereco({ onNext, backStep }) {
                         setValue("cidadeCep", data.localidade);
                         setValue("logradouro", data.logradouro);
                         setValue("bairro", data.bairro);
-                    } else if (data && data.erro) {
-                        toast.warn("CEP não encontrado. Digite seu endereço!", {
-                            position: "top-right",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            theme: "light",
-                        });
-                    setValue("estadoCep", "");
-                    setValue("cidadeCep", "");
-                    setValue("logradouro", "");
-                    setValue("bairro", "");
+                    } else if (data && data.erro) {    
+                        toastWarningColored("CEP não encontrado. Digite seu endereço!")
+                        setValue("estadoCep", "");
+                        setValue("cidadeCep", "");
+                        setValue("logradouro", "");
+                        setValue("bairro", "");
                     }
                 })
                 .catch((err) => {
-                    toast.error("Erro ao buscar o endereço. Digite seu endereço!", {
-                        position: "top-right",
-                        autoClose: 5000,
-                        type: "error",
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        theme: "light",
-                    });
+                    toastErrorColored("Erro ao buscar o endereço. Digite seu endereço!")
                     setValue("estadoCep", "");
                     setValue("cidadeCep", "");
                     setValue("logradouro", "");
@@ -91,7 +75,6 @@ export default function FormEndereco({ onNext, backStep }) {
             getEstado()
                 .then((data) => {
                     setEstados(data)
-                    console.log(estados)
                 })
                 .catch((e) => console.log(e))
         }
@@ -125,16 +108,8 @@ export default function FormEndereco({ onNext, backStep }) {
 
     
     useEffect(() => {
-        if ( errors.cepOption) {
-          toast.warn(errors.cepOption.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "light",
-          });
+        if (errors.cepOption) {
+            toastWarningColored(errors.cepOption.message)
         }
       }, [errors]);
 
@@ -147,52 +122,8 @@ export default function FormEndereco({ onNext, backStep }) {
             const { estado, cidade, logradouroSemCep, bairroSemCep, numeroSemCep, complementoSemCep } = data;
             filteredData = { estado, cidade, logradouroSemCep, bairroSemCep, numeroSemCep, complementoSemCep };
         }
-        console.log("Dados enviados:", filteredData);
         atualizarForm(filteredData);
         onNext();
-    };
-
-    const OptLabel = tw(motion.label)`
-        bg-white
-        grid
-        grid-cols-6
-        p-3
-        lg:py-4
-        items-center 
-        justify-center 
-        text-slate-400 
-        shadow-md
-        rounded-md
-        cursor-pointer
-        duration-100
-        hover:ring-2
-        hover:ring-blue-500
-        hover:bg-blue-100
-        hover:text-blue-500
-        peer-checked:bg-blue-600 
-        peer-checked:text-white
-        peer-checked:shadow-nome
-    `;
-
-    // const item = {
-    //     hidden: { y: 20, opacity: 0 },
-    //     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
-    // };
-
-    const container = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0, opacity: 1,
-            transition: { delayChildren: 0.3, staggerChildren: 0.2, },
-        },
-    };
-
-    const item = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0, opacity: 1,
-            transition: { duration: 0.5, ease: "easeOut" },
-        },
     };
 
     return (

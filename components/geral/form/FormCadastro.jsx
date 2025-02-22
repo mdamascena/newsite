@@ -1,13 +1,14 @@
 import { useState } from "react"
-import Link from "next/link"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormData } from "../../../context/FormContext"
-import {useDisclosure} from "@nextui-org/react"
-import { motion } from 'framer-motion'
+import { useDisclosure } from "@nextui-org/react"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
+import { motion } from 'framer-motion'
+import { container } from "shared/motionUtils/motionTransation"
+import Link from "next/link"
 import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../button/BtnBlueNext'
 
@@ -55,20 +56,6 @@ export default function FormCadastro({onNext}) {
         setIsAccepted(true);
         setValue("termos", true);
     };
-
-    const container = {
-        hidden: {y: 50, opacity: 0 },
-        visible: {y: 0, opacity: 1, 
-            transition: {delayChildren: 0.3, staggerChildren: 0.2,},
-        },
-    };
-      
-    const item = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {y: 0, opacity: 1,
-            transition: {duration: 0.5, ease:"easeOut"},
-        },
-    }
 
     return (
 

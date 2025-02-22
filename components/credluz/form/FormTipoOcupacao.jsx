@@ -1,53 +1,21 @@
-import { Controller, useFormContext } from "react-hook-form"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useFormData } from "../../../context/FormContext"
+import { Controller, useFormContext } from "react-hook-form"
 import { FaFemale } from "react-icons/fa"
 import { MdOutlineHandyman, MdOutlineMilitaryTech } from "react-icons/md"
 import { FaUserTie } from "react-icons/fa6"
 import { BsPersonBadgeFill } from "react-icons/bs"
 import { IoIosArrowBack } from "react-icons/io"
 import { FaMale } from "react-icons/fa"
+import { ToastContainer } from "react-toastify"
+import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { motion } from 'framer-motion'
-import tw from 'tailwind-styled-components'
+import { container, item } from "shared/motionUtils/motionTransation"
+import { OptLabel } from "../styles"
 import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
-import { toast, ToastContainer } from "react-toastify"
 
-const OptLabel = tw(motion.label)`
-    bg-white
-    grid
-    grid-cols-6
-    p-3
-    lg:py-6
-    items-center 
-    justify-center 
-    text-slate-400 
-    shadow-md
-    rounded-md
-    cursor-pointer
-    duration-100
-    hover:ring-2
-    hover:ring-blue-500
-    hover:bg-blue-100
-    hover:text-blue-500
-    peer-checked:bg-blue-600 
-    peer-checked:text-white
-    peer-checked:shadow-nome
-    
-`
-const container = {
-    hidden: {y: 50, opacity: 0 },
-    visible: {y: 0, opacity: 1, 
-        transition: {delayChildren: 0.3, staggerChildren: 0.2,},
-    },
-};
 
-const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {y: 0, opacity: 1,
-        transition: {duration: 0.5, ease:"easeOut"},
-    },
-};
 
 export default function FormTipoOcupacao({onNext, backStep}) {
 
@@ -67,16 +35,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
 
     useEffect(() => {
         if (errors.tipoOcupacao) {
-            toast.error(errors.tipoOcupacao.message, {
-                position: "top-right", // Posição do toast
-                autoClose: 5000, // Fechar automaticamente em 5 segundos
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme:"colored",
-            });
+            toastErrorColored(errors.tipoOcupacao.message)
         }
     }, [errors.tipoOcupacao]);
 

@@ -1,41 +1,22 @@
 import { useEffect } from "react"
-import {useDisclosure} from "@nextui-org/react"
-import tw from 'tailwind-styled-components'
+import { useFormData } from "../../../context/FormContext"
+import { useFormContext, Controller} from "react-hook-form"
+import { useDisclosure } from "@nextui-org/react"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
-import { useFormContext, Controller} from "react-hook-form"
-import { useFormData } from "../../../context/FormContext"
-import { motion, AnimatePresence } from 'framer-motion'
-import BtnNext from '../../geral/button/BtnBlueNext'
-import BtnBack from '../../geral/button/BtnBlueBack'
 import { IoIosArrowBack } from "react-icons/io"
 import { IoIosFemale } from "react-icons/io"
 import { IoIosMale } from "react-icons/io"
 import { TbMessage2Question } from "react-icons/tb"
-import { toast, ToastContainer } from "react-toastify"
+import { ToastContainer } from "react-toastify"
+import { toastErrorColored } from "shared/toastUtils/toastValidation"
+import { motion } from 'framer-motion'
+import { container, item } from "shared/motionUtils/motionTransation"
+import { OptLabel } from "components/geral/style"
+import BtnNext from '../../geral/button/BtnBlueNext'
+import BtnBack from '../../geral/button/BtnBlueBack'
 import ModalGenero from '../../geral/modal/ModalGenero'
 
-const OptLabel = tw(motion.label)`
-    bg-white
-    grid
-    grid-cols-6
-    p-3
-    lg:py-4
-    items-center 
-    justify-center 
-    text-slate-400 
-    shadow-md
-    rounded-md
-    cursor-pointer
-    duration-100
-    hover:ring-2
-    hover:ring-blue-500
-    hover:bg-blue-100
-    hover:text-blue-500
-    peer-checked:bg-blue-600 
-    peer-checked:text-white
-    peer-checked:shadow-nome
-`
 export default function FormIdentificacao({onNext, backStep}) {
 
     const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();
@@ -56,39 +37,9 @@ export default function FormIdentificacao({onNext, backStep}) {
 
     useEffect(() => {
         if (errors.genero) {
-            toast.error(errors.genero.message, {
-                position: "top-right",
-                autoClose: 5000,
-                type: "error",
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                theme:"colored",
-                progress: undefined,
-                
-            });
+            toastErrorColored(errors.genero.message);
         }
     }, [errors.genero]);
-
-    const container = {
-        hidden: {y: 50, opacity: 0 },
-        visible: {y: 0, opacity: 1, 
-            transition: {delayChildren: 0.3, staggerChildren: 0.2,},
-        },
-    };
-      
-    const item = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {y: 0, opacity: 1,
-            transition: {duration: 0.5, ease:"easeOut"},
-        },
-    }
-
-    const itemClasses = {
-        title: "text-blue-500 text-medium",
-        indicator: "text-medium text-blue-500"
-    }
 
     return (
 
