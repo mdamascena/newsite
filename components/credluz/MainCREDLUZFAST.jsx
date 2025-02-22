@@ -2,6 +2,7 @@ import Image from "next/image"
 import { BtnCalc } from "./styles"
 import cel from "../../public/img/PERSO_LUZ_2.png"
 import light from "../../public/img/LAMPADA.png"
+import variada from "../../public/img/VARIADAS.png"
 import SectioDescrisao from "./Descricao"
 import SectioComoFunciona from "./ComoFunciona"
 import SectioRegrasGerais from "./RegrasGeais"
@@ -35,15 +36,19 @@ export default function MainPrincipal() {
                             <Image className="" width={490} src={cel} alt="" />
                         </figure>
 
-                        <div className="col-span-1 lg:my-auto select-none">
+                        <div className="col-span-1 lg:my-auto select-none relative block">
 
                             <h1 className="text-[2.5rem] lg:text-[3.8rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-yellow-400 saturate-200">
                                 Empréstimo
                             </h1>
 
-                            <h2 className="lg:flex items-center text-[1.8rem] lg:text-[2.8rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-white">
-                                Débito na conta de<div className="text-7xl ml-2 tracking-tighter font-semibold" style={{ textShadow: "0px 0px 20px white" }}>LUZ</div>
+                            <h2 className="lg:flex items-center text-[1.8rem] lg:text-[2.8rem] leading-tight lg:leading-[50px] font-semibold tracking-tighter text-center lg:text-left text-white">Débito na conta de
+                                <span className="block text-7xl ml-2 tracking-tighter font-semibold z-10" style={{ textShadow: "0px 0px 20px white" }}>LUZ</span>
                             </h2>
+                            
+                            <Image className="absolute lg:w-80 lg:top-5 lg:left-[17.3rem] top-14" src={variada} alt=""/>
+                            <Image className="absolute lg:w-80 lg:-top-7 lg:left-[19.3rem]" src={variada} alt=""/>
+                            <Image className="absolute lg:w-80 lg:-top-1 lg:left-[22.5rem]" src={variada} alt=""/>
 
                             <div className="text-white ml-2 lg:ml-0">
                                 
@@ -78,7 +83,6 @@ export default function MainPrincipal() {
                                 <p>Liberações ocorrem em dias úteis **</p>
                             </div>
                         </div>
-
                         
                     </div>
                 </div>

@@ -81,7 +81,7 @@ export const enderecoSchema = yup.object({
   }),
   numero: yup.string().when("cepOption", {
     is: (value) => value === "1",
-    then: () => yup.string().optional()
+    then: () => yup.string().required("Número é obrigatório")
   }),
   complemento: yup.string().when("cepOption", {
     is: (value) => value === "1",
@@ -115,7 +115,7 @@ export const enderecoSchema = yup.object({
   }),
   numeroSemCep: yup.string().when("cepOption", {
     is: (value) => value === "2",
-    then: () => yup.string().optional()
+    then: () => yup.string().required("Número é obrigatório")
   }),
   complementoSemCep: yup.string().when("cepOption", {
     is: (value) => value === "2",

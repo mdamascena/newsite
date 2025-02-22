@@ -154,11 +154,11 @@ export function MarqueeDemo() {
   return (
     <div className="bg-white select-none">
 
-        <div className="relative flex py-24 lg:w-full flex-col items-center justify-center overflow-x-hidden bg-slate-100 container-custom">
+        <div className="relative flex py-20 lg:w-full flex-col items-center justify-center overflow-x-hidden bg-slate-100 container-custom">
             
             <div className="lg:mb-10 mb-5 -mt-5 mx-12">
                 <h1 className="text-slate-400 text-center lg:text-4xl text-2xl tracking-tight font-semibold">
-                    O que as avaliações dizem sobre nós
+                    Sua satisfação é nossa melhor avaliação!
                 </h1>
                 <h2 className="text-slate-400 text-center lg:text-lg text-md tracking-tight font-light">
                     Confira o que as pessoas dizem sobre nossos serviços.

@@ -88,9 +88,9 @@ export default function ComoFunciona(){
                                 </div>
 
                                 <div className="text-center flex relative">
-                                    <div className="z-10">
+                                    <div className="z-10 lg:mt-2">
                                         <p className="tracking-tight leading-5 text-white text-sm">
-                                            Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir em nosso simulador.
+                                            Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir.
                                         </p>
                                     </div>
                                     
@@ -115,9 +115,9 @@ export default function ComoFunciona(){
                                 </div>
 
                                 <div className="text-center flex">
-                                    <div className="z-10">
+                                    <div className="z-10 lg:mt-2">
                                         <p className="tracking-tight leading-5 text-white text-sm">
-                                            Conte um pouco sobre você pra gente, informe alguns dados básicos. Assim agilizamos a sua análise de crédito.
+                                            Conte um pouco sobre você, informe alguns dados básicos para pré-análise.
                                         </p>
                                     </div>
                                     
@@ -142,9 +142,9 @@ export default function ComoFunciona(){
                                 </div>
 
                                 <div className="text-center flex">
-                                    <div className="z-10">
+                                    <div className="z-10 lg:mt-2">
                                         <p className="tracking-tight leading-5 text-white text-sm">
-                                            Após a pré-aprovação do seu pedido de empréstimo, faça o envio dos seus documentos pelo nosso site ou WhatsApp.
+                                            Foi pré-aprovado, agora envie os documentos pelo site ou WhatsApp.
                                         </p>
                                     </div>
                                     
@@ -169,9 +169,9 @@ export default function ComoFunciona(){
                                 </div>
 
                                 <div className="text-center flex">
-                                    <div className="z-10">
+                                    <div className="z-10 lg:mt-2">
                                         <p className="tracking-tight leading-5 text-white text-sm">
-                                            Empréstimo APROVADO! Agora só falta assinar o contrato usando nosso aplicativo na tela do seu smartphone.
+                                            Empréstimo APROVADO! Agora só assinar o contrato pelo APP.
                                         </p>
                                     </div>
                                     
@@ -212,7 +212,7 @@ export default function ComoFunciona(){
                             <div className="text-center flex">
                                 <div className="z-10">
                                     <p className="tracking-tight leading-5 text-white text-md">
-                                        Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir em nosso simulador.
+                                        Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir.
                                     </p>
                                 </div>
 
@@ -236,7 +236,7 @@ export default function ComoFunciona(){
                             <div className="text-center flex">
                                 <div className="z-10">
                                     <p className="tracking-tight leading-5 text-white text-md">
-                                        Conte um pouco sobre você pra gente, informe alguns dados básicos. Assim agilizamos a sua análise de crédito.
+                                        Conte um pouco sobre você, informe alguns dados básicos para pré-análise.
                                     </p>
                                 </div>
                                     
@@ -261,7 +261,7 @@ export default function ComoFunciona(){
                             <div className="text-center flex">
                                 <div className="z-10">
                                     <p className="tracking-tight leading-5 text-white text-md">
-                                        Após a pré-aprovação do seu pedido de empréstimo, faça o envio dos seus documentos pelo nosso site ou WhatsApp.
+                                        Foi pré-aprovado, agora envie os documentos pelo site ou WhatsApp.
                                     </p>
                                 </div>
                                     
@@ -285,7 +285,7 @@ export default function ComoFunciona(){
                             <div className="text-center flex">
                                 <div className="z-10">
                                     <p className="tracking-tight leading-5 text-white text-md">
-                                        Empréstimo APROVADO! Agora só falta assinar o contrato usando nosso aplicativo na tela do seu smartphone.
+                                        Empréstimo APROVADO! Agora só assinar o contrato pelo APP.
                                     </p>
                                 </div>
                                     

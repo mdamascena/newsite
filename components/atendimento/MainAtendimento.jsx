@@ -10,19 +10,23 @@ export default function MainAtendimento() {
 
     return (
         <main>
-            <section className="bgMainAtendimento overflow-y-hidden lg:bg-fixed">
-                <div className='container-custom grid'>
-                    <div className="text-center pt-44 pb-36 px-5 content-center">
-                        <h1 className="text-3xl lg:text-5xl text-yellow-400 tracking-tighter font-semibold">Quer falar com a gente?</h1>
-                        <h2 className="text-2xl text-white tracking-tight">Fale com um dos nossos Consultores Especializados</h2>
-                        <div className="flex justify-center items-center text-yellow-400 py-7 gap-x-2 text-5xl">
+            <section className="bgMainAtendimento lg:h-[70vh] h-[80vh]">
+                <div className='container-custom grid grid-cols-2 h-full'>
+                    <div className='lg:col-span-1 col-span-2 mb-72 lg:mb-0'/>
+                    <div className="text-center lg:px-8 lg:col-span-1 col-span-2 my-auto backdrop-blur-md lg:mx-8 lg:p-5 p-3 rounded-xl">
+                        <h1 className="text-3xl lg:text-4xl text-yellow-400 tracking-tight lg:mb-2 font-semibold">
+                            Central de atendimento
+                        </h1>
+                        <h2 className="lg:text-xl text-md text-white tracking-tight lg:mb-5">
+                            Fale em um dos nossos canais de atendimento
+                        </h2>
+                        <div className="flex justify-around items-center text-white lg:text-3xl text-2xl bg-white/10 p-3 rounded-md">
                             <PiHeadsetFill/>
                             <IoMail/>
                             <RiMessengerFill/>
                             <AiOutlineWhatsApp/>
                             <FaInstagram/>
                         </div>
-                        <p className="text-white">Nossos consultores estão ONLINE de segunda à sexta, das 09h às 18h, com excessão aos feriados.</p>
                     </div>
                 </div>
             </section>

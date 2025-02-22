@@ -294,25 +294,24 @@ export default function FormEndereco({ onNext, backStep }) {
                                     animate={'visible'}
                                     variants={container}
                                     exit={{ opacity: 0 }}
-                                    className="lg:col-span-3 col-span-6">
-
+                                    className="lg:col-span-3 col-span-2">
+                        
                                     <Controller
                                         name="estado"
                                         control={control}
                                         render={({ field }) => (
-
+                        
                                             <Select
                                                 onValueChange={(value) => {
                                                     field.onChange(value); // Atualiza o valor do formulário
                                                     setSelectedEstado(value); // Atualiza o estado selecionado
                                                 }}
-                                                defaultValue={field.value}
-                                            >
-
+                                                defaultValue={field.value}>
+                        
                                                 <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.estado ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     {field.value || "Selecione um estado"}
                                                 </SelectTrigger>
-
+                        
                                                 <SelectContent>
                                                     {estados.map((estado) => (
                                                         <SelectItem key={estado.id || estado.sigla} value={estado.sigla}>
@@ -325,24 +324,24 @@ export default function FormEndereco({ onNext, backStep }) {
                                     />
                                     {errors.estado && <p className="text-red-500 text-xs mt-1">{errors.estado.message}</p>}
                                 </motion.div>
-
+                        
                                 <motion.div
                                     initial={'hidden'}
                                     animate={'visible'}
                                     variants={container}
-                                    className="lg:col-span-3 col-span-6">
-
+                                    className="lg:col-span-3 col-span-4">
+                        
                                     <Controller
                                         name="cidade"
                                         control={control}
                                         render={({ field }) => (
-
+                        
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
-
+                        
                                                 <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cidade ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     {field.value || "Selecione uma cidade"}
                                                 </SelectTrigger>
-
+                        
                                                 <SelectContent>
                                                     {cidades.map((cidade) => (
                                                         <SelectItem key={cidade.id} value={cidade.nome}>
@@ -350,7 +349,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                                         </SelectItem>
                                                     ))}
                                                 </SelectContent>
-
+                        
                                             </Select>
                                         )}
                                     />
@@ -361,17 +360,17 @@ export default function FormEndereco({ onNext, backStep }) {
 
                         {watchOption === "2" && cidadeSelecionada && (
                             <>
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-4">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-4 col-span-6">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
-                                        placeholder="Logradouro "
+                                        placeholder="Logradouro *"
                                         {...register("logradouroSemCep")}
                                     />
                                     {errors.logradouroSemCep && <p className="text-red-500 text-xs mt-1">{errors.logradouroSemCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-1 col-span-2">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="col-span-2">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.numeroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -381,7 +380,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.numeroSemCep && <p className="text-red-500 text-xs mt-1">{errors.numeroSemCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-2 col-span-3">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-4">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.complementoSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -391,11 +390,11 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.complementoSemCep && <p className="text-red-500 text-xs mt-1">{errors.complementoSemCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-2 col-span-3">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-6">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
-                                        placeholder="Bairro "
+                                        placeholder="Bairro *"
                                         {...register("bairroSemCep")}
                                     />
                                     {errors.bairroSemCep && <p className="text-red-500 text-xs mt-1">{errors.bairroSemCep.message}</p>}
@@ -403,6 +402,8 @@ export default function FormEndereco({ onNext, backStep }) {
                             </>  
                         )}
 
+
+                        
                     </div>
                 </div>
 

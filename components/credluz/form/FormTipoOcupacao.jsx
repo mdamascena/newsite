@@ -153,7 +153,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                     </motion.div>
 
                                     {/*opção autônomo*/}
-                                    <motion.div className="col-span-2" key="autonomo">
+                                    <motion.div className="col-span-2" key="autonomo" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="5" id="autonomo" checked={value === "5"} onChange={() => onChange("5")} />
                                         <OptLabel className="justify-items-stretch" htmlFor="autonomo">
                                             <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">
@@ -171,7 +171,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                                     </motion.div>
 
                                     {/*opção militar*/}
-                                    <motion.div className="col-span-2" key="militar">
+                                    <motion.div className="col-span-2" key="militar" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="6" id="militar" checked={value === "6"} onChange={() => onChange("6")} />
                                         <OptLabel className="justify-items-stretch" htmlFor="militar">
                                             <div className="col-span-6 lg:col-span-2 mb-1 justify-center lg:justify-start grid">

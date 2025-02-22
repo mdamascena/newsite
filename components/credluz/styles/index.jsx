@@ -33,7 +33,7 @@ export const BtnCalc = tw.button`
     text-xl 
     lg:px-32 
     py-3
-    px-18
+    px-[25vw]
     lg:flex-none
     flex-1
     rounded-xl

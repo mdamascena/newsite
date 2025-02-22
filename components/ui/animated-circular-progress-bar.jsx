@@ -22,7 +22,7 @@ export default function AnimatedCircularProgressBar({
           "--percent-to-px": `${percentPx}px`,
           "--gap-percent": "5",
           "--offset-factor": "0",
-          "--transition-length": "1s",
+          "--transition-length": "0.7s",
           "--transition-step": "200ms",
           "--delay": "0s",
           "--percent-to-deg": "3.6deg",

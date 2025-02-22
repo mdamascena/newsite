@@ -54,6 +54,9 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         setTitulo(credLuzTitle[step - 1]);
         setDescricao(credLuzDescription[step - 1]);
         setStepCurrent(credLuzSteps)
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
     }, [step, setProgressChange, setTitulo, setDescricao, setStepCurrent, credLuzTitle, credLuzDescription, credLuzSteps ]);
 
     const nextStep = (data) => {
