@@ -79,7 +79,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                         {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
                     </div>
                     
-                    <div className="lg:col-span-2 col-span-6">
+                    <div className="lg:col-span-2 col-span-3">
                         <Input 
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
@@ -89,7 +89,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                         {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
                     </div>
 
-                    <div className="lg:col-span-2 col-span-8">
+                    <div className="lg:col-span-2 col-span-3">
                             <Input 
                                 className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.registroGeral ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"

@@ -1,18 +1,22 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import { useFormData } from "../../../context/FormContext";
 import { useHookFormMask } from "use-mask-input"
-import { motion } from "framer-motion";
-import BtnNext from "../../geral/button/BtnBlueNext";
-import BtnBack from "../../geral/button/BtnBlueBack";
 import { IoIosArrowBack } from "react-icons/io";
 import { Input } from "components/ui/input";
+import { FaIdCard } from "react-icons/fa";
+import { IoPhonePortraitOutline, IoMailOutline } from "react-icons/io5";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify"
 import { toastWarningColored } from "shared/toastUtils/toastValidation";
+import { motion } from "framer-motion";
+import { container, item } from "shared/motionUtils/motionTransation";
+import { OptLabel } from "components/geral/style";
+import BtnNext from "../../geral/button/BtnBlueNext";
+import BtnBack from "../../geral/button/BtnBlueBack";
 
 export default function FormPagamento({ onNext, backStep }) {
-    const { register, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
+    const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
     const { atualizarForm } = useFormData();
     const registerWithMask = useHookFormMask(register)
 
@@ -42,15 +46,6 @@ export default function FormPagamento({ onNext, backStep }) {
         } else if(keyType === "Email"){
             setValue("chaveEmail", data.email)
         }
-    };
-
-    const container = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { delayChildren: 0.3, staggerChildren: 0.2 },
-        },
     };
 
     useEffect(() => {
@@ -98,33 +93,69 @@ export default function FormPagamento({ onNext, backStep }) {
                         </Select>
                     </div>
 
-                    {/* {selectValue !== '' && ( */}
-                        <>
-                        <div className="col-span-6 mt-5">
-                                {/* Cards de Seleção */}
-                                <div className="grid grid-cols-3 gap-4 col-span-6">
-                                    <div
-                                        className={`p-4 border-2 rounded-lg cursor-pointer ${selectedKey === "CPF" ? "border-blue-600 bg-blue-50" : "border-slate-300"}`}
-                                        onClick={() => pixSelecionado("CPF")}
-                                    >
+                    <div className="col-span-6 p-6 border-1 border-slate-300 rounded-xl relative mt-5">
 
-                                        <p className="text-center font-medium text-blue-600">CPF</p>
-                                    </div>
-                                    <div
-                                        className={`p-4 border-2 rounded-lg cursor-pointer ${selectedKey === "Celular" ? "border-blue-600 bg-blue-50" : "border-slate-300"}`}
-                                        onClick={() => pixSelecionado("Celular")}
-                                    >
-                                        <p className="text-center font-medium text-blue-600">Celular</p>
-                                    </div>
-                                    <div
-                                        className={`p-4 border-2 rounded-lg cursor-pointer ${selectedKey === "Email" ? "border-blue-600 bg-blue-50" : "border-slate-300"}`}
-                                        onClick={() => pixSelecionado("Email")}
-                                    >
-                                        <p className="text-center font-medium text-blue-600">Email</p>
-                                    </div>
+                        <span className="bg-slate-100 text-slate-400 absolute -top-3 px-2 text-sm">
+                            Escolha sua chave pix 
+                        </span>
+
+                        <Controller
+                            name="pix"
+                            control={control}
+                            defaultValue=""
+                            className='col-span-6 grid grid-cols-6 select-none'
+                            render={({ field: { onChange, value } }) => (
+
+                                <div value={value} onChange={onChange} className="grid grid-cols-6 col-span-6 gap-3 items-center">
+
+                                    <motion.div className="col-span-2" key="chaveCpf" variants={item} onClick={() => pixSelecionado("CPF")}>
+                                        <input type="radio" className="hidden peer" name='status' value="0" id="chaveCpf" checked={value === "0"} onChange={() => onChange("0")} />
+                                        <OptLabel htmlFor="chaveCpf">
+                                            <div className="col-span-6 flex justify-center mb-2">
+                                                <FaIdCard className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-6 text-center">
+                                                <p className="">
+                                                    CPF
+                                                </p>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    <motion.div className="col-span-2" key="chaveCel" variants={item} onClick={() => pixSelecionado("Celular")}>
+                                        <input type="radio" className="hidden peer" name='status' value="1" id="chaveCel" checked={value === "1"} onChange={() => onChange("1")} />
+                                        <OptLabel htmlFor="chaveCel">
+                                            <div className="col-span-6 flex justify-center mb-2">
+                                                <IoPhonePortraitOutline className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-6 text-center">
+                                                <p className="">
+                                                    Celular
+                                                </p>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
+                                    <motion.div className="col-span-2" key="chaveEmail" variants={item} onClick={() => pixSelecionado("Email")}>
+                                        <input type="radio" className="hidden peer" name='status' value="2" id="chaveEmail" checked={value === "2"} onChange={() => onChange("2")} />
+                                        <OptLabel htmlFor="chaveEmail">
+                                            <div className="col-span-6 flex justify-center mb-2">
+                                                <IoMailOutline className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-6 text-center">
+                                                <p className="">
+                                                    Email
+                                                </p>
+                                            </div>
+                                        </OptLabel>
+                                    </motion.div>
+
                                 </div>
+                            )}
+                        />
+                        <>
+                            <div className="col-span-6 mt-5">
 
-                                {/* Campo Condicional Baseado na Seleção */}
                                 {selectedKey === "CPF" && (
                                     <div className="lg:col-span-6 col-span-1 mt-4">
                                         <Input
@@ -169,7 +200,8 @@ export default function FormPagamento({ onNext, backStep }) {
                                 )}
                             </div>
                         </>
-                    {/* )} */}
+                    </div>
+
                 </div>
 
                 
