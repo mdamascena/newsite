@@ -224,7 +224,7 @@ export default function FormEndereco({ onNext, backStep }) {
                         {cepDigitado.replace("-", "").length === 8 && watchOption === "1" && (
                             <>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-4">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-3 col-span-4">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -234,7 +234,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.logradouro && <p className="text-red-500 text-xs mt-1">{errors.logradouro.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-1 col-span-2">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-1 col-span-2">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.numero ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -244,7 +244,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.numero && <p className="text-red-500 text-xs mt-1">{errors.numero.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-2 col-span-3">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-2 col-span-3">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.complemento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -254,7 +254,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.complemento && <p className="text-red-500 text-xs mt-1">{errors.complemento.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-2 col-span-3">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-2 col-span-3">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -264,7 +264,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.bairro && <p className="text-red-500 text-xs mt-1">{errors.bairro.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-4">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-3 col-span-4">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cidadeCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -274,7 +274,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.cidadeCep && <p className="text-red-500 text-xs mt-1">{errors.cidadeCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-1 col-span-2">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-1 col-span-2">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.estadoCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -360,7 +360,7 @@ export default function FormEndereco({ onNext, backStep }) {
 
                         {watchOption === "2" && cidadeSelecionada && (
                             <>
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-4 col-span-6">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-4 col-span-6">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -370,7 +370,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.logradouroSemCep && <p className="text-red-500 text-xs mt-1">{errors.logradouroSemCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="col-span-2">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="col-span-2">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.numeroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -380,7 +380,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.numeroSemCep && <p className="text-red-500 text-xs mt-1">{errors.numeroSemCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-4">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-3 col-span-4">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.complementoSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
@@ -390,7 +390,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     {errors.complementoSemCep && <p className="text-red-500 text-xs mt-1">{errors.complementoSemCep.message}</p>}
                                 </motion.div>
 
-                                <motion.div initial={'hidden'} animate={'visible'} variants={container} className="lg:col-span-3 col-span-6">
+                                <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-3 col-span-6">
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
