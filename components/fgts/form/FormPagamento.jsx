@@ -29,6 +29,9 @@ export default function FormPagamento({ onNext, backStep }) {
         if(!bancoWatch){
             toastWarningColored("Selecione um banco para continuar.")
             return;
+        } if (!selectedKey){
+            toastWarningColored("Selecione o pix para continuar.")
+            return;
         } else {
             atualizarForm(data);
             onNext();
@@ -48,10 +51,6 @@ export default function FormPagamento({ onNext, backStep }) {
             setValue("chaveEmail", data.email)
         }
     };
-
-    useEffect(() => {
-        setValue('banco', '');
-    }, []);
 
     return (
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
