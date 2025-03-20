@@ -35,6 +35,7 @@ export default function FormPagamento({ onNext, backStep }) {
         } else {
             atualizarForm(data);
             onNext();
+            console.log(formData)
         }
     };
 

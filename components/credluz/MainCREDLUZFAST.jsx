@@ -5,7 +5,7 @@ import light from "../../public/img/LAMPADA.png"
 import variada from "../../public/img/VARIADAS.png"
 import SectioDescrisao from "./Descricao"
 import SectioComoFunciona from "./ComoFunciona"
-import SectioRegrasGerais from "./RegrasGeais"
+import SectioRegrasGerais from "./RegrasGerais"
 import SectioRegioes from "./Regioes"
 import SectioAnalise from "../geral/section/Analise"
 import {HiCheck} from 'react-icons/hi'

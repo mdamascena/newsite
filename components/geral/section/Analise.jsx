@@ -19,7 +19,7 @@ const Card = tw.div`
     p-8
     duration-1000
 `
-export default function Regras(){
+export default function Analise(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
     const [movCard, setMovCard] = useState ('-translate-x-[150px] lg:translate-x-[150px] opacity-0');

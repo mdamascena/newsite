@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { CardRegras } from "./styles"
 import { HiCheck } from "react-icons/hi"
 
-export default function Regras(){
+export default function RegrasGerais(){
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
     const [movCard, setMovCard] = useState ('-translate-x-[50px] lg:translate-x-[50px] opacity-0');

@@ -4,11 +4,11 @@ import cel from "../../public/img/PERSO_LUZ_3.png"
 import light from "../../public/img/LAMPADA.png"
 import variada from "../../public/img/VARIADAS.png"
 import {HiCheck} from 'react-icons/hi'
-import SectionDescricao from './Descricao'
-import SectionComoFunciona from "./ComoFunciona"
-import SectionRegrasGerais from "./RegrasGeais"
-import SectionRegioes from "./Regioes"
-import SectionAnalise from "../geral/section/Analise"
+import Descricao from './Descricao'
+import ComoFunciona from "./ComoFunciona"
+import RegrasGerais from "./RegrasGerais"
+import Regioes from "./Regioes"
+import Analise from "../geral/section/Analise"
 import Simulador from './simulador/SimuladorCredluz'
 
 export default function MainCredluz() {
@@ -91,11 +91,11 @@ export default function MainCredluz() {
                     </div>   
                 </div>
             </section>
-            <SectionDescricao />
-            <SectionComoFunciona />
-            <SectionRegrasGerais />
-            <SectionRegioes />
-            <SectionAnalise />
+            <Descricao />
+            <ComoFunciona />
+            <RegrasGerais />
+            <Regioes />
+            <Analise />
         </main>
     )
 }

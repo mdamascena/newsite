@@ -54,3 +54,5 @@ export const pagamentoPix = Yup.object().shape({
   // banco: Yup.string()
   //   .oneOf(["0", "1", "2", "3", "4"], "Selecione um Banco"),
 });
+
+export const resumo = Yup.object().shape({});

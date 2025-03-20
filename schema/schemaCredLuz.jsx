@@ -33,4 +33,6 @@ export const dadosPessoaisCredLuz = Yup.object().shape({
     cep: Yup.string()
       .optional(),
   });
+
+  export const resumo = Yup.object().shape({});
   
