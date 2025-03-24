@@ -12,7 +12,7 @@ const messages = [
     { text: "Pronto, partiu!", duration: 1000000000 },
 ];
 
-export default function Page() {
+export default function PageTransicao() {
     const [currentMessage, setCurrentMessage] = useState(0);
     const [isCompleted, setIsCompleted] = useState(false);
     const [value, setValue] = useState(0);

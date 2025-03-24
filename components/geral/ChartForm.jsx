@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { Progress } from "../ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
 

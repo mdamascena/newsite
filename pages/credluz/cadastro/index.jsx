@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { FormDataProvider } from "../../../context/FormContext";
 import { FormCredLuz } from "../../../components/credluz/form";
 import BaseForm from "../../../components/geral/form/BaseForm";
-import Page from 'components/geral/PageTransicao';
+import PageTransicao from 'components/geral/PageTransicao';
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function IndexFormCredLux() {
+export default function IndexFormCredLuz() {
     const [countProgress, setCountProgress] = useState(0);
     const [copyTitulo, setCopyTitulo] = useState([]);
     const [copyDescricao, copySetDescricao] = useState([]);
@@ -15,10 +15,9 @@ export default function IndexFormCredLux() {
     const [showTransition, setShowTransition] = useState(true); // Controla a exibição da tela de transição
 
     useEffect(() => {
-        // Define um tempo para ocultar a tela de transição (exemplo: 5 segundos)
         const timer = setTimeout(() => {
             setShowTransition(false);
-        }, 17000); // Ajuste o tempo conforme necessário
+        }, 17000);
 
         return () => clearTimeout(timer);
     }, []);
@@ -39,7 +38,7 @@ export default function IndexFormCredLux() {
                         exit={{ opacity: 0, x: 500 }}
                         transition={{ duration: .6, ease: "backInOut" }}
                     >
-                        <Page />
+                        <PageTransicao />
                     </motion.div>
                 ) : (
                     <motion.div

@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
-import { tipoOcupacao, titularCia, resumo } from '../../../schema/schemaCredLuz';
+import { tipoOcupacao, titularCia, resumo, resposta } from '../../../schema/schemaCredLuz';
 import { cadastroSchema, identificacaoSchema, enderecoSchema } from '../../../schema/schemaCadastro';
 import { useFormData } from '../../../context/FormContext';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,7 +13,13 @@ const Step4 = dynamic(() => import('./FormTitularCia'));
 const Step5 = dynamic(() => import('../../geral/form/FormEndereco'));
 const Step6 = dynamic(() => import('./ResumoCredLuz'));
 
-const schemas = [cadastroSchema, identificacaoSchema, tipoOcupacao, titularCia, enderecoSchema, resumo];
+const PropostaAprovada = dynamic(() => import('../../geral/PropostaAprovada'));
+const PropostaRecusada = dynamic(() => import('../../geral/PropostaRecusada'));
+const PropostaAtiva = dynamic(() => import('../../geral/PropostaAtiva'));
+const ContratoAtivo = dynamic(() => import('../../geral/ContratoAtivo'));
+const ErroApi = dynamic(() => import('../../geral/ErroApi'));
+
+const schemas = [cadastroSchema, identificacaoSchema, tipoOcupacao, titularCia, enderecoSchema, resumo, resposta];
 
 export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
@@ -22,11 +28,12 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
 
     const credLuzSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
-        {key: "Identificação", thresholds : 20},
-        {key: "Perfil ocupacional", thresholds : 40},
-        {key: "Titular da fatura", thresholds : 60},
-        {key: "Contato e localidade", thresholds : 80},
-        {key: "Confirmação dos dados", thresholds: 90}
+        {key: "Identificação", thresholds : 15},
+        {key: "Perfil ocupacional", thresholds : 30},
+        {key: "Titular da fatura", thresholds : 45},
+        {key: "Contato e localidade", thresholds : 65},
+        {key: "Confirmação dos dados", thresholds: 80},
+        {key: "Reposta da solicitação", thresholds: 100}
     ], []);
 
     const credLuzTitle = useMemo(() => [
@@ -35,7 +42,8 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         "O que você faz da vida?",
         "Quem paga a luz?",
         "Onde você está no mapa?",
-        "Está tudo correto?"
+        "Está tudo correto?",
+        "Resposta da solicitação"
     ], []);
 
     const credLuzDescription = useMemo(() => [
@@ -44,7 +52,8 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
         "Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!",
         "É você que manda apagar a luz para não vir caro? Conta pra gente!",
         "Queremos saber onde mora e como falamos com você",
-        "Confira se todos os dados estão corretos antes de prosseguir"
+        "Confira se todos os dados estão corretos antes de prosseguir",
+        "Resposta da solicitação"
     ], []);
 
     const methods = useForm({
@@ -54,7 +63,8 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
     })
 
     useEffect(() => {
-        setProgressChange(((step - 1) / (schemas.length)) * 100);
+        const progresso = Math.round(((step - 1) / (credLuzSteps.length - 1)) * 100);
+        setProgressChange(progresso);
         setTitulo(credLuzTitle[step - 1]);
         setDescricao(credLuzDescription[step - 1]);
         setStepCurrent(credLuzSteps)
@@ -80,6 +90,7 @@ export function FormCredLuz( { setProgressChange, setTitulo, setDescricao, setSt
             {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
             {step === 5 && <Step5 onNext={nextStep} backStep={prevStep} />}
             {step === 6 && <Step6 onNext={nextStep} backStep={prevStep} />}
+            {step === 7 && <PropostaAprovada title={"Parabéns!"} subTitle={"Sua proposta foi Pré-Aprovada"} text={"Para ficar por dentro de mais atualizações, acesse sua conta!"} />}
         </FormProvider>
     )
 }

@@ -48,7 +48,7 @@ export default function App({ show, fechar, onOpenChange, prazo, parcela, valor,
             radius="sm"
             >
 
-            <ModalContent className="bg-btncalc py-3 select-none m-2">
+            <ModalContent style={{background: "#000055"}} className="bg-btncalc py-3 select-none m-2">
                 
                 <ModalHeader className="flex items-center justify-between">
                     <p className="text-amber-400 font-normal tracking-tight text-sm">

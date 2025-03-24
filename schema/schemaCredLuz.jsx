@@ -34,5 +34,7 @@ export const dadosPessoaisCredLuz = Yup.object().shape({
       .optional(),
   });
 
-  export const resumo = Yup.object().shape({});
+export const resumo = Yup.object().shape({});
+
+export const resposta = Yup.object().shape({});
   
