@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { Progress } from "../ui/progress"
 import { PiClipboardTextLight } from "react-icons/pi"
 
-export default function Chatform ({className, value, stepsChart }) {
+export default function Chatform ({className, titleChart, value, stepsChart }) {
 
     return(
         <div className={`justify-center lg:justify-end grid ${className}`}>
@@ -11,7 +11,7 @@ export default function Chatform ({className, value, stepsChart }) {
                                             
                 <div className="items-center lg:mb-5 lg:flex hidden">
                     <PiClipboardTextLight className="p-1 bg-white rounded-md text-3xl text-blue-600"/>
-                    <p className="text-white font-light ml-2">Preenchimento de proposta</p>
+                    <p className="text-white font-light ml-2">{titleChart}</p>
                 </div>
                                             
                 <Progress className='w-[85vw] lg:w-full' value={value} />

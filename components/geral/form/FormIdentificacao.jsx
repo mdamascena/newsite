@@ -83,6 +83,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                         <Input 
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
+                            inputMode="numeric"
                             placeholder="Nascimento *"
                             {...registerWithMask("dataNascimento", ['99/99/9999'])}
                         />

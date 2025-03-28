@@ -211,6 +211,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="CEP *"
+                                        inputMode="numeric"
                                         defaultValue={getValues("cep")}
                                         {...registerWithMask("cep", ['99999-999'])}
                                         onChange={handleCepChange}
@@ -238,6 +239,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.numero ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
+                                        inputMode="numeric"
                                         placeholder="Nº *"
                                         {...register("numero")}
                                     />
@@ -374,6 +376,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     <Input
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.numeroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
+                                        inputMode="numeric"
                                         placeholder="Nº *"
                                         {...register("numeroSemCep")}
                                     />

@@ -2,10 +2,9 @@ import Image from "next/image"
 import LogoB from "../../../public/img/LOGO_FULL_BRANCO.png"
 import { useRouter } from "next/router"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
-import CharForm from "../ChartForm"
-import PageTrans from "../PageTransicao"
+import ChartForm from "../ChartForm"
 
-export default function BaseForm({steps, titulo, descricao, progress, stepCurrent}) {
+export default function BaseForm({copyTitleChart, steps, titleText, descriptionText, progress, stepCurrent}) {
   
   const router = useRouter();
 
@@ -33,19 +32,19 @@ export default function BaseForm({steps, titulo, descricao, progress, stepCurren
                     <div className="text-end hidden lg:block content-center lg:min-h-[30vh]">
                         <div className="mr-5 lg:mr-0 mb-2">
                             <h1 className="text-white font-extralight lg:font-semibold lg:text-3xl text-md ml-2">
-                                {titulo}
+                                {titleText}
                             </h1>
                         </div>
                         
                         <div className="">
                             <p className="text-blue-200 ml-2">
-                                {descricao}
+                                {descriptionText}
                             </p>
                         </div>
                     </div>
 
                     <div className="content-end lg:min-h-[40vh]">
-                        <CharForm stepsChart={stepCurrent} value={progress} />
+                        <ChartForm titleChart={copyTitleChart} stepsChart={stepCurrent} value={progress} />
                     </div>
                 </div>
             </div>

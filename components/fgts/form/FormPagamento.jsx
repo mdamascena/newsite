@@ -26,7 +26,7 @@ export default function FormPagamento({ onNext, backStep }) {
 
     const onSubmit = (data) => {
         console.log(bancoWatch)
-        if(!bancoWatch){
+        if (!bancoWatch) {
             toastWarningColored("Selecione um banco para continuar.")
             return;
         } if (!selectedKey){
@@ -43,11 +43,11 @@ export default function FormPagamento({ onNext, backStep }) {
 
         const data = getValues();
 
-        if(keyType === "CPF"){
+        if (keyType === "CPF") {
             setValue("chaveCpf", data.cpf)
-        } else if(keyType === "Celular"){
+        } else if (keyType === "Celular") {
             setValue("chaveCel", data.celular)
-        } else if(keyType === "Email"){
+        } else if (keyType === "Email") {
             setValue("chaveEmail", data.email)
         }
     };
@@ -59,9 +59,10 @@ export default function FormPagamento({ onNext, backStep }) {
     }, [formData.banco])
 
     return (
-        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+        <>
+
             <ToastContainer />
-            
+
             <motion.div
                 initial="hidden"
                 animate="visible"
@@ -79,139 +80,139 @@ export default function FormPagamento({ onNext, backStep }) {
                     </p>
                 </div>
 
-                <div  className="container-form-body">
-                    <div className="col-span-6 mt-5">
-                        <Select className='placeholder:text-slate-400' defaultValue={formData.banco}  {...register('banco')} onValueChange={(value) => setValue('banco', value)} >
-                            <SelectTrigger className="py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 border-slate-300">
-                                <SelectValue placeholder="Informe seu Banco" />
-                            </SelectTrigger>
-                                            
-                            <SelectContent>
-                                <SelectGroup className="text-slate-400">
-                                    <SelectLabel>Selecione o Banco</SelectLabel>
-                                    <SelectItem value="0">237 - Banco Bradesco</SelectItem>
-                                    <SelectItem value="1">341 - Banco Itaú</SelectItem>
-                                    <SelectItem value="2">033 - Banco Santander</SelectItem>
-                                    <SelectItem value="3">001 - Banco do Brasil</SelectItem>
-                                    <SelectItem value="4">104 - Caixa Econômica Federal</SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
-                    </div>
+                <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="container-form-body">
+                        <div className="col-span-6 mt-5">
+                            <Select className='placeholder:text-slate-400'  {...register('banco')} onValueChange={(value) => setValue('banco', value)} >
+                                <SelectTrigger className="py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500">
+                                    <SelectValue placeholder="Informe seu Banco" />
+                                </SelectTrigger>
 
-                    { bancoWatch && (
+                                <SelectContent >
+                                    <SelectGroup className="text-slate-400">
+                                        <SelectLabel>Selecione o Banco</SelectLabel>
+                                        <SelectItem value="0">237 - Banco Bradesco</SelectItem>
+                                        <SelectItem value="1">341 - Banco Itaú</SelectItem>
+                                        <SelectItem value="2">033 - Banco Santander</SelectItem>
+                                        <SelectItem value="3">001 - Banco do Brasil</SelectItem>
+                                        <SelectItem value="4">104 - Caixa Econômica Federal</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
 
-                        <motion.div variants={container} className="col-span-6 p-6 border-1 border-slate-300 rounded-xl relative mt-5">
+                        {bancoWatch && (
 
-                            <span className="bg-slate-100 text-slate-400 absolute -top-3 px-2 text-sm">
-                                Chave PIX 
-                            </span>
+                            <motion.div variants={container} className="col-span-6 p-6 border-1 border-slate-300 rounded-xl relative mt-5">
 
-                            <Controller
-                                name="pix"
-                                control={control}
-                                defaultValue=""
-                                className='col-span-6 grid grid-cols-6 select-none'
-                                render={({ field: { onChange, value } }) => (
+                                <span className="bg-slate-100 text-slate-400 absolute -top-3 px-2 text-sm">
+                                    Chave PIX
+                                </span>
 
-                                    <div value={value} onChange={onChange} className="grid grid-cols-6 col-span-6 gap-3 items-center">
+                                <Controller
+                                    name="pix"
+                                    control={control}
+                                    defaultValue=""
+                                    className='col-span-6 grid grid-cols-6 select-none'
+                                    render={({ field: { onChange, value } }) => (
 
-                                        <motion.div className="col-span-2" key="chaveCpf" variants={item} onClick={() => pixSelecionado("CPF")}>
-                                            <input type="radio" className="hidden peer" name='status' value="0" id="chaveCpf" checked={value === "0"} onChange={() => onChange("0")} />
-                                            <OptLabel htmlFor="chaveCpf">
-                                                <div className="col-span-6 flex justify-center mb-2">
-                                                    <BsCreditCard2Front className="text-4xl lg:text-5xl p-1.5 lg:p-2 bg-blue-500 rounded-md text-white"/>
-                                                </div>
-                                                <div className="col-span-6 text-center">
-                                                    <p className="text-xs">
-                                                        CPF
-                                                    </p>
-                                                </div>
-                                            </OptLabel>
-                                        </motion.div>
+                                        <div value={value} onChange={onChange} className="grid grid-cols-6 col-span-6 gap-3 items-center">
 
-                                        <motion.div className="col-span-2" key="chaveCel" variants={item} onClick={() => pixSelecionado("Celular")}>
-                                            <input type="radio" className="hidden peer" name='status' value="1" id="chaveCel" checked={value === "1"} onChange={() => onChange("1")} />
-                                            <OptLabel htmlFor="chaveCel">
-                                                <div className="col-span-6 flex justify-center mb-2">
-                                                    <HiOutlineDevicePhoneMobile className="text-4xl lg:text-5xl p-1.5 lg:p-2 bg-blue-500 rounded-md text-white"/>
-                                                </div>
-                                                <div className="col-span-6 text-center">
-                                                    <p className="text-xs">
-                                                        Celular
-                                                    </p>
-                                                </div>
-                                            </OptLabel>
-                                        </motion.div>
+                                            <motion.div className="col-span-2" key="chaveCpf" variants={item} onClick={() => pixSelecionado("CPF")}>
+                                                <input type="radio" className="hidden peer" name='status' value="0" id="chaveCpf" checked={value === "0"} onChange={() => onChange("0")} />
+                                                <OptLabel htmlFor="chaveCpf">
+                                                    <div className="col-span-6 flex justify-center mb-2">
+                                                        <BsCreditCard2Front className="text-4xl lg:text-5xl p-1.5 lg:p-2 bg-blue-500 rounded-md text-white" />
+                                                    </div>
+                                                    <div className="col-span-6 text-center">
+                                                        <p className="text-xs">
+                                                            CPF
+                                                        </p>
+                                                    </div>
+                                                </OptLabel>
+                                            </motion.div>
 
-                                        <motion.div className="col-span-2" key="chaveEmail" variants={item} onClick={() => pixSelecionado("Email")}>
-                                            <input type="radio" className="hidden peer" name='status' value="2" id="chaveEmail" checked={value === "2"} onChange={() => onChange("2")} />
-                                            <OptLabel htmlFor="chaveEmail">
-                                                <div className="col-span-6 flex justify-center mb-2">
-                                                    <IoAt className="text-4xl lg:text-5xl p-1.5 lg:p-2 bg-blue-500 rounded-md text-white"/>
-                                                </div>
-                                                <div className="col-span-6 text-center">
-                                                    <p className="text-xs">
-                                                        E-mail
-                                                    </p>
-                                                </div>
-                                            </OptLabel>
-                                        </motion.div>
+                                            <motion.div className="col-span-2" key="chaveCel" variants={item} onClick={() => pixSelecionado("Celular")}>
+                                                <input type="radio" className="hidden peer" name='status' value="1" id="chaveCel" checked={value === "1"} onChange={() => onChange("1")} />
+                                                <OptLabel htmlFor="chaveCel">
+                                                    <div className="col-span-6 flex justify-center mb-2">
+                                                        <HiOutlineDevicePhoneMobile className="text-4xl lg:text-5xl p-1.5 lg:p-2 bg-blue-500 rounded-md text-white" />
+                                                    </div>
+                                                    <div className="col-span-6 text-center">
+                                                        <p className="text-xs">
+                                                            Celular
+                                                        </p>
+                                                    </div>
+                                                </OptLabel>
+                                            </motion.div>
 
+                                            <motion.div className="col-span-2" key="chaveEmail" variants={item} onClick={() => pixSelecionado("Email")}>
+                                                <input type="radio" className="hidden peer" name='status' value="2" id="chaveEmail" checked={value === "2"} onChange={() => onChange("2")} />
+                                                <OptLabel htmlFor="chaveEmail">
+                                                    <div className="col-span-6 flex justify-center mb-2">
+                                                        <IoAt className="text-4xl lg:text-5xl p-1.5 lg:p-2 bg-blue-500 rounded-md text-white" />
+                                                    </div>
+                                                    <div className="col-span-6 text-center">
+                                                        <p className="text-xs">
+                                                            E-mail
+                                                        </p>
+                                                    </div>
+                                                </OptLabel>
+                                            </motion.div>
+
+                                        </div>
+                                    )}
+                                />
+                                <>
+                                    <div className="col-span-6 mt-5">
+
+                                        {selectedKey === "CPF" && (
+                                            <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
+                                                <Input
+                                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.chaveCpf ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
+                                                        }`}
+                                                    type="text"
+                                                    disabled
+                                                    placeholder="CPF *"
+                                                    {...register("chaveCpf", { required: "Campo obrigatório" })}
+                                                />
+                                                {errors.chaveCpf && <p className="text-red-500 text-xs mt-1">{errors.chaveCpf.message}</p>}
+                                            </motion.div>
+                                        )}
+
+                                        {selectedKey === "Celular" && (
+                                            <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
+                                                <Input
+                                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.chaveCel ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
+                                                        }`}
+                                                    type="text"
+                                                    placeholder="Celular *"
+                                                    {...registerWithMask("chaveCel", ['99 99999-9999'], { required: "Campo obrigatório" })}
+                                                />
+                                                {errors.chaveCel && <p className="text-red-500 text-xs mt-1">{errors.chaveCel.message}</p>}
+                                            </motion.div>
+                                        )}
+
+                                        {selectedKey === "Email" && (
+                                            <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
+                                                <Input
+                                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.chaveEmail ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
+                                                        }`}
+                                                    type="text"
+                                                    placeholder="Email *"
+                                                    {...register("chaveEmail", { required: "Campo obrigatório" })}
+                                                />
+                                                {errors.chaveEmail && <p className="text-red-500 text-xs mt-1">{errors.chaveEmail.message}</p>}
+                                            </motion.div>
+                                        )}
                                     </div>
-                                )}
-                            />
-                            <>
-                                <div className="col-span-6 mt-5">
+                                </>
+                            </motion.div>
+                        )}
 
-                                    {selectedKey === "CPF" && (
-                                        <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
-                                            <Input
-                                                className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 border-slate-300 ${
-                                                    errors.chaveCpf ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
-                                                }`}
-                                                type="text"
-                                                disabled
-                                                placeholder="CPF *"
-                                                {...register("chaveCpf", { required: "Campo obrigatório" })}
-                                            />
-                                            {errors.chaveCpf && <p className="text-red-500 text-xs mt-1">{errors.chaveCpf.message}</p>}
-                                        </motion.div>
-                                    )}
+                    </div>
+                </form>
 
-                                    {selectedKey === "Celular" && (
-                                        <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
-                                            <Input
-                                                className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 border-slate-300 ${
-                                                    errors.chaveCel ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
-                                                }`}
-                                                type="text"
-                                                placeholder="Celular *"
-                                                {...registerWithMask("chaveCel", ['99 99999-9999'], { required: "Campo obrigatório" })}
-                                            />
-                                            {errors.chaveCel && <p className="text-red-500 text-xs mt-1">{errors.chaveCel.message}</p>}
-                                        </motion.div>
-                                    )}
-
-                                    {selectedKey === "Email" && (
-                                        <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
-                                            <Input
-                                                className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 border-slate-300 ${
-                                                    errors.chaveEmail ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
-                                                }`}
-                                                type="text"
-                                                placeholder="Email *"
-                                                {...register("chaveEmail", { required: "Campo obrigatório" })}
-                                            />
-                                            {errors.chaveEmail && <p className="text-red-500 text-xs mt-1">{errors.chaveEmail.message}</p>}
-                                        </motion.div>
-                                    )}
-                                </div>
-                            </>
-                        </motion.div>
-                    )}
-
-                </div>
 
                 <div className="container-form-footer">
                     <div className="col-span-2">
@@ -223,6 +224,6 @@ export default function FormPagamento({ onNext, backStep }) {
                     </div>
                 </div>
             </motion.div>
-        </form>
+        </>
     );
 }

@@ -121,8 +121,6 @@ export const enderecoSchema = yup.object({
     is: (value) => value === "2",
     then: () => yup.string().optional()
   }),
-
-
 });
 
 

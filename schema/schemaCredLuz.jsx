@@ -1,36 +1,37 @@
-import * as Yup from "yup";
-import { validatePhoneNumber } from "schema/validations";
+import * as yup from "yup";
+import { validateCPF } from "schema/validations";
 
-export const tipoOcupacao = Yup.object().shape({
-    tipoOcupacao: Yup.string()
-      .oneOf(["1", "2", "3", "4", "5", "6"], "Selecione um tipo de ocupação"),
-  })
+export const tipoOcupacaoSchema = yup.object().shape({
+  tipoOcupacao: yup.string()
+    .oneOf(["1", "2", "3", "4", "5", "6"], "Selecione um tipo de ocupação"),
+})
 
-export const titularCia = Yup.object().shape({
-    titularCia: Yup.string()
+export const titularCiaSchema = yup.object().shape({
+  titularCia: yup.string()
     .oneOf(["0", "1"], "Selecione sua titularidade"),
 });
 
-export const dadosPessoaisCredLuz = Yup.object().shape({
-    celular: Yup.string()
-      .length(13, "Celular deve conter 9 números sem contar o DDD")
-      .test("is-valid-phone", "Número de celular inválido", (value) => validatePhoneNumber(value)),
-    whatsapp: Yup.string()
-      .length(13, "WhatsApp deve conter 9 números sem contar o DDD")
-      .test("is-valid-phone", "Número de celular inválido", (value) => validatePhoneNumber(value)),
-    logradouro: Yup.string()
-      .min(1, "Digite o logradouro."),
-    numero: Yup.string()
-      .optional(),
-    complemento: Yup.string()
-      .optional(),
-    bairro: Yup.string()
-      .min(1, "Selecione o bairro da sua cidade."),
-    cidade: Yup.string()
-      .min(1, "Selecione a cidade."),
-    uf: Yup.string()
-      .min(1, "Selecione o estado."),
-    cep: Yup.string()
-      .optional(),
-  });
-  
+export const resumoSchema = yup.object().shape({});
+
+export const respostaSchema = yup.object().shape({});
+
+export const simulacaoSchema = yup.object().shape({
+  valorLimite: yup.string().required("Selecione o valor desejado"),
+  prazo: yup.string().required("Selecione as parcelas"),
+});
+
+export const dadosBancariosSchema = yup.object().shape({
+  banco: yup.string().required("Selecione um banco"),
+  agencia: yup.string().required("A Agência é obrigatória").length(4, "Agência deve conter exatamente 4 dígitos"),
+  conta: yup.string().required("A conta é obrigatória").min(2, "Conta deve ter no mínimo 2 dígitos"),
+  cpf_contaBancaria: yup.string().required("O CPF é obrigatório").test("is-valid-cpf", "O CPF é inválido", (value) => validateCPF(value))
+});
+
+export const envioRgSchema = yup.object().shape({
+  rgFrente: yup.string().required("Envie a frente do RG"),
+  rgVerso: yup.string().required("Envie o verso do RG"),
+});
+
+export const envioFaturaSchema = yup.object().shape({});
+
+export const finalizadoSchema = yup.object().shape({});
