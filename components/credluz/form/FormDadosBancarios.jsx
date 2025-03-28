@@ -101,6 +101,7 @@ export default function FormDadosBancarios({ onNext, backStep }) {
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.agencia ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             placeholder='Agência'
+                            inputMode="numeric"
                             maxLength={4}
                             id="agencia"
                             {...register("agencia")}
@@ -115,6 +116,7 @@ export default function FormDadosBancarios({ onNext, backStep }) {
                         <Input
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.conta ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
+                            inputMode="numeric"
                             placeholder='Digite sua conta'
                             id="conta"
                             {...register("conta", {
@@ -137,6 +139,7 @@ export default function FormDadosBancarios({ onNext, backStep }) {
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf_contaBancaria ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             placeholder='Digite seu CPF'
+                            inputMode="numeric"
                             id="cpf_contaBancaria"
                             maskChar={null}
                             {...registerWithMask("cpf_contaBancaria", ['999.999.999-99'])}

@@ -87,6 +87,7 @@ export default function FormCadastro({onNext}) {
                         <Input
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
+                            inputMode="numeric"
                             placeholder='Digite seu CPF'
                             {...registerWithMask("cpf", ['999.999.999-99'])}
                         />
@@ -107,6 +108,7 @@ export default function FormCadastro({onNext}) {
                             <Input 
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
+                                inputMode="numeric"
                                 placeholder="Seu celular *"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />
