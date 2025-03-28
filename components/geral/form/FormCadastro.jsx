@@ -88,7 +88,6 @@ export default function FormCadastro({onNext}) {
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             placeholder='Digite seu CPF'
-                            value={watch('cpf') || ''}
                             {...registerWithMask("cpf", ['999.999.999-99'])}
                         />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
@@ -98,7 +97,6 @@ export default function FormCadastro({onNext}) {
                         <div className="lg:col-span-3 col-span-6">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="email"
-                                value={watch('email') || ''}
                                 placeholder="Seu e-mail *"
                                 {...register('email')} 
                             />
@@ -109,7 +107,6 @@ export default function FormCadastro({onNext}) {
                             <Input 
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
-                                value={watch('celular') || ''}
                                 placeholder="Seu celular *"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />
@@ -126,7 +123,6 @@ export default function FormCadastro({onNext}) {
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenha}
-                                value={watch('senha') || ''}
                                 placeholder="Digite uma senha"
                                 {...register('senha')} 
                             />
@@ -144,7 +140,6 @@ export default function FormCadastro({onNext}) {
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenhaConfirmacao}
-                                value={watch('senhaConfirmacao') || ''}
                                 placeholder="Confirme sua senha" 
                                 {...register('senhaConfirmacao')}
                             />
