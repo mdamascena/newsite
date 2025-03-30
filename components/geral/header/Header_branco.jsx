@@ -68,7 +68,7 @@ const LiSm = tw.li`
 
 export default function Header() {
 
-    const [bgNavbar, setBgNavbar] = useState(['', 'text-blue-500', 'bg-blue-500/10', LogoA, 'hover:text-yellow-500']);
+    const [bgNavbar, setBgNavbar] = useState(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-y-0', true]);
     const [dropdonw, setDropdonw] = useState([true,'scale-y-0 h-0 -mb-6','opacity-0']);
 
@@ -102,9 +102,9 @@ export default function Header() {
         () => {
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 0) {
-                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, '']);
+                    setBgNavbar(['shadow-lg', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300']);
                 } else {
-                    setBgNavbar(['', 'text-blue-500', 'bg-blue-500/10', LogoA, '']);
+                    setBgNavbar(['bg-opacity-10', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500']);
                 }
             });
         }, []
