@@ -7,7 +7,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 
 export default function PropostaAprovada({ onNext, title, subTitle, text }) {
 
-    const { atualizarForm } = useFormData()
+    const { atualizarForm, formData } = useFormData()
     const [showTransition, setShowTransition] = useState(true);
 
     useEffect(() => {
@@ -18,8 +18,11 @@ export default function PropostaAprovada({ onNext, title, subTitle, text }) {
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        console.log("FormData", formData);
+    }, [])
+
     const onSubmit = (data) => {
-        atualizarForm(data);
         onNext();
     };
 

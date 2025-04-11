@@ -11,9 +11,12 @@ export default function ResumoCredLuz({ onNext, backStep }) {
     const { atualizarForm, formData } = useFormData()
 
     const onSubmit = (data) => {
-        atualizarForm(data);
         onNext();
     };
+
+    useEffect(() => {
+        console.log("FormData", formData);
+    }, [])
 
     return (
         <>

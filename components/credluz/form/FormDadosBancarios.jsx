@@ -37,6 +37,10 @@ export default function FormDadosBancarios({ onNext, backStep }) {
     
     }, [cpfWatch]);
 
+    useEffect(() => {
+        console.log("FormData", formData);
+    }, [])
+
     const onSubmit = (data) => {
         atualizarForm(data);
         onNext();

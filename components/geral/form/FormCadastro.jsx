@@ -12,14 +12,14 @@ import Link from "next/link"
 import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../button/BtnBlueNext'
 
-export default function FormCadastro({onNext}) {
+export default function FormCadastro({ onNext }) {
 
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
     const registerWithMask = useHookFormMask(register);
 
     const acceptedTerms = watch("termos");
     const acceptedWhatsapp = watch("aceite_whatsapp");
-    const {atualizarForm} = useFormData();
+    const { atualizarForm } = useFormData();
 
     // State para definir o campo password visivel.
     const [inputSenha, setInputSenha] = useState('password');
@@ -43,15 +43,15 @@ export default function FormCadastro({onNext}) {
         atualizarForm(data)
         onNext();
     }
-    
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isAccepted, setIsAccepted] = useState(false);
-    
+
     const handleAccept = () => {
         setIsAccepted(true);
         setValue("termos", true);
-    };   
-    
+    };
+
     const handleCheckboxChange = (event) => {
         setIsAccepted(true);
         setValue("termos", true);
@@ -60,14 +60,14 @@ export default function FormCadastro({onNext}) {
     return (
 
         <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
-                
+
             <motion.div
-                initial={'hidden'} 
+                initial={'hidden'}
                 animate={'visible'}
-                variants={container} 
+                variants={container}
                 className="grid grid-cols-6 xl:px-7"
-                >
-                
+            >
+
                 {/*Titulo do step*/}
                 <div className="container-form-head">
                     <div className="flex items-end">
@@ -94,18 +94,39 @@ export default function FormCadastro({onNext}) {
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
 
+                    <div className="lg:col-span-4 col-span-6">
+                        <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                            }`}
+                            placeholder="Seu nome completo? *"
+                            pattern="[a-zA-Z\s]*"
+                            {...register('nome')}
+                        />
+                        {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
+                    </div>
+
+                    <div className="lg:col-span-2 col-span-6">
+                        <Input
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            inputMode="numeric"
+                            placeholder="Nascimento *"
+                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
+                        />
+                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
+                    </div>
+
                     <div className="col-span-6 grid grid-cols-6 gap-2.5">
                         <div className="lg:col-span-3 col-span-6">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="email"
                                 placeholder="Seu e-mail *"
-                                {...register('email')} 
+                                {...register('email')}
                             />
                             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                         </div>
 
                         <div className="lg:col-span-3 col-span-6 relative">
-                            <Input 
+                            <Input
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
                                 inputMode="numeric"
@@ -116,17 +137,17 @@ export default function FormCadastro({onNext}) {
                             {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
                         </div>
                     </div>
-                    
+
                     <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-md text-sm">
                         Crie uma senha simples
                     </h5>
-                    
+
                     <div className="lg:col-span-3 col-span-6">
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenha}
                                 placeholder="Digite uma senha"
-                                {...register('senha')} 
+                                {...register('senha')}
                             />
 
                             {visivelSenha ? (
@@ -137,12 +158,12 @@ export default function FormCadastro({onNext}) {
                         </div>
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                     </div>
-                    
+
                     <div className="lg:col-span-3 col-span-6">
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenhaConfirmacao}
-                                placeholder="Confirme sua senha" 
+                                placeholder="Confirme sua senha"
                                 {...register('senhaConfirmacao')}
                             />
 
@@ -156,7 +177,7 @@ export default function FormCadastro({onNext}) {
                     </div>
 
                     <div className="col-span-6 mt-3 flex items-center">
-                        
+
                         <input
                             type="checkbox"
                             name="termos"
@@ -166,13 +187,13 @@ export default function FormCadastro({onNext}) {
                             onChange={handleCheckboxChange} // Usar a função para atualizar o valor
                             {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
                         />
-                        
+
                         <label className='text-slate-400 font-light lg:text-md text-sm w-96' htmlFor="termos">
                             <span className="mr-2">
                                 Li e aceito os termos.
                             </span>
-                         
-                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}> 
+
+                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}>
                                 Ver termos de uso e política de privacidade.
                             </Link>
 
@@ -180,10 +201,10 @@ export default function FormCadastro({onNext}) {
                         </label>
                     </div>
 
-                    <ModalOpt isOpen={isOpen} onOpenChange={onOpenChange} onAccept={handleAccept}/>
+                    <ModalOpt isOpen={isOpen} onOpenChange={onOpenChange} onAccept={handleAccept} />
 
                     <div className="col-span-6 my-2 flex items-center">
-                        <input 
+                        <input
                             type="checkbox"
                             name="aceite_whatsapp"
                             id="aceite_whatsapp"
@@ -204,9 +225,9 @@ export default function FormCadastro({onNext}) {
 
                 {/*Botão do step*/}
                 <div className="!grid-cols-1 container-form-footer">
-                    <BtnNext nome={'Criar conta'} type="submit"/>
+                    <BtnNext nome={'Criar conta'} type="submit" />
                 </div>
-            
+
             </motion.div>
 
         </form>

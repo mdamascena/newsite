@@ -12,6 +12,36 @@ export const cadastroSchema = yup.object().shape({
     .min(11, "O CPF deve ter pelo menos 11 dígitos")
     .max(14, "O CPF deve ter no máximo 14 dígitos")
     .test("is-valid-cpf", "O CPF é inválido", (value) => validateCPF(value)),
+  nome: yup.string()
+    .test("is-full-name", "Preencha o seu nome completo!", (value) => validateFullName(value))
+    .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "O campo deve conter apenas letras."),
+  dataNascimento: yup.string()
+    .length(10, "Digite uma data válida.")
+    .test("is-valid-date", "Idade deve estar entre 21 e 84 anos.", (value) => {
+      if (!value) return true; // Permitir campo vazio
+
+      const parsedDate = parse(value, "dd/MM/yyyy", new Date());
+      if (isNaN(parsedDate.getTime())) return false;
+
+      const today = new Date();
+      const ageInYears = differenceInYears(today, parsedDate);
+
+      if (
+        ageInYears < MIN_AGE ||
+        (ageInYears === MIN_AGE && isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MIN_AGE)))
+      ) {
+        return false;
+      }
+
+      if (
+        ageInYears > MAX_AGE ||
+        (ageInYears === MAX_AGE && !isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MAX_AGE)))
+      ) {
+        return false;
+      }
+
+      return true;
+    }),
   email: yup.string()
     .email("Formato de e-mail inválido"),
   celular: yup.string()
@@ -29,38 +59,8 @@ export const cadastroSchema = yup.object().shape({
 });
 
 export const identificacaoSchema = yup.object().shape({
-  nome: yup.string()
-    .test("is-full-name", "Preencha o seu nome completo!", (value) => validateFullName(value))
-    .matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "O campo deve conter apenas letras."),
-  dataNascimento: yup.string()
-    .length(10, "Digite uma data válida.")
-    .test("is-valid-date", "Idade deve estar entre 21 e 84 anos.", (value) => {
-      if (!value) return true; // Permitir campo vazio
-      
-      const parsedDate = parse(value, "dd/MM/yyyy", new Date());
-      if (isNaN(parsedDate.getTime())) return false;
-
-      const today = new Date();
-      const ageInYears = differenceInYears(today, parsedDate);
-
-      if (
-        ageInYears < MIN_AGE || 
-        (ageInYears === MIN_AGE && isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MIN_AGE)))
-      ) {
-        return false;
-      }
-
-      if (
-        ageInYears > MAX_AGE || 
-        (ageInYears === MAX_AGE && !isBefore(today, parsedDate.setFullYear(parsedDate.getFullYear() + MAX_AGE)))
-      ) {
-        return false;
-      }
-
-      return true;
-    }),
   genero: yup.string()
-    .oneOf(["0", "1"], "Selecione um gênero"),
+    .oneOf(["0", "1", "2"], "Selecione um gênero"),
 });
 
 export const enderecoSchema = yup.object({

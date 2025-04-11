@@ -68,27 +68,6 @@ export default function FormIdentificacao({onNext, backStep}) {
 
                 {/*Form do step*/}
                 <div className="container-form-body">
-                    
-                    <div className="lg:col-span-4 col-span-6">
-                        <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                            }`}
-                            placeholder="Seu nome completo? *"
-                            pattern="[a-zA-Z\s]*" 
-                            {...register('nome')} 
-                        />
-                        {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
-                    </div>
-                    
-                    <div className="lg:col-span-2 col-span-6">
-                        <Input 
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            inputMode="numeric"
-                            placeholder="Nascimento *"
-                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
-                        />
-                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
-                    </div>
 
                     <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-md text-sm">
                         Selecione seu gênero de nascimento
@@ -126,6 +105,20 @@ export default function FormIdentificacao({onNext, backStep}) {
                                         <div className="col-span-6 text-center">
                                             <p className="">
                                                 Feminino
+                                            </p>
+                                        </div>
+                                    </OptLabel>
+                                </motion.div>
+
+                                <motion.div className="col-span-3" key="outros" variants={item}>
+                                    <input type="radio" className="hidden peer" name='status' value="2" id="outros" checked={value === "2"} onChange={() => onChange("2")} />
+                                    <OptLabel htmlFor="outros">
+                                        <div className="col-span-6 flex justify-center mb-2">
+                                            <IoIosFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                        </div>
+                                        <div className="col-span-6 text-center">
+                                            <p className="">
+                                                Outros
                                             </p>
                                         </div>
                                     </OptLabel>
