@@ -3,16 +3,21 @@ import { useFormData } from "../../../context/FormContext";
 import { IoIosArrowBack } from "react-icons/io";
 import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
+import { useEffect } from "react";
 
 export default function FormEnvioFatura({ onNext, backStep }) {
 
     const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm } = useFormData();
+    const { atualizarForm, formData } = useFormData();
 
     const onSubmit = (data) => {
         atualizarForm(data);
         onNext();
     };
+
+    useEffect(() => {
+        console.log("FormData", formData);
+    }, [])
 
     return (
         <>

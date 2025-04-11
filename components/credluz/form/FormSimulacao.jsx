@@ -1,4 +1,5 @@
 import { useFormContext, Controller } from "react-hook-form";
+import { useEffect } from "react";
 import { useFormData } from "../../../context/FormContext";
 import { motion } from "framer-motion";
 import { container } from "shared/motionUtils/motionTransation";
@@ -8,12 +9,16 @@ import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabe
 export default function FormSimulacao({ onNext }) {
 
     const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm } = useFormData();
+    const { atualizarForm, formData } = useFormData();
 
     const onSubmit = (data) => {
         atualizarForm(data);
         onNext();
     };
+
+    useEffect(() => {
+            console.log("FormData", formData);
+        }, [])
 
     return (
         <>

@@ -36,7 +36,7 @@ export default function Footer() {
             <div className='container-custom pt-6'>
                 
                 <div className="pb-4">
-                    <h5 className="text-blue-200 lg:p-2 p-4 rounded-lg bg-opacity-20 bg-blue-800 text-center">
+                    <h5 className="text-blue-200 lg:p-2 p-4 bg-blue-800/20 rounded-lg text-center">
                         Atenção! Não cobramos valores antecipados para liberação de empréstimos.
                     </h5>
                 </div>
@@ -132,7 +132,7 @@ export default function Footer() {
                 
             </div>
 
-            <div className="bg-black bg-opacity-75 mt-2">
+            <div className="bg-black/75 mt-2">
                 <p className="text-blue-400 text-[10pt] text-center p-2">
                     ©ValoReal - Todos os direitos reservados - VALOREAL INTERMEDIAÇÃO DE NEGOCIOS LTDA-ME
                 </p>

@@ -7,7 +7,6 @@ import { BsCreditCard2Front } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
-import { useEffect } from "react";
 import { ToastContainer } from "react-toastify"
 import { toastWarningColored } from "shared/toastUtils/toastValidation";
 import { motion } from "framer-motion";
@@ -15,10 +14,11 @@ import { container, item } from "shared/motionUtils/motionTransation";
 import { OptLabel } from "components/geral/style";
 import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
+import { useEffect } from "react";
 
 export default function FormPagamento({ onNext, backStep }) {
     const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm } = useFormData();
+    const { atualizarForm, formData } = useFormData();
     const registerWithMask = useHookFormMask(register)
 
     const selectedKey = watch("tipoDeChave");
@@ -28,6 +28,9 @@ export default function FormPagamento({ onNext, backStep }) {
         console.log(bancoWatch)
         if (!bancoWatch) {
             toastWarningColored("Selecione um banco para continuar.")
+            return;
+        } if (!selectedKey){
+            toastWarningColored("Selecione o pix para continuar.")
             return;
         } else {
             atualizarForm(data);
@@ -50,8 +53,10 @@ export default function FormPagamento({ onNext, backStep }) {
     };
 
     useEffect(() => {
-        setValue('banco', '');
-    }, []);
+        if(formData.banco){
+            setValue("banco", formData.banco)
+        }
+    }, [formData.banco])
 
     return (
         <>
