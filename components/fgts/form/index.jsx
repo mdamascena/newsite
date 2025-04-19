@@ -3,15 +3,17 @@ import dynamic from 'next/dynamic';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useFormData } from "../../../context/FormContext";
 import { cadastroSchema, enderecoSchema } from '../../../schema/schemaCadastro';
-import { pagamentoPix, identificacaoSchema } from '../../../schema/schemaFgts';
+import { pagamentoPix, identificacaoSchema, adesaoSchema, autorizacaoSchema } from '../../../schema/schemaFgts';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
+const Step1 = dynamic(() => import('../../geral/form/FormCadastro'))
 const Step2 = dynamic(() => import('./FormIdentificacao'))
-const Step3 = dynamic(() => import('../../geral/form/FormEndereco'))
-const Step4 = dynamic(() => import('./FormPagamento'));
+const Step3 = dynamic(() => import('./FormAdesao'))
+const Step4 = dynamic(() => import('./FormAutorizacao'))
+const Step5 = dynamic(() => import('../../geral/form/FormEndereco'))
+const Step6 = dynamic(() => import('./FormPagamento'));
 
-const schemas = [cadastroSchema, identificacaoSchema, enderecoSchema, pagamentoPix ];
+const schemas = [cadastroSchema, identificacaoSchema, adesaoSchema, autorizacaoSchema, enderecoSchema, pagamentoPix ];
 
 export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
@@ -20,18 +22,21 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
 
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
-        {key: "Identificação", thresholds : 20},
-        {key: "Cadastrar Endereço", thresholds: 40},
-        {key: "Dados para crédito", thresholds: 60},
-        {key: "Confirmação dos dados", thresholds: 80}
+        {key: "Identificação", thresholds : 15},
+        {key: "Cadastrar Endereço", thresholds: 25},
+        {key: "Dados para crédito", thresholds: 40},
+        {key: "Confirmação dos dados", thresholds: 60},
+        {key: "Confirmação dos dados", thresholds: 80},
+        {key: "Confirmação dos dados", thresholds: 100}
     ], []);
     
-
     const fgtsTitle = useMemo(() => [
         "Vamos começar!",
         "Um pouco mais sobre você",
         "Onde você está no mapa?",
         "Olha o Pix aí!",
+        "Está tudo correto?",
+        "Está tudo correto?",
         "Está tudo correto?",
     ], []);
 
@@ -41,6 +46,8 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
         "Queremos saber onde mora e como falamos com você",
         "Queremos saber onde depositar seu crédito",
         "Confira se todos os dados estão corretos antes de prosseguir",
+        "Confira se todos os dados estão corretos antes de prosseguir",
+        "Confira se todos os dados estão corretos antes de prosseguir"
     ], []);
 
     const methods = useForm({   
@@ -70,7 +77,9 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
             {step === 1 && <Step1 onNext={nextStep}  />}
             {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
-            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep}/>}
+            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
+            {step === 5 && <Step5 onNext={nextStep} backStep={prevStep} />}
+            {step === 6 && <Step6 onNext={nextStep} backStep={prevStep} />}
         </FormProvider>
     )
 }

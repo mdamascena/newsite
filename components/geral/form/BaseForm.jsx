@@ -49,7 +49,7 @@ export default function BaseForm({copyTitleChart, steps, titleText, descriptionT
                 </div>
             </div>
 
-            <div className="col-span-1 lg:px-28 items-center grid px-6">
+            <div className="col-span-1 lg:px-28 items-center justify-center grid px-6">
                 {steps}
             </div>
         </div>

@@ -6,7 +6,9 @@ const BtnNext = tw.button`
     items-center 
     justify-center
     text-white
+    
     flex
+
     w-full
     py-3 
     rounded-lg

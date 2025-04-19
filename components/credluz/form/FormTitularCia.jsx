@@ -35,7 +35,7 @@ export default function FormTitularCia({ onNext, backStep }) {
     }, [errors.titularCia]);
     
     return (
-        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
             
             <ToastContainer />
 
@@ -48,19 +48,19 @@ export default function FormTitularCia({ onNext, backStep }) {
 
                 {/*Titulo do step*/}
                 <div className="container-form-head">
-                    <div className="flex items-end relative">
+                    <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight z-50 ">
                             Titularidade conta de luz
                         </h1>
                     </div>
         
-                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
-                        A conta de energia da sua residência está registrada no seu nome?
+                    <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
+                        A conta de luz da sua casa está registrada no seu nome?
                     </p>
                 </div>
 
                 {/*Opções*/}
-                <div className="container-form-body">
+                <div className="container-form-body lg:pt-20">
                     
                     <Controller
                         name="titularCia"
@@ -71,7 +71,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                             
                             <div value={value} onChange={onChange}>
                                 
-                                <div className="grid grid-cols-4 gap-3 items-center">
+                                <div className="grid grid-cols-4 gap-2 items-center">
                                     <motion.div className="col-span-2" variants={item}>
                                         <input type="radio" className="hidden peer" name='status' value="0" id="titularCia" checked={value === "0"} onChange={() => onChange("0")}/>
                                         <OptLabel htmlFor="titularCia">

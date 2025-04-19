@@ -59,23 +59,23 @@ export default function FormCadastro({ onNext }) {
 
     return (
 
-        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
 
             <motion.div
                 initial={'hidden'}
                 animate={'visible'}
                 variants={container}
-                className="grid grid-cols-6 xl:px-7"
+                className="lg:px-5"
             >
 
                 {/*Titulo do step*/}
                 <div className="container-form-head">
-                    <div className="flex items-end">
+                    <div className="flex col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Cadastro de conta
                         </h1>
                     </div>
-                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
+                    <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
                         Crie uma senha simples para você acessar a sua proposta e acompanhar a análise
                     </p>
                 </div>
@@ -115,7 +115,7 @@ export default function FormCadastro({ onNext }) {
                         {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
                     </div>
 
-                    <div className="col-span-6 grid grid-cols-6 gap-2.5">
+                    <div className="col-span-6 grid grid-cols-6 gap-2">
                         <div className="lg:col-span-3 col-span-6">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="email"
@@ -138,7 +138,7 @@ export default function FormCadastro({ onNext }) {
                         </div>
                     </div>
 
-                    <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-md text-sm">
+                    <h5 className="col-span-6 lg:mb-2 lg:mt-4 my-2 text-slate-400 font-light lg:text-base text-sm">
                         Crie uma senha simples
                     </h5>
 
@@ -176,7 +176,7 @@ export default function FormCadastro({ onNext }) {
                         {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
                     </div>
 
-                    <div className="col-span-6 mt-3 flex items-center">
+                    <div className="col-span-6 lg:mt-3 flex items-center">
 
                         <input
                             type="checkbox"
@@ -188,7 +188,7 @@ export default function FormCadastro({ onNext }) {
                             {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
                         />
 
-                        <label className='text-slate-400 font-light lg:text-md text-sm w-96' htmlFor="termos">
+                        <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="termos">
                             <span className="mr-2">
                                 Li e aceito os termos.
                             </span>
@@ -213,7 +213,7 @@ export default function FormCadastro({ onNext }) {
                             onChange={handleCheckboxChange} // Usar a função para atualizar o valor
                             {...register("aceite_whatsapp", { required: "Você deve aceitar os termos para continuar." })}
                         />
-                        <label className='text-slate-400 font-light lg:text-md text-sm w-96' htmlFor="aceite_whatsapp">
+                        <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="aceite_whatsapp">
                             <span className="mr-2">
                                 Autorizo a Valoreal entrar em contato comigo por celular, e-mail ou WhatsApp.
                             </span>

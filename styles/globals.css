@@ -17,30 +17,35 @@
 
 .container-form-head{
   @apply
-  lg:min-h-[20vh]
+  lg:w-[33vw]
+  lg:min-h-[15vh]
   lg:content-end
   lg:mb-0
   min-h-[10vh] 
   content-start
   mb-4
-  col-span-6 
+  col-span-6
+  grid
+  gap-1
 }
 
 .container-form-body{
   @apply
+  lg:w-[33vw]
   lg:content-start 
-  lg:min-h-[60vh]
-  lg:pt-8
+  lg:min-h-[75vh]
+  lg:pt-5
   content-start
   min-h-[55vh]
   col-span-6
-  gap-2.5
   grid
+  gap-2
 }
 
 .container-form-footer{
   @apply
-  lg:min-h-[20vh] 
+  lg:w-[33vw]
+  lg:min-h-[5vh] 
   min-h-[10vh] 
   content-center
   col-span-6

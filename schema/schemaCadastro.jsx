@@ -60,7 +60,7 @@ export const cadastroSchema = yup.object().shape({
 
 export const identificacaoSchema = yup.object().shape({
   genero: yup.string()
-    .oneOf(["0", "1", "2"], "Selecione um gênero"),
+    .oneOf(["0", "1", "2", "3"], "Selecione um gênero"),
 });
 
 export const enderecoSchema = yup.object({

@@ -136,24 +136,24 @@ export default function FormEndereco({ onNext, backStep }) {
                 animate={'visible'}
                 variants={container}
                 className='grid grid-cols-6 select-none xl:px-5'
-            >
+                >
 
                 {/*Titulo do step*/}
                 <div className="container-form-head">
-                    <div className="flex items-end">
+                    <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
                             Estamos quase lá!
                         </h1>
                     </div>
-                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
+                    <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
                         Agora só precisamos do seu endereço para prosseguir
                     </p>
                 </div>
 
                 {/*Opções do step*/}
-                <div className="container-form-body">
+                <div className="container-form-body lg:pt-20">
 
-                    <div className="grid grid-cols-6 col-span-6 gap-3 items-center">
+                    <div className="grid grid-cols-6 col-span-6 gap-2 items-center">
 
                         <motion.div className="col-span-3" key="comCep" variants={item}>
                             <input
@@ -296,7 +296,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     animate={'visible'}
                                     variants={container}
                                     exit={{ opacity: 0 }}
-                                    className="lg:col-span-3 col-span-2">
+                                    className="col-span-3">
                         
                                     <Controller
                                         name="estado"
@@ -331,7 +331,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                     initial={'hidden'}
                                     animate={'visible'}
                                     variants={container}
-                                    className="lg:col-span-3 col-span-4">
+                                    className="col-span-3">
                         
                                     <Controller
                                         name="cidade"

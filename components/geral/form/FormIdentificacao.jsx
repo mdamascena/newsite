@@ -5,9 +5,8 @@ import { useHookFormMask } from "use-mask-input"
 import { useFormContext, Controller} from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { motion } from 'framer-motion'
-import { IoIosArrowBack } from "react-icons/io"
-import { IoIosFemale } from "react-icons/io"
-import { IoIosMale } from "react-icons/io"
+import { IoIosFemale, IoIosMale, IoIosArrowBack,IoIosCloseCircleOutline } from "react-icons/io"
+import { IoMaleFemaleOutline } from "react-icons/io5"
 import { TbMessage2Question } from "react-icons/tb"
 import { ToastContainer } from "react-toastify"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
@@ -56,39 +55,34 @@ export default function FormIdentificacao({onNext, backStep}) {
 
                 {/*Titulo do step*/}
                 <div className="container-form-head">
-                    <div className="flex items-end">
+                    <div className="col-span-6 flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                            Dados pessoais
+                            Gênero
                         </h1>
                     </div>
-                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
-                        Informe sua identificação conforme registrado no nascimento.
+                    <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
+                        Informe seu gênero conforme registrado no nascimento.
                     </p>
                 </div>
 
                 {/*Form do step*/}
-                <div className="container-form-body">
-
-                    <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-md text-sm">
-                        Selecione seu gênero de nascimento
-                    </h5>
+                <div className="container-form-body lg:pt-20">
 
                     <Controller
                         name="genero"
                         control={control}
                         defaultValue=""
-                        className='col-span-6 grid grid-cols-6 select-none'
                         render={({ field: { onChange, value } }) => (
                                 
-                            <div value={value} onChange={onChange} className="grid grid-cols-6 col-span-6 gap-3 items-center">
+                            <div value={value} onChange={onChange} className="grid grid-cols-6 col-span-6 gap-2 items-center">
                                     
                                 <motion.div className="col-span-3" key="masculino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="0" id="masculino" checked={value === "0"} onChange={() => onChange("0")} />
-                                    <OptLabel htmlFor="masculino">
-                                        <div className="col-span-6 flex justify-center mb-2">
+                                    <OptLabel className="grid lg:grid-cols-1 grid-cols-3" htmlFor="masculino">
+                                        <div className="col-span-3 flex justify-center mb-1">
                                             <IoIosMale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-6 text-center">
+                                        <div className="col-span-3 text-center">
                                             <p className="">
                                                 Masculino
                                             </p>
@@ -98,11 +92,11 @@ export default function FormIdentificacao({onNext, backStep}) {
 
                                 <motion.div className="col-span-3" key="feminino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
-                                    <OptLabel htmlFor="feminino">
-                                        <div className="col-span-6 flex justify-center mb-2">
+                                    <OptLabel className="grid lg:grid-cols-1 grid-cols-3" htmlFor="feminino">
+                                        <div className="col-span-3 flex justify-center mb-1">
                                             <IoIosFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-6 text-center">
+                                        <div className="col-span-3 text-center">
                                             <p className="">
                                                 Feminino
                                             </p>
@@ -112,11 +106,11 @@ export default function FormIdentificacao({onNext, backStep}) {
 
                                 <motion.div className="col-span-3" key="outros" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="2" id="outros" checked={value === "2"} onChange={() => onChange("2")} />
-                                    <OptLabel htmlFor="outros">
-                                        <div className="col-span-6 flex justify-center mb-2">
-                                            <IoIosFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                    <OptLabel className="grid lg:grid-cols-1 grid-cols-3" htmlFor="outros">
+                                        <div className="col-span-3 flex justify-center mb-1">
+                                            <IoMaleFemaleOutline className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-6 text-center">
+                                        <div className="col-span-3 text-center">
                                             <p className="">
                                                 Outros
                                             </p>
@@ -124,14 +118,27 @@ export default function FormIdentificacao({onNext, backStep}) {
                                     </OptLabel>
                                 </motion.div>
 
-                                <motion.div className="col-span-6 lg:mt-5 mt-5 mx-auto" variants={item}>
+                                <motion.div className="col-span-3" key="seminformacao" variants={item}>
+                                    <input type="radio" className="hidden peer" name='status' value="3" id="seminformacao" checked={value === "3"} onChange={() => onChange("3")} />
+                                    <OptLabel className="grid lg:grid-cols-1 grid-cols-3" htmlFor="seminformacao">
+                                        <div className="col-span-3 flex justify-center mb-1">
+                                            <IoIosCloseCircleOutline className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                        </div>
+                                        <div className="col-span-3 text-center">
+                                            <p className="">
+                                                Não informar
+                                            </p>
+                                        </div>
+                                    </OptLabel>
+                                </motion.div>
+                                
+                                <motion.div className="col-span-6 mx-auto lg:mt-5 mt-5" variants={item}>
                                     <div className="flex text-blue-500 cursor-pointer text-center items-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
                                         <TbMessage2Question className="text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
                                         <p>Por que apenas essas opções ?</p>
                                     </div>
                                     <ModalGenero isOpen={isOpen} onOpenChange={onOpenChange}/>
                                 </motion.div>
-                                
                             </div>
                             
                         )}

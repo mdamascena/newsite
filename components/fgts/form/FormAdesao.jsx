@@ -72,11 +72,11 @@ export default function FormPagamento({ onNext, backStep }) {
                 <div className="container-form-head">
                     <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                            Dados para o envio do crédito
+                            Adeção Saque-Aniversário
                         </h1>
                     </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                        Agora só precisamos da sua chave Pix para prosseguir
+                        Antes de continuar, você deve aderir ao saque-aniversário do FGTS.
                     </p>
                 </div>
 

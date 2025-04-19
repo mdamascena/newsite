@@ -4,9 +4,8 @@ import { useFormContext, Controller} from "react-hook-form"
 import { useDisclosure } from "@nextui-org/react"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
-import { IoIosArrowBack } from "react-icons/io"
-import { IoIosFemale } from "react-icons/io"
-import { IoIosMale } from "react-icons/io"
+import { IoIosFemale, IoIosMale, IoIosArrowBack,IoIosCloseCircleOutline } from "react-icons/io"
+import { IoMaleFemaleOutline } from "react-icons/io5"
 import { TbMessage2Question } from "react-icons/tb"
 import { ToastContainer } from "react-toastify"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
@@ -43,7 +42,7 @@ export default function FormIdentificacao({onNext, backStep}) {
 
     return (
 
-        <form className="lg:min-h-[100vh] lg:overflow-y-hidden" onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
             
             <ToastContainer/>
             
@@ -56,20 +55,20 @@ export default function FormIdentificacao({onNext, backStep}) {
 
                 {/*Titulo do step*/}
                 <div className="container-form-head">
-                    <div className="flex items-end">
+                    <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                            Dados pessoais
+                            Identificação
                         </h1>
                     </div>
-                    <p className="col-span-6 text-slate-400 font-light lg:text-md text-sm">
-                        Informe sua identificação conforme registrado no nascimento.
+                    <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
+                        Informe os dados de idendificação solicitados abaixo:
                     </p>
                 </div>
 
                 {/*Form do step*/}
                 <div className="container-form-body">
                     
-                    <div className="lg:col-span-4 col-span-6">
+                    {/* <div className="lg:col-span-4 col-span-6">
                         <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
                             }`}
                             placeholder="Seu nome completo? *"
@@ -87,29 +86,30 @@ export default function FormIdentificacao({onNext, backStep}) {
                             {...registerWithMask("dataNascimento", ['99/99/9999'])}
                         />
                         {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
+                    </div> */}
+
+                    <div className="lg:col-span-1 col-span-6">
+                        <Input 
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.registroGeral ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            placeholder="Número do RG *"
+                            {...register('registroGeral')} 
+                            />
+                        {errors.registroGeral && <p className="text-red-500 text-xs mt-1">{errors.registroGeral.message}</p>}
                     </div>
 
-                    <div className="lg:col-span-2 col-span-3">
-                            <Input 
-                                className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.registroGeral ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type="text"
-                                placeholder="RG *"
-                                {...register('registroGeral')} 
+                    <div className="lg:col-span-5 col-span-6">
+                        <Input 
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nomeMae ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            placeholder="Nome da mãe *"
+                            {...register("nomeMae")}    
                             />
-                            {errors.registroGeral && <p className="text-red-500 text-xs mt-1">{errors.registroGeral.message}</p>}
-                        </div>
+                        {errors.nomeMae && <p className="text-red-500 text-xs mt-1">{errors.nomeMae.message}</p>}
+                    </div>
 
-                        <div className="lg:col-span-4 col-span-6 relative">
-                            <Input 
-                                className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nomeMae ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type="text"
-                                placeholder="Nome da mãe *"
-                                {...register("nomeMae")}    
-                            />
-                            {errors.nomeMae && <p className="text-red-500 text-xs mt-1">{errors.nomeMae.message}</p>}
-                        </div>
 
-                    <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-md text-sm">
+                    <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-base text-sm">
                         Selecione seu gênero de nascimento
                     </h5>
 
@@ -125,11 +125,11 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 <motion.div className="col-span-3" key="masculino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="0" id="masculino" checked={value === "0"} onChange={() => onChange("0")} />
                                     <OptLabel htmlFor="masculino">
-                                        <div className="col-span-6 flex justify-center mb-2">
-                                            <IoIosMale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                        <div className="col-span-2 flex justify-start">
+                                            <IoIosMale className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-6 text-center">
-                                            <p className="">
+                                        <div className="col-span-4 text-start">
+                                            <p className="text-sm lg:text-base">
                                                 Masculino
                                             </p>
                                         </div>
@@ -139,21 +139,49 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 <motion.div className="col-span-3" key="feminino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
                                     <OptLabel htmlFor="feminino">
-                                        <div className="col-span-6 flex justify-center mb-2">
-                                            <IoIosFemale className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                        <div className="col-span-2 flex justify-start">
+                                            <IoIosFemale className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-6 text-center">
-                                            <p className="">
+                                        <div className="col-span-4 text-start">
+                                            <p className="text-sm lg:text-base">
                                                 Feminino
                                             </p>
                                         </div>
                                     </OptLabel>
                                 </motion.div>
 
-                                <motion.div className="col-span-6 lg:mt-5 mt-5 mx-auto" variants={item}>
+                                <motion.div className="col-span-3" key="feminino" variants={item}>
+                                    <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
+                                    <OptLabel htmlFor="feminino">
+                                        <div className="col-span-2 flex justify-start">
+                                            <IoMaleFemaleOutline className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
+                                        </div>
+                                        <div className="col-span-4 text-start">
+                                            <p className="text-sm lg:text-base">
+                                                Outros
+                                            </p>
+                                        </div>
+                                    </OptLabel>
+                                </motion.div>
+
+                                <motion.div className="col-span-3" key="feminino" variants={item}>
+                                    <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
+                                    <OptLabel htmlFor="feminino">
+                                        <div className="col-span-2 flex justify-start">
+                                            <IoIosCloseCircleOutline className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
+                                        </div>
+                                        <div className="col-span-4 text-start">
+                                            <p className="text-sm lg:text-base">
+                                                Ñ informar
+                                            </p>
+                                        </div>
+                                    </OptLabel>
+                                </motion.div>
+
+                                <motion.div className="col-span-6 mt-2 mx-auto" variants={item}>
                                     <div className="flex text-blue-500 cursor-pointer text-center items-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
                                         <TbMessage2Question className="text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
-                                        <p>Por que apenas essas opções ?</p>
+                                        <p className="lg:text-base text-sm">Por que apenas essas opções ?</p>
                                     </div>
                                     <ModalGenero isOpen={isOpen} onOpenChange={onOpenChange}/>
                                 </motion.div>
