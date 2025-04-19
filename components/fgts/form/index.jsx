@@ -23,11 +23,10 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
         {key: "Identificação", thresholds : 15},
-        {key: "Cadastrar Endereço", thresholds: 25},
-        {key: "Dados para crédito", thresholds: 40},
-        {key: "Confirmação dos dados", thresholds: 60},
+        {key: "Adesão", thresholds: 32},
+        {key: "Autorização", thresholds: 49},
+        {key: "Cadastrar Endereço", thresholds: 65},
         {key: "Confirmação dos dados", thresholds: 80},
-        {key: "Confirmação dos dados", thresholds: 100}
     ], []);
     
     const fgtsTitle = useMemo(() => [
@@ -35,7 +34,6 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
         "Um pouco mais sobre você",
         "Onde você está no mapa?",
         "Olha o Pix aí!",
-        "Está tudo correto?",
         "Está tudo correto?",
         "Está tudo correto?",
     ], []);
@@ -47,7 +45,6 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
         "Queremos saber onde depositar seu crédito",
         "Confira se todos os dados estão corretos antes de prosseguir",
         "Confira se todos os dados estão corretos antes de prosseguir",
-        "Confira se todos os dados estão corretos antes de prosseguir"
     ], []);
 
     const methods = useForm({   

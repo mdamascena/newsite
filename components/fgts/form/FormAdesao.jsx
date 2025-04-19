@@ -16,7 +16,7 @@ import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { useEffect } from "react";
 
-export default function FormPagamento({ onNext, backStep }) {
+export default function FormAdesao({ onNext, backStep }) {
     const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
     const registerWithMask = useHookFormMask(register)
