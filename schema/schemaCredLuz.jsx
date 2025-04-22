@@ -32,6 +32,8 @@ export const envioRgSchema = yup.object().shape({
   rgVerso: yup.string().required("Envie o verso do RG"),
 });
 
-export const envioFaturaSchema = yup.object().shape({});
+export const envioFaturaSchema = yup.object().shape({
+  fatura: yup.string().required("Envie a fatura de energia"),
+});
 
 export const finalizadoSchema = yup.object().shape({});
