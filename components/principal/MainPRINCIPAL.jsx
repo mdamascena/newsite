@@ -18,7 +18,7 @@ const texts = [
     "Saque Antecipado do FGTS",
     "Consignado do INSS",
     "Parcelamento de PIX",
-    
+    "Consignado CLT"
 ]
 
 export default function MainHome() {
