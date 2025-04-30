@@ -37,7 +37,7 @@ export const identificacaoSchema = Yup.object().shape({
     }),
 
 	genero: Yup.string()
-		.oneOf(["0", "1"], "Selecione um gênero"),
+		.oneOf(["0", "1", "2", "3"], "Selecione um gênero"),
 	registroGeral: Yup.string()
 		.min(1, "RG é obrigatório"),
 	nomeMae: Yup.string()
@@ -45,16 +45,18 @@ export const identificacaoSchema = Yup.object().shape({
 		.matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "O campo deve conter apenas letras."),
 });
 
-
 export const pagamentoPix = Yup.object().shape({
-  tipoDeChave: Yup.string().min(1, "Selecione o tipo de chave"), // Campo obrigatório
-  chaveCpf: Yup.string().optional(), // Campo opcional
-  chaveCel: Yup.string().optional(), // Campo opcional
-  chaveEmail: Yup.string().optional(), // Campo opcional
-  // banco: Yup.string()
-  //   .oneOf(["0", "1", "2", "3", "4"], "Selecione um Banco"),
+  	tipoDeChave: Yup.string().min(1, "Selecione o tipo de chave"), // Campo obrigatório
+  	chaveCpf: Yup.string().optional(), // Campo opcional
+  	chaveCel: Yup.string().optional(), // Campo opcional
+  	chaveEmail: Yup.string().optional(), // Campo opcional
+  	// banco: Yup.string()
+  	//   .oneOf(["0", "1", "2", "3", "4"], "Selecione um Banco"),
 });
 
-export const adesaoSchema = Yup.object().shape({});
+export const adesaoSchema = Yup.object().shape({
+	genero: Yup.string()
+		.oneOf(["0"], "Selecione um gênero"),
+});
 
 export const autorizacaoSchema = Yup.object().shape({});

@@ -125,10 +125,10 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 <motion.div className="col-span-3" key="masculino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="0" id="masculino" checked={value === "0"} onChange={() => onChange("0")} />
                                     <OptLabel htmlFor="masculino">
-                                        <div className="col-span-2 flex justify-start">
+                                        <div className="col-span-6 flex justify-center">
                                             <IoIosMale className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-4 text-start">
+                                        <div className="col-span-6 text-center">
                                             <p className="text-sm lg:text-base">
                                                 Masculino
                                             </p>
@@ -139,10 +139,10 @@ export default function FormIdentificacao({onNext, backStep}) {
                                 <motion.div className="col-span-3" key="feminino" variants={item}>
                                     <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
                                     <OptLabel htmlFor="feminino">
-                                        <div className="col-span-2 flex justify-start">
+                                        <div className="col-span-6 flex justify-center">
                                             <IoIosFemale className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-4 text-start">
+                                        <div className="col-span-6 text-center">
                                             <p className="text-sm lg:text-base">
                                                 Feminino
                                             </p>
@@ -150,13 +150,13 @@ export default function FormIdentificacao({onNext, backStep}) {
                                     </OptLabel>
                                 </motion.div>
 
-                                <motion.div className="col-span-3" key="feminino" variants={item}>
-                                    <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
-                                    <OptLabel htmlFor="feminino">
-                                        <div className="col-span-2 flex justify-start">
+                                <motion.div className="col-span-3" key="outros" variants={item}>
+                                    <input type="radio" className="hidden peer" name='status' value="2" id="outros" checked={value === "2"} onChange={() => onChange("2")} />
+                                    <OptLabel htmlFor="outros">
+                                        <div className="col-span-6 flex justify-center">
                                             <IoMaleFemaleOutline className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-4 text-start">
+                                        <div className="col-span-6 text-center">
                                             <p className="text-sm lg:text-base">
                                                 Outros
                                             </p>
@@ -164,15 +164,15 @@ export default function FormIdentificacao({onNext, backStep}) {
                                     </OptLabel>
                                 </motion.div>
 
-                                <motion.div className="col-span-3" key="feminino" variants={item}>
-                                    <input type="radio" className="hidden peer" name='status' value="1" id="feminino" checked={value === "1"} onChange={() => onChange("1")} />
-                                    <OptLabel htmlFor="feminino">
-                                        <div className="col-span-2 flex justify-start">
+                                <motion.div className="col-span-3" key="seminformacao" variants={item}>
+                                    <input type="radio" className="hidden peer" name='status' value="3" id="seminformacao" checked={value === "3"} onChange={() => onChange("3")} />
+                                    <OptLabel htmlFor="seminformacao">
+                                        <div className="col-span-6 flex justify-center">
                                             <IoIosCloseCircleOutline className="text-3xl p-1 lg:text-5xl lg:p-2 bg-blue-500 rounded-md text-white"/>
                                         </div>
-                                        <div className="col-span-4 text-start">
+                                        <div className="col-span-6 text-center">
                                             <p className="text-sm lg:text-base">
-                                                Ñ informar
+                                                Não informar
                                             </p>
                                         </div>
                                     </OptLabel>
@@ -180,7 +180,7 @@ export default function FormIdentificacao({onNext, backStep}) {
 
                                 <motion.div className="col-span-6 mt-2 mx-auto" variants={item}>
                                     <div className="flex text-blue-500 cursor-pointer text-center items-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
-                                        <TbMessage2Question className="text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
+                                        <TbMessage2Question className="text-2xl lg:text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
                                         <p className="lg:text-base text-sm">Por que apenas essas opções ?</p>
                                     </div>
                                     <ModalGenero isOpen={isOpen} onOpenChange={onOpenChange}/>

@@ -53,10 +53,15 @@ export default function ModSlide() {
         <section>
             <div className='container-custom lg:px-16 py-[10vh] grid'>
                 <div className='content-center'>
-                    <h1 className='text-blue-950 saturate-150 lg:text-4xl text-2xl font-semibold tracking-tight text-center lg:mb-10 mb-8 lg:mx-24'>
-                        Descubra uma variedade de opções de empréstimos,
-                        <span className='text-blue-400'> tudo em um só lugar!</span>
-                    </h1>
+
+                    <div className='grid grid-cols-2'>
+
+                        <h1 className='lg:col-span-1 col-span-2 text-slate-400 lg:text-4xl text-2xl tracking-tight text-center lg:mb-10 mb-8'>
+                            Várias opções de crédito
+                            <span className='text-blue-600'> tudo em um só lugar!</span>
+                        </h1>
+
+                    </div>
 
                     <div className='grid grid-cols-1 lg:grid-cols-2'>
                         <div className='col-span-1 lg:mr-12'>

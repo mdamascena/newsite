@@ -22,11 +22,11 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
 
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
-        {key: "Identificação", thresholds : 15},
-        {key: "Adesão", thresholds: 32},
-        {key: "Autorização", thresholds: 49},
-        {key: "Cadastrar Endereço", thresholds: 65},
-        {key: "Confirmação dos dados", thresholds: 80},
+        {key: "Identificação", thresholds : 20},
+        {key: "Adesão", thresholds: 40},
+        {key: "Autorização", thresholds: 60},
+        {key: "Cadastrar Endereço", thresholds: 80},
+        {key: "Confirmação dos dados", thresholds: 100},
     ], []);
     
     const fgtsTitle = useMemo(() => [
@@ -54,7 +54,7 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
     })
 
     useEffect(() => {
-        setProgressChange(((step - 1) / (schemas.length)) * 100);
+        setProgressChange(Math.round(((step - 1) / (schemas.length - 1)) * 100));
         setTitulo(fgtsTitle[step - 1]);
         setDescricao(fgtsDescription[step - 1]);
         setStepCurrent(fgtsSteps)

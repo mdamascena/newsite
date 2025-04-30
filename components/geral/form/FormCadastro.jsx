@@ -176,13 +176,13 @@ export default function FormCadastro({ onNext }) {
                         {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
                     </div>
 
-                    <div className="col-span-6 lg:mt-3 flex items-center">
+                    <div className="col-span-6 lg:mt-3 mt-2 flex items-center">
 
                         <input
                             type="checkbox"
                             name="termos"
                             id="termos"
-                            className="text-blue-600 h-8 w-8 lg:h-5 lg:w-5 mr-4 ml-2"
+                            className="text-blue-600 h-5 w-5 mr-4 ml-2"
                             checked={acceptedTerms || false}
                             onChange={handleCheckboxChange} // Usar a função para atualizar o valor
                             {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
@@ -208,7 +208,7 @@ export default function FormCadastro({ onNext }) {
                             type="checkbox"
                             name="aceite_whatsapp"
                             id="aceite_whatsapp"
-                            className="text-blue-600 h-8 w-8 lg:h-5 lg:w-5 mr-4 ml-2"
+                            className="text-blue-600 h-5 w-5 mr-4 ml-2"
                             checked={acceptedWhatsapp || false}
                             onChange={handleCheckboxChange} // Usar a função para atualizar o valor
                             {...register("aceite_whatsapp", { required: "Você deve aceitar os termos para continuar." })}

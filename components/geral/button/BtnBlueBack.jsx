@@ -15,7 +15,7 @@ const BtnBack = tw.button`
     hover:bg-blue-50
     hover:scale-105
     active:scale-90 
-    duration-150
+    duration-400
 `;
 
 export default function BtnBlueBack

@@ -122,7 +122,7 @@ export const CardVantMais = tw.div`
 export const DesCardMais = tw.p`
     text-blue-400
     text-left
-    text-[15px]
+    text-xs
     lg:text-sm
     leading-tight
 `;
