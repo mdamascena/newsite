@@ -51,11 +51,11 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
 
     const cadastroSteps = useMemo(() => [
         { key: "Registrar conta", thresholds: 0 },
-        { key: "Identificação", thresholds: 15 },
-        { key: "Perfil ocupacional", thresholds: 30 },
-        { key: "Titular da fatura", thresholds: 45 },
-        { key: "Contato e localidade", thresholds: 65 },
-        { key: "Confirmação dos dados", thresholds: 80 },
+        { key: "Identificação", thresholds: 17 },
+        { key: "Perfil ocupacional", thresholds: 33 },
+        { key: "Titular da fatura", thresholds: 50 },
+        { key: "Contato e localidade", thresholds: 67 },
+        { key: "Confirmação dos dados", thresholds: 83 },
         { key: "Reposta da solicitação", thresholds: 100 }
     ], []);
 

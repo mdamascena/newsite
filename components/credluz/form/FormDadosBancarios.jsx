@@ -14,7 +14,7 @@ import { AlertSimple } from "shared/alertUtils/alertService";
 
 export default function FormDadosBancarios({ onNext, backStep }) {
 
-    const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
+    const { register, control, handleSubmit, setValue, watch, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
     const registerWithMask = useHookFormMask(register)
 

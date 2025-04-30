@@ -4,15 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .container-custom {
-  @apply
-  xl:max-w-[1265px] 
-  xl:mx-auto
-  lg:max-w-[1024px] 
-  lg:mx-8
-  md:max-w-[768px] 
-  md:mx-6
-  max-w-[425px] 
-  mx-4
+  @apply xl:max-w-[1265px] xl:mx-auto lg:max-w-[1024px] lg:mx-8 md:max-w-[768px] md:mx-6 max-w-[425px] mx-4
 }
 
 .container-form-head{
@@ -55,91 +47,92 @@
 }
 
 @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-      --primary: 222.2 47.4% 11.2%;
-      --primary-foreground: 210 40% 98%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
-      --radius: 0.5rem;
+    --radius: 0.5rem;
 
-      --color-1: 0 100% 63%;
+    --color-1: 0 100% 63%;
 
-      --color-2: 270 100% 63%;
+    --color-2: 270 100% 63%;
 
-      --color-3: 210 100% 63%;
+    --color-3: 210 100% 63%;
 
-      --color-4: 195 100% 63%;
+    --color-4: 195 100% 63%;
 
-      --color-5: 90 100% 63%;
-    }
-
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-
-      --primary: 210 40% 98%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 212.7 26.8% 83.9%;
-      --color-1: 0 100% 63%;
-      --color-2: 270 100% 63%;
-      --color-3: 210 100% 63%;
-      --color-4: 195 100% 63%;
-      --color-5: 90 100% 63%;
-    }
+    --color-5: 90 100% 63%;
   }
 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+}
+
 @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 html,
@@ -158,31 +151,31 @@ a {
   box-sizing: border-box;
 }
 
-.dongle{
+.dongle {
   font-family: 'Dongle', sans-serif;
 }
 
-.baloo{
+.baloo {
   font-family: 'Baloo 2', cursive;
 }
 
-.ubuntu{
+.ubuntu {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.Gochi{
+.Gochi {
   font-family: 'Gochi Hand', cursive;
 }
 
-.Poppins{
+.Poppins {
   font-family: 'Poppins', sans-serif;
 }
 
-.bg-base-calc{
+.bg-base-calc {
   background-image: linear-gradient(95deg, #ffffff4f 49%, #ffffff24 49%);
 }
 
-.bgMainHome{
+.bgMainHome {
   background: url(../public/img/bgmain.png), linear-gradient(55deg, #00025e 40%, #ffc107 100%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -190,14 +183,14 @@ a {
   background-position: top 100% right 10%;
 }
 
-.bgSectionPrincipal{
+.bgSectionPrincipal {
   background: url(../public/img/bg_principal_pre.png), linear-gradient(55deg, #000147 40%, #c3b6002b 70%);
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
 }
 
-.bgMainFGTS{
+.bgMainFGTS {
   background: url(../public/img/White.jpg), linear-gradient(0deg, #ffffff 50%, #e2e8f0 100%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -205,50 +198,51 @@ a {
   background-position: bottom;
 }
 
-@media(max-width: 720px){
-  .bgMainHome{
+@media(max-width: 720px) {
+  .bgMainHome {
     background: url(../public/img/bgmain.jpg), linear-gradient(55deg, #00025e 35%, #ffc107 100%);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  .bgMainFGTS{
+  .bgMainFGTS {
     background: url(../public/img/lines.jpg), linear-gradient(0deg, #ffffff 10%, #e2e8f0 100%);
     background-size: cover;
     background-blend-mode: multiply;
     background-position: top;
   }
 
-  .bgSectionPrincipal{
+  .bgSectionPrincipal {
     background: url(../public/img/bg_principal_pre.png), linear-gradient(55deg, #000147 40%, #c3b6002b 70%);
     background-size: cover;
     background-position: top 100% right 45%;
   }
 }
 
-.bgBrasaoFast{
+.bgBrasaoFast {
   background-image: url(../public/img/bg-brasao.png);
   background-size: 120vh;
   background-repeat: no-repeat;
   background-position: 310px 80px;
 }
 
-.bgBrasao{
+.bgBrasao {
   background-image: url(../public/img/bg-brasao.png);
   background-size: 120vh;
   background-repeat: no-repeat;
   background-position: 130px 80px;
 }
 
-.bgMainPrincipal{
-  background-image: radial-gradient(circle,  #0009bb 0%, #00004b 100%);
+.bgMainPrincipal {
+  background-image: radial-gradient(circle, #0009bb 0%, #00004b 100%);
   background-blend-mode: overlay;
   background-size: cover;
 }
 
 .bgForm {
-  position: relative; /* Necessário para o posicionamento absoluto do background */
+  position: relative;
+  /* Necessário para o posicionamento absoluto do background */
   background: linear-gradient(180deg, #0009bb 0%, #00004b 100%);
   background-blend-mode: overlay;
 }
@@ -264,11 +258,13 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: -35vh 1.5vh;
-  opacity: 0.5; /* Ajuste a opacidade se necessário */
+  opacity: 0.5;
+  /* Ajuste a opacidade se necessário */
 }
 
 .bgPage {
-  position: relative; /* Necessário para o posicionamento absoluto do background */
+  position: relative;
+  /* Necessário para o posicionamento absoluto do background */
   background: linear-gradient(180deg, #0009bb 25%, #00004b 100%);
   background-blend-mode: overlay;
 }
@@ -284,32 +280,33 @@ a {
   background-size: 90vh;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.5; /* Ajuste a opacidade se necessário */
+  opacity: 0.5;
+  /* Ajuste a opacidade se necessário */
 }
 
-@media(max-width: 720px){
+@media(max-width: 720px) {
   .bgPage::before {
-    background-size: 50vh;  
+    background-size: 50vh;
   }
 }
 
-.bgMainAtendimento{
-  background-image: url(../public/img/bg-atendimento.png), radial-gradient(circle,  #2b31a2 0%, #00004b75 100%);
+.bgMainAtendimento {
+  background-image: url(../public/img/bg-atendimento.png), radial-gradient(circle, #2b31a2 0%, #00004b75 100%);
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
 }
 
-.bgMainQuemSomos{
+.bgMainQuemSomos {
   background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle, #2b31a2 0, #00004b 100%);
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position:top;
+  background-position: top;
 }
 
-.bgComoFuncionaMain{
+.bgComoFuncionaMain {
   background-color: transparent;
   background-image: url(../public/img/bg-notebook.png), linear-gradient(210deg, #00004b 45%, #ffee00 100%);
   background-size: cover;
@@ -318,7 +315,7 @@ a {
   background-position: center left;
 }
 
-.video-container{
+.video-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -337,32 +334,32 @@ a {
   object-fit: cover;
 }
 
-@media(max-width: 1024px){
-  .bgMainPrincipal{
+@media(max-width: 1024px) {
+  .bgMainPrincipal {
     background-position: bottom;
   }
 
-  .bgBrasaoFast{
+  .bgBrasaoFast {
     background-size: 60vh;
-    background-position: 20px 70px;   
+    background-position: 20px 70px;
   }
 
-  .bgComoFuncionaMain{
+  .bgComoFuncionaMain {
     background-size: 100vh;
   }
 
-  .bgBrasao{
+  .bgBrasao {
     background-size: 45vh;
     background-position: 5px 70px;
- }
+  }
 
-  .bgForm::before{
+  .bgForm::before {
     background-size: 180px;
     background-repeat: no-repeat;
     background-position: 2vh -1vh;
   }
 
-  .bgMainAtendimento{
+  .bgMainAtendimento {
     background-position: 37%;
   }
 
@@ -372,6 +369,7 @@ a {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -380,47 +378,31 @@ a {
 .animate-scroll-infinite {
   animation: scrollInfinite 20s linear infinite;
 }
-.bg-modelo-credluz{
+
+.bg-modelo-credluz {
   background-image: url(../public/img/modelo_credluz.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-.bg-modelo-fgts{
+
+.bg-modelo-fgts {
   background-image: url(../public/img/modelo_fgts.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-.bg-modelo-inss{
+
+.bg-modelo-inss {
   background-image: url(../public/img/modelo_inss.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.bg-modelo-pix{
+.bg-modelo-pix {
   background-image: url(../public/img/modelo_pix.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.content-notFoto {
-  width: 100%;
-  height: 100%;
-
-  .label-foto {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-
-      img {
-          width: 100%;
-          padding: 30px;
-      }
-  }
 }
