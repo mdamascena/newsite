@@ -151,8 +151,8 @@ export const LiMod = tw.li`
     select-none
     group
     lg:pl-8
-    py-3
-    my-6
+    py-2
+    my-4
     cursor-pointer
     hidden
     lg:block

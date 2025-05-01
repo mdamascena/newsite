@@ -39,7 +39,12 @@ export default function ModSlide() {
         },
         {
             bgClass: 'bg-modelo-inss',
-            title: 'Empréstimo consignado',
+            title: 'Empréstimo consignado INSS/LOAS',
+            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
+        },
+        {
+            bgClass: 'bg-modelo-clt',
+            title: 'Empréstimo consignado CLT',
             description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
         },
         {

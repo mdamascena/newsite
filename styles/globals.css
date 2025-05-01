@@ -406,3 +406,10 @@ a {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.bg-modelo-clt {
+  background-image: url(../public/img/modelo_clt.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
