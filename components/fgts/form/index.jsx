@@ -15,10 +15,12 @@ const Step6 = dynamic(() => import('./FormPagamento'));
 
 const schemas = [cadastroSchema, identificacaoSchema, adesaoSchema, autorizacaoSchema, enderecoSchema, pagamentoPix ];
 
-export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
+export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
     const [step, setStep] = useState(1);
     const { formData, atualizarForm } = useFormData();
+
+    const titleChartCadastro = useMemo(() => ["Preenchimento de proposta"]);
 
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
@@ -54,11 +56,12 @@ export function FormFgts({ setProgressChange, setTitulo, setDescricao, setStepCu
     })
 
     useEffect(() => {
+        setTitleChart(titleChartCadastro);
         setProgressChange(Math.round(((step - 1) / (schemas.length - 1)) * 100));
         setTitulo(fgtsTitle[step - 1]);
         setDescricao(fgtsDescription[step - 1]);
         setStepCurrent(fgtsSteps)
-    }, [step, setProgressChange, setTitulo, setDescricao, setStepCurrent, fgtsTitle, fgtsDescription, fgtsSteps]);
+    }, [step, setTitleChart, setProgressChange, setTitulo, setDescricao, setStepCurrent, fgtsTitle, fgtsDescription, fgtsSteps]);
 
     const nextStep = (data) => {
         atualizarForm(data)

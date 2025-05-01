@@ -1,13 +1,19 @@
 import React from "react"
+import { useState } from "react"
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react"
-import { PiQuestionMarkBold } from "react-icons/pi"
-import { LiaCertificateSolid } from "react-icons/lia"
-import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "../../ui/carousel"
-  
+import Carousel from "components/fgts/carousel/Carrousel";
 
+const SlideCount = [
+    "/img/tela_acomp.png",
+    "/img/tela_acomp.png",
+    "/img/tela_acomp.png",
+    "/img/tela_acomp.png"
+];
 
-export default function ModalAdesaoFGTS({ isOpen, onOpenChange }) {
-  
+export default function ModalAdesaoFGTS({ isOpen, onOpenChange, setValueCard  }) {
+
+    const [currentSlide, setCurrentSlide] = useState(0);
+
     return (
         <>
             <Modal 
@@ -25,17 +31,33 @@ export default function ModalAdesaoFGTS({ isOpen, onOpenChange }) {
                     {(onClose) => (
                         <>
                             <ModalHeader className="flex justify-center font-semibold">
-                                <LiaCertificateSolid className="text-[5rem] p-2 rounded-xl bg-blue-500 text-white"/>
+                                <Button
+                                    value={'fechouModal'}
+                                    color="danger" radius="sm" variant="light" 
+                                    onPress={() => {
+                                        setValueCard('fechouModal');
+                                        onClose();
+                                    }}>
+                                    Fechar explicação
+                                </Button>
                             </ModalHeader>
 
                             <ModalBody className="m-3">
-                                
+                                <Carousel slides={SlideCount} onSlideChange={setCurrentSlide}/>
                             </ModalBody>
                             
                             <ModalFooter className="mx-auto">
 
-                                <Button color="danger" radius="sm" variant="light" onPress={onClose}>
-                                    Fechar explicação
+                                <Button
+                                    value={'0'} 
+                                    color="danger" radius="sm" variant="light" 
+                                    onPress={() => {
+                                        setValueCard('0');
+                                        onClose();
+                                    }}
+                                    isDisabled={currentSlide !== SlideCount.length - 1}
+                                    >
+                                    Já fiz a adesão
                                 </Button>
 
                             </ModalFooter>

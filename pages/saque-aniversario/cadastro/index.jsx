@@ -6,6 +6,7 @@ import BaseForm from "../../../components/geral/form/BaseForm"
 
 export default function Cadastro() {
 
+    const [copyTitleChart, setCopyTitleChart] = useState([]);
     const [countProgress, setCountProgress] = useState(0)
     const [copyTitulo, setCopyTitulo] = useState([]);
     const [copyDescricao, copySetDescricao] = useState([]);
@@ -19,14 +20,15 @@ export default function Cadastro() {
             </Head>
 
             <BaseForm
+                copyTitleChart={copyTitleChart}
                 stepCurrent={copyStepCurrent}
-                titulo={copyTitulo}
-                descricao={copyDescricao}
+                titleText={copyTitulo}
+                descriptionText={copyDescricao}
                 progress={countProgress}
-                
                 steps={
                     <FormDataProvider>
                         <FormFgts 
+                            setTitleChart={setCopyTitleChart}
                             setStepCurrent={setCopyStepCurrent}
                             setProgressChange={setCountProgress}
                             setTitulo={setCopyTitulo} 
