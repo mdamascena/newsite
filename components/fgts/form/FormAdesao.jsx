@@ -11,31 +11,44 @@ import { OptLabel, OptBnt } from "components/geral/style"
 import BtnNext from "../../geral/button/BtnBlueNext"
 import BtnBack from "../../geral/button/BtnBlueBack"
 import { useDisclosure } from "@nextui-org/react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import ModalAdesaoFGTS from '../../geral/modal/ModalAdesaoFGTS'
+import { set } from "lodash"
 
 export default function FormAdesao({ onNext, backStep }) {
     
-    const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
+    const { control, handleSubmit, watch, setValue, getValues, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    
+    const [valueCard, setValueCard] = useState('');
+
+    const adesaoWatch = watch("adesao");
+
+    useEffect(() => {
+        if (errors.adesao) {
+            toastErrorColored(errors.adesao.message);
+        }
+    }, [errors.adesao]);
+
+    useEffect(() => {
+        if(valueCard === '0') {
+            setValue("adesao", "0");
+            onOpenChange(false);
+            onNext();
+        } else if(valueCard === 'fechouModal'){
+            setValue("adesao", "");
+            setValueCard('')
+        }
+    }, [valueCard, setValue, onOpenChange, onNext, getValues]);
+
     function onSubmit(data){
+        if (!adesaoWatch) {
+            toastWarningColored("Selecione uma opção.")
+            return;
+        } 
         atualizarForm(data);
         onNext();
     }
-    
-    useEffect(() => {
-        if(formData.titularCia){
-            setValue("titularCia", formData.titularCia)
-        }
-    }, [formData.titularCia, setValue])
-    
-    useEffect(() => {
-        if (errors.titularCia) {
-            toastErrorColored(errors.titularCia.message);
-        }
-    }, [errors.titularCia]);
 
     return (
         <div className="lg:min-h-[100vh]">
@@ -96,7 +109,7 @@ export default function FormAdesao({ onNext, backStep }) {
                                                     </p>
                                                 </div>
                                             </OptLabel>
-                                            <ModalAdesaoFGTS isOpen={isOpen} onOpenChange={onOpenChange}/>
+                                            <ModalAdesaoFGTS isOpen={isOpen} onOpenChange={onOpenChange} setValueCard={setValueCard} />
                                     </motion.div>
 
                                 </div>

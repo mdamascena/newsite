@@ -128,7 +128,7 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
         }
 
 
-    }, [step, setProgressChange, setTitleText, setDescriptionText, setStepCurrent, cadastroLuzTitle, cadastroLuzDescription, cadastroSteps]);
+    }, [step, setTitleChart, setProgressChange, setTitleText, setDescriptionText, setStepCurrent, cadastroLuzTitle, cadastroLuzDescription, cadastroSteps]);
 
     const nextStep = (data) => {
         atualizarForm(data)
