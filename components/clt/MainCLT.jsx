@@ -19,7 +19,7 @@ export default function MainCLT() {
     <main>
         <section className="bgMainPrincipal">
             
-            <div className="bgBrasaoFast">
+            <div className="bgBrasao">
                 
                 <div className="pb-5 lg:pb-0 pt-20 container-custom">
                     

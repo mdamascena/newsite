@@ -66,7 +66,7 @@ export default function FormCadastro({ onNext }) {
                 animate={'visible'}
                 variants={container}
                 className="lg:px-5"
-            >
+                >
 
                 {/*Titulo do step*/}
                 <div className="container-form-head">

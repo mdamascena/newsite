@@ -20,8 +20,7 @@ export default function SectionVantagens() {
                     </h1>
 
                     <p className="text-white text-xs lg:text-lg text-center lg:px-28 px-4">
-                        É uma modalidade de empréstimo para quem tem saldo no FGTS em contas ativas ou inativas, e optou
-                        pelo saque-aniversário. Vejam algunas vantagens do Empréstimo FGTS na ValoReal
+                        É uma modalidade de empréstimo para quem tem saldo no FGTS em contas ativas ou inativas. Vejam algunas vantagens do Empréstimo FGTS na ValoReal
                     </p>
                 </div>
 

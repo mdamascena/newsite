@@ -156,6 +156,7 @@ export default function FormEndereco({ onNext, backStep }) {
                     <div className="grid grid-cols-6 col-span-6 gap-2 items-center">
 
                         <motion.div className="col-span-3" key="comCep" variants={item}>
+                            
                             <input
                                 type="radio"
                                 className="hidden peer"
