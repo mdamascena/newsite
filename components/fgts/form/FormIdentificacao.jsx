@@ -20,7 +20,6 @@ export default function FormIdentificacao({onNext, backStep}) {
 
     const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
-    const registerWithMask = useHookFormMask(register);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     const onSubmit = (data) => {

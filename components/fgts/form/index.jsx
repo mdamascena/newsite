@@ -66,10 +66,12 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
     const nextStep = (data) => {
         atualizarForm(data)
         setStep((prevStep) => Math.min(prevStep + 1, schemas.length));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const prevStep = () => {
         setStep((prevStep) => Math.max(prevStep - 1, 1));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (

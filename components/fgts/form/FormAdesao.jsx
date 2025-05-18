@@ -13,7 +13,6 @@ import BtnBack from "../../geral/button/BtnBlueBack"
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect, useState } from "react"
 import ModalAdesaoFGTS from '../../geral/modal/ModalAdesaoFGTS'
-import { set } from "lodash"
 
 export default function FormAdesao({ onNext, backStep }) {
     
