@@ -83,7 +83,7 @@ export default function FormCadastro({ onNext }) {
                 {/*Form do step*/}
                 <div className="grid-cols-6 container-form-body">
 
-                    <div className="col-span-6">
+                    <div className="lg:col-span-6 col-span-3">
                         <Input
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
@@ -92,6 +92,17 @@ export default function FormCadastro({ onNext }) {
                             {...registerWithMask("cpf", ['999.999.999-99'])}
                         />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
+                    </div>
+
+                    <div className="lg:col-span-2 col-span-3">
+                        <Input
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            type="text"
+                            inputMode="numeric"
+                            placeholder="Nascimento *"
+                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
+                        />
+                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
                     </div>
 
                     <div className="lg:col-span-4 col-span-6">
@@ -104,16 +115,6 @@ export default function FormCadastro({ onNext }) {
                         {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
                     </div>
 
-                    <div className="lg:col-span-2 col-span-6">
-                        <Input
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            inputMode="numeric"
-                            placeholder="Nascimento *"
-                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
-                        />
-                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
-                    </div>
 
                     <div className="col-span-6 grid grid-cols-6 gap-2">
                         <div className="lg:col-span-3 col-span-6">
@@ -142,11 +143,11 @@ export default function FormCadastro({ onNext }) {
                         Crie uma senha simples
                     </h5>
 
-                    <div className="lg:col-span-3 col-span-6">
+                    <div className="col-span-3">
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenha}
-                                placeholder="Digite uma senha"
+                                placeholder="Crie um senha"
                                 {...register('senha')}
                             />
 
@@ -159,11 +160,11 @@ export default function FormCadastro({ onNext }) {
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
                     </div>
 
-                    <div className="lg:col-span-3 col-span-6">
+                    <div className="col-span-3">
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenhaConfirmacao}
-                                placeholder="Confirme sua senha"
+                                placeholder="Confirme senha"
                                 {...register('senhaConfirmacao')}
                             />
 

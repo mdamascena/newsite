@@ -35,30 +35,26 @@ export default function Carousel({ imagens, onSlideChange  }) {
     const texto = [
         {
             indice: "1",
-            titulo: "Titulo1",
-            descricao: "Descrição1"
-        
+            titulo: "Acesse APP do FGTS",
+            descricao: "Faça seu login com seu CPF e senha"
         },
 
         {
             indice: "2",
-            titulo: "Titulo2",
-            descricao: "Descrição2"
-        
+            titulo: "Selecione Sistema",
+            descricao: "Clique em Sistemática de saque do seu FGTS"
         },
 
         {
             indice: "3",
-            titulo: "Titulo3",
-            descricao: "Descrição3"
-        
+            titulo: "Aceite o termo",
+            descricao: "Leia e selecione “Li e aceito os termos e condições”"
         },
 
         {
             indice: "4",
-            titulo: "Titulo4",
-            descricao: "Descrição4"
-        
+            titulo: "Finalizar adeção",
+            descricao: "Clique em “Optar pelo Saque-aniversário”. Pronto finalizado."
         }
 
     ];
@@ -67,21 +63,24 @@ export default function Carousel({ imagens, onSlideChange  }) {
 
         <div className="relative rounded-2xl bg-gradient-to-br from-[#000156] to-blue-400 saturate-150">
       
-            <div className=' top-16 left-3 mb-24 mt-2'>
-                <div className='relative ml-36'>
-                    <span className='absolute text-9xl font-bold text-blue-400/50 -z-10'>
+            <div className='ml-10 lg:mb-28 mb-24 mt-2'>
+                <div className='relative'>
+                    <span className='absolute lg:text-9xl text-8xl font-bold text-blue-400/30 -z-10'>
                         {texto[selectedIndex].indice}
                     </span>
-                    <h1 className='absolute font-semibold text-blue-400 text-3xl top-8 left-7'>
+                    <h1 className='absolute font-semibold text-blue-400 lg:text-3xl text-xl lg:top-8 top-2 lg:left-16 left-10'>
                         {texto[selectedIndex].titulo}
                     </h1>
-                    <p className='absolute font-light top-12 left-4 text-white'>
+                    <p className='absolute font-light lg:top-16 top-10 lg:left-16 left-10 text-white lg:text-base text-xs'>
                         {texto[selectedIndex].descricao}
                     </p>
                 </div>
-
             </div>
             
+            <div className='absolute p-5 bg-blue-800'/>
+
+            <div className='absolute top-10 lg:left-80 left-56 py-2 lg:px-28 px-10 bg-blue-500/20'/>
+
             <div className="overflow-hidden rounded-xl" ref={emblaRef}>
                 <div className="flex">
                     {imagens.map((src, index) => (

@@ -18,8 +18,7 @@ const BtnBack = tw.button`
     duration-400
 `;
 
-export default function BtnBlueBack
- ({nome, event, iconLeft, iconRight}){
+export default function BtnBlueBack({nome, event, iconLeft, iconRight}){
     return(
         <BtnBack type='button' onClick={event}>
             {iconLeft}
