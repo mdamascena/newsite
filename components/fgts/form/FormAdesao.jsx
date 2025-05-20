@@ -1,27 +1,25 @@
 import { useFormContext, Controller } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
-import { useHookFormMask } from "use-mask-input"
 import { IoIosArrowBack } from "react-icons/io"
 import { ToastContainer } from "react-toastify"
-import { toastWarningColored } from "shared/toastUtils/toastValidation"
 import { motion } from "framer-motion"
 import { container, item } from "shared/motionUtils/motionTransation"
 import { BiSolidMessageAltCheck, BiSolidMessageAltX } from "react-icons/bi"
-import { OptLabel, OptBnt } from "components/geral/style"
-import BtnNext from "../../geral/button/BtnBlueNext"
-import BtnBack from "../../geral/button/BtnBlueBack"
+import { OptLabel } from "components/geral/style"
+import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect, useState } from "react"
+import BtnNext from "../../geral/button/BtnBlueNext"
+import BtnBack from "../../geral/button/BtnBlueBack"
 import ModalAdesaoFGTS from '../../geral/modal/ModalAdesaoFGTS'
 
 export default function FormAdesao({ onNext, backStep }) {
     
     const { control, handleSubmit, watch, setValue, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormData();
+    const { atualizarForm } = useFormData();
+
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [valueCard, setValueCard] = useState('');
-
-    const adesaoWatch = watch("adesao");
 
     useEffect(() => {
         if (errors.adesao) {
@@ -41,10 +39,6 @@ export default function FormAdesao({ onNext, backStep }) {
     }, [valueCard, setValue, onOpenChange, onNext, getValues]);
 
     function onSubmit(data){
-        if (!adesaoWatch) {
-            toastWarningColored("Selecione uma opção.")
-            return;
-        } 
         atualizarForm(data);
         onNext();
     }

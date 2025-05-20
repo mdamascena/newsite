@@ -3,7 +3,6 @@ import { useFormData } from "../../../context/FormContext"
 import { useFormContext, Controller} from "react-hook-form"
 import { useDisclosure } from "@nextui-org/react"
 import { Input } from "components/ui/input"
-import { useHookFormMask } from "use-mask-input"
 import { IoIosFemale, IoIosMale, IoIosArrowBack,IoIosCloseCircleOutline } from "react-icons/io"
 import { IoMaleFemaleOutline } from "react-icons/io5"
 import { TbMessage2Question } from "react-icons/tb"
@@ -52,7 +51,6 @@ export default function FormIdentificacao({onNext, backStep}) {
                 className="grid grid-cols-6 xl:px-7"
                 >
 
-                {/*Titulo do step*/}
                 <div className="container-form-head">
                     <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
@@ -64,33 +62,13 @@ export default function FormIdentificacao({onNext, backStep}) {
                     </p>
                 </div>
 
-                {/*Form do step*/}
                 <div className="container-form-body">
-                    
-                    {/* <div className="lg:col-span-4 col-span-6">
-                        <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                            }`}
-                            placeholder="Seu nome completo? *"
-                            pattern="[a-zA-Z\s]*" 
-                            {...register('nome')} 
-                        />
-                        {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
-                    </div>
-                    
-                    <div className="lg:col-span-2 col-span-3">
-                        <Input 
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            placeholder="Nascimento *"
-                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
-                        />
-                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
-                    </div> */}
 
                     <div className="lg:col-span-1 col-span-6">
                         <Input 
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.registroGeral ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
+                            inputMode="numeric"
                             placeholder="Número do RG *"
                             {...register('registroGeral')} 
                             />
@@ -192,7 +170,6 @@ export default function FormIdentificacao({onNext, backStep}) {
                     />
                 </div>
 
-                {/*Botão do step*/}
                 <div className="container-form-footer">
                     <div className="col-span-2">
                         <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/> 
