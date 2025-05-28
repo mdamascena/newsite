@@ -29,8 +29,8 @@ export default function SectionVantagens() {
                     <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-0 pt-8 lg:order-1'>
                         <Card>
                             <CardFront>
-                                <MdMoneyOff className='text-5xl text-blue-300'/>
-                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
+                                <MdMoneyOff className='text-5xl text-blue-300 mx-auto'/>
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
                                     Sem mensalidades para pagar
                                 </h2>
                             </CardFront>
@@ -42,8 +42,8 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <AiOutlineFieldTime className='text-5xl text-blue-300'/>
-                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
+                                <AiOutlineFieldTime className='text-5xl text-blue-300 mx-auto'/>
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
                                     Liberação mais rápida do mercado
                                 </h2>
                             </CardFront>
@@ -62,8 +62,8 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <GiMoneyStack className='text-5xl text-blue-300' />
-                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
+                                <GiMoneyStack className='text-5xl text-blue-300 mx-auto' />
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
                                     Antecipe até 12 saques do seu FGTS
                                 </h2>
                             </CardFront>
@@ -75,8 +75,8 @@ export default function SectionVantagens() {
 
                         <Card>
                             <CardFront>
-                                <VscSearchStop className='text-5xl text-blue-300' />
-                                <h2 className='text-blue-50 lg:text-lg text-sm my-5'>
+                                <VscSearchStop className='text-5xl text-blue-300 mx-auto ' />
+                                <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
                                     Sem consulta no SPC/SERASA
                                 </h2>
                             </CardFront>
