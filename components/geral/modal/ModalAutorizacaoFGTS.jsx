@@ -4,41 +4,42 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "
 import Carousel from "components/fgts/carousel/Carrousel";
 
 const SlideImg = [
-    "/img/adesao1.webp",
-    "/img/adesao2.webp",
-    "/img/adesao3.webp",
+    "/img/autorizacao1.webp",
+    "/img/autorizacao2.webp",
+    "/img/autorizacao3.webp",
     "/img/adesao4.webp"
 ];
 
 const SlideTexto = [
     {
-            indice: "1",
-            titulo: "Acesse APP do FGTS",
-            descricao: "Faça seu login com seu CPF e senha"
+        indice: "1",
+        titulo: "Opção MAIS ",
+        descricao: "Para autorizar, clique em “MAIS” no canto inferior direito."
     },
 
     {
-            indice: "2",
-            titulo: "Selecione Sistema",
-            descricao: "Clique em Sistemática de saque do seu FGTS"
+        indice: "2",
+        titulo: "Autorização",
+        descricao: "Clique em “Autorização de consulta às informações do FGTS”"
     },
 
     {
-            indice: "3",
-            titulo: "Aceite o termo",
-            descricao: "Leia e selecione “Li e aceito os termos e condições”"
+        indice: "3",
+        titulo: "Opção de saque",
+        descricao: "Clique em “Empréstimo Saque-Aniversário”"
     },
 
-        {
-            indice: "4",
-            titulo: "Finalizar adeção",
-            descricao: "Clique em “Optar pelo Saque-aniversário”. Pronto finalizado."
-        }
+    {
+        indice: "4",
+        titulo: "Finalizar adeção",
+        descricao: "Pesquise e selecione a “Up.p Sociedade de Empréstimo entre Pessoas S.A.”"
+    }
 
 ];
 
 
-export default function ModalAdesaoFGTS({ isOpen, onOpenChange, setValueCard  }) {
+
+export default function ModalAutorizacaoFGTS({ isOpen, onOpenChange, setValueCard  }) {
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -81,7 +82,7 @@ export default function ModalAdesaoFGTS({ isOpen, onOpenChange, setValueCard  })
                                     ' 
                                     onPress={() => {setValueCard('0'); onClose();}}
                                     isDisabled={currentSlide !== SlideImg.length - 1}>
-                                    Adesão Efetuada
+                                    Autorização Efetuada
                                 </Button>
                             </ModalBody>
                             

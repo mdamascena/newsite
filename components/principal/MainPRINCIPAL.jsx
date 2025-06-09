@@ -44,7 +44,7 @@ export default function MainHome() {
 
                     <div className="lg:content-start content-end col-span-1 select-none">
                         <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 lg:text-xl col-span-1 lg:pr-14">
-                            Diversas modalidades de empréstimo, pensadas para atender diferentes necessidades, tudo em um só lugar!
+                            Muitas modalidades de crédito para atender diferentes necessidades, tudo em um só lugar!
                         </p>
                         <div className="pb-8 lg:pb-0">
                             <BtnHome onClick={handleRedirect}>

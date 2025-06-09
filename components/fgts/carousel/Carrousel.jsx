@@ -5,7 +5,7 @@ import { ArrowButton } from './ArrowButton';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import Image from 'next/image';
 
-export default function Carousel({ imagens, onSlideChange  }) {
+export default function Carousel({ imagens, texto, onSlideChange  }) {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [scrollSnaps, setScrollSnaps] = useState([]);
@@ -32,46 +32,19 @@ export default function Carousel({ imagens, onSlideChange  }) {
         onSelect();
     }, [emblaApi, onSelect]);
 
-    const texto = [
-        {
-            indice: "1",
-            titulo: "Acesse APP do FGTS",
-            descricao: "Faça seu login com seu CPF e senha"
-        },
-
-        {
-            indice: "2",
-            titulo: "Selecione Sistema",
-            descricao: "Clique em Sistemática de saque do seu FGTS"
-        },
-
-        {
-            indice: "3",
-            titulo: "Aceite o termo",
-            descricao: "Leia e selecione “Li e aceito os termos e condições”"
-        },
-
-        {
-            indice: "4",
-            titulo: "Finalizar adeção",
-            descricao: "Clique em “Optar pelo Saque-aniversário”. Pronto finalizado."
-        }
-
-    ];
-
     return (
 
-        <div className="relative rounded-2xl bg-gradient-to-br from-[#000156] to-blue-400 saturate-150">
+        <div className="relative rounded-lg bg-gradient-to-br from-[#000156] to-blue-400 saturate-150">
       
             <div className='ml-10 lg:mb-28 mb-24 mt-2'>
                 <div className='relative'>
                     <span className='absolute lg:text-9xl text-8xl font-bold text-blue-400/30 -z-10'>
                         {texto[selectedIndex].indice}
                     </span>
-                    <h1 className='absolute font-semibold text-blue-400 lg:text-3xl text-xl lg:top-8 top-2 lg:left-16 left-10'>
+                    <h1 className='absolute font-semibold text-blue-400 lg:text-3xl text-xl lg:top-8 top-2 lg:left-16 left-14'>
                         {texto[selectedIndex].titulo}
                     </h1>
-                    <p className='absolute font-light lg:top-16 top-10 lg:left-16 left-10 text-white lg:text-base text-xs'>
+                    <p className='absolute font-light lg:top-16 top-10 lg:left-16 left-14 text-white lg:text-base text-xs mr-5'>
                         {texto[selectedIndex].descricao}
                     </p>
                 </div>
@@ -79,7 +52,7 @@ export default function Carousel({ imagens, onSlideChange  }) {
             
             <div className='absolute p-5 bg-blue-800'/>
 
-            <div className='absolute top-10 lg:left-80 left-56 py-2 lg:px-28 px-10 bg-blue-500/20'/>
+            <div className='absolute top-10 lg:left-80 left-56 py-2 lg:px-28 px-10 bg-blue-500/10'/>
 
             <div className="overflow-hidden rounded-xl" ref={emblaRef}>
                 <div className="flex">

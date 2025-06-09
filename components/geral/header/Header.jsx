@@ -101,7 +101,7 @@ export default function Header() {
                 if (window.scrollY > 0) {
                     setBgNavbar(['shadow-lg', 'text-blue-500', 'bg-blue-500', LogoA, 'hover:text-yellow-500', 'bg-white']);
                 } else {
-                    setBgNavbar(['bg-black/10', 'text-white', 'bg-white/10', LogoB, 'hover:text-yellow-300', 'bg-black/10']);
+                    setBgNavbar(['bg-black/10', 'text-white', 'bg-white', LogoB, 'hover:text-yellow-300', 'bg-black/10']);
                 }
             });
         }, []
@@ -114,7 +114,7 @@ export default function Header() {
             <div id='menuBar'className={`${bgNavbar[0]} ${bgNavbar[5]} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-[20px] rounded-[10px] left-0 right-0 items-center duration-500 container-custom`}>
                 {/*Logo*/}
                 <Link href='/' passHref className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in justify-self-start'>
-                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
+                    <Image id='logoBranco' src={bgNavbar[3]} width={160} placeholder='blur' alt='' />
                 </Link>
 
                 {/*Menu desktop*/}

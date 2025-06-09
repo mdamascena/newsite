@@ -1,6 +1,5 @@
 import { useFormContext, Controller } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
-import { useHookFormMask } from "use-mask-input"
 import { IoIosArrowBack } from "react-icons/io"
 import { ToastContainer } from "react-toastify"
 import { toastWarningColored } from "shared/toastUtils/toastValidation"
@@ -13,7 +12,6 @@ import BtnBack from "../../geral/button/BtnBlueBack"
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect, useState } from "react"
 import ModalAdesaoFGTS from '../../geral/modal/ModalAdesaoFGTS'
-import { set } from "lodash"
 
 export default function FormAdesao({ onNext, backStep }) {
     
@@ -63,13 +61,14 @@ export default function FormAdesao({ onNext, backStep }) {
                 <div className="container-form-head">
                     <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                            Adeção Saque-Aniversário
+                            Adesão Saque-Aniversário
                         </h1>
                     </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
                         Antes de continuar, você deve aderir ao saque-aniversário do FGTS.
                     </p>
                 </div>
+                
 
                 <div className="container-form-body lg:pt-20">
 

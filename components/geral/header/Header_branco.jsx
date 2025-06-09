@@ -117,7 +117,7 @@ export default function Header() {
                 
                 {/*Logo*/}
                 <Link href='/' passHref className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                    <Image id='logoBranco' src={bgNavbar[3]} width={163.33} height={35} placeholder='blur' alt='' />
+                    <Image id='logoBranco' src={bgNavbar[3]} width={160} placeholder='blur' alt='' />
                 </Link>
 
                 {/*Menu desktop*/}
