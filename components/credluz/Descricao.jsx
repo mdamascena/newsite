@@ -39,7 +39,7 @@ export default function Descricao(){
                 <div className="grid grid-cols-2 lg:grid-cols-4 text-center gap-2 lg:gap-5">
                     <Card>
                         <div className="flex justify-center">
-                            <Image src={moeda} width={70} height={70} alt=""/>
+                            <Image src={moeda} width={70} height={70} alt="" unoptimized/>
                         </div>
                         <h5 className="font-semibold text-xl text-cyan-400 mb-5">
                             Crédito Fácil
@@ -51,7 +51,7 @@ export default function Descricao(){
 
                     <Card>
                         <div className="flex justify-center">
-                            <Image src={veloz} width={70} height={70} alt=""/>
+                            <Image src={veloz} width={70} height={70} alt="" unoptimized/>
                         </div>
                         <h5 className="font-semibold text-xl text-cyan-400 mb-5">
                             Rápido
@@ -63,7 +63,7 @@ export default function Descricao(){
 
                     <Card>
                         <div className="flex justify-center">
-                            <Image src={debito} width={70} height={70} alt=""/>
+                            <Image src={debito} width={70} height={70} alt="" unoptimized/>
                         </div>
                         <h5 className="font-semibold text-xl text-cyan-400 mb-5">
                             Débito Automático
@@ -75,7 +75,7 @@ export default function Descricao(){
 
                     <Card>
                         <div className="flex justify-center">
-                            <Image src={parcela} width={70} height={70} alt=""/>
+                            <Image src={parcela} width={70} height={70} alt="" unoptimized/>
                         </div>
                         <h5 className="font-semibold text-xl text-cyan-400 mb-5">
                             Sem Aperto
