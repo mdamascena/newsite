@@ -4,8 +4,8 @@ const Btn = tw.button`
     bg-yellow-400
     rounded-xl 
     text-white
-    text-xl
-    py-4
+    text-lg
+    py-2
     lg:w-96
     w-[100%]
     lg:px-28 

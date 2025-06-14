@@ -97,12 +97,12 @@ export const BtnMaisValor = tw.button`
 `
 export const BtnCalcValores = tw.button`
     text-white
-    text-xl
+    text-lg
     w-[98%]
     mx-1
     mb-2
     mt-1
-    py-6
+    py-2.5
     bg-yellow-400
     saturate-150
     tracking-tighter

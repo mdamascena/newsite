@@ -2,7 +2,7 @@ import { useFormContext, Controller } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { IoIosArrowBack } from "react-icons/io"
 import { ToastContainer } from "react-toastify"
-import { toastWarningColored } from "shared/toastUtils/toastValidation"
+import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { motion } from "framer-motion"
 import { container, item } from "shared/motionUtils/motionTransation"
 import { BiSolidMessageAltCheck, BiSolidMessageAltX } from "react-icons/bi"
@@ -39,12 +39,36 @@ export default function FormAutorizacao({ onNext, backStep }) {
 
     function onSubmit(data){
         if (!adesaoWatch) {
-            toastWarningColored("Selecione uma opção.")
+            toastErrorColored("Selecione uma opção.")
             return;
-        } 
-        atualizarForm(data);
-        onNext();
-    }
+        } if (!selectedKey){
+            toastErrorColored("Selecione o pix para continuar.")
+            return;
+        } else {
+            atualizarForm(data);
+            onNext();
+        }
+    };
+
+    const pixSelecionado = (keyType) => {
+        setValue("tipoDeChave", keyType);
+
+        const data = getValues();
+
+        if (keyType === "CPF") {
+            setValue("chaveCpf", data.cpf)
+        } else if (keyType === "Celular") {
+            setValue("chaveCel", data.celular)
+        } else if (keyType === "Email") {
+            setValue("chaveEmail", data.email)
+        }
+    };
+
+    useEffect(() => {
+        if(formData.banco){
+            setValue("banco", formData.banco)
+        }
+    }, [formData.banco])
 
     return (
         <div className="lg:min-h-[100vh]">

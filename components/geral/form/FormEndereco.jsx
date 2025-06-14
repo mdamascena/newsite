@@ -9,7 +9,7 @@ import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinSimpleAreaFill } from "react-icons/pi"
 import { VscMap } from "react-icons/vsc"
 import { ToastContainer } from "react-toastify"
-import { toastErrorColored, toastWarningColored } from 'shared/toastUtils/toastValidation'
+import { toastErrorColored } from 'shared/toastUtils/toastValidation'
 import { motion } from 'framer-motion'
 import { container, item } from 'shared/motionUtils/motionTransation'
 import { OptLabel } from '../style/index'
@@ -52,7 +52,7 @@ export default function FormEndereco({ onNext, backStep }) {
                         setValue("logradouro", data.logradouro);
                         setValue("bairro", data.bairro);
                     } else if (data && data.erro) {    
-                        toastWarningColored("CEP não encontrado. Digite seu endereço!")
+                        toastErrorColored("CEP não encontrado. Digite seu endereço!")
                         setValue("estadoCep", "");
                         setValue("cidadeCep", "");
                         setValue("logradouro", "");
@@ -78,7 +78,6 @@ export default function FormEndereco({ onNext, backStep }) {
                 })
                 .catch((e) => console.log(e))
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [watchOption])
 
     //Resetar o campo cidade caso troque de estado e faz a requisição novamente.
@@ -109,7 +108,7 @@ export default function FormEndereco({ onNext, backStep }) {
     
     useEffect(() => {
         if (errors.cepOption) {
-            toastWarningColored(errors.cepOption.message)
+            toastErrorColored(errors.cepOption.message)
         }
       }, [errors]);
 
@@ -138,7 +137,6 @@ export default function FormEndereco({ onNext, backStep }) {
                 className='grid grid-cols-6 select-none xl:px-5'
                 >
 
-                {/*Titulo do step*/}
                 <div className="container-form-head">
                     <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
@@ -150,7 +148,6 @@ export default function FormEndereco({ onNext, backStep }) {
                     </p>
                 </div>
 
-                {/*Opções do step*/}
                 <div className="container-form-body lg:pt-20">
 
                     <div className="grid grid-cols-6 col-span-6 gap-2 items-center">
@@ -411,7 +408,6 @@ export default function FormEndereco({ onNext, backStep }) {
                     </div>
                 </div>
 
-                {/*Botões*/}
                 <div className="container-form-footer">
                     <div className="col-span-2">
                         <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1" />} />

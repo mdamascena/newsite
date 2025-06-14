@@ -8,7 +8,7 @@ import { IoAt } from "react-icons/io5";
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
 import { ToastContainer } from "react-toastify"
-import { toastWarningColored } from "shared/toastUtils/toastValidation";
+import { toastErrorColored } from "shared/toastUtils/toastValidation";
 import { motion } from "framer-motion";
 import { container, item } from "shared/motionUtils/motionTransation";
 import { OptLabel } from "components/geral/style";
@@ -27,10 +27,10 @@ export default function FormPagamento({ onNext, backStep }) {
     const onSubmit = (data) => {
         console.log(bancoWatch)
         if (!bancoWatch) {
-            toastWarningColored("Selecione um banco para continuar.")
+            toastErrorColored("Selecione um banco para continuar.")
             return;
         } if (!selectedKey){
-            toastWarningColored("Selecione o pix para continuar.")
+            toastErrorColored("Selecione o pix para continuar.")
             return;
         } else {
             atualizarForm(data);
