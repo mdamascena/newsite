@@ -6,9 +6,9 @@ export const BtnCalc = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
     to-amber-500 
-    text-lg 
+    text-xl 
     lg:px-32 
-    py-2
+    py-4
     px-18
     lg:flex-none
     flex-1
@@ -30,7 +30,7 @@ export const BtnCalc = tw.button`
 `
 export const EmpTitle = tw.h1`
     text-blue-600 
-    lg:text-6xl
+    lg:text-7xl
     text-[48px] 
     text-center 
     lg:text-left 
@@ -44,15 +44,13 @@ export const BtnCalcRegras = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
     to-amber-500
-    text-lg
+    text-xl
     w-full
     lg:w-96
     lg:py-4
-    py-2
+    py-4
     rounded-xl
-    text-white
-    shadow-md
-    shadow-amber-400/50 
+    text-white 
     border-b-2 
     border-amber-300
     focus:outline-none
@@ -71,8 +69,8 @@ export const BtnSolic = tw.button`
     bg-gradient-to-r 
     from-yellow-300 
     to-amber-500
-    text-lg
-    py-2
+    text-xl
+    py-3
     flex-1
     rounded-lg
     text-white

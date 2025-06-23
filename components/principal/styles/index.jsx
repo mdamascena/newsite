@@ -88,27 +88,6 @@ export const Circle = tw.span`
     mix-blend-multiply
 `;
 
-//SECTIONS
-//LIBERE POTENCIAL
-export const Btn = tw.button`
-    bg-blue-500
-    saturate-150
-    flex 
-    items-center 
-    justify-center
-    text-white 
-    tracking-tighter
-    w-72
-    py-3
-    lg:px-5 
-    rounded-3xl
-    active:bg-blue-900
-    hover:bg-blue-700
-    hover:scale-105
-    active:scale-90 
-    duration-150      
-`;
-
 //MAIS
 export const CardVantMais = tw.div`
     col-span-1

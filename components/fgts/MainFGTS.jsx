@@ -7,6 +7,7 @@ import Vantagens from './VantagensFGTS'
 import Regras from './RegrasGeraisFGTS'
 import Analise from '../geral/section/Analise'
 import TaxaGuru from '../geral/section/TaxaGuru'
+import LinkFaq from '../geral/section/LinkFaq'
 
 export default function MainFGTS() {
 
@@ -50,8 +51,9 @@ export default function MainFGTS() {
                 Taxa='1,59%'
                 DescrisaoTaxa='A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.'
             />
-            <Analise/>
             <Regras />
+            <Analise/>
+            <LinkFaq/>
         </main>
     )
 }

@@ -100,7 +100,7 @@ export default function FormAutorizacao({ onNext, backStep }) {
                         <ul className="text-blue-500 mb-8 text-sm grid gap-2">
                             <li>➡️ QI SOCIEDADE DE CREDITO DIRETO S.A.</li>
                             <li>➡️ DELCRED SOCIEDADE DE CREDITO DIRETO S.A.</li>
-                            <li>➡️ UP.P SOCIEDADE DE EMPRESTIMO ENTRE PESSOAS S.A.</li>
+                            {/* <li>➡️ UP.P SOCIEDADE DE EMPRESTIMO ENTRE PESSOAS S.A.</li> */}
                         </ul>
                     </div>
 

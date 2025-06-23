@@ -5,6 +5,7 @@ import TaxaGuru from '../geral/section/TaxaGuru'
 import { LuCircleCheck  } from "react-icons/lu"
 import { useRouter } from 'next/router'
 import CondicoesINSS from './CondicoesINSS'
+import LinkFaq from 'components/geral/section/LinkFaq'
 
 export default function MainFGTS() {
 
@@ -83,6 +84,7 @@ export default function MainFGTS() {
                 Taxa='1,50%'
                 DescrisaoTaxa="A melhor taxa entre empréstimos para aposentados e pensionistas INSS, BPC/LOAS."
             />
+            <LinkFaq/>
             
         </main>
     )

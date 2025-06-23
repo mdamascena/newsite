@@ -29,8 +29,8 @@ const BtnMenu = tw.button`
     from-yellow-300 
     to-amber-500 
     text-md 
-    lg:py-1
-    py-0.5
+    lg:py-2
+    py-1
     lg:px-6
     px-4
     rounded-full

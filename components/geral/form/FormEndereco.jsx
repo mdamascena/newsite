@@ -52,7 +52,8 @@ export default function FormEndereco({ onNext, backStep }) {
                         setValue("logradouro", data.logradouro);
                         setValue("bairro", data.bairro);
                     } else if (data && data.erro) {    
-                        toastErrorColored("CEP não encontrado. Digite seu endereço!")
+                        toastErrorColored("CEP inválido. Digite um CEP válido.")
+                        setValue("cep", "")
                         setValue("estadoCep", "");
                         setValue("cidadeCep", "");
                         setValue("logradouro", "");
@@ -109,8 +110,9 @@ export default function FormEndereco({ onNext, backStep }) {
     useEffect(() => {
         if (errors.cepOption) {
             toastErrorColored(errors.cepOption.message)
+
         }
-      }, [errors]);
+      }, [errors, setValue]);
 
     const onSubmit = (data) => {
         let filteredData;

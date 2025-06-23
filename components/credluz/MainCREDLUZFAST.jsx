@@ -8,6 +8,8 @@ import SectioComoFunciona from "./ComoFunciona"
 import SectioRegrasGerais from "./RegrasGeais"
 import SectioRegioes from "./Regioes"
 import SectioAnalise from "../geral/section/Analise"
+import SectioLinkFaq from "../geral/section/LinkFaq"
+
 import {HiCheck} from 'react-icons/hi'
 import { useRouter } from 'next/router'
 
@@ -93,6 +95,7 @@ export default function MainPrincipal() {
         <SectioRegrasGerais />
         <SectioRegioes />
         <SectioAnalise />
+        <SectioLinkFaq/>
     </main>
   );
 }

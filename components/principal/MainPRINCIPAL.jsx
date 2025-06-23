@@ -5,7 +5,7 @@ import Modalidades from "./Modalidades"
 import SlideModalidade from "./sections/SlideModalidade"
 import Taxa from "./sections/Taxas"
 import Mais from "./sections/Mais"
-import SeuPotencial from "./sections/LiberePotencial"
+import LinkFaq from "../geral/section/LinkFaq"
 import Escolha from "./sections/Escolha"
 import { useRouter } from 'next/router'
 import { MarqueeDemo } from "./MarqueeDemo"
@@ -65,7 +65,7 @@ export default function MainHome() {
         <Escolha/>
         <SeuPerfil/> 
         <MarqueeDemo />
-        <SeuPotencial/>      
+        <LinkFaq/>      
         {/* <Simulador/>
         <Modalidades/> */}
 

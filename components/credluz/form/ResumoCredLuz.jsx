@@ -6,14 +6,21 @@ import { IoIosArrowBack } from "react-icons/io";
 import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { LuPencil } from "react-icons/lu";
+import tw from "tailwind-styled-components";
 
+const LSpan = tw.span`
+    block 
+    text-xs 
+    text-blue-400
+`
+  
 export default function ResumoCredLuz({ onNext, backStep }) {
 
     const { atualizarForm, formData } = useFormData()
 
-    const onSubmit = (data) => {
+    function onSubmit(data){
         onNext();
-    };
+    }
 
     useEffect(() => {
         console.log("FormData", formData);
@@ -22,15 +29,14 @@ export default function ResumoCredLuz({ onNext, backStep }) {
     return (
         <div className="lg:min-h-[100vh]">
 
-            
             {/*Titulo do step*/}
             <div className="container-form-head">
                 <motion.div initial="hidden" animate="visible" variants={container} className="col-span-6">
                     <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                        Resumo
+                        Confirmação
                     </h1>
                     <h2 className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                        Aqui está um resumo dos dados que você informou. Verifique se está tudo correto antes de prosseguir
+                        Verifique se está tudo correto antes de prosseguir
                     </h2>
                 </motion.div>
             </div>
@@ -41,7 +47,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                 <motion.div initial="hidden" animate="visible" variants={container} className="col-span-6">
                     
                     <div className="text-slate-400 bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6">
-                        <h3 className=" bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
+                        <h3 className="bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
                             Dados pessoais
                         </h3>
                         
@@ -49,12 +55,12 @@ export default function ResumoCredLuz({ onNext, backStep }) {
 
                         <div className="text-sm lg:col-span-3 col-span-6 text-slate-400">
                             <div className="mb-2">
-                                <span className="block text-xs text-blue-400">Nome:</span> 
+                                <LSpan>Nome</LSpan> 
                                 {formData.nome}
                             </div>
                                 
                             <div className="lg:mb-0 mb-2">
-                                <span className="block text-xs text-blue-400">CPF:</span> 
+                                <LSpan>CPF</LSpan> 
                                 {formData.cpf}
                             </div> 
                         </div>
@@ -62,11 +68,11 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                         <div className="text-sm lg:col-span-3 col-span-6 text-slate-400">
 
                             <div className="mb-2">
-                                <span className="block text-xs text-blue-400">E-mail:</span> 
+                                <LSpan>E-mail</LSpan> 
                                 {formData.email}
                             </div>
                             <div className="">
-                                <span className="block text-xs text-blue-400">Celular:</span> 
+                                <LSpan>Celular</LSpan> 
                                 {formData.celular}
                             </div> 
                             
@@ -74,42 +80,94 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                         
                     </div>
                         
-                    <div className="text-slate-400  bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6 mt-4">
-                        <h3 className=" bg-blue-400 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
+                    <div className="text-slate-400  bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6 mt-6">
+                        <h3 className="bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
                             Endereço
                         </h3>
-                        <div className="text-sm col-span-3 text-black">
 
-                            <div className="mb-2">
-                                <span className="block text-[10px] text-slate-400">CEP</span> 
-                                {formData.cep}
+                        <div className="text-sm lg:col-span-3 col-span-6 text-slate-400">
+
+                            {formData.cep?.trim() && (
+                                <div className="mb-2">
+                                    <LSpan>CEP</LSpan>
+                                    {formData.cep}
+                                </div>
+                            )}
+                            <div className="">
+                                <LSpan>Logradouro</LSpan> 
+                                {formData.logradouro ? formData.logradouro : formData.logradouroSemCep}, {formData.numero ? formData.numero : formData.numeroSemCep}
                             </div>
-                            <div className="mb-2">
-                                <span className="block text-[10px] text-slate-400">Logradouro</span> 
-                                {formData.cepOption == "1" ? formData.logradouro : formData.logradouroSemCep}, {formData.numero}
-                            </div>
-                            <div className="mb-2">
-                                <span className="block text-[10px] text-slate-400">Complemento</span> 
-                                {formData.complemento}
-                            </div>
+                            {(formData.complemento || formData.complementoSemCep) && (
+                                <div>
+                                    <LSpan>Complemento</LSpan>
+                                    {formData.complemento ? formData.complemento : formData.complementoSemCep}
+                                </div>
+                            )}
                         
                         </div>
-                        <div className="text-sm col-span-3 text-black">
+
+                        <div className="text-sm lg:col-span-3 col-span-6 text-slate-400">
 
                             <div className="mb-2">
-                                <span className="block text-[10px] text-slate-400">Estado</span> 
-                                {formData.estado}                            
+                                <LSpan>Estado</LSpan>
+                                {formData.estadoCep ? formData.estadoCep : formData.estado}                            
                             </div>
                             
-                            <div className="mb-2">
-                                <span className="block text-[10px] text-slate-400">Cidade</span> 
-                                {formData.cidade}
+                            <div className="">
+                                <LSpan>Cidade</LSpan> 
+                                {formData.cidadeCep ? formData.cidadeCep : formData.cidade}
                             </div>
                             
                         </div>
                     </div>
 
-                </motion.div>     
+                    <div className="text-slate-400  bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6 mt-6">
+                        <h3 className="bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
+                            Perfil
+                        </h3>
+
+                        <div className="text-sm lg:col-span-3 col-span-6 text-slate-400">
+                            <div className="mb-2">
+                                <LSpan>Gênero</LSpan> 
+                                {(() => {
+                                    const generoMap = {
+                                        0: "Masculino",
+                                        1: "Feminino",
+                                        2: "Outros",
+                                        3: "Não informar"
+                                    };
+                                    return generoMap[formData.genero];
+                                })()}
+                            </div>
+
+                            <div className="">
+                                <LSpan>Ocupação</LSpan> 
+                                {(() => {
+                                    const ocupacaoMap = {
+                                        1: "Assalariado",
+                                        2: "Servidor Público",
+                                        3: "Autônomo"
+                                    };
+                                    return ocupacaoMap[formData.tipoOcupacao];
+                                })()}
+                            </div>
+                        </div>
+                        
+                        <div className="text-sm lg:col-span-3 col-span-6 text-slate-400">
+                            <div className="mb-2">
+                                <LSpan>Titular da conta de luz</LSpan> 
+                                {(() => {
+                                    const titulaMap = {
+                                        0: "Sim",
+                                        1: "Não"
+                                    };
+                                    return titulaMap[formData.titularCia];
+                                })()}
+                            </div>
+                        </div>
+                    </div>
+
+                </motion.div>
             </div>
 
             {/*Botões*/}

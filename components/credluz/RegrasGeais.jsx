@@ -39,7 +39,7 @@ export default function Regras(){
                 
                 <div className='col-span-1 lg:pl-5 lg:my-auto'>    
                     <div className={`duration-1000 delay-500 ${movDesc}`}>
-                        <h2 className="text-4xl text-blue-600 font-semibold mb-2 tracking-tighter">Condiçoes Gerais</h2>
+                        <h2 className="text-4xl text-blue-600 font-semibold mb-2 tracking-tighter">Condições Gerais</h2>
                         <p className=" text-slate-400 my-6">
                             Essa é uma modalidade de empréstimo 100% online. 
                             Feito para quem tem conta de energia em seu nome. Não precisa comprovar renda. 

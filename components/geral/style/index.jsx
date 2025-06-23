@@ -46,3 +46,24 @@ export const OptBnt = tw(motion.button)`
     active:text-white
     active:shadow-nome
 `;
+
+//SECTIONS
+//LINKFAQ
+export const Btn = tw.button`
+    bg-yellow-600
+    
+    flex 
+    items-center 
+    justify-center
+    text-white 
+    tracking-tighter
+    w-72
+    py-3
+    lg:px-5 
+    rounded-3xl
+    active:bg-yellow-700
+    hover:bg-yellow-600
+    hover:scale-105
+    active:scale-90 
+    duration-150      
+`;

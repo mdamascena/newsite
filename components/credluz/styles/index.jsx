@@ -39,8 +39,6 @@ export const BtnCalc = tw.button`
     rounded-xl
     text-white
     mt-8
-    shadow-md
-    shadow-amber-400/50
     border-b-2 
     border-amber-300
     focus:outline-none
@@ -97,12 +95,12 @@ export const BtnMaisValor = tw.button`
 `
 export const BtnCalcValores = tw.button`
     text-white
-    text-lg
+    text-xl
     w-[98%]
     mx-1
     mb-2
     mt-1
-    py-2.5
+    py-6
     bg-yellow-400
     saturate-150
     tracking-tighter

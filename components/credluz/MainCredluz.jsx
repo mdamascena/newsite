@@ -10,6 +10,7 @@ import SectionRegrasGerais from "./RegrasGeais"
 import SectionRegioes from "./Regioes"
 import SectionAnalise from "../geral/section/Analise"
 import Simulador from './simulador/SimuladorCredluz'
+import SectionLinkFaq from "../geral/section/LinkFaq"
 
 export default function MainCredluz() {
 
@@ -96,6 +97,7 @@ export default function MainCredluz() {
             <SectionRegrasGerais />
             <SectionRegioes />
             <SectionAnalise />
+            <SectionLinkFaq/>
         </main>
     )
 }
