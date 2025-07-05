@@ -11,6 +11,7 @@ import { container } from "shared/motionUtils/motionTransation"
 import Link from "next/link"
 import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../button/BtnBlueNext'
+import ModalLogin from '../../geral/modal/ModalLogin'
 
 export default function FormCadastro({ onNext }) {
 
@@ -56,6 +57,18 @@ export default function FormCadastro({ onNext }) {
         setIsAccepted(true);
         setValue("termos", true);
     };
+
+    const {
+        isOpen: isOptOpen,
+        onOpen: onOptOpen,
+        onOpenChange: onOptOpenChange,
+    } = useDisclosure();
+
+    const {
+        isOpen: isLoginOpen,
+        onOpen: onLoginOpen,
+        onOpenChange: onLoginOpenChange,
+    } = useDisclosure();
 
     return (
 
@@ -194,7 +207,7 @@ export default function FormCadastro({ onNext }) {
                                 Li e aceito os termos.
                             </span>
 
-                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOpen(); }}>
+                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOptOpen(); }}>
                                 Ver termos de uso e política de privacidade.
                             </Link>
 
@@ -202,7 +215,7 @@ export default function FormCadastro({ onNext }) {
                         </label>
                     </div>
 
-                    <ModalOpt isOpen={isOpen} onOpenChange={onOpenChange} onAccept={handleAccept} />
+                    <ModalOpt isOpen={isOptOpen} onOpenChange={onOptOpenChange} onAccept={handleAccept} />
 
                     <div className="col-span-6 my-2 flex items-center">
                         <input
@@ -220,6 +233,13 @@ export default function FormCadastro({ onNext }) {
                             </span>
                             {errors.aceite_whatsapp && <p className="text-red-500 text-sm mt-1">{errors.aceite_whatsapp.message}</p>}
                         </label>
+                    </div>
+                    
+                    <div>
+                        <div onClick={(e) => { e.preventDefault(); onLoginOpen(); }}>
+                            Abrir
+                        </div>
+                        <ModalLogin isOpen={isLoginOpen} onOpenChange={onLoginOpenChange} />
                     </div>
 
                 </div>

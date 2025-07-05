@@ -44,12 +44,10 @@ export default function MainCONTA() {
                     </div>
                     
                     <div className='items-center flex justify-end lg:justify-center col-span-3 lg:col-span-2 lg:order-3'>
-
                         <BtnConta className='flex items-center' onClick={handleBack}>
                             <HiOutlineArrowLongLeft className='mr-2 text-lg' />
                             {showLogin ? 'Voltar' : 'Acessar Conta'}
                         </BtnConta>
-                 
                     </div>
                 </div>
             </div>

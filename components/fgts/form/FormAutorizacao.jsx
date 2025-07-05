@@ -87,7 +87,7 @@ export default function FormAutorizacao({ onNext, backStep }) {
                         </h1>
                     </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                        Para realizar a simulação, precisamos da sua 
+                        Precisamos da sua 
                         autorização para que nossa 
                         financeira consulte seu saldo FGTS.
                     </p>

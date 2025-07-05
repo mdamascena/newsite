@@ -6,7 +6,7 @@ export const NumCard = tw.span`
     relative 
     bottom-52
     font-semibold
-    text-[15rem] 
+    text-[15rem]
     bg-clip-text 
     text-transparent 
     bg-gradient-to-t 

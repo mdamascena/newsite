@@ -6,7 +6,8 @@ export const OptLabel = tw(motion.label)`
     grid
     grid-cols-6
     lg:p-3
-    p-2
+    py-4
+    max-h-[110px]
     lg:py-4
     items-center 
     justify-center 
