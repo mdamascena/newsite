@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
@@ -12,6 +12,7 @@ import Link from "next/link"
 import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../button/BtnBlueNext'
 import ModalLogin from '../../geral/modal/ModalLogin'
+import { validateCPF } from "schema/validations"
 
 export default function FormCadastro({ onNext }) {
 
@@ -24,20 +25,12 @@ export default function FormCadastro({ onNext }) {
 
     // State para definir o campo password visivel.
     const [inputSenha, setInputSenha] = useState('password');
-    const [inputSenhaConfirmacao, setInputSenhaConfirmacao] = useState('password')
     const [visivelSenha, setVisivelSenha] = useState(false);
-    const [visivelSenhaConfirmacao, setVisivelSenhaConfirmacao] = useState(false)
 
     // Função para tornar o campo password type text
     const toggleSenhaVisibility = () => {
         setVisivelSenha(!visivelSenha);
         setInputSenha(inputSenha === 'password' ? 'text' : 'password');
-    }
-
-    // Função para tornar o campo password type text
-    const toggleSenhaConfirmacaoVisibility = () => {
-        setVisivelSenhaConfirmacao(!visivelSenhaConfirmacao)
-        setInputSenhaConfirmacao(inputSenhaConfirmacao === 'password' ? 'text' : 'password');
     }
 
     const onSubmit = (data) => {
@@ -70,9 +63,43 @@ export default function FormCadastro({ onNext }) {
         onOpenChange: onLoginOpenChange,
     } = useDisclosure();
 
+    const [inputAction, setInputAction] = useState(true); 
+    
+    //Para testar o modal, apagar depois que fizer pelo back
+    const cpfValue = watch("cpf") || "";
+    
+    useEffect(() =>{
+        
+        const isValidCPF = validateCPF(cpfValue);
+
+       if (isValidCPF) {
+            setInputAction(false); // habilita campos
+        } else {
+            setInputAction(true); // desabilita campos e limpa outros
+            // Limpar campos quando CPF não é válido
+            setValue("dataNascimento", "");
+            setValue("nome", "");
+            setValue("email", "");
+            setValue("celular", "");
+            setValue("senha", "");
+            setValue("senhaConfirmacao", "");
+            setValue("termos", false);
+            setValue("aceite_whatsapp", false);
+        }
+
+        if (cpfValue === "555.555.555-55") {
+            onLoginOpen(cpfValue);
+        }
+
+    }, [cpfValue, onLoginOpen, errors, setValue]);
+
     return (
 
         <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
+
+            <ModalLogin isOpen={isLoginOpen} onOpenChange={(open) => {onLoginOpenChange(open);
+                if (!open) {setValue("cpf", "")}}}
+            />
 
             <motion.div
                 initial={'hidden'}
@@ -102,7 +129,8 @@ export default function FormCadastro({ onNext }) {
                             type="text"
                             inputMode="numeric"
                             placeholder='Digite seu CPF'
-                            {...registerWithMask("cpf", ['999.999.999-99'])}
+                            
+                            {...registerWithMask("cpf", ["999.999.999-99"], {showMaskOnHover:false})}
                         />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
@@ -111,6 +139,7 @@ export default function FormCadastro({ onNext }) {
                         <Input
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
+                            disabled={inputAction}
                             inputMode="numeric"
                             placeholder="Nascimento *"
                             {...registerWithMask("dataNascimento", ['99/99/9999'])}
@@ -123,6 +152,7 @@ export default function FormCadastro({ onNext }) {
                             }`}
                             placeholder="Seu nome completo? *"
                             pattern="[a-zA-Z\s]*"
+                            disabled={inputAction}
                             {...register('nome')}
                         />
                         {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
@@ -133,6 +163,7 @@ export default function FormCadastro({ onNext }) {
                         <div className="lg:col-span-3 col-span-6">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="email"
+                                disabled={inputAction}
                                 placeholder="Seu e-mail *"
                                 {...register('email')}
                             />
@@ -144,10 +175,11 @@ export default function FormCadastro({ onNext }) {
                                 className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type="text"
                                 inputMode="numeric"
+                                disabled={inputAction}
                                 placeholder="Seu celular *"
                                 {...registerWithMask("celular", ['99 99999-9999'])}
                             />
-                            <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : 'text-slate-400'}`} />
+                            <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : `${ inputAction ? 'text-slate-300':'text-slate-400'}`}`} />
                             {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
                         </div>
                     </div>
@@ -160,14 +192,15 @@ export default function FormCadastro({ onNext }) {
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                 type={inputSenha}
+                                disabled={inputAction}
                                 placeholder="Crie um senha"
                                 {...register('senha')}
                             />
 
                             {visivelSenha ? (
-                                <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaVisibility} />
+                                <PiEye className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
                             ) : (
-                                <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaVisibility} />
+                                <PiEyeClosedBold className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
                             )}
                         </div>
                         {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
@@ -176,15 +209,16 @@ export default function FormCadastro({ onNext }) {
                     <div className="col-span-3">
                         <div className="relative">
                             <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type={inputSenhaConfirmacao}
+                                type={inputSenha}
+                                disabled={inputAction}
                                 placeholder="Confirme senha"
                                 {...register('senhaConfirmacao')}
                             />
 
-                            {visivelSenhaConfirmacao ? (
-                                <PiEye className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
+                            {visivelSenha ? (
+                                <PiEye className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
                             ) : (
-                                <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={toggleSenhaConfirmacaoVisibility} />
+                                <PiEyeClosedBold className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
                             )}
                         </div>
                         {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
@@ -196,6 +230,7 @@ export default function FormCadastro({ onNext }) {
                             type="checkbox"
                             name="termos"
                             id="termos"
+                            disabled={inputAction}
                             className="text-blue-600 h-5 w-5 mr-4 ml-2"
                             checked={acceptedTerms || false}
                             onChange={handleCheckboxChange} // Usar a função para atualizar o valor
@@ -222,11 +257,13 @@ export default function FormCadastro({ onNext }) {
                             type="checkbox"
                             name="aceite_whatsapp"
                             id="aceite_whatsapp"
+                            disabled={inputAction}
                             className="text-blue-600 h-5 w-5 mr-4 ml-2"
                             checked={acceptedWhatsapp || false}
                             onChange={handleCheckboxChange} // Usar a função para atualizar o valor
                             {...register("aceite_whatsapp", { required: "Você deve aceitar os termos para continuar." })}
                         />
+
                         <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="aceite_whatsapp">
                             <span className="mr-2">
                                 Autorizo a Valoreal entrar em contato comigo por celular, e-mail ou WhatsApp.
@@ -235,18 +272,11 @@ export default function FormCadastro({ onNext }) {
                         </label>
                     </div>
                     
-                    <div>
-                        <div onClick={(e) => { e.preventDefault(); onLoginOpen(); }}>
-                            Abrir
-                        </div>
-                        <ModalLogin isOpen={isLoginOpen} onOpenChange={onLoginOpenChange} />
-                    </div>
-
                 </div>
 
                 {/*Botão do step*/}
                 <div className="!grid-cols-1 container-form-footer">
-                    <BtnNext nome={'Criar conta'} type="submit" />
+                    <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
                 </div>
 
             </motion.div>

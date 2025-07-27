@@ -20,7 +20,7 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
     const [step, setStep] = useState(1);
     const { formData, atualizarForm } = useFormData();
 
-    const titleChartCadastro = useMemo(() => ["Preenchimento de proposta"]);
+    const titleChartCadastro = useMemo(() => ["Preenchimento de proposta"], []);
 
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
@@ -61,7 +61,7 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
         setTitulo(fgtsTitle[step - 1]);
         setDescricao(fgtsDescription[step - 1]);
         setStepCurrent(fgtsSteps)
-    }, [step, setTitleChart, setProgressChange, setTitulo, setDescricao, setStepCurrent, fgtsTitle, fgtsDescription, fgtsSteps]);
+    }, [step, setTitleChart, setProgressChange, setTitulo, setDescricao, setStepCurrent, fgtsTitle, fgtsDescription, fgtsSteps, titleChartCadastro]);
 
     const nextStep = (data) => {
         atualizarForm(data)

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import IndexFC from '../../components/faleconosco/IndexFaleConosco';
 
-export default function Contact() {
+export default function FaleConosco() {
     return (
     <>
         <Head>

@@ -45,9 +45,9 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
     const [step, setStep] = useState(1);
     const { formData, atualizarForm } = useFormData();
 
-    const titleChartCadastro = useMemo(() => ["Preenchimento de proposta",]);
+    const titleChartCadastro = useMemo(() => ["Preenchimento de proposta",], []);
 
-    const titleChartEnvioDocumento = useMemo(() => ["Envio de documentos",]);
+    const titleChartEnvioDocumento = useMemo(() => ["Envio de documentos",], []);
 
     const cadastroSteps = useMemo(() => [
         { key: "Registrar conta", thresholds: 0 },
@@ -125,10 +125,23 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
             setTitleText(envioDocLuzTitle[step - 8]);
             setDescriptionText(envioDocLuzDescription[step - 8]);
             setStepCurrent(envioDocumentoSteps)
-        }
-
-
-    }, [step, setTitleChart, setProgressChange, setTitleText, setDescriptionText, setStepCurrent, cadastroLuzTitle, cadastroLuzDescription, cadastroSteps]);
+        
+        }}, [step, 
+            setTitleChart, 
+            setProgressChange, 
+            setTitleText, 
+            setDescriptionText, 
+            setStepCurrent, 
+            cadastroLuzTitle, 
+            cadastroLuzDescription, 
+            cadastroSteps, 
+            envioDocLuzDescription, 
+            envioDocLuzTitle,
+            envioDocumentoSteps,
+            titleChartCadastro,
+            titleChartEnvioDocumento
+            ]
+        );
 
     const nextStep = (data) => {
         atualizarForm(data)

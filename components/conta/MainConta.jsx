@@ -30,7 +30,7 @@ export default function MainCONTA() {
     return (
         <main>
             <div className='bgMainPrincipal pb-40'>
-                <div className='grid grid-cols-6 justify-around lg:p-10 p-6 pt-10 lg:pt-12 lg:mx-32'>
+                <div className='grid grid-cols-6 justify-around lg:p-10 p-6 pt-10 lg:pt-12 '>
                     
                     <Link href='/' passHref className='lg:w-44 w-36 items-center flex lg:mx-auto col-span-3 lg:col-span-2 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                         <Image src={logoBranco} alt=''/>
@@ -49,6 +49,7 @@ export default function MainCONTA() {
                             {showLogin ? 'Voltar' : 'Acessar Conta'}
                         </BtnConta>
                     </div>
+
                 </div>
             </div>
 

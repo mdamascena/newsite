@@ -41,9 +41,9 @@ export default function FormAutorizacao({ onNext, backStep }) {
         if (!adesaoWatch) {
             toastErrorColored("Selecione uma opção.")
             return;
-        } if (!selectedKey){
-            toastErrorColored("Selecione o pix para continuar.")
-            return;
+        // } if (!selectedKey){
+        //     toastErrorColored("Selecione o pix para continuar.")
+        //     return;
         } else {
             atualizarForm(data);
             onNext();
@@ -68,7 +68,7 @@ export default function FormAutorizacao({ onNext, backStep }) {
         if(formData.banco){
             setValue("banco", formData.banco)
         }
-    }, [formData.banco])
+    }, [formData.banco, setValue])
 
     return (
         <div className="lg:min-h-[100vh]">

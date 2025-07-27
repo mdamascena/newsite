@@ -1,5 +1,7 @@
 export function validateCPF(value) {
+    
     const cleanedValue = value.replace(/[^\d]/g, ''); // Remove caracteres não numéricos
+    
     if (cleanedValue.length !== 11) {
         return false;
     }
@@ -46,3 +48,5 @@ export function validatePhoneNumber(value) {
 
     return true;
 }
+
+export { loginSchema } from "../schemaLogin";

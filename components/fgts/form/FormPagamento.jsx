@@ -168,14 +168,12 @@ export default function FormPagamento({ onNext, backStep }) {
                                         {selectedKey === "CPF" && (
                                             <motion.div variants={container} className="lg:col-span-6 col-span-1 mt-4">
                                                 <Input
-                                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.chaveCpf ? "border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50" : ""
-                                                        }`}
+                                                    className='py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500'
                                                     type="text"
                                                     disabled
                                                     placeholder="CPF *"
-                                                    {...register("chaveCpf", { required: "Campo obrigatório" })}
+                                                    {...register("chaveCpf")}
                                                 />
-                                                {errors.chaveCpf && <p className="text-red-500 text-xs mt-1">{errors.chaveCpf.message}</p>}
                                             </motion.div>
                                         )}
 

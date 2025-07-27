@@ -323,7 +323,7 @@ a {
 }
 
 .bgMainQuemSomos {
-  background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle, #2b31a2 0, #00004b 100%);
+  background-image: url(../public/img/call_valoreal.jpg), radial-gradient(circle closest-side, #2b31a27e 0, #00004b 150%);
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
@@ -385,6 +385,10 @@ a {
 
   .bgMainAtendimento {
     background-position: 37%;
+  }
+
+  .bgMainQuemSomos {
+    background-size: inherit;
   }
 
 }

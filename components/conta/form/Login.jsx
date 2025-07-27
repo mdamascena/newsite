@@ -45,15 +45,15 @@ export default function Login({ setShowLogin }) {
                         ) : (
                             <PiEyeClosedBold className='absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-4xl p-2 cursor-pointer' onClick={togglePassVisibility}/>
                         )}
-                        
                     </div>
-
+                    
                     <Btn type='submit'>Acessar</Btn>
-
-
                 </form>
-                <BtnReset className='mt-2' onClick={handleResetClick}>Esqueci senha</BtnReset>
-                
+
+                <BtnReset className='mt-2' onClick={handleResetClick}>
+                    Esqueci senha
+                </BtnReset>
+
             </motion.div>
             
         </AnimatePresence>

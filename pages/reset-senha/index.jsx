@@ -1,14 +1,14 @@
 import Head from 'next/head'
-import IndexQuemSomos from '../../components/quemsomos/IndexQuemSomos'
+import IndexResetSenha from '../../components/resetsenha/IndexResetSenha'
 
-export default function QuemSomos() {
+export default function ResetSenha() {
     return (
         <>
             <Head>
-                <title>Quem Somos</title>
+                <title>Nova senha</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             </Head>
-            <IndexQuemSomos/>
+            <IndexResetSenha/>
         </>
   )
 }
