@@ -15,8 +15,6 @@ import { OptLabel } from "../styles"
 import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
 
-
-
 export default function FormTipoOcupacao({onNext, backStep}) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();

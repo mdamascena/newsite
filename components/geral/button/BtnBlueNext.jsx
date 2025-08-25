@@ -18,9 +18,9 @@ const BtnNext = tw.button`
     disabled:opacity-50  
 `
 
-export default function BtnBlueNext ({nome, event, iconLeft, iconRight, habilitado}){
+export default function BtnBlueNext ({nome, event, iconLeft, iconRight, habilitado, tipo, className}){
     return(
-        <BtnNext onClick={event} disabled={habilitado}>
+        <BtnNext type={tipo} className={className} onClick={event} disabled={habilitado}>
             {iconLeft}
             {nome}
             {iconRight}

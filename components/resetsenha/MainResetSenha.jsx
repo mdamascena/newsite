@@ -33,7 +33,7 @@ export default function MainResetSenha() {
                 setTimeout(() => {
                 // Aqui você pode redirecionar para login
                 console.log('Redirecionar para login ou fechar modal');
-                }, 3000);
+                }, 30000);
             } else {
                 setError(true);
                 setTimeout(() => setError(false), 3000);
@@ -67,7 +67,7 @@ export default function MainResetSenha() {
 
                     {success && <Sucess show={success} />}
                     {error && <Failed show={error} />}
-                    
+
                 </div>
 
             </div>

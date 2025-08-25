@@ -1,4 +1,4 @@
-import { BtnPass } from '../styles'
+import BtnBlueNext from "components/geral/button/BtnBlueNext"
 import { HiOutlineKey } from "react-icons/hi2"
 import { TbMessage2Filled } from "react-icons/tb"
 import { IoMail } from "react-icons/io5"
@@ -7,13 +7,30 @@ import { MdRadioButtonUnchecked } from "react-icons/md"
 import { motion, AnimatePresence } from 'framer-motion'
 import ModalReset from '../../geral/modal/ModalReset'
 import { useState } from 'react'
+import { ToastContainer } from "react-toastify"
+import { toastErrorColored } from "shared/toastUtils/toastValidation";
 
 export default function FormPass() {
 
     const [abrirModal, setAbrirModal] = useState(false)
+    const [selectedOption, setSelectedOption] = useState(null)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!selectedOption) {
+            toastErrorColored("Selecione uma opção para continuar.");
+            return;
+        }
+
+        // Aqui você pode chamar o backend para enviar o SMS ou e-mail
+        console.log("Opção escolhida:", selectedOption);
+    };
 
     return (
         <AnimatePresence>
+
+            <ToastContainer />
 
             <motion.div
                 initial={ {scale: 0} }
@@ -27,7 +44,7 @@ export default function FormPass() {
                     </p>
                 </div>
 
-                <form className='grid gap-y-4'>
+                <form className='grid gap-y-4' onSubmit={handleSubmit}>
                     {/* <Input type='email' className='py-6 bg-slate-200 placeholder:text-slate-400 focus-visible:ring-blue-500' placeholder='Digite seu e-mail'/> */}
                     
                     <div className="gap-4 grid">
@@ -41,6 +58,7 @@ export default function FormPass() {
                                     name="opcaoEnvio"
                                     id="enviaSMS"
                                     value="1"
+                                    onChange={(e) => setSelectedOption(e.target.value)}
                                 />
 
                                 <label htmlFor="enviaSMS" key="enviaSMS" className="col-span-1 border-1 hover:ring-2 duration-300 peer-checked:border-blue-500 peer-checked:bg-blue-200 bg-slate-200 rounded-lg p-2 items-center flex constant">
@@ -69,6 +87,7 @@ export default function FormPass() {
                                     name="opcaoEnvio"
                                     id="enviaMail"
                                     value="0"
+                                    onChange={(e) => setSelectedOption(e.target.value)}
                                 />
 
                                 <label htmlFor="enviaMail" key="enviaMail" className="col-span-1 border-1 hover:ring-2 duration-300 peer-checked:border-blue-500 peer-checked:bg-blue-200 bg-slate-200 rounded-lg p-2 items-center flex constant">
@@ -93,10 +112,13 @@ export default function FormPass() {
                         </div>
                     </div>
 
-                    <BtnPass className='flex'>
-                        <HiOutlineKey className='text-xl mr-2'/>
-                        Recuperar senha
-                    </BtnPass>
+                    <BtnBlueNext 
+                        tipo={"submit"} 
+                        classN={'flex'} 
+                        nome={"Recuperar senha"} 
+                        iconLeft={<HiOutlineKey className='text-xl mr-2'/>}
+                    />
+
                 </form>
  
                 {/* <BtnReset onClick={()=>{setAbrirModal(true)}} className='mt-2'>Esqueci o e-mail</BtnReset> */}

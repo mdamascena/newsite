@@ -1,53 +1,5 @@
 import tw from "tailwind-styled-components";
 
-//FORM LOGIN
-export const Btn = tw.button`
-    bg-blue-700
-    items-center 
-    justify-center
-    text-white
-    w-full
-    py-3
-    lg:px-5 
-    rounded-lg
-    active:bg-blue-900
-    hover:bg-blue-600
-    hover:scale-105
-    active:scale-90 
-    duration-150   
-`
-export const BtnReset = tw.button`
-    bg-blue-100
-    items-center
-    justify-center
-    text-blue-500
-    w-full
-    py-3
-    lg:px-5 
-    rounded-lg
-    active:bg-blue-300
-    hover:bg-blue-50
-    hover:scale-105
-    active:scale-90 
-    duration-150
-`;
-
-//FORM RESET
-export const BtnPass = tw.button`
-    bg-blue-700
-    items-center 
-    justify-center
-    text-white
-    w-full
-    py-3
-    lg:px-5 
-    rounded-lg
-    active:bg-blue-900
-    hover:bg-blue-600
-    hover:scale-105
-    active:scale-90 
-    duration-150 
-`
 
 //MAIN CONTA
 export const BtnConta = tw.button`

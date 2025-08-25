@@ -187,5 +187,54 @@
         {"prazo": 16, "parcela": "200,00"},
         {"prazo": 18, "parcela": "200,00"},
         {"prazo": 20, "parcela": "200,00"}
+    ],
+    "3400": 
+    [
+        {"prazo": 15, "parcela": "100,00"},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
+    ],
+    "3500": 
+    [
+        {"prazo": 15, "parcela": "100,00"},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
+    ],
+    "3600": 
+    [
+        {"prazo": 15, "parcela": "100,00"},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
+    ],
+    "3700": 
+    [
+        {"prazo": 15, "parcela": "100,00"},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
+    ],
+    "3800": 
+    [
+        {"prazo": 15, "parcela": "100,00"},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
+    ],
+    "3900": 
+    [
+        {"prazo": 15, "parcela": "100,00"},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
+    ],
+    "4000": 
+    [
+        {"prazo": 15, "parcela": 100.00},
+        {"prazo": 16, "parcela": "200,00"},
+        {"prazo": 18, "parcela": "200,00"},
+        {"prazo": 20, "parcela": "200,00"}
     ]
   }

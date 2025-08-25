@@ -56,7 +56,7 @@ export default function FormPagamento({ onNext, backStep }) {
         if(formData.banco){
             setValue("banco", formData.banco)
         }
-    }, [formData.banco])
+    }, [formData.banco, setValue])
 
     return (
         <div className="lg:min-h-[100vh]">

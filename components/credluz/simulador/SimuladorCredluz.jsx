@@ -135,6 +135,38 @@ export default function SimuladorCredLuz() {
         3300: {
             component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
             title: 'Simulação de R$ 3.300,00'
+        },
+        3400: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.400,00'
+        },
+        3500: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.500,00'
+        },
+        3500: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.500,00'
+        },
+        3600: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.600,00'
+        },
+        3700: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.700,00'
+        },
+        3800: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.800,00'
+        },
+        3900: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 3.900,00'
+        },
+        4000: {
+            component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,
+            title: 'Simulação de R$ 4.000,00'
         }
     };
 

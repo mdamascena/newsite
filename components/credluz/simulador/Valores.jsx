@@ -37,7 +37,7 @@ export default function Valores({showSimulador, itemVariants}) {
                 <Slider
                     defaultValue={[700]}
                     min={700}
-                    max={3300}
+                    max={4000}
                     step={100}
                     onValueChange={handleValueChange}
                     value={values}
@@ -45,7 +45,7 @@ export default function Valores({showSimulador, itemVariants}) {
                 />
                
                 <div className='text-white text-center mt-6 font-light'>
-                    Escolha entre R$ 700,00 a R$ 3.300,00
+                    Escolha entre R$ 700,00 a R$ 4.000,00
                 </div>
                 
             </div>

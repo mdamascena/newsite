@@ -7,12 +7,14 @@ import { useFormData } from "../../../context/FormContext"
 import { useDisclosure } from "@nextui-org/react"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { motion } from 'framer-motion'
-import { container } from "shared/motionUtils/motionTransation"
+import { container, item } from "shared/motionUtils/motionTransation"
 import Link from "next/link"
 import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../button/BtnBlueNext'
 import ModalLogin from '../../geral/modal/ModalLogin'
 import { validateCPF } from "schema/validations"
+import { ToastContainer } from "react-toastify"
+import { toastErrorColored } from "shared/toastUtils/toastValidation"
 
 export default function FormCadastro({ onNext }) {
 
@@ -72,8 +74,10 @@ export default function FormCadastro({ onNext }) {
         
         const isValidCPF = validateCPF(cpfValue);
 
-       if (isValidCPF) {
+        if (isValidCPF) {
             setInputAction(false); // habilita campos
+        
+            console.log('CPF Valido')
         } else {
             setInputAction(true); // desabilita campos e limpa outros
             // Limpar campos quando CPF não é válido
@@ -85,17 +89,34 @@ export default function FormCadastro({ onNext }) {
             setValue("senhaConfirmacao", "");
             setValue("termos", false);
             setValue("aceite_whatsapp", false);
+            console.log('CPF não Valido')
         }
 
         if (cpfValue === "555.555.555-55") {
             onLoginOpen(cpfValue);
         }
 
+        if (isValidCPF.length === 11 && isValidCPF){
+            toastErrorColored("Informe CPF para redefinir a senha");
+        }
+
+
     }, [cpfValue, onLoginOpen, errors, setValue]);
+
+    const handleResetClick = async () => {
+        const isValid = await trigger("cpf");
+        if (!isValid) {
+            toastErrorColored("Informe CPF para redefinir a senha");
+            return;
+        }
+        setShowLogin(false);
+    };
 
     return (
 
         <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
+
+            <ToastContainer/>
 
             <ModalLogin isOpen={isLoginOpen} onOpenChange={(open) => {onLoginOpenChange(open);
                 if (!open) {setValue("cpf", "")}}}
@@ -115,172 +136,178 @@ export default function FormCadastro({ onNext }) {
                             Cadastro de conta
                         </h1>
                     </div>
-                    <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                        Crie uma senha simples para você acessar a sua proposta e acompanhar a análise
-                    </p>
+                    {inputAction &&(
+                        <motion.p variants={container} className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
+                            Começe digitando o seu CPF e siga o passo a passo
+                        </motion.p>
+                    )}
+
+                    {!inputAction &&(
+                        <motion.p variants={container} className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
+                            Complete seu cadastro e crie uma senha simples, que seja fácil de lembrar
+                        </motion.p>
+                    )}
                 </div>
 
                 {/*Form do step*/}
                 <div className="grid-cols-6 container-form-body">
 
-                    <div className="lg:col-span-6 col-span-3">
+                    <div className={`lg:col-span-6 ${!inputAction ? 'col-span-3' : 'col-span-6'}`}>
                         <Input
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             inputMode="numeric"
                             placeholder='Digite seu CPF'
-                            
                             {...registerWithMask("cpf", ["999.999.999-99"], {showMaskOnHover:false})}
                         />
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
-
-                    <div className="lg:col-span-2 col-span-3">
-                        <Input
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            disabled={inputAction}
-                            inputMode="numeric"
-                            placeholder="Nascimento *"
-                            {...registerWithMask("dataNascimento", ['99/99/9999'])}
-                        />
-                        {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
-                    </div>
-
-                    <div className="lg:col-span-4 col-span-6">
-                        <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
-                            }`}
-                            placeholder="Seu nome completo? *"
-                            pattern="[a-zA-Z\s]*"
-                            disabled={inputAction}
-                            {...register('nome')}
-                        />
-                        {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
-                    </div>
-
-
-                    <div className="col-span-6 grid grid-cols-6 gap-2">
-                        <div className="lg:col-span-3 col-span-6">
-                            <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type="email"
-                                disabled={inputAction}
-                                placeholder="Seu e-mail *"
-                                {...register('email')}
-                            />
-                            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
-                        </div>
-
-                        <div className="lg:col-span-3 col-span-6 relative">
-                            <Input
-                                className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type="text"
-                                inputMode="numeric"
-                                disabled={inputAction}
-                                placeholder="Seu celular *"
-                                {...registerWithMask("celular", ['99 99999-9999'])}
-                            />
-                            <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : `${ inputAction ? 'text-slate-300':'text-slate-400'}`}`} />
-                            {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
-                        </div>
-                    </div>
-
-                    <h5 className="col-span-6 lg:mb-2 lg:mt-4 my-2 text-slate-400 font-light lg:text-base text-sm">
-                        Crie uma senha simples
-                    </h5>
-
-                    <div className="col-span-3">
-                        <div className="relative">
-                            <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type={inputSenha}
-                                disabled={inputAction}
-                                placeholder="Crie um senha"
-                                {...register('senha')}
-                            />
-
-                            {visivelSenha ? (
-                                <PiEye className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
-                            ) : (
-                                <PiEyeClosedBold className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
-                            )}
-                        </div>
-                        {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
-                    </div>
-
-                    <div className="col-span-3">
-                        <div className="relative">
-                            <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                                type={inputSenha}
-                                disabled={inputAction}
-                                placeholder="Confirme senha"
-                                {...register('senhaConfirmacao')}
-                            />
-
-                            {visivelSenha ? (
-                                <PiEye className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
-                            ) : (
-                                <PiEyeClosedBold className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
-                            )}
-                        </div>
-                        {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
-                    </div>
-
-                    <div className="col-span-6 lg:mt-3 mt-2 flex items-center">
-
-                        <input
-                            type="checkbox"
-                            name="termos"
-                            id="termos"
-                            disabled={inputAction}
-                            className="text-blue-600 h-5 w-5 mr-4 ml-2"
-                            checked={acceptedTerms || false}
-                            onChange={handleCheckboxChange} // Usar a função para atualizar o valor
-                            {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
-                        />
-
-                        <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="termos">
-                            <span className="mr-2">
-                                Li e aceito os termos.
-                            </span>
-
-                            <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOptOpen(); }}>
-                                Ver termos de uso e política de privacidade.
-                            </Link>
-
-                            {errors.termos && <p className="text-red-500 text-sm mt-1">{errors.termos.message}</p>}
-                        </label>
-                    </div>
-
-                    <ModalOpt isOpen={isOptOpen} onOpenChange={onOptOpenChange} onAccept={handleAccept} />
-
-                    <div className="col-span-6 my-2 flex items-center">
-                        <input
-                            type="checkbox"
-                            name="aceite_whatsapp"
-                            id="aceite_whatsapp"
-                            disabled={inputAction}
-                            className="text-blue-600 h-5 w-5 mr-4 ml-2"
-                            checked={acceptedWhatsapp || false}
-                            onChange={handleCheckboxChange} // Usar a função para atualizar o valor
-                            {...register("aceite_whatsapp", { required: "Você deve aceitar os termos para continuar." })}
-                        />
-
-                        <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="aceite_whatsapp">
-                            <span className="mr-2">
-                                Autorizo a Valoreal entrar em contato comigo por celular, e-mail ou WhatsApp.
-                            </span>
-                            {errors.aceite_whatsapp && <p className="text-red-500 text-sm mt-1">{errors.aceite_whatsapp.message}</p>}
-                        </label>
-                    </div>
                     
+                    {!inputAction &&(
+                        <>
+                            <motion.div variants={item} className="lg:col-span-2 col-span-3">
+                                <Input
+                                    className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.dataNascimento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                    type="text"
+                                    inputMode="numeric"
+                                    placeholder="Nascimento *"
+                                    {...registerWithMask("dataNascimento", ['99/99/9999'])}
+                                />
+                                {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
+                            </motion.div>
+                        
+                            <motion.div variants={item} className="lg:col-span-4 col-span-6">
+                                <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nome ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''
+                                    }`}
+                                    placeholder="Seu nome completo? *"
+                                    pattern="[a-zA-Z\s]*"
+                                    {...register('nome')}
+                                />
+                                {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
+                            </motion.div>
+
+                            <motion.div variants={item} className="col-span-6 grid grid-cols-6 gap-2">
+                                <div className="lg:col-span-3 col-span-6">
+                                    <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                        type="email"
+                                        placeholder="Seu e-mail *"
+                                        {...register('email')}
+                                    />
+                                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                                </div>
+
+                                <div className="lg:col-span-3 col-span-6 relative">
+                                    <Input
+                                        className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                        type="text"
+                                        inputMode="numeric"
+                                        placeholder="Seu celular *"
+                                        {...registerWithMask("celular", ['99 99999-9999'])}
+                                    />
+                                    <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : `${ inputAction ? 'text-slate-300':'text-slate-400'}`}`} />
+                                    {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
+                                </div>
+                            </motion.div>
+
+                            <motion.div variants={item} className="col-span-6 lg:mb-2 lg:mt-4 my-2 text-slate-400 font-light lg:text-base text-sm">
+                                Crie uma senha simples
+                            </motion.div>
+
+                            <motion.div variants={item} className="col-span-3">
+                                <div className="relative">
+                                    <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                        type={inputSenha}
+                                        placeholder="Crie um senha"
+                                        {...register('senha')}
+                                    />
+
+                                    {visivelSenha ? (
+                                        <PiEye className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
+                                    ) : (
+                                        <PiEyeClosedBold className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
+                                    )}
+                                </div>
+                                {errors.senha && <p className="text-red-500 text-xs mt-1">{errors.senha.message}</p>}
+                            </motion.div>
+
+                            <motion.div variants={item} className="col-span-3">
+                                <div className="relative">
+                                    <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senhaConfirmacao ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                                        type={inputSenha}
+                                        disabled={inputAction}
+                                        placeholder="Confirme senha"
+                                        {...register('senhaConfirmacao')}
+                                    />
+
+                                    {visivelSenha ? (
+                                        <PiEye className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
+                                    ) : (
+                                        <PiEyeClosedBold className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${ inputAction ? 'text-slate-300':'text-slate-400'} text-4xl p-2 cursor-pointer`} onClick={toggleSenhaVisibility} />
+                                    )}
+                                </div>
+                                {errors.senhaConfirmacao && <p className="text-red-500 text-xs mt-1">{errors.senhaConfirmacao.message}</p>}
+                            </motion.div>
+
+                            <motion.div variants={item} className="col-span-6 lg:mt-3 mt-2 flex items-center">
+                                <input
+                                    type="checkbox"
+                                    name="termos"
+                                    id="termos"
+                                    disabled={inputAction}
+                                    className="text-blue-600 h-5 w-5 mr-4 ml-2"
+                                    checked={acceptedTerms || false}
+                                    onChange={handleCheckboxChange} // Usar a função para atualizar o valor
+                                    {...register("termos", { required: "Você deve aceitar os termos para continuar." })}
+                                />
+
+                                <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="termos">
+                                    <span className="mr-2">
+                                        Li e aceito os termos.
+                                    </span>
+
+                                    <Link className="text-blue-400" href="#" onClick={(e) => { e.preventDefault(); onOptOpen(); }}>
+                                        Ver termos de uso e política de privacidade.
+                                    </Link>
+
+                                    {errors.termos && <p className="text-red-500 text-sm mt-1">{errors.termos.message}</p>}
+                                </label>
+                            </motion.div>
+
+                            <ModalOpt isOpen={isOptOpen} onOpenChange={onOptOpenChange} onAccept={handleAccept} />
+
+                            <motion.div variants={item} className="col-span-6 my-2 flex items-center">
+                                <input
+                                    type="checkbox"
+                                    name="aceite_whatsapp"
+                                    id="aceite_whatsapp"
+                                    disabled={inputAction}
+                                    className="text-blue-600 h-5 w-5 mr-4 ml-2"
+                                    checked={acceptedWhatsapp || false}
+                                    onChange={handleCheckboxChange} // Usar a função para atualizar o valor
+                                    {...register("aceite_whatsapp", { required: "Você deve aceitar os termos para continuar." })}
+                                />
+
+                                <label className='text-slate-400 font-light lg:text-md text-xs w-full' htmlFor="aceite_whatsapp">
+                                    <span className="mr-2">
+                                        Autorizo a Valoreal entrar em contato comigo por celular, e-mail ou WhatsApp.
+                                    </span>
+                                    {errors.aceite_whatsapp && <p className="text-red-500 text-sm mt-1">{errors.aceite_whatsapp.message}</p>}
+                                </label>
+                            </motion.div>
+                        </>
+                    )}
+
                 </div>
 
                 {/*Botão do step*/}
-                <div className="!grid-cols-1 container-form-footer">
-                    <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
-                </div>
+                {!inputAction && (
+                    <motion.div className="!grid-cols-1 container-form-footer" variants={item}>
+                        <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
+                    </motion.div>
+                )}
 
-            </motion.div>
-
+            </motion.div>  
+        
         </form>
     )
 }

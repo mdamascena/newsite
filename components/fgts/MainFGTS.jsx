@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { BtnCalc, EmpTitle } from './styles'
 import ImgMain from '../../public/img/pers_home1.png'
+import ImgMainMobile from '../../public/img/pers_fgts_mobile.png'
 import SimuladorFGTS from './SimuladorFGTS'
 import Vantagens from './VantagensFGTS'
 import Regras from './RegrasGeraisFGTS'
@@ -19,9 +20,11 @@ export default function MainFGTS() {
     
     return (
         <main>
+            
             <div className="bgMainFGTS">
                 
                 <div className='lg:pt-24 pt-20 grid grid-cols-1 lg:grid-cols-2 container-custom'>
+                    
                     <div className='lg:my-auto mb-10 lg:ml-5 select-none'>
                         <EmpTitle>Empréstimo</EmpTitle>
                         <h1 className='text-blue-600 lg:text-5xl text-2xl text-center lg:text-left font-semibold tracking-tighter'>
@@ -35,9 +38,11 @@ export default function MainFGTS() {
                         </div>
                     </div>
 
-                    <div className='flex justify-center'>
-                        <Image width={600} src={ImgMain} alt='' />
+                    <div className=''>
+                        <Image className='lg:block hidden' width={600} src={ImgMain} alt='' />
+                        <Image className='mx-auto lg:hidden block' width={350} src={ImgMainMobile} alt='' />
                     </div>
+
                 </div>
 
             </div>
@@ -48,7 +53,7 @@ export default function MainFGTS() {
                 TituloGuru='Não deixe o seu FGTS parado!'
                 DescricaoGuru='Utilize o seu saldo e fique tranquilo com suas finanças ou realize seus planos.' 
                 DescrisaoProduto='Antecipação do saque FGTS'
-                Taxa='1,59%'
+                Taxa='1,29%'
                 DescrisaoTaxa='A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.'
             />
             <Regras />
