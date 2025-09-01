@@ -10,10 +10,20 @@ const MAX_AGE = 84; // Idade máxima em anos
 export const cadastroSchema = yup.object().shape(
     {
 
+        // cpf: yup.string()
+        // .min(11, "O CPF deve ter pelo menos 11 dígitos")
+        // .max(14, "O CPF deve ter no máximo 14 dígitos")
+        // .test("is-valid-cpf", "O CPF é inválido", (value) => validateCPF(value)),
+
         cpf: yup.string()
-        .min(11, "O CPF deve ter pelo menos 11 dígitos")
-        .max(14, "O CPF deve ter no máximo 14 dígitos")
-        .test("is-valid-cpf", "O CPF é inválido", (value) => validateCPF(value)),
+        .required('Informe seu CPF')
+        .test('cpf-valido', 'CPF inválido', (v) => {
+            const d = (v || '').replace(/\D/g, '');
+            if (d.length < 11){
+                return true; // enquanto incompleto, não erra
+            }
+            return validateCPF(v || '');
+        }),
     
         nome: yup.string()
         .test("is-full-name", "Preencha o seu nome completo!", (value) => validateFullName(value))

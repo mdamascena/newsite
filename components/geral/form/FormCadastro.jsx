@@ -14,11 +14,12 @@ import BtnNext from '../button/BtnBlueNext'
 import ModalLogin from '../../geral/modal/ModalLogin'
 import { validateCPF } from "schema/validations"
 import { ToastContainer } from "react-toastify"
-import { toastErrorColored } from "shared/toastUtils/toastValidation"
+import { toastErrorColored, toastInfoColored, toastSuccessColored } from "shared/toastUtils/toastValidation"
+import { LuCircleCheckBig } from "react-icons/lu";
 
 export default function FormCadastro({ onNext }) {
 
-    const { register, watch, handleSubmit, formState: { errors }, setValue } = useFormContext();
+    const { register, watch, handleSubmit, formState: { errors }, setValue, clearErrors } = useFormContext();
     const registerWithMask = useHookFormMask(register);
 
     const acceptedTerms = watch("termos");
@@ -70,47 +71,80 @@ export default function FormCadastro({ onNext }) {
     //Para testar o modal, apagar depois que fizer pelo back
     const cpfValue = watch("cpf") || "";
     
-    useEffect(() =>{
-        
-        const isValidCPF = validateCPF(cpfValue);
+    useEffect(() => {
+        const cleanedCpf = (cpfValue || '').replace(/\D/g, '');
 
-        if (isValidCPF) {
-            setInputAction(false); // habilita campos
-        
-            console.log('CPF Valido')
-        } else {
-            setInputAction(true); // desabilita campos e limpa outros
-            // Limpar campos quando CPF não é válido
-            setValue("dataNascimento", "");
-            setValue("nome", "");
-            setValue("email", "");
-            setValue("celular", "");
-            setValue("senha", "");
-            setValue("senhaConfirmacao", "");
-            setValue("termos", false);
-            setValue("aceite_whatsapp", false);
-            console.log('CPF não Valido')
-        }
-
-        if (cpfValue === "555.555.555-55") {
-            onLoginOpen(cpfValue);
-        }
-
-        if (isValidCPF.length === 11 && isValidCPF){
-            toastErrorColored("Informe CPF para redefinir a senha");
-        }
-
-
-    }, [cpfValue, onLoginOpen, errors, setValue]);
-
-    const handleResetClick = async () => {
-        const isValid = await trigger("cpf");
-        if (!isValid) {
-            toastErrorColored("Informe CPF para redefinir a senha");
+        if (cleanedCpf.length < 11) {
+            setInputAction(true);
+            clearErrors('cpf'); // some com vermelho enquanto digita
             return;
         }
-        setShowLogin(false);
-    };
+
+        if (cleanedCpf.length === 11) {
+            const isValidCPF = validateCPF(cpfValue);
+
+            if (isValidCPF) {
+                setInputAction(false);
+                
+                toastInfoColored("Validando CPF...",{
+                    autoClose: 1500,
+                    pauseOnHover: false,
+                    theme: "light"
+
+                });
+                setTimeout(() => {setInputAction(false);}, 1500);
+                
+                // opcional: clearErrors para garantir UI limpa
+                clearErrors('cpf');
+            } else {
+                setInputAction(true);
+                setValue("dataNascimento", "");
+                setValue("nome", "");
+                setValue("email", "");
+                setValue("celular", "");
+                setValue("senha", "");
+                setValue("senhaConfirmacao", "");
+                setValue("termos", false);
+                setValue("aceite_whatsapp", false);
+                toastErrorColored("CPF inválido!",{
+                    autoClose: 1500,
+                    pauseOnHover: false,
+                    theme: "light"
+                });
+            }
+
+            
+        }
+    }, [cpfValue, onLoginOpen, setValue, clearErrors]);
+
+    // const handleResetClick = async () => {
+    //     const isValid = await trigger("cpf");
+    //     if (!isValid) {
+    //         toastErrorColored("Informe CPF para redefinir a senha");
+            
+    //     }else{
+    //         toastSuccessColored("CPF Válido!");
+    //     }
+    //     setShowLogin(false);
+    // };
+
+    const [showForm, setShowForm] = useState(false);
+
+    useEffect(() => {
+        
+        if (!inputAction) {
+            setTimeout(() => {
+                
+                if (cpfValue === "555.555.555-55") onLoginOpen(cpfValue);
+                
+                setShowForm(true);
+
+            }, 1500);
+        } else {
+            setShowForm(false); // esconde se inputAction mudar
+        }
+        }, [cpfValue, inputAction, onLoginOpen]
+    );
 
     return (
 
@@ -152,18 +186,30 @@ export default function FormCadastro({ onNext }) {
                 {/*Form do step*/}
                 <div className="grid-cols-6 container-form-body">
 
-                    <div className={`lg:col-span-6 ${!inputAction ? 'col-span-3' : 'col-span-6'}`}>
-                        <Input
+                    <div className={`lg:col-span-6 ${showForm ? 'col-span-3' : 'col-span-6'}`}>
+                        <Input 
                             className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             inputMode="numeric"
-                            placeholder='Digite seu CPF'
-                            {...registerWithMask("cpf", ["999.999.999-99"], {showMaskOnHover:false})}
-                        />
+                            placeholder="Digite seu CPF"
+                            
+                            {...registerWithMask("cpf", ["999.999.999-99"], {showMaskOnHover: false})}
+                            //     validate: (v) => {
+                            //     const digits = (v || "").replace(/\D/g, "");
+                            //     // enquanto não tiver 11 dígitos, NÃO mostre erro
+                            //     if (digits.length < 11) {
+                            //         return true
+                            //         // com 11 dígitos, valida de verdade
+                            //     }
+                            //     return validateCPF(v) || "CPF inválido";
+                            // },})}
+                        >
+                            
+                        </Input>
                         {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
                     </div>
                     
-                    {!inputAction &&(
+                    {showForm &&(
                         <>
                             <motion.div variants={item} className="lg:col-span-2 col-span-3">
                                 <Input
@@ -200,6 +246,7 @@ export default function FormCadastro({ onNext }) {
                                     <Input
                                         className={`py-6 pl-9 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.celular ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
+                                        disabled={inputAction}
                                         inputMode="numeric"
                                         placeholder="Seu celular *"
                                         {...registerWithMask("celular", ['99 99999-9999'])}
@@ -217,6 +264,7 @@ export default function FormCadastro({ onNext }) {
                                 <div className="relative">
                                     <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.senha ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type={inputSenha}
+                                        disabled={inputAction}
                                         placeholder="Crie um senha"
                                         {...register('senha')}
                                     />
@@ -300,7 +348,7 @@ export default function FormCadastro({ onNext }) {
                 </div>
 
                 {/*Botão do step*/}
-                {!inputAction && (
+                {showForm && ( 
                     <motion.div className="!grid-cols-1 container-form-footer" variants={item}>
                         <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
                     </motion.div>
