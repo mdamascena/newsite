@@ -54,7 +54,7 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
 
     const methods = useForm({   
         resolver: yupResolver(schemas[step - 1]),
-        mode: 'onChange',
+        mode: 'onSubmit',
         defaultValues: formData
     })
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
@@ -14,12 +14,13 @@ import BtnNext from '../button/BtnBlueNext'
 import ModalLogin from '../../geral/modal/ModalLogin'
 import { validateCPF } from "schema/validations"
 import { ToastContainer } from "react-toastify"
-import { toastErrorColored, toastInfoColored, toastSuccessColored } from "shared/toastUtils/toastValidation"
-import { LuCircleCheckBig } from "react-icons/lu";
+import { toastInfoColored } from "shared/toastUtils/toastValidation"
+import { GoCheckCircleFill } from "react-icons/go";
+import { GoXCircleFill } from "react-icons/go";
 
 export default function FormCadastro({ onNext }) {
 
-    const { register, watch, handleSubmit, formState: { errors }, setValue, clearErrors } = useFormContext();
+    const { register, watch, handleSubmit, formState: { errors }, setValue} = useFormContext();
     const registerWithMask = useHookFormMask(register);
 
     const acceptedTerms = watch("termos");
@@ -66,38 +67,44 @@ export default function FormCadastro({ onNext }) {
         onOpenChange: onLoginOpenChange,
     } = useDisclosure();
 
-    const [inputAction, setInputAction] = useState(true); 
+    const [inputAction, setInputAction] = useState(0); // true = desabilita campos/btn
     
-    //Para testar o modal, apagar depois que fizer pelo back
+    const [showForm, setShowForm] = useState(false);
+
     const cpfValue = watch("cpf") || "";
-    
+
+// 1) crie um ref para o timer
+const validateTimerRef = useRef(null);
+
     useEffect(() => {
+        
+        // 2) sempre cancele o timer anterior ao mudar o CPF
+        if (validateTimerRef.current) {
+            clearTimeout(validateTimerRef.current);
+            validateTimerRef.current = null;
+        }
+
         const cleanedCpf = (cpfValue || '').replace(/\D/g, '');
 
+        // menos de 11 -> interrompe tudo e sai
         if (cleanedCpf.length < 11) {
-            setInputAction(true);
-            clearErrors('cpf'); // some com vermelho enquanto digita
+            setShowForm(0);
             return;
         }
 
-        if (cleanedCpf.length === 11) {
+        // chegou a 11 -> inicia validação
+        toastInfoColored("Validando CPF...", {
+            autoClose: 1000,
+            pauseOnHover: false,
+            theme: "light"
+        });
+
+        // 3) agenda um único timeout e guarda o id
+        validateTimerRef.current = setTimeout(() => {
+            
             const isValidCPF = validateCPF(cpfValue);
 
-            if (isValidCPF) {
-                setInputAction(false);
-                
-                toastInfoColored("Validando CPF...",{
-                    autoClose: 1500,
-                    pauseOnHover: false,
-                    theme: "light"
-
-                });
-                setTimeout(() => {setInputAction(false);}, 1500);
-                
-                // opcional: clearErrors para garantir UI limpa
-                clearErrors('cpf');
-            } else {
-                setInputAction(true);
+            const limpaCampos = () => {
                 setValue("dataNascimento", "");
                 setValue("nome", "");
                 setValue("email", "");
@@ -106,45 +113,35 @@ export default function FormCadastro({ onNext }) {
                 setValue("senhaConfirmacao", "");
                 setValue("termos", false);
                 setValue("aceite_whatsapp", false);
-                toastErrorColored("CPF inválido!",{
-                    autoClose: 1500,
-                    pauseOnHover: false,
-                    theme: "light"
-                });
             }
 
-            
-        }
-    }, [cpfValue, onLoginOpen, setValue, clearErrors]);
-
-    // const handleResetClick = async () => {
-    //     const isValid = await trigger("cpf");
-    //     if (!isValid) {
-    //         toastErrorColored("Informe CPF para redefinir a senha");
-            
-    //     }else{
-    //         toastSuccessColored("CPF Válido!");
-    //     }
-    //     setShowLogin(false);
-    // };
-
-    const [showForm, setShowForm] = useState(false);
-
-    useEffect(() => {
-        
-        if (!inputAction) {
-            setTimeout(() => {
+            if (isValidCPF) {
                 
-                if (cpfValue === "555.555.555-55") onLoginOpen(cpfValue);
-                
-                setShowForm(true);
+                limpaCampos();
 
-            }, 1500);
-        } else {
-            setShowForm(false); // esconde se inputAction mudar
-        }
-        }, [cpfValue, inputAction, onLoginOpen]
-    );
+                if (cpfValue === "555.555.555-55") {
+                    onLoginOpen(cpfValue);
+                } else {
+                    setShowForm(1)
+                }
+
+            } else {
+                setShowForm(2)
+            }
+
+            // 4) limpa referência após executar
+            validateTimerRef.current = null;
+            
+        }, 1500);
+
+        // 5) limpeza ao desmontar
+        return () => {
+            if (validateTimerRef.current) {
+                clearTimeout(validateTimerRef.current);
+                validateTimerRef.current = null;
+            }
+        };
+    }, [cpfValue, onLoginOpen, setValue]);
 
     return (
 
@@ -170,46 +167,50 @@ export default function FormCadastro({ onNext }) {
                             Cadastro de conta
                         </h1>
                     </div>
-                    {inputAction &&(
-                        <motion.p variants={container} className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                            Começe digitando o seu CPF e siga o passo a passo
-                        </motion.p>
-                    )}
-
-                    {!inputAction &&(
+                    
+                    {showForm === 1 &&
                         <motion.p variants={container} className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
                             Complete seu cadastro e crie uma senha simples, que seja fácil de lembrar
                         </motion.p>
-                    )}
+                    }
+                    
+                    {(showForm === 2 || showForm === 0) &&
+                        <motion.p variants={container} className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
+                            Começe digitando o seu CPF e siga o passo a passo
+                        </motion.p>
+                    }
                 </div>
 
                 {/*Form do step*/}
                 <div className="grid-cols-6 container-form-body">
 
-                    <div className={`lg:col-span-6 ${showForm ? 'col-span-3' : 'col-span-6'}`}>
+                    <div className={`relative lg:col-span-6 ${showForm === 1 ? 'col-span-3' : 'col-span-6'}`}>
+                        
                         <Input 
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cpf ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
+                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${showForm === 2 ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                             type="text"
                             inputMode="numeric"
                             placeholder="Digite seu CPF"
-                            
                             {...registerWithMask("cpf", ["999.999.999-99"], {showMaskOnHover: false})}
-                            //     validate: (v) => {
-                            //     const digits = (v || "").replace(/\D/g, "");
-                            //     // enquanto não tiver 11 dígitos, NÃO mostre erro
-                            //     if (digits.length < 11) {
-                            //         return true
-                            //         // com 11 dígitos, valida de verdade
-                            //     }
-                            //     return validateCPF(v) || "CPF inválido";
-                            // },})}
-                        >
-                            
-                        </Input>
-                        {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf.message}</p>}
+                        />
+
+                        {showForm === 1 &&
+                            <GoCheckCircleFill className="absolute lg:text-xl text-lg top-4 right-4 text-blue-500"/>
+                        }
+                        {showForm === 2 &&
+                            <GoXCircleFill className="absolute lg:text-xl text-lg top-4 right-4 text-red-500"/>
+                        }
+                        {showForm === 2 && 
+                            <motion.div variants={container} className="p-3 bg-red-100 rounded-md border-l-4 border-red-500 mt-3 ">
+                                <p className="text-red-500 text-sm mt-1 text-center">
+                                    CPF inválido. Verifique o número digitado
+                                </p> 
+                            </motion.div>
+                        }
+                        
                     </div>
                     
-                    {showForm &&(
+                    {showForm === 1 &&(
                         <>
                             <motion.div variants={item} className="lg:col-span-2 col-span-3">
                                 <Input
@@ -348,7 +349,7 @@ export default function FormCadastro({ onNext }) {
                 </div>
 
                 {/*Botão do step*/}
-                {showForm && ( 
+                {showForm === 1 && ( 
                     <motion.div className="!grid-cols-1 container-form-footer" variants={item}>
                         <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
                     </motion.div>
