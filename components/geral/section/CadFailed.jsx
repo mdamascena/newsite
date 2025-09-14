@@ -1,9 +1,7 @@
 import React from "react"
-import { useState } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import Lottie from "lottie-react"
-import Falha from "../../../public/img/Failed.json"
-import { LiaTelegramPlane } from "react-icons/lia"
+import Falha from "../../../public/img/failed.json"
 
 
 export default function CadSucess({setShowLogin}) {
@@ -13,7 +11,6 @@ export default function CadSucess({setShowLogin}) {
     };
   
     return (
-  
         <AnimatePresence>
 
             <motion.div
@@ -33,19 +30,13 @@ export default function CadSucess({setShowLogin}) {
                     <Lottie animationData={Falha} loop={false} />
                 </div>
 
-
                 <div className="mt-auto text-red-500 mb-2 bg-red-200 rounded-lg p-3 items-center shadow-sm text-center">
                     <p className="font-light text-sm">
                         Não foi possível enviar o link. Por favor, tente novamente.
                     </p>
-                    {/* <div className="bg-blue-500 rounded-lg mx-auto text-white items-center">
-                        <LiaTelegramPlane className="text-5xl p-2" />
-                    </div> */}
                 </div>
             </motion.div>
 
         </AnimatePresence>
-
-
     );
 }

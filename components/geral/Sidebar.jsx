@@ -1,5 +1,4 @@
 'use client';
-
 import { usePathname } from "next/navigation";
 import Logotipo from "../../public/img/LOGO_AZUL.png"
 import Image from "next/image";
@@ -52,7 +51,7 @@ export default function SideBar() {
                     const isActive = rota === href;
 
                     return (
-                        <Link
+                        <Link passHref
                             key={href}
                             href={href}
                             className={`flex flex-col md:flex-row items-center md:gap-4 md:py-3 px-3 
