@@ -8,6 +8,7 @@ export default function PageTransicaoResposta() {
     const [isCompleted, setIsCompleted] = useState(false);
     const [value, setValue] = useState(0);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const messages = [
         { text: "Perfeito!", duration: 1000 },
         { text: "Aguarde só um momento, estamos analisando seus dados!", duration: 8000 },
@@ -24,7 +25,7 @@ export default function PageTransicaoResposta() {
         } else {
             setIsCompleted(true);
         }
-    }, [currentMessage]);
+    }, [currentMessage, messages]);
 
     useEffect(() => {
         const handleIncrement = (prev) => {

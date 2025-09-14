@@ -24,7 +24,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
 
     useEffect(() => {
         console.log("FormData", formData);
-    }, [])
+    }, [formData])
     
     return (
         <div className="lg:min-h-[100vh]">

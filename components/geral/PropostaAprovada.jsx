@@ -20,7 +20,7 @@ export default function PropostaAprovada({ onNext, title, subTitle, text }) {
 
     useEffect(() => {
         console.log("FormData", formData);
-    }, [])
+    }, [formData])
 
     const onSubmit = (data) => {
         onNext();

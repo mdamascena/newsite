@@ -13,6 +13,7 @@ export default function ResumoFgts({ onNext, backStep }) {
     const [ nomeBanco, setNomeBanco ] = useState('')
     const [ chavePix, setChavePix ] = useState('');
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const bancos = {
         "0": "237 - Banco Bradesco",
         "1": "341 - Banco Itaú",
@@ -21,6 +22,7 @@ export default function ResumoFgts({ onNext, backStep }) {
         "4": "104 - Caixa Econômica Federal",
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const chavesPix = {
         "0": formData.chaveCpf,
         "1": formData.chaveCel,
@@ -29,11 +31,11 @@ export default function ResumoFgts({ onNext, backStep }) {
 
     useEffect(() => {
         setNomeBanco(bancos[formData.banco] || "Banco não informado");
-    }, [formData.banco]);
+    }, [formData.banco, bancos]);
 
     useEffect(() => {
         setChavePix(chavesPix[formData.pix] || "Chave PIX não informada");
-    }, [formData.pix]);
+    }, [formData.pix, chavesPix]);
 
     const onSubmit = (data) => {
         atualizarForm(data);

@@ -17,8 +17,8 @@ export default function FormSimulacao({ onNext }) {
     };
 
     useEffect(() => {
-            console.log("FormData", formData);
-        }, [])
+        console.log("FormData", formData);
+    }, [formData])
 
     return (
         <>

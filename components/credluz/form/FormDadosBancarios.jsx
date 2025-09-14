@@ -35,11 +35,11 @@ export default function FormDadosBancarios({ onNext, backStep }) {
             setValue("cpf_contaBancaria", "");
         }
     
-    }, [cpfWatch]);
+    }, [cpfWatch, formData.cpf, setValue]);
 
     useEffect(() => {
         console.log("FormData", formData);
-    }, [])
+    }, [formData])
 
     const onSubmit = (data) => {
         atualizarForm(data);
