@@ -86,5 +86,9 @@
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.8",
     "postcss": "^8.5.3"
+  },
+  "engines": {
+    "node": "22.x"
   }
+  
 }
