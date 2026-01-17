@@ -18,19 +18,19 @@ export default function Descricao(){
                         Peça o seu empréstimo agora mesmo
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
                         <div className="col-span-1 text-6xl font-semibold tracking-tighter text-center mb-5 lg:mb-0 mt-10">
                             É PRA VC!
                         </div>
 
-                        <div className="col-span-2 lg:text-xl">
+                        <div className="col-span-1 lg:text-lg">
                             <p className="mb-5">
-                                Crédito de fácil acesso, não precisa comprovar renda, basta 
+                                Fácil, não precisa comprovar renda, basta 
                                 ser o titular da conta de energia da sua residência. 
                                 As parcelas são debitadas direto na sua conta de luz.
                             </p>
                             <p>
-                                Saiba na hora se foi pré-aprovado. Limite até R$ 3.300,00, com parcelamento em até 22x. Simples assim!
+                                Saiba na hora se foi pré-aprovado. Limite até R$ 4.000,00, com parcelamento em até 25x. Simples assim!
                             </p>
                         </div>
                     </div>

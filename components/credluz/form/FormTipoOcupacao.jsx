@@ -59,7 +59,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
                     </div>
                     
                     <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                    Em qual dessas situações você se encaixa atualmente?
+                        Em qual dessas situações você se encaixa atualmente?
                     </p>
                 </div>
 

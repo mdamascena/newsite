@@ -10,6 +10,7 @@ import LinkFaq from 'components/geral/section/LinkFaq'
 export default function MainFGTS() {
 
     const router = useRouter();
+    
     const handleRedirect = () => {
         router.push('consignado-inss/cadastro');
     }
@@ -44,7 +45,7 @@ export default function MainFGTS() {
                         </div>
                         
                         <div className='my-5 gap-1 lg:gap-4 justify-center lg:justify-start lg:hidden flex'>
-                             <Card>
+                            <Card>
                                 <LuCircleCheck className='mr-2'/>
                                 Aposentado
                             </Card>
@@ -67,12 +68,14 @@ export default function MainFGTS() {
                         </div>
 
                     </div>
+
                     <div className='-mb-1 flex lg:mt-6'>
                         <Image width={580} src={ImgMain} alt='' />
                     </div>
 
                 </div>
             </div>
+
             <div className='container-custom'>
                 <CondicoesINSS />
             </div>

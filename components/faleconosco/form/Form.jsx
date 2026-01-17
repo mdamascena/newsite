@@ -33,7 +33,7 @@ export default function FormFC() {
 
     return (
          
-        <div className='rounded-xl shadow-lg p-5 lg:ml-14 bg-white'>
+        <div className='rounded-xl shadow-lg p-5 bg-white'>
                         
             <form onSubmit={handleSubmit(onSubmit)} className="gap-y-2 grid" >
 

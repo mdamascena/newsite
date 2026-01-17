@@ -52,9 +52,9 @@ export default function MainFGTS() {
             <TaxaGuru 
                 TituloGuru='Não deixe o seu FGTS parado!'
                 DescricaoGuru='Utilize o seu saldo e fique tranquilo com suas finanças ou realize seus planos.' 
-                DescrisaoProduto='Antecipação do saque FGTS'
+                DescrisaoProduto='Antecipação saque FGTS'
                 Taxa='1,29%'
-                DescrisaoTaxa='A melhor taxa em comparação com outras modalidades de empréstimo para o trabalhador brasileiro.'
+                DescrisaoTaxa='A melhor taxa em comparação com outras modalidades de empréstimo.'
             />
             <Regras />
             <Analise/>

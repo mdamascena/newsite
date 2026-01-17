@@ -52,7 +52,7 @@ export default function MainPrincipal() {
                             <Image className="absolute lg:w-80 lg:-top-7 lg:left-[19.3rem]" src={variada} alt=""/>
                             <Image className="absolute lg:w-80 lg:-top-1 lg:left-[22.5rem]" src={variada} alt=""/>
 
-                            <div className="text-white ml-2 lg:ml-0">
+                            <div className="text-white ml-2 lg:ml-0 z-50">
                                 
                                 <div className="leading-5 mt-5 text-md flex items-center">
                                     <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
@@ -71,7 +71,7 @@ export default function MainPrincipal() {
                                 
                                 <div className="leading-5 mt-2 text-md flex items-center">
                                     <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
-                                    <span className="ml-2 lg:text-lg">Limite de até R$ 3.300,00 *</span>
+                                    <span className="ml-2 lg:text-lg">Limite de até R$ 4.000,00 *</span>
                                 </div>
 
                             </div>

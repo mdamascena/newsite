@@ -12,6 +12,7 @@ const StepTipoOcupacao = dynamic(() => import('./FormTipoOcupacao'));
 const StepTitutularCia = dynamic(() => import('./FormTitularCia'));
 const StepEndereco = dynamic(() => import('../../geral/form/FormEndereco'));
 const StepResumo = dynamic(() => import('./ResumoCredLuz'));
+const StepNaotitular = dynamic(() => import('./FormNaoTitular'));
 
 const PropostaAprovada = dynamic(() => import('../../geral/PropostaAprovada'));
 const PropostaRecusada = dynamic(() => import('../../geral/PropostaRecusada'));
@@ -158,7 +159,8 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
             {step === 2 && <StepIdentificacao onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <StepTipoOcupacao onNext={nextStep} backStep={prevStep} />}
             {step === 4 && <StepTitutularCia onNext={nextStep} backStep={prevStep} />}
-            {step === 5 && <StepEndereco onNext={nextStep} backStep={prevStep} />}
+            {step === 5 && <StepNaotitular onNext={nextStep} backStep={prevStep} />}
+            {/* {step === 5 && <StepEndereco onNext={nextStep} backStep={prevStep} />} */}
             {step === 6 && <StepResumo onNext={nextStep} backStep={prevStep} />}
             {step === 7 && <PropostaAprovada onNext={nextStep} title={"Parabéns!"} subTitle={"Sua proposta foi Pré-Aprovada"} text={"Para ficar por dentro de mais atualizações, acesse sua conta!"} />}
 

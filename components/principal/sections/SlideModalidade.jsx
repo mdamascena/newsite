@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IoIosArrowForward } from "react-icons/io";
 import { LiMod, Title, Desc } from '../styles';
+import BtnYellow from 'components/geral/button/BtnYellow';
+import Link from 'next/link';
 
 export default function ModSlide() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -30,27 +32,37 @@ export default function ModSlide() {
         {
             bgClass: 'bg-modelo-credluz',
             title: 'Empréstimo da conta de luz',
-            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
+            description: 'Crédito rápido e sem burocracia, sem comprovação de renda e aprovado até para negativados',
+            resumo: 'Dinheiro rápido, sem burocracia e com aprovação fácil até pra quem está negativado e não comprova renda. Simples, seguro e acessível pra quem precisa resolver hoje sem dor de cabeça.',
+            pagina: '../credluz'
         },
         {
             bgClass: 'bg-modelo-fgts',
             title: 'Antecipação saque FGTS',
-            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
+            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal, sem comprometer seu orçamento',
+            resumo: 'Use o seu FGTS agora sem sair do emprego! Antecipe saque-aniversário e receba o valor em poucas horas. Melhor taxa, contratação rápida e 100% digital.',
+            pagina: '../saque-aniversario'
         },
         {
             bgClass: 'bg-modelo-inss',
             title: 'Empréstimo consignado INSS/LOAS',
-            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
+            description: 'Empréstimo com as menores taxas, desconto direto do benefício, sem consulta ao SPC/Serasa',
+            resumo: 'Beneficiarios do INSS têm aqui o crédito mais vantajoso do mercado. Parcelas descontadas direto do benefício, juros baixos e sem surpresas. Faça sua simulação e comprove!',
+            pagina: '../consignado-inss'
         },
         {
             bgClass: 'bg-modelo-clt',
             title: 'Empréstimo consignado CLT',
-            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
+            description: 'Crédito consignado para trabalhadores CLT, com desconto em folha, juros reduzidos e limite ampliado',
+            resumo: 'Crédito com desconto direto na folha de pagamento, juros bem menores e aprovação rápida. Ideal pra quem tem carteira assinada e quer resolver pendências ou realizar planos sem comprometer o orçamento.',
+            pagina: '../credluz-fast'
         },
         {
             bgClass: 'bg-modelo-pix',
             title: 'Pix Parcelado',
-            description: 'Antecipe seu saldo FGTS e realize o que quiser. Sem parcela mensal.',
+            description: 'Dinheiro na hora via Pix, com pagamento em parcelas que cabem no bolso',
+            resumo: 'Dinheiro na hora, direto no Pix, e pagamento em parcelas que cabem no seu bolso. Sem burocracia, sem esperar. Uma solução moderna, rápida e segura pra quem precisa resolver agora.',
+            pagina: '../credluz-fast'
         },
     ];
 
@@ -76,18 +88,27 @@ export default function ModSlide() {
                                     key={index}
                                     className={`group overflow-hidden relative rounded-2xl h-80 lg:h-full ${slide.bgClass} ${activeIndex === index ? 'block' : 'hidden'}`}
                                     onMouseEnter={() => handleMouseEnter(index)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    <div className='h-0 group-hover:h-28 transform duration-400 bg-black/30 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
+                                    onMouseLeave={handleMouseLeave}>
+
+                                    <div className='h-0 group-hover:h-72 transform duration-400 bg-black/50 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
                                         <div className='grid grid-cols-5'>
-                                            <p className='text-white p-5 col-span-4'>
+                                            <p className='text-white text-2xl font-semibold tracking-tight p-5 col-span-4'>
                                                 {slide.title}
                                             </p>
                                             <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
-                                                <IoIosArrowForward />
+                                                <IoIosArrowForward className='group-hover:rotate-90 duration-1000' />
                                             </button>
+                                            <p className='text-white col-span-5 px-5'>
+                                                {slide.resumo}
+                                            </p>
+                                            <div className='col-span-5 mx-auto mt-2'>
+                                                <Link href={slide.pagina} passHref> 
+                                                    <BtnYellow className="m-5 text-xl !p-3" nome="Saiba mais"/>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             ))}
                         </div>

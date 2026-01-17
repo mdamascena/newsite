@@ -6,15 +6,15 @@ import { cadastroSchema, enderecoSchema } from '../../../schema/schemaCadastro';
 import { pagamentoPix, identificacaoSchema, adesaoSchema, autorizacaoSchema } from '../../../schema/schemaFgts';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const Step1 = dynamic(() => import('../../geral/form/FormCadastro'))
-const Step2 = dynamic(() => import('./FormIdentificacao'))
-const Step3 = dynamic(() => import('./FormAdesao'))
-const Step4 = dynamic(() => import('./FormAutorizacao'))
-const Step5 = dynamic(() => import('./FormSimulacao'))
-const Step6 = dynamic(() => import('../../geral/form/FormEndereco'))
-const Step7 = dynamic(() => import('./FormPagamento'));
+const StepCadastro = dynamic(() => import('../../geral/form/FormCadastro'))
+const StepIdentificacao = dynamic(() => import('./FormIdentificacao'))
+const StepAdesao = dynamic(() => import('./FormAdesao'))
+const StepAutorizacao = dynamic(() => import('./FormAutorizacao'))
+const StepSimulacao = dynamic(() => import('./FormSimulacao'))
+const StepEndereco = dynamic(() => import('../../geral/form/FormEndereco'))
+const StepPagamento = dynamic(() => import('./FormPagamento'));
 
-const schemas = [cadastroSchema, identificacaoSchema, adesaoSchema, autorizacaoSchema, enderecoSchema, pagamentoPix ];
+const schemas = [cadastroSchema, identificacaoSchema, adesaoSchema, autorizacaoSchema, null, enderecoSchema, pagamentoPix ];
 
 export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
 
@@ -25,7 +25,7 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
 
     const fgtsSteps = useMemo(() => [
         {key: "Registrar conta", thresholds : 0},
-        {key: "Identificação", thresholds : 20},
+        {key: "Identificação", thresholds : 17},
         {key: "Adesão", thresholds: 30},
         {key: "Autorização", thresholds: 40},
         {key: "Simulação", thresholds: 60},
@@ -50,13 +50,14 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
         "Queremos saber onde você mora",
         "Confira se todos os dados estão corretos antes de prosseguir",
         "Queremos saber onde depositar seu crédito",
+        "Queremos saber onde depositar seu crédito",
     ], []);
 
     const methods = useForm({   
-        resolver: yupResolver(schemas[step - 1]),
+        resolver: schemas[step - 1] ? yupResolver(schemas[step - 1]) : undefined,
         mode: 'onSubmit',
         defaultValues: formData
-    })
+    });
 
     useEffect(() => {
         setTitleChart(titleChartCadastro);
@@ -79,12 +80,13 @@ export function FormFgts({ setTitleChart, setProgressChange, setTitulo, setDescr
 
     return (
         <FormProvider {...methods}>
-            {step === 1 && <Step1 onNext={nextStep} />}
-            {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
-            {step === 3 && <Step3 onNext={nextStep} backStep={prevStep} />}
-            {step === 4 && <Step4 onNext={nextStep} backStep={prevStep} />}
-            {step === 5 && <Step5 onNext={nextStep} backStep={prevStep} />}
-            {step === 6 && <Step6 onNext={nextStep} backStep={prevStep} />}
+            {step === 1 && <StepCadastro onNext={nextStep} />}
+            {step === 2 && <StepIdentificacao onNext={nextStep} backStep={prevStep} />}
+            {step === 3 && <StepAdesao onNext={nextStep} backStep={prevStep} />}
+            {step === 4 && <StepAutorizacao onNext={nextStep} backStep={prevStep} />}
+            {step === 5 && <StepSimulacao onNext={nextStep} backStep={prevStep} />}
+            {step === 6 && <StepPagamento onNext={nextStep} backStep={prevStep} />}
+            {step === 7 && <StepEndereco onNext={nextStep} backStep={prevStep} />}
         </FormProvider>
     )
 }

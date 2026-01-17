@@ -40,11 +40,12 @@ export default function MainHome() {
                             Empréstimo <span className="font-extralight">ONLINE</span>
                         </h1>
                         <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/>
+                        
                     </div>
 
                     <div className="lg:content-start content-end col-span-1 select-none">
                         <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 lg:text-xl col-span-1 lg:pr-14">
-                            Muitas modalidades de crédito para atender diferentes necessidades, tudo em um só lugar!
+                            Modalidades de crédito para atender diferentes necessidades, tudo em um só lugar!
                         </p>
                         <div className="pb-8 lg:pb-0">
                             <BtnHome onClick={handleRedirect}>

@@ -13,6 +13,7 @@ const WP = 'https://bit.ly/wa-plancredi-api';
 const TEL = 'tel:8008789853';
 
 export default function MainResetSenha() {
+    
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);

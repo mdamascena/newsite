@@ -8,6 +8,7 @@ import {CiCalculator1} from 'react-icons/ci'
 import { NumCard } from "./styles"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+import VerticalScrollStack from "../geral/VerticalScrollStack"
 
 export default function ComoFunciona(){
 
@@ -16,7 +17,9 @@ export default function ComoFunciona(){
     const [scrollDesc, setScrollDesc] = useState('opacity-0 lg:translate-x-[30px]');
 
     useEffect(()=>{
+        
         const intersectionObserver = new IntersectionObserver((entries)=>{
+            
             if(entries.some((entry) => entry.isIntersecting)){
                 setScrollCel('');
                 setScrollDesc('');
@@ -26,6 +29,7 @@ export default function ComoFunciona(){
             }
         
         });
+
         intersectionObserver.observe(document.querySelector('#ComoFunciona'));
         return () => intersectionObserver.disconnect();
     });
@@ -186,117 +190,215 @@ export default function ComoFunciona(){
 
                 </div>
 
-                
             </div>
             
-                <Carousel 
-                    autoPlay 
-                    infiniteLoop 
-                    centerMode 
-                    showArrows={false} 
-                    showStatus={false} 
-                    showIndicators={false}
-                    showThumbs={false}
-                    className="lg:hidden -mt-10"
-                    >
+            <Carousel 
+                autoPlay 
+                infiniteLoop 
+                centerMode 
+                showArrows={false} 
+                showStatus={false} 
+                showIndicators={false}
+                showThumbs={false}
+                className="lg:hidden -mt-10">
 
-                    <div className="flex h-72 mx-2">
-                        <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
-                            <div className="col-span-1 my-8">
-                                <div className="flex flex-row items-center">
-                                    <CiCalculator1 className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Simule o crédito</h5>
-                                </div>
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <CiCalculator1 className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Simule o crédito</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir.
+                                </p>
                             </div>
 
-                            <div className="text-center flex">
-                                <div className="z-10">
-                                    <p className="tracking-tight leading-5 text-white text-md">
-                                        Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir.
-                                    </p>
-                                </div>
-
-                                <div className="absolute">
-                                    <NumCard className="left-36">1</NumCard>
-                                </div>
+                            <div className="absolute">
+                                <NumCard className="left-36">1</NumCard>
                             </div>
                         </div>
                     </div>
+                </div>
                 
-                    <div className="flex h-72 mx-2">
-                        <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
                                 
-                            <div className="col-span-1 my-8">
-                                <div className="flex flex-row items-center">
-                                    <HiOutlineClipboardDocumentList className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Preencha os dados</h5>
-                                </div>
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <HiOutlineClipboardDocumentList className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Preencha os dados</h5>
                             </div>
-
-                            <div className="text-center flex">
-                                <div className="z-10">
-                                    <p className="tracking-tight leading-5 text-white text-md">
-                                        Conte um pouco sobre você, informe alguns dados básicos para pré-análise.
-                                    </p>
-                                </div>
-                                    
-                                <div className="absolute">
-                                    <NumCard className="left-28">2</NumCard>
-                                </div>
-                            </div>
-
                         </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Conte um pouco sobre você, informe alguns dados básicos para pré-análise.
+                                </p>
+                            </div>
+                                    
+                            <div className="absolute">
+                                <NumCard className="left-28">2</NumCard>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
                 
-                    <div className="flex h-72 mx-2">
-                        <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
                                 
-                            <div className="col-span-1 my-8">
-                                <div className="flex flex-row items-center">
-                                    <HiOutlineIdentification className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Envie documentos</h5>
-                                </div>
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <HiOutlineIdentification className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Envie documentos</h5>
                             </div>
+                        </div>
 
-                            <div className="text-center flex">
-                                <div className="z-10">
-                                    <p className="tracking-tight leading-5 text-white text-md">
-                                        Foi pré-aprovado, agora envie os documentos pelo site ou WhatsApp.
-                                    </p>
-                                </div>
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Foi pré-aprovado, agora envie os documentos pelo site ou WhatsApp.
+                                </p>
+                            </div>
                                     
-                                <div className="absolute">
-                                    <NumCard className="left-28">3</NumCard>
-                                </div>
+                            <div className="absolute">
+                                <NumCard className="left-28">3</NumCard>
                             </div>
                         </div>
                     </div>
+                </div>
                 
-                    <div className="flex h-72 mx-2">
-                        <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
                                 
-                            <div className="col-span-1 my-8">
-                                <div className="flex flex-row items-center">
-                                    <PiSignature className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
-                                    <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Assinatura Digital</h5>
-                                </div>
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <PiSignature className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Assinatura Digital</h5>
                             </div>
+                        </div>
 
-                            <div className="text-center flex">
-                                <div className="z-10">
-                                    <p className="tracking-tight leading-5 text-white text-md">
-                                        Empréstimo APROVADO! Agora só assinar o contrato pelo APP.
-                                    </p>
-                                </div>
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Empréstimo APROVADO! Agora só assinar o contrato pelo APP.
+                                </p>
+                            </div>
                                     
-                                <div className="absolute">
-                                    <NumCard className="left-28">4</NumCard>
-                                </div>
+                            <div className="absolute">
+                                <NumCard className="left-28">4</NumCard>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                </Carousel>
+            </Carousel>
+
+            {/* <VerticalScrollStack>
+
+                <div className="h-screen flex items-center justify-center">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <CiCalculator1 className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Simule o crédito</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Escolha o valor do empréstimo e defina em quantas parcelas deseja dividir.
+                                </p>
+                            </div>
+
+                            <div className="absolute">
+                                <NumCard className="left-36">1</NumCard>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                                
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <HiOutlineClipboardDocumentList className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Preencha os dados</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Conte um pouco sobre você, informe alguns dados básicos para pré-análise.
+                                </p>
+                            </div>
+                                    
+                            <div className="absolute">
+                                <NumCard className="left-28">2</NumCard>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                                
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <HiOutlineIdentification className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Envie documentos</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Foi pré-aprovado, agora envie os documentos pelo site ou WhatsApp.
+                                </p>
+                            </div>
+                                    
+                            <div className="absolute">
+                                <NumCard className="left-28">3</NumCard>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="flex h-72 mx-2">
+                    <div className="bg-blue-700 p-5 mb-5 rounded-2xl">
+                                
+                        <div className="col-span-1 my-8">
+                            <div className="flex flex-row items-center">
+                                <PiSignature className="text-blue-50 bg-blue-500 p-2 text-6xl rounded-xl"/>
+                                <h5 className="text-blue-200 text-2xl tracking-tight font-semibold ml-5 z-10">Assinatura Digital</h5>
+                            </div>
+                        </div>
+
+                        <div className="text-center flex">
+                            <div className="z-10">
+                                <p className="tracking-tight leading-5 text-white text-md">
+                                    Empréstimo APROVADO! Agora só assinar o contrato pelo APP.
+                                </p>
+                            </div>
+                                    
+                            <div className="absolute">
+                                <NumCard className="left-28">4</NumCard>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </VerticalScrollStack> */}
            
         </section>
        

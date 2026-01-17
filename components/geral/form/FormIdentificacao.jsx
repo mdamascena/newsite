@@ -132,7 +132,7 @@ export default function FormIdentificacao({onNext, backStep}) {
                                     </OptLabel>
                                 </motion.div>
                                 
-                                <motion.div className="col-span-6 mx-auto lg:mt-5 mt-5" variants={item}>
+                                <motion.div className="col-span-6 mx-auto mt-2" variants={item}>
                                     <div className="flex text-blue-500 cursor-pointer text-center items-center" onClick={(e) => { e.preventDefault(); onOpen(); }}>
                                         <TbMessage2Question className="text-4xl mr-3 p-1 rounded-lg bg-blue-100 text-blue-500"/>
                                         <p>Por que apenas essas opções ?</p>

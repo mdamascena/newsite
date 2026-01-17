@@ -5,8 +5,6 @@ import { MdMoneyOff } from 'react-icons/md'
 import { VscSearchStop } from 'react-icons/vsc'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GiMoneyStack } from 'react-icons/gi'
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { PiPlus } from "react-icons/pi";
 
 export default function SectionVantagens() {
     return (

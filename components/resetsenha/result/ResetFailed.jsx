@@ -1,9 +1,10 @@
+"use client"
 import React from "react"
 import Lottie from "lottie-react"
 import { motion, AnimatePresence } from "framer-motion"
 import Failed from "../../../public/img/failed.json"
 
-export default function ResetFailed({ show }) {
+export default function ResetFailed({show, animation}) {
   
     return (
         <AnimatePresence>

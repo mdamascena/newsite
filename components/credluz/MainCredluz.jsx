@@ -61,7 +61,7 @@ export default function MainCredluz() {
                                     
                                     <div className="leading-5 mt-2 text-md flex items-center">
                                         <HiCheck className="rounded-lg bg-yellow-100 text-yellow-500 text-2xl"/>
-                                        <span className="ml-2 text-lg">Limite de até R$ 3.300,00 *</span>
+                                        <span className="ml-2 text-lg">Limite de até R$ 4.000,00 *</span>
                                     </div>
 
                                     <div className="text-[12px] text-white mt-5 text-center lg:text-start">

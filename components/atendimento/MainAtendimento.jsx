@@ -30,8 +30,8 @@ export default function MainAtendimento() {
                     </div>
                 </div>
             </section>
-            <SectionCanais/>
             <SectionChat/>
+            <SectionCanais/>
         </main>
     )
 }

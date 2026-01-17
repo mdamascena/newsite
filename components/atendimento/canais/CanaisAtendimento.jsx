@@ -3,6 +3,7 @@ import { IoMail } from "react-icons/io5"
 import Link from "next/link"
 import tw from "tailwind-styled-components"
 import { useState } from 'react'
+import FormFaleConosco from '../../faleconosco/form/Form'
 
 const Btn = tw.button`
     text-sm 
@@ -27,7 +28,7 @@ export default function SectionAtendimento() {
     const handleClose = () => {setOpen(false);};
 
     return (
-        <section className="bg-slate-100">
+        <section className="bg-slate-200">
             
             <div className="container-custom py-[10vh] grid">
                 <div className="">
@@ -35,20 +36,42 @@ export default function SectionAtendimento() {
                     <p className="text-slate-400 text-center tracking-tight font-light">Estamos disponíveis de segunda a sexta feira, das 09h às 18h, pelos seguintes canais:</p>
                 </div>
                 <div className="mt-8 lg:px-32 px-3">
+                    
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-3 gap-y-3">
                         
-                        <div className="col-span-1 rounded-xl shadow-lg p-8 bg-white">
-                            <div className="text-sky-500 mb-5">
-                                <PiHeadsetFill className="text-5xl"/>
-                                <h4 className="font-semibold tracking-tight text-2xl">Central de Atendimento</h4>
+                        <div className="col-span-1 rounded-xl shadow-lg p-8 bg-white grid">
+
+                            <div className="lg:order-1 order-3">
+                                <div className="text-blue-500 mb-5">
+                                    <IoMail className="text-5xl"/>
+                                    <h4 className="font-semibold tracking-tight text-2xl">Fale conosco</h4>
+                                </div>
+                                <div className="text-slate-400"> 
+                                    {/* <Btn onClick={handleClickOpen}>Enviar e-mail</Btn> */}
+                                    <p className="font-extralight mt-3">Envie e-mail para o nosso suporte</p>
+                                </div>
                             </div>
-                            <div className="text-slate-400">
-                                <Link className="font-semibold text-2xl tracking-tight" href='tel:0800-878-9853'>0800 878 9853</Link>
-                                <p className="font-extralight">Fale gratuitamente com nossos especialistas</p>
+
+                            <hr className="order-2 divide-solid border-1 my-6" />
+
+                            <div className="lg:order-3 order-1">
+                                <div className="text-blue-500 mb-5">
+                                    <PiHeadsetFill className="text-5xl"/>
+                                    <h4 className="font-semibold tracking-tight text-2xl">Central de Atendimento</h4>
+                                </div>
+                                <div className="text-slate-400">
+                                    <Link className="font-semibold text-2xl tracking-tight" href='tel:0800-878-9853'>0800 878 9853</Link>
+                                    <p className="font-extralight">Fale gratuitamente com nossos especialistas</p>
+                                </div>
                             </div>
+
                         </div>
 
-                        <div className="col-span-1 rounded-xl shadow-lg p-8 bg-white">
+                        <div className="col-span-1">
+                            <FormFaleConosco/>
+                        </div>
+
+                        {/* <div className="col-span-1 rounded-xl shadow-lg p-8 bg-white">
                             <div className="text-sky-500 mb-5">
                                 <IoMail className="text-5xl"/>
                                 <h4 className="font-semibold tracking-tight text-2xl">Fale conosco</h4>
@@ -57,7 +80,7 @@ export default function SectionAtendimento() {
                                 <Btn onClick={handleClickOpen}>Enviar e-mail</Btn>
                                 <p className="font-extralight mt-3">Envie e-mail para o nosso suporte</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     
                 </div>

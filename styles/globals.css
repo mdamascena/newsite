@@ -147,6 +147,9 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  .theme {
+    --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
+    --animate-aurora: aurora 8s ease-in-out infinite alternate;}
 }
 
 @layer base {
@@ -315,7 +318,7 @@ a {
 }
 
 .bgMainAtendimento {
-  background-image: url(../public/img/bg-atendimento.png), radial-gradient(circle, #2b31a2 0%, #00004b75 100%);
+  background-image: url(../public/img/bg-atendimento.png), radial-gradient(circle, #262c9c 10%, #00004b55 90vh);
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
@@ -441,3 +444,26 @@ a {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@theme inline {
+  @keyframes blink-cursor {
+  0%, 49% {
+    opacity: 1;}
+  50%, 100% {
+    opacity: 0;}}
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);}
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);}
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);}
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);}
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);}}}

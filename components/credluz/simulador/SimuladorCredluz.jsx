@@ -26,7 +26,7 @@ export default function SimuladorCredLuz() {
     const components = {
         Valores: {
             component: <Valores showSimulador={handleShowCalc} animacao={itemVariants} />,
-            title: 'Simule seu Empréstimo'
+            title: 'Simulação aproximada'
         },
         700: {
             component: <PMTGERAL valor={valorSelecionado} showSimulador={setMudarComp} animacao={itemVariants} />,

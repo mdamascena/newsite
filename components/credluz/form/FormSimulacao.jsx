@@ -26,8 +26,7 @@ export default function FormSimulacao({ onNext }) {
                 initial="hidden"
                 animate="visible"
                 variants={container}
-                className="grid grid-cols-6 xl:px-7"
-            >
+                className="grid grid-cols-6 xl:px-7">
 
                 <div className="container-form-head">
                     <div className="flex items-end">
@@ -39,7 +38,6 @@ export default function FormSimulacao({ onNext }) {
                         Selecione o valor e as parcelas para continuar.
                     </p>
                 </div>
-
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="container-form-body">

@@ -1,14 +1,8 @@
 import * as Yup from "yup";
-import { validateFullName } from "schema/validations";
 
 export const identificacaoSchema = Yup.object().shape({
-	registroGeral: Yup.string()
-		.min(1, "RG é obrigatório"),
 	genero: Yup.string()
 		.oneOf(["0", "1", "2", "3"], "Selecione um gênero"),
-	nomeMae: Yup.string()
-		.test("is-full-name", "Preencha o seu nome completo!", (value) => validateFullName(value))
-		.matches(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "O campo deve conter apenas letras."),
 });
 
 export const pagamentoPix = Yup.object().shape({

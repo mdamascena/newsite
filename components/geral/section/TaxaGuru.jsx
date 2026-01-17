@@ -1,6 +1,35 @@
 import GuruFinanceiro from '../../animacoes/AnimeGuru'
+import { useEffect, useState } from "react"
 
 export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, Taxa, DescrisaoTaxa}) {
+
+    const [barTaxa, setBarTaxa] = useState(['w-5','w-5','w-5','w-5','scale-0']);
+    
+    useEffect(()=>{
+        
+        const intersectionObserver = new IntersectionObserver((entries)=>{
+
+            setTimeout(() => {
+            
+                if(entries.some((entry) => entry.isIntersecting)){
+                    
+                    console.log('Apareceu');
+                    setBarTaxa(['w-full','w-[75%]','w-[55%]','lg:w-[14%] w-[20%]','scale-100']);
+                    
+                }else{
+                    console.log('nao apareceu');
+                    setBarTaxa(['w-5','w-5','w-5','w-5','scale-0']);
+                }
+
+            }, 1000);
+        
+        });
+        
+        intersectionObserver.observe(document.querySelector('#taxa'));
+        
+        return () => intersectionObserver.disconnect();
+    },[]);
+
     return (
         <section className='bg-gradient-to-t from-slate-50 to-slate-100 select-none'>
 
@@ -21,7 +50,7 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
                     </div>
                 </div>
 
-                <div className='grid grid-cols-3 lg:mx-16'>
+                <div id='taxa' className='grid grid-cols-3 lg:mx-16'>
 
                     <div className='lg:col-span-2 col-span-3 rounded-3xl bg-white p-7 my-4 lg:mr-6 shadow-lg order-2 lg:order-1'>
 
@@ -35,7 +64,7 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
                                 </div>
 
                                 <div className='bg-slate-200 flex-1 rounded-xl relative col-span-5 my-auto'>
-                                    <div className='py-1 rounded-xl bg-amber-500 text-white text-right p-5'>
+                                    <div className={`py-1 rounded-xl duration-1000 ease-in ${barTaxa[0]} bg-amber-500 text-white text-right p-5`}>
                                         28,00%
                                     </div>
                                 </div>
@@ -47,7 +76,7 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
                                 </div>
 
                                 <div className='bg-slate-200 rounded-xl relative col-span-5 my-auto'>
-                                    <div className='py-1 rounded-xl w-[72%] bg-amber-400 text-white text-right p-5'>
+                                    <div className={`py-1 rounded-xl duration-1000 ease-in ${barTaxa[1]} bg-amber-400 text-white text-right p-5`}>
                                         12,50%
                                     </div>
                                 </div>
@@ -59,7 +88,7 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
                                 </div>
 
                                 <div className='bg-slate-200 rounded-xl relative col-span-5 my-auto'>
-                                    <div className='py-1 rounded-xl w-[55%] bg-amber-300 text-white text-right p-5'>
+                                    <div className={`py-1 rounded-xl duration-1000 ease-in ${barTaxa[2]} bg-amber-300 text-white text-right p-5`}>
                                         8,00%
                                     </div>
                                 </div>
@@ -71,7 +100,7 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
                                 </div>
 
                                 <div className='bg-slate-200 rounded-xl relative col-span-5 my-auto'>
-                                    <div className='py-1 rounded-xl lg:w-[14%] w-[20%] bg-blue-600 text-white text-right p-5'>
+                                    <div className={`py-1 rounded-xl duration-1000 ease-in ${barTaxa[3]} bg-blue-600 text-white text-right p-5`}>
                                         {Taxa}
                                     </div>
                                 </div>
@@ -81,15 +110,15 @@ export default function TaxaGuru({TituloGuru, DescricaoGuru, DescrisaoProduto, T
 
                     </div>
 
-                    <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white shadow-lg order-1 lg:order-2 pt-10 lg:pt-16'>
+                    <div className='lg:col-span-1 col-span-3 rounded-3xl bg-blue-600 p-7 my-4 text-white shadow-lg order-1 lg:order-2 pt-10 lg:py-12 duration-75'>
 
                         <h1 className='text-center text-blue-300 lg:text-4xl text-xl mb-2 tracking-tighter'>
                             Juros a partir de
                         </h1>
-                        <h2 className='text-center tracking-tight font-semibold text-7xl lg:text-8xl text-white'>
+                        <h2 className={`text-center tracking-tight font-semibold text-7xl lg:text-8xl text-white duration-250 ${barTaxa[4]}`}>
                             {Taxa}<span className='text-3xl'> a.m.</span>
                         </h2>
-                        <p className='text-center text-blue-300 lg:text-lg text-md my-5 leading-5'>
+                        <p className='text-center text-blue-300 lg:text-lg text-md mt-5 leading-5'>
                             {DescrisaoTaxa}
                         </p>
 

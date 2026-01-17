@@ -1,8 +1,9 @@
 
 export default function Taxa() {
     return(
-        <section>
-            <div className='grid grid-col-1 lg:grid-cols-2 container-custom lg:pt-44 pt-16 content-center'>
+        <section className="container-custom bg-white">
+            
+            <div className='grid grid-col-1 lg:grid-cols-2 lg:pt-44 pt-16 content-center'>
                 
                 <div className='col-span-1 mb-20 lg:mb-0'>
                     <h1 className='text-3xl lg:text-5xl text-blue-600 tracking-tighter'>
@@ -13,7 +14,7 @@ export default function Taxa() {
                     </p>
                 </div>
 
-                <div className="bg-gradient-to-t from-slate-200 to-slate-100 pt-14 pb-5 rounded-xl">
+                <div className="col-span-1 bg-gradient-to-tl from-slate-300 to-slate-50 pt-14 pb-5 rounded-xl shadow-xl">
 
                     <div className='col-span-1'>
                         <div className='grid grid-cols-3 h-64'>
@@ -41,7 +42,9 @@ export default function Taxa() {
                     </div>
                     
                 </div>
+
             </div>
+            
         </section>
     )
 }

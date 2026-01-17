@@ -103,7 +103,7 @@ export default function App({ show, fechar, onOpenChange, prazo, parcela, valor,
 
                         <li className="flex items-center">
                             <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
-                            Limite de até R$ 3.300,00*
+                            Limite de até R$ 4.000,00*
                         </li>
                     </ul>
                     <div className="justify-center">

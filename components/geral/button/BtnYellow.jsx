@@ -17,8 +17,12 @@ const Btn = tw.button`
     duration-150
     shadow-lg
 `
-export default function BtnYellow ({nome}){
+export default function BtnYellow ({nome, event, iconLeft, iconRight, habilitado, tipo, className}){
     return(
-        <Btn>{nome}</Btn>
+        <Btn type={tipo} className={className} onClick={event} disabled={habilitado}>
+            {iconLeft}
+            {nome}
+            {iconRight}
+        </Btn>
     )
 }

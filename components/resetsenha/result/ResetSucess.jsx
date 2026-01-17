@@ -3,7 +3,7 @@ import Lottie from "lottie-react"
 import { motion, AnimatePresence } from "framer-motion"
 import CheckOK from "../../../public/img/check_ok.json"
 
-export default function ResetSucess({ show }) {
+export default function ResetSucess({ show, animation }) {
   
     return (
         <AnimatePresence>
