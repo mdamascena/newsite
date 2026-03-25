@@ -86,24 +86,24 @@ export default function ModSlide() {
                             {slides.map((slide, index) => (
                                 <div
                                     key={index}
-                                    className={`group overflow-hidden relative rounded-2xl h-80 lg:h-full ${slide.bgClass} ${activeIndex === index ? 'block' : 'hidden'}`}
+                                    className={`group overflow-hidden relative rounded-2xl h-80 lg:h-full ${slide.bgClass} ${activeIndex === index ? 'block':'hidden'}`}
                                     onMouseEnter={() => handleMouseEnter(index)}
                                     onMouseLeave={handleMouseLeave}>
 
                                     <div className='h-0 group-hover:h-72 transform duration-400 bg-black/50 inset-x-0 bottom-0 absolute backdrop-blur-md cursor-pointer'>
                                         <div className='grid grid-cols-5'>
-                                            <p className='text-white text-2xl font-semibold tracking-tight p-5 col-span-4'>
+                                            <p className='text-white lg:text-2xl text-xl font-semibold tracking-tight p-5 col-span-4'>
                                                 {slide.title}
                                             </p>
-                                            <button className='text-2xl flex items-center justify-center bg-yellow-400 rounded-full w-10 h-10 text-center text-white col-span-1 m-5'>
+                                            <button className='lg:text-2xl text-xl flex items-center justify-center bg-yellow-400 rounded-full lg:w-10 lg:h-10 w-7 h-7 text-center text-white col-span-1 m-5'>
                                                 <IoIosArrowForward className='group-hover:rotate-90 duration-1000' />
                                             </button>
-                                            <p className='text-white col-span-5 px-5'>
+                                            <p className='text-white col-span-5 px-5 lg:text-base text-sm'>
                                                 {slide.resumo}
                                             </p>
                                             <div className='col-span-5 mx-auto mt-2'>
                                                 <Link href={slide.pagina} passHref> 
-                                                    <BtnYellow className="m-5 text-xl !p-3" nome="Saiba mais"/>
+                                                    <BtnYellow className="m-5 text-xl lg:!p-3 !p-2" nome="Saiba mais"/>
                                                 </Link>
                                             </div>
                                         </div>
@@ -121,12 +121,14 @@ export default function ModSlide() {
                                         key={index}
                                         $isActive={activeIndex === index}
                                         onMouseEnter={() => handleMouseEnter(index)}
-                                        onMouseLeave={handleMouseLeave}
-                                    >
+                                        onMouseLeave={handleMouseLeave}>
+
                                         <Title>{slide.title}</Title>
+                                        
                                         <Desc $isActive={activeIndex === index}>
                                             {slide.description}
                                         </Desc>
+
                                     </LiMod>
                                 ))}
                             </ul>

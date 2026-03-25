@@ -14,7 +14,7 @@ export default function Taxa() {
                     </p>
                 </div>
 
-                <div className="col-span-1 bg-gradient-to-tl from-slate-300 to-slate-50 pt-14 pb-5 rounded-xl shadow-xl">
+                <div className="col-span-1 bg-gradient-to-tl from-slate-300 to-white pt-14 pb-5 rounded-xl shadow-xl">
 
                     <div className='col-span-1'>
                         <div className='grid grid-cols-3 h-64'>

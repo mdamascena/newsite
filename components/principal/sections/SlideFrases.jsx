@@ -13,8 +13,8 @@ export default function Slide() {
                         duration: 15, // Ajuste a duração para alterar a velocidade
                         repeat: Infinity,
                         ease: "linear",
-                    }}
-                >
+                    }}>
+                        
                     {/* Primeiro item - Texto */}
                     <div className="flex min-w-[480px] items-center justify-center rounded-xl bg-blue-700 saturate-200 px-4">
                         <span className="font-bold text-white">
@@ -61,10 +61,7 @@ export default function Slide() {
                             className="object-cover"
                         />
                     </div>
-
-                    
-
-                    
+                                       
                 </motion.div>
             </div>
         </div>

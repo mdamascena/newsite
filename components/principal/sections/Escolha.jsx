@@ -133,7 +133,7 @@ export default function SeuPotencial(){
                     </div>
 
                     {/*Card grafico*/}
-                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-slate-200 to-slate-100 p-5 lg:p-8 text-slate-400 h-80'>
+                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-slate-200 to-slate-50 p-5 lg:p-8 text-slate-400 h-80'>
 
                         <div className="text-center mb-5">
                             <h1 className='text-xl tracking-tight font-semibold'>
@@ -161,7 +161,7 @@ export default function SeuPotencial(){
                     </div>
                     
                     {/*Limite*/}
-                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-slate-200 to-slate-100 p-5 lg:p-8 text-slate-400 h-80'>
+                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-slate-200 to-slate-50 p-5 lg:p-8 text-slate-400 h-80'>
                         
                         <div className='text-center'>
 
