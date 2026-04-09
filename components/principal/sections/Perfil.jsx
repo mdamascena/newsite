@@ -7,14 +7,14 @@ export default function Perfil() {
         <section className="h-[80vh] bgSectionPrincipal overflow-y-hidden bg-fixed relative">
             
             <div id="notif"
-                className="absolute z-10 w-[min(14rem,calc(100vw-2rem))] left-1/2 -translate-x-1/2 bottom-[clamp(10rem,14vh,7rem)] lg:left-[43%]">
+                className="absolute z-10 w-[min(14rem,calc(100vw-2rem))] left-1/2 -translate-x-1/2 bottom-[20%] lg:left-[43%]">
 
                 <motion.div
                     className="bg-white p-2 rounded-lg shadow-lg"
-                    initial={{ opacity: 0, y: 24, scale: 0.96 }}
-                    whileInView={{ opacity: 0.65, y: 0, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 0.65, scale: 1 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 4.2, delay: 1.58, ease: [0.22, 1, 0.36, 1] }}>
+                    transition={{ duration: 2.2, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}>
 
                     <div className="flex items-center justify-between rounded-lg">
                         <div className="flex items-center">
@@ -49,11 +49,11 @@ export default function Perfil() {
                                 as="h1"
                                 className="text-4xl lg:text-5xl font-semibold"
                                 animation="blurInUp"
-                                duration={5}
+                                duration={2}
                                 by="character"
                                 amount={0.80}
                                 once={false}
-                                delay={0.85}
+                                delay={1.0}
                             >
                                 Sorriso😁 no rosto
                             </TextAnimate>
@@ -63,10 +63,10 @@ export default function Perfil() {
                                 className="text-xl lg:text-4xl font-normal lg:mt-3"
                                 animation="blurInUp"
                                 by="character"
-                                duration={5}
+                                duration={2}
                                 amount={0.80}
                                 once={false}
-                                delay={0.80}
+                                delay={2.0}
                             >
                                 de quem recebeu um PIX
                             </TextAnimate>
