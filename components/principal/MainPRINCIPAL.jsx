@@ -37,7 +37,7 @@ export default function MainHome() {
 
                     <div className="content-center col-span-1">
                         <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
-                            Empréstimo <span className="font-extralight">ONLINE</span>
+                            Crédito Pessoal <span className="font-extralight">ONLINE</span>
                         </h1>
                         <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/>
                         

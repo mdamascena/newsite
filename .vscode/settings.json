@@ -1,19 +1,24 @@
 {
-    "cSpell.words": [
-        "Aniversário",
-        "antecipação",
-        "ativa",
-        "Condições",
-        "conta",
-        "Contrate",
-        "emancipado",
-        "fazer",
-        "FGTS",
-        "Gerais",
-        "inativa",
-        "optante",
-        "precisa",
-        "saldo",
-        "Saque"
-    ]
+  "cSpell.enabled": false,
+  "cSpell.language": "en,pt-BR",
+  "cSpell.allowCompoundWords": true,
+  "cSpell.ignorePaths": [
+    "node_modules",
+    ".next",
+    "package-lock.json"
+  ],
+  "cSpell.words": [
+    "antecipacao",
+    "beneficiarios",
+    "clt",
+    "consignado",
+    "credluz",
+    "fgts",
+    "inss",
+    "loas",
+    "Pefil",
+    "pix",
+    "saque",
+    "serasa"
+  ]
 }
