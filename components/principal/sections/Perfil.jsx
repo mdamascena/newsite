@@ -14,7 +14,7 @@ export default function Perfil() {
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 0.65, scale: 1 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 2.2, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}>
+                    transition={{  delay: 2.0, ease: [0.30, 1, 0.50, 2] }}>
 
                     <div className="flex items-center justify-between rounded-lg">
                         <div className="flex items-center">
@@ -33,7 +33,7 @@ export default function Perfil() {
 
                     <div className="text-black flex items-center justify-between">
                         <p className="tracking-tighter m-0 text-justify text-sm">
-                            Voce recebeu
+                            Você recebeu
                         </p>
                         <span className="text-md font-bold ml-2">R$ 15.053,00</span>
                     </div>
@@ -49,11 +49,11 @@ export default function Perfil() {
                                 as="h1"
                                 className="text-4xl lg:text-5xl font-semibold"
                                 animation="blurInUp"
-                                duration={2}
+                                
                                 by="character"
                                 amount={0.80}
                                 once={false}
-                                delay={1.0}
+                                delay={0.2}
                             >
                                 Sorriso😁 no rosto
                             </TextAnimate>
@@ -61,12 +61,12 @@ export default function Perfil() {
                             <TextAnimate
                                 as="h1"
                                 className="text-xl lg:text-4xl font-normal lg:mt-3"
-                                animation="blurInUp"
+                                animation="slideLeft"
                                 by="character"
-                                duration={2}
+                                
                                 amount={0.80}
                                 once={false}
-                                delay={2.0}
+                                delay={0.65}
                             >
                                 de quem recebeu um PIX
                             </TextAnimate>
