@@ -14,7 +14,7 @@ export default function Perfil() {
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 0.65, scale: 1 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{  delay: 2.0, ease: [0.30, 1, 0.50, 2] }}>
+                    transition={{  delay: 0.20, ease: [0.30, 1, 0.50, 2] }}>
 
                     <div className="flex items-center justify-between rounded-lg">
                         <div className="flex items-center">
@@ -53,7 +53,7 @@ export default function Perfil() {
                                 by="character"
                                 amount={0.80}
                                 once={false}
-                                delay={0.2}
+                                delay={1}
                             >
                                 Sorriso😁 no rosto
                             </TextAnimate>
@@ -66,7 +66,7 @@ export default function Perfil() {
                                 
                                 amount={0.80}
                                 once={false}
-                                delay={0.65}
+                                delay={2}
                             >
                                 de quem recebeu um PIX
                             </TextAnimate>

@@ -5,12 +5,23 @@ import { MdMoneyOff } from 'react-icons/md'
 import { VscSearchStop } from 'react-icons/vsc'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GiMoneyStack } from 'react-icons/gi'
+import Particles from '../ui/particles'
 
 export default function SectionVantagens() {
     return (
-        <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600'>
-            
-            <div className='container-custom'>
+        <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600 relative overflow-hidden'>
+            <Particles
+                className='z-0'
+                quantity={400}
+                size={1.4}
+                staticity={55}
+                ease={60}
+                color='#bfdbfe'
+                vx={0.35}
+                vy={0.35}
+            />
+
+            <div className='container-custom relative z-10'>
 
                 <div className='text-justify lg:pt-8 pt-8 lg:mb-8'>
                     <h1 className="text-blue-300 mx-4 lg:text-4xl text-2xl font-semibold tracking-tighter lg:mb-6 mb-2 p-3 text-center">
