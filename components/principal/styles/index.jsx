@@ -96,6 +96,10 @@ export const CardVantMais = tw.div`
     lg:p-6
     p-3 
     lg:h-52
+    hover:shadow-xl 
+    duration-500 
+    hover:bg-[#030554] 
+    hover:scale-110
 `;
 
 export const DesCardMais = tw.p`
