@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import LogoFB from '../../../public/img/LOGO_FULL_BRANCO.png'
 import tw from 'tailwind-styled-components'
-import { SiInstagram } from "react-icons/si"
-import { ImFacebook } from 'react-icons/im'
-import { SiTiktok } from 'react-icons/si'
-import { MdHeadsetMic } from 'react-icons/md'
+import { SiInstagram } from "@react-icons/all-files/si/SiInstagram"
+import { ImFacebook } from '@react-icons/all-files/im/ImFacebook'
+import { SiTiktok } from '@react-icons/all-files/si/SiTiktok'
+import { MdHeadsetMic } from '@react-icons/all-files/md/MdHeadsetMic'
 
 const Rodape = tw.footer`
     bg-gradient-to-b 

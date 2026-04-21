@@ -1,4 +1,4 @@
-import Acompanhamento from "../index.jsx";
+import AcompanhamentoLayout from "../../../../components/conta/AcompanhamentoLayout";
 import { IoMdArrowBack } from "react-icons/io";
 import { useRouter } from "next/router.js";
 import { AvatarFallback, Avatar } from "components/ui/avatar.jsx";
@@ -16,7 +16,7 @@ export default function Perfil() {
     }
     return (
         <>
-            <Acompanhamento>
+            <AcompanhamentoLayout>
                 <div className="p-4 flex items-center border-b-1 border-gray-300">
                     <div className="w-full flex">
                         <IoMdArrowBack className="text-2xl text-gray-600 cursor-pointer" onClick={handleBack} />
@@ -144,7 +144,7 @@ export default function Perfil() {
                         </div>
                     </div>
                 </div>
-            </Acompanhamento>
+            </AcompanhamentoLayout>
         </>
     );
 }

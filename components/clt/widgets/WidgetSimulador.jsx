@@ -1,4 +1,4 @@
-import { IoArrowForwardOutline } from "react-icons/io5";
+import { IoArrowForwardOutline } from "@react-icons/all-files/io5/IoArrowForwardOutline";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 

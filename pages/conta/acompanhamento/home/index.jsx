@@ -1,16 +1,10 @@
-import Acompanhamento from "../index.jsx";
-import { usePathname } from "next/navigation";
-import Logotipo from "../../../../public/img/LOGO_AZUL.png"
-import Image from "next/image";
+import AcompanhamentoLayout from "../../../../components/conta/AcompanhamentoLayout";
 import { IoMdNotificationsOutline } from "react-icons/io";
 
 
 export default function Home() {
-
-    const rota = usePathname();
-
     return (
-        <Acompanhamento>
+        <AcompanhamentoLayout>
             
             <div className="flex items-center justify-between w-full">
 
@@ -25,6 +19,6 @@ export default function Home() {
 
             </div>
 
-        </Acompanhamento>
+        </AcompanhamentoLayout>
     )
 }

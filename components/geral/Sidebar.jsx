@@ -1,5 +1,4 @@
-'use client';
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import Logotipo from "../../public/img/LOGO_AZUL.png"
 import Image from "next/image";
 import { FaHome, FaUser } from "react-icons/fa";
@@ -7,8 +6,7 @@ import { TbContract } from "react-icons/tb";
 import Link from "next/link";
 
 export default function SideBar() {
-
-    const rota = usePathname();
+    const { pathname } = useRouter();
 
     const links = [
         {
@@ -33,7 +31,7 @@ export default function SideBar() {
         <aside style={{ boxShadow: '1px 0 1px rgba(0, 0, 0, 0.1)' }}
             className="md:w-58 md:h-screen justify-between md:flex md:flex-col items-center rounded-br-2xl md:rounded-br-7xl">
 
-            {rota === '/conta/acompanhamento/home' ? (
+            {pathname === '/conta/acompanhamento/home' ? (
                 <div className="h-20 md:h-28 p-6 md:flex justify-center border-b-2 border-gray-200">
                     <Image className="object-contain w-full h-full" src={Logotipo} height={100} width={150} alt="Logo" />
                 </div>
@@ -48,7 +46,7 @@ export default function SideBar() {
                 md:static md:flex-col md:bg-transparent md:p-0 md:justify-start md:align-start md:w-full md:items-start md:shadow-none">
 
                 {links.map(({ href, label, icon: Icon }) => {
-                    const isActive = rota === href;
+                    const isActive = pathname === href;
 
                     return (
                         <Link passHref

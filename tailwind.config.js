@@ -1,13 +1,11 @@
 const { nextui } = require ( "@nextui-org/theme" ) ;
 module.exports = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './styles/globals.css',
-    './src/**/*.{js,jsx}',
-    "./node_modules/@nextui-org/theme/dist/**/*.{js, jsx}",
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./styles/**/*.css",
+    "./node_modules/@nextui-org/theme/dist/components/{button,modal,scroll-shadow}.{js,mjs}",
   ],
   prefix: "",
   theme: {
@@ -168,7 +166,6 @@ module.exports = {
   		}
   	}
   },
-  darkMode: "class",
   plugins: [nextui ()],
   
 }

@@ -1,12 +1,5 @@
-import SideBar from "../../../components/geral/Sidebar"
+import AcompanhamentoLayout from "../../../components/conta/AcompanhamentoLayout";
 
-export default function Acompanhamento({ children }) {
-    return (
-    <div className="md:flex">
-        <SideBar />
-        <main className="w-full">
-            {children}
-        </main>
-    </div>
-  )
+export default function Acompanhamento() {
+  return <AcompanhamentoLayout />;
 }

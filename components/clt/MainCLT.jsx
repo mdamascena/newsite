@@ -167,10 +167,17 @@ export default function MainCLT() {
     <main>
         <section className="relative overflow-hidden bg-gradient-to-t from-slate-400 via-white to-white">
             <DotPattern
-                width={8}
-                height={8}
+                width={6}
+                height={6}
                 cr={1.1}
-                className="inset-auto left-0 top-0 h-[580px] w-[900px] text-blue-500/20 [mask-image:radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
+                className="hidden lg:block inset-auto left-0 top-0 h-[580px] w-[900px] text-blue-500/20 [mask-image:radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
+            />
+
+            <DotPattern
+                width={7}
+                height={7}
+                cr={1.5}
+                className="lg:hidden inset-auto left-0 top-0 h-[580px] w-[900px] text-blue-500/20 [mask-image:radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
             />
       
             <div className="relative z-10 lg:pb-0 pt-20 container-custom">
@@ -180,8 +187,7 @@ export default function MainCLT() {
                     <div className="lg:col-span-3 lg:my-auto select-none relative">
                         
                         <h1 className="hidden lg:block text-blue-600 lg:text-[3.5rem] text-[48px] text-center lg:text-left font-semibold tracking-tighter">
-                            Crédito
-                            do{" "}
+                            Crédito do{" "}
                             <Highlighter
                                 className="-mt-20"
                                 action="underline" 
@@ -196,8 +202,7 @@ export default function MainCLT() {
                         </h1>
 
                         <h1 className="lg:hidden block leading-none text-blue-600 lg:text-[3.5rem] text-[48px] text-center lg:text-left font-semibold tracking-tighter my-5">
-                            Crédito
-                            do{" "}
+                            Crédito do{" "}
                             <Highlighter
                                 className="-mt-20"
                                 action="underline" 
@@ -231,14 +236,14 @@ export default function MainCLT() {
                                 action="circle" 
                                 color="#fde047" 
                                 strokeWidth={3} 
-                                padding={5} 
+                                padding={5}
                                 iterations={2} 
                                 multiline={true}
                                 animationDuration={3000}
                                 className="font-semibold">
                                 <span className="font-semibold">100% ONLINE</span>
                             </Highlighter>
-                            {" "}{" "}.<br/>Se precisar, conte com nossos consultores.
+                            {" "}{" "}.<br/>Se precisar de ajuda, conte com nossos consultores.
                         </p>
 
                         <div className="text-center md:text-left">
@@ -291,7 +296,7 @@ export default function MainCLT() {
                             </figure>
 
                             <figure className="relative z-10 flex lg:hidden items-end justify-center">
-                                <Image className="" width={25} src={menclt} alt="" />
+                                <Image className="" width={2} src={menclt} alt="" />
                             </figure>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Acompanhamento from "../index.jsx";
+import AcompanhamentoLayout from "../../../../components/conta/AcompanhamentoLayout";
 import { IoMdArrowBack } from "react-icons/io";
 import { useRouter } from "next/router.js";
 
@@ -12,7 +12,7 @@ export default function Contrato() {
     }
 
     return (
-        <Acompanhamento>
+        <AcompanhamentoLayout>
             <div className="p-5 flex items-center border-b-3 border-transparent">
                 <div className="w-full flex">
                     <IoMdArrowBack className="text-2xl text-gray-600 cursor-pointer" onClick={handleBack} />
@@ -56,6 +56,6 @@ export default function Contrato() {
                     <p className="text-gray-700">✅ Aqui estão os contratos finalizados.</p>
                     )}
                 </div>
-        </Acompanhamento>
+        </AcompanhamentoLayout>
     )
 }

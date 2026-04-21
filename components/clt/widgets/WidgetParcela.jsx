@@ -1,4 +1,4 @@
-import { RiExchangeDollarFill } from "react-icons/ri";
+import { RiExchangeDollarFill } from "@react-icons/all-files/ri/RiExchangeDollarFill";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ export default function WidgetParcela ({ClassName, motionProps = {}}){
                     <p className="text-xs text-white tracking-tight mb-2 font-semibold">Desconto em folha</p>
                 </div>
 
-                <div className="text-xs text-slate-400 flex items-center justify-between text-center">
+                <div className="text-xs text-blue-600 flex items-center justify-between text-center">
                     <div className="rounded-sm bg-slate-50 shadow-sm p-1 w-6">06</div>
                     <div className="rounded-sm bg-slate-50 shadow-sm p-1 w-6">12</div>
                     <div className="rounded-sm bg-slate-50 shadow-sm p-1 w-6">24</div>
