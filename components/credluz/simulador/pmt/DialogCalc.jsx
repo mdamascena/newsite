@@ -1,5 +1,5 @@
 import React from "react"
-import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react"
+import {Modal, ModalContent, ModalHeader, ModalBody} from "components/lib/nextui-compat"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import LogoCrefaz from '../../../../public/img/logocrefaz.png'

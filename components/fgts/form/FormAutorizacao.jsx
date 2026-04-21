@@ -9,7 +9,7 @@ import { BiSolidMessageAltCheck, BiSolidMessageAltX } from "react-icons/bi"
 import { OptLabel, OptBnt } from "components/geral/style"
 import BtnNext from "../../geral/button/BtnBlueNext"
 import BtnBack from "../../geral/button/BtnBlueBack"
-import { useDisclosure } from "@nextui-org/react"
+import { useDisclosure } from "components/lib/nextui-compat"
 import { useEffect, useState } from "react"
 import ModalAutorizacaoFGTS from "components/geral/modal/ModalAutorizacaoFGTS"
 

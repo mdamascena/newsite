@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import {Modal, ModalContent, ModalBody, Button} from "@nextui-org/react"
+import {Modal, ModalContent, ModalBody, Button} from "components/lib/nextui-compat"
 import BtnBlueNext from "../button/BtnBlueNext"
 import { BsWhatsapp } from "react-icons/bs"
 import { BsTelephone } from "react-icons/bs"

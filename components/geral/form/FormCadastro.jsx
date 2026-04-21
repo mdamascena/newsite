@@ -4,7 +4,7 @@ import { useHookFormMask } from "use-mask-input"
 import { useFormContext } from "react-hook-form"
 import { PiEyeClosedBold, PiEye } from "react-icons/pi"
 import { useFormData } from "../../../context/FormContext"
-import { useDisclosure } from "@nextui-org/react"
+import { useDisclosure } from "components/lib/nextui-compat"
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2"
 import { motion } from 'framer-motion'
 import { container, item } from "shared/motionUtils/motionTransation"

@@ -1,5 +1,5 @@
 import React from "react"
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, ScrollShadow} from "@nextui-org/react"
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, ScrollShadow} from "components/lib/nextui-compat"
 
 
 export default function App({ isOpen, onOpenChange, onAccept }) {

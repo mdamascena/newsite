@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useFormData } from "../../../context/FormContext"
 import { useFormContext, Controller} from "react-hook-form"
-import { useDisclosure } from "@nextui-org/react"
+import { useDisclosure } from "components/lib/nextui-compat"
 import { Input } from "components/ui/input"
 import { IoIosFemale, IoIosMale, IoIosArrowBack,IoIosCloseCircleOutline } from "react-icons/io"
 import { IoMaleFemaleOutline } from "react-icons/io5"

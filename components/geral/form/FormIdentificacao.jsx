@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useDisclosure } from "@nextui-org/react"
+import { useDisclosure } from "components/lib/nextui-compat"
 import { Input } from "components/ui/input"
 import { useHookFormMask } from "use-mask-input"
 import { useFormContext, Controller} from "react-hook-form"

@@ -1,5 +1,5 @@
 import React from "react"
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react"
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "components/lib/nextui-compat"
 import InputMask from "react-input-mask"
 import { Input } from "../../ui/input"
 import BtnBack from '../button/BtnBlueBack'

@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react"
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "components/lib/nextui-compat"
 import Carousel from "components/fgts/carousel/Carrousel";
 
 const SlideImg = [
