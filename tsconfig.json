@@ -1,10 +1,17 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
-      "components/*": ["components/*"],
-      "shared/*": ["shared/*"],
-      "@/*": ["./*"]
+      "components/*": [
+        "components/*"
+      ],
+      "shared/*": [
+        "shared/*"
+      ],
+      "@/*": [
+        "./*"
+      ]
     },
     "target": "es2017",
     "lib": [
@@ -22,7 +29,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {

@@ -1,7 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@config "../tailwind.config.js";
+@import "tailwindcss";
+@import "@heroui/styles";
+@import "tw-animate-css";
 
 .container-custom {
   @apply xl:max-w-[1265px] xl:mx-auto lg:max-w-[1024px] lg:mx-8 md:max-w-[768px] md:mx-6 max-w-[425px] mx-4
