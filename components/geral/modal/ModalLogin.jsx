@@ -23,6 +23,7 @@ export default function ModalLogin({ isOpen, onOpenChange, onNext  }) {
     return (
         <>
             <Modal
+                aria-label="Acesso da conta"
                 classNames={{
                 backdrop:"bg-black/80 lg:bg-black-60",
                 body:"px-2"

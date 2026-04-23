@@ -6,7 +6,7 @@ export default function App({ isOpen, onOpenChange, onAccept }) {
   
     return (
         <>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange} size={"4xl"} scrollBehavior={'inside'} placement={'top'}>
+            <Modal aria-label="Termos de uso e política de privacidade" isOpen={isOpen} onOpenChange={onOpenChange} size={"4xl"} scrollBehavior={'inside'} placement={'top'}>
 
                 <ModalContent>
                     {(onClose) => (

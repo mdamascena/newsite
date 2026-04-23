@@ -5,7 +5,7 @@ export default function Btn(props) {
             bg-blue-500 
             text-white 
             rounded-xl
-            py-[10px] 
+            py-2.5 
             w-full 
             focus:outline-none
             focus:bg-blue-700 
@@ -14,7 +14,8 @@ export default function Btn(props) {
             hover:ring-2
             hover:ring-blue-200 
             duration-100 
-            saturate-150"
+            saturate-150
+            cursor-pointer"
         >{props.nome}</button>
     )
 

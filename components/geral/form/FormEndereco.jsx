@@ -315,11 +315,16 @@ export default function FormEndereco({ onNext, backStep }) {
                                                 </SelectTrigger>
                         
                                                 <SelectContent>
-                                                    {estados.map((estado) => (
-                                                        <SelectItem key={estado.id || estado.sigla} value={estado.sigla}>
-                                                            {estado.nome}
-                                                        </SelectItem>
-                                                    ))}
+                                                    {estados
+                                                        .filter((estado) => estado?.sigla)
+                                                        .map((estado, index) => (
+                                                            <SelectItem
+                                                                key={`estado-${estado.id || estado.sigla || estado.nome || index}`}
+                                                                value={estado.sigla}
+                                                            >
+                                                                {estado.nome}
+                                                            </SelectItem>
+                                                        ))}
                                                 </SelectContent>
                                             </Select>
                                         )}
@@ -345,11 +350,16 @@ export default function FormEndereco({ onNext, backStep }) {
                                                 </SelectTrigger>
                         
                                                 <SelectContent>
-                                                    {cidades.map((cidade) => (
-                                                        <SelectItem key={cidade.id} value={cidade.nome}>
-                                                            {cidade.nome}
-                                                        </SelectItem>
-                                                    ))}
+                                                    {cidades
+                                                        .filter((cidade) => cidade?.nome)
+                                                        .map((cidade, index) => (
+                                                            <SelectItem
+                                                                key={`cidade-${cidade.id || cidade.nome || index}`}
+                                                                value={cidade.nome}
+                                                            >
+                                                                {cidade.nome}
+                                                            </SelectItem>
+                                                        ))}
                                                 </SelectContent>
                         
                                             </Select>

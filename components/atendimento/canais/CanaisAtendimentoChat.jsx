@@ -22,7 +22,8 @@ const Btn = tw.button`
     hover:bg-blue-500
     hover:scale-105
     active:scale-90 
-    duration-150 
+    duration-150
+    cursor-pointer 
 `
 export default function SectionAtendimento() {
 
@@ -49,7 +50,6 @@ export default function SectionAtendimento() {
                                     </h4>
                                 </div>
                                 <div className="text-slate-400">
-                                    
                                     <Btn>Iniciar Atendimento</Btn>
                                     <p className="font-extralight mt-3">Fale com a gente pelo Messenger</p>
                                 </div>

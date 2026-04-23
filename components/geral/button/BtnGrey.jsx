@@ -4,7 +4,7 @@ export default function BtnGrey(props) {
             bg-slate-500 
             text-white 
             rounded-xl 
-            py-[10px] 
+            py-2.5 
             w-full 
             focus:outline-none
             focus:bg-slate-700 
@@ -13,7 +13,8 @@ export default function BtnGrey(props) {
             hover:ring-2
             hover:ring-slate-200 
             duration-100 
-            saturate-150"
+            saturate-150
+            cursor-pointer"
         >{props.nome}</button>
     )
 

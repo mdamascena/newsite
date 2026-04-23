@@ -44,7 +44,7 @@ export default function Page() {
     }, []);
 
     return (
-        <div className="h-[100vh] w-[100vw] bgPage">
+        <div className="h-screen w-screen bgPage">
             {/* Fundo com grade de efeito */}
             <FlickeringGrid
                 className="z-0 absolute inset-0 size-full"
@@ -65,7 +65,13 @@ export default function Page() {
                         ease: "easeInOut",
                     }}
                     >
-                    <Image className="" src={LogoValoreal} width={170} alt="" />
+                    <Image
+                        className="h-auto"
+                        src={LogoValoreal}
+                        width={170}
+                        height={Math.round((LogoValoreal.height / LogoValoreal.width) * 170)}
+                        alt=""
+                    />
                 </motion.div>
 
                 {/* Barra Circular */}

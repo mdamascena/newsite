@@ -36,5 +36,6 @@ export const Btn = tw.button`
     hover:bg-blue-500
     hover:scale-105
     active:scale-90 
-    duration-150    
+    duration-150
+    cursor-pointer   
 `

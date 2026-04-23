@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import BtnNext from "../../geral/button/BtnBlueNext"
 import BtnBack from "../../geral/button/BtnBlueBack"
 import { Input } from '../../ui/input'
@@ -20,18 +20,12 @@ export default function Login({ setShowLogin }) {
         setPassType(passType === 'password' ? 'text' : 'password');
     };
 
-    const { register, handleSubmit, watch, formState: { errors }, trigger, clearErrors } = useForm();
+    const { register, handleSubmit, formState: { errors }, trigger } = useForm();
     const registerWithMask = useHookFormMask(register);
-    const cpfValue = watch("cpf");
 
     const onSubmit = (data) => {
         console.log("Login data:", data);
     };
-
-    useEffect(() => {
-    if (cpfValue && validateCPF(cpfValue)) {
-        clearErrors("cpf");
-    }}, [cpfValue, clearErrors]);
 
     const handleResetClick = async () => {
         const isValid = await trigger("cpf");

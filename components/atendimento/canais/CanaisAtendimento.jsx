@@ -52,7 +52,7 @@ export default function SectionAtendimento() {
                                 </div>
                             </div>
 
-                            <hr className="order-2 divide-solid border-1 my-6" />
+                            <hr className="order-2 border-t border-slate-200 my-6" />
 
                             <div className="lg:order-3 order-1">
                                 <div className="text-blue-500 mb-5">

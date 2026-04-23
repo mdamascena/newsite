@@ -6,7 +6,13 @@ import Address from '../../../../components/fgts/form/Address';
 <div className="grid grid-cols-1 lg:grid-cols-5 h-[100vh]">
     <div className="m-2 col-span-2 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 saturate-150 rounded-xl">
         <div className="p-6 lg:p-10 flex justify-end">
-            <Image src={LogoB} width={130} alt='' />
+            <Image
+                src={LogoB}
+                width={130}
+                height={Math.round((LogoB.height / LogoB.width) * 130)}
+                className="h-auto"
+                alt=''
+            />
         </div>
     </div>
 

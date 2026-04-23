@@ -51,6 +51,7 @@ export const BtnCalc = tw.button`
     hover:scale-105
     active:scale-90
     duration-150
+    cursor-pointer
 `
 
 //REGRAS

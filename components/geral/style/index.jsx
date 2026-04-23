@@ -52,7 +52,7 @@ export const OptBnt = tw(motion.button)`
 //LINKFAQ
 export const Btn = tw.button`
     bg-yellow-600
-    
+    cursor-pointer
     flex 
     items-center 
     justify-center

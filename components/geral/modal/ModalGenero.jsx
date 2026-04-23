@@ -8,6 +8,7 @@ export default function App({ isOpen, onOpenChange }) {
     return (
         <>
             <Modal 
+                aria-label="Explicação sobre gênero"
                 isOpen={isOpen} 
                 onOpenChange={onOpenChange}  
                 hideCloseButton={true}

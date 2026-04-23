@@ -29,16 +29,15 @@ export default function FormPass() {
 
     return (
         <AnimatePresence>
-
-            <ToastContainer />
-
             <motion.div
                 initial={ {scale: 0} }
                 animate={ {scale: 1 }}
                 transition={{type: "spring", stiffness: 260, damping: 20}}
                 exit={ {scale: 0 }}>
+
+                <ToastContainer />
             
-                <div className='bg-white border border-l-4 border-l-blue-600 rounded-md mb-5'>
+                <div className='bg-white border border-l-4 border-l-blue-600 border-slate-200 rounded-md mb-5'>
                     <p className='text-center py-2 px-2 text-slate-400 font-light text-xs lg:text-sm'>
                         Para recuperar sua senha, vamos te enviar um link. Selecine como deseja receber: SMS ou e-mail?
                     </p>
@@ -61,7 +60,7 @@ export default function FormPass() {
                                     onChange={(e) => setSelectedOption(e.target.value)}
                                 />
 
-                                <label htmlFor="enviaSMS" key="enviaSMS" className="col-span-1 border-1 hover:ring-2 duration-300 peer-checked:border-blue-500 peer-checked:bg-blue-200 bg-slate-200 rounded-lg p-2 items-center flex constant">
+                                <label htmlFor="enviaSMS" key="enviaSMS" className="col-span-1 border border-transparent hover:ring-2 hover:ring-blue-500 duration-300 peer-checked:border-blue-500 peer-checked:bg-blue-200 bg-slate-200 rounded-lg p-2 items-center flex constant">
                                 
                                     <div className="grid grid-cols-6 items-center">
                                         <TbMessage2Filled className="text-4xl bg-blue-300 text-blue-600 p-2 col-span-1 rounded-md"/>
@@ -90,12 +89,12 @@ export default function FormPass() {
                                     onChange={(e) => setSelectedOption(e.target.value)}
                                 />
 
-                                <label htmlFor="enviaMail" key="enviaMail" className="col-span-1 border-1 hover:ring-2 duration-300 peer-checked:border-blue-500 peer-checked:bg-blue-200 bg-slate-200 rounded-lg p-2 items-center flex constant">
+                                <label htmlFor="enviaMail" key="enviaMail" className="col-span-1 border border-transparent hover:ring-2 hover:ring-blue-500 duration-300 peer-checked:border-blue-500 peer-checked:bg-blue-200 bg-slate-200 rounded-lg p-2 items-center flex constant">
                                 
                                     <div className="grid grid-cols-6 items-center">
                                         <IoMail className="text-4xl bg-blue-300 text-blue-600 p-2 col-span-1 rounded-md"/>
                                         <div className="col-span-5">
-                                            <div className="flex-1 ml-1 break-words">
+                                            <div className="flex-1 ml-1 wrap-break-word">
                                                 <div className="text-slate-400 text-sm font-medium">e-mail</div>
                                                 <div className="text-xs">ms*******na@gmail.com</div>
                                             </div>

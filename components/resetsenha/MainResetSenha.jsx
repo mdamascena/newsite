@@ -49,7 +49,13 @@ export default function MainResetSenha() {
             <div className="bgMainPrincipal h-[50vh]">
                 <div className="flex justify-center lg:p-10 p-6 pt-10 lg:pt-12">
                     <Link href="/" passHref className="lg:w-44 w-36 items-center flex lg:mx-auto col-span-3 lg:col-span-2 hover:scale-110 hover:-rotate-6 duration-300 ease-in">
-                        <Image src={logoBranco} alt="" />
+                        <Image
+                            src={logoBranco}
+                            width={176}
+                            height={Math.round((logoBranco.height / logoBranco.width) * 176)}
+                            className="h-auto w-full"
+                            alt=""
+                        />
                     </Link>
                 </div>
             </div>

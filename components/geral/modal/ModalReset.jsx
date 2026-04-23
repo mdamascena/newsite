@@ -10,6 +10,7 @@ export default function App({isOpen,onClose}) {
 
     return (
         <Modal 
+            aria-label="Localizar cadastro"
             classNames={{
                 backdrop:"bg-black/90",
                 body:"px-4",

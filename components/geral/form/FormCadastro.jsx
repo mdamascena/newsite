@@ -72,9 +72,14 @@ export default function FormCadastro({ onNext }) {
     const [showForm, setShowForm] = useState(false);
 
     const cpfValue = watch("cpf") || "";
+    const validateTimerRef = useRef(null);
+    const lastValidatedCpfRef = useRef("");
+    const lastToastCpfRef = useRef("");
+    const onLoginOpenRef = useRef(onLoginOpen);
 
-// 1) crie um ref para o timer
-const validateTimerRef = useRef(null);
+    useEffect(() => {
+        onLoginOpenRef.current = onLoginOpen;
+    }, [onLoginOpen]);
 
     useEffect(() => {
         
@@ -89,15 +94,24 @@ const validateTimerRef = useRef(null);
         // menos de 11 -> interrompe tudo e sai
         if (cleanedCpf.length < 11) {
             setShowForm(0);
+            lastValidatedCpfRef.current = "";
+            lastToastCpfRef.current = "";
             return;
         }
 
         // chegou a 11 -> inicia validação
-        toastInfoColored("Validando CPF...", {
-            autoClose: 1000,
-            pauseOnHover: false,
-            theme: "light"
-        });
+        if (lastValidatedCpfRef.current === cleanedCpf) {
+            return;
+        }
+
+        if (lastToastCpfRef.current !== cleanedCpf) {
+            toastInfoColored("Validando CPF...", {
+                autoClose: 1000,
+                pauseOnHover: false,
+                theme: "light"
+            });
+            lastToastCpfRef.current = cleanedCpf;
+        }
 
         // 3) agenda um único timeout e guarda o id
         validateTimerRef.current = setTimeout(() => {
@@ -118,15 +132,16 @@ const validateTimerRef = useRef(null);
             if (isValidCPF) {
                 
                 limpaCampos();
+                setShowForm(1);
+                lastValidatedCpfRef.current = cleanedCpf;
 
                 if (cpfValue === "555.555.555-55") {
-                    onLoginOpen(cpfValue);
-                } else {
-                    setShowForm(1)
+                    onLoginOpenRef.current();
                 }
 
             } else {
-                setShowForm(2)
+                setShowForm(2);
+                lastValidatedCpfRef.current = "";
             }
 
             // 4) limpa referência após executar
@@ -141,7 +156,7 @@ const validateTimerRef = useRef(null);
                 validateTimerRef.current = null;
             }
         };
-    }, [cpfValue, onLoginOpen, setValue]);
+    }, [cpfValue, setValue]);
 
     return (
 

@@ -31,9 +31,9 @@ export default function MainHome() {
     <main>
         <div className="bgMainHome">
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 container-custom lg:h-[100vh] h-[85vh]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 container-custom lg:h-screen h-[85vh]">
                 
-                <div className="col-span-1 grid grid-cols-1 lg:h-[50%] h-[100%] my-auto">
+                <div className="col-span-1 grid grid-cols-1 lg:h-[50%] h-full my-auto">
 
                     <div className="content-center col-span-1">
                         <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">

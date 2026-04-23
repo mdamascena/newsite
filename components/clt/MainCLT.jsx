@@ -1,13 +1,12 @@
 import Image from "next/image"
 import { useRef } from "react"
 import { motion, useInView } from "motion/react"
-import { BtnCalc } from "./styles"
 import menclt from "../../public/img/PERSO_CLT.png"
 import SectioAnalise from "../geral/section/Analise"
+import SectionFaq from "../geral/section/LinkFaq"
 import Ripple from "../ui/ripple"
 import { DotPattern } from "../ui/dot-pattern"
 import { Highlighter } from "../ui/highlighter"
-import { useRouter } from 'next/router'
 import { IoIosAddCircle } from "react-icons/io"
 import { RiMoneyDollarCircleFill } from "react-icons/ri"
 import WidgetSimulador from "./widgets/WidgetSimulador.jsx"
@@ -15,6 +14,7 @@ import WidgetLimite from "./widgets/WidgetLimite.jsx"
 import WidgetParcela from "./widgets/WidgetParcela.jsx"
 
 const HERO_ITEM_STAGGER = 0.22;
+const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
 
 const cltHeroAnimations = {
     plusIcon: {
@@ -151,11 +151,6 @@ export default function MainCLT() {
     const showHeroDecorations = useInView(heroVisualRef, {
         amount: 0.35,
     });
-    const router = useRouter();
-    const handleRedirect = () => {
-        router.push('credluz-fast/cadastro');
-    }
-
     const heroDecorationState = showHeroDecorations ? "visible" : "hidden";
     const getHeroMotionProps = (animationName) => ({
         initial: "hidden",
@@ -165,19 +160,19 @@ export default function MainCLT() {
 
   return (
     <main>
-        <section className="relative overflow-hidden bg-gradient-to-t from-slate-400 via-white to-white">
+        <section className="relative overflow-hidden bg-linear-to-t from-slate-400 via-white to-white">
             <DotPattern
                 width={6}
                 height={6}
                 cr={1.1}
-                className="hidden lg:block inset-auto left-0 top-0 h-[580px] w-[900px] text-blue-500/20 [mask-image:radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
+                className="hidden lg:block inset-auto left-0 top-0 h-145 w-225 text-blue-500/20 mask-[radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
             />
 
             <DotPattern
                 width={7}
                 height={7}
                 cr={1.5}
-                className="lg:hidden inset-auto left-0 top-0 h-[580px] w-[900px] text-blue-500/20 [mask-image:radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
+                className="lg:hidden inset-auto left-0 top-0 h-145 w-225 text-blue-500/20 mask-[radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
             />
       
             <div className="relative z-10 lg:pb-0 pt-20 container-custom">
@@ -233,7 +228,7 @@ export default function MainCLT() {
                         <p className='text-blue-600 lg:text-xl text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center tracking-tight'>
                             Descubra seu limite e contrate em minutos{" "}
                             <Highlighter 
-                                action="circle" 
+                                action="box" 
                                 color="#fde047" 
                                 strokeWidth={3} 
                                 padding={5}
@@ -247,7 +242,12 @@ export default function MainCLT() {
                         </p>
 
                         <div className="text-center md:text-left">
-                            <BtnCalc>Simular agora</BtnCalc>
+                            <button
+                                type="button"
+                                className="mt-8 flex-1 cursor-pointer rounded-xl border-b-2 border-amber-300 bg-linear-to-r from-yellow-300 to-amber-500 px-[25vw] py-3 text-xl text-white shadow-md shadow-amber-400/50 duration-150 hover:scale-105 hover:bg-linear-to-r hover:from-yellow-400 hover:to-amber-500 hover:shadow-md active:scale-90 lg:flex-none lg:px-32"
+                            >
+                                Simular agora
+                            </button>
                         </div>
 
                         <div className="text-[12px] text-white mt-5 text-center lg:text-start">
@@ -258,25 +258,32 @@ export default function MainCLT() {
 
                     <div className="lg:col-span-2 lg:flex justify-start">
 
-                        <div className="relative mt-2 mx-auto max-w-[560px] min-h-[520px] overflow-visible lg:hidden">
+                        <div className="relative mt-2 mx-auto max-w-140 min-h-130 overflow-visible lg:hidden">
                             <Ripple
-                                className="z-0 -inset-20 [mask-image:none] absolute"
+                                className="z-0 -inset-20 mask-none absolute"
                                 mainCircleSize={100}
                                 mainCircleOpacity={0.2}
                                 numCircles={7}
                             />
-                            <figure className="relative z-10 flex min-h-[520px] items-end justify-center">
-                                <Image className="w-auto h-auto" width={200} src={menclt} alt="" />
+                            <figure className="relative z-10 flex min-h-130 items-end justify-center">
+                                <Image
+                                    className="w-auto h-auto"
+                                    width={200}
+                                    height={getScaledHeight(menclt, 200)}
+                                    src={menclt}
+                                    alt=""
+                                    loading="eager"
+                                />
                             </figure>
                         </div>
 
                         <div ref={heroVisualRef} className="relative overflow-visible hidden lg:block">
                             
                             <Ripple
-                                className="z-0 -inset-20 [mask-image:none]"
+                                className="z-0 -inset-20 mask-none"
                                 mainCircleSize={260}
                                 mainCircleOpacity={0.18}
-                                numCircles={7}
+                                numCircles={6}
                             />
                             
                             <motion.div {...getHeroMotionProps("plusIcon")} className="bg-white rounded-full absolute top-24 left-1 z-40">
@@ -292,12 +299,16 @@ export default function MainCLT() {
                             <WidgetParcela ClassName="-right-20 top-24" motionProps={getHeroMotionProps("parcela")}/>
                             
                             <figure className="relative z-10 lg:flex hidden items-end justify-center">
-                                <Image className="" width={340} src={menclt} alt="" />
+                                <Image
+                                    className="h-auto"
+                                    width={340}
+                                    height={getScaledHeight(menclt, 340)}
+                                    src={menclt}
+                                    alt=""
+                                    loading="eager"
+                                />
                             </figure>
 
-                            <figure className="relative z-10 flex lg:hidden items-end justify-center">
-                                <Image className="" width={2} src={menclt} alt="" />
-                            </figure>
                         </div>
                     </div>
                     
@@ -308,6 +319,8 @@ export default function MainCLT() {
         </section>
         
         <SectioAnalise />
+        <SectionFaq/>
+
     </main>
   );
 }

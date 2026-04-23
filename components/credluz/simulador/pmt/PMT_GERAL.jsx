@@ -39,7 +39,7 @@ export default function PMTGERAL({valor, showSimulador}){
                 <div className="grid grid-cols-2 gap-1">
                     {data && data.map((item, index) => (
                         <div key={index} className="flex justify-center">
-                            <BtnPmtGeral show={showModal} onClick={() => handleSelectParcela(item.prazo, item.parcela)}>
+                            <BtnPmtGeral onClick={() => handleSelectParcela(item.prazo, item.parcela)}>
                                 {`${item.prazo} X`}
                             </BtnPmtGeral>
                         </div>
@@ -50,7 +50,15 @@ export default function PMTGERAL({valor, showSimulador}){
                     </BtnVolta>
                 </div>
                     
-                <Modal show={showModal} parcela={selectedParcela} prazo={selectedPrazo} valor={selectedValor} showSimulador={() => showSimulador('Valores')}/>
+                <Modal
+                    isOpen={showModal}
+                    onClose={() => setShowModal(false)}
+                    onOpenChange={setShowModal}
+                    parcela={selectedParcela}
+                    prazo={selectedPrazo}
+                    valor={selectedValor}
+                    showSimulador={() => showSimulador('Valores')}
+                />
             </div>
             
         </div>

@@ -26,6 +26,7 @@ const BtnSocial = tw.button`
     active:scale-90 
     duration-150
     ease-in
+    cursor-pointer
 `
 
 export default function Footer() {
@@ -106,7 +107,13 @@ export default function Footer() {
                 <hr className="border border-blue-700 border-opacity-75 rounded-full" />
 
                 <div className="mt-5">
-                    <Image src={LogoFB} width={140} height={30} alt='' />
+                    <Image
+                        src={LogoFB}
+                        width={140}
+                        height={Math.round((LogoFB.height / LogoFB.width) * 140)}
+                        className="h-auto"
+                        alt=''
+                    />
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-3">

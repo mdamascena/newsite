@@ -22,6 +22,7 @@ export const BtnHome = tw.button`
     hover:scale-105
     active:scale-90 
     duration-150
+    cursor-pointer
 `;
 
 //MODALIDADES
@@ -127,6 +128,7 @@ export const BtnMais = tw.button`
     active:scale-90
     active:bg-blue-800
     duration-150
+    cursor-pointer
 `
 
 //SLIDE MODALIDADE

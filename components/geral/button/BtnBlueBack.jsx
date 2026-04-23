@@ -16,6 +16,7 @@ const BtnBack = tw.button`
     hover:scale-105
     active:scale-90 
     duration-400
+    cursor-pointer
 `;
 
 export default function BtnBlueBack({nome, event, iconLeft, iconRight, tipo, habilitado, classN}){

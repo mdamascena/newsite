@@ -33,7 +33,13 @@ export default function MainCONTA() {
                 <div className='grid grid-cols-6 justify-around lg:p-10 p-6 pt-10 lg:pt-12 '>
                     
                     <Link href='/' passHref className='lg:w-44 w-36 items-center flex lg:mx-auto col-span-3 lg:col-span-2 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                        <Image src={logoBranco} alt=''/>
+                        <Image
+                            src={logoBranco}
+                            width={176}
+                            height={Math.round((logoBranco.height / logoBranco.width) * 176)}
+                            className='h-auto w-full cursor-pointer'
+                            alt=''
+                        />
                     </Link>
                     
                     <div className='text-center text-white col-span-6 lg:col-span-2 order-3 lg:order-1 mt-8 lg:mt-0'>
@@ -54,7 +60,7 @@ export default function MainCONTA() {
             </div>
 
             <div className='flex justify-center relative'>
-                <div className='absolute bg-white rounded-md shadow-lg p-5 lg:p-8 -top-32 w-[90%] lg:w-[530px]'>
+                <div className='absolute bg-white rounded-md shadow-lg p-5 lg:p-8 -top-32 w-[90%] lg:w-132.5'>
                     {showLogin ? <Login setShowLogin={setShowLogin} /> : <Reset />}
                 </div>
             </div>

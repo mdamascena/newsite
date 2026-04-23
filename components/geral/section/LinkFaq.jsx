@@ -7,10 +7,10 @@ import { PiQuestionMarkBold } from "react-icons/pi"
 
 export default function LinkFaq(){
     return(
-        <section className='lg:px-56 bg-gradient-to-b from-slate-100 to-white'>
+        <section className='lg:px-56 bg-linear-to-b from-slate-100 to-white'>
             <div className='lg:pt-32 pt-8 container-custom'>
                 
-                <div className='z-0 relative overflow-hidden bg-gradient-to-l from-yellow-200 to-yellow-500 lg:h-96 lg:mb-10 h-[45rem] lg:w-[1000px] rounded-3xl mx-auto shadow-lg'>
+                <div className='z-0 relative overflow-hidden bg-linear-to-l from-yellow-200 to-yellow-500 lg:h-96 lg:mb-10 h-180 lg:w-250 rounded-3xl mx-auto shadow-lg'>
                     <PiQuestionMarkBold className='text-9xl absolute -left-1 text-yellow-300/40'/>
                     <PiQuestionMarkBold className='text-5xl absolute left-20 top-32 text-yellow-300/40'/>
                     <PiQuestionMarkBold className='text-5xl absolute left-20 top-0 text-yellow-300/40'/>
@@ -29,13 +29,13 @@ export default function LinkFaq(){
                     <PiQuestionMarkBold className='text-2xl absolute left-5 top-28 text-yellow-300/40'/>
                     <PiQuestionMarkBold className='text-5xl absolute left-36 top-12 text-yellow-300/40'/>
                 </div>
-                <div className='grid lg:grid-cols-2 grid-cols-1 mt-[-42rem] lg:mt-[-29.5rem]'>
+                <div className='grid lg:grid-cols-2 grid-cols-1 -mt-168 lg:-mt-118'>
 
-                    <div className='col-span-1 grid lg:order-none order-4 lg:justify-end justify-center z-10'>
-                        <Image className='lg:w-[350px] w-[300px]'src={Modelo} alt=''/>
+                    <div className='col-span-1 grid lg:order-0 order-4 lg:justify-end justify-center z-10'>
+                        <Image className='lg:w-87.5 w-75'src={Modelo} alt=''/>
                     </div>
                         
-                    <div className='col-span-1 content-center lg:w-[420px] lg:ml-5 mx-8 z-10'>
+                    <div className='col-span-1 content-center lg:w-105 lg:ml-5 mx-8 z-10'>
                         <div className='lg:text-4xl text-3xl font-medium tracking-tight text-center lg:text-left'>
                             <h1 className='text-white'>Ainda está com</h1>
                             <h1 className='text-yellow-600 font-bold'>dúvidas?</h1>
@@ -48,12 +48,14 @@ export default function LinkFaq(){
                         </div>
                             
                         <div className='flex lg:justify-start justify-center my-6 lg:my-0'>
-                            <Link passHref href="/faq">
-                                <Btn>
+                            
+                            <Btn>
+                                <Link className='flex items-center' passHref href="/faq">
                                     Dúvidas 
                                     <FaRegQuestionCircle className='ml-1'/>
-                                </Btn>
-                            </Link>
+                                </Link>
+                            </Btn>
+                            
                         </div>
                     </div>
 

@@ -5,10 +5,9 @@ import desc from '../../../public/img/exemp_desc.png'
 import {BsBroadcast} from 'react-icons/bs'
 import {BsAppIndicator} from 'react-icons/bs'
 import {BsChatLeftDots} from 'react-icons/bs'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import BtnYellow from "../button/BtnYellow"
 import tw from 'tailwind-styled-components'
-import { useRouter } from 'next/router'
 import Link from "next/link"
 
 const Card = tw.div`
@@ -19,7 +18,11 @@ const Card = tw.div`
     p-8
     duration-1000
 `
+
+const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
+
 export default function Regras(){
+    const sectionRef = useRef(null);
     
     const [movImg, setMovImg] = useState ('opacity-0 scale-0');
     const [movCard, setMovCard] = useState ('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
@@ -28,6 +31,10 @@ export default function Regras(){
     const [movInfo, setMovInfo] = useState ('opacity-0 scale-0');
 
     useEffect(()=>{
+        if (!sectionRef.current) {
+            return undefined;
+        }
+
         const intersectionObserver = new IntersectionObserver((entries)=>{
             if(entries.some((entry) => entry.isIntersecting)){
                 setMovImg('');
@@ -35,7 +42,6 @@ export default function Regras(){
                 setMovDesc('');
                 setMovStep('lg:translate-y-[115px] translate-y-[86px] lg:-translate-x-[50px] -translate-x-[30px]');
                 setMovInfo('lg:translate-y-[250px] translate-y-[186px] translate-x-[20px] lg:translate-x-[50px] ');
-                console.log('ta ai');
             }else{
                 setMovImg('opacity-0 scale-0');
                 setMovCard('-translate-x-[150px] lg:translate-x-[150px] opacity-0');
@@ -45,12 +51,12 @@ export default function Regras(){
             }
         
         });
-        intersectionObserver.observe(document.querySelector('#analise'));
+        intersectionObserver.observe(sectionRef.current);
         return () => intersectionObserver.disconnect();
-    });
+    }, []);
 
     return(
-        <section id='analise' className='bg-white select-none'>
+        <section ref={sectionRef} id='analise' className='bg-white select-none'>
             
             <div className="relative container-custom lg:py-[15vh] py-5">
                 
@@ -110,7 +116,7 @@ export default function Regras(){
                                 </div>
                             </div>
                         </div>
-                        <Link href='../PageTransicao' passHref>
+                        <Link href='/PageTransicao' passHref>
                             <BtnYellow nome='Simular aqui'/>
                         </Link>
                     </div>
@@ -118,18 +124,32 @@ export default function Regras(){
                     <div className='col-span-1 flex lg:justify-center justify-center z-10 relative'>
                         <div className="hidden lg:flex justify-center">
                             <div className="flex">
-                                <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={230} src={analise} alt=''/>
-                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={230} src={step} alt='' />
-                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10`} width={240} src={desc} alt='' />
+                                <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={230} height={getScaledHeight(analise, 230)} src={analise} alt='' style={{ height: "auto" }}/>
+                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={230} height={getScaledHeight(step, 230)} src={step} alt='' style={{ height: "auto" }} />
+                                <Image
+                                    className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10 max-w-none`}
+                                    width={240}
+                                    height={getScaledHeight(desc, 240)}
+                                    src={desc}
+                                    alt=''
+                                    style={{ height: "auto" }}
+                                />
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[13rem] absolute rounded-full bottom-6 shadow-xl duration-1000 ${movImg}`}/>
                         </div>
 
                         <div className="mt-8 flex justify-center lg:hidden">
                             <div className="flex">
-                                <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={170} src={analise} alt=''/>
-                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={170} src={step} alt='' />
-                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10`} width={180} src={desc} alt='' />
+                                <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={170} height={getScaledHeight(analise, 170)} src={analise} alt='' style={{ height: "auto" }}/>
+                                <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={170} height={getScaledHeight(step, 170)} src={step} alt='' style={{ height: "auto" }} />
+                                <Image
+                                    className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10 max-w-none`}
+                                    width={180}
+                                    height={getScaledHeight(desc, 180)}
+                                    src={desc}
+                                    alt=''
+                                    style={{ height: "auto" }}
+                                />
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[9rem] absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>
                         </div>

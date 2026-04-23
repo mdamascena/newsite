@@ -27,7 +27,8 @@ export const Card = tw.div`
 
 //MAIN CREDLUZ FAST
 export const BtnCalc = tw.button`
-    bg-gradient-to-r 
+    cursor-pointer
+    bg-gradient-to-r
     from-yellow-300 
     to-amber-500 
     text-xl 
@@ -75,6 +76,7 @@ export const Btn = tw.button`
     duration-300
     text-white 
     rounded-md
+    cursor-pointer
 `
 export const BtnMaisValor = tw.button`
     bg-white/30
@@ -92,8 +94,10 @@ export const BtnMaisValor = tw.button`
     hover:scale-105
     active:scale-90 
     duration-150
+    cursor-pointer
 `
 export const BtnCalcValores = tw.button`
+    cursor-pointer
     text-white
     text-xl
     w-[98%]
@@ -114,6 +118,7 @@ export const BtnCalcValores = tw.button`
 //PMT
 //DIALOG CALC
 export const BtnSolicita = tw.button`
+    cursor-pointer
     flex 
     items-center 
     justify-center 
@@ -143,6 +148,7 @@ export const BtnRecalc = tw.button`
     active:bg-slate-200
     active:scale-90 
     duration-200
+    cursor-pointer
 `
 
 //PMT GERAL
@@ -157,6 +163,7 @@ export const BtnPmtGeral = tw.button`
     duration-300
     text-white 
     rounded-md
+    cursor-pointer
 `
 export const BtnVolta = tw.button`
     w-full
@@ -173,6 +180,7 @@ export const BtnVolta = tw.button`
     duration-300
     text-white 
     rounded-md
+    cursor-pointer
 `
 export const BtnCalcFast = tw.button`
     bg-yellow-400 
@@ -189,6 +197,7 @@ export const BtnCalcFast = tw.button`
     active:bg-yellow-600 
     duration-150 
     shadow-lg
+    cursor-pointer
 `
 
 export const OptLabel = tw(motion.label)`

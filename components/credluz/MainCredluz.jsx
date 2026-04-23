@@ -23,7 +23,7 @@ export default function MainCredluz() {
         <main className="select-none">
             <section className="bgMainPrincipal">
                 <div className="bgBrasao">
-                    <div className="pb-5 lg:pb-0 lg:pt-28 pt-10 container-custom">
+                    <div className="pb-5 lg:pb-0 lg:pt-18 pt-10 container-custom">
                         <div className="grid grid-cols-1 lg:grid-cols-3">
                             
                             <figure className="mx-auto block lg:hidden mt-14 pr-2">
@@ -38,7 +38,7 @@ export default function MainCredluz() {
                                     <h2 className="font-semibold tracking-tighter text-4xl mb-3 lg:mb-0 flex items-center">Débito na conta de 
                                         <span className="text-6xl ml-2 z-10" style={{ textShadow: "0px 0px 20px white" }}>LUZ</span>
                                     </h2>
-                                    <div className="bg-yellow-400 p-[1px] lg:my-5 rounded-full"/>
+                                    <div className="bg-yellow-400 p-px lg:my-5 rounded-full"/>
 
                                     <Image className="absolute -top-10 left-40" src={variada} width={900} alt=""/>
                                     <Image className="absolute -top-2 left-52" src={variada} width={500} alt=""/>
@@ -75,7 +75,7 @@ export default function MainCredluz() {
                                         Empréstimo <span className="font-light">Pessoal Online</span>
                                     </h1>
                                     <h2 className="text-yellow-400 font-medium tracking-tighter text-2xl">Débito na conta de LUZ</h2>
-                                    <div className="bg-yellow-400 p-[1px] mx-4 lg:my-5 rounded-full"/>
+                                    <div className="bg-yellow-400 p-px mx-4 lg:my-5 rounded-full"/>
                                 </div>
                             </div>
 

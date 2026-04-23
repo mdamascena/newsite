@@ -16,7 +16,8 @@ export const BtnConta = tw.button`
     hover:text-blue-600 
     hover:scale-105
     active:scale-90 
-    duration-300    
+    duration-300
+    cursor-pointer    
 `
 export const BtnHelp = tw.button`
     bg-sky-500
@@ -38,5 +39,6 @@ export const BtnHelp = tw.button`
     hover:bg-sky-700
     hover:scale-105
     active:scale-90 
-    duration-150    
+    duration-150
+    cursor-pointer  
 `

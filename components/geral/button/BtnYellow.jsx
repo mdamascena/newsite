@@ -16,6 +16,7 @@ const Btn = tw.button`
     active:bg-yellow-600
     duration-150
     shadow-lg
+    cursor-pointer
 `
 export default function BtnYellow ({nome, event, iconLeft, iconRight, habilitado, tipo, className}){
     return(

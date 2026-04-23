@@ -17,7 +17,7 @@ export default function MainFC() {
                 
                 <div className='lg:my-auto col-span-1'>
                     
-                    <button className='flex items-center lg:bottom-20 relative text-blue-500 bg-blue-50 lg:rounded-lg rounded-md py-1 px-4' onClick={handleBack}>
+                    <button className='flex items-center lg:bottom-20 relative text-blue-500 bg-blue-50 lg:rounded-lg rounded-md py-1 px-4 cursor-pointer' onClick={handleBack}>
                         <HiOutlineArrowLongLeft className='mr-2' />
                         Voltar
                     </button>

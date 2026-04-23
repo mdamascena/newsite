@@ -27,6 +27,7 @@ export const BtnCalc = tw.button`
     hover:scale-105
     active:scale-90
     duration-150
+    cursor-pointer
 `
 export const EmpTitle = tw.h1`
     text-blue-600 
@@ -61,6 +62,7 @@ export const BtnCalcRegras = tw.button`
     hover:scale-105
     active:scale-90
     duration-150
+    cursor-pointer
 `;
 
 //SIMULADOR
@@ -83,6 +85,7 @@ export const BtnSolic = tw.button`
     hover:scale-105
     active:scale-90
     duration-150
+    cursor-pointer
 `
 export const IntSolic = tw.input`
     w-full

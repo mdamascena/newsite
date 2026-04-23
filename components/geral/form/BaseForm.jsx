@@ -26,7 +26,13 @@ export default function BaseForm({copyTitleChart, steps, titleText, descriptionT
                                 className="text-6xl text-white cursor-pointer lg:p-2 w-10 lg:w-20"
                                 onClick={handleBack}
                             />
-                            <Image className="w-28 lg:w-40" src={LogoB} width={200} alt="" />
+                            <Image
+                                className="w-28 lg:w-40 h-auto"
+                                src={LogoB}
+                                width={200}
+                                height={Math.round((LogoB.height / LogoB.width) * 200)}
+                                alt=""
+                            />
                         </div>
 
                         <div className="text-end hidden lg:block content-center lg:min-h-[30vh]">

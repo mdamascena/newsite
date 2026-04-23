@@ -80,6 +80,7 @@ export default function ModalAutorizacaoFGTS({ isOpen, onOpenChange, setValueCar
     return (
         <>
             <Modal 
+                aria-label="Instruções de autorização do FGTS"
                 isOpen={isOpen} 
                 onOpenChange={onOpenChange}  
                 hideCloseButton={true}

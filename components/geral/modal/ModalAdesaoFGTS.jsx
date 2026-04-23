@@ -45,6 +45,7 @@ export default function ModalAdesaoFGTS({ isOpen, onOpenChange, setValueCard  })
     return (
         <>
             <Modal 
+                aria-label="Instruções de adesão ao FGTS"
                 isOpen={isOpen} 
                 onOpenChange={onOpenChange}  
                 hideCloseButton={true}

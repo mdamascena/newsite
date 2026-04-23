@@ -1,134 +1,144 @@
-import React from "react"
-import {Modal, ModalContent, ModalHeader, ModalBody} from "components/lib/nextui-compat"
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import LogoCrefaz from '../../../../public/img/logocrefaz.png'
-import { BtnSolicita, BtnRecalc } from "../../styles"
-import { FaCheck } from "react-icons/fa6"
-import { BiMoneyWithdraw } from "react-icons/bi"
-import Link from "next/link"
+import React from "react";
+import { Modal, ModalContent, ModalHeader, ModalBody } from "components/lib/nextui-compat";
+import Image from "next/image";
+import Link from "next/link";
+import { FaCheck } from "react-icons/fa6";
+import { BiMoneyWithdraw } from "react-icons/bi";
 
-export default function App({ show, fechar, onOpenChange, prazo, parcela, valor, showSimulador }) {
+import LogoCrefaz from "../../../../public/img/logocrefaz.png";
+import { BtnSolicita, BtnRecalc } from "../../styles";
 
-    const [data, setData] = useState([]);
-    const [selectedParcela, setSelectedParcela] = useState(null);
-    const [selectedPrazo, setSelectedPrazo] = useState(null)
-    const [selectedValor, setSelectedValor] = useState(null)
+export default function App({
+  isOpen,
+  onClose,
+  onOpenChange,
+  show,
+  fechar,
+  prazo,
+  parcela,
+  valor,
+  showSimulador,
+}) {
+  const modalIsOpen = typeof isOpen === "boolean" ? isOpen : Boolean(show);
+  const handleClose = onClose ?? fechar;
 
-    useEffect(() => {
-        const fetchData = async () => {
-          const response = await fetch('/tabela.json');
-          const json = await response.json();
-          setData(json[valor]); // filtra os dados pelo valor específico
-        };
-    
-        fetchData();
-    }, [valor]);
+  const handleRecalcClick = () => {
+    setTimeout(() => {
+      handleClose?.();
+      showSimulador();
+    }, 800);
+  };
 
-    const handleSelectParcela = (prazo, parcela) => {
-        setSelectedPrazo(prazo);
-        setSelectedParcela(parcela);
-        setSelectedValor(valor)
-    };
+  return (
 
-    const handleRecalcClick = () => {
-        setTimeout(() => {
-            showSimulador();
-        }, 800)
-    } 
-  
-    return (
-        <Modal 
-            classNames={{backdrop:"bg-gradient-to-b from-black/90 via-blue-950/70 to-black/90"}}
-            hideCloseButton={true} 
-            isOpen={show} 
-            onClose={fechar} 
-            backdrop="opaque"
-            placement="center"
-            radius="sm"
-            >
+    <Modal
+        aria-label="Resultado da simulação de crédito"
+        classNames={{ backdrop: "bg-gradient-to-b from-black/90 via-blue-950/70 to-black/90" }}
+        hideCloseButton={true}
+        isOpen={modalIsOpen}
+        onClose={handleClose}
+        onOpenChange={onOpenChange}
+        backdrop="opaque"
+        placement="center"
+        radius="sm">
 
-            <ModalContent className="bg-btncalc py-3 select-none m-2">
+        <ModalContent className="mx-2 select-none bg-btncalc p-2!">
+            
+            <ModalHeader className="flex items-center justify-between">
                 
-                <ModalHeader className="flex items-center justify-between">
-                    <p className="text-amber-400 font-normal tracking-tight text-sm">
-                        Simulação de crédito financeira
+                <p className="text-sm font-normal tracking-tight text-amber-400">
+                    Simulação de crédito financeira
+                </p>
+
+                <div className="lg:ml-2">
+                    <Image src={LogoCrefaz} width={90} alt="" />
+                </div>
+
+            </ModalHeader>
+
+            <ModalBody className="">
+                
+                <div className="flex items-center justify-between pt-3">
+                    
+                    <div>
+
+                        <div className="text-4xl font-bold tracking-tight text-white lg:text-5xl">
+                            {Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                        </div>
+
+                        <div className="mt-2 flex text-xl text-white lg:text-2xl">
+                            <div className="text-start">
+                                {prazo}X de{" "}
+                                {Number(parcela).toLocaleString("pt-BR", {
+                                    style: "currency",
+                                    currency: "BRL",
+                                })}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="items-center">
+                        <div className="rounded-md bg-blue-800/30 p-3 text-6xl text-white">
+                            <BiMoneyWithdraw />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="my-2 w-full border-b border-dashed border-white" />
+
+                <ul className="mt-3 grid gap-y-2 text-md font-light text-white text-md">
+                
+                    <li className="flex items-center">
+                        <FaCheck className="mr-2 rounded-lg bg-yellow-100 p-1 text-2xl text-yellow-500" />
+                        Sem comprovação de renda
+                    </li>
+
+                    <li className="flex items-center">
+                        <FaCheck className="mr-2 rounded-lg bg-yellow-100 p-1 text-2xl text-yellow-500" />
+                        Possibilidade para negativado*
+                    </li>
+
+                    <li className="flex items-center">
+                        <FaCheck className="mr-2 rounded-lg bg-yellow-100 p-1 text-2xl text-yellow-500" />
+                        Liberação no mesmo dia
+                    </li>
+
+                    <li className="flex items-center">
+                        <FaCheck className="mr-2 rounded-lg bg-yellow-100 p-1 text-2xl text-yellow-500" />
+                        Limite de até R$ 4.000,00*
+                    </li>
+
+                </ul>
+
+                <div className="justify-center">
+
+                    <Link href="credluz/cadastro" passHref>
+                        <BtnSolicita className="w-full text-base">Solicitar Empréstimo</BtnSolicita>
+                    </Link>
+
+                    <BtnRecalc className="w-full text-base" onClick={handleRecalcClick}>
+                        Simular outro valor
+                    </BtnRecalc>
+
+                </div>
+
+                <div className="select-none text-[10px]">
+                    <p className="font-light text-white">
+                        Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de
+                        522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
                     </p>
+                </div>
 
-                    <div className="lg:ml-2">
-                        <Image src={LogoCrefaz} width={90} alt="" />
-                    </div>  
-                </ModalHeader>
+                <div className="my-2">
+                    <p className="text-sm text-white">*Crédito sujeito a análise</p>
+                </div>
 
-                <ModalBody>
-                    <div className="flex items-center justify-between pt-3">
-                        <div>
-                            <div className="text-white lg:text-5xl text-4xl font-[700] tracking-tight">
-                                {Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', })}
-                            </div>
+            </ModalBody>
 
-                            <div className="text-white lg:text-2xl text-xl flex mt-2">
-                                <div className="text-start">
-                                    {prazo}X de {Number(parcela).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', })}
-                                </div>
-                            </div>
-                        </div>
+        </ModalContent>
 
-                        <div className="items-center">
-                            <div className="text-6xl bg-blue-800/30 p-3 text-white rounded-md">
-                                <BiMoneyWithdraw />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="border-b border-dashed border-white w-full my-2"/>
-
-       
-
-                    <ul className="text-white font-light mt-3 gap-y-2 grid">
-                        <li className="flex items-center">
-                            <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
-                            Sem comprovação de renda
-                        </li>
-
-                        <li className="flex items-center">
-                            <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
-                            Possibilidade para negativado*
-                        </li>
-
-                        <li className="flex items-center">
-                            <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
-                            Liberação no mesmo dia
-                        </li>
-
-                        <li className="flex items-center">
-                            <FaCheck className="bg-yellow-100 p-1 text-2xl rounded-lg text-yellow-500 mr-2" />
-                            Limite de até R$ 4.000,00*
-                        </li>
-                    </ul>
-                    <div className="justify-center">
-                        <Link href="credluz/cadastro" passHref>
-                            <BtnSolicita className="w-full">
-                                Solicitar Empréstimo
-                            </BtnSolicita>
-                        </Link>
-                
-                        <BtnRecalc className="w-full" onClick={handleRecalcClick}>
-                            Simular outro valor
-                        </BtnRecalc>                
-                    </div>
-                    <div className="text-[10px] select-none">
-                        <p className="text-white font-light">
-                            Pagamento de 8 a 22 meses. Taxa equivalente ao CET mensal de 16,46% e anual de 522,16%. Exemplo: R$ 1.000,00, em 18 meses com parcelas de R$ 184,01.
-                        </p>
-                    </div>
-                                    
-                    <div className="my-2">
-                        <p className="text-white text-sm">*Crédito sujeito a análise</p>
-                    </div>
-                </ModalBody>
-
-            </ModalContent>
-        </Modal>
-    );
+    </Modal>
+  );
 }

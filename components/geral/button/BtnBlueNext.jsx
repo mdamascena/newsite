@@ -15,7 +15,8 @@ const BtnNext = tw.button`
     hover:scale-105
     active:scale-90 
     duration-400
-    disabled:opacity-50  
+    disabled:opacity-50
+    cursor-pointer  
 `
 
 export default function BtnBlueNext ({nome, event, iconLeft, iconRight, habilitado, tipo, className}){
