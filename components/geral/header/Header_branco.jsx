@@ -127,7 +127,7 @@ export default function Header() {
                             Quem Somos
                         </Link>
                         <LiDrop className={`${desktopLinkClass} relative flex group`}>
-                            Empréstimo
+                            Empréstimos
                             <RiArrowDownSLine className='text-lg duration-500 group-hover:rotate-180' />
                             <Dropdown>
                                 <div className='p-1 text-sm'>
@@ -178,7 +178,7 @@ export default function Header() {
                             type='button'
                             className={`w-full rounded-md px-2 py-2 text-center text-slate-400! transition-colors duration-300 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200 cursor-pointer ${dropdonw[0] ? '' : 'bg-slate-200'}`}
                             onClick={drop}>
-                            Empréstimo
+                            Empréstimos
                         </button>
                     </LiSm>
                 </ul>

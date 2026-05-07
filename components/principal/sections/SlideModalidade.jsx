@@ -8,7 +8,7 @@ import Link from 'next/link';
 const slides = [
     {
         bgClass: 'bg-modelo-credluz',
-        title: 'Empréstimo da conta de luz',
+        title: 'Empréstimo da conta de LUZ',
         description: 'Crédito rápido e sem burocracia, sem comprovação de renda e aprovado até para negativados',
         resumo: 'Dinheiro rápido, sem burocracia e com aprovação fácil até pra quem está negativado e não comprova renda. Simples, seguro e acessível pra quem precisa resolver hoje sem dor de cabeça.',
         pagina: '../credluz'
@@ -156,7 +156,7 @@ export default function ModSlide() {
                                         className={`group absolute inset-0 overflow-hidden rounded-2xl ${activeSlide.bgClass}`}
                                     >
                                         <motion.div
-                                            className='pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20'
+                                            className='pointer-events-none absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-black/20'
                                             animate={{ y: ['-3%', '3%', '-3%'], opacity: [0.32, 0.56, 0.32] }}
                                             transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
                                         />
@@ -181,7 +181,7 @@ export default function ModSlide() {
                                                 </p>
                                                 <div className='col-span-5 mt-2 flex justify-center'>
                                                     <Link className='inline-flex justify-center mb-3' href={activeSlide.pagina} passHref>
-                                                        <BtnYellow className="text-xl lg:!p-3 !p-2 !px-16 !lg:px-0" nome="Saiba mais" />
+                                                        <BtnYellow className="text-xl lg:p-3! p-2! px-16! !lg:px-0" nome="Saiba mais" />
                                                     </Link>
                                                 </div>
                                             </motion.div>

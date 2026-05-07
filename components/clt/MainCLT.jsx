@@ -12,6 +12,8 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri"
 import WidgetSimulador from "./widgets/WidgetSimulador.jsx"
 import WidgetLimite from "./widgets/WidgetLimite.jsx"
 import WidgetParcela from "./widgets/WidgetParcela.jsx"
+import InformeCLT from "./InformeCLT.jsx"
+import VantagensCLT from "./VantagensCLT.jsx"
 
 const HERO_ITEM_STAGGER = 0.22;
 const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
@@ -144,7 +146,6 @@ const cltHeroAnimations = {
     },
 };
 
-
 export default function MainCLT() {
 
     const heroVisualRef = useRef(null);
@@ -161,6 +162,7 @@ export default function MainCLT() {
   return (
     <main>
         <section className="relative overflow-hidden bg-linear-to-t from-slate-400 via-white to-white">
+            
             <DotPattern
                 width={6}
                 height={6}
@@ -169,9 +171,9 @@ export default function MainCLT() {
             />
 
             <DotPattern
-                width={7}
-                height={7}
-                cr={1.5}
+                width={4}
+                height={4}
+                cr={1.1}
                 className="lg:hidden inset-auto left-0 top-0 h-145 w-225 text-blue-500/20 mask-[radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
             />
       
@@ -242,10 +244,7 @@ export default function MainCLT() {
                         </p>
 
                         <div className="text-center md:text-left">
-                            <button
-                                type="button"
-                                className="mt-8 flex-1 cursor-pointer rounded-xl border-b-2 border-amber-300 bg-linear-to-r from-yellow-300 to-amber-500 px-[25vw] py-3 text-xl text-white shadow-md shadow-amber-400/50 duration-150 hover:scale-105 hover:bg-linear-to-r hover:from-yellow-400 hover:to-amber-500 hover:shadow-md active:scale-90 lg:flex-none lg:px-32"
-                            >
+                            <button type="button" className="mt-8 flex-1 cursor-pointer rounded-xl border-b-2 border-amber-300 bg-linear-to-r from-yellow-300 to-amber-500 px-[25vw] py-3 text-xl text-white shadow-md shadow-amber-400/50 duration-150 hover:scale-105 hover:bg-linear-to-r hover:from-yellow-400 hover:to-amber-500 hover:shadow-md active:scale-90 lg:flex-none lg:px-32">
                                 Simular agora
                             </button>
                         </div>
@@ -256,20 +255,33 @@ export default function MainCLT() {
                         </div>
                     </div>
 
-                    <div className="lg:col-span-2 lg:flex justify-start">
+                    <div ref={heroVisualRef} className="lg:col-span-2 lg:flex justify-start">
 
-                        <div className="relative mt-2 mx-auto max-w-140 min-h-130 overflow-visible lg:hidden">
+                        <div className="relative mt-2 overflow-visible lg:hidden">
                             <Ripple
                                 className="z-0 -inset-20 mask-none absolute"
                                 mainCircleSize={100}
                                 mainCircleOpacity={0.2}
                                 numCircles={7}
                             />
-                            <figure className="relative z-10 flex min-h-130 items-end justify-center">
+
+                            <motion.div {...getHeroMotionProps("plusIcon")} className="bg-white rounded-full absolute top-24 left-1 z-40">
+                                <IoIosAddCircle className="text-5xl text-blue-600"/>
+                            </motion.div>
+
+                            <motion.div {...getHeroMotionProps("moneyIcon")} className="bg-white rounded-full absolute bottom-12 -left-5 z-50">
+                                <RiMoneyDollarCircleFill className="text-5xl text-blue-600"/>
+                            </motion.div>
+                            
+                            <WidgetSimulador ClassName="top-1 left-1" motionProps={getHeroMotionProps("simulador")}/>
+                            <WidgetLimite ClassName="bottom-0 right-0" motionProps={getHeroMotionProps("limite")}/>
+                            <WidgetParcela ClassName="right-2 top-2" motionProps={getHeroMotionProps("parcela")}/>
+
+                            <figure className="relative z-10 flex items-end justify-center">
                                 <Image
-                                    className="w-auto h-auto"
-                                    width={200}
-                                    height={getScaledHeight(menclt, 200)}
+                                    className=""
+                                    width={280}
+                                    height={getScaledHeight(menclt, 280)}
                                     src={menclt}
                                     alt=""
                                     loading="eager"
@@ -277,7 +289,7 @@ export default function MainCLT() {
                             </figure>
                         </div>
 
-                        <div ref={heroVisualRef} className="relative overflow-visible hidden lg:block">
+                        <div className="relative overflow-visible hidden lg:block">
                             
                             <Ripple
                                 className="z-0 -inset-20 mask-none"
@@ -318,6 +330,8 @@ export default function MainCLT() {
 
         </section>
         
+        <InformeCLT/>
+        <VantagensCLT />
         <SectioAnalise />
         <SectionFaq/>
 

@@ -11,7 +11,6 @@ export default function SectionDescFGTS() {
             <div className="grid grid-cols-2 lg:pt-16 container-custom">
                 
                 <div className="lg:col-span-1 col-span-2 lg:order-2 lg:ml-10 px-2 grid content-center">
-                    
                     <div>
                         <h2 className="text-4xl lg:text-5xl font-semibold tracking-tighter text-blue-500 mb-2 pt-8 lg:pt-0">Condições Gerais</h2>
                         <p className="text-md lg:text-xl text-slate-400">O que precisa para fazer a antecipação do meu saque aniversário?</p>

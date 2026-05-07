@@ -124,15 +124,13 @@ export default function Regras(){
                     <div className='col-span-1 flex lg:justify-center justify-center z-10 relative'>
                         <div className="hidden lg:flex justify-center">
                             <div className="flex">
-                                <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={230} height={getScaledHeight(analise, 230)} src={analise} alt='' style={{ height: "auto" }}/>
+                                <Image priority className={`duration-1000 delay-700 ${movImg} z-10`} width={230} height={getScaledHeight(analise, 230)} src={analise} alt='' style={{ height: "auto" }}/>
                                 <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={230} height={getScaledHeight(step, 230)} src={step} alt='' style={{ height: "auto" }} />
                                 <Image
                                     className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10 max-w-none`}
-                                    width={240}
-                                    height={getScaledHeight(desc, 240)}
                                     src={desc}
                                     alt=''
-                                    style={{ height: "auto" }}
+                                    style={{ width: 240, height: "auto" }}
                                 />
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[13rem] absolute rounded-full bottom-6 shadow-xl duration-1000 ${movImg}`}/>
@@ -140,15 +138,13 @@ export default function Regras(){
 
                         <div className="mt-8 flex justify-center lg:hidden">
                             <div className="flex">
-                                <Image className={`duration-1000 delay-700 ${movImg} z-10`} width={170} height={getScaledHeight(analise, 170)} src={analise} alt='' style={{ height: "auto" }}/>
+                                <Image priority className={`duration-1000 delay-700 ${movImg} z-10`} width={170} height={getScaledHeight(analise, 170)} src={analise} alt='' style={{ height: "auto" }}/>
                                 <Image className={`border-slate-300 rounded-xl shadow-lg duration-700 absolute delay-1000 ${movStep} z-10`} width={170} height={getScaledHeight(step, 170)} src={step} alt='' style={{ height: "auto" }} />
                                 <Image
                                     className={`border-slate-300 rounded-xl shadow-lg duration-1000 absolute delay-1000 ${movInfo} z-10 max-w-none`}
-                                    width={180}
-                                    height={getScaledHeight(desc, 180)}
                                     src={desc}
                                     alt=''
-                                    style={{ height: "auto" }}
+                                    style={{ width: 180, height: "auto" }}
                                 />
                             </div>
                             <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[9rem] absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>

@@ -111,8 +111,7 @@ export default function Header() {
             <AlertI />
             <div
                 id='menuBar'
-                className={`${containerClass} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-5 rounded-[10px] left-0 right-0 items-center duration-500 container-custom`}
-            >
+                className={`${containerClass} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-5 rounded-[10px] left-0 right-0 items-center duration-500 container-custom`}>
                 <Link href='/' className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in justify-self-start'>
                     <Image id='logoBranco' src={logoSrc} width={160} placeholder='blur' alt='' />
                 </Link>
@@ -121,18 +120,16 @@ export default function Header() {
                     <ul className='flex gap-7'>
                         <Link
                             href='/'
-                            className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}
-                        >
+                            className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
                             Principal
                         </Link>
                         <Link
                             href='/quem-somos'
-                            className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}
-                        >
+                            className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
                             Quem Somos
                         </Link>
                         <LiDrop className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} relative flex group`}>
-                            Empréstimo
+                            Empréstimos
                             <RiArrowDownSLine className='text-lg duration-200 group-hover:rotate-180' />
                             <Dropdown>
                                 <div className='p-1 text-sm'>
@@ -179,7 +176,7 @@ export default function Header() {
                     </LiSm>
                     <LiSm>
                         <button type='button' className={`w-full rounded-md px-2 py-2 text-center text-slate-400! transition-colors duration-300 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200 ${dropdonw[0] ? '' : 'bg-slate-200'}`} onClick={drop}>
-                            Empréstimo
+                            Empréstimos
                         </button>
                     </LiSm>
                 </ul>

@@ -10,7 +10,8 @@ import Escolha from "./sections/Escolha"
 import { useRouter } from 'next/router'
 import { MarqueeDemo } from "./MarqueeDemo"
 import { RainbowButton } from "../ui/rainbow-button"
-import WordRotate from "../ui/word-rotate"
+import dynamic from "next/dynamic";
+const WordRotate = dynamic(() => import("../ui/word-rotate"), { ssr: false });
 
 const texts = [
     "Crédito na conta de LUZ",

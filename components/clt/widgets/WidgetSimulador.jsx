@@ -7,10 +7,10 @@ export default function WidgetSimulador({ClassName, motionProps = {}}) {
     return(
         <motion.div {...motionProps} className={cn("absolute rounded-lg bg-blue-300 z-50 shadow-xl opacity-80", ClassName)}>
             <div className="bg-blue-50 rounded-lg m-2 text-slate-400 text-xs p-2">
-                <p className="mb-0 text-[10px]">Simulação</p>
+                <p className="mb-0 lg:text-[10px] text-[8px]">Parcela</p>
                 <div className="flex items-center">
-                    <p className="font-semibold text-md tracking-tight">R$ 120,00</p>
-                    <p className="ml-1">Parcela</p>
+                    <p className="font-semibold lg:text-md text-xs tracking-tight">R$ 120,00</p>
+                    <p className="ml-1 ">mês</p>
                 </div>
             </div>
 

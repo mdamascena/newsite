@@ -23,6 +23,7 @@ export default function SessaoModalidades() {
         <section className="bg-slate-50">
 
             <div className='lg:hidden'>
+
                 <Carousel className="grid grid-cols-1 "
                     autoPlay={true}
                     infiniteLoop={true}
@@ -30,8 +31,7 @@ export default function SessaoModalidades() {
                     centerSlidePercentage={90}
                     showThumbs={false}
                     interval={5000}
-                    dynamicHeight={true}
-                    >
+                    dynamicHeight={true}>
 
                     {/*Energia*/}
                     <CardMod className='mb-5'>
@@ -139,7 +139,7 @@ export default function SessaoModalidades() {
                                             <p className="self-center text-lg text-slate-400 mb-0 group-hover:text-white">Consignado</p>
                                         </div>
                                     </div>
-                                    <p className="text-slate-400 h-[84px] text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">
+                                    <p className="text-slate-400 h-21 text-sm bg-slate-200 p-3 rounded-lg group-hover:bg-blue-100 group-hover:text-blue-500">
                                         Para beneficiários do INSS com pagamento em 10 minutos
                                     </p>
                                 </div>
