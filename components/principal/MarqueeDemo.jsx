@@ -177,8 +177,8 @@ export function MarqueeDemo() {
                 ))}
             </Marquee>
             
-            <div className="pointer-events-none absolute inset-y-0 left-0 lg:w-1/3 w-16 bg-gradient-to-r from-white"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 lg:w-1/3 w-16 bg-gradient-to-l from-white"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 lg:w-1/3 w-16 bg-linear-to-r from-white"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 lg:w-1/3 w-16 bg-linear-to-l from-white"></div>
     
         </div>
     </div>
