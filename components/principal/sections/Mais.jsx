@@ -50,7 +50,7 @@ export default function Mais() {
                         {/* <Image src={celulares} width={500} alt=''/> */}
                         <div className='grid grid-cols-2 gap-3 lg:p-3 relative isolate'>
                             {cards.map(({ title, description, icon: Icon, className }) => (
-                                <CometCard key={title} className='w-full z-0 hover:z-50' withShadow={false}>
+                                <CometCard key={title} className='w-full z-0 hover:z-50' withShadow={false} invert>
                                     <CardVantMais>
                                         <div className='text-3xl text-white pb-3'>
                                             <Icon />

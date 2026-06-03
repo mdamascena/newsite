@@ -208,7 +208,7 @@ export function ModalContent({ children, className }) {
         <HeroModal.Dialog
           {...context.dialogProps}
           className={cn(
-            "w-full bg-white !p-0 !shadow-2xl",
+            "w-full bg-white p-0! shadow-2xl!",
             getLegacySizeClass(context.size),
             context.classNames?.base,
             radiusClasses[context.radius],
@@ -241,7 +241,7 @@ export function ModalHeader({ children, className, ...props }) {
   return (
     <HeroModal.Header
       className={cn(
-        "!mb-0 flex w-full flex-row flex-initial items-center gap-0 px-6 pt-6",
+        "mb-0! flex w-full flex-row flex-initial items-center gap-0 lg:px-6 px-3 lg:pt-6 pt-3",
         context.classNames?.header,
         className
       )}
@@ -261,7 +261,7 @@ export function ModalBody({ children, className, ...props }) {
   return (
     <HeroModal.Body
       className={cn(
-        "!mt-0 min-h-0 flex flex-1 flex-col gap-3 px-6 py-4",
+        "mt-0! min-h-0 flex flex-1 flex-col gap-3 lg:px-6 px-3 py-4",
         context.classNames?.body,
         className
       )}
@@ -278,7 +278,7 @@ export function ModalFooter({ children, className, ...props }) {
   return (
     <HeroModal.Footer
       className={cn(
-        "!mt-0 flex flex-row items-center justify-end gap-2 px-6 pb-6 pt-2",
+        "mt-0! flex flex-row items-center justify-end gap-2 px-6 pb-6 pt-2",
         context.classNames?.footer,
         className
       )}

@@ -18,7 +18,7 @@ export default function SeuPotencial(){
                 <div className='grid lg:grid-cols-3 grid-cols-1 gap-3 lg:mx-3'>
                     
                     {/*Propostas*/}
-                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-blue-800 to-blue-600 p-5 lg:p-8 text-white relative h-80'>
+                    <div className='col-span-1 rounded-xl bg-linear-to-t from-blue-800 to-blue-600 p-5 lg:p-8 text-white relative h-80'>
                         <div className="text-center mb-5">
                             <h1 className='text-xl tracking-tight font-semibold'>
                                 Propostas pré-aprovadas
@@ -43,7 +43,7 @@ export default function SeuPotencial(){
                                     </div>
 
                                     <div className="mt-2 flex items-center">
-                                        <p className="text-lg tracking-tight font-semibold text-blue-800">
+                                        <p className="text-md tracking-tight font-semibold text-blue-800">
                                             R$ 8.056,33
                                         </p>
 
@@ -75,7 +75,7 @@ export default function SeuPotencial(){
                                     </div>
 
                                     <div className="mt-2 flex items-center">
-                                        <p className="text-lg tracking-tight font-semibold text-blue-600">
+                                        <p className="text-md tracking-tight font-semibold text-blue-600">
                                             R$ 10.000,00
                                         </p>
 
@@ -107,7 +107,7 @@ export default function SeuPotencial(){
                                     </div>
 
                                     <div className="mt-2 flex items-center">
-                                        <p className="text-lg tracking-tight font-semibold text-blue-500">
+                                        <p className="text-md tracking-tight font-semibold text-blue-500">
                                             R$ 20.056,33
                                         </p>
 
@@ -133,7 +133,7 @@ export default function SeuPotencial(){
                     </div>
 
                     {/*Card grafico*/}
-                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-slate-200 to-slate-50 p-5 lg:p-8 text-slate-400 h-80'>
+                    <div className='col-span-1 rounded-xl bg-linear-to-t from-slate-200 to-slate-50 p-5 lg:p-8 text-slate-400 h-80'>
 
                         <div className="text-center mb-5">
                             <h1 className='text-xl tracking-tight font-semibold'>
@@ -147,12 +147,12 @@ export default function SeuPotencial(){
 
                         <div className="flex justify-center items-end mt-8">
                             <div className="flex space-x-3 items-end">
-                                <div className="bg-gradient-to-b from-slate-300 to-slate-100 rounded-t-md w-12 h-24"/>
-                                <div className="bg-gradient-to-b from-blue-500 to-blue-50 rounded-t-md w-12 h-16">
+                                <div className="bg-linear-to-b from-slate-300 to-slate-100 rounded-t-md w-12 h-24"/>
+                                <div className="bg-linear-to-b from-blue-500 to-blue-50 rounded-t-md w-12 h-16">
                                     <GoHeartFill className="text-xl text-blue-500 -mt-5 mx-auto"/>
                                 </div>
-                                <div className="bg-gradient-to-b from-slate-300 to-slate-100 rounded-t-md w-12 h-32"/>
-                                <div className="bg-gradient-to-b from-slate-300 to-slate-100 rounded-t-md w-12 h-24"/>
+                                <div className="bg-linear-to-b from-slate-300 to-slate-100 rounded-t-md w-12 h-32"/>
+                                <div className="bg-linear-to-b from-slate-300 to-slate-100 rounded-t-md w-12 h-24"/>
                             </div>
                         </div>
 
@@ -161,7 +161,7 @@ export default function SeuPotencial(){
                     </div>
                     
                     {/*Limite*/}
-                    <div className='col-span-1 rounded-xl bg-gradient-to-t from-slate-200 to-slate-50 p-5 lg:p-8 text-slate-400 h-80'>
+                    <div className='col-span-1 rounded-xl bg-linear-to-t from-slate-200 to-slate-50 p-5 lg:p-8 text-slate-400 h-80'>
                         
                         <div className='text-center'>
 
@@ -180,7 +180,7 @@ export default function SeuPotencial(){
                                     <div className='mt-20'>
                                         <HiArrowTrendingUp className='rounded-full bg-white p-1.5 text-3xl shadow-xl'/>
                                     </div>
-                                    <div className='bg-white shadow-xl rounded-xl p-2 -rotate-12 border-blue-500 border-r-[30px]'>
+                                    <div className='bg-white shadow-xl rounded-xl p-2 -rotate-12 border-blue-500 border-r-30'>
                                         <div className='flex items-center'>
                                             <p className='font-semibold tracking-tighter'>Total de limite</p>
                                             <BiMoneyWithdraw className='text-blue-500 text-xl ml-1 font-semibold'/>

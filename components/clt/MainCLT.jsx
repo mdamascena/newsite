@@ -14,6 +14,7 @@ import WidgetLimite from "./widgets/WidgetLimite.jsx"
 import WidgetParcela from "./widgets/WidgetParcela.jsx"
 import InformeCLT from "./InformeCLT.jsx"
 import VantagensCLT from "./VantagensCLT.jsx"
+import NumerosCLT from "./NumerosCLT.jsx"
 
 const HERO_ITEM_STAGGER = 0.22;
 const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
@@ -174,7 +175,7 @@ export default function MainCLT() {
                 width={4}
                 height={4}
                 cr={1.1}
-                className="lg:hidden inset-auto left-0 top-0 h-145 w-225 text-blue-500/20 mask-[radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
+                className="lg:hidden inset-auto left-0 top-0 h-145 w-225 text-blue-500/10 mask-[radial-gradient(ellipse_at_top_left,#000_0%,#000_30%,transparent_80%)]"
             />
       
             <div className="relative z-10 lg:pb-0 pt-20 container-custom">
@@ -227,7 +228,7 @@ export default function MainCLT() {
                             </Highlighter>
                         </h2>
 
-                        <p className='text-blue-600 lg:text-xl text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center tracking-tight'>
+                        <p className='text-blue-600 lg:text-xl text-md mt-7 lg:mt-7 lg:pr-36 lg:text-left text-center tracking-tight hidden lg:block'>
                             Descubra seu limite e contrate em minutos{" "}
                             <Highlighter 
                                 action="box" 
@@ -243,15 +244,19 @@ export default function MainCLT() {
                             {" "}{" "}.<br/>Se precisar de ajuda, conte com nossos consultores.
                         </p>
 
+                        <p className='text-blue-600 text-md mt-2 text-center tracking-tight lg:hidden block'>
+                            Descubra seu limite na hora 100% ONLINE
+                        </p>
+
                         <div className="text-center md:text-left">
-                            <button type="button" className="mt-8 flex-1 cursor-pointer rounded-xl border-b-2 border-amber-300 bg-linear-to-r from-yellow-300 to-amber-500 px-[25vw] py-3 text-xl text-white shadow-md shadow-amber-400/50 duration-150 hover:scale-105 hover:bg-linear-to-r hover:from-yellow-400 hover:to-amber-500 hover:shadow-md active:scale-90 lg:flex-none lg:px-32">
+                            <button type="button" className="lg:mt-8 mt-5 flex-1 cursor-pointer rounded-xl border-b-2 border-amber-300 bg-linear-to-r from-yellow-300 to-amber-500 px-[25vw] py-3 text-xl text-white shadow-md shadow-amber-400/50 duration-150 hover:scale-105 hover:bg-linear-to-r hover:from-yellow-400 hover:to-amber-500 hover:shadow-md active:scale-90 lg:flex-none lg:px-32">
                                 Simular agora
                             </button>
                         </div>
 
-                        <div className="text-[12px] text-white mt-5 text-center lg:text-start">
-                            <p>Crédito sujeito à análise *</p>
-                            <p>Liberações ocorrem em dias úteis **</p>
+                        <div className="text-[12px] text-white lg:mt-5 mt-2 text-center lg:text-start">
+                            <p className="text-slate-400 lg:text-white">Crédito sujeito à análise *</p>
+                            <p className="hidden lg:block">Liberações ocorrem em dias úteis **</p>
                         </div>
                     </div>
 
@@ -262,25 +267,25 @@ export default function MainCLT() {
                                 className="z-0 -inset-20 mask-none absolute"
                                 mainCircleSize={100}
                                 mainCircleOpacity={0.2}
-                                numCircles={7}
+                                numCircles={6}
                             />
 
-                            <motion.div {...getHeroMotionProps("plusIcon")} className="bg-white rounded-full absolute top-24 left-1 z-40">
-                                <IoIosAddCircle className="text-5xl text-blue-600"/>
+                            <motion.div {...getHeroMotionProps("plusIcon")} className="bg-white rounded-full absolute top-12 left-16 z-40">
+                                <IoIosAddCircle className="text-4xl text-blue-600"/>
                             </motion.div>
 
-                            <motion.div {...getHeroMotionProps("moneyIcon")} className="bg-white rounded-full absolute bottom-12 -left-5 z-50">
-                                <RiMoneyDollarCircleFill className="text-5xl text-blue-600"/>
+                            <motion.div {...getHeroMotionProps("moneyIcon")} className="bg-white rounded-full absolute bottom-18 left-5 z-50">
+                                <RiMoneyDollarCircleFill className="text-4xl text-blue-600"/>
                             </motion.div>
                             
-                            <WidgetSimulador ClassName="top-1 left-1" motionProps={getHeroMotionProps("simulador")}/>
-                            <WidgetLimite ClassName="bottom-0 right-0" motionProps={getHeroMotionProps("limite")}/>
-                            <WidgetParcela ClassName="right-2 top-2" motionProps={getHeroMotionProps("parcela")}/>
+                            <WidgetSimulador ClassName="top-28 left-1" motionProps={getHeroMotionProps("simulador")}/>
+                            <WidgetLimite ClassName="bottom-20 right-0" motionProps={getHeroMotionProps("limite")}/>
+                            <WidgetParcela ClassName="right-2 top-12" motionProps={getHeroMotionProps("parcela")}/>
 
                             <figure className="relative z-10 flex items-end justify-center">
                                 <Image
                                     className=""
-                                    width={280}
+                                    width={235}
                                     height={getScaledHeight(menclt, 280)}
                                     src={menclt}
                                     alt=""
@@ -330,6 +335,7 @@ export default function MainCLT() {
 
         </section>
         
+        <NumerosCLT/>
         <InformeCLT/>
         <VantagensCLT />
         <SectioAnalise />

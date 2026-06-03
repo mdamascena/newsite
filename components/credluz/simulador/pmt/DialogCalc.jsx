@@ -39,16 +39,16 @@ export default function App({
         onClose={handleClose}
         onOpenChange={onOpenChange}
         backdrop="opaque"
-        placement="center"
+        placement="start"
         radius="sm">
 
         <ModalContent className="mx-2 select-none bg-btncalc p-2!">
             
             <ModalHeader className="flex items-center justify-between">
                 
-                <p className="text-sm font-normal tracking-tight text-amber-400">
+                <h1 className="text-sm font-normal tracking-tight text-amber-400">
                     Simulação de crédito financeira
-                </p>
+                </h1>
 
                 <div className="lg:ml-2">
                     <Image src={LogoCrefaz} width={90} alt="" />

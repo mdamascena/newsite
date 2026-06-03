@@ -12,12 +12,14 @@ export const CometCard = ({
   rotateDepth = 17.5,
   translateDepth = 20,
   withShadow = true,
+  invert = false,
   className,
   children,
 }: {
   rotateDepth?: number;
   translateDepth?: number;
   withShadow?: boolean;
+  invert?: boolean;
   className?: string;
   children: React.ReactNode;
 }) => {
@@ -65,8 +67,8 @@ export const CometCard = ({
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
 
-    x.set(xPct);
-    y.set(yPct);
+    x.set(invert ? -xPct : xPct);
+    y.set(invert ? -yPct : yPct);
   };
 
   const handleMouseLeave = () => {
