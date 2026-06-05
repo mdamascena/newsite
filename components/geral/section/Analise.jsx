@@ -66,7 +66,7 @@ export default function Regras(){
                         <div className={`duration-1000 delay-500 ${movDesc} lg:mt-16`}>
                             
                             <div className="text-3xl lg:text-5xl font-bold mb-4 tracking-tighter">
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-800 via-blue-600 to-blue-500 saturate-150">
+                                <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-800 via-blue-600 to-blue-500 saturate-150">
                                     Não fique no escuro sem saber o que está rolando!
                                 </span>
                             </div>
@@ -133,7 +133,7 @@ export default function Regras(){
                                     style={{ width: 240, height: "auto" }}
                                 />
                             </div>
-                            <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[13rem] absolute rounded-full bottom-6 shadow-xl duration-1000 ${movImg}`}/>
+                            <span className={`bg-linear-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-52 absolute rounded-full bottom-6 shadow-xl duration-1000 ${movImg}`}/>
                         </div>
 
                         <div className="mt-8 flex justify-center lg:hidden">
@@ -147,7 +147,7 @@ export default function Regras(){
                                     style={{ width: 180, height: "auto" }}
                                 />
                             </div>
-                            <span className={`bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-[9rem] absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>
+                            <span className={`bg-linear-to-br from-blue-950 via-blue-600 to-cyan-400 saturate-150 p-36 absolute rounded-full bottom-7 shadow-xl duration-1000 ${movImg}`}/>
                         </div>
                     </div>
                     

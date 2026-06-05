@@ -284,9 +284,9 @@ export default function MainCLT() {
 
                             <figure className="relative z-10 flex items-end justify-center">
                                 <Image
-                                    className=""
+                                    className="h-auto"
                                     width={235}
-                                    height={getScaledHeight(menclt, 280)}
+                                    height={getScaledHeight(menclt, 235)}
                                     src={menclt}
                                     alt=""
                                     loading="eager"
