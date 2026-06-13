@@ -17,9 +17,34 @@ import VantagensCLT from "./VantagensCLT.jsx"
 import NumerosCLT from "./NumerosCLT.jsx"
 import Comparativo from "./Comparativo.jsx"
 import ComparativoCLT from "./ComparativoCLT.jsx"
+import SliderY from "../ui/sliderY.jsx"
 
 const HERO_ITEM_STAGGER = 0.22;
 const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
+
+const sliderYExampleItems = [
+    {
+        image: "/img/bg-clt-notebook.jpg",
+        title: "Troque dívidas caras por uma parcela menor",
+        description: "Compare taxas e veja como o consignado CLT pode aliviar o orçamento.",
+        action: "Comparar agora",
+        dismissible: true,
+    },
+    {
+        image: "/img/perso_jap.jpg",
+        title: "Contrate pelo celular, sem complicação",
+        description: "Simulação online, análise rápida e acompanhamento com consultores.",
+        action: "Simular limite",
+        dismissible: true,
+    },
+    {
+        image: "/img/perso_comp_clt.png",
+        title: "Economize todos os meses",
+        description: "Use uma taxa menor para organizar contas, cartão ou empréstimos antigos.",
+        action: "Ver economia",
+        dismissible: true,
+    },
+];
 
 const cltHeroAnimations = {
     plusIcon: {
@@ -340,6 +365,7 @@ export default function MainCLT() {
         <NumerosCLT/>
         <InformeCLT/>
         <ComparativoCLT/>
+        
         
         <VantagensCLT />
         <SectioAnalise />
