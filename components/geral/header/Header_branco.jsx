@@ -135,6 +135,7 @@ export default function Header() {
                                     <Link href='/consignado-inss' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Empréstimo consignado INSS</Link>
                                     <Link href='/consignado-clt' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Empréstimo consignado CLT</Link>
                                     <Link href='/credluz' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Empréstimo na conta de LUZ</Link>
+                                    <Link href='/credluz-fast' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Refinanciamento de AUTO</Link>
                                     <Link href='/credluz-fast' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>PIX parcelado</Link>
                                 </div>
                             </Dropdown>
@@ -196,6 +197,9 @@ export default function Header() {
                         </LiSm>
                         <LiSm>
                             <Link href='/credluz' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>Empréstimo na conta de LUZ</Link>
+                        </LiSm>
+                        <LiSm>
+                            <Link href='/credluz-fast' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>Refinanciamento de AUTO</Link>
                         </LiSm>
                         <LiSm>
                             <Link href='/credluz-fast' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>PIX parcelado</Link>

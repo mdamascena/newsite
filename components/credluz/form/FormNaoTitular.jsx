@@ -6,7 +6,7 @@ import { OptLabel } from "../styles"
 
 export default function FormNaoTitular() {
     return (
-        <div className="lg:min-h-[100vh]">
+        <div className="lg:min-h-screen">
 
             <motion.div 
                 initial={'hidden'} 

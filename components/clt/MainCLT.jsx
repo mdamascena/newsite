@@ -16,6 +16,7 @@ import InformeCLT from "./InformeCLT.jsx"
 import VantagensCLT from "./VantagensCLT.jsx"
 import NumerosCLT from "./NumerosCLT.jsx"
 import Comparativo from "./Comparativo.jsx"
+import ComparativoCLT from "./ComparativoCLT.jsx"
 
 const HERO_ITEM_STAGGER = 0.22;
 const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
@@ -338,7 +339,8 @@ export default function MainCLT() {
         
         <NumerosCLT/>
         <InformeCLT/>
-        <Comparativo/>
+        <ComparativoCLT/>
+        
         <VantagensCLT />
         <SectioAnalise />
         <SectionFaq/>

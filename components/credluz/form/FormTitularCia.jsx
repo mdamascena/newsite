@@ -35,7 +35,7 @@ export default function FormTitularCia({ onNext, backStep }) {
     }, [errors.titularCia]);
     
     return (
-        <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-screen" onSubmit={handleSubmit(onSubmit)}>
             
             <ToastContainer />
 

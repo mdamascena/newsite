@@ -4,7 +4,7 @@ import { PiTrendDown } from "react-icons/pi";
 
 export default function InformeCLT() {
     return (
-        <section className="pb-44 bg-slate-100">
+        <section className="pb-5 bg-slate-100">
             <div className="container-custom">
                 <div className="lg:grid grid-cols-4 gap-3 hidden">
                     <div className="col-span-2 grid gap-y-3">
