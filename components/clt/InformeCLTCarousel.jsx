@@ -38,7 +38,6 @@ export default function InformeCLTCarousel() {
     return (
         <SliderY
             cardHeight="h-62"
-            endSpace="pb-[28vh]"
             gap={16}
             stackOffset={18}
             topOffset={92}

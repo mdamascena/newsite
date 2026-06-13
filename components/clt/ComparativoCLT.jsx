@@ -15,7 +15,7 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 
-const AUTOPLAY_INTERVAL = 3500;
+const AUTOPLAY_INTERVAL = 5500;
 
 const comparativos = [
     {
@@ -59,7 +59,7 @@ function ComparativoCard({ item }) {
                 <p className="text-slate-400 font-semibold mr-2">{item.titulo}</p>
             </div>
 
-            <div className="flex justify-between my-4 px-5">
+            <div className="flex lg:justify-between justify-around my-5 px-5">
                 <div className="">
                     <div className="bg-red-100 text-red-500 font-semibold tracking-tight p-1 rounded-md flex items-center">
                         <p className="text-xl">{item.taxaPaga}</p> 
@@ -84,18 +84,18 @@ function ComparativoCard({ item }) {
             <div className="border-b border-slate-200"/>
 
             <div className="px-5 mt-2">
-                <span className="text-xl font-semibold text-blue-500 tracking-tight">{item.percentualEconomia}%</span>
-                <p className="text-xs text-slate-400 mb-1">Potencial de economia</p>
+                <span className="text-3xl lg:text-xl font-semibold text-blue-500 tracking-tight">{item.percentualEconomia}%</span> <span className="text-slate-400">a menos</span>
+                {/* <p className="text-xs text-slate-400 mb-1">Potencial de economia</p> */}
                 <div className="w-full h-5 rounded-lg bg-slate-200 flex items-center">
                     <div
-                        className="h-5 bg-blue-500 rounded-l-lg text-[10px] text-white items-center pl-2 flex"
+                        className="h-5 bg-blue-500 rounded-l-lg text-xl text-white items-center pl-2 flex"
                         style={{ width: `${item.percentualEconomia}%` }}
                     />
                 </div>
             </div>
 
-            <div className="px-5 text-slate-400 text-xs mt-1 mb-0.5 pb-5">
-                <p className="">economia até {item.economiaAno} por ano</p>
+            <div className="px-5 text-slate-400 text-sm mt-1 mb-0.5 pb-5">
+                <p className="">economia até <span className="text-blue-500 text-xl font-semibold tracking-tight">{item.economiaAno}</span> por ano</p>
             </div>
             
         </div>
@@ -145,7 +145,7 @@ function ComparativoMobileCarousel() {
 
     return (
         <Carousel
-            className="relative z-10 -mt-16"
+            className="relative z-10 -mt-12"
             opts={{
                 align: "center",
                 containScroll: "trimSnaps",
@@ -193,29 +193,52 @@ export default function ComparativoCLT () {
             <div className="container-custom">
                 <div className="lg:hidden">
                     <div className="mb-6 text-start">
-                        <p className="text-sm tracking-tight text-slate-400">
+                        <p className="lg:text-sm text-2xl lg:font-normal font-semibold tracking-tight text-slate-400 mb-2">
                             Comparativo de taxa
                         </p>
-                        <h2 className="text-3xl font-semibold tracking-tight text-slate-400">
+
+                        <h2 className="text-md tracking-tight text-slate-400 lg:hidden">
+                            Pague menos juros: troque dívidas com juros mais alto por um crédito mais barato.
+                        </h2>
+
+                        <h2 className="text-3xl font-semibold tracking-tight text-slate-400 lg:block hidden">
                             Veja quanto você pode economizar
                         </h2>
                     </div>
 
-                    <div className="h-80 rounded-xl w-full bg-[url('/img/perso_comp_clt.png')] bg-cover bg-center"/>
+                    <div className="relative h-80 w-full overflow-hidden rounded-xl bg-[url('/img/perso_comp_clt.png')] bg-cover bg-end">
+                        <div className="absolute inset-0 bg-linear-to-br from-black via-black/10 to-transparent" />
+
+                        <h1 className="relative z-10 px-5 pt-3 text-2xl font-semibold text-white">
+                            Veja quanto você pode economizar
+                        </h1>
+                    </div>
+
+                    {/* <div className="h-80 rounded-xl w-full bg-[url('/img/perso_comp_clt.png')] bg-cover bg-center bg-black">
+                        <h1 className="font-semibold text-white p-5 text-2xl">Veja quanto você pode economizar</h1>
+                    </div> */}
 
                     <ComparativoMobileCarousel />
                 </div>
 
                 <div className="hidden lg:grid grid-cols-4 gap-4">
-                    <div className="col-span-2 rounded-xl w-full h-full bg-[url('/img/perso_comp_clt.png')] bg-cover bg-center"/>
+                    {/* <div className="col-span-2 rounded-xl w-full h-full bg-[url('/img/perso_comp_clt.png')] bg-cover bg-center"/> */}
+
+                    <div className="col-span-2 relative h-full w-full overflow-hidden rounded-xl bg-[url('/img/perso_comp_clt.png')] bg-cover bg-end">
+                        <div className="absolute inset-0 bg-linear-to-br from-black via-black/10 to-transparent" />
+
+                        <h1 className="relative z-10 p-12 text-4xl font-semibold text-white">
+                            Veja quanto você pode economizar
+                        </h1>
+                    </div>
                     
                     <div className="col-span-2">
                         <div className="mb-8 text-start">
-                            <p className="text-sm tracking-tight text-slate-400">
+                            <h1 className="text-2xl tracking-tight text-slate-400 font-semibold mb-2">
                                 Comparativo de taxa
-                            </p>
-                            <h2 className="text-3xl font-semibold tracking-tight text-slate-400">
-                                Veja quanto você pode economizar
+                            </h1>
+                            <h2 className="text-xl tracking-tighter text-slate-400">
+                                Pague menos juros: troque dívidas com juros mais alto por um crédito mais barato.
                             </h2>
                         </div>
 

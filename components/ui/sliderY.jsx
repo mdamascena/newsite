@@ -125,7 +125,7 @@ export default function SliderY({
     topOffset = 88,
     stackOffset = 28,
     cardHeight = "h-[440px]",
-    endSpace = "pb-[32vh]",
+    endSpace = "pb-8",
     minScale = 0.9,
     scaleStep = 0.035,
     gap = 24,

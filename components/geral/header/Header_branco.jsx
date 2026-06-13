@@ -67,7 +67,7 @@ const LiSm = tw.li`
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-y-0', true])
-    const [dropdonw, setDropdonw] = useState([true, 'scale-y-0 h-0 -mb-6', 'opacity-0'])
+    const [dropdonw, setDropdonw] = useState([true, 'max-h-0 scale-y-0 -mb-6 overflow-hidden', 'opacity-0'])
 
     const containerClass = isScrolled ? 'shadow-lg bg-blue-600' : 'bg-blue-600/10'
     const logoSrc = isScrolled ? LogoB : LogoA
@@ -92,9 +92,9 @@ export default function Header() {
 
     const drop = () => {
         if (dropdonw[0]) {
-            setDropdonw([false, 'h-64 scale-y-100', 'opacity-100'])
+            setDropdonw([false, 'max-h-[28rem] scale-y-100 mb-2 overflow-hidden', 'opacity-100'])
         } else {
-            setDropdonw([true, 'h-0 scale-y-0 -mb-6', 'opacity-0'])
+            setDropdonw([true, 'max-h-0 scale-y-0 -mb-6 overflow-hidden', 'opacity-0'])
         }
     }
 
