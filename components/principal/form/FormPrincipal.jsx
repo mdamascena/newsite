@@ -33,7 +33,8 @@ export function FormPrincipal({ setProgressChange, setTitulo, setDescricao, setS
 
     const methods = useForm({
         resolver: yupResolver(schemas[step - 1]),
-        mode: 'onChange',
+        mode: 'onBlur',
+        reValidateMode: 'onBlur',
         defaultValues: formData
     })
 

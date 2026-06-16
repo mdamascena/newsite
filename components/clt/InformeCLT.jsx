@@ -1,6 +1,7 @@
 import InformeCLTCarousel from "./InformeCLTCarousel";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { PiTrendDown } from "react-icons/pi";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function InformeCLT() {
     return (
@@ -8,7 +9,11 @@ export default function InformeCLT() {
             <div className="container-custom">
                 <div className="lg:grid grid-cols-4 gap-3 hidden">
                     <div className="col-span-2 grid gap-y-3">
-                        <div className="rounded-2xl h-62 w-full bg-[url('/img/bg-clt-notebook.jpg')] bg-cover bg-center" />
+                        
+                        <div className="relative rounded-2xl h-62 w-full bg-[url('/img/bg-clt-notebook.jpg')] bg-cover bg-center">
+                            <IoDocumentTextOutline className="text-white text-5xl ml-5 mt-5 rounded-full p-2 bg-amber-300/50"/>
+                            <p className="text-amber-500 tracking-tight z-10 relative ml-5 mt-8 text-2xl">$ Descontato em folha</p>
+                        </div>
 
                         <div className="rounded-2xl h-62 w-full bg-blue-700 overflow-hidden">
                             <PiUsersThreeLight className="text-white text-5xl ml-5 my-5 rounded-full p-2 bg-white/20" />

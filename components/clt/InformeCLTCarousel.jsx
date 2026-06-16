@@ -2,10 +2,12 @@
 
 import { PiTrendDown, PiUsersThreeLight } from "react-icons/pi";
 import SliderY from "../ui/sliderY";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 const mobileCards = [
     {
         type: "image",
+        icon: IoDocumentTextOutline,
         className: "bg-[url('/img/bg-clt-notebook.jpg')] bg-cover bg-center",
         label: "Notebook com proposta CLT",
     },
@@ -59,11 +61,9 @@ function MobileCard({ card }) {
 
     if (card.type === "image") {
         return (
-            <div
-                aria-label={card.label}
-                className={`h-full w-full ${card.className}`}
-                role="img"
-            />
+            <div aria-label={card.label} className={`h-full w-full ${card.className}`} role="img">
+
+            </div>
         );
     }
 

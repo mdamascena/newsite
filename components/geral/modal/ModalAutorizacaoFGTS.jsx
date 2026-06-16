@@ -97,7 +97,7 @@ export default function ModalAutorizacaoFGTS({ isOpen, onOpenChange, setValueCar
                     {(onClose) => (
                         <>
                             {/* <ModalHeader className="flex justify-center font-semibold p-3"/> */}
-                            <ModalBody className="!px-0 !py-0 m-3 select-none relative">
+                            <ModalBody className="px-0! py-auto! m-3 select-none flex flex-col items-center justify-center">
                                     
                                 <Carousel imagens={SlideImg} texto={SlideTexto} onSlideChange={setCurrentSlide}/>
                                 

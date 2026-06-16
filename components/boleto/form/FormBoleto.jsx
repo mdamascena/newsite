@@ -33,7 +33,8 @@ export function FormBoleto({ setProgressChange, setTitulo, setDescricao, setStep
 
     const methods = useForm({
         resolver: yupResolver(schemas[step - 1]),
-        mode: 'onChange',
+        mode: 'onBlur',
+        reValidateMode: 'onBlur',
         defaultValues: formData
     })
 

@@ -71,7 +71,7 @@ export default function FormAutorizacao({ onNext, backStep }) {
     }, [formData.banco, setValue])
 
     return (
-        <div className="lg:min-h-[100vh]">
+        <div className="lg:min-h-screen">
 
             <ToastContainer />
 
@@ -129,18 +129,17 @@ export default function FormAutorizacao({ onNext, backStep }) {
                                     </motion.div>
 
                                     <motion.div className="col-span-2" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="1" id="naoAutorizacao" checked={value === "1"} onChange={() => onChange("1")}/>
-                                            <OptLabel htmlFor="naoAutorizacao" onClick={() => { onOpen(); }}>
-                                                <div className="col-span-6 flex justify-center mb-2">
-                                                    <BiSolidMessageAltX  className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
-                                                </div>
-                                                <div className="col-span-6 text-center">
-                                                    <p className="">
-                                                        <span className="text-blue-400">NÃO</span> sei fazer
-                                                    </p>
-                                                </div>
-                                            </OptLabel>
-                                            <ModalAutorizacaoFGTS isOpen={isOpen} onOpenChange={onOpenChange} setValueCard={setValueCard} />
+                                        <OptBnt type="button" onClick={() => { onOpen(); }}>
+                                            <div className="col-span-6 flex justify-center mb-2">
+                                                <BiSolidMessageAltX  className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
+                                            </div>
+                                            <div className="col-span-6 text-center">
+                                                <p className="">
+                                                    <span className="text-blue-400">NÃO</span> sei fazer
+                                                </p>
+                                            </div>
+                                        </OptBnt>
+                                        <ModalAutorizacaoFGTS isOpen={isOpen} onOpenChange={onOpenChange} setValueCard={setValueCard} />
                                     </motion.div>
 
                                 </div>

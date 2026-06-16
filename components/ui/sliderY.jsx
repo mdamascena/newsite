@@ -9,12 +9,8 @@ function ImageCard({ item, cardClassName }) {
     const Icon = item.icon;
 
     return (
-        <div
-            className={cn(
-                "relative h-full overflow-hidden p-6 text-white rounded-2xl shadow-lg",
-                cardClassName
-            )}
-        >
+        <div className={cn("relative h-full overflow-hidden p-6 text-white rounded-2xl shadow-lg", cardClassName)}>
+        
             {item.image && (
                 <div
                     aria-hidden="true"

@@ -52,22 +52,19 @@ function ComparativoCard({ item }) {
     const Icon = item.icon;
 
     return (
-        <div className="col-auto bg-white rounded-xl mx-3 lg:mx-0">
+        <div className="col-auto bg-white rounded-xl mx-3 lg:mx-0 shadow-md">
 
-            <div className="flex items-center bg-white px-5 pt-5 rounded-t-lg">
+            <div className="flex items-center bg-blue-500/20 px-5 py-3 rounded-t-lg">
                 {Icon && <Icon className="p-0.5 bg-blue-500 text-white rounded-sm text-3xl mr-2"/>}
-                <p className="text-slate-400 font-semibold mr-2">{item.titulo}</p>
+                <p className="text-blue-500 font-semibold mr-2">{item.titulo}</p>
             </div>
 
-            <div className="flex lg:justify-between justify-around my-5 px-5">
+            <div className="flex lg:justify-between justify-around my-3 lg:my-5 px-5">
                 <div className="">
-                    <div className="bg-red-100 text-red-500 font-semibold tracking-tight p-1 rounded-md flex items-center">
+                    <div className="bg-slate-100 text-slate-400 font-semibold tracking-tight p-1 rounded-md flex items-center">
                         <p className="text-xl">{item.taxaPaga}</p> 
                         <GoArrowUp className="ml-1 text-xl"/>
                     </div>
-                    <p className="text-[10px] text-slate-400">
-                        Taxa que você paga
-                    </p>
                 </div>
                 
                 <div className="">
@@ -75,7 +72,7 @@ function ComparativoCard({ item }) {
                         <p className="text-xl">1.9% a.m</p> 
                         <GoArrowDown className="ml-1 text-xl"/>
                     </div>
-                    <p className="text-[10px] text-slate-400">
+                    <p className="text-[10px] text-blue-500">
                         Com consignado CLT
                     </p>
                 </div>
@@ -84,18 +81,17 @@ function ComparativoCard({ item }) {
             <div className="border-b border-slate-200"/>
 
             <div className="px-5 mt-2">
-                <span className="text-3xl lg:text-xl font-semibold text-blue-500 tracking-tight">{item.percentualEconomia}%</span> <span className="text-slate-400">a menos</span>
-                {/* <p className="text-xs text-slate-400 mb-1">Potencial de economia</p> */}
-                <div className="w-full h-5 rounded-lg bg-slate-200 flex items-center">
+                <span className="text-3xl lg:text-xl font-semibold text-slate-400 tracking-tight">{item.percentualEconomia}%</span> <span className="text-slate-400">a menos</span>
+                <div className="w-full h-5 rounded-sm bg-slate-200 flex items-center">
                     <div
-                        className="h-5 bg-blue-500 rounded-l-lg text-xl text-white items-center pl-2 flex"
+                        className="h-5 bg-blue-500 rounded-l-sm text-xl text-white items-center pl-2 flex"
                         style={{ width: `${item.percentualEconomia}%` }}
                     />
                 </div>
             </div>
 
             <div className="px-5 text-slate-400 text-sm mt-1 mb-0.5 pb-5">
-                <p className="">economia até <span className="text-blue-500 text-xl font-semibold tracking-tight">{item.economiaAno}</span> por ano</p>
+                <p className="">economia até <span className="text-md font-semibold tracking-tight">{item.economiaAno}</span> por ano</p>
             </div>
             
         </div>
@@ -198,7 +194,7 @@ export default function ComparativoCLT () {
                         </p>
 
                         <h2 className="text-md tracking-tight text-slate-400 lg:hidden">
-                            Pague menos juros: troque dívidas com juros mais alto por um crédito mais barato.
+                            Troque dívidas caras por um consignado a partir de <span className="text-lg">1,90% a.m</span>
                         </h2>
 
                         <h2 className="text-3xl font-semibold tracking-tight text-slate-400 lg:block hidden">
@@ -214,34 +210,26 @@ export default function ComparativoCLT () {
                         </h1>
                     </div>
 
-                    {/* <div className="h-80 rounded-xl w-full bg-[url('/img/perso_comp_clt.png')] bg-cover bg-center bg-black">
-                        <h1 className="font-semibold text-white p-5 text-2xl">Veja quanto você pode economizar</h1>
-                    </div> */}
-
                     <ComparativoMobileCarousel />
                 </div>
 
                 <div className="hidden lg:grid grid-cols-4 gap-4">
-                    {/* <div className="col-span-2 rounded-xl w-full h-full bg-[url('/img/perso_comp_clt.png')] bg-cover bg-center"/> */}
 
                     <div className="col-span-2 relative h-full w-full overflow-hidden rounded-xl bg-[url('/img/perso_comp_clt.png')] bg-cover bg-end">
                         <div className="absolute inset-0 bg-linear-to-br from-black via-black/10 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent backdrop-blur-[1.5px] mask-[linear-gradient(to_top,black_0%,black_35%,transparent_75%)] [-webkit-mask-image:linear-gradient(to_top,black_0%,black_35%,transparent_75%)]" />
 
-                        <h1 className="relative z-10 p-12 text-4xl font-semibold text-white">
-                            Veja quanto você pode economizar
+                        <h1 className="relative z-10 p-12 mr-5 text-4xl font-semibold text-white">
+                            Economize com crédito mais barato
                         </h1>
+                        <h2 className="absolute bottom-0 left-0 right-0 z-10 p-12 text-2xl font-semibold text-white">
+                            Troque dívidas caras por um consignado a partir de <span className="text-3xl">1,90% a.m</span>
+                            {/* Pague menos juros: troque dívidas com juros mais alto por um crédito mais barato. */}
+                        </h2> 
                     </div>
                     
                     <div className="col-span-2">
-                        <div className="mb-8 text-start">
-                            <h1 className="text-2xl tracking-tight text-slate-400 font-semibold mb-2">
-                                Comparativo de taxa
-                            </h1>
-                            <h2 className="text-xl tracking-tighter text-slate-400">
-                                Pague menos juros: troque dívidas com juros mais alto por um crédito mais barato.
-                            </h2>
-                        </div>
-
+                        
                         <div className="grid grid-cols-2 gap-4">
                             {comparativos.map((item) => (
                                 <ComparativoCard key={item.titulo} item={item} />

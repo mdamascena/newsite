@@ -20,8 +20,16 @@ import { GoXCircleFill } from "react-icons/go";
 
 export default function FormCadastro({ onNext }) {
 
-    const { register, watch, handleSubmit, formState: { errors }, setValue} = useFormContext();
+    const { register, watch, handleSubmit, formState: { errors }, setValue, trigger} = useFormContext();
     const registerWithMask = useHookFormMask(register);
+
+    const validateOnBlur = (fieldName, fieldProps) => ({
+        ...fieldProps,
+        onBlur: (event) => {
+            fieldProps.onBlur(event);
+            trigger(fieldName);
+        }
+    });
 
     const acceptedTerms = watch("termos");
     const acceptedWhatsapp = watch("aceite_whatsapp");
@@ -160,7 +168,7 @@ export default function FormCadastro({ onNext }) {
 
     return (
 
-        <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-screen" onSubmit={handleSubmit(onSubmit)}>
 
             <ToastContainer/>
 
@@ -233,7 +241,7 @@ export default function FormCadastro({ onNext }) {
                                     type="text"
                                     inputMode="numeric"
                                     placeholder="Nascimento *"
-                                    {...registerWithMask("dataNascimento", ['99/99/9999'])}
+                                    {...validateOnBlur("dataNascimento", registerWithMask("dataNascimento", ['99/99/9999']))}
                                 />
                                 {errors.dataNascimento && <p className="text-red-500 text-xs mt-1">{errors.dataNascimento.message}</p>}
                             </motion.div>
@@ -243,7 +251,7 @@ export default function FormCadastro({ onNext }) {
                                     }`}
                                     placeholder="Seu nome completo? *"
                                     pattern="[a-zA-Z\s]*"
-                                    {...register('nome')}
+                                    {...validateOnBlur("nome", register('nome'))}
                                 />
                                 {errors.nome && <p className="text-red-500 text-xs mt-1">{errors.nome.message}</p>}
                             </motion.div>
@@ -253,7 +261,7 @@ export default function FormCadastro({ onNext }) {
                                     <Input className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.email ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="email"
                                         placeholder="Seu e-mail *"
-                                        {...register('email')}
+                                        {...validateOnBlur("email", register('email'))}
                                     />
                                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                                 </div>
@@ -265,7 +273,7 @@ export default function FormCadastro({ onNext }) {
                                         disabled={inputAction}
                                         inputMode="numeric"
                                         placeholder="Seu celular *"
-                                        {...registerWithMask("celular", ['99 99999-9999'])}
+                                        {...validateOnBlur("celular", registerWithMask("celular", ['99 99999-9999']))}
                                     />
                                     <HiOutlineDevicePhoneMobile className={`absolute top-3 left-2 text-2xl ${errors.celular ? 'text-red-500' : `${ inputAction ? 'text-slate-300':'text-slate-400'}`}`} />
                                     {errors.celular && <p className="text-red-500 text-xs mt-1">{errors.celular.message}</p>}
@@ -282,7 +290,7 @@ export default function FormCadastro({ onNext }) {
                                         type={inputSenha}
                                         disabled={inputAction}
                                         placeholder="Crie um senha"
-                                        {...register('senha')}
+                                        {...validateOnBlur("senha", register('senha'))}
                                     />
 
                                     {visivelSenha ? (
@@ -300,7 +308,7 @@ export default function FormCadastro({ onNext }) {
                                         type={inputSenha}
                                         disabled={inputAction}
                                         placeholder="Confirme senha"
-                                        {...register('senhaConfirmacao')}
+                                        {...validateOnBlur("senhaConfirmacao", register('senhaConfirmacao'))}
                                     />
 
                                     {visivelSenha ? (
