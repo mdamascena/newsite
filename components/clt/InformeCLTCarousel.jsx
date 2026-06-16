@@ -7,7 +7,10 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 const mobileCards = [
     {
         type: "image",
+        classIcon:"bg-amber-300/50 text-white",
         icon: IoDocumentTextOutline,
+        title:"$ Descontato em folha",
+        titleClassName:"text-white top-32 left-5",
         className: "bg-[url('/img/bg-clt-notebook.jpg')] bg-cover bg-center",
         label: "Notebook com proposta CLT",
     },
@@ -34,6 +37,12 @@ const mobileCards = [
         className: "bg-[url('/img/perso_jap.jpg')] bg-cover bg-center",
         label: "Cliente usando celular",
     },
+    {
+        type: "",
+        className: "",
+        label: "",
+    }
+    
 ];
 
 export default function InformeCLTCarousel() {
@@ -61,8 +70,15 @@ function MobileCard({ card }) {
 
     if (card.type === "image") {
         return (
-            <div aria-label={card.label} className={`h-full w-full ${card.className}`} role="img">
-
+            <div aria-label={card.label} className={`relative h-full w-full ${card.className}`} role="img">
+                {Icon && (
+                    <Icon className={`absolute text-5xl ml-5 top-5 rounded-full p-2 ${card.classIcon}`} />
+                )}
+                <div className="text-white relative">
+                    <p className={`text-2xl absolute ${card.titleClassName}`}>
+                        {card.title}
+                    </p>
+                </div>
             </div>
         );
     }
