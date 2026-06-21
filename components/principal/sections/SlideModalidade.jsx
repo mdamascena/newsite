@@ -41,6 +41,13 @@ const slides = [
         resumo: 'Dinheiro na hora, direto no Pix, e pagamento em parcelas que cabem no seu bolso. Sem burocracia, sem esperar. Uma solução moderna, rápida e segura pra quem precisa resolver agora.',
         pagina: '../credluz-fast'
     },
+    {
+        bgClass: 'bg-modelo-car',
+        title: 'Refinanciamento de AUTO',
+        description: 'Dinheiro na hora via Pix, com pagamento em parcelas que cabem no bolso',
+        resumo: 'Dinheiro na hora, direto no Pix, e pagamento em parcelas que cabem no seu bolso. Sem burocracia, sem esperar. Uma solução moderna, rápida e segura pra quem precisa resolver agora.',
+        pagina: '../credluz-fast'
+    }
 ];
 
 const slideVariants = {
@@ -131,7 +138,7 @@ export default function ModSlide() {
 
                     <div className='grid grid-cols-2'>
 
-                        <h1 className='lg:col-span-1 col-span-2 text-slate-400 lg:text-4xl text-2xl tracking-tight text-center lg:mb-10 mb-8'>
+                        <h1 className='lg:col-span-1 col-span-2 text-slate-400 lg:text-4xl text-2xl tracking-tight text-start lg:mb-10 mb-8'>
                             Várias opções de crédito
                             <span className='text-blue-600'> tudo em um só lugar!</span>
                         </h1>
@@ -143,8 +150,8 @@ export default function ModSlide() {
                             <div
                                 className='relative overflow-hidden rounded-2xl h-80 lg:h-full lg:flex-1'
                                 onMouseEnter={() => setIsHovered(true)}
-                                onMouseLeave={handleMouseLeave}
-                            >
+                                onMouseLeave={handleMouseLeave}>
+
                                 <AnimatePresence custom={direction} initial={false} mode="wait">
                                     <motion.div
                                         key={activeIndex}
@@ -153,8 +160,8 @@ export default function ModSlide() {
                                         initial="enter"
                                         animate="center"
                                         exit="exit"
-                                        className={`group absolute inset-0 overflow-hidden rounded-2xl ${activeSlide.bgClass}`}
-                                    >
+                                        className={`group absolute inset-0 overflow-hidden rounded-2xl ${activeSlide.bgClass}`}>
+
                                         <motion.div
                                             className='pointer-events-none absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-black/20'
                                             animate={{ y: ['-3%', '3%', '-3%'], opacity: [0.32, 0.56, 0.32] }}
@@ -167,11 +174,12 @@ export default function ModSlide() {
                                                 initial={{ opacity: 0, y: 24 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                className='grid grid-cols-5'
-                                            >
+                                                className='grid grid-cols-5'>
+
                                                 <p className='text-white lg:text-2xl text-xl font-semibold tracking-tight p-5 col-span-4 mb-5'>
                                                     {activeSlide.title}
                                                 </p>
+
                                                 <button className='lg:text-2xl text-xl flex items-center justify-center bg-yellow-400 rounded-full lg:w-10 lg:h-10 w-7 h-7 text-center text-white col-span-1 m-5'>
                                                     <IoIosArrowForward className='group-hover:rotate-90 duration-700' />
                                                 </button>
@@ -179,6 +187,7 @@ export default function ModSlide() {
                                                 <p className='text-white col-span-5 px-5 lg:text-base text-sm'>
                                                     {activeSlide.resumo}
                                                 </p>
+
                                                 <div className='col-span-5 mt-2 flex justify-center'>
                                                     <Link className='inline-flex justify-center mb-3' href={activeSlide.pagina} passHref>
                                                         <BtnYellow className="text-xl lg:p-3! p-2! px-16! !lg:px-0" nome="Saiba mais" />
@@ -198,8 +207,8 @@ export default function ModSlide() {
                                         key={index}
                                         $isActive={activeIndex === index}
                                         onMouseEnter={() => handleMouseEnter(index)}
-                                        onMouseLeave={handleMouseLeave}
-                                    >
+                                        onMouseLeave={handleMouseLeave}>
+
                                         <Title>{slide.title}</Title>
 
                                         <Desc $isActive={activeIndex === index}>

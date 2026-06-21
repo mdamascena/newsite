@@ -37,10 +37,10 @@ export default function NumerosCLT(){
     return(
         <section className="relative overflow-hidden bg-slate-100 py-10">
 
-            <div className="container-custom relative z-10 text-slate-400">
+            <div className="container-custom relative z-10 text-slate-500">
                 <div className="grid grid-cols-3">
                     <h1 className="lg:text-4xl text-2xl pl-5 pb-8 lg:pt-16 pt-5 font-semibold tracking-tighter lg:col-span-2 col-span-3">
-                        Consignado do Trabalhador da Valoreal tem mais vantagem para quem é CLT
+                        Explore uma nova maneira de obter crédito rápido, fácil para quem é CLT
                     </h1>
                 </div>
                 

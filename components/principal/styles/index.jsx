@@ -137,7 +137,8 @@ export const LiMod = tw.li`
     group
     lg:pl-8
     py-2
-    my-4
+    my-2
+    lg:mr-12
     cursor-pointer
     hidden
     lg:block
@@ -148,7 +149,7 @@ export const LiMod = tw.li`
 
 export const Title = tw.h2`
     select-none
-    text-2xl
+    text-xl
     tracking-tight
     font-semibold
     text-center
@@ -163,4 +164,5 @@ export const Desc = tw.p`
     ${(p) => (p.$isActive ? 'text-slate-400' : 'text-slate-200 group-hover:text-slate-400')}
     text-center
     lg:text-left
+    text-sm
 `

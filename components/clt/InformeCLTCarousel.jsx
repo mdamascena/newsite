@@ -42,7 +42,6 @@ const mobileCards = [
         className: "",
         label: "",
     }
-    
 ];
 
 export default function InformeCLTCarousel() {

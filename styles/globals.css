@@ -6,7 +6,7 @@
 
 @layer components {
   .container-custom {
-    @apply xl:max-w-[1265px] xl:mx-auto lg:max-w-[1024px] lg:mx-8 md:max-w-[768px] md:mx-6 max-w-[425px] mx-4;
+    @apply xl:max-w-316.25 xl:mx-auto lg:max-w-5xl lg:mx-8 md:max-w-3xl md:mx-6 max-w-106.25 mx-4;
   }
 
   .container-form-head{
@@ -157,11 +157,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    /* Replace Tailwind @apply with explicit CSS to avoid unknown at-rule errors */
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -452,25 +454,41 @@ a:not([class]) {
   background-position: center;
 }
 
-@theme inline {
-  @keyframes blink-cursor {
+.bg-modelo-car {
+  background-image: url(../public/img/perso_slide_car.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@keyframes blink-cursor {
   0%, 49% {
-    opacity: 1;}
+    opacity: 1;
+  }
   50%, 100% {
-    opacity: 0;}}
-  @keyframes aurora {
+    opacity: 0;
+  }
+}
+
+@keyframes aurora {
   0% {
     background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);}
+    transform: rotate(-5deg) scale(0.9);
+  }
   25% {
     background-position: 50% 100%;
-    transform: rotate(5deg) scale(1.1);}
+    transform: rotate(5deg) scale(1.1);
+  }
   50% {
     background-position: 100% 50%;
-    transform: rotate(-3deg) scale(0.95);}
+    transform: rotate(-3deg) scale(0.95);
+  }
   75% {
     background-position: 50% 0%;
-    transform: rotate(3deg) scale(1.05);}
+    transform: rotate(3deg) scale(1.05);
+  }
   100% {
     background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);}}}
+    transform: rotate(-5deg) scale(0.9);
+  }
+}
