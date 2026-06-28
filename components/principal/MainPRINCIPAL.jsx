@@ -65,16 +65,18 @@ export default function MainHome() {
                         <h1 className="text-yellow-400 lg:text-5xl text-3xl text-center lg:text-left font-semibold tracking-tight">
                             Crédito Pessoal <span className="font-extralight">ONLINE</span>
                         </h1>
+                        <p className="text-white text-center text-md lg:hidden">
+                            Diferente modalidades de crédito para você escolher
+                        </p>
                         <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/>
-                        
                     </div>
 
-                    <div className="lg:content-start content-end col-span-1 select-none">
-                        <p className="text-white lg:text-left text-justify lg:mx-0 mx-2 lg:text-xl col-span-1 lg:pr-14">
+                    <div className="lg:content-start content-center lg:mt-0 col-span-1 select-none">
+                        <p className="text-white text-left mx-0 text-xl col-span-1 lg:pr-14 hidden lg:block">
                             Modalidades de crédito para atender diferentes necessidades, tudo em um só lugar!
                         </p>
                         <div className="pb-8 lg:pb-0">
-                            <BtnHome onClick={handleRedirect}>
+                            <BtnHome className="mt-28" onClick={handleRedirect}>
                                 Simular agora
                             </BtnHome>
                         </div>
