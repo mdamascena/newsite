@@ -86,7 +86,9 @@ export const enderecoSchema = yup.object({
     /* COM CEP */
     cep: yup.string().when("cepOption", {
         is: (value) => value === "1",
-        then: () => yup.string().required("CEP é obrigatório")
+        then: () => yup.string()
+            .required("CEP é obrigatório")
+            .length(9, "Digite um CEP válido")
     }),
 
     logradouro: yup.string().when("cepOption", {

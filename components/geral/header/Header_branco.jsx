@@ -115,7 +115,7 @@ export default function Header() {
             <div id='menuBar' className={`${containerClass} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-5 rounded-[10px] left-0 right-0 items-center duration-500 container-custom`}>
                 
                 <Link href='/' className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
-                    <Image id='logoBranco' src={logoSrc} width={160} placeholder='blur' alt='' />
+                    <Image id='logoBranco' src={logoSrc} width={160} placeholder='blur' loading='eager' alt='' />
                 </Link>
 
                 <nav className='hidden lg:block ml-auto'>
@@ -135,7 +135,7 @@ export default function Header() {
                                     <Link href='/consignado-inss' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Empréstimo consignado INSS</Link>
                                     <Link href='/consignado-clt' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Empréstimo consignado CLT</Link>
                                     <Link href='/credluz' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Empréstimo na conta de LUZ</Link>
-                                    <Link href='/credluz-fast' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Refinanciamento de AUTO</Link>
+                                    <Link href='/refin-auto' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Refinanciamento de AUTO</Link>
                                     <Link href='/credluz-fast' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>PIX parcelado</Link>
                                 </div>
                             </Dropdown>
@@ -199,7 +199,7 @@ export default function Header() {
                             <Link href='/credluz' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>Empréstimo na conta de LUZ</Link>
                         </LiSm>
                         <LiSm>
-                            <Link href='/credluz-fast' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>Refinanciamento de AUTO</Link>
+                            <Link href='/refin-auto' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>Refinanciamento de AUTO</Link>
                         </LiSm>
                         <LiSm>
                             <Link href='/credluz-fast' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-white focus:bg-white active:bg-white'>PIX parcelado</Link>

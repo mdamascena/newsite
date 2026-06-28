@@ -19,13 +19,36 @@ import BtnBack from '../button/BtnBlueBack'
 
 export default function FormEndereco({ onNext, backStep }) {
 
-    const { control, handleSubmit, clearErrors, watch, register, getValues, setValue, formState: { errors } } = useFormContext();
+    const { control, handleSubmit, clearErrors, watch, register, getValues, setValue, trigger, formState: { errors } } = useFormContext();
     const { atualizarForm } = useFormData();
     const registerWithMask = useHookFormMask(register);
+
+    const hasFilledValue = (value) => value?.replace(/[_\s./()-]/g, "").length > 0;
+
+    const validateOnBlur = (fieldName, fieldProps, onChangeCallback) => ({
+        ...fieldProps,
+        onChange: (event) => {
+            fieldProps.onChange(event);
+            onChangeCallback?.(event);
+
+            if (!hasFilledValue(event.target.value)) {
+                clearErrors(fieldName);
+            }
+        },
+        onBlur: (event) => {
+            if (hasFilledValue(event.target.value)) {
+                fieldProps.onBlur(event);
+                trigger(fieldName);
+            } else {
+                clearErrors(fieldName);
+            }
+        }
+    });
 
     const [estados, setEstados] = useState([]);
     const [cidades, setCidades] = useState([]);
     const [cepDigitado, setCepDigitado] = useState("");
+    const [cepValido, setCepValido] = useState(false);
     const [selectedEstado, setSelectedEstado] = useState("");
 
     const watchCep = watch("cep")
@@ -35,23 +58,31 @@ export default function FormEndereco({ onNext, backStep }) {
     //Atualizar os dados de CEP ao retornar de um STEP
     useEffect(() => {
         const currentCep = getValues("cep");
-        setCepDigitado(currentCep ? currentCep : ""); // Atualiza o estado com uma string vazia se estiver indefinido
+        const cleanedCep = currentCep ? currentCep.replace(/\D/g, "") : "";
+        setCepDigitado(cleanedCep); // Atualiza o estado com uma string vazia se estiver indefinido
+
+        if (cleanedCep.length < 8) {
+            setCepValido(false);
+        }
       },  [watchCep, getValues ]);
       
     //Busca o endereço de acordo com o CEP digitado.
     const handleCepChange = (e) => {
         const cep = e.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
         setCepDigitado(cep);
+        setCepValido(false);
 
         if (cep.length === 8) {
             getEnderecoCep(cep)
                 .then((data) => {
                     if (data && !data.erro) {
+                        setCepValido(true);
                         setValue("estadoCep", data.uf);
                         setValue("cidadeCep", data.localidade);
                         setValue("logradouro", data.logradouro);
                         setValue("bairro", data.bairro);
                     } else if (data && data.erro) {    
+                        setCepValido(false);
                         toastErrorColored("CEP inválido. Digite um CEP válido.")
                         setValue("cep", "")
                         setValue("estadoCep", "");
@@ -61,6 +92,7 @@ export default function FormEndereco({ onNext, backStep }) {
                     }
                 })
                 .catch((err) => {
+                    setCepValido(false);
                     toastErrorColored("Erro ao buscar o endereço. Digite seu endereço!")
                     setValue("estadoCep", "");
                     setValue("cidadeCep", "");
@@ -69,6 +101,23 @@ export default function FormEndereco({ onNext, backStep }) {
                 });
         }
     };
+
+    useEffect(() => {
+        if (watchOption !== "1") {
+            setCepValido(false);
+        }
+    }, [watchOption]);
+
+    useEffect(() => {
+        if (!cepValido) {
+            setValue("estadoCep", "");
+            setValue("cidadeCep", "");
+            setValue("logradouro", "");
+            setValue("bairro", "");
+            setValue("numero", "");
+            setValue("complemento", "");
+        }
+    }, [cepValido, setValue]);
 
     //Se a opção for SemCep, faz a requisição buscando estados.
     useEffect(() => {
@@ -99,12 +148,12 @@ export default function FormEndereco({ onNext, backStep }) {
 
     //Limpa as mensagens das validações caso os campos forem preenchidos.
     useEffect(() => {
-        if (cepDigitado.length === 8) {
+        if (cepValido) {
             clearErrors(["logradouro", "bairro", "cidadeCep", "estadoCep", "cep"]);
         } if(cidadeSelecionada) {
             clearErrors(["logradouroSemCep", "bairroSemCep"])
         }
-    }, [cepDigitado, cidadeSelecionada, clearErrors]);
+    }, [cepValido, cidadeSelecionada, clearErrors]);
 
     
     useEffect(() => {
@@ -213,8 +262,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         placeholder="CEP *"
                                         inputMode="numeric"
                                         defaultValue={getValues("cep")}
-                                        {...registerWithMask("cep", ['99999-999'])}
-                                        onChange={handleCepChange}
+                                        {...validateOnBlur("cep", registerWithMask("cep", ['99999-999']), handleCepChange)}
                                     />
                                     {errors.cep && <p className="text-red-500 text-xs mt-1">{errors.cep.message}</p>}
                                 </motion.div>
@@ -222,7 +270,7 @@ export default function FormEndereco({ onNext, backStep }) {
                             </>
                         )}
 
-                        {cepDigitado.replace("-", "").length === 8 && watchOption === "1" && (
+                        {cepValido && watchOption === "1" && (
                             <>
 
                                 <motion.div initial={'hidden'} animate={'visible'} variants={item} className="lg:col-span-3 col-span-4">
@@ -230,7 +278,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Logradouro "
-                                        {...register("logradouro")}
+                                        {...validateOnBlur("logradouro", register("logradouro"))}
                                     />
                                     {errors.logradouro && <p className="text-red-500 text-xs mt-1">{errors.logradouro.message}</p>}
                                 </motion.div>
@@ -241,7 +289,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         type="text"
                                         inputMode="numeric"
                                         placeholder="Nº *"
-                                        {...register("numero")}
+                                        {...validateOnBlur("numero", register("numero"))}
                                     />
                                     {errors.numero && <p className="text-red-500 text-xs mt-1">{errors.numero.message}</p>}
                                 </motion.div>
@@ -251,7 +299,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.complemento ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Complemento "
-                                        {...register("complemento")}
+                                        {...validateOnBlur("complemento", register("complemento"))}
                                     />
                                     {errors.complemento && <p className="text-red-500 text-xs mt-1">{errors.complemento.message}</p>}
                                 </motion.div>
@@ -261,7 +309,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairro ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Bairro "
-                                        {...register("bairro")}
+                                        {...validateOnBlur("bairro", register("bairro"))}
                                     />
                                     {errors.bairro && <p className="text-red-500 text-xs mt-1">{errors.bairro.message}</p>}
                                 </motion.div>
@@ -271,7 +319,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cidadeCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Cidade *"
-                                        {...register("cidadeCep")}
+                                        {...validateOnBlur("cidadeCep", register("cidadeCep"))}
                                     />
                                     {errors.cidadeCep && <p className="text-red-500 text-xs mt-1">{errors.cidadeCep.message}</p>}
                                 </motion.div>
@@ -281,7 +329,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.estadoCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Estado *"
-                                        {...register("estadoCep")}
+                                        {...validateOnBlur("estadoCep", register("estadoCep"))}
                                     />
                                     {errors.estadoCep && <p className="text-red-500 text-xs mt-1">{errors.estadoCep.message}</p>}
                                 </motion.div>
@@ -377,7 +425,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.logradouroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Logradouro *"
-                                        {...register("logradouroSemCep")}
+                                        {...validateOnBlur("logradouroSemCep", register("logradouroSemCep"))}
                                     />
                                     {errors.logradouroSemCep && <p className="text-red-500 text-xs mt-1">{errors.logradouroSemCep.message}</p>}
                                 </motion.div>
@@ -388,7 +436,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         type="text"
                                         inputMode="numeric"
                                         placeholder="Nº *"
-                                        {...register("numeroSemCep")}
+                                        {...validateOnBlur("numeroSemCep", register("numeroSemCep"))}
                                     />
                                     {errors.numeroSemCep && <p className="text-red-500 text-xs mt-1">{errors.numeroSemCep.message}</p>}
                                 </motion.div>
@@ -398,7 +446,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.complementoSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Complemento "
-                                        {...register("complementoSemCep")}
+                                        {...validateOnBlur("complementoSemCep", register("complementoSemCep"))}
                                     />
                                     {errors.complementoSemCep && <p className="text-red-500 text-xs mt-1">{errors.complementoSemCep.message}</p>}
                                 </motion.div>
@@ -408,7 +456,7 @@ export default function FormEndereco({ onNext, backStep }) {
                                         className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.bairroSemCep ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
                                         type="text"
                                         placeholder="Bairro *"
-                                        {...register("bairroSemCep")}
+                                        {...validateOnBlur("bairroSemCep", register("bairroSemCep"))}
                                     />
                                     {errors.bairroSemCep && <p className="text-red-500 text-xs mt-1">{errors.bairroSemCep.message}</p>}
                                 </motion.div>

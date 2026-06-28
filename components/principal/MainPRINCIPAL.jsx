@@ -1,7 +1,5 @@
-import Simulador from "./SimuladorGeral"
 import SeuPerfil from "./sections/Perfil"
 import { BtnHome } from "./styles"
-import Modalidades from "./Modalidades"
 import SlideModalidade from "./sections/SlideModalidade"
 import Taxa from "./sections/Taxas"
 import Mais from "./sections/Mais"
@@ -9,7 +7,14 @@ import LinkFaq from "../geral/section/LinkFaq"
 import Escolha from "./sections/Escolha"
 import { useRouter } from 'next/router'
 import { MarqueeDemo } from "./MarqueeDemo"
-import { RainbowButton } from "../ui/rainbow-button"
+import WidgetLUZ from "./widgets/WidgetLUZ"
+import WidgetCLT from "./widgets/WidgetCLT"
+import WidgetFGTS from "./widgets/WidgetFGTS"
+import WidgetINSS from "./widgets/WidgetINSS"
+import WidgetPIX from "./widgets/WidgetPIX"
+import WidgetAUTO from "./widgets/WidgetAUTO"
+import { AnimatedList } from "../ui/animated-list"
+
 import dynamic from "next/dynamic";
 const WordRotate = dynamic(() => import("../ui/word-rotate"), { ssr: false });
 
@@ -19,8 +24,20 @@ const texts = [
     "Saque Antecipado do FGTS",
     "Consignado do INSS",
     "Parcelamento de PIX",
-    "Consignado CLT"
+    "Consignado CLT",
+    "Refinanciamento de AUTO"
 ]
+
+let creditWidgets = [
+    { id: "luz", Component: WidgetLUZ },
+    { id: "clt", Component: WidgetCLT },
+    { id: "fgts", Component: WidgetFGTS },
+    { id: "inss", Component: WidgetINSS },
+    { id: "pix", Component: WidgetPIX },
+    { id: "auto", Component: WidgetAUTO },
+]
+
+creditWidgets = Array.from({ length: 10 }, () => creditWidgets).flat()
 
 export default function MainHome() {
 
@@ -32,7 +49,15 @@ export default function MainHome() {
     <main>
         <div className="bgMainHome">
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 container-custom lg:h-screen h-[85vh]">
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 container-custom lg:h-screen h-[85vh]">
+
+                <div className="absolute lg:bottom-24 bottom-50 lg:right-150 left-1 flex h-56 w-44 flex-col overflow-hidden [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] mask-[linear-gradient(to_bottom,black_75%,transparent_100%)]">
+                    <AnimatedList className="w-44" delay={2300}>
+                        {creditWidgets.map(({ id, Component }, index) => (
+                            <Component key={`${id}-${index}`} />
+                        ))}
+                    </AnimatedList>
+                </div>
                 
                 <div className="col-span-1 grid grid-cols-1 lg:h-[50%] h-full my-auto">
 

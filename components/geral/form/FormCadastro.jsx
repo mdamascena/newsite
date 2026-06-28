@@ -20,14 +20,27 @@ import { GoXCircleFill } from "react-icons/go";
 
 export default function FormCadastro({ onNext }) {
 
-    const { register, watch, handleSubmit, formState: { errors }, setValue, trigger} = useFormContext();
+    const { register, watch, handleSubmit, formState: { errors }, setValue, trigger, clearErrors} = useFormContext();
     const registerWithMask = useHookFormMask(register);
+
+    const hasFilledValue = (value) => value?.replace(/[_\s./()-]/g, "").length > 0;
 
     const validateOnBlur = (fieldName, fieldProps) => ({
         ...fieldProps,
+        onChange: (event) => {
+            fieldProps.onChange(event);
+
+            if (!hasFilledValue(event.target.value)) {
+                clearErrors(fieldName);
+            }
+        },
         onBlur: (event) => {
-            fieldProps.onBlur(event);
-            trigger(fieldName);
+            if (hasFilledValue(event.target.value)) {
+                fieldProps.onBlur(event);
+                trigger(fieldName);
+            } else {
+                clearErrors(fieldName);
+            }
         }
     });
 

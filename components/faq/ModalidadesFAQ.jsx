@@ -17,7 +17,7 @@ export default function ModalidadesFAQ(){
 
                     <div className='grid grid-cols-5 gap-2 relative bottom-24'>
                         <CardMod>
-                            <div className="duration-300 grid grid-cols-4 w-[100%] justify-items-center">
+                            <div className="duration-300 grid grid-cols-4 w-full justify-items-center">
                                 <MdOutlineCake className="col-span-4 mb-3 text-5xl text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='col-span-4 text-center'>
                                     <p className="text-lg font-semibold text-slate-400 group-hover:text-white">Antecipação</p>
@@ -27,7 +27,7 @@ export default function ModalidadesFAQ(){
                         </CardMod>
 
                         <CardMod>
-                            <div className="duration-300 grid grid-cols-4 w-[100%] justify-items-center">
+                            <div className="duration-300 grid grid-cols-4 w-full justify-items-center">
                                 <HiOutlineBanknotes className="col-span-4 mb-3 text-5xl text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='col-span-4 text-center'>
                                     <p className="text-lg font-semibold text-slate-400 group-hover:text-white">Empréstimo</p>
@@ -37,7 +37,7 @@ export default function ModalidadesFAQ(){
                         </CardMod>
 
                         <CardMod>
-                            <div className="duration-300 grid grid-cols-4 w-[100%] justify-items-center">
+                            <div className="duration-300 grid grid-cols-4 w-full justify-items-center">
                                 <FaUserTie className="col-span-4 mb-3 text-5xl text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='col-span-4 text-center'>
                                     <p className="text-lg font-semibold text-slate-400 group-hover:text-white">Empréstimo</p>
@@ -47,7 +47,7 @@ export default function ModalidadesFAQ(){
                         </CardMod>
 
                         <CardMod>
-                            <div className="duration-300 grid grid-cols-4 w-[100%] justify-items-center">
+                            <div className="duration-300 grid grid-cols-4 w-full justify-items-center">
                                 <RiLightbulbFlashLine className="col-span-4 mb-3 text-5xl text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='col-span-4 text-center'>
                                     <p className="text-lg font-semibold text-slate-400 group-hover:text-white">Empréstimo</p>
@@ -57,7 +57,7 @@ export default function ModalidadesFAQ(){
                         </CardMod>
 
                         <CardMod>
-                            <div className="duration-300 grid grid-cols-4 w-[100%] justify-items-center">
+                            <div className="duration-300 grid grid-cols-4 w-full justify-items-center">
                                 <SiPix className="col-span-4 mb-3 text-5xl text-blue-600 bg-blue-200 group-hover:bg-blue-400 group-hover:text-blue-100 duration-300 p-2 rounded-full" />
                                 <div className='col-span-4 text-center'>
                                     <p className="text-lg font-semibold text-slate-400 group-hover:text-white">Pix Parcelado</p>

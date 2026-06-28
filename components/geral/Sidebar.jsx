@@ -33,11 +33,11 @@ export default function SideBar() {
 
             {pathname === '/conta/acompanhamento/home' ? (
                 <div className="h-20 md:h-28 p-6 md:flex justify-center border-b-2 border-gray-200">
-                    <Image className="object-contain w-full h-full" src={Logotipo} height={100} width={150} alt="Logo" />
+                    <Image className="object-contain w-full h-full" src={Logotipo} height={100} width={150} loading="eager" alt="Logo" />
                 </div>
                 ) : (
                 <div className="hidden md:h-28 p-6 md:flex justify-center border-b-2 border-gray-200">
-                    <Image className="object-contain w-full h-full" src={Logotipo} height={100} width={150} alt="Logo" />
+                    <Image className="object-contain w-full h-full" src={Logotipo} height={100} width={150} loading="eager" alt="Logo" />
                 </div>
             )}
 

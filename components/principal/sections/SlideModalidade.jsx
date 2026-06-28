@@ -32,7 +32,7 @@ const slides = [
         title: 'Empréstimo consignado CLT',
         description: 'Crédito consignado para trabalhadores CLT, com desconto em folha, juros reduzidos e limite ampliado',
         resumo: 'Crédito com desconto direto na folha de pagamento, juros bem menores e aprovação rápida. Ideal pra quem tem carteira assinada e quer resolver pendências ou realizar planos sem comprometer o orçamento.',
-        pagina: '../credluz-fast'
+        pagina: '../consignado-clt'
     },
     {
         bgClass: 'bg-modelo-pix',
@@ -46,7 +46,7 @@ const slides = [
         title: 'Refinanciamento de AUTO',
         description: 'Dinheiro na hora via Pix, com pagamento em parcelas que cabem no bolso',
         resumo: 'Dinheiro na hora, direto no Pix, e pagamento em parcelas que cabem no seu bolso. Sem burocracia, sem esperar. Uma solução moderna, rápida e segura pra quem precisa resolver agora.',
-        pagina: '../credluz-fast'
+        pagina: '../refin-auto'
     }
 ];
 

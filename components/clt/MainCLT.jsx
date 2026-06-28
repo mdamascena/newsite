@@ -1,8 +1,8 @@
 import Image from "next/image"
-import Link from "next/link"
 import { useRef } from "react"
 import { motion, useInView } from "motion/react"
 import menclt from "../../public/img/PERSO_CLT.png"
+import BtnYellowG from "../geral/button/BtnYellowG.jsx"
 import SectioAnalise from "../geral/section/Analise"
 import SectionFaq from "../geral/section/LinkFaq"
 import Ripple from "../ui/ripple"
@@ -278,9 +278,7 @@ export default function MainCLT() {
                         </p>
 
                         <div className="text-center md:text-left">
-                            <Link href="/consignado-clt/cadastro" className="inline-block lg:mt-8 mt-5 flex-1 cursor-pointer rounded-xl border-b-2 border-amber-300 bg-linear-to-r from-yellow-300 to-amber-500 px-[25vw] py-3 text-xl text-white shadow-md shadow-amber-400/50 duration-150 hover:scale-105 hover:bg-linear-to-r hover:from-yellow-400 hover:to-amber-500 hover:shadow-md active:scale-90 lg:flex-none lg:px-32">
-                                Simular agora
-                            </Link>
+                            <BtnYellowG href="/consignado-clt/cadastro" className="mt-5 px-[25vw] lg:mt-8" />
                         </div>
 
                         <div className="text-[12px] text-white lg:mt-5 mt-2 text-center lg:text-start">
