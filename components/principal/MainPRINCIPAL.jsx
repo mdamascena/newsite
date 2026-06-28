@@ -51,7 +51,7 @@ export default function MainHome() {
             
             <div className="relative grid grid-cols-1 lg:grid-cols-2 container-custom lg:h-screen h-[85vh]">
 
-                <div className="absolute lg:bottom-24 bottom-50 lg:right-150 left-1 flex h-56 w-44 flex-col overflow-hidden [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] mask-[linear-gradient(to_bottom,black_75%,transparent_100%)]">
+                <div className="absolute lg:bottom-24 bottom-38 lg:right-150 left-1 flex h-56 w-44 flex-col overflow-hidden [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] mask-[linear-gradient(to_bottom,black_75%,transparent_100%)]">
                     <AnimatedList className="w-44" delay={2300}>
                         {creditWidgets.map(({ id, Component }, index) => (
                             <Component key={`${id}-${index}`} />
@@ -71,7 +71,7 @@ export default function MainHome() {
                         <WordRotate words={texts} className="text-white lg:text-4xl text-2xl text-center lg:text-left font-medium tracking-tight"/>
                     </div>
 
-                    <div className="lg:content-start content-center lg:mt-0 col-span-1 select-none">
+                    <div className="lg:content-start content-end lg:mt-0 col-span-1 select-none">
                         <p className="text-white text-left mx-0 text-xl col-span-1 lg:pr-14 hidden lg:block">
                             Modalidades de crédito para atender diferentes necessidades, tudo em um só lugar!
                         </p>
