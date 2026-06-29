@@ -12,7 +12,6 @@ const StepTipoOcupacao = dynamic(() => import('./FormTipoOcupacao'));
 const StepTitutularCia = dynamic(() => import('./FormTitularCia'));
 const StepEndereco = dynamic(() => import('../../geral/form/FormEndereco'));
 const StepResumo = dynamic(() => import('./ResumoCredLuz'));
-const StepNaotitular = dynamic(() => import('./FormNaoTitular'));
 
 const PropostaAprovada = dynamic(() => import('../../geral/PropostaAprovada'));
 const PropostaRecusada = dynamic(() => import('../../geral/PropostaRecusada'));
@@ -28,9 +27,9 @@ const StepFinalizado = dynamic(() => import('./Finalizado'));
 
 const schemas = [
     cadastroSchema,
+    titularCiaSchema,
     identificacaoSchema,
     tipoOcupacaoSchema,
-    titularCiaSchema,
     enderecoSchema,
     resumoSchema,
     respostaSchema,
@@ -52,9 +51,9 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
 
     const cadastroSteps = useMemo(() => [
         { key: "Registrar conta", thresholds: 0 },
-        { key: "Identificação", thresholds: 17 },
-        { key: "Perfil ocupacional", thresholds: 33 },
-        { key: "Titular da fatura", thresholds: 50 },
+        { key: "Titular da fatura", thresholds: 17 },
+        { key: "Identificação", thresholds: 33 },
+        { key: "Perfil ocupacional", thresholds: 50 },
         { key: "Contato e localidade", thresholds: 67 },
         { key: "Confirmação dos dados", thresholds: 83 },
         { key: "Reposta da solicitação", thresholds: 100 }
@@ -70,9 +69,9 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
 
     const cadastroLuzTitle = useMemo(() => [
         "Vamos começar!",
+        "Quem paga a luz?",
         "Um pouco mais sobre você",
         "O que você faz da vida?",
-        "Quem paga a luz?",
         "Onde você está no mapa?",
         "Está tudo correto?",
         "Resposta da solicitação"
@@ -88,9 +87,9 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
 
     const cadastroLuzDescription = useMemo(() => [
         "Preencha seus dados iniciais para criarmos a sua conta",
+        "É você que manda apagar a luz para não vir caro? Conta pra gente!",
         "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
         "Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!",
-        "É você que manda apagar a luz para não vir caro? Conta pra gente!",
         "Queremos saber onde mora e como falamos com você",
         "Confira se todos os dados estão corretos antes de prosseguir",
         "Resposta da solicitação"
@@ -157,10 +156,9 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
     return (
         <FormProvider {...methods}>
             {step === 1 && <StepCadastro onNext={nextStep} />}
-            {step === 2 && <StepIdentificacao onNext={nextStep} backStep={prevStep} />}
-            {step === 3 && <StepTipoOcupacao onNext={nextStep} backStep={prevStep} />}
-            {step === 4 && <StepTitutularCia onNext={nextStep} backStep={prevStep} />}
-            {/*step === 5 && <StepNaotitular onNext={nextStep} backStep={prevStep} />*/}
+            {step === 2 && <StepTitutularCia onNext={nextStep} backStep={prevStep} />}
+            {step === 3 && <StepIdentificacao onNext={nextStep} backStep={prevStep} />}
+            {step === 4 && <StepTipoOcupacao onNext={nextStep} backStep={prevStep} />}
             {step === 5 && <StepEndereco onNext={nextStep} backStep={prevStep} />}
             {step === 6 && <StepResumo onNext={nextStep} backStep={prevStep} />}
             {step === 7 && <PropostaAprovada onNext={nextStep} title={"Parabéns!"} subTitle={"Sua proposta foi Pré-Aprovada"} text={"Para ficar por dentro de mais atualizações, acesse sua conta!"} />}

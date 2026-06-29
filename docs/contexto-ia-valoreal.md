@@ -150,6 +150,15 @@ Para integrar em um fluxo existente:
 - Permitir que o cliente continue mesmo quando uma modalidade nao for ideal, quando houver regra pendente de parceiro.
 - Guardar as respostas em nomes de campo estaveis para evitar divergencia entre modalidades.
 
+## Padroes de interface
+
+- Modais gerais ficam em `components/geral/modal`.
+- Acoes principais em modais devem usar `components/geral/button/BtnBlueNext`.
+- Acoes secundarias, voltar ou fechar em modais devem usar `components/geral/button/BtnBlueBack`.
+- Evitar `Button` direto de `components/lib/nextui-compat` para acoes de modal quando os botoes gerais atenderem ao caso.
+- No `BtnBlueNext`, usar a prop `className` para ajustes pontuais. No `BtnBlueBack`, usar a prop `classN`.
+- Para botoes dentro de modal que nao submetem formulario, passar `tipo="button"`.
+
 ## Decisao recomendada
 
 O melhor caminho e transformar `Genero` e `Tipo de ocupacao` em partes do novo `Cadastro de perfil`, e deixar os formularios especificos apenas com perguntas realmente exclusivas da modalidade.

@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 import { useFormData } from "../../../context/FormContext"
 import { Controller, useFormContext } from "react-hook-form"
 import { RiUserFollowLine, RiUserForbidLine } from "react-icons/ri"
@@ -10,16 +11,44 @@ import { container, item } from "shared/motionUtils/motionTransation"
 import { OptLabel } from "components/geral/style"
 import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
+import ModalTitularNao from "components/geral/modal/ModalTitularNao"
 
 
 export default function FormTitularCia({ onNext, backStep }) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
+    const router = useRouter();
+    const [showNaoTitularModal, setShowNaoTitularModal] = useState(false);
 
     function onSubmit(data){
+        if(data.titularCia === "1"){
+            atualizarForm(data);
+            setShowNaoTitularModal(true);
+            return;
+        }
+
         atualizarForm(data);
         onNext();
+    }
+
+    const handleTitularChange = (value, onChange) => {
+        onChange(value);
+
+        if(value === "1"){
+            atualizarForm({ titularCia: value });
+            setShowNaoTitularModal(true);
+        }
+    }
+
+    const handleCloseNaoTitularModal = () => {
+        setShowNaoTitularModal(false);
+        router.push("/");
+    }
+
+    const handleSimularOutraModalidade = () => {
+        setShowNaoTitularModal(false);
+        router.push("/cadastro");
     }
 
     useEffect(() => {
@@ -38,6 +67,21 @@ export default function FormTitularCia({ onNext, backStep }) {
         <form className="lg:min-h-screen" onSubmit={handleSubmit(onSubmit)}>
             
             <ToastContainer />
+
+            <ModalTitularNao
+                isOpen={showNaoTitularModal}
+                
+                onOpenChange={(open) => {
+                    if(!open){
+                        handleCloseNaoTitularModal();
+                        return;
+                    }
+                    setShowNaoTitularModal(open);
+                }}
+                
+                onClose={handleCloseNaoTitularModal}
+                onSimularOutraModalidade={handleSimularOutraModalidade}
+            />
 
             <motion.div 
                 initial={'hidden'} 
@@ -73,7 +117,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                                 
                                 <div className="grid grid-cols-4 gap-2 items-center">
                                     <motion.div className="col-span-2" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="0" id="titularCia" checked={value === "0"} onChange={() => onChange("0")}/>
+                                        <input type="radio" className="hidden peer" name='status' value="0" id="titularCia" checked={value === "0"} onChange={() => handleTitularChange("0", onChange)}/>
                                         <OptLabel htmlFor="titularCia">
                                             <div className="col-span-6 flex justify-center mb-2">
                                                 <RiUserFollowLine className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
@@ -87,7 +131,7 @@ export default function FormTitularCia({ onNext, backStep }) {
                                     </motion.div>
 
                                     <motion.div className="col-span-2" variants={item}>
-                                        <input type="radio" className="hidden peer" name='status' value="1" id="naoTitularCia" checked={value === "1"} onChange={() => onChange("1")}/>
+                                        <input type="radio" className="hidden peer" name='status' value="1" id="naoTitularCia" checked={value === "1"} onChange={() => handleTitularChange("1", onChange)}/>
                                         <OptLabel htmlFor="naoTitularCia">
                                             <div className="col-span-6 flex justify-center mb-2">
                                                 <RiUserForbidLine  className="text-5xl p-2 bg-blue-500 rounded-md text-white"/>
@@ -110,11 +154,11 @@ export default function FormTitularCia({ onNext, backStep }) {
                 {/*Botões*/}
                 <div className="container-form-footer">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>  
+                        <BtnBack tipo="button" nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1"/>}/>
                     </div>
 
                     <div className="col-span-5">
-                        <BtnNext event={handleSubmit(onSubmit)} nome={'Avançar'} type="submit"/>
+                        <BtnNext nome={'Avançar'} tipo="submit"/>
                     </div>
                 </div>
 
