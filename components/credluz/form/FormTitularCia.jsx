@@ -34,11 +34,6 @@ export default function FormTitularCia({ onNext, backStep }) {
 
     const handleTitularChange = (value, onChange) => {
         onChange(value);
-
-        if(value === "1"){
-            atualizarForm({ titularCia: value });
-            setShowNaoTitularModal(true);
-        }
     }
 
     const handleCloseNaoTitularModal = () => {

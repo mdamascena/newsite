@@ -13,7 +13,7 @@ const LSpan = tw.span`
     text-xs 
     text-blue-400
 `
-  
+
 export default function ResumoCredLuz({ onNext, backStep }) {
 
     const { atualizarForm, formData } = useFormData()
@@ -27,7 +27,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
     }, [formData])
     
     return (
-        <div className="lg:min-h-[100vh]">
+        <div className="lg:min-h-screen">
 
             {/*Titulo do step*/}
             <div className="container-form-head">
@@ -47,7 +47,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                 <motion.div initial="hidden" animate="visible" variants={container} className="col-span-6">
                     
                     <div className="text-slate-400 bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6">
-                        <h3 className="bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
+                        <h3 className="bg-blue-600 text-white absolute -top-2.5 left-4 px-3 text-sm col-span-6 rounded-lg w-40">
                             Dados pessoais
                         </h3>
                         
@@ -81,7 +81,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                     </div>
                         
                     <div className="text-slate-400  bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6 mt-6">
-                        <h3 className="bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
+                        <h3 className="bg-blue-600 text-white absolute -top-2.5 left-4 px-3 text-sm col-span-6 rounded-lg w-40">
                             Endereço
                         </h3>
 
@@ -122,7 +122,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                     </div>
 
                     <div className="text-slate-400  bg-white shadow-md rounded-xl relative p-4 col-span-6 grid grid-cols-6 mt-6">
-                        <h3 className="bg-blue-600 text-white absolute -top-[10px] left-4 px-3 text-sm col-span-6 rounded-lg w-40">
+                        <h3 className="bg-blue-600 text-white absolute -top-2.5 left-4 px-3 text-sm col-span-6 rounded-lg w-40">
                             Perfil
                         </h3>
 

@@ -1,5 +1,5 @@
-import AcompanhamentoLayout from "../../../components/conta/AcompanhamentoLayout";
+import Cliente from "../../../components/conta/acompanhamento/Cliente";
 
 export default function Acompanhamento() {
-  return <AcompanhamentoLayout />;
+  return <Cliente />;
 }

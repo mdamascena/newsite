@@ -26,6 +26,10 @@ export default function FormTipoOcupacao({onNext, backStep}) {
     }
 
     useEffect(() => {
+        console.log("FormData", formData);
+    }, [formData])
+    
+    useEffect(() => {
         if(formData.tipoOcupacao){
             setValue('tipoOcupacao', formData.tipoOcupacao);
         }
@@ -38,7 +42,7 @@ export default function FormTipoOcupacao({onNext, backStep}) {
     }, [errors.tipoOcupacao]);
 
     return (
-        <form className="lg:min-h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
+        <form className="lg:min-h-screen" onSubmit={handleSubmit(onSubmit)}>
             
             <ToastContainer />
             

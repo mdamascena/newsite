@@ -19,7 +19,7 @@ import NumerosCLT from "./NumerosCLT.jsx"
 import Comparativo from "./Comparativo.jsx"
 import ComparativoCLT from "./ComparativoCLT.jsx"
 import SliderY from "../ui/sliderY.jsx"
-import PerfilCLT from "./PerfilCLT.jsx"
+import TVOnline from "./TVOnline.jsx"
 
 const HERO_ITEM_STAGGER = 0.22;
 const getScaledHeight = (image, width) => Math.round((image.height / image.width) * width);
@@ -366,7 +366,7 @@ export default function MainCLT() {
         <InformeCLT/>
         <ComparativoCLT/>
         
-        <PerfilCLT/>
+        <TVOnline/>
         <VantagensCLT />
         <SectioAnalise />
         <SectionFaq/>

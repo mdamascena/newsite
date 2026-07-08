@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFormContext, Controller } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { useHookFormMask } from "use-mask-input"
 import { Input } from "components/ui/input"
-import { getCidade, getEnderecoCep, getEstado } from '../../../services/servicesCredLuz/apiCep'
+import { getEnderecoCep } from '../../../services/servicesEnd/apiCep'
+import { getCidade, getEstado } from '../../../services/servicesEnd/apiIBGE'
 import { Select, SelectTrigger, SelectContent, SelectItem } from "components/ui/select"
 import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinSimpleAreaFill } from "react-icons/pi"
@@ -54,6 +55,12 @@ export default function FormEndereco({ onNext, backStep }) {
     const watchCep = watch("cep")
     const cidadeSelecionada = watch("cidade");
     const watchOption = watch("cepOption")
+    const previousOptionRef = useRef(watchOption);
+
+    const getEstadoIbgeIdFromCidadeId = (cidadeIbgeId) => {
+        const id = String(cidadeIbgeId || "");
+        return id.length >= 2 ? id.slice(0, 2) : "";
+    };
 
     //Atualizar os dados de CEP ao retornar de um STEP
     useEffect(() => {
@@ -71,14 +78,20 @@ export default function FormEndereco({ onNext, backStep }) {
         const cep = e.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
         setCepDigitado(cep);
         setCepValido(false);
+        setValue("cidadeIbgeId", "");
+        setValue("estadoIbgeId", "");
 
         if (cep.length === 8) {
             getEnderecoCep(cep)
                 .then((data) => {
                     if (data && !data.erro) {
+                        const cidadeIbgeId = data.ibge ? String(data.ibge) : "";
+
                         setCepValido(true);
                         setValue("estadoCep", data.uf);
                         setValue("cidadeCep", data.localidade);
+                        setValue("cidadeIbgeId", cidadeIbgeId);
+                        setValue("estadoIbgeId", getEstadoIbgeIdFromCidadeId(cidadeIbgeId));
                         setValue("logradouro", data.logradouro);
                         setValue("bairro", data.bairro);
                     } else if (data && data.erro) {    
@@ -87,6 +100,8 @@ export default function FormEndereco({ onNext, backStep }) {
                         setValue("cep", "")
                         setValue("estadoCep", "");
                         setValue("cidadeCep", "");
+                        setValue("cidadeIbgeId", "");
+                        setValue("estadoIbgeId", "");
                         setValue("logradouro", "");
                         setValue("bairro", "");
                     }
@@ -96,6 +111,8 @@ export default function FormEndereco({ onNext, backStep }) {
                     toastErrorColored("Erro ao buscar o endereço. Digite seu endereço!")
                     setValue("estadoCep", "");
                     setValue("cidadeCep", "");
+                    setValue("cidadeIbgeId", "");
+                    setValue("estadoIbgeId", "");
                     setValue("logradouro", "");
                     setValue("bairro", "");
                 });
@@ -103,10 +120,16 @@ export default function FormEndereco({ onNext, backStep }) {
     };
 
     useEffect(() => {
+        if (previousOptionRef.current !== watchOption) {
+            previousOptionRef.current = watchOption;
+            setValue("cidadeIbgeId", "");
+            setValue("estadoIbgeId", "");
+        }
+
         if (watchOption !== "1") {
             setCepValido(false);
         }
-    }, [watchOption]);
+    }, [watchOption, setValue]);
 
     useEffect(() => {
         if (!cepValido) {
@@ -134,6 +157,7 @@ export default function FormEndereco({ onNext, backStep }) {
     useEffect(() => {
         if (selectedEstado !== "") {
             setValue("cidade", "")
+            setValue("cidadeIbgeId", "")
             setValue("logradouroSemCep", "")
             setValue("numeroSemCep", "")
             setValue("complementoSemCep", "")
@@ -165,12 +189,15 @@ export default function FormEndereco({ onNext, backStep }) {
 
     const onSubmit = (data) => {
         let filteredData;
+        const cidadeIbgeId = getValues("cidadeIbgeId") || "";
+        const estadoIbgeId = getValues("estadoIbgeId") || "";
+
         if (watchOption === "1") {
             const { cep, estadoCep, cidadeCep, logradouro, bairro, numero, complemento } = data;
-            filteredData = { cep, estadoCep, cidadeCep, logradouro, bairro, numero, complemento };
+            filteredData = { cep, estadoCep, cidadeCep, cidadeIbgeId, estadoIbgeId, logradouro, bairro, numero, complemento };
         } else if (watchOption === "2") {
             const { estado, cidade, logradouroSemCep, bairroSemCep, numeroSemCep, complementoSemCep } = data;
-            filteredData = { estado, cidade, logradouroSemCep, bairroSemCep, numeroSemCep, complementoSemCep };
+            filteredData = { estado, cidade, cidadeIbgeId, estadoIbgeId, logradouroSemCep, bairroSemCep, numeroSemCep, complementoSemCep };
         }
         atualizarForm(filteredData);
         onNext();
@@ -353,7 +380,10 @@ export default function FormEndereco({ onNext, backStep }) {
                         
                                             <Select
                                                 onValueChange={(value) => {
+                                                    const estadoSelecionado = estados.find((estado) => estado.sigla === value);
+
                                                     field.onChange(value); // Atualiza o valor do formulário
+                                                    setValue("estadoIbgeId", estadoSelecionado?.id ? String(estadoSelecionado.id) : "");
                                                     setSelectedEstado(value); // Atualiza o estado selecionado
                                                 }}
                                                 defaultValue={field.value}>
@@ -391,7 +421,19 @@ export default function FormEndereco({ onNext, backStep }) {
                                         control={control}
                                         render={({ field }) => (
                         
-                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                            <Select
+                                                onValueChange={(value) => {
+                                                    const cidadeSelecionada = cidades.find((cidade) => cidade.nome === value);
+                                                    const estadoIbgeId = cidadeSelecionada?.microrregiao?.mesorregiao?.UF?.id;
+
+                                                    field.onChange(value);
+                                                    setValue("cidadeIbgeId", cidadeSelecionada?.id ? String(cidadeSelecionada.id) : "");
+
+                                                    if (estadoIbgeId) {
+                                                        setValue("estadoIbgeId", String(estadoIbgeId));
+                                                    }
+                                                }}
+                                                defaultValue={field.value}>
                         
                                                 <SelectTrigger className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.cidade ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}>
                                                     {field.value || "Selecione uma cidade"}

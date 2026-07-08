@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import BtnNext from "../../geral/button/BtnBlueNext"
 import BtnBack from "../../geral/button/BtnBlueBack"
 import { Input } from '../../ui/input'
@@ -9,22 +10,36 @@ import { useHookFormMask } from "use-mask-input"
 import { validateCPF } from "schema/validations"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { ToastContainer } from "react-toastify"
+import { loginAuth } from "../../../services/serviceAuth/apiAuth"
 
-export default function Login({ setShowLogin }) {
+export default function Login({ setShowLogin, setResetCpf }) {
     
     const [passType, setPassType] = useState('password');
     const [isPassVisible, setIsPassVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const togglePassVisibility = () => {
         setIsPassVisible(!isPassVisible);
         setPassType(passType === 'password' ? 'text' : 'password');
     };
 
-    const { register, handleSubmit, formState: { errors }, trigger } = useForm();
+    const { register, handleSubmit, formState: { errors }, trigger, getValues } = useForm();
     const registerWithMask = useHookFormMask(register);
 
-    const onSubmit = (data) => {
-        console.log("Login data:", data);
+    const onSubmit = async (data) => {
+        setIsLoading(true);
+
+        const result = await loginAuth(data);
+
+        setIsLoading(false);
+
+        if (!result.success) {
+            toastErrorColored(result.message);
+            return;
+        }
+
+        router.push("/acompanhamento");
     };
 
     const handleResetClick = async () => {
@@ -33,6 +48,7 @@ export default function Login({ setShowLogin }) {
             toastErrorColored("Informe CPF para redefinir a senha");
             return;
         }
+        setResetCpf?.(getValues("cpf"));
         setShowLogin(false);
     };
 
@@ -77,11 +93,11 @@ export default function Login({ setShowLogin }) {
                     </div>
                     {errors.senha && (<p className="text-red-500 text-xs -mt-1">{errors.senha.message}</p>)}
 
-                    <BtnNext nome={"Acessar"} tipo={'submit'}/>
+                    <BtnNext nome={isLoading ? "Acessando..." : "Acessar"} tipo={'submit'} habilitado={isLoading}/>
 
                 </form>
 
-                <BtnBack nome={"Esqueci senha"} classN={'mt-2'} event={handleResetClick}/>
+                <BtnBack nome={"Esqueci senha"} classN={'mt-2'} event={handleResetClick} habilitado={isLoading}/>
 
             </motion.div>
         </AnimatePresence>

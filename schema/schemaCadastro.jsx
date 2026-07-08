@@ -121,6 +121,10 @@ export const enderecoSchema = yup.object({
         then: () => yup.string().required("Cidade é obrigatório"),
     }),
 
+    cidadeIbgeId: yup.string().optional(),
+
+    estadoIbgeId: yup.string().optional(),
+
     /* SEM CEP */
     estado: yup.string().when("cepOption", {
         is: (value) => value === "2",

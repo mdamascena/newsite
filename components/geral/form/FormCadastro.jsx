@@ -13,10 +13,31 @@ import ModalOpt from '../modal/ModalOpt'
 import BtnNext from '../button/BtnBlueNext'
 import ModalLogin from '../../geral/modal/ModalLogin'
 import { validateCPF } from "schema/validations"
-import { ToastContainer } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import { toastInfoColored } from "shared/toastUtils/toastValidation"
 import { GoCheckCircleFill } from "react-icons/go";
 import { GoXCircleFill } from "react-icons/go";
+import { getPessoaPorCpf } from "../../../services/serviceAuth/apiPessoa";
+
+const CpfLoadingToast = () => (
+    <div>
+        <span>Validando CPF...</span>
+        <span className="absolute bottom-0 left-0 h-1 w-full overflow-hidden bg-blue-100">
+            <span
+                className="block h-full w-1/2 rounded-full bg-blue-500"
+                style={{ animation: "cpf-toast-loading 1.1s ease-in-out infinite" }}
+            />
+        </span>
+        <style>
+            {`
+                @keyframes cpf-toast-loading {
+                    0% { transform: translateX(-110%); }
+                    100% { transform: translateX(220%); }
+                }
+            `}
+        </style>
+    </div>
+);
 
 export default function FormCadastro({ onNext }) {
 
@@ -91,12 +112,13 @@ export default function FormCadastro({ onNext }) {
     const [inputAction, setInputAction] = useState(0); // true = desabilita campos/btn
     
     const [showForm, setShowForm] = useState(false);
+    const [isCpfLoading, setIsCpfLoading] = useState(false);
 
     const cpfValue = watch("cpf") || "";
     const validateTimerRef = useRef(null);
     const lastValidatedCpfRef = useRef("");
-    const lastToastCpfRef = useRef("");
     const onLoginOpenRef = useRef(onLoginOpen);
+    const cpfLoadingToastRef = useRef(null);
 
     useEffect(() => {
         onLoginOpenRef.current = onLoginOpen;
@@ -109,6 +131,12 @@ export default function FormCadastro({ onNext }) {
             clearTimeout(validateTimerRef.current);
             validateTimerRef.current = null;
         }
+        setIsCpfLoading(false);
+
+        if (cpfLoadingToastRef.current) {
+            toast.dismiss(cpfLoadingToastRef.current);
+            cpfLoadingToastRef.current = null;
+        }
 
         const cleanedCpf = (cpfValue || '').replace(/\D/g, '');
 
@@ -116,7 +144,6 @@ export default function FormCadastro({ onNext }) {
         if (cleanedCpf.length < 11) {
             setShowForm(0);
             lastValidatedCpfRef.current = "";
-            lastToastCpfRef.current = "";
             return;
         }
 
@@ -125,17 +152,20 @@ export default function FormCadastro({ onNext }) {
             return;
         }
 
-        if (lastToastCpfRef.current !== cleanedCpf) {
-            toastInfoColored("Validando CPF...", {
-                autoClose: 1000,
-                pauseOnHover: false,
-                theme: "light"
-            });
-            lastToastCpfRef.current = cleanedCpf;
-        }
+        setShowForm(0);
+        setIsCpfLoading(true);
+        cpfLoadingToastRef.current = "cpf-loading";
+        toastInfoColored(<CpfLoadingToast />, {
+            toastId: cpfLoadingToastRef.current,
+            autoClose: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            theme: "light",
+            className: "relative overflow-hidden",
+        });
 
         // 3) agenda um único timeout e guarda o id
-        validateTimerRef.current = setTimeout(() => {
+        validateTimerRef.current = setTimeout(async () => {
             
             const isValidCPF = validateCPF(cpfValue);
 
@@ -153,11 +183,15 @@ export default function FormCadastro({ onNext }) {
             if (isValidCPF) {
                 
                 limpaCampos();
-                setShowForm(1);
                 lastValidatedCpfRef.current = cleanedCpf;
 
-                if (cpfValue === "555.555.555-55") {
+                const pessoa = await getPessoaPorCpf(cleanedCpf);
+
+                if (pessoa) {
+                    setShowForm(0);
                     onLoginOpenRef.current();
+                } else {
+                    setShowForm(1);
                 }
 
             } else {
@@ -165,8 +199,14 @@ export default function FormCadastro({ onNext }) {
                 lastValidatedCpfRef.current = "";
             }
 
+            if (cpfLoadingToastRef.current) {
+                toast.dismiss(cpfLoadingToastRef.current);
+                cpfLoadingToastRef.current = null;
+            }
+
             // 4) limpa referência após executar
             validateTimerRef.current = null;
+            setIsCpfLoading(false);
             
         }, 1500);
 
@@ -176,6 +216,11 @@ export default function FormCadastro({ onNext }) {
                 clearTimeout(validateTimerRef.current);
                 validateTimerRef.current = null;
             }
+            if (cpfLoadingToastRef.current) {
+                toast.dismiss(cpfLoadingToastRef.current);
+                cpfLoadingToastRef.current = null;
+            }
+            setIsCpfLoading(false);
         };
     }, [cpfValue, setValue]);
 
@@ -230,10 +275,10 @@ export default function FormCadastro({ onNext }) {
                             {...registerWithMask("cpf", ["999.999.999-99"], {showMaskOnHover: false})}
                         />
 
-                        {showForm === 1 &&
+                        {!isCpfLoading && showForm === 1 &&
                             <GoCheckCircleFill className="absolute lg:text-xl text-lg top-4 right-4 text-blue-500"/>
                         }
-                        {showForm === 2 &&
+                        {!isCpfLoading && showForm === 2 &&
                             <GoXCircleFill className="absolute lg:text-xl text-lg top-4 right-4 text-red-500"/>
                         }
                         {showForm === 2 && 
@@ -386,7 +431,7 @@ export default function FormCadastro({ onNext }) {
 
                 {/*Botão do step*/}
                 {showForm === 1 && ( 
-                    <motion.div className="!grid-cols-1 container-form-footer" variants={item}>
+                    <motion.div className="grid-cols-1! container-form-footer" variants={item}>
                         <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
                     </motion.div>
                 )}

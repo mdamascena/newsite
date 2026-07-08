@@ -22,6 +22,11 @@ export const OptLabel = tw(motion.label)`
     hover:text-blue-500
     peer-checked:bg-blue-600 
     peer-checked:text-white
+    peer-checked:hover:bg-blue-600
+    peer-checked:hover:text-white
+    peer-checked:hover:ring-blue-600
+    peer-checked:[&_svg]:bg-white
+    peer-checked:[&_svg]:text-blue-500
     peer-checked:shadow-nome
 `;
 
@@ -46,6 +51,8 @@ export const OptBnt = tw(motion.button)`
     hover:text-blue-500
     active:bg-blue-600 
     active:text-white
+    active:[&_svg]:bg-blue-100
+    active:[&_svg]:text-blue-400
     active:shadow-nome
 `;
 

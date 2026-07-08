@@ -9,7 +9,7 @@ import Particles from '../ui/particles'
 
 export default function SectionVantagens() {
     return (
-        <section className='bg-gradient-to-b from-[#002CBD] via-blue-700 to-blue-600 relative overflow-hidden'>
+        <section className='bg-linear-to-b from-[#002CBD] via-blue-700 to-blue-600 relative overflow-hidden'>
             <Particles
                 className='z-0'
                 quantity={400}
@@ -36,7 +36,7 @@ export default function SectionVantagens() {
                 <div className='grid lg:grid-cols-5 grid-cols-2 select-none justify-items-center lg:mx-20'>
 
                     <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-0 pt-8 lg:order-1'>
-                        <Card>
+                        <Card tabIndex={0}>
                             <CardFront>
                                 <MdMoneyOff className='text-5xl text-blue-300 mx-auto'/>
                                 <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
@@ -49,7 +49,7 @@ export default function SectionVantagens() {
                             </CardBack>
                         </Card>
 
-                        <Card>
+                        <Card tabIndex={0}>
                             <CardFront>
                                 <AiOutlineFieldTime className='text-5xl text-blue-300 mx-auto'/>
                                 <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
@@ -69,7 +69,7 @@ export default function SectionVantagens() {
 
                     <div className='lg:my-auto my-0 lg:px-0 px-2 lg:pt-0 pt-8 lg:order-3'>
 
-                        <Card>
+                        <Card tabIndex={0}>
                             <CardFront>
                                 <GiMoneyStack className='text-5xl text-blue-300 mx-auto' />
                                 <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>
@@ -82,7 +82,7 @@ export default function SectionVantagens() {
                             </CardBack>
                         </Card>
 
-                        <Card>
+                        <Card tabIndex={0}>
                             <CardFront>
                                 <VscSearchStop className='text-5xl text-blue-300 mx-auto ' />
                                 <h2 className='text-blue-50 lg:text-lg text-sm my-5 text-center'>

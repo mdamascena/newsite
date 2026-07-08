@@ -42,11 +42,11 @@ export default function ModalLogin({ isOpen, onOpenChange, onNext  }) {
                 <ModalContent className="overflow-visible">
                     {(onClose) => (
                         <>
-                            <ModalBody className="bg-blue-800 rounded-xl">
+                            <ModalBody className="bg-blue-800 rounded-lg">
 
                                 <div className="grid grid-cols-1 lg:grid-cols-2">
 
-                                    <div className="col-span-1 p-5 text-white">
+                                    <div className="col-span-1 lg:pr-5 lg:px-0 px-2 lg:pb-0 pb-5 content-center text-white">
                                         <div className="">
                                             <p className="font-semibold text-4xl tracking-tight">
                                                 Olá
@@ -71,7 +71,7 @@ export default function ModalLogin({ isOpen, onOpenChange, onNext  }) {
                                     </div>
 
                                     {/*Formulários*/}
-                                    <div className="col-span-1 bg-slate-100 rounded-lg p-5 py-5 h-[350px]">
+                                    <div className="col-span-1 bg-slate-100 rounded-lg p-5 py-5 h-87.5">
                                         {showLogin ? <CadLogin setShowLogin={setShowLogin}/> : <CadReset setShowLogin={setShowLogin}/>}
                                     </div>
 

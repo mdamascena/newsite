@@ -108,6 +108,9 @@ export const Card = tw.div`
     items-stretch
     group
     hover:scale-110
+    focus-visible:scale-110
+    pointer-coarse:focus:scale-110
+    pointer-coarse:active:scale-110
     duration-300
     mb-4
     rounded-2xl 
@@ -115,6 +118,12 @@ export const Card = tw.div`
     shadow-lg
     shadow-blue-700
     hover:bg-blue-50
+    focus-visible:bg-blue-50
+    pointer-coarse:focus:bg-blue-50
+    pointer-coarse:active:bg-blue-50
+    focus:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-blue-100
     lg:h-[200px]
     lg:w-[220px]
     h-[24vh]
@@ -128,6 +137,9 @@ export const CardFront = tw.div`
     mx-4 
     lg:mx-5
     group-hover:scale-0 
+    group-focus-visible:scale-0
+    pointer-coarse:group-focus:scale-0
+    pointer-coarse:group-active:scale-0
     absolute 
     duration-500
 `
@@ -142,5 +154,8 @@ export const CardBack = tw.div`
     tracking-tighter 
     scale-0 
     group-hover:scale-100 
+    group-focus-visible:scale-100
+    pointer-coarse:group-focus:scale-100
+    pointer-coarse:group-active:scale-100
     duration-500
 `

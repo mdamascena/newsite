@@ -16,15 +16,26 @@ const TEL = 'tel:8008789853'
 export default function MainCONTA() {
 
     const [showLogin, setShowLogin] = useState(true)
+    const [resetCpf, setResetCpf] = useState("")
 
     const router = useRouter();
 
+    const handleShowLogin = () => {
+        setResetCpf("");
+        setShowLogin(true);
+    }
+
     const handleBack = () => {
         if (!showLogin) {
-            setShowLogin(true);
+            handleShowLogin();
         } else {
             router.back();
         }
+    }
+
+    const handleSemCadClose = () => {
+        handleShowLogin();
+        router.push('/conta');
     }
     
     return (
@@ -61,7 +72,11 @@ export default function MainCONTA() {
 
             <div className='flex justify-center relative'>
                 <div className='absolute bg-white rounded-md shadow-lg p-5 lg:p-8 -top-32 w-[90%] lg:w-132.5'>
-                    {showLogin ? <Login setShowLogin={setShowLogin} /> : <Reset />}
+                    {showLogin ? (
+                        <Login setShowLogin={setShowLogin} setResetCpf={setResetCpf} />
+                    ) : (
+                        <Reset cpf={resetCpf} onSemCadClose={handleSemCadClose} />
+                    )}
                 </div>
             </div>
 

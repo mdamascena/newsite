@@ -12,11 +12,10 @@ export const BtnHome = tw.button`
     lg:px-32
     lg:mx-0
     py-4
-    lg:w-[450px]
+    lg:w-[520px]
     w-full
     rounded-xl
-    text-white 
-    mt-8
+    text-white
     hover:to-amber-600 
     hover:from-yellow-500
     hover:scale-105
