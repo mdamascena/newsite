@@ -54,7 +54,7 @@ export const statusVisual = {
 		currentStep: "border-amber-500 bg-white text-amber-700 ring-amber-100 dark:border-amber-300 dark:bg-slate-950 dark:text-amber-200 dark:ring-amber-400/15",
 		doneStep: "border-amber-500 bg-amber-500 text-slate-950 dark:border-amber-300 dark:bg-amber-300",
 		line: "bg-amber-500 dark:bg-amber-300",
-		description: "border-amber-500 bg-amber-50 dark:border-amber-300 dark:bg-amber-400/10",
+		description: "border-amber-500 bg-amber-100 dark:border-amber-300 dark:bg-amber-400/10",
 		descriptionText: "text-amber-950 dark:text-amber-50"
   	},
   	aguardando: {
@@ -63,7 +63,7 @@ export const statusVisual = {
 		headerText: "text-slate-300",
 		badge: "bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200",
 		soft: "bg-slate-400 text-slate-700 dark:bg-slate-800 dark:text-slate-200",
-		panel: "bg-slate-400 dark:bg-slate-950",
+		panel: "bg-slate-400 dark:bg-slate-800",
 		border: "border-slate-500 dark:border-slate-400",
 		text: "text-slate-700 dark:text-slate-200",
 		ring: "ring-slate-100 dark:ring-slate-500/15",
@@ -71,7 +71,7 @@ export const statusVisual = {
 		currentStep: "border-slate-500 bg-white text-slate-700 ring-slate-100 dark:border-slate-400 dark:bg-slate-950 dark:text-slate-200 dark:ring-slate-500/15",
 		doneStep: "border-slate-500 bg-slate-500 text-white dark:border-slate-400 dark:bg-slate-400 dark:text-slate-950",
 		line: "bg-slate-500 dark:bg-slate-400",
-		description: "border-slate-500 bg-slate-50 dark:border-slate-400 dark:bg-slate-950",
+		description: "border-slate-500 bg-slate-200 dark:border-slate-400 dark:bg-slate-800",
 		descriptionText: "text-slate-700 dark:text-slate-200"
   	}
 };

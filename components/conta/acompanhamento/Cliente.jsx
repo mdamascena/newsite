@@ -17,6 +17,7 @@ const views = {
 export default function Cliente() {
   const [activeView, setActiveView] = useState("home");
   const [targetOfertaId, setTargetOfertaId] = useState(null);
+  const [isDark, setIsDark] = useState(false);
   const ActiveComponent = views[activeView] || Home;
 
   const handleViewChange = (view, options = {}) => {
@@ -25,8 +26,13 @@ export default function Cliente() {
   };
 
   return (
-    <AcompanhamentoLayout activeView={activeView} onViewChange={handleViewChange}>
-      <ActiveComponent onNavigate={handleViewChange} targetOfertaId={targetOfertaId} />
+    <AcompanhamentoLayout activeView={activeView} isDark={isDark} onViewChange={handleViewChange}>
+      <ActiveComponent
+        isDark={isDark}
+        onNavigate={handleViewChange}
+        onToggleTheme={() => setIsDark((current) => !current)}
+        targetOfertaId={targetOfertaId}
+      />
     </AcompanhamentoLayout>
   );
 }

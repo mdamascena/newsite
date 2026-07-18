@@ -42,8 +42,15 @@ export default function SideBar({ activeView = "home", onViewChange = () => {} }
     return (
         <>
         <aside className="hidden bgMainPrincipal transition-colors dark:bg-slate-950/95 md:sticky md:top-0 md:flex md:h-dvh md:w-64 md:shrink-0 md:flex-col md:shadow-none">
-            <div className="hidden px-6 py-5 md:flex md:justify-start">
-                <Image className="h-auto object-contain pt-2" src={Logotipo} width={130} loading="eager" alt="Logo Valor Real" />
+            <div className="hidden px-6 py-5 pt-7 md:flex md:justify-start">
+                <Image
+                    className="h-auto object-contain"
+                    src={Logotipo}
+                    width={130}
+                    height={Math.round((Logotipo.height / Logotipo.width) * 130)}
+                    loading="eager"
+                    alt="Logo Valor Real"
+                />
             </div>
 
             <nav className="flex flex-col gap-1 p-4">

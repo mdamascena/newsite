@@ -15,7 +15,6 @@ import {
   WalletCards,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { useTheme } from "next-themes";
 import { cliente, contratosRealizados, modalidadesCredito, ofertas, propostasEmAnalise } from "./acompanhamentoData";
 import { getStatusVisual, pendenciaButtonClass } from "./statusVisual";
 
@@ -63,21 +62,13 @@ function formatStepDate(date = "") {
 }
 
 // Botao de troca entre tema claro e escuro.
-function ThemeToggleButton() {
-	const { resolvedTheme, setTheme } = useTheme();
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
-	const isDark = mounted && resolvedTheme === "dark";
+function ThemeToggleButton({ isDark, onToggleTheme }) {
 
 	return (
 		<button
 			type="button"
 			aria-label={isDark ? "Ativar tema claro" : "Ativar tema escuro"}
-			onClick={() => setTheme(isDark ? "light" : "dark")}
+			onClick={onToggleTheme}
 			className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
 			{isDark ? (
 				<Moon className="h-5 w-5" aria-hidden="true" />
@@ -159,7 +150,7 @@ function DadosProposta({ proposta }) {
 	const dados = [...dadosFinanceiros, ...dadosOperacao];
 
 	return (
-		<article className="rounded-lg border border-slate-300 bg-slate-100 dark:border-slate-800 dark:bg-slate-900">
+		<article className="rounded-lg border border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800">
 			<button
 				type="button"
 				aria-expanded={isOpen}
@@ -178,16 +169,16 @@ function DadosProposta({ proposta }) {
 				/>
 			</button>
 
-			<div className={`${isOpen ? "block" : "hidden"} border-t border-slate-300 px-5 pb-5 dark:border-slate-800 md:block md:px-6 md:pb-6`}>
-				<dl className="divide-y divide-slate-300 dark:divide-slate-800">
+			<div className={`${isOpen ? "block" : "hidden"} border-t border-slate-300 px-5 pb-5 dark:border-slate-700 md:block md:px-6 md:pb-6`}>
+				<dl className="divide-y divide-dashed divide-slate-300 dark:divide-slate-700">
 					<div className="flex items-center justify-between gap-4 py-3">
-						<dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">Proposta</dt>
-						<dd className="text-right text-sm font-bold text-slate-950 dark:text-white">{proposta.numero}</dd>
+						<dt className="text-xs uppercase tracking-wide text-slate-400">Proposta</dt>
+						<dd className="text-right text-sm text-slate-950 dark:text-white">{proposta.numero}</dd>
 					</div>
 					{dados.map((dado) => (
 						<div key={dado.rotulo} className="flex items-center justify-between gap-4 py-3">
-							<dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">{dado.rotulo}</dt>
-							<dd className="text-right text-sm font-bold text-slate-950 dark:text-white">{dado.valor}</dd>
+							<dt className="text-xs uppercase tracking-wide text-slate-400">{dado.rotulo}</dt>
+							<dd className="text-right text-sm text-slate-950 dark:text-white">{dado.valor}</dd>
 						</div>
 					))}
 				</dl>
@@ -360,7 +351,7 @@ function SeletorPropostas({ modalidades, modalidadeSelecionadaId, onSelect }) {
 								className={`rounded-lg bg-slate-100 p-3 text-left duration-150 ${
 									isActive
 										? "border border-slate-400 bg-slate-300 dark:border-blue-400 dark:bg-blue-500/10"
-										: "border-slate-200 bg-slate-50 hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
+										: "border-slate-200 bg-slate-50 hover:bg-slate-200 dark:border-slate-800 dark:bg-black/30 dark:hover:bg-slate-800"
 									}`
 								}>
 
@@ -371,10 +362,6 @@ function SeletorPropostas({ modalidades, modalidadeSelecionadaId, onSelect }) {
 											Proposta {proposta.numero}
 										</p>
 									</div>
-									{/* <span className={`${statusBadgeSmallClass} ${visual.badge}`}>
-										<StatusIcon className="h-3 w-3" aria-hidden="true" />
-										{proposta.status}
-									</span> */}
 								</div>
 
 							</button>
@@ -426,7 +413,7 @@ function NotificationMenu({ onNavigate, onClose }) {
 	);
 }
 
-export default function Home({ onNavigate }) {
+export default function Home({ isDark, onNavigate, onToggleTheme }) {
 	const modalidadesComProposta = useMemo(() => modalidadesCredito.filter((modalidade) => Boolean(modalidade.proposta)), []);
 	const primeiraModalidadeId = modalidadesComProposta[0]?.id || modalidadesCredito[0]?.id || "";
 	const [modalidadeSelecionadaId, setModalidadeSelecionadaId] = useState(primeiraModalidadeId);
@@ -468,7 +455,7 @@ export default function Home({ onNavigate }) {
 						</button>
 						{showNotifications && <NotificationMenu onNavigate={onNavigate} onClose={() => setShowNotifications(false)} />}
 					</div>
-					<ThemeToggleButton />
+					<ThemeToggleButton isDark={isDark} onToggleTheme={onToggleTheme} />
 				</div>
 			</header>
 
