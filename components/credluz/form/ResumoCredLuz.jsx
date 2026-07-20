@@ -164,6 +164,11 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                                     return titulaMap[formData.titularCia];
                                 })()}
                             </div>
+
+                            <div>
+                                <LSpan>Companhia de energia</LSpan>
+                                {formData.ciaeDescricao || (formData.ciaeId ? `ID ${formData.ciaeId}` : "Não informada")}
+                            </div>
                         </div>
                     </div>
 

@@ -20,7 +20,7 @@ export const statusVisual = {
 		currentStep: "border-blue-600 bg-white text-blue-700 ring-blue-100 dark:border-blue-400 dark:bg-slate-950 dark:text-blue-200 dark:ring-blue-400/15",
 		doneStep: "border-blue-600 bg-blue-600 text-white dark:border-blue-400 dark:bg-blue-400 dark:text-slate-950",
 		line: "bg-blue-600 dark:bg-blue-400",
-		description: "border-blue-600 bg-blue-50 dark:border-blue-400 dark:bg-blue-500/10",
+		description: "border-blue-600 bg-blue-100 dark:border-blue-400 dark:bg-blue-500/10",
 		descriptionText: "text-slate-700 dark:text-slate-200"
   	},
   	recusado: {
@@ -37,7 +37,7 @@ export const statusVisual = {
 		currentStep: "border-red-600 bg-white text-red-700 ring-red-100 dark:border-red-400 dark:bg-slate-950 dark:text-red-200 dark:ring-red-400/15",
 		doneStep: "border-red-600 bg-red-600 text-white dark:border-red-400 dark:bg-red-400 dark:text-slate-950",
 		line: "bg-red-600 dark:bg-red-400",
-		description: "border-red-600 bg-red-50 dark:border-red-400 dark:bg-red-500/10",
+		description: "border-red-600 bg-red-100 dark:border-red-400 dark:bg-red-500/10",
 		descriptionText: "text-slate-700 dark:text-red-50"
   	},
   	pendente: {
@@ -52,7 +52,7 @@ export const statusVisual = {
 		ring: "ring-amber-100 dark:ring-amber-400/15",
 		progress: "bg-amber-500 dark:bg-amber-300",
 		currentStep: "border-amber-500 bg-white text-amber-700 ring-amber-100 dark:border-amber-300 dark:bg-slate-950 dark:text-amber-200 dark:ring-amber-400/15",
-		doneStep: "border-amber-500 bg-amber-500 text-slate-950 dark:border-amber-300 dark:bg-amber-300",
+		doneStep: "border-amber-500 bg-amber-500 text-white dark:border-amber-300 dark:bg-amber-300",
 		line: "bg-amber-500 dark:bg-amber-300",
 		description: "border-amber-500 bg-amber-100 dark:border-amber-300 dark:bg-amber-400/10",
 		descriptionText: "text-amber-950 dark:text-amber-50"
@@ -71,7 +71,7 @@ export const statusVisual = {
 		currentStep: "border-slate-500 bg-white text-slate-700 ring-slate-100 dark:border-slate-400 dark:bg-slate-950 dark:text-slate-200 dark:ring-slate-500/15",
 		doneStep: "border-slate-500 bg-slate-500 text-white dark:border-slate-400 dark:bg-slate-400 dark:text-slate-950",
 		line: "bg-slate-500 dark:bg-slate-400",
-		description: "border-slate-500 bg-slate-200 dark:border-slate-400 dark:bg-slate-800",
+		description: "border-slate-500 bg-slate-100 dark:border-slate-400 dark:bg-slate-800",
 		descriptionText: "text-slate-700 dark:text-slate-200"
   	}
 };

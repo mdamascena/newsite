@@ -1,5 +1,16 @@
 import { AvatarFallback, Avatar } from "components/ui/avatar.jsx";
-import { ArrowLeft, BadgeCheck, Banknote, ChevronRight, Edit3, Home, KeyRound, Mail, ShieldCheck, UserRound } from "lucide-react";
+import {
+  LuArrowLeft,
+  LuBadgeCheck,
+  LuBanknote,
+  LuChevronRight,
+  LuSquarePen,
+  LuHouse,
+  LuKeyRound,
+  LuMail,
+  LuShieldCheck,
+  LuUserRound,
+} from "react-icons/lu";
 import { acoesPerfil, cliente, dadosPerfil } from "./acompanhamentoData";
 
 function InfoItem({ rotulo, valor }) {
@@ -27,7 +38,7 @@ function ActionItem({ acao, icon: Icon }) {
 			</span>
         <span className="mt-1 block truncate text-sm text-slate-500 dark:text-slate-400">{acao.descricao}</span>
       </span>
-      <ChevronRight className="h-5 w-5 text-slate-400" aria-hidden="true" />
+      <LuChevronRight className="h-5 w-5 text-slate-400" aria-hidden="true" />
     </button>
   );
 }
@@ -41,7 +52,7 @@ export default function Perfil({ onNavigate }) {
 				aria-label="Voltar para inicio"
 				onClick={() => onNavigate("home")}
 				className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800">
-				<ArrowLeft className="h-5 w-5" aria-hidden="true" />
+				<LuArrowLeft className="h-5 w-5" aria-hidden="true" />
 			</button>
 			<div>
 				<p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Perfil e dados</p>
@@ -91,7 +102,7 @@ export default function Perfil({ onNavigate }) {
 
 				<article className="rounded-lg border border-emerald-100 bg-emerald-50 p-5 shadow-sm dark:border-emerald-400/20 dark:bg-emerald-400/10">
 					<div className="flex items-start gap-3">
-						<ShieldCheck className="mt-0.5 h-5 w-5 text-emerald-700 dark:text-emerald-200" aria-hidden="true" />
+						<LuShieldCheck className="mt-0.5 h-5 w-5 text-emerald-700 dark:text-emerald-200" aria-hidden="true" />
 						<div>
 							<h3 className="font-bold text-emerald-950 dark:text-emerald-100">Conta protegida</h3>
 							<p className="mt-1 text-sm leading-relaxed text-emerald-900/75 dark:text-emerald-100/75">Suas informacoes sensiveis aparecem em ambiente autenticado.</p>
@@ -112,7 +123,7 @@ export default function Perfil({ onNavigate }) {
 							type="button"
 							className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-800 dark:bg-blue-500 dark:text-slate-950 dark:hover:bg-blue-400">
 
-							<Edit3 className="h-4 w-4" aria-hidden="true" />
+							<LuSquarePen className="h-4 w-4" aria-hidden="true" />
 							Editar dados
 						</button>
 					</div>
@@ -129,13 +140,13 @@ export default function Perfil({ onNavigate }) {
 							<p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Atualizacoes rapidas</p>
 							<h2 className="mt-1 text-lg font-bold text-slate-950 dark:text-white">O que voce pode gerenciar</h2>
 						</div>
-						<BadgeCheck className="h-5 w-5 text-blue-600 dark:text-blue-300" aria-hidden="true" />
+						<LuBadgeCheck className="h-5 w-5 text-blue-600 dark:text-blue-300" aria-hidden="true" />
 					</div>
 
 					<div className="grid gap-3">
 						{acoesPerfil.map((acao, index) => {
-							const icons = [Home, Banknote, KeyRound, Mail];
-							const Icon = icons[index] || UserRound;
+							const icons = [LuHouse, LuBanknote, LuKeyRound, LuMail];
+							const Icon = icons[index] || LuUserRound;
 
 							return <ActionItem key={acao.titulo} acao={acao} icon={Icon} />;
 						})}

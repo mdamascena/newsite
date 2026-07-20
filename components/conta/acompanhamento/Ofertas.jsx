@@ -1,8 +1,15 @@
-import { ArrowLeft, BadgePercent, ChevronRight, Sparkles, Tags, WalletCards } from "lucide-react";
+import {
+  LuArrowLeft,
+  LuBadgePercent,
+  LuChevronRight,
+  LuSparkles,
+  LuTags,
+  LuWalletCards,
+} from "react-icons/lu";
 import { useEffect } from "react";
 import { ofertas } from "./acompanhamentoData";
 
-const ofertaIcons = [BadgePercent, WalletCards, Tags];
+const ofertaIcons = [LuBadgePercent, LuWalletCards, LuTags];
 
 function OfertaCard({ oferta, index, isTarget }) {
   const Icon = ofertaIcons[index % ofertaIcons.length];
@@ -34,7 +41,7 @@ function OfertaCard({ oferta, index, isTarget }) {
           className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-800 dark:bg-blue-500 dark:text-slate-950 dark:hover:bg-blue-400"
         >
           Simular oferta
-          <ChevronRight className="h-4 w-4" aria-hidden="true" />
+          <LuChevronRight className="h-4 w-4" aria-hidden="true" />
         </button>
       </div>
     </article>
@@ -62,7 +69,7 @@ export default function Ofertas({ onNavigate, targetOfertaId }) {
             onClick={() => onNavigate("home")}
             className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
-            <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+            <LuArrowLeft className="h-5 w-5" aria-hidden="true" />
           </button>
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Ofertas</p>
@@ -79,7 +86,7 @@ export default function Ofertas({ onNavigate, targetOfertaId }) {
             <strong className="mt-1 block text-2xl text-slate-950 dark:text-white">{ofertas.length}</strong>
           </div>
           <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-            <Sparkles className="h-5 w-5" aria-hidden="true" />
+            <LuSparkles className="h-5 w-5" aria-hidden="true" />
           </span>
         </div>
       </section>

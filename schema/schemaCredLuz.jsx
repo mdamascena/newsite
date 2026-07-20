@@ -9,6 +9,10 @@ export const titularCiaSchema = yup.object().shape({
   	titularCia: yup.string().oneOf(["0", "1"], "Selecione sua titularidade"),
 });
 
+export const companhiaEnergiaSchema = yup.object().shape({
+	ciaeId: yup.string().required("Selecione sua companhia de energia"),
+});
+
 export const resumoSchema = yup.object().shape({});
 
 export const respostaSchema = yup.object().shape({});

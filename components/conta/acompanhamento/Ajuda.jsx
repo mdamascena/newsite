@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import {
-  ArrowLeft,
-  Clock3,
-  Headphones,
-  Mail,
-  MessageCircle,
-  Phone,
-  Send,
-} from "lucide-react";
+  LuArrowLeft,
+  LuClock3,
+  LuHeadphones,
+  LuMail,
+  LuMessageCircle,
+  LuPhone,
+  LuSend,
+} from "react-icons/lu";
 import { Input } from "components/ui/input";
 import { Textarea } from "components/ui/textarea";
 import {
@@ -30,7 +30,7 @@ const canais = [
     descricao: "Fale com a equipe pelo canal digital.",
     detalhe: "Atendimento online",
     href: WP,
-    icon: MessageCircle,
+    icon: LuMessageCircle,
     tone: "bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-200",
   },
   {
@@ -38,7 +38,7 @@ const canais = [
     descricao: "Fale gratuitamente com nossos especialistas.",
     detalhe: "0800 878 9853",
     href: TEL,
-    icon: Phone,
+    icon: LuPhone,
     tone: "bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-200",
   },
   {
@@ -46,7 +46,7 @@ const canais = [
     descricao: "Envie uma mensagem com o assunto da sua solicitação.",
     detalhe: "Resposta por e-mail",
     href: "#form-ajuda",
-    icon: Mail,
+    icon: LuMail,
     tone: "bg-amber-50 text-amber-700 dark:bg-amber-400/10 dark:text-amber-200",
   },
 ];
@@ -67,7 +67,7 @@ export default function Ajuda({ onNavigate }) {
           onClick={() => onNavigate("home")}
           className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
         >
-          <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+          <LuArrowLeft className="h-5 w-5" aria-hidden="true" />
         </button>
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Ajuda</p>
@@ -105,7 +105,7 @@ export default function Ajuda({ onNavigate }) {
           <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="flex items-start gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-200">
-                <Headphones className="h-5 w-5" aria-hidden="true" />
+                <LuHeadphones className="h-5 w-5" aria-hidden="true" />
               </span>
               <div>
                 <h2 className="font-bold text-slate-950 dark:text-white">Central de atendimento</h2>
@@ -117,7 +117,7 @@ export default function Ajuda({ onNavigate }) {
           <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="flex items-start gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-amber-700 dark:bg-amber-400/10 dark:text-amber-200">
-                <Clock3 className="h-5 w-5" aria-hidden="true" />
+                <LuClock3 className="h-5 w-5" aria-hidden="true" />
               </span>
               <div>
                 <h2 className="font-bold text-slate-950 dark:text-white">Retorno organizado</h2>
@@ -166,7 +166,7 @@ export default function Ajuda({ onNavigate }) {
               type="submit"
               className="mt-2 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 text-sm font-semibold text-white transition hover:bg-blue-800 dark:bg-blue-500 dark:text-slate-950 dark:hover:bg-blue-400"
             >
-              <Send className="h-4 w-4" aria-hidden="true" />
+              <LuSend className="h-4 w-4" aria-hidden="true" />
               Enviar mensagem
             </button>
           </form>

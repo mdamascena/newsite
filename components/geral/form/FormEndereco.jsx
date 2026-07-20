@@ -20,7 +20,7 @@ import BtnBack from '../button/BtnBlueBack'
 
 export default function FormEndereco({ onNext, backStep }) {
 
-    const { control, handleSubmit, clearErrors, watch, register, getValues, setValue, trigger, formState: { errors } } = useFormContext();
+    const { control, handleSubmit, clearErrors, watch, register, getValues, setValue, trigger, formState: { errors, isSubmitting } } = useFormContext();
     const { atualizarForm } = useFormData();
     const registerWithMask = useHookFormMask(register);
 
@@ -49,7 +49,10 @@ export default function FormEndereco({ onNext, backStep }) {
     const [estados, setEstados] = useState([]);
     const [cidades, setCidades] = useState([]);
     const [cepDigitado, setCepDigitado] = useState("");
-    const [cepValido, setCepValido] = useState(false);
+    const [cepValido, setCepValido] = useState(() => {
+        const cepAtual = getValues("cep")?.replace(/\D/g, "") || "";
+        return cepAtual.length === 8 && Boolean(getValues("cidadeCep"));
+    });
     const [selectedEstado, setSelectedEstado] = useState("");
 
     const watchCep = watch("cep")
@@ -187,7 +190,7 @@ export default function FormEndereco({ onNext, backStep }) {
         }
       }, [errors, setValue]);
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         let filteredData;
         const cidadeIbgeId = getValues("cidadeIbgeId") || "";
         const estadoIbgeId = getValues("estadoIbgeId") || "";
@@ -200,7 +203,7 @@ export default function FormEndereco({ onNext, backStep }) {
             filteredData = { estado, cidade, cidadeIbgeId, estadoIbgeId, logradouroSemCep, bairroSemCep, numeroSemCep, complementoSemCep };
         }
         atualizarForm(filteredData);
-        onNext();
+        await onNext(filteredData);
     };
 
     return (
@@ -512,11 +515,15 @@ export default function FormEndereco({ onNext, backStep }) {
 
                 <div className="container-form-footer">
                     <div className="col-span-2">
-                        <BtnBack nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1" />} />
+                        <BtnBack tipo="button" nome={'Voltar'} event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1" />} />
                     </div>
 
                     <div className="col-span-5">
-                        <BtnNext event={handleSubmit(onSubmit)} nome={'Avançar'} type="submit" />
+                        <BtnNext
+                            nome={isSubmitting ? "Consultando..." : "Avançar"}
+                            tipo="submit"
+                            habilitado={isSubmitting}
+                        />
                     </div>
                 </div>
             </motion.div>

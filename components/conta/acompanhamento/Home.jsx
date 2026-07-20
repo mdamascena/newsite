@@ -1,19 +1,19 @@
 import {
-  Bell,
-  CheckCircle2,
-  ChevronDown,
-  ChevronRight,
-  CircleAlert,
-  CircleX,
-  Clock3,
-  FileCheck2,
-  History,
-  Moon,
-  Search,
-  Sparkles,
-  Sun,
-  WalletCards,
-} from "lucide-react";
+  LuBell,
+  LuCheck,
+  LuChevronDown,
+  LuChevronRight,
+  LuCircleAlert,
+  LuCircleX,
+  LuClock3,
+  LuFileCheck2,
+  LuHistory,
+  LuMoon,
+  LuSearch,
+  LuSparkles,
+  LuSun,
+  LuWalletCards,
+} from "react-icons/lu";
 import { useEffect, useMemo, useState } from "react";
 import { cliente, contratosRealizados, modalidadesCredito, ofertas, propostasEmAnalise } from "./acompanhamentoData";
 import { getStatusVisual, pendenciaButtonClass } from "./statusVisual";
@@ -24,16 +24,16 @@ const neutralBadgeClass = "inline-flex h-7 w-fit shrink-0 items-center rounded-f
 
 // Icones usados para sinalizar cada tipo de status da proposta.
 const statusIconMap = {
-	analise: Search,
-	pendente: CircleAlert,
-	recusado: CircleX,
-	aguardando: Clock3,
-	aprovado: CheckCircle2
+	analise: LuSearch,
+	pendente: LuCircleAlert,
+	recusado: LuCircleX,
+	aguardando: LuClock3,
+	aprovado: LuCheck
 };
 
 // Retorna o icone correto para o status atual da proposta.
 function getStatusIcon(tipoStatus) {
-  	return statusIconMap[tipoStatus] || Clock3;
+  	return statusIconMap[tipoStatus] || LuClock3;
 }
 
 // Converte valores em formato BRL mockado para numero e soma dos cards.
@@ -71,9 +71,9 @@ function ThemeToggleButton({ isDark, onToggleTheme }) {
 			onClick={onToggleTheme}
 			className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
 			{isDark ? (
-				<Moon className="h-5 w-5" aria-hidden="true" />
+				<LuMoon className="h-5 w-5" aria-hidden="true" />
 			) : (
-				<Sun className="h-5 w-5" aria-hidden="true" />
+				<LuSun className="h-5 w-5" aria-hidden="true" />
 			)}
 		</button>
 	);
@@ -81,20 +81,20 @@ function ThemeToggleButton({ isDark, onToggleTheme }) {
 
 // Etapas da analise da proposta.
 function PropostaSteps({ etapas = [], visual = getStatusVisual() }) {
-	if (!etapas.length) {
-		return (
-			<div className="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-				Etapas ainda nao informadas pelo CRM.
-			</div>
-		);
-	}
+	// if (!etapas.length) {
+	// 	return (
+	// 		<div className="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+	// 			Etapas ainda nao informadas pelo CRM.
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<ol className="grid gap-3 md:grid-flow-col md:auto-cols-fr">
 			{etapas.map((etapa, index) => {
 				const isDone = etapa.estado === "done";
 				const isCurrent = etapa.estado === "current";
-				const hasStepDate = etapa.data && etapa.data !== "A definir";
+				const hasStepDate = etapa.data && etapa.data !== "";
 				const hasStepTime = hasStepDate && etapa.horario && !["A definir", "Proxima etapa", "Final"].includes(etapa.horario);
 				const stepDate = hasStepDate ? formatStepDate(etapa.data) : "";
 				const desktopDateTime = [stepDate, hasStepTime ? etapa.horario : null].filter(Boolean).join(" • ");
@@ -119,7 +119,7 @@ function PropostaSteps({ etapas = [], visual = getStatusVisual() }) {
 										? `${visual.currentStep} ring-4`
 										: "border-slate-200 bg-white text-slate-400 dark:border-slate-700 dark:bg-slate-900"
 							}`}>
-								{isDone ? <CheckCircle2 className="h-5 w-5" aria-hidden="true" /> : index + 1}
+								{isDone ? <LuCheck className="h-5 w-5" aria-hidden="true" /> : index + 1}
 							</span>
 
 							<div className="min-w-0 pb-5 md:pb-0">
@@ -163,7 +163,7 @@ function DadosProposta({ proposta }) {
 					<span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Valor solicitado</span>
 				</span>
 				
-				<ChevronDown
+				<LuChevronDown
 					className={`mt-1 h-5 w-5 text-slate-400 transition md:hidden ${isOpen ? "rotate-180" : ""}`}
 					aria-hidden="true"
 				/>
@@ -192,7 +192,7 @@ function EmptyProposta({ modalidade, onNavigate }) {
 	return (
 		<section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
 			<div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-950/70">
-				<FileCheck2 className="h-9 w-9 text-slate-400" aria-hidden="true" />
+				<LuFileCheck2 className="h-9 w-9 text-slate-400" aria-hidden="true" />
 				<h2 className="mt-4 text-xl font-bold text-slate-950 dark:text-white">
 					{modalidade ? "Nada em analise agora" : "Nenhuma proposta em acompanhamento"}
 				</h2>
@@ -208,7 +208,7 @@ function EmptyProposta({ modalidade, onNavigate }) {
 						className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-800 dark:bg-blue-500 dark:text-slate-950 dark:hover:bg-blue-400"
 					>
 						Falar com atendimento
-						<ChevronRight className="h-4 w-4" aria-hidden="true" />
+						<LuChevronRight className="h-4 w-4" aria-hidden="true" />
 					</button>
 				)}
 			</div>
@@ -282,7 +282,7 @@ function PropostaPrincipal({ modalidade, onNavigate }) {
 						</div>
 
 						<div className={`rounded-lg border-l-16 p-4 ${visual.description}`}>
-							<p className={`text-xs font-semibold uppercase tracking-wide ${visual.text}`}>Descricao do status</p>
+							<p className={`text-xs font-semibold uppercase tracking-wide ${visual.text}`}>Descrição do status</p>
 							<p className={`mt-2 text-sm leading-relaxed ${visual.descriptionText}`}>{proposta.descricaoStatus}</p>
 							{hasPendencia && (
 								<button
@@ -397,7 +397,7 @@ function NotificationMenu({ onNavigate, onClose }) {
 							className="flex w-full items-start gap-3 rounded-lg px-3 py-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
 						>
 							<span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-								<Sparkles className="h-4 w-4" aria-hidden="true" />
+								<LuSparkles className="h-4 w-4" aria-hidden="true" />
 							</span>
 							<span>
 								<span className="block text-sm font-bold text-slate-950 dark:text-white">{oferta.titulo}</span>
@@ -446,7 +446,7 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 							aria-expanded={showNotifications}
 							onClick={() => setShowNotifications((current) => !current)}
 							className="relative flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
-							<Bell className="h-5 w-5" aria-hidden="true" />
+							<LuBell className="h-5 w-5" aria-hidden="true" />
 							{ofertas.length > 0 && (
 								<span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-white bg-blue-700 px-1 text-[11px] font-bold leading-none text-white dark:border-slate-900 dark:bg-blue-400 dark:text-slate-950">
 									{ofertas.length}
@@ -463,17 +463,17 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 			<section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
 				{/* Dados das propostas: valor total em analise */}
 				<MetricCard
-					icon={WalletCards}
+					icon={LuWalletCards}
 					label="Total em analise"
 					value={totalEmAnalise}
 					detail={`${propostasEmAnalise.length} propostas em acompanhamento`}
 				/>
 				{/* Dados das propostas: quantidade de propostas abertas */}
-				<MetricCard icon={Clock3} label="Propostas abertas" value={propostasEmAnalise.length} detail="Antes da contratacao" />
+				<MetricCard icon={LuClock3} label="Propostas abertas" value={propostasEmAnalise.length} detail="Antes da contratacao" />
 				{/* Dados das propostas: pendencias do cliente */}
-				<MetricCard icon={CircleAlert} label="Pendencias" value={totalPendencias} detail="Acoes que dependem do cliente" />
+				<MetricCard icon={LuCircleAlert} label="Pendencias" value={totalPendencias} detail="Acoes que dependem do cliente" />
 				{/* Dados das propostas: contratos realizados */}
-				<MetricCard icon={History} label="Contratos realizados" value={contratosRealizados.length} detail="Operacoes ja contratadas" />
+				<MetricCard icon={LuHistory} label="Contratos realizados" value={contratosRealizados.length} detail="Operacoes ja contratadas" />
 			</section>
 
 			{/* Card Modalidades de credito */}
