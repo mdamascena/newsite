@@ -10,7 +10,7 @@ import CadReset from "../section/CadReset"
 const WP = 'https://bit.ly/wa-plancredi-api'
 const TEL = 'tel:8008789853'
 
-export default function ModalLogin({ isOpen, onOpenChange, onNext  }) {
+export default function ModalLogin({ isOpen, onOpenChange, cpf }) {
 
     const [showLogin, setShowLogin] = useState(true)
 
@@ -72,7 +72,7 @@ export default function ModalLogin({ isOpen, onOpenChange, onNext  }) {
 
                                     {/*Formulários*/}
                                     <div className="col-span-1 bg-slate-100 rounded-lg p-5 py-5 h-87.5">
-                                        {showLogin ? <CadLogin setShowLogin={setShowLogin}/> : <CadReset setShowLogin={setShowLogin}/>}
+                                        {showLogin ? <CadLogin setShowLogin={setShowLogin} cpf={cpf} /> : <CadReset setShowLogin={setShowLogin}/>}
                                     </div>
 
                                     <div className="lg:hidden text-sm mt-5 text-white mx-2">

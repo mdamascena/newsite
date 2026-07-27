@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AvatarFallback, Avatar } from "components/ui/avatar.jsx";
 import {
   LuArrowLeft,
@@ -11,7 +12,7 @@ import {
   LuShieldCheck,
   LuUserRound,
 } from "react-icons/lu";
-import { acoesPerfil, cliente, dadosPerfil } from "./acompanhamentoData";
+import { carregarClienteAcompanhamento, criarAcoesPerfil, criarDadosPerfil } from "./acompanhamentoData";
 
 function InfoItem({ rotulo, valor }) {
   	return (
@@ -44,6 +45,39 @@ function ActionItem({ acao, icon: Icon }) {
 }
 
 export default function Perfil({ onNavigate }) {
+  const [clienteAtual, setClienteAtual] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
+
+  useEffect(() => {
+    let isActive = true;
+    const loadPerfil = async () => {
+      const resultado = await carregarClienteAcompanhamento();
+
+      if (!isActive) {
+        return;
+      }
+
+      if (!resultado.success) {
+        setLoadError(resultado.message);
+        setIsLoading(false);
+        return;
+      }
+
+      setClienteAtual({ ...resultado.cliente });
+      setIsLoading(false);
+    };
+
+    loadPerfil();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  const dadosPerfil = clienteAtual ? criarDadosPerfil(clienteAtual) : [];
+  const acoesPerfil = clienteAtual ? criarAcoesPerfil(clienteAtual) : [];
+
   return (
     <div className="space-y-6">
 		<header className="flex items-start gap-3">
@@ -68,15 +102,15 @@ export default function Perfil({ onNavigate }) {
 			<aside className="space-y-5">
 				<article className="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
 					<Avatar className="mx-auto h-20 w-20 border-4 border-blue-50 dark:border-blue-500/10">
-						<AvatarFallback className="bg-blue-100 text-lg font-bold tracking-wider text-blue-800 dark:bg-blue-500/15 dark:text-blue-100">{cliente.iniciais}</AvatarFallback>
+						<AvatarFallback className="bg-blue-100 text-lg font-bold tracking-wider text-blue-800 dark:bg-blue-500/15 dark:text-blue-100">{clienteAtual?.iniciais || "--"}</AvatarFallback>
 					</Avatar>
 					
 					<h2 className="mt-4 text-xl font-bold text-slate-950 dark:text-white">
-						{cliente.nomeCompleto}
+						{clienteAtual?.nomeCompleto || (isLoading ? "Carregando dados..." : "Dados indisponíveis")}
 					</h2>
 					
 					<p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-						{cliente.cpf}
+						{clienteAtual?.cpf || ""}
 					</p>
 
 					<div className="mt-6 rounded-lg bg-slate-50 p-4 text-left dark:bg-slate-950">
@@ -86,12 +120,12 @@ export default function Perfil({ onNavigate }) {
 							</p>
 							
 							<span className="text-sm font-bold text-blue-700 dark:text-blue-300">
-								{cliente.completude}%
+								{clienteAtual?.completude || 0}%
 							</span>
 						</div>
 
 						<div className="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-800">
-							<div className="h-2 rounded-full bg-blue-600 dark:bg-blue-400" style={{ width: `${cliente.completude}%` }} />
+							<div className="h-2 rounded-full bg-blue-600 dark:bg-blue-400" style={{ width: `${clienteAtual?.completude || 0}%` }} />
 						</div>
 						
 						<p className="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
@@ -128,6 +162,8 @@ export default function Perfil({ onNavigate }) {
 						</button>
 					</div>
 					<div className="grid gap-3 md:grid-cols-2">
+						{isLoading && <p className="text-sm text-slate-500 dark:text-slate-400">Carregando dados de cadastro...</p>}
+						{loadError && <p className="text-sm text-red-600 dark:text-red-300">{loadError}</p>}
 						{dadosPerfil.map((item) => (
 							<InfoItem key={item.rotulo} rotulo={item.rotulo} valor={item.valor} />
 						))}

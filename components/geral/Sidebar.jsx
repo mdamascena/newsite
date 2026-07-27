@@ -1,9 +1,18 @@
 import Logotipo from "../../public/img/LOGO_FULL_BRANCO.png"
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { History, Home, LifeBuoy, LogOut, Sparkles, Tags, UserRound } from "lucide-react";
 import { FloatingDock } from "components/ui/floating-dock";
+import { CURRENT_USER_CPF_STORAGE_KEY } from "../../services/serviceAuth/apiPessoa";
 
 export default function SideBar({ activeView = "home", onViewChange = () => {} }) {
+    const router = useRouter();
+
+    const handleLogout = () => {
+        window.localStorage.removeItem(CURRENT_USER_CPF_STORAGE_KEY);
+        router.push("/");
+    };
+
     const links = [
         {
             id: "home",
@@ -89,6 +98,7 @@ export default function SideBar({ activeView = "home", onViewChange = () => {} }
                 </div>
                 <button
                     type="button"
+                    onClick={handleLogout}
                     className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-3 text-sm font-semibold text-rose-600 transition bg-red-500/20 hover:bg-indigo-50/70 dark:text-indigo-300 dark:hover:bg-rose-500/10">
                     <LogOut className="h-4 w-4" aria-hidden="true" />
                     Sair

@@ -7,6 +7,8 @@ import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { LuPencil } from "react-icons/lu";
 import tw from "tailwind-styled-components";
+import { adicionarPessoa } from "../../../services/serviceAuth/apiAddPessoa";
+import ModalCadLoading from "../../geral/modal/ModalCadLoading";
 
 const LSpan = tw.span`
     block 
@@ -16,11 +18,35 @@ const LSpan = tw.span`
 
 export default function ResumoCredLuz({ onNext, backStep }) {
 
-    const { atualizarForm, formData } = useFormData()
+    const { formData } = useFormData()
+    const [cadastroStatus, setCadastroStatus] = useState(null);
+    const isCreatingPessoa = Boolean(cadastroStatus);
 
-    function onSubmit(data){
-        onNext();
+    async function onSubmit(){
+        if (isCreatingPessoa) {
+            return;
+        }
+
+        setCadastroStatus("processing");
+        let resultado;
+
+        try {
+            resultado = await adicionarPessoa(formData);
+        } catch {
+            resultado = { success: false };
+        }
+
+        setCadastroStatus(resultado.success ? "success" : "error");
     }
+
+    const handleCadastroFinished = () => {
+        const shouldContinue = cadastroStatus === "success";
+        setCadastroStatus(null);
+
+        if (shouldContinue) {
+            onNext();
+        }
+    };
 
     useEffect(() => {
         console.log("FormData", formData);
@@ -28,6 +54,11 @@ export default function ResumoCredLuz({ onNext, backStep }) {
     
     return (
         <div className="lg:min-h-screen">
+            <ModalCadLoading
+                isOpen={isCreatingPessoa}
+                status={cadastroStatus}
+                onFinished={handleCadastroFinished}
+            />
 
             {/*Titulo do step*/}
             <div className="container-form-head">
@@ -181,7 +212,7 @@ export default function ResumoCredLuz({ onNext, backStep }) {
                     <BtnBack nome="Voltar" event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1" />} />
                 </div>
                 <div className="col-span-5">
-                    <BtnNext event={onSubmit} nome="Avançar" type="submit" />
+                    <BtnNext event={onSubmit} nome={isCreatingPessoa ? "Finalizando..." : "Avançar"} tipo="button" habilitado={isCreatingPessoa} />
                 </div>
             
 

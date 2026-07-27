@@ -15,7 +15,7 @@ import {
   LuWalletCards,
 } from "react-icons/lu";
 import { useEffect, useMemo, useState } from "react";
-import { cliente, contratosRealizados, modalidadesCredito, ofertas, propostasEmAnalise } from "./acompanhamentoData";
+import { carregarClienteAcompanhamento, cliente, contratosRealizados, etapaFoiAlcancada, modalidadesCredito, obterResumoEtapas, ofertas, propostasEmAnalise } from "./acompanhamentoData";
 import { getStatusVisual, pendenciaButtonClass } from "./statusVisual";
 
 const statusBadgeBaseClass = "inline-flex h-7 w-fit shrink-0 items-center gap-1.5 rounded-full border border-black/5 px-3 text-xs font-bold leading-none dark:border-white/10";
@@ -52,13 +52,25 @@ function formatCurrency(value) {
 
 // Formata datas das etapas no padrao dd/mm/aa.
 function formatStepDate(date = "") {
-	const [day, month, year] = String(date).split("/");
+	const dateValue = String(date).split("T")[0];
+	const isoMatch = dateValue.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+	if (isoMatch) {
+		return `${isoMatch[3]}/${isoMatch[2]}/${isoMatch[1].slice(-2)}`;
+	}
+
+	const [day, month, year] = dateValue.split("/");
 
 	if (!day || !month || !year) {
-		return date;
+		return dateValue;
 	}
 
 	return `${day}/${month}/${year.slice(-2)}`;
+}
+
+function formatStepTime(time = "") {
+	const timeValue = String(time).trim();
+	return /^\d{2}:\d{2}:\d{2}/.test(timeValue) ? timeValue.slice(0, 5) : timeValue;
 }
 
 // Botao de troca entre tema claro e escuro.
@@ -81,28 +93,32 @@ function ThemeToggleButton({ isDark, onToggleTheme }) {
 
 // Etapas da analise da proposta.
 function PropostaSteps({ etapas = [], visual = getStatusVisual() }) {
-	// if (!etapas.length) {
-	// 	return (
-	// 		<div className="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-	// 			Etapas ainda nao informadas pelo CRM.
-	// 		</div>
-	// 	);
-	// }
+	if (!etapas.length) {
+		return (
+			<div className="rounded-lg border border-dashed border-slate-300 bg-white p-4 text-sm font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+				Etapas ainda não informadas.
+			</div>
+		);
+	}
+
+	const resumoEtapas = obterResumoEtapas(etapas);
 
 	return (
 		<ol className="grid gap-3 md:grid-flow-col md:auto-cols-fr">
-			{etapas.map((etapa, index) => {
-				const isDone = etapa.estado === "done";
-				const isCurrent = etapa.estado === "current";
-				const hasStepDate = etapa.data && etapa.data !== "";
-				const hasStepTime = hasStepDate && etapa.horario && !["A definir", "Proxima etapa", "Final"].includes(etapa.horario);
+			{resumoEtapas.etapas.map((etapa, index) => {
+				const isReached = etapaFoiAlcancada(etapa);
+				const isCurrent = isReached && etapa.ordem === resumoEtapas.ordemAtual;
+				const isDone = isReached && !isCurrent;
+				const hasStepDate = Boolean(String(etapa.data || "").trim());
+				const hasStepTime = Boolean(String(etapa.horario || "").trim());
 				const stepDate = hasStepDate ? formatStepDate(etapa.data) : "";
-				const desktopDateTime = [stepDate, hasStepTime ? etapa.horario : null].filter(Boolean).join(" • ");
-				const titleClass = isDone || isCurrent ? visual.text : "text-slate-400 dark:text-slate-500";
+				const stepTime = hasStepTime ? formatStepTime(etapa.horario) : "";
+				const desktopDateTime = [stepDate, stepTime].filter(Boolean).join(" • ");
+				const titleClass = isReached ? visual.text : "text-slate-400 dark:text-slate-500";
 
 				return (
-					<li key={`${etapa.titulo}-${index}`} className="relative">
-						{index < etapas.length - 1 && (
+					<li key={`${etapa.ordem}-${etapa.titulo}`} className="relative">
+						{index < resumoEtapas.etapas.length - 1 && (
 							<span className={`absolute left-5 top-10 h-[calc(100%-1.25rem)] w-0.5 md:left-[calc(50%+1.25rem)] md:right-[calc(-50%+1.25rem)] md:top-12 md:h-0.5 md:w-auto ${
 								isDone ? visual.line : "bg-slate-200 dark:bg-slate-800"
 							}`} aria-hidden="true" />
@@ -110,7 +126,7 @@ function PropostaSteps({ etapas = [], visual = getStatusVisual() }) {
 
 						<div className="relative flex gap-3 md:flex-col md:items-center md:text-center">
 							<span className="hidden h-4 text-[10px] font-semibold leading-4 text-slate-400 dark:text-slate-500 md:block">
-								{hasStepDate ? desktopDateTime : ""}
+								{desktopDateTime}
 							</span>
 							<span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold shadow-sm ${
 								isDone
@@ -119,12 +135,12 @@ function PropostaSteps({ etapas = [], visual = getStatusVisual() }) {
 										? `${visual.currentStep} ring-4`
 										: "border-slate-200 bg-white text-slate-400 dark:border-slate-700 dark:bg-slate-900"
 							}`}>
-								{isDone ? <LuCheck className="h-5 w-5" aria-hidden="true" /> : index + 1}
+								{isDone ? <LuCheck className="h-5 w-5" aria-hidden="true" /> : etapa.ordem}
 							</span>
 
 							<div className="min-w-0 pb-5 md:pb-0">
 								<h3 className={`text-sm font-bold ${titleClass}`}>{etapa.titulo}</h3>
-								{hasStepDate && (
+								{desktopDateTime && (
 									<p className="mt-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500 md:hidden">
 										<span>{desktopDateTime}</span>
 									</p>
@@ -306,17 +322,15 @@ function PropostaPrincipal({ modalidade, onNavigate }) {
 // Estrutura visual dos quatro cards destacados no topo da Home.
 function MetricCard({ icon: Icon, label, value, detail }) {
 	return (
-		<article className="rounded-lg shadow-md bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-			<div className="flex items-start justify-between gap-3">
-				<div>
-					<p className="text-xs font-semibold uppercase tracking-wide text-blue-500">{label}</p>
-					<strong className="mt-2 block text-xl text-slate-400">{value}</strong>
-				</div>
-				<span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-300">
+		<article className="relative min-w-0 rounded-lg bg-white p-3 shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-4">
+			<div className="min-w-0 pr-9 sm:pr-12">
+				<p className="wrap-break-word text-[10px] font-semibold uppercase leading-tight tracking-wide text-blue-500 sm:text-xs">{label}</p>
+				<strong className="mt-2 block wrap-break-word text-lg leading-tight text-slate-400 sm:text-xl">{value}</strong>
+			</div>
+			<span className="absolute right-3 top-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-300 sm:right-4 sm:top-4 sm:h-10 sm:w-10">
 					<Icon className="h-6 w-6" aria-hidden="true" />
 				</span>
-			</div>
-			<p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{detail}</p>
+			<p className="mt-3 wrap-break-word text-xs leading-snug text-slate-500 dark:text-slate-400 sm:text-sm">{detail}</p>
 		</article>
 	);
 }
@@ -418,6 +432,7 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 	const primeiraModalidadeId = modalidadesComProposta[0]?.id || modalidadesCredito[0]?.id || "";
 	const [modalidadeSelecionadaId, setModalidadeSelecionadaId] = useState(primeiraModalidadeId);
 	const [showNotifications, setShowNotifications] = useState(false);
+	const [clienteAtual, setClienteAtual] = useState({ ...cliente });
 	const modalidadeSelecionada = modalidadesCredito.find((modalidade) => modalidade.id === modalidadeSelecionadaId) || modalidadesComProposta[0] || modalidadesCredito[0] || null;
 	const totalEmAnalise = formatCurrency(propostasEmAnalise.reduce((total, proposta) => total + currencyToNumber(proposta.valor), 0));
 	const totalPendencias = propostasEmAnalise.filter((proposta) => proposta.tipoStatus === "pendente" || proposta.pendencia).length;
@@ -427,6 +442,24 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 			setModalidadeSelecionadaId(primeiraModalidadeId);
 		}
 	}, [modalidadeSelecionadaId, primeiraModalidadeId]);
+
+	useEffect(() => {
+		let isActive = true;
+
+		const carregarCliente = async () => {
+			const resultado = await carregarClienteAcompanhamento();
+
+			if (isActive && resultado.success) {
+				setClienteAtual({ ...resultado.cliente });
+			}
+		};
+
+		carregarCliente();
+
+		return () => {
+			isActive = false;
+		};
+	}, []);
 	
 	return (
 		<div className="space-y-6">
@@ -434,7 +467,7 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 			<header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 				<div>
 					{/* <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Area do cliente</p> */}
-					<h1 className="mt-1 text-2xl font-bold text-slate-950 dark:text-white sm:text-3xl">Ola, {cliente.primeiroNome}</h1>
+					<h1 className="mt-1 text-2xl font-bold text-slate-950 dark:text-white sm:text-3xl">Ola, {clienteAtual.primeiroNome}</h1>
 					<p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Acompanhe o andamento das propostas e os dados principais da sua conta.</p>
 				</div>
 
@@ -460,7 +493,7 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 			</header>
 
 			{/* BLOCO DA IMAGEM: quatro cards do topo da Home */}
-			<section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+			<section className="grid grid-cols-2 gap-4 xl:grid-cols-4">
 				{/* Dados das propostas: valor total em analise */}
 				<MetricCard
 					icon={LuWalletCards}

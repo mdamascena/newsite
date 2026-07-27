@@ -4,6 +4,7 @@ import { respostaSchema, resumoSchema, tipoOcupacaoSchema, titularCiaSchema, com
 import { cadastroSchema, identificacaoSchema, enderecoSchema } from '../../../schema/schemaCadastro';
 import { useFormData } from '../../../context/FormContext';
 import { CIAE_ID_STORAGE_KEY, getCompanhiasEnergiaPorCidade } from '../../../services/servicesEnd/apiCompanhiaEnergia';
+import { registrarUsuario } from '../../../services/serviceAuth/apiAddPessoa';
 import { toastErrorColored } from 'shared/toastUtils/toastValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import dynamic from 'next/dynamic';
@@ -212,7 +213,6 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
         try {
             const companhias = await getCompanhiasEnergiaPorCidade({
                 cidadeIbgeId: endereco.cidadeIbgeId,
-                cidade: endereco.cidadeCep || endereco.cidade,
             });
 
             if (companhias.length === 0) {
@@ -240,9 +240,29 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
         setStep(7);
     };
 
+    const handleCriarUsuario = async (dadosCadastro) => {
+        const cpfDigits = String(dadosCadastro.cpf || "").replace(/\D/g, "");
+
+        if (formData.usuarioCriadoCpf === cpfDigits) {
+            return true;
+        }
+
+        const resultado = await registrarUsuario({
+            cpf: dadosCadastro.cpf,
+            senha: dadosCadastro.senha,
+        });
+
+        if (!resultado.success) {
+            return false;
+        }
+
+        atualizarForm({ usuarioCriadoCpf: cpfDigits });
+        return true;
+    };
+
     return (
         <FormProvider {...methods}>
-            {step === 1 && <StepCadastro onNext={nextStep} />}
+            {step === 1 && <StepCadastro onNext={nextStep} onBeforeNext={handleCriarUsuario} />}
             {step === 2 && <StepTitutularCia onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <StepIdentificacao onNext={nextStep} backStep={prevStep} />}
             {step === 4 && <StepTipoOcupacao onNext={nextStep} backStep={prevStep} />}

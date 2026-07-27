@@ -159,6 +159,19 @@ Para integrar em um fluxo existente:
 - No `BtnBlueNext`, usar a prop `className` para ajustes pontuais. No `BtnBlueBack`, usar a prop `classN`.
 - Para botoes dentro de modal que nao submetem formulario, passar `tipo="button"`.
 
+## Arquitetura do acompanhamento
+
+- `components/conta/acompanhamento/acompanhamentoData.js` e a fonte central dos dados exibidos no acompanhamento: propostas, contratos, ofertas, etapas, status e adaptadores de dados da API.
+- Componentes de tela, como `Home.jsx`, `Historico.jsx`, `Ofertas.jsx` e `Perfil.jsx`, devem cuidar somente da apresentacao e de interacoes locais. Eles nao devem chamar endpoints, acessar `localStorage` para montar dados nem duplicar regras de mapeamento/formatação.
+- Para integrar uma nova API do acompanhamento, criar ou ajustar uma funcao exportada em `acompanhamentoData.js`. Essa funcao deve devolver um contrato pronto para a tela, incluindo `success`, `status`, `message` quando aplicavel e os dados ja normalizados.
+- `cliente` e o objeto central do cliente autenticado. `carregarClienteAcompanhamento` deve buscar a API e atualizar esse mesmo objeto com `Object.assign`; nao criar objetos paralelos chamados `perfil`, `clienteMapeado` ou equivalentes.
+- Os componentes podem manter apenas uma copia de `cliente` no estado para provocar a nova renderizacao do React. A origem e o contrato dos dados continuam sendo o objeto `cliente` de `acompanhamentoData.js`.
+- Regras de campos, formatacao, completude e acoes do cliente pertencem a `acompanhamentoData.js`.
+- Ao criar novas etapas ou status de proposta, atualizar o modelo central em `acompanhamentoData.js` antes de alterar qualquer componente visual.
+- Etapas recebidas da API usam somente `ordem`, `titulo`, `data` e `horario`. Nao adicionar `descricao` ou `estado` ao contrato das etapas.
+- A exibicao deve ordenar pelo inteiro `ordem`. A ultima etapa com `data` ou `horario` e a etapa atual; etapas registradas anteriores estao concluidas; etapas sem ambos os campos ainda estao aguardando.
+- `etapaAtual` e `progresso` devem ser derivados por `obterResumoEtapas`, nunca duplicados manualmente no retorno ou nos componentes.
+
 ## Decisao recomendada
 
 O melhor caminho e transformar `Genero` e `Tipo de ocupacao` em partes do novo `Cadastro de perfil`, e deixar os formularios especificos apenas com perguntas realmente exclusivas da modalidade.

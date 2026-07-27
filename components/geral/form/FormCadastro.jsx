@@ -14,10 +14,11 @@ import BtnNext from '../button/BtnBlueNext'
 import ModalLogin from '../../geral/modal/ModalLogin'
 import { validateCPF } from "schema/validations"
 import { ToastContainer, toast } from "react-toastify"
-import { toastInfoColored } from "shared/toastUtils/toastValidation"
+import { toastErrorColored, toastInfoColored } from "shared/toastUtils/toastValidation"
 import { GoCheckCircleFill } from "react-icons/go";
 import { GoXCircleFill } from "react-icons/go";
 import { getPessoaPorCpf } from "../../../services/serviceAuth/apiPessoa";
+import ModalCadLoading from "../modal/ModalCadLoading";
 
 const CpfLoadingToast = () => (
     <div>
@@ -39,7 +40,7 @@ const CpfLoadingToast = () => (
     </div>
 );
 
-export default function FormCadastro({ onNext }) {
+export default function FormCadastro({ onNext, onBeforeNext }) {
 
     const { register, watch, handleSubmit, formState: { errors }, setValue, trigger, clearErrors} = useFormContext();
     const registerWithMask = useHookFormMask(register);
@@ -79,10 +80,45 @@ export default function FormCadastro({ onNext }) {
         setInputSenha(inputSenha === 'password' ? 'text' : 'password');
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        if (showForm !== 1 || isCpfLoading || isCreatingAccount) {
+            return;
+        }
+
+        if (onBeforeNext) {
+            setIsCreatingAccount(true);
+            setPendingCadastroData(data);
+            setCadastroStatus("processing");
+
+            let canProceed = false;
+
+            try {
+                canProceed = await onBeforeNext(data);
+            } catch {
+                canProceed = false;
+            }
+
+            setCadastroStatus(canProceed ? "success" : "error");
+            return;
+        }
+
         atualizarForm(data)
         onNext();
     }
+
+    const handleCadastroFinished = () => {
+        const shouldContinue = cadastroStatus === "success";
+        const dadosCadastro = pendingCadastroData;
+
+        setPendingCadastroData(null);
+        setCadastroStatus(null);
+        setIsCreatingAccount(false);
+
+        if (shouldContinue && dadosCadastro) {
+            atualizarForm(dadosCadastro);
+            onNext();
+        }
+    };
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isAccepted, setIsAccepted] = useState(false);
@@ -113,6 +149,9 @@ export default function FormCadastro({ onNext }) {
     
     const [showForm, setShowForm] = useState(false);
     const [isCpfLoading, setIsCpfLoading] = useState(false);
+    const [isCreatingAccount, setIsCreatingAccount] = useState(false);
+    const [cadastroStatus, setCadastroStatus] = useState(null);
+    const [pendingCadastroData, setPendingCadastroData] = useState(null);
 
     const cpfValue = watch("cpf") || "";
     const validateTimerRef = useRef(null);
@@ -125,6 +164,7 @@ export default function FormCadastro({ onNext }) {
     }, [onLoginOpen]);
 
     useEffect(() => {
+        let isCancelled = false;
         
         // 2) sempre cancele o timer anterior ao mudar o CPF
         if (validateTimerRef.current) {
@@ -185,9 +225,19 @@ export default function FormCadastro({ onNext }) {
                 limpaCampos();
                 lastValidatedCpfRef.current = cleanedCpf;
 
-                const pessoa = await getPessoaPorCpf(cleanedCpf);
+                const resultado = await getPessoaPorCpf(cleanedCpf);
 
-                if (pessoa) {
+                if (isCancelled) {
+                    return;
+                }
+
+                if (!resultado.success) {
+                    setShowForm(0);
+                    lastValidatedCpfRef.current = "";
+                    setValue("cpf", "");
+                    clearErrors("cpf");
+                    toastErrorColored("API sem retorno. Tente mais tarde");
+                } else if (resultado.pessoa) {
                     setShowForm(0);
                     onLoginOpenRef.current();
                 } else {
@@ -212,6 +262,7 @@ export default function FormCadastro({ onNext }) {
 
         // 5) limpeza ao desmontar
         return () => {
+            isCancelled = true;
             if (validateTimerRef.current) {
                 clearTimeout(validateTimerRef.current);
                 validateTimerRef.current = null;
@@ -222,7 +273,7 @@ export default function FormCadastro({ onNext }) {
             }
             setIsCpfLoading(false);
         };
-    }, [cpfValue, setValue]);
+    }, [clearErrors, cpfValue, setValue]);
 
     return (
 
@@ -230,8 +281,14 @@ export default function FormCadastro({ onNext }) {
 
             <ToastContainer/>
 
-            <ModalLogin isOpen={isLoginOpen} onOpenChange={(open) => {onLoginOpenChange(open);
+            <ModalLogin cpf={cpfValue} isOpen={isLoginOpen} onOpenChange={(open) => {onLoginOpenChange(open);
                 if (!open) {setValue("cpf", "")}}}
+            />
+
+            <ModalCadLoading
+                isOpen={Boolean(cadastroStatus)}
+                status={cadastroStatus}
+                onFinished={handleCadastroFinished}
             />
 
             <motion.div
@@ -432,7 +489,7 @@ export default function FormCadastro({ onNext }) {
                 {/*Botão do step*/}
                 {showForm === 1 && ( 
                     <motion.div className="grid-cols-1! container-form-footer" variants={item}>
-                        <BtnNext habilitado={inputAction} nome={'Criar conta'} type="submit" />
+                        <BtnNext habilitado={inputAction || isCreatingAccount} nome={isCreatingAccount ? 'Criando conta...' : 'Criar conta'} type="submit" />
                     </motion.div>
                 )}
 

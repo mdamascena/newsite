@@ -11,6 +11,7 @@ import { validateCPF } from "schema/validations"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { ToastContainer } from "react-toastify"
 import { loginAuth } from "../../../services/serviceAuth/apiAuth"
+import { CURRENT_USER_CPF_STORAGE_KEY } from "../../../services/serviceAuth/apiPessoa"
 
 export default function Login({ setShowLogin, setResetCpf }) {
     
@@ -39,6 +40,7 @@ export default function Login({ setShowLogin, setResetCpf }) {
             return;
         }
 
+        window.localStorage.setItem(CURRENT_USER_CPF_STORAGE_KEY, data.cpf.replace(/\D/g, ""));
         router.push("/acompanhamento");
     };
 
