@@ -2,7 +2,7 @@ import Image from 'next/image'
 import PersV from '../../public/img/pers_v.png'
 
 
-export default function Acance() {
+export default function Alcance() {
     return (
         <section className='bg-slate-100'>
             

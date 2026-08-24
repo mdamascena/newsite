@@ -16,6 +16,14 @@ import ModalGenero from '../modal/ModalGenero'
 import BtnBack from '../button/BtnBlueBack'
 import BtnNext from '../button/BtnBlueNext' 
 
+export const STEP_INFO = {
+    id: "identificacao",
+    progressLabel: "Identificação",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Um pouco mais sobre você",
+    description: "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
+};
+
 export default function FormIdentificacao({onNext, backStep}) {
 
     const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();

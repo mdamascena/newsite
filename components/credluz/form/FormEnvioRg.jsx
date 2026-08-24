@@ -1,18 +1,26 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 import { useFormData } from "../../../context/FormContext";
 import { IoIosArrowBack } from "react-icons/io";
 import { Label } from "components/ui/label";
 import { Input } from "components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "components/ui/card";
 import Image from "next/image";
 import ImgInput from '../../../public/img/imageInput.png'
 import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 
+export const STEP_INFO = {
+    id: "envio-identidade",
+    progressLabel: "Envio de identidade",
+    sectionTitle: "Envio de documentos",
+    title: "Identidade",
+    description: "Envie uma foto do seu documento de identidade",
+};
+
 export default function FormEnvioRg({ onNext, backStep }) {
     const { setValue, getValues, handleSubmit, register, formState: { errors } } = useFormContext();
-    const { formData, atualizarForm } = useFormData();
+    const { atualizarForm } = useFormData();
     
     const [rgFrente, setRgFrente] = useState(getValues("rgFrente") || "");
     const [rgVerso, setRgVerso] = useState(getValues("rgVerso") || "");

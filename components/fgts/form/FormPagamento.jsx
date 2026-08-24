@@ -16,6 +16,14 @@ import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { useEffect } from "react";
 
+export const STEP_INFO = {
+    id: "pagamento",
+    progressLabel: "Pagamento",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Olha o Pix aí!",
+    description: "Queremos saber onde depositar seu crédito",
+};
+
 export default function FormPagamento({ onNext, backStep }) {
     const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
@@ -25,7 +33,6 @@ export default function FormPagamento({ onNext, backStep }) {
     const bancoWatch = watch("banco");
 
     const onSubmit = (data) => {
-        console.log(bancoWatch)
         if (!bancoWatch) {
             toastErrorColored("Selecione um banco para continuar.")
             return;

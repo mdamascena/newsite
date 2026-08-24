@@ -4,8 +4,15 @@ import { useRouter } from "next/router"
 import { HiOutlineArrowLongLeft } from "react-icons/hi2"
 import ChartForm from "../ChartForm"
 
-export default function BaseForm({copyTitleChart, steps, titleText, descriptionText, progress, stepCurrent}) {
-  
+export default function BaseForm({ stepInfo = {}, steps }) {
+    const {
+        sectionTitle,
+        title,
+        description,
+        progress = 0,
+        progressSteps = [],
+    } = stepInfo;
+
     const router = useRouter();
 
     const handleBack = () => {
@@ -14,10 +21,10 @@ export default function BaseForm({copyTitleChart, steps, titleText, descriptionT
 
     return (
     
-        <main className="bg-slate-100 min-h-[100vh] select-none">
+        <main className="bg-slate-100 min-h-screen select-none">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[100vh]">
-                <div className="col-span-1 bgForm rounded-2xl m-2 !sticky top-1">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-screen">
+                <div className="col-span-1 bgForm rounded-2xl m-2 sticky! top-1">
                     
                     <div className="relative lg:mx-14">
                         
@@ -38,19 +45,19 @@ export default function BaseForm({copyTitleChart, steps, titleText, descriptionT
                         <div className="text-end hidden lg:block content-center lg:min-h-[30vh]">
                             <div className="mr-5 lg:mr-0 mb-2">
                                 <h1 className="text-white font-extralight lg:font-semibold lg:text-3xl text-md ml-2">
-                                    {titleText}
+                                    {title}
                                 </h1>
                             </div>
                             
                             <div className="">
                                 <p className="text-blue-200 ml-2">
-                                    {descriptionText}
+                                    {description}
                                 </p>
                             </div>
                         </div>
 
                         <div className="content-end lg:min-h-[40vh]">
-                            <ChartForm titleChart={copyTitleChart} stepsChart={stepCurrent} value={progress} />
+                            <ChartForm titleChart={sectionTitle} stepsChart={progressSteps} value={progress} />
                         </div>
                     </div>
                 </div>

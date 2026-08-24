@@ -1,84 +1,65 @@
-import { useState, useEffect, useMemo } from 'react';
-import dynamic from 'next/dynamic';
-import { useForm, FormProvider } from 'react-hook-form';
-import { useFormData } from '../../../context/FormContext';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { cadastroSchema, enderecoSchema } from '../../../schema/schemaCadastro';
-import { perfilSchema } from '../../../schema/schemaPerfil';
+import { useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useFormData } from "../../../context/FormContext";
+import { cadastroSchema, enderecoSchema } from "../../../schema/schemaCadastro";
+import { perfilSchema } from "../../../schema/schemaPerfil";
+import FormCadastro, { STEP_INFO as CADASTRO_STEP_INFO } from "../../geral/form/FormCadastro";
+import FormCadastroPerfil, { STEP_INFO as PERFIL_STEP_INFO } from "../../geral/form/FormCadastroPerfil";
+import FormEndereco, { STEP_INFO as ENDERECO_STEP_INFO } from "../../geral/form/FormEndereco";
 
-const StepCadastro = dynamic(() => import('../../geral/form/FormCadastro'));
-const StepCadastroPerfil = dynamic(() => import('../../geral/form/FormCadastroPerfil'));
-const StepEndereco = dynamic(() => import('../../geral/form/FormEndereco'));
+const FLOW_STEPS = [
+    { Component: FormCadastro, schema: cadastroSchema, info: CADASTRO_STEP_INFO },
+    { Component: FormCadastroPerfil, schema: perfilSchema, info: PERFIL_STEP_INFO },
+    { Component: FormEndereco, schema: enderecoSchema, info: ENDERECO_STEP_INFO },
+];
 
-const schemas = [cadastroSchema, perfilSchema, enderecoSchema];
+const LAST_STEP_INDEX = FLOW_STEPS.length - 1;
+const getProgress = (stepIndex) => Math.round((stepIndex / LAST_STEP_INDEX) * 100);
+const progressSteps = FLOW_STEPS.map(({ info }, index) => ({
+    key: info.progressLabel,
+    thresholds: getProgress(index),
+}));
 
-export function FormCLT({ setTitleChart, setProgressChange, setTitleText, setDescriptionText, setStepCurrent }) {
-
-    const [step, setStep] = useState(1);
+export function FormRefinAuto({ setStepInfo }) {
+    const [stepIndex, setStepIndex] = useState(0);
     const { formData, atualizarForm } = useFormData();
-
-    const titleChart = useMemo(() => ["Preenchimento de proposta"], []);
-
-    const steps = useMemo(() => [
-        { key: "Registrar conta", thresholds: 0 },
-        { key: "Cadastro de perfil", thresholds: 50 },
-        { key: "Endereço", thresholds: 100 },
-    ], []);
-
-    const titles = useMemo(() => [
-        "Vamos começar!",
-        "Conhecendo seu perfil",
-        "Onde você mora?",
-    ], []);
-
-    const descriptions = useMemo(() => [
-        "Preencha seus dados iniciais para criarmos a sua conta",
-        "Responda algumas perguntas rápidas para indicarmos as melhores opções",
-        "Agora só precisamos do seu endereço para prosseguir",
-    ], []);
+    const activeStep = FLOW_STEPS[stepIndex];
+    const { Component: ActiveStep, schema } = activeStep;
+    const progress = getProgress(stepIndex);
 
     const methods = useForm({
-        resolver: yupResolver(schemas[step - 1]),
-        mode: 'onBlur',
-        reValidateMode: 'onBlur',
-        defaultValues: formData
+        resolver: yupResolver(schema),
+        mode: "onBlur",
+        reValidateMode: "onBlur",
+        defaultValues: formData,
     });
 
     useEffect(() => {
-        setTitleChart(titleChart);
-        setProgressChange(Math.round(((step - 1) / (schemas.length - 1)) * 100));
-        setTitleText(titles[step - 1]);
-        setDescriptionText(descriptions[step - 1]);
-        setStepCurrent(steps);
-    }, [
-        step,
-        setTitleChart,
-        setProgressChange,
-        setTitleText,
-        setDescriptionText,
-        setStepCurrent,
-        titleChart,
-        titles,
-        descriptions,
-        steps,
-    ]);
+        setStepInfo({
+            ...activeStep.info,
+            progress,
+            progressSteps,
+        });
+    }, [activeStep.info, progress, setStepInfo]);
 
     const nextStep = (data) => {
-        atualizarForm(data);
-        setStep((prevStep) => Math.min(prevStep + 1, schemas.length));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (data) {
+            atualizarForm(data);
+        }
+
+        setStepIndex((currentIndex) => Math.min(currentIndex + 1, LAST_STEP_INDEX));
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const prevStep = () => {
-        setStep((prevStep) => Math.max(prevStep - 1, 1));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setStepIndex((currentIndex) => Math.max(currentIndex - 1, 0));
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     return (
         <FormProvider {...methods}>
-            {step === 1 && <StepCadastro onNext={nextStep} />}
-            {step === 2 && <StepCadastroPerfil onNext={nextStep} backStep={prevStep} />}
-            {step === 3 && <StepEndereco onNext={nextStep} backStep={prevStep} />}
+            <ActiveStep onNext={nextStep} backStep={prevStep} />
         </FormProvider>
     );
 }

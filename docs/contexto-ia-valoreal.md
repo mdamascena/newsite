@@ -1,179 +1,60 @@
-# Contexto de IA - Valoreal
+# Contexto de IA — Valoreal
 
-Este documento orienta futuras IAs e desenvolvedores sobre o produto, os formularios e a evolucao desejada do cadastro unico da Valoreal.
+Última revisão: 15 de agosto de 2026.
 
-## Visao do negocio
+Este é o ponto de entrada do contexto técnico e de produto da Valoreal. Ele deve permanecer curto: os detalhes vivem nos documentos temáticos abaixo.
 
-A Valoreal e uma fintech/correspondente bancario que oferece varias modalidades de credito de instituicoes financeiras parceiras. A experiencia desejada e permitir que o cliente faca um unico cadastro e, a partir dos dados informados, a Valoreal avalie quais modalidades ele pode tentar ou para quais ele tem aptidao.
+Se houver divergência entre a documentação e o repositório, o código é a fonte de verdade. Depois de confirmar o comportamento no código, corrija o documento temático correspondente.
 
-Aptidao significa uma pre-aprovacao ou indicativo de que o cliente possui perfil minimo para seguir naquela modalidade. Nao deve ser comunicada como garantia de aprovacao final.
+## Mapa do contexto
 
-## Modalidades
+| Documento | Assunto | Leia quando for trabalhar em |
+| --- | --- | --- |
+| [Formulários e regras](./contexto-ia/formularios-e-regras.md) | Steps, `STEP_INFO`, fluxos ativos, validação, APIs do fluxo, perfil e regras de aptidão | Cadastro, modalidade de crédito, ordem de steps, schema ou regra de negócio |
+| [Arquitetura](./contexto-ia/arquitetura.md) | Stack, diretórios, responsabilidades, estado, serviços e acompanhamento | Estrutura do projeto, integração de API, dados compartilhados ou criação de módulos |
+| [Design e interface](./contexto-ia/design-interface.md) | Layout, componentes visuais, copy, responsividade e interação | UI, UX, textos, estilos, botões, modais ou acessibilidade |
 
-- Emprestimo na conta de luz: depende, no minimo, de a conta de energia estar em nome do cliente ou de regra especifica da parceira.
-- Antecipacao do FGTS: depende de CPF, dados pessoais, saldo/saque-aniversario/autorizacao conforme regras do parceiro.
-- Consignado INSS: depende de perfil de beneficiario, aposentado, pensionista ou BPC/LOAS, conforme regras do parceiro.
-- Consignado CLT: depende de vinculo empregaticio CLT e elegibilidade junto ao parceiro.
-- Emprestimo com garantia de veiculo: depende de o cliente possuir veiculo, dados do veiculo e regra sobre quitacao/alienacao.
-- PIX parcelado: usa o limite do cartao de credito como forma de credito/parcelamento; depende de o cliente possuir cartao e limite disponivel.
-- Protecao veicular: produto futuro. O perfil com veiculo tambem deve ajudar a identificar oportunidade para esse produto.
+## Como interpretar os documentos
 
-## Estrutura atual observada
+- **Implementado** descreve o que existe no código na data da revisão.
+- **Decisão vigente** descreve o padrão que novas alterações devem seguir.
+- **Planejado** descreve uma direção de produto ou arquitetura que ainda não está totalmente conectada ao fluxo.
 
-O projeto usa Next.js/React com formularios baseados em `react-hook-form` e validacao `yup`.
+Não transformar uma seção planejada em descrição do estado atual antes de implementar e validar o código.
 
-Pontos importantes:
+## Visão do negócio
 
-- `components/geral/form/FormCadastro.jsx` e o formulario comum principal. Ele cria a conta do cliente e captura CPF, nome, data de nascimento, telefone, e-mail, senha e aceites.
-- `context/FormContext.jsx` guarda os dados do fluxo em memoria via `formData` e `atualizarForm`.
-- Cada modalidade tem um `form/index.jsx` proprio, com controle de `step`, array de `schemas`, textos do progresso e renderizacao condicional dos componentes.
-- `components/geral/form/BaseForm.jsx` renderiza a pagina de formulario com area lateral, titulo, descricao e grafico de progresso.
-- `components/geral/ChartForm.jsx` mostra o progresso por steps principais.
-- `components/geral/form/FormIdentificacao.jsx` hoje captura genero.
-- `components/credluz/form/FormTipoOcupacao.jsx` hoje captura ocupacao dentro do fluxo de conta de luz, mas ocupacao deveria ser reaproveitada no perfil geral.
+A Valoreal é uma fintech/correspondente bancário que oferece modalidades de crédito de instituições financeiras parceiras. A experiência desejada é permitir um cadastro único e usar os dados informados para indicar quais modalidades o cliente pode tentar.
 
-## Objetivo do Cadastro de Perfil
+`Aptidão`, `indicação` e `opção disponível` significam uma pré-análise ou compatibilidade inicial. Nunca devem ser comunicadas como garantia de aprovação final.
 
-Criar um step unico chamado `Cadastro de perfil`, reutilizavel por todas as modalidades, com substeps internos. Ele deve capturar respostas simples que direcionam quais modalidades o cliente pode tentar.
+As modalidades hoje consideradas no contexto de produto são:
 
-Esse step deve ser extremamente facil de responder: uma pergunta por tela/substep, opcoes grandes, linguagem direta e progresso interno visivel.
+- empréstimo na conta de luz;
+- antecipação do FGTS;
+- consignado INSS;
+- consignado CLT;
+- empréstimo com garantia de veículo;
+- PIX parcelado;
+- proteção veicular como oportunidade futura.
 
-## Perguntas do perfil
+## Estado atual em poucas linhas
 
-Campos recomendados:
+- O site usa Next.js com Pages Router e React.
+- Existem sete rotas ativas de cadastro, cada uma montando um orquestrador de formulário.
+- A página mantém apenas o estado visual `stepInfo`; o orquestrador controla ordem, validação, navegação, progresso e decisões de fluxo.
+- Cada step exporta sua própria constante `STEP_INFO`. Os textos não ficam mais em arrays no `index.jsx`.
+- Steps reutilizáveis, como `FormCadastro`, `FormIdentificacao`, `FormEndereco` e `FormCadastroPerfil`, possuem uma única copy compartilhada entre as modalidades que os usam.
+- Não existe e não deve ser criado um `flowConfig.js` apenas para guardar textos.
+- O cadastro de perfil, seu schema e o avaliador de aptidão existem, mas a integração completa em todas as modalidades ainda é planejada.
+- O CredLuz ainda não conclui a jornada de empréstimo no backend: a pré-análise, o envio final de documentos e a criação da proposta permanecem pendentes.
 
-- `perfilTemVeiculo`: pergunta se o cliente possui carro, moto ou outro veiculo.
-- `perfilVeiculoQuitado`: se possui veiculo, perguntar se o veiculo esta quitado. Esta pergunta deve aparecer apenas quando `perfilTemVeiculo` for verdadeiro.
-- `perfilContaLuzTitular`: pergunta se a conta de luz esta no nome do cliente.
-- `perfilTemCartaoCredito`: pergunta se o cliente possui cartao de credito.
-- `perfilOcupacao`: pergunta qual e a ocupacao atual do cliente.
-- `perfilGenero`: pergunta o genero do cliente, preferencialmente reaproveitando a logica atual de `FormIdentificacao`.
+## Regra de manutenção deste contexto
 
-Ocupacoes recomendadas:
-
-- CLT/assalariado
-- Aposentado
-- Pensionista
-- Beneficiario INSS/BPC/LOAS
-- Servidor publico
-- Autonomo/profissional liberal/empresario
-- Militar
-- Desempregado/outro
-
-## Regras iniciais de aptidao
-
-Estas regras sao indicativas e devem ser ajustadas conforme regras das instituicoes parceiras:
-
-- Conta de luz: apto se `perfilContaLuzTitular = sim`.
-- Consignado CLT: apto se `perfilOcupacao = CLT/assalariado`.
-- Consignado INSS: apto se `perfilOcupacao` for aposentado, pensionista ou beneficiario INSS/BPC/LOAS.
-- Garantia de veiculo: apto se `perfilTemVeiculo = sim`. Se `perfilVeiculoQuitado = sim`, sinalizar maior chance; se nao, seguir para analise especifica, pois a regra pode variar.
-- PIX parcelado: apto se `perfilTemCartaoCredito = sim`.
-- FGTS: nao deve depender apenas das perguntas do perfil. Pode ser oferecido como tentativa geral quando o cliente tiver CPF valido e idade minima, mas a aptidao real depende de saldo, saque-aniversario e autorizacao.
-- Protecao veicular: oportunidade se `perfilTemVeiculo = sim`, independentemente da modalidade de credito.
-
-## Comportamento recomendado do step
-
-O step principal no grafico externo deve aparecer como `Cadastro de perfil`.
-
-Dentro dele, mostrar um indicador interno:
-
-- Texto curto: `Pergunta 2 de 6`.
-- Barra fina de progresso interno.
-- Opcionalmente, chips com as modalidades liberadas ate o momento.
-
-Cada substep deve:
-
-- Mostrar uma unica pergunta.
-- Usar botoes/cards de resposta com icone.
-- Avancar automaticamente apos a escolha quando isso for confortavel.
-- Ter botao voltar para corrigir respostas.
-- Salvar a resposta no `FormContext` a cada substep ou no submit final do step.
-
-Fluxo sugerido:
-
-1. Genero
-2. Ocupacao
-3. Conta de luz em seu nome?
-4. Tem cartao de credito?
-5. Tem veiculo?
-6. Se tem veiculo: o veiculo esta quitado?
-7. Resultado resumido: mostrar modalidades indicadas e continuar para a modalidade escolhida/original.
-
-Observacao: se o cliente veio de uma landing page de modalidade especifica, apos o perfil ele deve continuar no fluxo especifico daquela modalidade, mas a UI pode sugerir outras opcoes compatveis.
-
-## Implementacao recomendada
-
-Criar componentes e utilitarios comuns:
-
-- `components/geral/form/FormCadastroPerfil.jsx`: step unico com substeps internos.
-- `schema/schemaPerfil.jsx`: schema yup do perfil financeiro.
-- `lib/avaliarAptidaoModalidades.js`: funcao pura que recebe `formData` e retorna modalidades aptas, possiveis e pendentes.
-
-Contrato sugerido de `FormCadastroPerfil`:
-
-```jsx
-export default function FormCadastroPerfil({ onNext, backStep }) {
-  // usa useFormContext()
-  // usa useFormData()
-  // controla subStep internamente
-}
-```
-
-Saida recomendada de aptidao:
-
-```js
-{
-  aptas: ["conta_luz", "pix_parcelado"],
-  possiveis: ["fgts"],
-  oportunidades: ["protecao_veicular"],
-  bloqueadas: [
-    { modalidade: "consignado_clt", motivo: "Cliente nao informou vinculo CLT" }
-  ]
-}
-```
-
-Para integrar em um fluxo existente:
-
-1. Importar `perfilSchema`.
-2. Inserir `perfilSchema` no array `schemas` logo apos `cadastroSchema`.
-3. Importar `FormCadastroPerfil`.
-4. Renderizar `step === 2 && <StepCadastroPerfil ... />`.
-5. Ajustar os indices dos steps seguintes.
-6. Atualizar o array visual de progresso para incluir `Cadastro de perfil`.
-
-## Cuidado de UX e comunicacao
-
-- Usar `aptidao`, `indicacao` ou `opcao disponivel`; evitar prometer `aprovado` antes da analise real.
-- Explicar pouco e perguntar direto.
-- Nao repetir perguntas ja respondidas no perfil dentro da modalidade, exceto quando a instituicao parceira exigir confirmacao.
-- Permitir que o cliente continue mesmo quando uma modalidade nao for ideal, quando houver regra pendente de parceiro.
-- Guardar as respostas em nomes de campo estaveis para evitar divergencia entre modalidades.
-
-## Padroes de interface
-
-- Modais gerais ficam em `components/geral/modal`.
-- Acoes principais em modais devem usar `components/geral/button/BtnBlueNext`.
-- Acoes secundarias, voltar ou fechar em modais devem usar `components/geral/button/BtnBlueBack`.
-- Evitar `Button` direto de `components/lib/nextui-compat` para acoes de modal quando os botoes gerais atenderem ao caso.
-- No `BtnBlueNext`, usar a prop `className` para ajustes pontuais. No `BtnBlueBack`, usar a prop `classN`.
-- Para botoes dentro de modal que nao submetem formulario, passar `tipo="button"`.
-
-## Arquitetura do acompanhamento
-
-- `components/conta/acompanhamento/acompanhamentoData.js` e a fonte central dos dados exibidos no acompanhamento: propostas, contratos, ofertas, etapas, status e adaptadores de dados da API.
-- Componentes de tela, como `Home.jsx`, `Historico.jsx`, `Ofertas.jsx` e `Perfil.jsx`, devem cuidar somente da apresentacao e de interacoes locais. Eles nao devem chamar endpoints, acessar `localStorage` para montar dados nem duplicar regras de mapeamento/formatação.
-- Para integrar uma nova API do acompanhamento, criar ou ajustar uma funcao exportada em `acompanhamentoData.js`. Essa funcao deve devolver um contrato pronto para a tela, incluindo `success`, `status`, `message` quando aplicavel e os dados ja normalizados.
-- `cliente` e o objeto central do cliente autenticado. `carregarClienteAcompanhamento` deve buscar a API e atualizar esse mesmo objeto com `Object.assign`; nao criar objetos paralelos chamados `perfil`, `clienteMapeado` ou equivalentes.
-- Os componentes podem manter apenas uma copia de `cliente` no estado para provocar a nova renderizacao do React. A origem e o contrato dos dados continuam sendo o objeto `cliente` de `acompanhamentoData.js`.
-- Regras de campos, formatacao, completude e acoes do cliente pertencem a `acompanhamentoData.js`.
-- Ao criar novas etapas ou status de proposta, atualizar o modelo central em `acompanhamentoData.js` antes de alterar qualquer componente visual.
-- Etapas recebidas da API usam somente `ordem`, `titulo`, `data` e `horario`. Nao adicionar `descricao` ou `estado` ao contrato das etapas.
-- A exibicao deve ordenar pelo inteiro `ordem`. A ultima etapa com `data` ou `horario` e a etapa atual; etapas registradas anteriores estao concluidas; etapas sem ambos os campos ainda estao aguardando.
-- `etapaAtual` e `progresso` devem ser derivados por `obterResumoEtapas`, nunca duplicados manualmente no retorno ou nos componentes.
-
-## Decisao recomendada
-
-O melhor caminho e transformar `Genero` e `Tipo de ocupacao` em partes do novo `Cadastro de perfil`, e deixar os formularios especificos apenas com perguntas realmente exclusivas da modalidade.
-
-Isso reduz atrito, evita duplicidade e permite que a Valoreal apresente uma esteira unica de analise com varias oportunidades de credito para o mesmo cadastro.
+1. Atualize apenas o documento dono do assunto.
+2. Crie um link para outro documento em vez de copiar a mesma regra em dois lugares.
+3. Registre contratos e responsabilidades duráveis; não copie arquivos inteiros para a documentação.
+4. Use nomes e caminhos reais do repositório.
+5. Separe claramente o que está implementado do que está planejado.
+6. Atualize a data de revisão somente depois de conferir o documento contra o código.
+7. Use o histórico do Git como changelog; estes arquivos descrevem o estado e as decisões vigentes, não uma sequência de alterações antigas.

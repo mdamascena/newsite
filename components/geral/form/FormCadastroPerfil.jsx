@@ -19,6 +19,14 @@ import BtnNext from "../button/BtnBlueNext";
 import { OptLabel } from "../style";
 import ModalGenero from "../modal/ModalGenero";
 
+export const STEP_INFO = {
+    id: "cadastro-perfil",
+    progressLabel: "Perfil",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Conhecendo seu perfil",
+    description: "Responda algumas perguntas rápidas para indicarmos as melhores opções.",
+};
+
 const perguntasBase = [
     {
         field: "perfilGenero",

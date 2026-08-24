@@ -20,6 +20,14 @@ import { GoXCircleFill } from "react-icons/go";
 import { getPessoaPorCpf } from "../../../services/serviceAuth/apiPessoa";
 import ModalCadLoading from "../modal/ModalCadLoading";
 
+export const STEP_INFO = {
+    id: "cadastro",
+    progressLabel: "Registrar conta",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Vamos começar!",
+    description: "Preencha seus dados iniciais para criarmos a sua conta",
+};
+
 const CpfLoadingToast = () => (
     <div>
         <span>Validando CPF...</span>

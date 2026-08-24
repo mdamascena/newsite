@@ -1,19 +1,27 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 import { useFormData } from "../../../context/FormContext";
 import { IoIosArrowBack } from "react-icons/io";
 import { Label } from "components/ui/label";
 import { Input } from "components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "components/ui/card";
 import Image from "next/image";
 import ImgInput from '../../../public/img/imageInput.png'
 import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 
+export const STEP_INFO = {
+    id: "envio-fatura-energia",
+    progressLabel: "Envio da fatura de energia",
+    sectionTitle: "Envio de documentos",
+    title: "Fatura de energia",
+    description: "Envie uma foto da sua fatura de energia",
+};
+
 export default function FormEnvioFatura({ onNext, backStep }) {
 
     const { setValue, getValues, handleSubmit, register, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormData();
+    const { atualizarForm } = useFormData();
 
     const [fatura, setFatura] = useState(getValues("fatura") || "");
     const [previewFatura, setPreviewFatura] = useState("");

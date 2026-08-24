@@ -7,29 +7,21 @@ import { CIAE_ID_STORAGE_KEY, getCompanhiasEnergiaPorCidade } from '../../../ser
 import { registrarUsuario } from '../../../services/serviceAuth/apiAddPessoa';
 import { toastErrorColored } from 'shared/toastUtils/toastValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
-import dynamic from 'next/dynamic';
+import StepCadastro, { STEP_INFO as CADASTRO_STEP_INFO } from '../../geral/form/FormCadastro';
+import StepIdentificacao, { STEP_INFO as IDENTIFICACAO_STEP_INFO } from '../../geral/form/FormIdentificacao';
+import StepEndereco, { STEP_INFO as ENDERECO_STEP_INFO } from '../../geral/form/FormEndereco';
+import StepTipoOcupacao, { STEP_INFO as OCUPACAO_STEP_INFO } from './FormTipoOcupacao';
+import StepTitularCia, { STEP_INFO as TITULAR_STEP_INFO } from './FormTitularCia';
+import StepCompanhiaEnergia, { STEP_INFO as COMPANHIA_STEP_INFO } from './FormCompanhiaEnergia';
+import StepResumo, { STEP_INFO as RESUMO_STEP_INFO } from './ResumoCredLuz';
+import PropostaAprovada, { STEP_INFO as PROPOSTA_STEP_INFO } from '../../geral/PropostaAprovada';
+import StepSimulacao, { STEP_INFO as SIMULACAO_STEP_INFO } from './FormSimulacao';
+import StepEnvioRg, { STEP_INFO as ENVIO_RG_STEP_INFO } from './FormEnvioRg';
+import StepEnvioFatura, { STEP_INFO as ENVIO_FATURA_STEP_INFO } from './FormEnvioFatura';
+import StepDadosBancarios, { STEP_INFO as DADOS_BANCARIOS_STEP_INFO } from './FormDadosBancarios';
+import StepFinalizado, { STEP_INFO as FINALIZADO_STEP_INFO } from './Finalizado';
 
-const StepCadastro = dynamic(() => import('../../geral/form/FormCadastro'));
-const StepIdentificacao = dynamic(() => import('../../geral/form/FormIdentificacao'));
-const StepTipoOcupacao = dynamic(() => import('./FormTipoOcupacao'));
-const StepTitutularCia = dynamic(() => import('./FormTitularCia'));
-const StepEndereco = dynamic(() => import('../../geral/form/FormEndereco'));
-const StepCompanhiaEnergia = dynamic(() => import('./FormCompanhiaEnergia'));
-const StepResumo = dynamic(() => import('./ResumoCredLuz'));
-
-const PropostaAprovada = dynamic(() => import('../../geral/PropostaAprovada'));
-const PropostaRecusada = dynamic(() => import('../../geral/PropostaRecusada'));
-const PropostaAtiva = dynamic(() => import('../../geral/PropostaAtiva'));
-const ContratoAtivo = dynamic(() => import('../../geral/ContratoAtivo'));
-const ErroApi = dynamic(() => import('../../geral/ErroApi'));
-
-const StepSimulacao = dynamic(() => import('./FormSimulacao'));
-const StepEnvioRg = dynamic(() => import('./FormEnvioRg'));
-const StepEnvioFatura = dynamic(() => import('./FormEnvioFatura'));
-const StepDadosBancarios = dynamic(() => import('./FormDadosBancarios'));
-const StepFinalizado = dynamic(() => import('./Finalizado'));
-
-const schemas = [
+const SCHEMAS = [
     cadastroSchema,
     titularCiaSchema,
     identificacaoSchema,
@@ -45,136 +37,82 @@ const schemas = [
     finalizadoSchema
 ];
 
-export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, setDescriptionText, setStepCurrent }) {
+const CADASTRO_FLOW = [
+    { step: 1, info: CADASTRO_STEP_INFO },
+    { step: 2, info: TITULAR_STEP_INFO },
+    { step: 3, info: IDENTIFICACAO_STEP_INFO },
+    { step: 4, info: OCUPACAO_STEP_INFO },
+    { step: 5, info: ENDERECO_STEP_INFO },
+    { step: 6, info: COMPANHIA_STEP_INFO, optional: true },
+    { step: 7, info: RESUMO_STEP_INFO },
+    { step: 8, info: PROPOSTA_STEP_INFO },
+];
+
+const DOCUMENTOS_FLOW = [
+    { step: 9, info: SIMULACAO_STEP_INFO },
+    { step: 10, info: DADOS_BANCARIOS_STEP_INFO },
+    { step: 11, info: ENVIO_RG_STEP_INFO },
+    { step: 12, info: ENVIO_FATURA_STEP_INFO },
+    { step: 13, info: FINALIZADO_STEP_INFO },
+];
+
+const getProgress = (index, total) => (
+    total <= 1 ? 100 : Math.round((index / (total - 1)) * 100)
+);
+
+const getProgressSteps = (flow) => flow.map(({ info }, index) => ({
+    key: info.progressLabel,
+    thresholds: getProgress(index, flow.length),
+}));
+
+const DOCUMENTOS_PROGRESS_STEPS = getProgressSteps(DOCUMENTOS_FLOW);
+
+export function FormCredLuz({ setStepInfo }) {
 
     const [step, setStep] = useState(1);
     const [companhiasEnergia, setCompanhiasEnergia] = useState([]);
     const { formData, atualizarForm } = useFormData();
     const exibirStepCompanhia = companhiasEnergia.length > 1;
 
-    const titleChartCadastro = useMemo(() => ["Preenchimento de proposta",], []);
-
-    const titleChartEnvioDocumento = useMemo(() => ["Envio de documentos",], []);
-
-    const cadastroSteps = useMemo(() => {
-        const steps = [
-            { key: "Registrar conta" },
-            { key: "Titular da fatura" },
-            { key: "Identificação" },
-            { key: "Perfil ocupacional" },
-            { key: "Contato e localidade" },
-        ];
-
-        if (exibirStepCompanhia) {
-            steps.push({ key: "Companhia de energia" });
-        }
-
-        steps.push(
-            { key: "Confirmação dos dados" },
-            { key: "Resposta da solicitação" }
-        );
-
-        return steps.map((item, index) => ({
-            ...item,
-            thresholds: Math.round((index / (steps.length - 1)) * 100),
-        }));
+    const cadastroFlow = useMemo(() => {
+        return CADASTRO_FLOW.filter(({ optional }) => !optional || exibirStepCompanhia);
     }, [exibirStepCompanhia]);
 
-    const envioDocumentoSteps = useMemo(() => [
-        { key: "Simulação", thresholds: 0 },
-        { key: "Dados bancários", thresholds: 25 },
-        { key: "Envio de identidade", thresholds: 50 },
-        { key: "Envio da fatura de energia", thresholds: 75 },
-        { key: "Finalizado", thresholds: 100 },
-    ], []);
-
-    const cadastroLuzTitle = useMemo(() => [
-        "Vamos começar!",
-        "Quem paga a luz?",
-        "Um pouco mais sobre você",
-        "O que você faz da vida?",
-        "Onde você está no mapa?",
-        "Qual é a sua companhia?",
-        "Está tudo correto?",
-        "Resposta da solicitação"
-    ], []);
-
-    const envioDocLuzTitle = useMemo(() => [
-        "Crédito Liberado",
-        "Dados bancários",
-        "Identidade",
-        "Fatura de energia",
-        "Finalizado",
-    ], []);
-
-    const cadastroLuzDescription = useMemo(() => [
-        "Preencha seus dados iniciais para criarmos a sua conta",
-        "É você que manda apagar a luz para não vir caro? Conta pra gente!",
-        "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
-        "Como é sua oculpação, se trabalha, se é aposentado. Estamos curiosos!",
-        "Queremos saber onde mora e como falamos com você",
-        "Confirme qual companhia fornece energia para sua residência",
-        "Confira se todos os dados estão corretos antes de prosseguir",
-        "Resposta da solicitação"
-    ], []);
-
-    const envioDocLuzDescription = useMemo(() => [
-        "Escolha o valor e a quantidade de parcelas",
-        "Informe seus dados bancários",
-        "Envie uma foto do seu documento de identidade",
-        "Envie uma foto da sua fatura de energia",
-        "Finalizado",
-    ], []);
+    const cadastroProgressSteps = useMemo(
+        () => getProgressSteps(cadastroFlow),
+        [cadastroFlow]
+    );
 
     const methods = useForm({
-        resolver: yupResolver(schemas[step - 1]),
+        resolver: yupResolver(SCHEMAS[step - 1]),
         mode: 'onBlur',
         reValidateMode: 'onBlur',
         defaultValues: formData
     })
 
     useEffect(() => {
-        if (step < 9) {
-            const cadastroStepIndex = !exibirStepCompanhia && step > 6 ? step - 2 : step - 1;
+        const flow = step < 9 ? cadastroFlow : DOCUMENTOS_FLOW;
+        const progressSteps = step < 9 ? cadastroProgressSteps : DOCUMENTOS_PROGRESS_STEPS;
+        const activeIndex = flow.findIndex(({ step: flowStep }) => flowStep === step);
 
-            setTitleChart(titleChartCadastro);
-            setProgressChange(Math.round((cadastroStepIndex / (cadastroSteps.length - 1)) * 100));
-            setTitleText(cadastroLuzTitle[step - 1]);
-            setDescriptionText(cadastroLuzDescription[step - 1]);
-            setStepCurrent(cadastroSteps)
+        if (activeIndex === -1) {
+            return;
+        }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            setTitleChart(titleChartEnvioDocumento);
-            setProgressChange(0);
-            setProgressChange(Math.round(((step - 9) / (envioDocumentoSteps.length - 1)) * 100));
-            setTitleText(envioDocLuzTitle[step - 9]);
-            setDescriptionText(envioDocLuzDescription[step - 9]);
-            setStepCurrent(envioDocumentoSteps)
-        
-        }}, [step, 
-            setTitleChart, 
-            setProgressChange, 
-            setTitleText, 
-            setDescriptionText, 
-            setStepCurrent, 
-            cadastroLuzTitle, 
-            cadastroLuzDescription, 
-            cadastroSteps, 
-            exibirStepCompanhia,
-            envioDocLuzDescription, 
-            envioDocLuzTitle,
-            envioDocumentoSteps,
-            titleChartCadastro,
-            titleChartEnvioDocumento
-            ]
-        );
+        setStepInfo({
+            ...flow[activeIndex].info,
+            progress: getProgress(activeIndex, flow.length),
+            progressSteps,
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [cadastroFlow, cadastroProgressSteps, setStepInfo, step]);
 
     const nextStep = (data) => {
         if (data) {
             atualizarForm(data)
         }
-        setStep((prevStep) => Math.min(prevStep + 1, schemas.length));
+        setStep((prevStep) => Math.min(prevStep + 1, SCHEMAS.length));
     };
 
     const prevStep = () => {
@@ -263,7 +201,7 @@ export function FormCredLuz({setTitleChart, setProgressChange, setTitleText, set
     return (
         <FormProvider {...methods}>
             {step === 1 && <StepCadastro onNext={nextStep} onBeforeNext={handleCriarUsuario} />}
-            {step === 2 && <StepTitutularCia onNext={nextStep} backStep={prevStep} />}
+            {step === 2 && <StepTitularCia onNext={nextStep} backStep={prevStep} />}
             {step === 3 && <StepIdentificacao onNext={nextStep} backStep={prevStep} />}
             {step === 4 && <StepTipoOcupacao onNext={nextStep} backStep={prevStep} />}
             {step === 5 && <StepEndereco onNext={handleEnderecoNext} backStep={prevStep} />}

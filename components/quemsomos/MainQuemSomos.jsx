@@ -1,5 +1,7 @@
 import { TypingAnimation } from "../ui/typing-animation";
 import { AuroraText } from "../ui/aurora-text"
+import Alcance from "./Alcance"
+import SectionBrifing from "./SectionBrifing";
 
 export default function MainQuemSomos() {
 
@@ -14,6 +16,9 @@ export default function MainQuemSomos() {
                 </div>
 
             </section>
+            <SectionBrifing />
+
+            <Alcance/>
         </main>
     )
 }

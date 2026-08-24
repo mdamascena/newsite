@@ -10,6 +10,14 @@ import { OptLabel } from "components/geral/style"
 import BtnNext from "../../geral/button/BtnBlueNext"
 import BtnBack from "../../geral/button/BtnBlueBack"
 
+export const STEP_INFO = {
+    id: "companhia-energia",
+    progressLabel: "Companhia de energia",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Qual é a sua companhia?",
+    description: "Confirme qual companhia fornece energia para sua residência",
+};
+
 export default function FormCompanhiaEnergia({ companhias, onNext, backStep }) {
     const {
         control,

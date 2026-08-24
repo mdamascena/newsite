@@ -13,6 +13,13 @@ import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
 import ModalTitularNao from "components/geral/modal/ModalTitularNao"
 
+export const STEP_INFO = {
+    id: "titular-fatura",
+    progressLabel: "Titular da fatura",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Quem paga a luz?",
+    description: "É você que manda apagar a luz para não vir caro? Conta pra gente!",
+};
 
 export default function FormTitularCia({ onNext, backStep }) {
 

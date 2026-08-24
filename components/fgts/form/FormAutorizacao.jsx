@@ -13,18 +13,28 @@ import { useDisclosure } from "components/lib/nextui-compat"
 import { useEffect, useState } from "react"
 import ModalAutorizacaoFGTS from "components/geral/modal/ModalAutorizacaoFGTS"
 
+export const STEP_INFO = {
+    id: "autorizacao-fgts",
+    progressLabel: "Autorização",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Autorização dos bancos",
+    description: "Autorize nossas instituições parceiras a consultar o seu saldo FGTS.",
+};
+
 export default function FormAutorizacao({ onNext, backStep }) {
     
-    const { control, handleSubmit, watch, setValue, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormData();
+    const { control, handleSubmit, watch, setValue, formState: { errors } } = useFormContext();
+    const { atualizarForm } = useFormData();
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [valueCard, setValueCard] = useState('');
 
-    const adesaoWatch = watch("autorizacao");
+    const autorizacaoSelecionada = watch("autorizacao");
 
     useEffect(() => {
-        if (errors.adesao) {toastErrorColored(errors.adesao.message);}
-    }, [errors.adesao]);
+        if (errors.autorizacao) {
+            toastErrorColored(errors.autorizacao.message);
+        }
+    }, [errors.autorizacao]);
 
     useEffect(() => {
         if(valueCard === '0') {
@@ -35,40 +45,17 @@ export default function FormAutorizacao({ onNext, backStep }) {
             setValue("autorizacao", "");
             setValueCard('')
         }
-    }, [valueCard, setValue, onOpenChange, onNext, getValues]);
+    }, [valueCard, setValue, onOpenChange, onNext]);
 
     function onSubmit(data){
-        if (!adesaoWatch) {
+        if (!autorizacaoSelecionada) {
             toastErrorColored("Selecione uma opção.")
             return;
-        // } if (!selectedKey){
-        //     toastErrorColored("Selecione o pix para continuar.")
-        //     return;
-        } else {
-            atualizarForm(data);
-            onNext();
         }
+
+        atualizarForm(data);
+        onNext();
     };
-
-    const pixSelecionado = (keyType) => {
-        setValue("tipoDeChave", keyType);
-
-        const data = getValues();
-
-        if (keyType === "CPF") {
-            setValue("chaveCpf", data.cpf)
-        } else if (keyType === "Celular") {
-            setValue("chaveCel", data.celular)
-        } else if (keyType === "Email") {
-            setValue("chaveEmail", data.email)
-        }
-    };
-
-    useEffect(() => {
-        if(formData.banco){
-            setValue("banco", formData.banco)
-        }
-    }, [formData.banco, setValue])
 
     return (
         <div className="lg:min-h-screen">

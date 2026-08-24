@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useFormData } from "context/FormContext";
 import { AnimatePresence, motion } from 'framer-motion';
 import PageTransicaoResposta from './PageTransicaoResposta';
 import BtnNext from "../geral/button/BtnBlueNext";
 import { FaCheckCircle } from 'react-icons/fa';
 
+export const STEP_INFO = {
+    id: "resposta-solicitacao",
+    progressLabel: "Resposta da solicitação",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Resposta da solicitação",
+    description: "Resposta da solicitação",
+};
+
 export default function PropostaAprovada({ onNext, title, subTitle, text }) {
 
-    const { atualizarForm, formData } = useFormData()
     const [showTransition, setShowTransition] = useState(true);
 
     useEffect(() => {
@@ -18,11 +24,7 @@ export default function PropostaAprovada({ onNext, title, subTitle, text }) {
         return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => {
-        console.log("FormData", formData);
-    }, [formData])
-
-    const onSubmit = (data) => {
+    const onSubmit = () => {
         onNext();
     };
 

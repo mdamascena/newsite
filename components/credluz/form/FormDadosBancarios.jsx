@@ -12,6 +12,14 @@ import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { AlertSimple } from "shared/alertUtils/alertService";
 
+export const STEP_INFO = {
+    id: "dados-bancarios",
+    progressLabel: "Dados bancários",
+    sectionTitle: "Envio de documentos",
+    title: "Dados bancários",
+    description: "Informe seus dados bancários",
+};
+
 export default function FormDadosBancarios({ onNext, backStep }) {
 
     const { register, control, handleSubmit, setValue, watch, formState: { errors } } = useFormContext();
@@ -36,10 +44,6 @@ export default function FormDadosBancarios({ onNext, backStep }) {
         }
     
     }, [cpfWatch, formData.cpf, setValue]);
-
-    useEffect(() => {
-        console.log("FormData", formData);
-    }, [formData])
 
     const onSubmit = (data) => {
         atualizarForm(data);

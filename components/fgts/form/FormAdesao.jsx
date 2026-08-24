@@ -13,9 +13,17 @@ import BtnNext from "../../geral/button/BtnBlueNext"
 import BtnBack from "../../geral/button/BtnBlueBack"
 import ModalAdesaoFGTS from '../../geral/modal/ModalAdesaoFGTS'
 
+export const STEP_INFO = {
+    id: "adesao-saque-aniversario",
+    progressLabel: "Adesão",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Adesão ao saque aniversário",
+    description: "Já aderiu ao saque aniversário?",
+};
+
 export default function FormAdesao({ onNext, backStep }) {
     
-    const { control, handleSubmit, watch, setValue, getValues, formState: { errors } } = useFormContext();
+    const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm } = useFormData();
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -36,7 +44,7 @@ export default function FormAdesao({ onNext, backStep }) {
             setValue("adesao", "");
             setValueCard('')
         }
-    }, [valueCard, setValue, onOpenChange, onNext, getValues]);
+    }, [valueCard, setValue, onOpenChange, onNext]);
 
     function onSubmit(data){
         atualizarForm(data);

@@ -15,6 +15,14 @@ import { OptLabel } from "../styles"
 import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
 
+export const STEP_INFO = {
+    id: "perfil-ocupacional",
+    progressLabel: "Perfil ocupacional",
+    sectionTitle: "Preenchimento de proposta",
+    title: "O que você faz da vida?",
+    description: "Como é sua ocupação, se trabalha ou se é aposentado? Estamos curiosos!",
+};
+
 export default function FormTipoOcupacao({onNext, backStep}) {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
@@ -25,10 +33,6 @@ export default function FormTipoOcupacao({onNext, backStep}) {
         onNext();
     }
 
-    useEffect(() => {
-        console.log("FormData", formData);
-    }, [formData])
-    
     useEffect(() => {
         if(formData.tipoOcupacao){
             setValue('tipoOcupacao', formData.tipoOcupacao);

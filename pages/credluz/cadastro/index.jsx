@@ -7,12 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function IndexFormCredLux() {
 
-    const [copyTitleChart, setCopyTitleChart] = useState([]);
-    const [countProgress, setCountProgress] = useState(0);
-    const [copyTitulo, setCopyTitulo] = useState([]);
-    const [copyDescricao, copySetDescricao] = useState([]);
-    const [copyStepCurrent, setCopyStepCurrent] = useState([]);
-    const [showTransition, setShowTransition] = useState(true); // Controla a exibição da tela de transição
+    const [stepInfo, setStepInfo] = useState({});
 
     return (
         <>
@@ -29,20 +24,10 @@ export default function IndexFormCredLux() {
                     transition={{ duration: .6, ease: "backOut" }}
                 >
                     <BaseForm
-                        copyTitleChart={copyTitleChart}
-                        stepCurrent={copyStepCurrent}
-                        titleText={copyTitulo}
-                        descriptionText={copyDescricao}
-                        progress={countProgress}
+                        stepInfo={stepInfo}
                         steps={
                             <FormDataProvider>
-                                <FormCredLuz
-                                    setTitleChart={setCopyTitleChart}
-                                    setStepCurrent={setCopyStepCurrent}
-                                    setProgressChange={setCountProgress}
-                                    setTitleText={setCopyTitulo}
-                                    setDescriptionText={copySetDescricao}
-                                />
+                                <FormCredLuz setStepInfo={setStepInfo} />
                             </FormDataProvider>
                         }
                     />

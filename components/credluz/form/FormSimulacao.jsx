@@ -1,24 +1,27 @@
 import { useFormContext, Controller } from "react-hook-form";
-import { useEffect } from "react";
 import { useFormData } from "../../../context/FormContext";
 import { motion } from "framer-motion";
 import { container } from "shared/motionUtils/motionTransation";
 import BtnNext from "../../geral/button/BtnBlueNext";
 import { Select, SelectTrigger, SelectValue, SelectItem, SelectGroup, SelectLabel, SelectContent } from "../../ui/selectFC"
 
+export const STEP_INFO = {
+    id: "simulacao",
+    progressLabel: "Simulação",
+    sectionTitle: "Envio de documentos",
+    title: "Crédito Liberado",
+    description: "Escolha o valor e a quantidade de parcelas",
+};
+
 export default function FormSimulacao({ onNext }) {
 
-    const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormData();
+    const { control, handleSubmit, formState: { errors } } = useFormContext();
+    const { atualizarForm } = useFormData();
 
     const onSubmit = (data) => {
         atualizarForm(data);
         onNext();
     };
-
-    useEffect(() => {
-        console.log("FormData", formData);
-    }, [formData])
 
     return (
         <>

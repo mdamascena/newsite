@@ -1,42 +1,27 @@
-import Head from 'next/head'
-import { useState } from "react"
-import { FormDataProvider } from "../../../context/FormContext"
-import { FormFgts } from "../../../components/fgts/form/index"
-import BaseForm from "../../../components/geral/form/BaseForm"
+import Head from "next/head";
+import { useState } from "react";
+import { FormFgts } from "../../../components/fgts/form";
+import BaseForm from "../../../components/geral/form/BaseForm";
+import { FormDataProvider } from "../../../context/FormContext";
 
 export default function Cadastro() {
-
-    const [copyTitleChart, setCopyTitleChart] = useState([]);
-    const [countProgress, setCountProgress] = useState(0)
-    const [copyTitulo, setCopyTitulo] = useState([]);
-    const [copyDescricao, copySetDescricao] = useState([]);
-    const [copyStepCurrent, setCopyStepCurrent] = useState([])
+    const [stepInfo, setStepInfo] = useState({});
 
     return (
         <>
             <Head>
                 <title>Empréstimo Saque Aniversário</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
             <BaseForm
-                copyTitleChart={copyTitleChart}
-                stepCurrent={copyStepCurrent}
-                titleText={copyTitulo}
-                descriptionText={copyDescricao}
-                progress={countProgress}
+                stepInfo={stepInfo}
                 steps={
                     <FormDataProvider>
-                        <FormFgts 
-                            setTitleChart={setCopyTitleChart}
-                            setStepCurrent={setCopyStepCurrent}
-                            setProgressChange={setCountProgress}
-                            setTitulo={setCopyTitulo} 
-                            setDescricao={copySetDescricao}
-                        />
+                        <FormFgts setStepInfo={setStepInfo} />
                     </FormDataProvider>
                 }
             />
         </>
-    )
+    );
 }

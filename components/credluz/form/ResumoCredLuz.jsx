@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFormData } from "context/FormContext";
 import { motion } from "framer-motion";
 import { container } from "shared/motionUtils/motionTransation";
@@ -15,6 +15,14 @@ const LSpan = tw.span`
     text-xs 
     text-blue-400
 `
+
+export const STEP_INFO = {
+    id: "confirmacao-dados",
+    progressLabel: "Confirmação dos dados",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Está tudo correto?",
+    description: "Confira se todos os dados estão corretos antes de prosseguir",
+};
 
 export default function ResumoCredLuz({ onNext, backStep }) {
 
@@ -48,10 +56,6 @@ export default function ResumoCredLuz({ onNext, backStep }) {
         }
     };
 
-    useEffect(() => {
-        console.log("FormData", formData);
-    }, [formData])
-    
     return (
         <div className="lg:min-h-screen">
             <ModalCadLoading

@@ -17,6 +17,14 @@ import { OptLabel } from '../style/index'
 import BtnNext from '../button/BtnBlueNext'
 import BtnBack from '../button/BtnBlueBack'
 
+export const STEP_INFO = {
+    id: "endereco",
+    progressLabel: "Endereço",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Onde você mora?",
+    description: "Agora só precisamos do seu endereço para prosseguir",
+};
+
 
 export default function FormEndereco({ onNext, backStep }) {
 

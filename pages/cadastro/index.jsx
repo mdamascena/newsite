@@ -1,40 +1,27 @@
-import Head from 'next/head'
-import { useState } from "react"
-import { FormDataProvider } from "../../context/FormContext"
-import BaseForm from "../../components/geral/form/BaseForm"
-import { FormPrincipal } from '../../components/principal/form/FormPrincipal'
+import Head from 'next/head';
+import { useState } from 'react';
+import BaseForm from '../../components/geral/form/BaseForm';
+import { FormPrincipal } from '../../components/principal/form/FormPrincipal';
+import { FormDataProvider } from '../../context/FormContext';
 
 export default function Cadastro() {
-
-    const [countProgress, setCountProgress] = useState(0)
-    const [copyTitulo, setCopyTitulo] = useState([]);
-    const [copyDescricao, copySetDescricao] = useState([]);
-    const [copyStepCurrent, setCopyStepCurrent] = useState([])
+    const [stepInfo, setStepInfo] = useState({});
 
     return (
         <>
             <Head>
                 <title>Cadastro</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
             <BaseForm
-                stepCurrent={copyStepCurrent}
-                titulo={copyTitulo}
-                descricao={copyDescricao}
-                progress={countProgress}
-                
+                stepInfo={stepInfo}
                 steps={
                     <FormDataProvider>
-                        <FormPrincipal 
-                            setStepCurrent={setCopyStepCurrent}
-                            setProgressChange={setCountProgress}
-                            setTitulo={setCopyTitulo} 
-                            setDescricao={copySetDescricao}
-                        />
+                        <FormPrincipal setStepInfo={setStepInfo} />
                     </FormDataProvider>
                 }
             />
         </>
-    )
+    );
 }

@@ -1,60 +1,58 @@
-import { useFormContext, Controller } from "react-hook-form";
-import { useFormData } from "../../../context/FormContext";
-import { useHookFormMask } from "use-mask-input"
-import { IoIosArrowBack } from "react-icons/io";
-import { ToastContainer } from "react-toastify"
-import { toastErrorColored } from "shared/toastUtils/toastValidation";
 import { motion } from "framer-motion";
-import { container, item } from "shared/motionUtils/motionTransation";
-import { OptLabel } from "components/geral/style";
-import BtnNext from "../../geral/button/BtnBlueNext";
+import { IoIosArrowBack } from "react-icons/io";
+import { container } from "shared/motionUtils/motionTransation";
 import BtnBack from "../../geral/button/BtnBlueBack";
-import { useEffect } from "react";
+import BtnNext from "../../geral/button/BtnBlueNext";
+
+export const STEP_INFO = {
+    id: "simulacao-fgts",
+    progressLabel: "Simulação",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Limite de crédito",
+    description: "Confira as condições da sua simulação antes de prosseguir",
+};
 
 export default function FormSimulacao({ onNext, backStep }) {
-    const { register, control, handleSubmit, setValue, watch, getValues, formState: { errors } } = useFormContext();
-    const { atualizarForm, formData } = useFormData();
-    
+    const handleNext = (event) => {
+        event.preventDefault();
+        onNext();
+    };
+
     return (
-        <div className="lg:min-h-[100vh]">
-
-            <ToastContainer />
-
+        <form className="lg:min-h-[100vh]" onSubmit={handleNext}>
             <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={container}
-                >
-
+            >
                 <div className="container-form-head">
                     <div className="col-span-6 items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
-                            Dados para o envio do crédito
+                            Simulação do saque-aniversário
                         </h1>
                     </div>
                     <p className="col-span-6 text-slate-400 font-light lg:text-base text-sm">
-                        Agora só precisamos da sua chave Pix para prosseguir
+                        Confira as condições disponíveis para antecipar seu FGTS.
                     </p>
                 </div>
 
-                <form className="container-form-body lg:pt-20" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="">
-                        
-
-                        
-                    </div>
-                </form>
+                <div className="container-form-body lg:pt-20" />
 
                 <div className="container-form-footer">
                     <div className="col-span-2">
-                        <BtnBack nome="Voltar" event={backStep} iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1" />} />
+                        <BtnBack
+                            tipo="button"
+                            nome="Voltar"
+                            event={backStep}
+                            iconLeft={<IoIosArrowBack className="lg:mr-3 mr-1" />}
+                        />
                     </div>
 
                     <div className="col-span-5">
-                        <BtnNext event={handleSubmit(onSubmit)} nome="Avançar" type="submit" />
+                        <BtnNext tipo="submit" nome="Avançar" />
                     </div>
                 </div>
             </motion.div>
-        </div>
+        </form>
     );
 }

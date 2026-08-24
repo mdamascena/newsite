@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { loginAuth } from "../../../services/serviceAuth/apiAuth"
 import { CURRENT_USER_CPF_STORAGE_KEY } from "../../../services/serviceAuth/apiPessoa"
+import ModalCadLoading from "../modal/ModalCadLoading"
 
 export default function CadLogin({setShowLogin, cpf}) {
 
@@ -58,6 +59,7 @@ export default function CadLogin({setShowLogin, cpf}) {
     return (
   
         <AnimatePresence>
+            <ModalCadLoading isOpen={isLoading} status="processing" />
             <motion.div
                 initial={ {scale: 0} }
                 animate={ {scale: 1 }}

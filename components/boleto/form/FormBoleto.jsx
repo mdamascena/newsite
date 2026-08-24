@@ -1,63 +1,67 @@
-import { useState, useEffect, useMemo } from 'react';
-import dynamic from 'next/dynamic';
-import { useForm, FormProvider } from 'react-hook-form';
-import { useFormData } from "../../../context/FormContext";
+import { useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import FormCadastro, { STEP_INFO as CADASTRO_STEP_INFO } from '../../geral/form/FormCadastro';
+import FormIdentificacao, { STEP_INFO as IDENTIFICACAO_STEP_INFO } from '../../geral/form/FormIdentificacao';
+import { useFormData } from '../../../context/FormContext';
 import { cadastroSchema, identificacaoSchema } from '../../../schema/schemaCadastro';
 
-const Step1 = dynamic(() => import('../../geral/form/FormCadastro'));
-const Step2 = dynamic(() => import('../../geral/form/FormIdentificacao'))
+const FLOW_STEPS = [
+    {
+        Component: FormCadastro,
+        schema: cadastroSchema,
+        info: CADASTRO_STEP_INFO,
+    },
+    {
+        Component: FormIdentificacao,
+        schema: identificacaoSchema,
+        info: IDENTIFICACAO_STEP_INFO,
+    },
+];
 
-const schemas = [cadastroSchema, identificacaoSchema];
+const progressSteps = FLOW_STEPS.map(({ info }, index) => ({
+    key: info.progressLabel,
+    thresholds: Math.round((index / (FLOW_STEPS.length - 1)) * 100),
+}));
 
-export function FormBoleto({ setProgressChange, setTitulo, setDescricao, setStepCurrent}) {
-
-    const [step, setStep] = useState(1);
+export function FormBoleto({ setStepInfo }) {
+    const [step, setStep] = useState(0);
     const { formData, atualizarForm } = useFormData();
-
-    const cpSteps = useMemo(() => [
-        {key: "Registrar conta", thresholds : 0},
-        {key: "Identificação", thresholds : 50},
-    ], []);
-    
-
-    const cpTitle = useMemo(() => [
-        "Vamos começar!",
-        "Um pouco mais sobre você",
-    ], []);
-
-    const cpDescription = useMemo(() => [
-        "Preencha seus dados iniciais para criarmos a sua conta",
-        "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
-    ], []);
+    const activeStep = FLOW_STEPS[step];
+    const ActiveStep = activeStep.Component;
 
     const methods = useForm({
-        resolver: yupResolver(schemas[step - 1]),
+        resolver: yupResolver(activeStep.schema),
         mode: 'onBlur',
         reValidateMode: 'onBlur',
-        defaultValues: formData
-    })
+        defaultValues: formData,
+    });
 
     useEffect(() => {
-        setProgressChange(((step - 1) / (schemas.length)) * 100);
-        setTitulo(cpTitle[step - 1]);
-        setDescricao(cpDescription[step - 1]);
-        setStepCurrent(cpSteps)
-    }, [step, setProgressChange, setTitulo, setDescricao, setStepCurrent, cpTitle, cpDescription, cpSteps]);
+        const progress = Math.round((step / (FLOW_STEPS.length - 1)) * 100);
+
+        setStepInfo({
+            ...activeStep.info,
+            progress,
+            progressSteps,
+        });
+    }, [activeStep.info, setStepInfo, step]);
 
     const nextStep = (data) => {
-        atualizarForm(data)
-        setStep((prevStep) => Math.min(prevStep + 1, schemas.length));
+        if (data) {
+            atualizarForm(data);
+        }
+
+        setStep((currentStep) => Math.min(currentStep + 1, FLOW_STEPS.length - 1));
     };
 
     const prevStep = () => {
-        setStep((prevStep) => Math.max(prevStep - 1, 1));
+        setStep((currentStep) => Math.max(currentStep - 1, 0));
     };
 
     return (
         <FormProvider {...methods}>
-            {step === 1 && <Step1 onNext={nextStep}  />}
-            {step === 2 && <Step2 onNext={nextStep} backStep={prevStep} />}
+            <ActiveStep onNext={nextStep} backStep={prevStep} />
         </FormProvider>
-    )
+    );
 }

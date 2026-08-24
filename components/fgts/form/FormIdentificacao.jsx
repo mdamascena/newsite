@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { useFormData } from "../../../context/FormContext"
 import { useFormContext, Controller} from "react-hook-form"
 import { useDisclosure } from "components/lib/nextui-compat"
-import { Input } from "components/ui/input"
 import { IoIosFemale, IoIosMale, IoIosArrowBack,IoIosCloseCircleOutline } from "react-icons/io"
 import { IoMaleFemaleOutline } from "react-icons/io5"
 import { TbMessage2Question } from "react-icons/tb"
@@ -15,14 +14,21 @@ import BtnNext from '../../geral/button/BtnBlueNext'
 import BtnBack from '../../geral/button/BtnBlueBack'
 import ModalGenero from '../../geral/modal/ModalGenero'
 
+export const STEP_INFO = {
+    id: "identificacao",
+    progressLabel: "Identificação",
+    sectionTitle: "Preenchimento de proposta",
+    title: "Um pouco mais sobre você",
+    description: "Aqui queremos conhecer um pouquinho mais sobre você. Simples, né?",
+};
+
 export default function FormIdentificacao({onNext, backStep}) {
 
-    const { control, handleSubmit, register, setValue, formState: { errors } } = useFormContext();
+    const { control, handleSubmit, setValue, formState: { errors } } = useFormContext();
     const { atualizarForm, formData } = useFormData();
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     const onSubmit = (data) => {
-        console.log('FormIdentificacao data', data);
         atualizarForm(data)
         onNext();
     }
@@ -52,7 +58,6 @@ export default function FormIdentificacao({onNext, backStep}) {
                 className="grid grid-cols-6 xl:px-7"
                 >
 
-                {/*Titulo do step*/}
                 <div className="container-form-head">
                     <div className="col-span-6 flex items-end">
                         <h1 className="text-blue-600 text-xl font-semibold tracking-tight">
@@ -65,33 +70,6 @@ export default function FormIdentificacao({onNext, backStep}) {
                 </div>
 
                 <div className="container-form-body lg:pt-20">
-
-                    {/* <div className="lg:col-span-1 col-span-6">
-                        <Input 
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.registroGeral ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            inputMode="numeric"
-                            placeholder="Número do RG *"
-                            {...register('registroGeral')} 
-                            />
-                        {errors.registroGeral && <p className="text-red-500 text-xs mt-1">{errors.registroGeral.message}</p>}
-                    </div>
-
-                    <div className="lg:col-span-5 col-span-6">
-                        <Input 
-                            className={`py-6 bg-white placeholder:text-slate-400 focus-visible:ring-blue-500 ${errors.nomeMae ? 'border-red-500 focus-visible:ring-red-500 placeholder:text-red-500 bg-red-50' : ''}`}
-                            type="text"
-                            placeholder="Nome da mãe *"
-                            {...register("nomeMae")}    
-                            />
-                        {errors.nomeMae && <p className="text-red-500 text-xs mt-1">{errors.nomeMae.message}</p>}
-                    </div> */}
-
-
-                    {/* <h5 className="col-span-6 lg:mb-2 lg:mt-5 my-2 text-slate-400 font-light lg:text-base text-sm">
-                        Selecione seu gênero de nascimento
-                    </h5> */}
-
                     <Controller
                         name="genero"
                         control={control}
