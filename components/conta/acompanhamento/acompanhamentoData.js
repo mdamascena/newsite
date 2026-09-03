@@ -256,16 +256,16 @@ const modalidadesCreditoBase = [
 			valor: "R$ 1.850,00",
 			numero: "012027",
 			instituicaoFinanceira: "Crefaz",
-			taxaJuros: "2,49% a.m.",
-			iof: "R$ 41,20",
-			consultor: "",
+			// taxaJuros: "2,49% a.m.",
+			// iof: "R$ 41,20",
+			// consultor: "",
 			dadosProposta: [
 				{ rotulo: "Valor solicitado", valor: "R$ 1.850,00", destaque: true },
 				{ rotulo: "Prazo", valor: "18 parcelas" },
 				{ rotulo: "Parcela", valor: "R$ 156,40" },
 				{ rotulo: "Saldo devedor", valor: "Nao se aplica" },
 			],
-			pendencia: null,
+			pendencia: null, // Pensar como vou tratar
 			etapas: [
 				{
 					ordem: 1,
