@@ -7,8 +7,15 @@ import BtnNext from "../../geral/button/BtnBlueNext";
 import BtnBack from "../../geral/button/BtnBlueBack";
 import { LuPencil } from "react-icons/lu";
 import tw from "tailwind-styled-components";
-import { adicionarPessoa } from "../../../services/serviceAuth/apiAddPessoa";
+import { adicionarPessoa } from "../../../services/geral/apiAddPessoa";
+import { criarPreAnaliseEmprestimoEnergia } from "../../../services/credluz/apiPreAnalise";
 import ModalCadLoading from "../../geral/modal/ModalCadLoading";
+
+const PRE_ANALISE_MOCK = Object.freeze({
+    empPrazo: 12,
+    empValor: 1200,
+    empParcela: 184,
+});
 
 const LSpan = tw.span`
     block 
@@ -26,7 +33,7 @@ export const STEP_INFO = {
 
 export default function ResumoCredLuz({ onNext, backStep }) {
 
-    const { formData } = useFormData()
+    const { formData, atualizarForm } = useFormData()
     const [cadastroStatus, setCadastroStatus] = useState(null);
     const isCreatingPessoa = Boolean(cadastroStatus);
 
@@ -39,7 +46,40 @@ export default function ResumoCredLuz({ onNext, backStep }) {
         let resultado;
 
         try {
-            resultado = await adicionarPessoa(formData);
+            const resultadoPessoa = await adicionarPessoa(formData);
+            const pessoaId = Number(resultadoPessoa.pessoaId ?? formData.pessoaId);
+
+            if (Number.isInteger(pessoaId) && pessoaId > 0) {
+                atualizarForm({ pessoaId });
+            }
+
+            if (!resultadoPessoa.success) {
+                resultado = resultadoPessoa;
+            } else if (formData.preAnaliseConcluida) {
+                resultado = { success: true };
+            } else {
+                const resultadoPreAnalise = await criarPreAnaliseEmprestimoEnergia({
+                    pesId: pessoaId,
+                    ...PRE_ANALISE_MOCK,
+                    ciaeId: formData.ciaeId,
+                    empIdTipoOcupacao: formData.tipoOcupacao,
+                });
+
+                if (resultadoPreAnalise.success) {
+                    const emprestimoEnergiaId = Number(
+                        resultadoPreAnalise.data?.empId ?? resultadoPreAnalise.data?.EmpId
+                    );
+                    const dadosPreAnalise = { preAnaliseConcluida: true };
+
+                    if (Number.isInteger(emprestimoEnergiaId) && emprestimoEnergiaId > 0) {
+                        dadosPreAnalise.emprestimoEnergiaId = emprestimoEnergiaId;
+                    }
+
+                    atualizarForm(dadosPreAnalise);
+                }
+
+                resultado = resultadoPreAnalise;
+            }
         } catch {
             resultado = { success: false };
         }

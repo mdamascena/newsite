@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const CREDLUZ_API_BASE_URL = (
-    process.env.NEXT_PUBLIC_CREDLUZ_API_BASE_URL || "https://localhost:7286"
+    process.env.NEXT_PUBLIC_CREDLUZ_API_BASE_URL || "http://localhost:5033"
 ).replace(/\/+$/, "");
 
 const COMPANHIAS_CIDADE_BASE_URL = `${CREDLUZ_API_BASE_URL}/companhias-cidade`;

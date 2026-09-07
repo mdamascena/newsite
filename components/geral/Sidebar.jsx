@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { History, Home, LifeBuoy, LogOut, Sparkles, Tags, UserRound } from "lucide-react";
 import { FloatingDock } from "components/ui/floating-dock";
-import { CURRENT_USER_CPF_STORAGE_KEY } from "../../services/serviceAuth/apiPessoa";
+import { CURRENT_USER_CPF_STORAGE_KEY } from "../../services/geral/apiPessoa";
 
 export default function SideBar({ activeView = "home", onViewChange = () => {} }) {
     const router = useRouter();

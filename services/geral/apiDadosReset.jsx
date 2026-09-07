@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const DADOS_RESET_BASE_URL = "https://localhost:7286/pessoasdados";
+const CREDLUZ_API_BASE_URL = (
+    process.env.NEXT_PUBLIC_CREDLUZ_API_BASE_URL || "http://localhost:5033"
+).replace(/\/+$/, "");
+
+const DADOS_RESET_BASE_URL = `${CREDLUZ_API_BASE_URL}/pessoasdados`;
 
 export const getDadosResetPorCpf = (cpf) => {
     const cpfDigits = (cpf || "").replace(/\D/g, "");

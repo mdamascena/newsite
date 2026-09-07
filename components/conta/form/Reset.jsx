@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { ToastContainer } from "react-toastify"
 import { toastErrorColored } from "shared/toastUtils/toastValidation";
 import ModalSemCad from "../../geral/modal/ModalSemCad"
-import { getDadosResetPorCpf } from "../../../services/serviceAuth/apiDadosReset"
+import { getDadosResetPorCpf } from "../../../services/geral/apiDadosReset"
 
 const maskCelular = (celular) => {
     const digits = String(celular ?? "").replace(/\D/g, "");

@@ -10,8 +10,8 @@ import { useHookFormMask } from "use-mask-input"
 import { validateCPF } from "schema/validations"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
 import { ToastContainer } from "react-toastify"
-import { loginAuth } from "../../../services/serviceAuth/apiAuth"
-import { CURRENT_USER_CPF_STORAGE_KEY } from "../../../services/serviceAuth/apiPessoa"
+import { loginAuth } from "../../../services/geral/apiAuth"
+import { CURRENT_USER_CPF_STORAGE_KEY } from "../../../services/geral/apiPessoa"
 import ModalCadLoading from "../../geral/modal/ModalCadLoading"
 
 export default function Login({ setShowLogin, setResetCpf }) {
