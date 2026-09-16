@@ -39,7 +39,7 @@ const slides = [
         title: 'Pix Parcelado',
         description: 'Dinheiro na hora via Pix, com pagamento em parcelas que cabem no bolso',
         resumo: 'Dinheiro na hora, direto no Pix, e pagamento em parcelas que cabem no seu bolso. Sem burocracia, sem esperar. Uma solução moderna, rápida e segura pra quem precisa resolver agora.',
-        pagina: '../credluz-fast'
+        pagina: '/cadastro/result'
     },
     {
         bgClass: 'bg-modelo-car',
