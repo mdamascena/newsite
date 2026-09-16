@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const PESSOAS_BASE_URL = "https://localhost:7286/pessoas";
+const CREDLUZ_API_BASE_URL = (
+    process.env.NEXT_PUBLIC_CREDLUZ_API_BASE_URL || "http://localhost:5033"
+).replace(/\/+$/, "");
+
+const PESSOAS_BASE_URL = `${CREDLUZ_API_BASE_URL}/pessoas`;
 
 export const CURRENT_USER_CPF_STORAGE_KEY = "valoreal.currentUserCpf";
 

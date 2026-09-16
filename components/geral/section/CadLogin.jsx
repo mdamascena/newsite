@@ -10,8 +10,8 @@ import { RiShieldKeyholeLine } from "react-icons/ri"
 import { motion, AnimatePresence } from 'framer-motion'
 import { ToastContainer } from "react-toastify"
 import { toastErrorColored } from "shared/toastUtils/toastValidation"
-import { loginAuth } from "../../../services/serviceAuth/apiAuth"
-import { CURRENT_USER_CPF_STORAGE_KEY } from "../../../services/serviceAuth/apiPessoa"
+import { loginAuth } from "../../../services/geral/apiAuth"
+import { CURRENT_USER_CPF_STORAGE_KEY } from "../../../services/geral/apiPessoa"
 import ModalCadLoading from "../modal/ModalCadLoading"
 
 export default function CadLogin({setShowLogin, cpf}) {

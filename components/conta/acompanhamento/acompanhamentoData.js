@@ -1,4 +1,4 @@
-import { CURRENT_USER_CPF_STORAGE_KEY, getPessoaPorCpf } from "../../../services/serviceAuth/apiPessoa";
+import { CURRENT_USER_CPF_STORAGE_KEY, getPessoaPorCpf } from "../../../services/geral/apiPessoa";
 
 const getCampoPessoa = (pessoa, camelCase, pascalCase) => pessoa?.[camelCase] ?? pessoa?.[pascalCase] ?? "";
 

@@ -3,8 +3,8 @@ import { useFormContext, Controller } from "react-hook-form"
 import { useFormData } from "../../../context/FormContext"
 import { useHookFormMask } from "use-mask-input"
 import { Input } from "components/ui/input"
-import { getEnderecoCep } from '../../../services/servicesEnd/apiCep'
-import { getCidade, getEstado } from '../../../services/servicesEnd/apiIBGE'
+import { getEnderecoCep } from '../../../services/geral/apiCep'
+import { getCidade, getEstado } from '../../../services/geral/apiIBGE'
 import { Select, SelectTrigger, SelectContent, SelectItem } from "components/ui/select"
 import { IoIosArrowBack } from "react-icons/io"
 import { PiMapPinSimpleAreaFill } from "react-icons/pi"

@@ -17,7 +17,7 @@ import { ToastContainer, toast } from "react-toastify"
 import { toastErrorColored, toastInfoColored } from "shared/toastUtils/toastValidation"
 import { GoCheckCircleFill } from "react-icons/go";
 import { GoXCircleFill } from "react-icons/go";
-import { getPessoaPorCpf } from "../../../services/serviceAuth/apiPessoa";
+import { getPessoaPorCpf } from "../../../services/geral/apiPessoa";
 import ModalCadLoading from "../modal/ModalCadLoading";
 
 export const STEP_INFO = {

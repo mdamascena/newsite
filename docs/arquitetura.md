@@ -30,8 +30,8 @@ As versões exatas e o runtime Node suportado devem ser consultados em `package.
 | `components/ui/` | Primitivos visuais reutilizáveis |
 | `context/` | Estado React compartilhado dentro de uma árvore |
 | `schema/` | Schemas Yup e validações de domínio dos formulários |
-| `services/serviceAuth/` | Autenticação, pessoa, criação de cadastro e reset |
-| `services/servicesEnd/` | CEP, IBGE e companhia de energia |
+| `services/geral/` | Autenticação, pessoa, cadastro, reset, CEP, IBGE e companhia de energia |
+| `services/credluz/` | Serviços específicos da jornada CredLuz |
 | `shared/` | Toasts, alertas e variantes de animação compartilhadas |
 | `lib/` | Funções puras e utilitários de aplicação |
 | `styles/` | CSS global, tokens e classes utilitárias compostas |
@@ -59,7 +59,7 @@ pages/credluz/cadastro/index.jsx
     → components/credluz/form/index.jsx (`FormCredLuz`)
     → components/credluz/form/Form*.jsx e components/geral/form/Form*.jsx
     → schema/schemaCredLuz.jsx e schema/schemaCadastro.jsx
-    → services/serviceAuth/* e services/servicesEnd/*
+    → services/geral/*
 ```
 
 O contrato completo de page, orquestrador e step está em [Formulários e regras](./formularios-e-regras.md).
@@ -98,13 +98,14 @@ Não existe um arquivo central que reúna todas as APIs. Os módulos de `service
 
 | Serviço | Responsabilidade principal | Consumidores atuais principais |
 | --- | --- | --- |
-| `serviceAuth/apiAuth.jsx` | Login | Formulários de conta/login |
-| `serviceAuth/apiPessoa.jsx` | Consultar pessoa por CPF | `FormCadastro` e acompanhamento |
-| `serviceAuth/apiAddPessoa.jsx` | Registrar credencial e adicionar pessoa/endereço | CredLuz |
-| `serviceAuth/apiDadosReset.jsx` | Consultar dados de recuperação | Fluxo de reset |
-| `servicesEnd/apiCep.jsx` | Consultar endereço no ViaCEP | `FormEndereco` |
-| `servicesEnd/apiIBGE.jsx` | Listar estados e municípios | `FormEndereco` |
-| `servicesEnd/apiCompanhiaEnergia.jsx` | Listar e normalizar companhias por cidade | Orquestrador CredLuz |
+| `geral/apiAuth.jsx` | Login | Formulários de conta/login |
+| `geral/apiPessoa.jsx` | Consultar pessoa por CPF | `FormCadastro` e acompanhamento |
+| `geral/apiAddPessoa.jsx` | Registrar credencial e adicionar pessoa/endereço | CredLuz |
+| `geral/apiDadosReset.jsx` | Consultar dados de recuperação | Fluxo de reset |
+| `geral/apiCep.jsx` | Consultar endereço no ViaCEP | `FormEndereco` |
+| `geral/apiIBGE.jsx` | Listar estados e municípios | `FormEndereco` |
+| `geral/apiCompanhiaEnergia.jsx` | Listar e normalizar companhias por cidade | Orquestrador CredLuz |
+| `credluz/apiPreAnalise.jsx` | Criar pré-análise de empréstimo de energia | `ResumoCredLuz` |
 
 Regras vigentes:
 
@@ -119,7 +120,7 @@ Os retornos ainda não são uniformes: alguns serviços devolvem `{ success, dat
 Configuração atual:
 
 - `NEXT_PUBLIC_AUTH_API_BASE_URL` configura o cadastro de credencial em `apiAddPessoa.jsx`.
-- `NEXT_PUBLIC_CREDLUZ_API_BASE_URL` configura pessoa/endereço em `apiAddPessoa.jsx` e companhia de energia em `apiCompanhiaEnergia.jsx`.
+- `NEXT_PUBLIC_CREDLUZ_API_BASE_URL` configura pessoa/endereço em `apiAddPessoa.jsx`, companhia de energia em `apiCompanhiaEnergia.jsx` e pré-análise em `apiPreAnalise.jsx`.
 - Alguns módulos de autenticação/pessoa/reset ainda possuem URLs `https://localhost:*` fixas. Isso é uma limitação atual e deve ser corrigido antes de depender de ambientes diferentes.
 - ViaCEP e IBGE usam seus endpoints públicos diretamente.
 - Não há rotas locais em `pages/api`; as chamadas partem do cliente para os serviços externos.

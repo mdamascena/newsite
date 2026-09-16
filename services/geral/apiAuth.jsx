@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const AUTH_LOGIN_URL = "https://localhost:7210/auth/login";
+const AUTH_API_BASE_URL = (
+    process.env.NEXT_PUBLIC_AUTH_API_BASE_URL || "http://localhost:5132"
+).replace(/\/+$/, "");
+
+const AUTH_LOGIN_URL = `${AUTH_API_BASE_URL}/auth/login`;
 
 export const loginAuth = ({ cpf, senha }) => {
     const cpfDigits = (cpf || "").replace(/\D/g, "");

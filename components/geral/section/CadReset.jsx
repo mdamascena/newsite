@@ -9,7 +9,7 @@ import { IoMail } from "react-icons/io5"
 import { MdRadioButtonChecked } from "react-icons/md"
 import { MdRadioButtonUnchecked } from "react-icons/md"
 import { motion, AnimatePresence } from 'framer-motion'
-import { getDadosResetPorCpf } from "../../../services/serviceAuth/apiDadosReset"
+import { getDadosResetPorCpf } from "../../../services/geral/apiDadosReset"
 
 const maskCelular = (celular) => {
     const digits = String(celular ?? "").replace(/\D/g, "");
