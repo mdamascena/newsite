@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { useRef } from "react"
 import { motion, useInView } from "motion/react"
-import menclt from "../../public/img/PERSO_CLT.png"
+import menclt from "../../public/img/PERSO_CLT_3.png"
 import BtnYellowG from "../geral/button/BtnYellowG.jsx"
 import SectioAnalise from "../geral/section/Analise"
 import SectionFaq from "../geral/section/LinkFaq"

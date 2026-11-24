@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { RiArrowDownSLine } from 'react-icons/ri'
 import tw from 'tailwind-styled-components'
-import 'animate.css'
 
 import LogoB from '../../../public/img/LOGO_BRANCO.png'
 import LogoA from '../../../public/img/LOGO_AZUL.png'
-import AlertI from '../alert/Alert'
+import AlertI from '../alert/AlertBlue'
 
 const Dropdown = tw.div`
     absolute
@@ -27,7 +25,16 @@ const Dropdown = tw.div`
     group-hover:opacity-100
 `
 
+const LiDrop = tw.li`
+    my-auto
+    cursor-pointer
+    text-sm
+    duration-500
+    transition-all
+`
+
 const BtnMenu = tw.button`
+    cursor-pointer!
     rounded-full
     border-b-2
     border-amber-300
@@ -50,14 +57,6 @@ const BtnMenu = tw.button`
     lg:py-2
 `
 
-const LiDrop = tw.li`
-    my-auto
-    cursor-pointer
-    text-sm
-    duration-500
-    transition-all
-`
-
 const LiSm = tw.li`
     m-2
     rounded-md
@@ -67,11 +66,18 @@ const LiSm = tw.li`
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [mudaLinha, setMudaLinha] = useState(['w-6', '', 'w-4', 'scale-y-0', true])
-    const [dropdonw, setDropdonw] = useState([true, 'max-h-0 scale-y-0 -mb-6 overflow-hidden', 'opacity-0'])
+    const [dropdonw, setDropdonw] = useState([true, 'scale-y-0 h-0 -mb-6', 'opacity-0'])
 
-    const containerClass = isScrolled ? 'shadow-lg bg-white' : 'bg-black/10'
-    const logoSrc = isScrolled ? LogoA : LogoB
-    const burgerClass = isScrolled ? 'bg-blue-500' : 'bg-white'
+    const containerClass = isScrolled ? 'shadow-lg bg-blue-600' : 'bg-blue-600/10'
+    const logoSrc = isScrolled ? LogoB : LogoA
+    const burgerClass = isScrolled ? 'bg-white' : 'bg-blue-500'
+    
+    const desktopLinkClass = isScrolled
+        ? 'text-white! hover:text-yellow-300!'
+        : 'text-blue-500! hover:text-yellow-500!'
+    const loanIndicatorColorClass = isScrolled
+        ? 'bg-white group-hover:bg-yellow-300'
+        : 'bg-blue-500 group-hover:bg-yellow-500'
 
     const btnClick = () => {
         if (mudaLinha[4]) {
@@ -89,9 +95,9 @@ export default function Header() {
 
     const drop = () => {
         if (dropdonw[0]) {
-            setDropdonw([false, 'max-h-[28rem] scale-y-100 mb-2 overflow-hidden', 'opacity-100'])
+            setDropdonw([false, 'h-80 scale-y-100', 'opacity-100'])
         } else {
-            setDropdonw([true, 'max-h-0 scale-y-0 -mb-6 overflow-hidden', 'opacity-0'])
+            setDropdonw([true, 'h-0 scale-y-0 -mb-6', 'opacity-0'])
         }
     }
 
@@ -109,28 +115,26 @@ export default function Header() {
     return (
         <header>
             <AlertI />
-            <div
-                id='menuBar'
-                className={`${containerClass} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-5 rounded-[10px] left-0 right-0 items-center duration-500 container-custom`}>
-                <Link href='/' className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in justify-self-start'>
+            <div id='menuBar' className={`${containerClass} flex flex-row justify-between mt-2 z-50 backdrop-blur-md fixed py-3 px-5 rounded-[10px] left-0 right-0 items-center duration-500 container-custom`}>
+                
+                <Link href='/' className='pr-8 lg:pr-0 hover:scale-110 hover:-rotate-6 duration-300 ease-in'>
                     <Image id='logoBranco' src={logoSrc} width={160} placeholder='blur' loading='eager' alt='' />
                 </Link>
 
                 <nav className='hidden lg:block ml-auto'>
                     <ul className='flex gap-7'>
-                        <Link
-                            href='/'
-                            className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
+                        <Link href='/' className={`${desktopLinkClass} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
                             Principal
                         </Link>
-                        <Link
-                            href='/quem-somos'
-                            className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
+                        <Link href='/quem-somos' className={`${desktopLinkClass} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
                             Quem Somos
                         </Link>
-                        <LiDrop className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} relative flex group`}>
+                        <LiDrop className={`${desktopLinkClass} relative flex group`}>
                             Empréstimos
-                            <RiArrowDownSLine className='text-lg duration-200 group-hover:rotate-180' />
+                            <span className='relative ml-1 mt-1.5 flex size-2' aria-hidden='true'>
+                                <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-80 transition-colors duration-500 ${loanIndicatorColorClass}`}></span>
+                                <span className={`relative inline-flex size-2 animate-pulse rounded-full saturate-150 transition-all duration-500 group-hover:scale-110 ${loanIndicatorColorClass}`}></span>
+                            </span>
                             <Dropdown>
                                 <div className='p-1 text-sm'>
                                     <Link href='/saque-aniversario' className='m-1 block rounded-md px-4 py-2 text-slate-400! duration-500 hover:bg-slate-200'>Saque antecipado FGTS</Link>
@@ -142,22 +146,23 @@ export default function Header() {
                                 </div>
                             </Dropdown>
                         </LiDrop>
-                        <Link href='/atendimento' className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
+                        <Link href='/atendimento' className={`${desktopLinkClass} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
                             Atendimento
                         </Link>
-                        
-                        <Link href='/faq' className={`${isScrolled ? 'text-blue-500! hover:text-yellow-500!' : 'text-white! hover:text-yellow-300!'} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
+                        <Link href='/faq' className={`${desktopLinkClass} my-auto text-sm duration-500 transition-all hover:scale-[1.2]`}>
                             Ajuda
                         </Link>
                     </ul>
                 </nav>
 
                 <div className='ml-auto'>
+                    
                     <BtnMenu>
                         <Link href='/conta'>
                             Acessar
                         </Link>
                     </BtnMenu>
+                    
                 </div>
 
                 <div className='space-y-1.25 cursor-pointer overflow-hidden lg:hidden ml-5' onClick={btnClick}>
@@ -176,8 +181,15 @@ export default function Header() {
                         <Link href='/quem-somos' className='block w-full rounded-md px-2 py-2 text-slate-400! transition-colors duration-300 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200'>Quem Somos</Link>
                     </LiSm>
                     <LiSm>
-                        <button type='button' className={`w-full rounded-md px-2 py-2 text-center text-slate-400! transition-colors duration-300 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200 ${dropdonw[0] ? '' : 'bg-slate-200'}`} onClick={drop}>
-                            Empréstimos
+                        <button
+                            type='button'
+                            className={`flex w-full items-center justify-center gap-2 rounded-md px-2 py-2 text-center text-slate-400! transition-colors duration-300 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200 cursor-pointer ${dropdonw[0] ? '' : 'bg-slate-200'}`}
+                            onClick={drop}>
+                            <span>Empréstimos</span>
+                            <span className='relative flex size-2.5 shrink-0' aria-hidden='true'>
+                                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-95'></span>
+                                <span className='relative inline-flex size-2.5 rounded-full bg-blue-300'></span>
+                            </span>
                         </button>
                     </LiSm>
                 </ul>

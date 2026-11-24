@@ -324,13 +324,19 @@ function MetricCard({ icon: Icon, label, value, detail }) {
 	return (
 		<article className="relative min-w-0 rounded-lg bg-white p-3 shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-4">
 			<div className="min-w-0 pr-9 sm:pr-12">
-				<p className="wrap-break-word text-[10px] font-semibold uppercase leading-tight tracking-wide text-blue-500 sm:text-xs">{label}</p>
-				<strong className="mt-2 block wrap-break-word text-lg leading-tight text-slate-400 sm:text-xl">{value}</strong>
+				<p className="wrap-break-word text-[10px] font-semibold uppercase leading-tight tracking-wide text-blue-500 sm:text-xs">
+					{label}
+				</p>
+				<strong className="mt-2 block wrap-break-word text-lg leading-tight text-slate-400 sm:text-xl">
+					{value}
+				</strong>
 			</div>
 			<span className="absolute right-3 top-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-300 sm:right-4 sm:top-4 sm:h-10 sm:w-10">
-					<Icon className="h-6 w-6" aria-hidden="true" />
-				</span>
-			<p className="mt-3 wrap-break-word text-xs leading-snug text-slate-500 dark:text-slate-400 sm:text-sm">{detail}</p>
+				<Icon className="h-6 w-6" aria-hidden="true" />
+			</span>
+			<p className="mt-3 wrap-break-word text-xs leading-snug text-slate-500 dark:text-slate-400 sm:text-sm">
+				{detail}
+			</p>
 		</article>
 	);
 }
@@ -345,7 +351,9 @@ function SeletorPropostas({ modalidades, modalidadeSelecionadaId, onSelect }) {
 		<section className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
 			<div className="mb-3">
 				{/* <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Modalidades de credito</p> */}
-				<h2 className="mt-1 text-lg font-bold text-slate-950 dark:text-white">Escolha uma proposta para acompanhar</h2>
+				<h2 className="mt-1 text-lg font-bold text-slate-950 dark:text-white">
+					Suas propostas
+				</h2>
 			</div>
 
 			<div className="-mx-1 overflow-x-auto px-1 pb-1">
@@ -464,14 +472,11 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 	return (
 		<div className="space-y-6">
 			{/* Cabecalho da Home */}
-			<header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-				<div>
-					{/* <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Area do cliente</p> */}
-					<h1 className="mt-1 text-2xl font-bold text-slate-950 dark:text-white sm:text-3xl">Ola, {clienteAtual.primeiroNome}</h1>
-					<p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Acompanhe o andamento das propostas e os dados principais da sua conta.</p>
-				</div>
+			<header className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 sm:gap-x-4">
+				{/* <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Area do cliente</p> */}
+				<h1 className="min-w-0 text-2xl font-bold leading-tight text-slate-950 dark:text-white sm:text-3xl">Ola, {clienteAtual.primeiroNome}</h1>
 
-				<div className="flex items-center gap-2">
+				<div className="flex items-center gap-2 sm:row-span-2 my-3">
 					<div className="relative">
 						<button
 							type="button"
@@ -490,6 +495,8 @@ export default function Home({ isDark, onNavigate, onToggleTheme }) {
 					</div>
 					<ThemeToggleButton isDark={isDark} onToggleTheme={onToggleTheme} />
 				</div>
+
+				<p className="col-span-2 mt-1 text-sm text-slate-500 dark:text-slate-400 sm:col-span-1">Acompanhe o andamento das propostas e os dados principais da sua conta.</p>
 			</header>
 
 			{/* BLOCO DA IMAGEM: quatro cards do topo da Home */}

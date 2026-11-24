@@ -54,21 +54,21 @@ function ComparativoCard({ item }) {
     return (
         <div className="col-auto bg-white rounded-xl mx-3 lg:mx-0 shadow-md">
 
-            <div className="flex items-center bg-blue-500/20 px-5 py-3 rounded-t-lg">
+            <div className="flex items-center px-5 py-3 rounded-t-lg border-b border-slate-200">
                 {Icon && <Icon className="p-0.5 bg-blue-500 text-white rounded-sm text-3xl mr-2"/>}
                 <p className="text-blue-500 font-semibold mr-2">{item.titulo}</p>
             </div>
 
-            <div className="flex lg:justify-between justify-around my-3 lg:my-5 px-5">
+            <div className="flex lg:justify-baseline justify-around my-3 lg:my-5 px-5">
                 <div className="">
-                    <div className="bg-slate-100 text-slate-400 font-semibold tracking-tight p-1 rounded-md flex items-center">
+                    <div className="bg-slate-100 text-slate-400 font-semibold tracking-tight p-1 px-3 rounded-md flex items-center">
                         <p className="text-xl">{item.taxaPaga}</p> 
                         <GoArrowUp className="ml-1 text-xl"/>
                     </div>
                 </div>
                 
                 <div className="">
-                    <div className="bg-blue-100 text-blue-500 font-semibold tracking-tight p-1 rounded-md flex items-center">
+                    <div className="bg-blue-100 text-blue-500 font-semibold tracking-tight p-1 px-3 rounded-md flex items-center">
                         <p className="text-xl">1.9% a.m</p> 
                         <GoArrowDown className="ml-1 text-xl"/>
                     </div>
